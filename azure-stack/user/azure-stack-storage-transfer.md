@@ -32,7 +32,7 @@ Azure Stack Hub は、ディスク、BLOB、テーブル、キュー、および
 
     オープン ソースでクロスプラットフォームの Azure および Azure Stack Hub Platform で使用できるコマンド群が提供されます。
 
-* [Microsoft ストレージ エクスプローラー](#microsoft-azure-storage-explorer)
+* [Microsoft Azure Storage Explorer](#microsoft-azure-storage-explorer)
 
     ユーザー インターフェイスを備えた使いやすいスタンドアロンのアプリ。
 
@@ -265,7 +265,7 @@ az storage blob download --container-name $AZURESTACK_STORAGE_CONTAINER_NAME --a
 echo "Done"
 ```
 
-## <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラー
+## <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
 
 Azure Storage Explorer は、Microsoft のスタンドアロン アプリです。 これを使用すると、Windows、macOS、Linux のコンピューターで Azure Storage と Azure Stack Hub Storage 両方のデータを簡単に操作できます。 簡単に、Azure Stack Hub Storage データを簡単に管理する方法が必要な場合は、Microsoft Azure Storage Explorer の使用を検討してください。
 
@@ -303,6 +303,6 @@ blobEndpoint myaccount.blob.local.azurestack.external
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stack Hub サブスクリプションに Microsoft Azure Storage Explorer を接続する](azure-stack-storage-connect-se.md)
-* [ストレージ エクスプローラーの概要](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Storage Explorer の概要](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * [Azure 互換ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)
 * [Microsoft Azure ストレージの概要](/azure/storage/common/storage-introduction)
