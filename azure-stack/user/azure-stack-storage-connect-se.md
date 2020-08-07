@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Hub サブスクリプションまたはストレージ アカウントにストレージ エクスプローラーを接続する
-description: Azure Stack Hub サブスクリプションにストレージ エクスプローラーを接続する方法について説明します。
+title: Azure Stack Hub サブスクリプションまたはストレージ アカウントに Storage Explorer を接続する
+description: Azure Stack Hub サブスクリプションに Storage Explorer を接続する方法について説明します。
 author: mattbriggs
 ms.topic: conceptual
 ms.date: 04/20/2020
@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/21/2020
 ms.locfileid: "81660374"
 ---
-# <a name="connect-storage-explorer-to-an-azure-stack-hub-subscription-or-a-storage-account"></a>Azure Stack Hub サブスクリプションまたはストレージ アカウントにストレージ エクスプローラーを接続する
+# <a name="connect-storage-explorer-to-an-azure-stack-hub-subscription-or-a-storage-account"></a>Azure Stack Hub サブスクリプションまたはストレージ アカウントに Storage Explorer を接続する
 
 この記事では、[Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) を使用して Azure Stack Hub サブスクリプションとストレージ アカウントに接続する方法について説明します。 Storage Explorer は、Windows、macOS、Linux で Azure Stack Hub ストレージのデータを簡単に操作できるようにするスタンドアロン アプリです。
 
@@ -90,7 +90,7 @@ Azure Active Directory (Azure AD) アカウントに属している Azure Stack 
 ## <a name="connect-to-an-azure-stack-hub-subscription-with-ad-fs-account"></a>AD FS アカウントを使用して Azure Stack Hub サブスクリプションに接続する
 
 > [!Note]  
-> Azure のフェデレーション サービス (AD FS) のサインイン エクスペリエンスでは、Azure Stack Hub 1804 以降の更新プログラムが適用されたストレージ エクスプローラー 1.2.0 以降のバージョンがサポートされます。
+> Azure のフェデレーション サービス (AD FS) のサインイン エクスペリエンスでは、Azure Stack Hub 1804 以降の更新プログラムが適用された Storage Explorer 1.2.0 以降のバージョンがサポートされます。
 AD FS アカウントに属している Azure Stack Hub サブスクリプションに Storage Explorer を接続するには、次の手順を使用します。
 
 1. **[アカウントの管理]** を選択します。 エクスプローラーには、サインインした Microsoft サブスクリプションが一覧表示されます。
