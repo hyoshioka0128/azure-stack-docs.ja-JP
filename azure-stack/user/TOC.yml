@@ -149,7 +149,7 @@
                   href: azure-stack-storage-dev.md
                 - name: データ転送ツール
                   href: azure-stack-storage-transfer.md
-                - name: ストレージ エクスプローラーの接続
+                - name: Storage Explorer の接続
                   href: azure-stack-storage-connect-se.md
             - name: ネットワーク
               items:
