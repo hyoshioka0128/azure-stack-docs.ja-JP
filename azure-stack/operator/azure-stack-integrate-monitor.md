@@ -119,9 +119,9 @@ SPN の作成方法に関する詳細については、「[アプリ ID を使�
 
 | パラメーター | 説明 | 認証 |
 | --- | --- | --- |
-| **External_domain_fqdn ** | 外部ドメイン FQDN |    |
-| **region: ** | リージョン名 |    |
-| **tenant_id: ** | テナント ID\* |    |
+| **External_domain_fqdn** | 外部ドメイン FQDN |    |
+| **region:** | リージョン名 |    |
+| **tenant_id:** | テナント ID\* |    |
 | client_id: | クライアント ID | シークレットを使用する SPN |
 | client_secret: | クライアント パスワード | シークレットを使用する SPN |
 | client_cert\*\*: | 証明書へのパス | 証明書を使用する SPN |
