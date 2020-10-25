@@ -10,12 +10,12 @@ metadata:
   author: BryanLa
   ms.author: bryanla
   ms.date: 11/04/2019
-  ms.openlocfilehash: 9a0a1b733882ca77cdce2d6ccc0395ce31c891f1
-  ms.sourcegitcommit: bdd4d529bd3e115a9f76eece62b1613448d5d020
+  ms.openlocfilehash: 746a9c96e4d1ca25ed194e7b016b63aa63ba6c0f
+  ms.sourcegitcommit: 362081a8c19e7674c3029c8a44d7ddbe2deb247b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/14/2020
-  ms.locfileid: "77568364"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91899501"
 highlightedContent:
   items:
   - title: Azure Stack ファミリに関するお知らせ
@@ -23,13 +23,13 @@ highlightedContent:
     url: http://aka.ms/AzsFamAnnounce
   - title: Azure Stack 製品およびソリューション ファミリの比較
     itemType: overview
-    url: /azure-stack/operator/compare-azure-azure-stack
+    url: ./operator/compare-azure-azure-stack.md
 productDirectory:
   items:
   - title: Azure Stack Hub
     imageSrc: media/index/azure-stack-hub.svg
     links:
-    - url: /azure-stack/operator/azure-stack-overview
+    - url: ./operator/azure-stack-overview.md
       text: Azure Stack Hub とは
   - title: Azure Stack Edge
     imageSrc: media/index/azure-stack-edge.svg
@@ -39,7 +39,7 @@ productDirectory:
   - title: Azure Stack HCI
     imageSrc: media/index/azure-stack-hci.svg
     links:
-    - url: /azure-stack/hci/overview
+    - url: ./hci/overview.md
       text: Azure Stack HCI の概要
 conceptualContent:
   title: ハイブリッド パターンとソリューションの例
@@ -47,38 +47,38 @@ conceptualContent:
   items:
   - title: ハイブリッドの詳細情報
     links:
-    - url: /azure-stack/hybrid/overview-patterns-solution-examples
+    - url: /hybrid/app-solutions/overview-patterns-solution-examples
       itemType: overview
       text: パターンとソリューションの例とは
-    - url: /azure-stack/hybrid/overview-app-design-considerations
+    - url: /hybrid/app-solutions/overview-app-design-considerations
       itemType: concept
       text: ハイブリッド アプリの設計上の考慮事項
   - title: ハイブリッド パターンを確認する
     links:
-    - url: /azure-stack/hybrid/pattern-cross-cloud-scale
+    - url: /hybrid/app-solutions/pattern-cross-cloud-scale
       itemType: architecture
       text: クラウド間スケーリング
-    - url: /azure-stack/hybrid/pattern-cicd-pipeline
+    - url: /hybrid/app-solutions/pattern-cicd-pipeline
       itemType: architecture
       text: DevOps ハイブリッド CI/CD
-    - url: /azure-stack/hybrid/pattern-retail-footfall-detection
+    - url: /hybrid/app-solutions/pattern-retail-footfall-detection
       itemType: architecture
       text: 足音検知 (リテール)
-    - url: /azure-stack/hybrid/pattern-geo-distributed
+    - url: /hybrid/app-solutions/pattern-geo-distributed
       itemType: architecture
       text: 地理的に分散されたアプリ
   - title: ハイブリッド ソリューションのデプロイの例
     links:
-    - url: /azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling
+    - url: /hybrid/app-solutions/solution-deployment-guide-cross-cloud-scaling
       itemType: tutorial
       text: クラウド間スケーリング
     - url: https://aka.ms/hybriddevopsdeploy
       itemType: tutorial
       text: DevOps ハイブリッド CI/CD
-    - url: /azure-stack/hybrid/solution-deployment-guide-retail-footfall-detection
+    - url: /hybrid/app-solutions/solution-deployment-guide-retail-footfall-detection
       itemType: tutorial
       text: 足音検知 (リテール)
-    - url: /azure-stack/hybrid/solution-deployment-guide-geo-distributed
+    - url: /hybrid/app-solutions/solution-deployment-guide-geo-distributed
       itemType: tutorial
       text: 地理的に分散されたアプリ
 additionalContent:
@@ -87,31 +87,31 @@ additionalContent:
     items:
     - title: 演算子
       links:
-      - url: /azure-stack/operator/azure-stack-manage-portals
+      - url: ./operator/azure-stack-manage-portals.md
         text: 管理者ポータルを使用する
-      - url: /azure-stack/operator/release-notes
+      - url: ./operator/release-notes.md
         text: リリース ノート
-      - url: /azure-stack/operator/azure-stack-servicing-policy
+      - url: ./operator/azure-stack-servicing-policy.md
         text: Azure Stack Hub サービス ポリシー
-      - url: /azure-stack/operator/azure-stack-create-service-principals
+      - url: ./operator/azure-stack-create-service-principals.md
         text: アプリ ID を使用してリソースにアクセスする
     - title: User
       links:
-      - url: /azure-stack/user/azure-stack-quick-windows-portal
+      - url: ./user/azure-stack-quick-windows-portal.md
         text: VM をデプロイする
-      - url: /azure-stack/user/azure-stack-vm-sizes
+      - url: ./user/azure-stack-vm-sizes.md
         text: サポートされる VM のサイズ
-      - url: /azure-stack/user/azure-stack-considerations
+      - url: ./user/azure-stack-considerations.md
         text: アプリを構築するための重要な考慮事項
-      - url: /azure-stack/user/azure-stack-key-vault-manage-portal
+      - url: ./user/azure-stack-key-vault-manage-portal.md
         text: キー コンテナーの作成と管理
     - title: Azure Stack Development Kit (ASDK)
       links:
-      - url: /azure-stack/asdk/asdk-deploy-considerations
+      - url: ./asdk/asdk-deploy-considerations.md
         text: ASDK の要件と考慮事項
-      - url: /azure-stack/asdk/asdk-download
+      - url: ./asdk/asdk-download.md
         text: ASDK のダウンロードと抽出
-      - url: /azure-stack/asdk/asdk-prepare-host
+      - url: ./asdk/asdk-prepare-host.md
         text: ASDK ホスト コンピューターの準備
   - title: Azure Stack Edge
     items:

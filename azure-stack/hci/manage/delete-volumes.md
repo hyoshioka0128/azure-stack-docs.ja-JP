@@ -3,20 +3,20 @@ title: Azure Stack HCI のボリュームを削除する
 description: Windows Admin Center と PowerShell を使用して Azure Stack HCI でボリュームを削除する方法について説明します。
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 03/17/2020
-ms.openlocfilehash: cf556a9b6c130907e8607d8e5b9436b71756a3d4
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.topic: how-to
+ms.date: 07/21/2020
+ms.openlocfilehash: 7a90948cccb75bb8bb1578101d530c46852e99d6
+ms.sourcegitcommit: 0e52f460295255b799bac92b40122a22bf994e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "79511897"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86866524"
 ---
 # <a name="deleting-volumes-in-azure-stack-hci"></a>Azure Stack HCI のボリュームの削除
 
-> 適用対象:Windows Server 2019
+> 適用対象:Azure Stack HCI バージョン 20H2、Windows Server 2019
 
-このトピックでは、Windows Admin Center を使用して[記憶域スペース ダイレクト](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) クラスターのボリュームを削除する手順について説明します。
+このトピックでは、Windows Admin Center を使用して Azure Stack HCI クラスターのボリュームを削除する手順について説明します。
 
 Windows Admin Center を使用したボリュームの削除方法を説明する短いビデオをご覧ください。
 
@@ -33,7 +33,7 @@ Windows Admin Center を使用したボリュームの削除方法を説明す�
 
 記憶域スペース ダイレクト内のボリュームを削除するには、**Remove-VirtualDisk** コマンドレットを使用します。 このコマンドレットは、**VirtualDisk** オブジェクトを削除し、使用した領域を、**VirtualDisk** オブジェクトを公開する記憶域プールに返します。
 
-まず、管理 PC で PowerShell を起動し、**Get-VirtualDisk** コマンドレットを **CimSession** パラメーターを指定して実行します。このパラメーターは、記憶域スペース ダイレクト クラスターまたはサーバー ノードの名前で、たとえば *clustername.microsoft.com* となります。 
+まず、管理 PC で PowerShell を起動し、**Get-VirtualDisk** コマンドレットを **CimSession** パラメーターを指定して実行します。このパラメーターは、記憶域スペース ダイレクト クラスターまたはサーバー ノードの名前で、たとえば *clustername.microsoft.com* となります。
 
 ```PowerShell
 Get-VirtualDisk -CimSession clustername.microsoft.com
@@ -58,6 +58,6 @@ Remove-VirtualDisk -FriendlyName "Volume1"
 
 その他の重要な記憶域管理タスクの詳細な手順については、以下も参照してください。
 
-- [記憶域スペース ダイレクトのボリュームの計画](../concepts/plan-volumes.md)
-- [記憶域スペース ダイレクトのボリュームの作成](create-volumes.md)
-- [記憶域スペース ダイレクトのボリュームの拡張](extend-volumes.md)
+- [ボリュームを計画する](../concepts/plan-volumes.md)
+- [ボリュームを作成する](create-volumes.md)
+- [ボリュームを拡張する](extend-volumes.md)

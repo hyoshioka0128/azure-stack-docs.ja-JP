@@ -7,12 +7,12 @@ ms.date: 04/25/2019
 ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 03/14/2019
-ms.openlocfilehash: 2369ffbd1d3fc72c9d2df7ff87be6131f7aabcd7
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 01f02fcf624db0a8ce47084ec5aa331e0831014b
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77703317"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86489285"
 ---
 # <a name="enable-backup-for-azure-stack-hub-with-powershell"></a>PowerShell で Azure Stack Hub のバックアップを有効にする
 
@@ -42,7 +42,7 @@ PowerShell 環境の構成方法については、[PowerShell for Azure Stack Hu
 | `$frequencyInHours` | 頻度 (時間単位) はバックアップの作成頻度を決定します。 既定値は 12 です。 Scheduler では、最大値 12 から最小値 4 までをサポートします。|
 | `$retentionPeriodInDays` | 保有期間 (日単位) は、バックアップが外部の保存場所に保持される日数を決定します。 既定値は 7 です。 Scheduler では、最大値 14 から最小値 2 までをサポートします。 保有期間より前のバックアップは、外部の保存場所から自動的に削除されます。|
 | `$encryptioncertpath` | 1901 以降に適用されます。 パラメーターは、Azure Stack Hub Module バージョン 1.7 以降で利用できます。 暗号化証明書パスは、.CER ファイルのファイル パスと、データ暗号化に使用される公開キーを指定します。 |
-| `$encryptionkey` | ビルド 1811 以前に適用されます。 パラメーターは、Azure Stack Hub Module バージョン 1.6 以前で利用できます。 暗号化キーはデータの暗号化に使用されます。 [New-AzsEncryptionKeyBase64](https://docs.microsoft.com/powershell/module/azs.backup.admin/new-azsencryptionkeybase64) コマンドレットを使用して、新しいキーを生成します。 |
+| `$encryptionkey` | ビルド 1811 以前に適用されます。 パラメーターは、Azure Stack Hub Module バージョン 1.6 以前で利用できます。 暗号化キーはデータの暗号化に使用されます。 [New-AzsEncryptionKeyBase64](/powershell/module/azs.backup.admin/new-azsencryptionkeybase64) コマンドレットを使用して、新しいキーを生成します。 |
 |     |     |
 
 ### <a name="enable-backup-on-1901-and-later-using-certificate"></a>証明書を使用して 1901 以降に対してバックアップを有効にする

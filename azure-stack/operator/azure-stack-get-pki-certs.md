@@ -7,12 +7,12 @@ ms.date: 09/10/2019
 ms.author: inhenkel
 ms.reviewer: ppacent
 ms.lastreviewed: 09/10/2019
-ms.openlocfilehash: d197a8b4464af8f331a11af2ba642ad053273bf9
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: e72d00d7a0a5f1a9299d3d279e3b7ee8dd779b30
+ms.sourcegitcommit: 1c5e7d8419037c0f3ef6fe9d8e6bfb6a59659c84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77699713"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89428568"
 ---
 # <a name="generate-certificate-signing-requests-for-azure-stack-hub"></a>Azure Stack Hub への証明書署名要求を生成する
 
@@ -20,7 +20,8 @@ Azure Stack Hub 対応性チェッカー ツールを使用して、Azure Stack 
 
 Azure Stack Hub 対応性チェッカー ツール (AzsReadinessChecker) を使用すると、次の証明書を要求できます。
 
-- [証明書署名要求の生成](azure-stack-get-pki-certs.md#generate-certificate-signing-requests)に関する説明に従った**標準の証明書要求**。
+- [新しいデプロイのための証明書署名要求の生成](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments)の説明に従った、**標準の証明書要求**。
+- [証明書更新のための証明書署名要求の生成](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-certificate-renewal)の説明に従った、**証明書要求の更新**。
 - **サービスとしてのプラットフォーム**:「[Azure Stack Hub 公開キー インフラストラクチャ証明書の要件」の「オプションの PaaS 証明書](azure-stack-pki-certs.md#optional-paas-certificates)」で指定されているように、証明書に対するサービスとしてのプラットフォーム (PaaS) 名を要求できます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -37,9 +38,9 @@ Azure Stack Hub デプロイのための PKI 証明書に対する CSR を生成
   > [!NOTE]  
   > 証明機関から証明書が送り返されたら、[Azure Stack Hub PKI 証明書の準備](azure-stack-prepare-pki-certs.md)に関するページの手順を同じシステムで完了する必要があります。
 
-## <a name="generate-certificate-signing-requests"></a>証明書の署名要求を生成する
+## <a name="generate-certificate-signing-requests-for-new-deployments"></a>新しいデプロイのための証明書署名要求を生成する
 
-次の手順を使って、Azure Stack Hub PKI 証明書を準備し、検証します。
+新しい Azure Stack Hub PKI 証明書のための証明書署名要求を準備するには、次の手順を使用します。
 
 1. 次のコマンドレットを実行して、PowerShell プロンプト (5.1 以上) から AzsReadinessChecker をインストールします。
 
@@ -91,45 +92,107 @@ Azure Stack Hub デプロイのための PKI 証明書に対する CSR を生成
 6. デプロイ用に証明書署名要求を生成するため、次を実行します。
 
     ```powershell  
-    New-AzsCertificateSigningRequest -certificateType Deployment -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+    New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ```
 
     他の Azure Stack Hub サービスへの証明書要求を生成するには、`-CertificateType` の値を変更します。 次に例を示します。
 
     ```powershell  
     # App Services
-    New-AzsCertificateSigningRequest -certificateType AppServices -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
+    New-AzsHubAppServicesCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
 
     # DBAdapter
-    New-AzsCertificateSigningRequest -certificateType DBAdapter -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
+    New-AzsHubDbAdapterCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
 
     # EventHubs
-    New-AzsCertificateSigningRequest -certificateType EventHubs -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
+    New-AzsHubEventHubsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
 
     # IoTHub
-    New-AzsCertificateSigningRequest -certificateType IoTHub -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
+    New-AzsHubIoTHubCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
     ```
 
 7. または、開発/テスト環境の場合は、複数のサブジェクトの別名 (SAN) を含む 1 つの証明書要求を生成するには、 **-RequestType SingleCSR** パラメーターと値を追加します (運用環境では、推奨**されません**)。
 
     ```powershell  
-    New-AzsCertificateSigningRequest -certificateType Deployment -RegionName $regionName -FQDN $externalFQDN -RequestType SingleCSR -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+    New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -RequestType SingleCSR -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ```
 
 8.  出力を確認します。
 
     ```powershell  
-    New-AzsCertificateSigningRequest v1.1912.1082.37 started.
     Starting Certificate Request Process for Deployment
     CSR generating for following SAN(s): *.adminhosting.east.azurestack.contoso.com,*.adminvault.east.azurestack.contoso.com,*.blob.east.azurestack.contoso.com,*.hosting.east.azurestack.contoso.com,*.queue.east.azurestack.contoso.com,*.table.east.azurestack.contoso.com,*.vault.east.azurestack.contoso.com,adminmanagement.east.azurestack.contoso.com,adminportal.east.azurestack.contoso.com,management.east.azurestack.contoso.com,portal.east.azurestack.contoso.com
-    Present this CSR to your Certificate Authority for Certificate Generation: C:\Users\checker\Documents\AzureStackCSR\wildcard_adminhosting_east_azurestack_contoso_com_CertRequest_20191219140359.req
+    Present this CSR to your Certificate Authority for Certificate Generation: C:\Users\[*redacted*]\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710165538.req
     Certreq.exe output: CertReq: Request Created
-
-    Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
-    New-AzsCertificateSigningRequest Completed
     ```
 
 9.  生成された **.REQ** ファイルを CA (内部またはパブリック) に送信します。 **New-AzsCertificateSigningRequest** の出力ディレクトリには、証明機関への送信に必要な CSR が含まれています。 また、このディレクトリには、証明書要求の生成中に使用される INF ファイルが含まれる子ディレクトリも参照用として含まれています。 CA が生成された要求を使用して、[Azure Stack Hub PKI の要件](azure-stack-pki-certs.md)を満たす証明書を生成することを確認してください。
+
+## <a name="generate-certificate-signing-requests-for-certificate-renewal"></a>証明書更新のための証明書署名要求を生成する
+
+既存の Azure Stack Hub PKI 証明書を更新するための証明書署名要求を準備するには、次の手順を使用します。
+
+1. 次のコマンドレットを実行して、PowerShell プロンプト (5.1 以上) から AzsReadinessChecker をインストールします。
+
+    ```powershell  
+        Install-Module Microsoft.AzureStack.ReadinessChecker
+    ```
+
+2. Azure Stack Hub システムの regionname.domain.com の形式で **stampEndpoint** を宣言します。 例 (Azure Stack Hub テナント ポータルのアドレスが <code> https://</code><code>portal.east.azurestack.contoso.com</code> の場合):
+
+    ```powershell  
+    $stampEndpoint = 'east.azurestack.contoso.com'
+    ```
+
+    > [!NOTE]  
+    > 上記の Azure Stack Hub システムには、HTTPS 接続が必要です。
+    > 適合性チェッカーは、stampendpoint (リージョンとドメイン) を使用して、デプロイ証明書などの証明書の種類に必要な既存の証明書へのポインターを作成します。'portal' がツールによって前に付けられるため、証明書の複製では、AppServices sso.appservices.east.azurestack.contoso.com などに対して、portal.east.azurestack.contoso.com が使用されます。計算されたエンドポイントにバインドされた証明書は、サブジェクト、キーの長さ、署名アルゴリズムなどの属性を複製するために使用されます。  これらの属性のいずれかを変更する場合は、代わりに「[新しいデプロイのための証明書署名要求を生成する](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments)」の手順に従ってください。
+
+3. 既に存在する出力ディレクトリを宣言します。 次に例を示します。
+
+    ```powershell  
+    $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
+    ```
+
+4. デプロイ用に証明書署名要求を生成するため、次を実行します。
+
+    ```powershell  
+    New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory
+    ```
+
+    他の Azure Stack Hub サービスへの証明書要求を生成するには、次を使用します。
+
+    ```powershell  
+    # App Services
+    New-AzsHubAppServicesCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory
+
+    # DBAdapter
+    New-AzsHubDBAdapterCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory
+
+    # EventHubs
+    New-AzsHubEventHubsCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory
+
+    # IoTHub
+    New-AzsHubIotHubCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory
+    ```
+
+5. または、開発/テスト環境の場合は、複数のサブジェクトの別名 (SAN) を含む 1 つの証明書要求を生成するには、 **-RequestType SingleCSR** パラメーターと値を追加します (運用環境では、推奨**されません**)。
+
+    ```powershell  
+    New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampendpoint -OutputRequestPath $OutputDirectory -RequestType SingleCSR
+    ```
+
+6.  出力を確認します。
+
+    ```powershell  
+    Querying StampEndpoint portal.east.azurestack.contoso.com for existing certificate
+    Starting Certificate Request Process for Deployment
+    CSR generating for following SAN(s): *.adminhosting.east.azurestack.contoso.com,*.adminvault.east.azurestack.contoso.com,*.blob.east.azurestack.contoso.com,*.hosting.east.azurestack.contoso.com,*.queue.east.azurestack.contoso.com,*.table.east.azurestack.contoso.com,*.vault.east.azurestack.contoso.com,adminmanagement.east.azurestack.contoso.com,adminportal.east.azurestack.contoso.com,management.east.azurestack.contoso.com,portal.east.azurestack.contoso.com
+    Present this CSR to your Certificate Authority for Certificate Generation: C:\Users\[*redacted*]\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710122723.req
+    Certreq.exe output: CertReq: Request Created
+    ```
+
+7.  生成された **.REQ** ファイルを CA (内部またはパブリック) に送信します。 **New-AzsCertificateSigningRequest** の出力ディレクトリには、証明機関への送信に必要な CSR が含まれています。 また、このディレクトリには、証明書要求の生成中に使用される INF ファイルが含まれる子ディレクトリも参照用として含まれています。 CA が生成された要求を使用して、[Azure Stack Hub PKI の要件](azure-stack-pki-certs.md)を満たす証明書を生成することを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

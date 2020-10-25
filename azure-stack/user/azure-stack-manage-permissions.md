@@ -7,12 +7,12 @@ ms.date: 09/13/2019
 ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 2f633e44b4646659a888df85e51450147104710e
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 1002f45b51f4a70ddbadb8230df6e98f591fcbb6
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77703980"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90573753"
 ---
 # <a name="manage-access-to-resources-in-azure-stack-hub-with-role-based-access-control"></a>Azure Stack Hub でロールベースのアクセス制御を使用してリソースへのアクセスを管理する
 
@@ -62,8 +62,8 @@ Azure の[ロールの割り当て](/azure/role-based-access-control/role-assign
 1. 管理するリソースへの所有者アクセス許可があるアカウントでサインインします。
 2. 左側のナビゲーション ペインで、 **[リソース グループ]** を選択します。
 3. アクセス許可を設定するリソース グループの名前を選択します。
-4. リソース グループのナビゲーション ペインで、 **[アクセス制御 (IAM)]** を選択します。<BR> **[ロールの割り当て]** ビューに、リソース グループへのアクセス権を持つ項目が一覧表示されます。 結果はフィルター処理してグループ化できます。
-5. **[アクセス制御]** メニュー バーで、 **[追加]** を選択します。
+4. リソース グループのナビゲーション ペインで、**[アクセス制御 (IAM)]** を選択します。<BR> **[ロールの割り当て]** ビューに、リソース グループへのアクセス権を持つ項目が一覧表示されます。 結果はフィルター処理してグループ化できます。
+5. **[アクセス制御]** メニュー バーで、**[追加]** を選択します。
 6. **[アクセス許可の追加]** ウィンドウで:
 
    * 割り当てるロールを **[ロール]** ドロップダウン リストから選択します。

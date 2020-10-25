@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub 統合システムでの Azure Stack Hub ファイアウォールの統合
+title: ファイアウォールを Azure Stack Hub システムと統合する
 description: Azure Stack Hub 統合システムでの Azure Stack Hub ファイアウォールの統合について説明します。
 author: IngridAtMicrosoft
 ms.topic: conceptual
@@ -7,12 +7,12 @@ ms.date: 04/10/2020
 ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 11/15/2019
-ms.openlocfilehash: c33c2dbcdb662f23072ef7aca83364643c3cdf0c
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 666d205fb99ac309196bd4b84032ef8c7877ab8a
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81244209"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90572869"
 ---
 # <a name="azure-stack-hub-firewall-integration"></a>Azure Stack Hub ファイアウォールの統合
 Azure Stack Hub は、ファイアウォール デバイスを使ってセキュリティで保護することをお勧めします。 ファイアウォールは、分散型サービス拒否 (DDOS) 攻撃に対する防御、侵入検出、コンテンツ検査などに役立ちます。 ただし、これが BLOB、テーブル、キューなどの Azure ストレージ サービスのスループットのボトルネックになる場合もあります。

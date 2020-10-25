@@ -3,15 +3,15 @@ title: Azure Stack Hub の Key Vault の概要
 description: Azure Stack Hub での Key Vault によるキーとシークレットの管理方法について説明します
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 08/10/2020
 ms.author: sethm
-ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 09db1c2e8daa34b566512ca6daee2480a86527df
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.lastreviewed: 08/10/2020
+ms.openlocfilehash: 7387778055a50b138766cc7f8c416b206f4b9db9
+ms.sourcegitcommit: 77f53d8f4188feea7dd2197650ee860104b1e2aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77704048"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88501077"
 ---
 # <a name="introduction-to-key-vault-in-azure-stack-hub"></a>Azure Stack Hub の Key Vault の概要
 
@@ -39,7 +39,7 @@ Azure Stack Hub サブスクリプションを持つユーザーはだれでも�
 * ユーザーまたはアプリがキーとシークレットを管理または使用できるように、キー コンテナーへのアクセスを許可する。
 * キーの使用状況の構成 (署名や暗号化など)。
 
-オペレーターは、アプリから呼び出す Uniform Resource Identifier (URI) を開発者に提供できるようになります。 オペレーターは、セキュリティ管理者にキーの使用状況のログ情報を提供することもできます。
+オペレーターは、アプリから呼び出す Uniform Resource Identifier (URI) を開発者に提供できるようになります。
 
 開発者は、API を使用してキーを直接管理することもできます。 詳細については、「[Key Vault 開発者ガイド](/azure/key-vault/key-vault-developers-guide)」を参照してください。
 
@@ -61,7 +61,7 @@ Azure Stack Hub サブスクリプションを持つユーザーはだれでも�
 
 ### <a name="chief-security-officer-cso"></a>最高セキュリティ責任者 (CSO)
 
-**問題**:組織が、キーのライフサイクルを管理し、キーの使用状況を確実に監視できるようにしたい。
+**問題**: 組織が、キーのライフ サイクルを管理し、キーの使用状況を確実に監視できるようにしたい。
 
 **説明:** Key Vault は、Microsoft がキーを確認または抽出しないように作られています。 アプリが顧客のキーを使って暗号化操作を実行する必要がある場合は、Key Vault がアプリに代わってこれを行います。 アプリからは顧客のキーが見えません。 複数の Azure Stack Hub サービスとリソースが使用されていますが、Azure Stack Hub の 1 つの場所からキーを管理することができます。 コンテナーでは、Azure Stack Hub にあるコンテナーの数、サポートするリージョン、使用するアプリに関係なく、1 つのインターフェイスが提供されます。
 

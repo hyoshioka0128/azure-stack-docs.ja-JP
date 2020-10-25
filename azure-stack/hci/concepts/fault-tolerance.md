@@ -1,20 +1,20 @@
 ---
-title: Azure Stack HCI のフォールト トレランスとストレージの効率性
+title: フォールト トレランスとストレージの効率性 - Azure Stack HCI
 description: ミラーリングとパリティを含む、記憶域スペース ダイレクトの回復性オプションについて説明します。
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 02/28/2020
-ms.openlocfilehash: 9ace3960b4c54461a4153c4997694e6d17ee4fd1
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.topic: conceptual
+ms.date: 07/21/2020
+ms.openlocfilehash: 140427df807c1fbe048615a6642a888d0516475c
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "79026117"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90572248"
 ---
 # <a name="fault-tolerance-and-storage-efficiency-in-azure-stack-hci"></a>Azure Stack HCI のフォールト トレランスとストレージの効率性
 
->適用対象:Windows Server 2019
+> 適用対象:Azure Stack HCI バージョン 20H2、Windows Server 2019
 
 このトピックでは、記憶域スペース ダイレクトで使用できる回復性オプションについて説明し、スケール要件、記憶域の効率性、それぞれの一般的な利点とトレードオフについて説明します。 また、作業を開始するための使用方法についても説明し、役に立つ資料、ブログ、およびその他の詳細情報について紹介します。
 
@@ -28,7 +28,7 @@ RAID と同様に、記憶域スペースでこれを実現する方法がいく
 
 ## <a name="mirroring"></a>ミラーリング
 
-ミラーリングを使ってあらゆるデータのコピーを複数保持することによって、フォールト トレランスが実現します。 これは、RAID-1 と最もよく似ています。 データをどのようにストライピングおよび配置するかは重要な問題ですが (詳細については、[こちらのブログ](https://blogs.technet.microsoft.com/filecab/2016/11/21/deep-dive-pool-in-spaces-direct/)を参照してください)、ミラーリングを使って格納するデータがいずれも、そのままの形で複数回書き込まれるという点は間違いありません。 コピーはそれぞれ、障害の発生が個別にとどまることが想定される別々の物理ハードウェア (別のサーバーの別のドライブ) に書き込まれます。
+ミラーリングを使ってあらゆるデータのコピーを複数保持することによって、フォールト トレランスが実現します。 これは、RAID-1 と最もよく似ています。 データをどのようにストライピングおよび配置するかは重要な問題ですが (詳細については、[こちらのブログ](https://techcommunity.microsoft.com/t5/storage-at-microsoft/deep-dive-the-storage-pool-in-storage-spaces-direct/ba-p/425959)を参照してください)、ミラーリングを使って格納するデータがいずれも、そのままの形で複数回書き込まれるという点は間違いありません。 コピーはそれぞれ、障害の発生が個別にとどまることが想定される別々の物理ハードウェア (別のサーバーの別のドライブ) に書き込まれます。
 
 記憶域スペースには、"双方向" と "3 方向" の 2 種類のミラーリングが用意されています。
 
@@ -84,11 +84,11 @@ RAID と同様に、記憶域スペースでこれを実現する方法がいく
 
 ![ローカル再構築コード](media/fault-tolerance/local-reconstruction-codes-180px.png)
 
-Microsoft の [Claus Joergensen](https://twitter.com/clausjor) による、非常に詳細でありながら読みやすいチュートリアルである、「[how local reconstruction codes handle various failure scenarios, and why they're appealing (ローカル再構築コードによるさまざまな障害シナリオへの対応とその優位性)](https://blogs.technet.microsoft.com/filecab/2016/09/06/volume-resiliency-and-efficiency-in-storage-spaces-direct/)」を参照することをお勧めします。
+Microsoft の [Claus Joergensen](https://twitter.com/clausjor) による、非常に詳細でありながら読みやすいチュートリアルである、「[how local reconstruction codes handle various failure scenarios, and why they're appealing (ローカル再構築コードによるさまざまな障害シナリオへの対応とその優位性)](https://techcommunity.microsoft.com/t5/storage-at-microsoft/bg-p/FileCAB)」を参照することをお勧めします。
 
 ## <a name="mirror-accelerated-parity"></a>ミラー高速パリティ
 
-記憶域スペース ダイレクトのボリュームは、一部をミラーにし、一部をパリティにすることができます。 書き込みは、最初はミラー化された部分で処理され、その後パリティ部分に徐々に移動します。 事実上、これは、[ミラーリングを使用してイレージャー コーディングを高速化](https://blogs.technet.microsoft.com/filecab/2016/09/06/volume-resiliency-and-efficiency-in-storage-spaces-direct/)しています。
+記憶域スペース ダイレクトのボリュームは、一部をミラーにし、一部をパリティにすることができます。 書き込みは、最初はミラー化された部分で処理され、その後パリティ部分に徐々に移動します。 事実上、これは、[ミラーリングを使用してイレージャー コーディングを高速化](https://techcommunity.microsoft.com/t5/storage-at-microsoft/bg-p/FileCAB)しています。
 
 3 方向ミラーとデュアル パリティを混在させるには、少なくとも 4 つの障害ドメイン (つまり 4 台のサーバー) が必要です。
 
@@ -202,14 +202,14 @@ Microsoft の [Claus Joergensen](https://twitter.com/clausjor) による、非�
 
 ## <a name="usage"></a>使用法
 
-「[記憶域スペース ダイレクトのボリュームの作成](/windows-server/storage/storage-spaces/create-volumes)」をご覧ください。
+[ボリュームの作成](../manage/create-volumes.md)に関する記事を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 この記事で説明されている項目の詳細については、以下を参照してください。
 
 - [Microsoft Research による Azure でのイレージャー コーディング](https://www.microsoft.com/research/publication/erasure-coding-in-windows-azure-storage/)
-- [ローカル再構築コードとパリティ ボリュームの高速化](https://blogs.technet.microsoft.com/filecab/2016/09/06/volume-resiliency-and-efficiency-in-storage-spaces-direct/)
-- [記憶域管理 API でのボリューム](https://blogs.technet.microsoft.com/filecab/2016/08/29/deep-dive-volumes-in-spaces-direct/)
+- [ローカル再構築コードとパリティ ボリュームの高速化](https://techcommunity.microsoft.com/t5/storage-at-microsoft/bg-p/FileCAB)
+- [記憶域管理 API でのボリューム](https://techcommunity.microsoft.com/t5/storage-at-microsoft/bg-p/FileCAB)
 - [Microsoft Ignite 2016 でのストレージ効率性に関するデモ](https://www.youtube.com/watch?v=-LK2ViRGbWs&t=36m55s)
 - [記憶域スペース ダイレクトの容量計算ツールのプレビュー](https://aka.ms/s2dcalc)

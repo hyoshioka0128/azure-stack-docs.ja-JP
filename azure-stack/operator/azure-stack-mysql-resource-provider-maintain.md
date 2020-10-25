@@ -1,18 +1,18 @@
 ---
-title: Azure Stack Hub での MySQL リソース プロバイダーのメンテナンス操作
+title: MySQL リソース プロバイダーのメンテナンス操作 - Azure Stack Hub
 description: Azure Stack Hub での MySQL リソース プロバイダー サービスのメンテナンス方法について説明します。
 author: bryanla
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 9/22/2020
 ms.author: bryanla
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2020
-ms.openlocfilehash: 219689721c66bcf97bb776874a1b33e84fcfa6d0
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: ff9c1054f505625e51426fca70bbb2ae7d9115a5
+ms.sourcegitcommit: 69cfff119ab425d0fbb71e38d1480d051fc91216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77698727"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91572944"
 ---
 # <a name="mysql-resource-provider-maintenance-operations-in-azure-stack-hub"></a>Azure Stack Hub での MySQL リソース プロバイダーのメンテナンス操作
 
@@ -24,7 +24,7 @@ MySQL リソース プロバイダーは、ロックダウンされた仮想マ�
 
 次のいずれかの方法を使用して、プロバイダーの VM を更新します。
 
-- 現在パッチが適用されている Windows Server 2016 Core イメージを使用して最新のリソース プロバイダーのパッケージをインストールする。
+- 現在パッチが適用されている VM イメージを使用して最新のリソース プロバイダーのパッケージをインストールする。
 - リソース プロバイダーのインストールまたは更新中に Windows 更新プログラム パッケージをインストールする。
 
 ## <a name="update-the-vm-windows-defender-definitions"></a>VM の Windows Defender の定義を更新する
@@ -92,6 +92,7 @@ Azure Stack Hub 統合システムで SQL および MySQL リソース プロバ
 - [デプロイ時に提供](azure-stack-pki-certs.md)された外部 SSL 証明書。
 - デプロイ時に提供されたリソース プロバイダー VM のローカル管理者アカウントのパスワード。
 - リソース プロバイダーの診断ユーザー (dbadapterdiag) のパスワード。
+- (バージョン 1.1.47.0 以上) デプロイ時に生成された Key Vault 証明書。
 
 ### <a name="powershell-examples-for-rotating-secrets"></a>PowerShell のシークレットのローテーション例
 
@@ -105,8 +106,8 @@ Azure Stack Hub 統合システムで SQL および MySQL リソース プロバ
     -DiagnosticsUserPassword $passwd `
     -DependencyFilesLocalPath $certPath `
     -DefaultSSLCertificatePassword $certPasswd `  
-    -VMLocalCredential $localCreds
-
+    -VMLocalCredential $localCreds `
+    -KeyVaultPfxPassword $keyvaultCertPasswd
 ```
 
 **診断ユーザーのパスワードを変更する:**
@@ -117,7 +118,6 @@ Azure Stack Hub 統合システムで SQL および MySQL リソース プロバ
     -CloudAdminCredential $cloudCreds `
     -AzCredential $adminCreds `
     -DiagnosticsUserPassword  $passwd
-
 ```
 
 **VM ローカル管理者アカウントのパスワードを変更する:**
@@ -128,7 +128,6 @@ Azure Stack Hub 統合システムで SQL および MySQL リソース プロバ
     -CloudAdminCredential $cloudCreds `
     -AzCredential $adminCreds `
     -VMLocalCredential $localCreds
-
 ```
 
 **SSL 証明書のパスワードを変更する:**
@@ -140,21 +139,32 @@ Azure Stack Hub 統合システムで SQL および MySQL リソース プロバ
     -AzCredential $adminCreds `
     -DependencyFilesLocalPath $certPath `
     -DefaultSSLCertificatePassword $certPasswd
+```
 
+**Key Vault 証明書のパスワードを変更する:**
+
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    -KeyVaultPfxPassword $keyvaultCertPasswd
 ```
 
 ### <a name="secretrotationmysqlproviderps1-parameters"></a>SecretRotationMySQLProvider.ps1 パラメーター
 
-|パラメーター|説明|
-|-----|-----|
-|AzCredential|Azure Stack Hub サービス管理者アカウントの資格情報。|
-|CloudAdminCredential|Azure Stack Hub クラウド管理者ドメイン アカウントの資格情報。|
-|PrivilegedEndpoint|Get-AzureStackStampInformation にアクセスするための特権エンドポイント。|
-|DiagnosticsUserPassword|診断ユーザー アカウントのパスワード。|
-|VMLocalCredential|MySQLAdapter VM でのローカル管理者アカウント。|
-|DefaultSSLCertificatePassword|既定の SSL 証明書 (* pfx) のパスワード。|
-|DependencyFilesLocalPath|依存関係ファイルのローカル パス。|
-|     |     |
+|パラメーター|説明|解説|
+|-----|-----|-----|
+|AzureEnvironment|Azure Stack Hub のデプロイに使用するサービス管理者アカウントの Azure 環境。 Azure AD のデプロイでのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure Active Directory を使用している場合は **AzureChinaCloud** です。|省略可能|
+|AzCredential|Azure Stack Hub サービス管理者アカウントの資格情報。|Mandatory|
+|CloudAdminCredential|Azure Stack Hub クラウド管理者ドメイン アカウントの資格情報。|Mandatory|
+|PrivilegedEndpoint|Get-AzureStackStampInformation にアクセスするための特権エンドポイント。|Mandatory|省略可能|
+|DiagnosticsUserPassword|診断ユーザー アカウントのパスワード。|省略可能|
+|VMLocalCredential|MySQLAdapter VM でのローカル管理者アカウント。|省略可能|
+|DefaultSSLCertificatePassword|既定の SSL 証明書 (*.pfx) のパスワード。|省略可能|
+|DependencyFilesLocalPath|依存関係ファイルのローカル パス。|省略可能|
+|KeyVaultPfxPassword|データベース アダプターの Key Vault 証明書の生成に使用されるパスワード。|省略可能|
+|     |     |     |
 
 ### <a name="known-issues"></a>既知の問題
 
@@ -226,7 +236,7 @@ Azure Diagnostics 拡張機能は、既定で MySQL リソース プロバイダ
 
 2. 左側のペインで **[仮想マシン]** を選択し、MySQL リソース プロバイダー アダプター VM を検索して、その VM を選択します。
 
-3. VM の **[診断設定]** で、 **[ログ]** タブにアクセスし、 **[カスタム]** を選択して、収集するイベント ログをカスタマイズします。
+3. VM の **[診断設定]** で、**[ログ]** タブにアクセスし、**[カスタム]** を選択して、収集するイベント ログをカスタマイズします。
    
    ![診断設定への移動](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-diagnostics-settings.png)
 
@@ -234,11 +244,11 @@ Azure Diagnostics 拡張機能は、既定で MySQL リソース プロバイダ
 
    ![イベント ログの追加](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-event-logs.png)
 
-5. IIS ログの収集を有効にするには、 **[IIS ログ]** と **[失敗した要求のログ]** をオンにします。
+5. IIS ログの収集を有効にするには、**[IIS ログ]** と **[失敗した要求のログ]** をオンにします。
 
    ![IIS ログの追加](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-iis-logs.png)
 
-6. 最後に、 **[保存]** を選択して、すべての診断設定を保存します。
+6. 最後に、**[保存]** を選択して、すべての診断設定を保存します。
 
 イベント ログと IIS ログの収集が MySQL リソース プロバイダーに対して構成されると、**mysqladapterdiagaccount** という名前のシステム ストレージ アカウント内にログが見つかります。
 
@@ -246,4 +256,4 @@ Azure Diagnostics 拡張機能の詳細については、「[Azure Diagnostics �
 
 ## <a name="next-steps"></a>次のステップ
 
-[MySQL リソース プロバイダーを削除する](azure-stack-mysql-resource-provider-remove.md)
+[MySQL リソースプロバイダーを削除する](azure-stack-mysql-resource-provider-remove.md)

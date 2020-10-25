@@ -8,12 +8,12 @@ ms.date: 10/02/2019
 ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: a30c3a4f745e46a5e7b58d4355f1c193d8702e28
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 0345c3290b717385d8080dc6be771660ea22a2e1
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "79295426"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86487908"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>SQL リソース プロバイダーへのホスティング サーバーの追加
 
@@ -41,7 +41,7 @@ SQL ホスティング サーバーを追加する前に、次の必須要件と
 
 Marketplace 管理機能により、SQL IaaS VM イメージを使用できます。 これらのイメージは、Azure で使用できる SQL VM と同じです。
 
-Marketplace 項目を使用して SQL VM をデプロイする前に、必ず **SQL IaaS 拡張機能**の最新バージョンをダウンロードしてください。 IaaS 拡張機能や対応するポータル拡張機能により、修正プログラムの自動適用やバックアップなどの追加機能が提供されます。 この拡張機能の詳細については、[SQL Server Agent 拡張機能を使用した Azure VM での管理タスクの自動化](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)に関する記事を参照してください。
+Marketplace 項目を使用して SQL VM をデプロイする前に、必ず **SQL IaaS 拡張機能**の最新バージョンをダウンロードしてください。 IaaS 拡張機能や対応するポータル拡張機能により、修正プログラムの自動適用やバックアップなどの追加機能が提供されます。 この拡張機能の詳細については、[SQL Server Agent 拡張機能を使用した Azure VM での管理タスクの自動化](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)に関する記事を参照してください。
 
 > [!NOTE]
 > SQL IaaS 拡張機能は、Marketplace にあるすべての SQL on Windows イメージに "_必須_" です。この拡張機能をダウンロードしなかった場合、VM のデプロイは失敗します。 これは、Linux ベースの SQL VM イメージでは使用されません。
@@ -66,7 +66,7 @@ SQL sysadmin より低い特権を持つ管理者ユーザーを作成できま�
 
 * すべての Azure Stack Hub ストレージは BitLocker を使用して暗号化されているので、Azure Stack Hub 上のどの SQL インスタンスも暗号化された Blob ストレージを利用します。
 * SQL リソース プロバイダーは、TLS 1.2 を完全にサポートします。 SQL RP を通じて管理される SQL Server はすべて、TLS 1.2 "_のみ_" に対して構成されており、RP は既定でこれに設定されることを確認します。 サポートされているすべてのバージョンの SQL Server は、TLS 1.2 をサポートしています。 詳細については、「[Microsoft SQL Server 用の TLS 1.2 のサポート](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)」を参照してください。
-* SQL Server 構成マネージャーを使用して、SQL Server へのすべての通信が常に暗号化されるように **ForceEncryption** オプションを設定します。 詳細については、「[暗号化された接続を強制するサーバーを構成するには](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#to-configure-the-server-to-force-encrypted-connections)」を参照してください。
+* SQL Server 構成マネージャーを使用して、SQL Server へのすべての通信が常に暗号化されるように **ForceEncryption** オプションを設定します。 詳細については、「[暗号化された接続を強制するサーバーを構成するには](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#to-configure-the-server-to-force-encrypted-connections)」を参照してください。
 * クライアント アプリが、暗号化された接続で通信することも確認します。
 * RP は、SQL Server インスタンスで使用される証明書を信頼するように構成されています。
 
@@ -106,15 +106,15 @@ SQL Server 2014 または SQL Server 2016 の任意のエディションを使�
 
 SQL Always On インスタンスの構成にはさらに手順が必要で、3 台の VM (または物理マシン) が必要です。この記事は、Always On 可用性グループについて十分に理解していることを前提にしています。 詳細については、次の記事を参照してください。
 
-* [Azure Virtual Machines での SQL Server Always On 可用性グループの概要](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
-* [Always On 可用性グループ (SQL Server)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
+* [Azure Virtual Machines での SQL Server Always On 可用性グループの概要](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+* [Always On 可用性グループ (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
 
 > [!NOTE]
 > SQL アダプター リソース プロバイダーは、Always On 可用性グループに対して SQL 2016 SP1 Enterprise 以降のインスタンス _のみ_ をサポートします。 このアダプターの構成には、自動シード処理などの SQL の新機能が必要です。
 
 ### <a name="automatic-seeding"></a>自動シード処理
 
-SQL Server のインスタンスごとに各可用性グループで[自動シード処理](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)を有効にする必要があります。
+SQL Server のインスタンスごとに各可用性グループで[自動シード処理](/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)を有効にする必要があります。
 
 すべてのインスタンスで自動シード処理を有効にするには、次の SQL コマンドを編集し、セカンダリ インスタンスごとにプライマリ レプリカで実行します。
 
@@ -136,7 +136,7 @@ SQL Server のインスタンスごとに各可用性グループで[自動シ�
 
 ### <a name="configure-contained-database-authentication"></a>包含データベース認証を構成する
 
-包含データベースを可用性グループに追加する前に、包含データベース認証サーバー オプションが、可用性グループの可用性レプリカをホストするすべてのサーバー インスタンスで 1 に設定されていることを確認します。 詳細については、[包含データベース認証サーバー構成オプション](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017)を参照してください。
+包含データベースを可用性グループに追加する前に、包含データベース認証サーバー オプションが、可用性グループの可用性レプリカをホストするすべてのサーバー インスタンスで 1 に設定されていることを確認します。 詳細については、[包含データベース認証サーバー構成オプション](/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017)を参照してください。
 
 これらのコマンドを使用して、包含データベース認証サーバー オプションをインスタンスごとに設定します。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub におけるパフォーマンスを最適化するための SQL Server のベスト プラクティス
+title: Azure Stack Hub で SQL Server のパフォーマンスを最適化する
 description: この記事では、Azure Stack Hub VM における SQL Server のパフォーマンス向上と最適化に役立つ、SQL サーバーのベスト プラクティスを紹介します。
 author: bryanla
 ms.topic: article
@@ -7,28 +7,28 @@ ms.date: 04/02/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2020
-ms.openlocfilehash: ec1a5b07498e380eeef3989df1185537afef360f
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: f222334bcc6535b82b105494d907c8a69a463073
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77704847"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90573770"
 ---
 # <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack-hub"></a>Azure Stack Hub におけるパフォーマンスを最適化するための SQL Server のベスト プラクティス
 
 この記事では、Microsoft Azure Stack Hub 仮想マシン (VM) における SQL Server の最適化とパフォーマンス向上を行うための、SQL サーバーのベスト プラクティスを紹介します。 Azure Stack Hub VM で SQL Server を実行するときは、オンプレミスのサーバー環境で SQL Server に適用されるデータベース パフォーマンス チューニング オプションと同じものを使用します。 Azure Stack Hub クラウド内のリレーショナル データベースのパフォーマンスは、VM のファミリ サイズやデータ ディスクの構成などの多くの要因に左右されます。
 
-SQL Server イメージを作成するときは、[VM を Azure Stack Hub ポータルにプロビジョニングすることを検討してください](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。 Azure Stack Hub 管理者ポータルの Marketplace 管理から SQL IaaS 拡張機能をダウンロードし、任意の SQL Server VM イメージをダウンロードします。 これには、SQL Server 2016 SP1、SQL Server 2016 SP2、SQL Server 2017 が含まれます。
+SQL Server イメージを作成するときは、[VM を Azure Stack Hub ポータルにプロビジョニングすることを検討してください](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。 Azure Stack Hub 管理者ポータルの Marketplace 管理から SQL IaaS 拡張機能をダウンロードし、任意の SQL Server VM イメージをダウンロードします。 これには、SQL Server 2016 SP1、SQL Server 2016 SP2、SQL Server 2017 が含まれます。
 
 > [!NOTE]  
 > この記事では、グローバルな Azure portal を使用して SQL Server VM をプロビジョニングする方法について説明しますが、ガイダンスは次の点を除いて Azure Stack Hub にも適用されます。オペレーティング システム ディスクに SSD は利用できません。また、ストレージ構成に若干の違いがあります。
 
-VM イメージでは、SQL Server の場合、ライセンス持ち込み (BYOL) のみを使用できます。 Windows Server の場合、既定のライセンス モデルは従量課金制 (PAYG) です。 VM の Windows Server ライセンス モデルの詳細については、「[Azure Stack Hub Marketplace 内の Windows Server に関する FAQ](https://docs.microsoft.com/azure-stack/operator/azure-stack-windows-server-faq#what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server)」記事を参照してください。  
+VM イメージでは、SQL Server の場合、ライセンス持ち込み (BYOL) のみを使用できます。 Windows Server の場合、既定のライセンス モデルは従量課金制 (PAYG) です。 VM の Windows Server ライセンス モデルの詳細については、「[Azure Stack Hub Marketplace 内の Windows Server に関する FAQ](../operator/azure-stack-windows-server-faq.md#what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server)」記事を参照してください。  
 
 この記事では、Azure Stack Hub VM で SQL Server の "*最適な*" パフォーマンスを得ることに焦点を絞っています。 ワークロードの要求が厳しくない場合は、推奨される最適化がすべて必要になるわけではありません。 各推奨事項を評価するときに、パフォーマンスのニーズとワークロードのパターンを考慮してください。
 
 > [!NOTE]  
-> Azure VM における SQL Server のパフォーマンスのガイダンスについては、[こちらの記事](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)を参照してください。
+> Azure VM における SQL Server のパフォーマンスのガイダンスについては、[こちらの記事](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)を参照してください。
 
 ## <a name="checklist-for-sql-server-best-practices"></a>SQL サーバーのベスト プラクティスに関するチェックリスト
 
@@ -98,7 +98,7 @@ Azure Stack Hub VM には、次の 3 種類のメイン ディスクがありま
 
 - **ディスク ストライピング:** スループットを向上させるために、データ ディスクをさらに追加し、ディスク ストライピングを使用できます。 必要なデータ ディスク数を決定するには、ログ ファイルと、データおよび TempDB ファイルに必要な IOPS 数を分析します。 IOPS の制限は、VM のサイズではなく、VM シリーズ ファミリに基づくデータ ディスクあたりの制限であることに注意してください。 ただし、ネットワーク帯域幅の制限は、VM のサイズに基づきます。 詳細については、「[Azure Stack Hub でサポートされている仮想マシンのサイズ](azure-stack-vm-sizes.md)」に示されている表を参照してください。 次のガイドラインに従ってください。
 
-  - Windows Server 2012 以降の場合は、次のガイドラインに従った[記憶域スペース](https://technet.microsoft.com/library/hh831739.aspx)を使用します｡
+  - Windows Server 2012 以降の場合は、次のガイドラインに従った[記憶域スペース](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11))を使用します｡
 
     1. パーティションの配置不良を原因とするパフォーマンスの低下を回避するため、インターリーブ (ストライプ サイズ) をオンライン トランザクション処理 (OLTP) ワークロードに対しては 64 KB (65,536 バイト)、データ ウェアハウス ワークロードに対しては 256 KB (262,144 バイト) に設定します。 これは､PowerShell を使って設定する必要があります｡
 
@@ -123,14 +123,14 @@ Azure Stack Hub VM には、次の 3 種類のメイン ディスクがありま
 
 ## <a name="io-guidance"></a>I/O のガイダンス
 
-- 初期ファイル割り当てに必要な時間を短縮するために、ファイルの瞬時初期化を有効にすることを検討します。 ファイルの瞬時初期化を利用するには、SQL Server (MSSQLSERVER) サービス アカウントに **SE_MANAGE_VOLUME_NAME** を付与し、 **[ボリュームの保守タスクを実行]** セキュリティ ポリシーにそのサービス アカウントを追加します。 Azure の SQL Server プラットフォーム イメージを使用している場合、既定のサービス アカウント (**NT Service\MSSQLSERVER**) は、 **[ボリュームの保守タスクを実行]** セキュリティ ポリシーに追加されません。 つまり、SQL Server Azure プラットフォーム イメージでは、ファイルの瞬時初期化は有効になりません。 **[ボリュームの保守タスクを実行]** セキュリティ ポリシーに SQL Server サービス アカウントを追加したら、SQL Server サービスを再起動します。 この機能を使用する場合、セキュリティに関する考慮事項があります。 詳細については、「 [データベース ファイルの初期化](https://msdn.microsoft.com/library/ms175935.aspx)」をご覧ください。
+- 初期ファイル割り当てに必要な時間を短縮するために、ファイルの瞬時初期化を有効にすることを検討します。 ファイルの瞬時初期化を利用するには、SQL Server (MSSQLSERVER) サービス アカウントに **SE_MANAGE_VOLUME_NAME** を付与し、 **[ボリュームの保守タスクを実行]** セキュリティ ポリシーにそのサービス アカウントを追加します。 Azure の SQL Server プラットフォーム イメージを使用している場合、既定のサービス アカウント (**NT Service\MSSQLSERVER**) は、 **[ボリュームの保守タスクを実行]** セキュリティ ポリシーに追加されません。 つまり、SQL Server Azure プラットフォーム イメージでは、ファイルの瞬時初期化は有効になりません。 **[ボリュームの保守タスクを実行]** セキュリティ ポリシーに SQL Server サービス アカウントを追加したら、SQL Server サービスを再起動します。 この機能を使用する場合、セキュリティに関する考慮事項があります。 詳細については、「 [データベース ファイルの初期化](/sql/relational-databases/databases/database-instant-file-initialization?view=sql-server-ver15)」をご覧ください。
 - **自動拡張** は、予想外の増加に付随するものです。 自動拡張を使用して、データやログの増加に日常的に対処しないでください。 自動拡張を使用する場合は、**Size** スイッチを使用してファイルを事前に拡張します。
 - パフォーマンスに悪影響を及ぼすおそれのある不要なオーバーヘッドを回避するために、 **自動圧縮** が無効になっていることを確認します。
-- 既定のバックアップ ファイルとデータベース ファイルの場所を設定します。 この記事では、推奨事項を使用し、[サーバーのプロパティ] ウィンドウで変更を行います。 手順については、「 [データ ファイルとログ ファイルの既定の場所の表示または変更 (SQL Server Management Studio)](https://msdn.microsoft.com/library/dd206993.aspx)」をご覧ください。 次のスクリーンショットは、これらの変更を行う場所を示しています。
+- 既定のバックアップ ファイルとデータベース ファイルの場所を設定します。 この記事では、推奨事項を使用し、[サーバーのプロパティ] ウィンドウで変更を行います。 手順については、「 [データ ファイルとログ ファイルの既定の場所の表示または変更 (SQL Server Management Studio)](/sql/database-engine/configure-windows/view-or-change-the-default-locations-for-data-and-log-files?view=sql-server-ver15)」をご覧ください。 次のスクリーンショットは、これらの変更を行う場所を示しています。
 
     > ![既定の場所を表示または変更する](./media/sql-server-vm-considerations/image1.png)
 
-- ロックされたページを有効にして、IO とページング アクティビティを減らします。 詳細については、「 [Lock Pages in Memory オプションの有効化 (Windows)](https://msdn.microsoft.com/library/ms190730.aspx)」をご覧ください。
+- ロックされたページを有効にして、IO とページング アクティビティを減らします。 詳細については、「 [Lock Pages in Memory オプションの有効化 (Windows)](/sql/database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows?view=sql-server-ver15)」をご覧ください。
 
 - バックアップを含め、Azure Stack Hub との間での転送時にデータ ファイルを圧縮することを検討します。
 
@@ -140,7 +140,7 @@ Azure Stack Hub VM には、次の 3 種類のメイン ディスクがありま
 
 - **Azure** **ストレージにバックアップします。** Azure Stack Hub VM で実行されている SQL Server のバックアップを実行する際は、SQL Server Backup to URL を使用できます。 SQL Server 2012 SP1 CU2 以降で使用できるこの機能は、接続されているデータ ディスクにバックアップする場合に推奨されます。
 
-    Azure Storage を使用してバックアップまたは復元を行うときは、「[SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](https://msdn.microsoft.com/library/jj919149.aspx)」と「[Microsoft Azure に格納されたバックアップからの復元](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017)」に記載されている推奨事項に従ってください。 [Azure VM での SQL Server の自動バックアップ](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)を使用して、バックアップを自動化することもできます。
+    Azure Storage を使用してバックアップまたは復元を行うときは、「[SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting?view=sql-server-ver15)」と「[Microsoft Azure に格納されたバックアップからの復元](/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017)」に記載されている推奨事項に従ってください。 [Azure VM での SQL Server の自動バックアップ](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)を使用して、バックアップを自動化することもできます。
 
 -   **Azure Stack Hub ストレージにバックアップします。** Azure Storage へのバックアップと同様の方法で、Azure Stack Hub ストレージにバックアップできます。 SQL Server Management Studio (SSMS) 内でバックアップを作成する場合は、構成情報を手動で入力する必要があります。 SSMS を使用してストレージ コンテナーや Shared Access Signature を作成することはできません。 SSMS は、Azure Stack Hub サブスクリプションではなく、Azure サブスクリプションにのみ接続されます。 代わりに、ストレージ アカウント、コンテナー、Shared Access Signature を Azure Stack Hub ポータルで、あるいは PowerShell を使用して作成する必要があります。
 

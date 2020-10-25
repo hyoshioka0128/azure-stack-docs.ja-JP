@@ -3,15 +3,15 @@ title: ポータルを使って Azure Stack Hub の Key Vault を管理する
 description: Azure Stack Hub ポータルを使用して Azure Stack Hub の Key Vault を管理する方法について説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 06/09/2020
 ms.author: sethm
 ms.lastreviewed: 1/10/2020
-ms.openlocfilehash: 50348aff594b058606aae49981e497f8b3515235
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 5413c37b0574e022716a1a0d333c18e78a818937
+ms.sourcegitcommit: d91e47a51a02042f700c6a420f526f511a6db9a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77702926"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84666390"
 ---
 # <a name="manage-key-vault-in-azure-stack-hub-using-the-portal"></a>ポータルを使って Azure Stack Hub の Key Vault を管理する
 
@@ -23,7 +23,7 @@ Azure Key Vault サービスを含むプランをサブスクライブする必�
 
 ## <a name="create-a-key-vault"></a>Key Vault を作成します
 
-1. [ユーザー ポータル](https://portal.local.azurestack.external)にサインインします。
+1. ユーザー ポータル `https://portal.local.azurestack.external` にサインインします。
 
 2. ダッシュボードから、 **[+ リソースの作成]** 、 **[セキュリティ + ID]** 、 **[Key Vault]** の順に選択します。
 
@@ -49,7 +49,7 @@ Azure Key Vault サービスを含むプランをサブスクライブする必�
 
 ### <a name="create-a-key"></a>キーの作成
 
-1. Azure Stack Hub の[ユーザー ポータル](https://portal.local.azurestack.external)にサインインします。
+1. Azure Stack Hub のユーザー ポータル `https://portal.local.azurestack.external` にサインインします。
 
 2. ダッシュボードで **[すべてのリソース]** をクリックし、先ほど作成した Key Vault を選択して、 **[キー]** タイルを選択します。
 
@@ -69,7 +69,7 @@ Azure Key Vault サービスを含むプランをサブスクライブする必�
 
 ### <a name="create-a-secret"></a>シークレットの作成
 
-1. [ユーザー ポータル](https://portal.local.azurestack.external)にサインインします。
+1. ユーザー ポータル `https://portal.local.azurestack.external` にサインインします。
 
 2. ダッシュボードで **[すべてのリソース]** を選択し、先ほど作成した Key Vault を選択して、 **[シークレット]** タイルを選択します。
 

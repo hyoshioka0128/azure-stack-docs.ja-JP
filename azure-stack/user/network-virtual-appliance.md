@@ -3,22 +3,22 @@ title: Azure Stack Hub でのネットワーク仮想アプライアンスに関
 description: Microsoft Azure Stack Hub でのネットワーク仮想アプライアンス (NVA) の使用時に発生する、VM または VPN の接続の問題をトラブルシューティングします。
 author: sethmanheim
 ms.author: sethm
-ms.date: 05/12/2020
+ms.date: 09/08/2020
 ms.topic: article
 ms.reviewer: sranthar
 ms.lastreviewed: 05/12/2020
-ms.openlocfilehash: f933e9c4e70f533d4194b48c7b9e4d6e4bf380b0
-ms.sourcegitcommit: d5d89bbe8a3310acaff29a7a0cd7ac4f2cf5bfe7
+ms.openlocfilehash: 293e445343acfe13a0be2cabab6cb1577c3941a2
+ms.sourcegitcommit: b147d617c32cea138b5bd4bab568109282e44317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83554966"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90010885"
 ---
 # <a name="troubleshoot-network-virtual-appliance-problems"></a>ネットワーク仮想アプライアンスに関する問題をトラブルシューティングする
 
 Azure Stack Hub でネットワーク仮想アプライアンス (NVA) を使用する仮想マシンまたは VPN で、接続の問題が発生する場合があります。
 
-この記事では、NVA 構成に対する Azure Stack Hub の基本的なプラットフォーム要件を確認するのに役立つ手順を示します。
+この記事は、NVA 構成のための Azure Stack Hub の基本プラットフォーム要件を確認するのに役立ちます。
 
 NVA と、Azure Stack Hub プラットフォームとの統合に対するテクニカル サポートは、NVA のベンダーによって提供されます。
 
@@ -39,8 +39,8 @@ Azure Stack Hub での NVA に関する問題をこの記事で対処できな�
 ## <a name="basic-troubleshooting-steps"></a>基本的なトラブルシューティングの手順
 
 1. 基本構成の確認。
-1. NVA のパフォーマンスの確認。
-1. 高度なネットワークのトラブルシューティングの実行。
+2. NVA のパフォーマンスの確認。
+3. 高度なネットワークのトラブルシューティングの実行。
 
 ## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Azure 上の NVA に対する最小構成要件の確認
 
@@ -58,8 +58,8 @@ Azure Stack Hub での NVA に関する問題をこの記事で対処できな�
 #### <a name="use-the-azure-stack-hub-portal"></a>Azure Stack Hub ポータルを使用する
 
 1. Azure Stack Hub ポータルで NVA リソースを検索し、 **[ネットワーク]** を選択して、ネットワーク インターフェイスを選択します。
-1. **[ネットワーク インターフェイス]** ページで、 **[IP 構成]** を選択します。
-1. IP 転送が有効になっていることを確認します。
+2. **[ネットワーク インターフェイス]** ページで、 **[IP 構成]** を選択します。
+3. IP 転送が有効になっていることを確認します。
 
 #### <a name="use-powershell"></a>PowerShell の使用
 
@@ -69,8 +69,9 @@ Azure Stack Hub での NVA に関する問題をこの記事で対処できな�
    Get-AzureRMNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NIC name>
    ```
 
-1. **EnableIPForwarding** プロパティを確認します。
-1. IP 転送が有効になっていない場合は、次のコマンドを実行して有効にします。
+2. **EnableIPForwarding** プロパティを確認します。
+
+3. IP 転送が有効になっていない場合は、次のコマンドを実行して有効にします。
 
    ```powershell
    $nic2 = Get-AzureRMNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NIC name>
@@ -84,7 +85,7 @@ Azure Stack Hub での NVA に関する問題をこの記事で対処できな�
 ### <a name="check-whether-traffic-can-be-routed-to-the-nva"></a>トラフィックを NVA にルーティングできるかどうかを確認する
 
 1. NVA にトラフィックをリダイレクトするように構成されている VM を見つけます。
-1. NVA が次ホップであることを確認するには、Windows で **Tracert \<NVA のプライベート IP\>** を使用するか、**Traceroute \<NVA のプライベート IP\>** を実行します。
+1. NVA が次ホップであることを確認するには、`Tracert <Private IP of NVA>` (Windows の場合) または `Traceroute <Private IP of NVA>` を実行します。
 1. NVA が次ホップとして一覧表示されていない場合は、Azure Stack Hub のルート テーブルを確認して更新します。
 
 ゲストレベルのオペレーティング システムによっては、ICMP トラフィックをブロックするためのファイアウォール ポリシーが配置されていることがあります。 これらのファイアウォール ルールを機能させるために、前のコマンドで更新する必要があります。
@@ -92,7 +93,7 @@ Azure Stack Hub での NVA に関する問題をこの記事で対処できな�
 ### <a name="check-whether-traffic-can-reach-the-nva"></a>トラフィックで NVA に到達できるかどうかを確認する
 
 1. NVA に接続する必要がある VM を見つけます。
-1. ネットワーク セキュリティ グループ (NSG) によってトラフィックがブロックされているかどうかを確認します。 Windows の場合は、**ping** (ICMP) または **Test-NetConnection \<NVA のプライベート IP\>** (TCP) を実行します。 Linux の場合は、**Tcpping \<NVA のプライベート IP\>** を実行します。
+1. ネットワーク セキュリティ グループ (NSG) によってトラフィックがブロックされているかどうかを確認します。 Windows の場合、`ping` (ICMP) または `Test-NetConnection <Private IP of NVA>` (TCP) を実行します。 Linux の場合、`Tcpping <Private IP of NVA>` を実行します。
 1. NSG によってトラフィックがブロックされている場合は、トラフィックを許可するように変更します。
 
 ### <a name="check-whether-the-nva-and-vms-are-listening-for-expected-traffic"></a>NVA と VM で予期されるトラフィックがリッスンされているかどうかを確認する
@@ -133,7 +134,7 @@ VM ネットワークでスパイクが使用される場合、または使用�
 
 ### <a name="capture-a-network-trace"></a>ネットワーク トレースをキャプチャする
 
-[**PsPing**](/sysinternals/downloads/psping) または **Nmap** の実行中に、ソース VM、宛先 VM、および NVA で、同時ネットワーク トレースをキャプチャします。 その後、トレースを停止します。
+[`PsPing`](/sysinternals/downloads/psping) または `Nmap` の実行中に、ソース VM、宛先 VM、および NVA で、同時ネットワーク トレースをキャプチャします。 その後、トレースを停止します。
 
 1. 同時ネットワーク追跡をキャプチャするには、次のコマンドを実行します。
 
@@ -149,9 +150,9 @@ VM ネットワークでスパイクが使用される場合、または使用�
    sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
    ```
 
-2. ソース VM から宛先 VM に対して **PsPing** または **Nmap** を使用します。 例として **PsPing 10.0.0.4:80** や **Nmap-p 80 10.0.0.4** があります。
+2. ソース VM から宛先 VM に対して `PsPing` または `Nmap` を使用します。 たとえば、`PsPing 10.0.0.4:80` や `Nmap -p 80 10.0.0.4` などです。
 
-3. **tcpdump** か自分で選んだパケット アナライザーを利用し、宛先 VM からネットワーク トレースを開きます。 **PsPing** または **Nmap** を実行できるソース VM の IP に表示フィルターを適用します。 Windows での **netmon** の例は **IPv4.address==10.0.0.4**です。 Linux での例は、**tcpdump -nn -r vmtrace.cap src** と **dst host 10.0.0.4** です。
+3. **tcpdump** か自分で選んだパケット アナライザーを利用し、宛先 VM からネットワーク トレースを開きます。 `PsPing` または `Nmap` を実行できるソース VM の IP に表示フィルターを適用します。 Windows での **netmon** の例は `IPv4.address==10.0.0.4`です。 Linux での例は `tcpdump -nn -r vmtrace.cap src` や `dst host 10.0.0.4` などです。
 
 ### <a name="analyze-traces"></a>トレースの分析
 
@@ -163,4 +164,4 @@ VM ネットワークでスパイクが使用される場合、または使用�
 
 ### <a name="create-a-support-ticket"></a>サポート チケットの作成
 
-上記の手順で問題が解決しない場合は、[サポート チケット](../operator/azure-stack-manage-basics.md#where-to-get-support)を作成し、[オンデマンド ログ収集ツール](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md)を使用してログを提供してください。
+上記の手順で問題が解決しない場合は、[サポート チケット](../operator/azure-stack-manage-basics.md#where-to-get-support)を作成し、[オンデマンド ログ収集ツール](../operator/azure-stack-diagnostic-log-collection-overview.md)を使用してログを提供してください。

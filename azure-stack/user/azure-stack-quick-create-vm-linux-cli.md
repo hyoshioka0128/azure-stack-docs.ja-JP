@@ -1,17 +1,17 @@
 ---
-title: Azure Stack Hub 内で Azure CLI を使用して Linux 仮想マシンを作成する
+title: Azure Stack Hub で Azure CLI を使用して Linux VM を作成する
 description: Azure Stack Hub 内で Azure CLI を使用して Linux 仮想マシンを作成します。
 author: mattbriggs
 ms.topic: quickstart
 ms.date: 5/27/2020
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 9cb3a448d708a70d70705cd8ea6230f17816726a
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: b7b016d377267c9032a79c1e0f04bd1ac65e4185
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111674"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90571538"
 ---
 # <a name="quickstart-create-a-linux-server-vm-by-using-the-azure-cli-in-azure-stack-hub"></a>クイック スタート:Azure Stack Hub 内で Azure CLI を使用して Linux サーバー VM を作成する
 

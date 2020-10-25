@@ -7,12 +7,13 @@ ms.date: 04/10/2020
 ms.author: bryanla
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: f1217bacebc4c391347506720c760b947e363b3a
-ms.sourcegitcommit: 41195d1ee8ad14eda102cdd3fee3afccf1d83aca
+ms.custom: conteperfq4
+ms.openlocfilehash: 8e6ec9fcb6428b9f8dad7c4f78acde54291b30f1
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82908610"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86488622"
 ---
 # <a name="integrate-ad-fs-identity-with-your-azure-stack-hub-datacenter"></a>AD FS ID を Azure Stack Hub データセンターに統合する
 
@@ -63,7 +64,7 @@ Graph は、単一の Active Directory フォレストとの統合のみをサ�
 
 Azure Stack Hub の[パブリック VIP ネットワーク](azure-stack-network.md#public-vip-network) サブネットを、Azure Stack Hub に最も近い Active Directory サイトに追加します。 たとえば、Active Directory に 2 つのサイトがあるとします。シアトルとレドモントです。 シアトルのサイトに Azure Stack Hub がデプロイされている場合、Azure Stack Hub のパブリック VIP ネットワーク サブネットを、Active Directory のシアトルのサイトに追加します。
 
-Active Directory サイトの詳細については、「[サイト トポロジの設計](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)」を参照してください。
+Active Directory サイトの詳細については、「[サイト トポロジの設計](/windows-server/identity/ad-ds/plan/designing-the-site-topology)」を参照してください。
 
 > [!Note]  
 > Active Directory が単一サイトで構成されている場合、この手順はスキップできます。 包括的なサブネットが構成されている場合、Azure Stack Hub のパブリック VIP ネットワーク サブネットがその一部ではないことを確認します。
@@ -259,7 +260,7 @@ Azure Stack Hub の Graph サービスでは、次のプロトコルとポート
    ```
 
     > [!Note]  
-    > Windows 統合認証 (WIA) サポートのユーザー エージェント文字列が、AD FS 展開に対して期限切れになっている場合があり、最新のクライアントをサポートするための更新プログラムが必要になる場合があります。 WIA によってサポートされるユーザー エージェント文字列の更新に関する詳細については、「[WIA をサポートしていないデバイスのイントラネットフォームベース認証の構成](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia)」の記事をお読みください。<br><br>フォーム ベース認証ポリシーを有効にする手順については、「[認証ポリシーを構成する](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies)」を参照してください。
+    > Windows 統合認証 (WIA) サポートのユーザー エージェント文字列が、AD FS 展開に対して期限切れになっている場合があり、最新のクライアントをサポートするための更新プログラムが必要になる場合があります。 WIA によってサポートされるユーザー エージェント文字列の更新に関する詳細については、「[WIA をサポートしていないデバイスのイントラネットフォームベース認証の構成](/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia)」の記事をお読みください。<br><br>フォーム ベース認証ポリシーを有効にする手順については、「[認証ポリシーを構成する](/windows-server/identity/ad-fs/operations/configure-authentication-policies)」を参照してください。
 
 3. 証明書利用者信頼を追加するには、AD FS インスタンスまたはファーム メンバーで、次の Windows PowerShell コマンドを実行します。 必ず AD FS エンドポイントを更新して、手順 1 で作成されたファイルを指定します。
 

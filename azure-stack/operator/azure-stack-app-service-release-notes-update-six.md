@@ -8,12 +8,12 @@ ms.date: 06/24/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
-ms.openlocfilehash: 974b338ff7da9bd4442d4aadc02d475bd01686df
-ms.sourcegitcommit: ddcd083430ca905653d412dc2f7b813218d79509
+ms.openlocfilehash: 932686cb52e7aa2a1aa1c948e1ab5d5469d4bf30
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83374640"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86489591"
 ---
 # <a name="app-service-on-azure-stack-hub-update-6-release-notes"></a>App Service on Azure Stack Hub update 6 のリリース ノート
 
@@ -78,7 +78,7 @@ Azure App Service on Azure Stack Hub Update 6 には、次の機能強化と修�
 ## <a name="post-deployment-steps"></a>デプロイ後の手順
 
 > [!IMPORTANT]
-> SQL Always On インスタンスを使用して App Service リソース プロバイダーを提供している場合は、データベースのフェールオーバーが発生したときにサービスが失われないように、[appservice_hosting と appservice_metering データベースを可用性グループに追加](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する必要があります。
+> SQL Always On インスタンスを使用して App Service リソース プロバイダーを提供している場合は、データベースのフェールオーバーが発生したときにサービスが失われないように、[appservice_hosting と appservice_metering データベースを可用性グループに追加](/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する必要があります。
 
 ## <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
 
@@ -98,7 +98,7 @@ Azure App Service on Azure Stack Hub Update 6 には、次の機能強化と修�
 
 ## <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>Azure App Service on Azure Stack Hub を運用するクラウド管理者に対する既知の問題
 
-[Azure Stack Hub 1908 リリース ノート](/azure-stack/operator/release-notes?view=azs-1908)内のドキュメントを参照してください。
+[Azure Stack Hub 1908 リリース ノート](./release-notes.md?view=azs-1908)内のドキュメントを参照してください。
 
 ## <a name="known-issues-for-tenants-deploying-applications-on-azure-app-service-on-azure-stack-hub"></a>Azure App Service on Azure Stack Hub にアプリケーションをデプロイするテナントに関する既知の問題
 

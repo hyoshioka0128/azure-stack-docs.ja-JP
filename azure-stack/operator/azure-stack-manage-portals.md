@@ -7,12 +7,12 @@ ms.date: 06/07/2019
 ms.author: justinha
 ms.reviewer: efemmano
 ms.lastreviewed: 06/07/2019
-ms.openlocfilehash: 358837da19ad34f82f81a94da0c89b165574ea49
-ms.sourcegitcommit: 4138a2a15f78e7db38b3a29acc963a71937146fd
+ms.openlocfilehash: d7951500afe21ec0800328230d6b5f1653934c40
+ms.sourcegitcommit: 5f4f0ee043ff994efaad44129ce49be43c64d5dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "77699254"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84819198"
 ---
 # <a name="use-the-administrator-portal-in-azure-stack-hub"></a>Azure Stack Hub で管理者ポータルを使用する
 
@@ -24,7 +24,7 @@ Azure Stack Hub には、管理者ポータルとユーザー ポータルの 2 
 
 | 環境 | 管理者ポータルの URL |   
 | -- | -- | 
-| ASDK| https://adminportal.local.azurestack.external  |
+| ASDK| `https://adminportal.local.azurestack.external`  |
 | 統合システム | https://adminportal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; | 
 | | |
 
@@ -77,8 +77,8 @@ Azure Stack Hub オペレーター向けドキュメントにアクセスする�
 
 管理者ポータルの右上隅にあるヘルプ アイコン (疑問符) をクリックし、 **[ヘルプとサポート]** をクリックしてから、 **[サポート]** で **[新しいサポート リクエスト]** をクリックすると、次のいずれかの結果になります。
 
-- 統合システムを使用している場合は、Microsoft カスタマー サポート サービス (CSS) のサポート チケットを直接開くことができるサイトが開きます。 Microsoft サポートと OEM (Original Equipment Manufacturer) ハードウェア ベンダーのサポートのどちらに連絡するかについては、「[サポートが受けられる場所](azure-stack-manage-basics.md#where-to-get-support)」を参照してください。
-- ASDK を使用している場合は、[Azure Stack Hub フォーラムのサイト](https://social.msdn.microsoft.com/Forums/home?forum=AzureStack)が直接開きます。 これらのフォーラムは定期的にチェックされています。 ASDK は評価環境であるため、Microsoft CSS を通した正式なサポートは提供されていません。
+- 統合システムを使用している場合は、Microsoft サポートのサポート チケットを直接開くことができるサイトが開きます。 Microsoft サポートと OEM (Original Equipment Manufacturer) ハードウェア ベンダーのサポートのどちらに連絡するかについては、「[サポートが受けられる場所](azure-stack-manage-basics.md#where-to-get-support)」を参照してください。
+- ASDK を使用している場合は、[Azure Stack Hub フォーラムのサイト](https://social.msdn.microsoft.com/Forums/home?forum=AzureStack)が直接開きます。 これらのフォーラムは定期的にチェックされています。 ASDK は評価環境であるため、Microsoft サポートを通じた正式なサポートは提供されていません。
 
 ### <a name="quick-access-to-the-azure-roadmap"></a>Azure ロードマップへのクイック アクセス
 

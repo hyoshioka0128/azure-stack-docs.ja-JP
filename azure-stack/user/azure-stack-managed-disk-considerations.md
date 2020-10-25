@@ -1,18 +1,18 @@
 ---
-title: Azure Stack Hub マネージド ディスク; 相違点と考慮事項
+title: Azure Stack Hub マネージド ディスクの相違点と考慮事項
 description: Azure Stack Hub でマネージド ディスクとマネージド イメージを操作する際の相違点と考慮事項について説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/04/2020
+ms.date: 08/27/2020
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: da3ba321eee4c71549fb84a61d3010803e5e6349
-ms.sourcegitcommit: 85c373fd8f9e8888a7ba25bedce2f640c93de1e5
+ms.openlocfilehash: d8ddebe5fccf03a47db3d6ab190b77296b34734b
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84334163"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90574263"
 ---
 # <a name="azure-stack-hub-managed-disks-differences-and-considerations"></a>Azure Stack Hub マネージド ディスク: 相違点と考慮事項
 
@@ -20,12 +20,11 @@ ms.locfileid: "84334163"
 
 マネージド ディスクを使用すると、VM ディスクに関連付けられている[ストレージ アカウント](../operator/azure-stack-manage-storage-accounts.md)を管理できるため、IaaS 仮想マシン (VM) のディスク管理が簡素化されます。
 
-> [!NOTE]  
-> Azure Stack Hub のマネージド ディスクは 1808 更新プログラム以降で利用可能でした。 1811 更新プログラム以降で Azure Stack Hub ポータルを使用して VM を作成する場合、機能は既定で有効になっています。
+Azure Stack Hub ポータルを使用して VM を作成すると、マネージド ディスクが既定で有効になります。
   
 ## <a name="cheat-sheet-managed-disk-differences"></a>チート シート: マネージド ディスクの相違点
 
-| 機能 | Azure (グローバル) | Azure Stack Hub |
+| 特徴量 | Azure (グローバル) | Azure Stack Hub |
 | --- | --- | --- |
 |保存データの暗号化 |Azure Storage Service Encryption (SSE)、Azure Disk Encryption (ADE)。     |BitLocker 128 ビット AES 暗号化      |
 |Image          | マネージド カスタム イメージ |サポートされています|
@@ -152,7 +151,7 @@ Windows の場合は、「[Sysprep を使用して Windows VM を一般化する
 
 「[ストレージ アカウントを使用する VM からイメージを作成する](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vm-that-uses-a-storage-account)」の手順に従って、ストレージ アカウント内の一般化された VHD からマネージド イメージを作成します。 このイメージは、後でマネージド VM を作成するために使用できます。
 
-#### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>ケース 2: Powershell を使用してマネージド イメージからマネージド VM を作成する
+#### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>ケース 2: PowerShell を使用してマネージド イメージからマネージド VM を作成する
 
 「[PowerShell を使ってマネージド ディスクからイメージを作成する](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-managed-disk-using-powershell)」のスクリプトを使って既存のマネージド ディスク VM からイメージを作成した後、次のサンプル スクリプトを使って、既存のイメージ オブジェクトから類似の Linux VM を作成します。
 
@@ -204,6 +203,7 @@ $Image = Get-AzureRmImage -ResourceGroupName $ImageRG -ImageName $ImageName
 $VmConfig = New-AzureRmVMConfig -VMName $VirtualMachineName -VMSize "Standard_D1" | `
 Set-AzureRmVMOperatingSystem -Linux -ComputerName $VirtualMachineName -Credential $Cred | `
 Set-AzureRmVMSourceImage -Id $Image.Id | `
+Set-AzureRmVMOSDisk -VM $VmConfig -CreateOption FromImage -Linux | `
 Add-AzureRmVMNetworkInterface -Id $Nic.Id
 
 # Create a virtual machine
@@ -219,7 +219,7 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VmC
 - 1808 更新プログラムの前にサブスクリプションが作成された場合は、次の手順に従ってサブスクリプションを更新します。 そうでないと、このサブスクリプションに VM をデプロイする操作がエラー メッセージ "ディスク マネージャーでの内部エラーです" で失敗することがあります。
    1. Azure Stack Hub ユーザー ポータルで、 **[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、 **[Microsoft.Compute]** をクリックした後、 **[再登録]** をクリックします。
    2. 同じサブスクリプションで、 **[アクセス制御 (IAM)]** に移動し、 **[Azure Stack Hub - マネージド ディスク]** がリストに含まれていることを確認します。
-- マルチテナント環境を使用している場合は、[この記事](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-hub-with-the-guest-directory)の次の手順に従って、各ゲスト ディレクトリを再構成するように (お客様の組織内またはサービス プロバイダーからの) クラウド オペレーターに依頼してください。 そうしないと、そのゲスト ディレクトリに関連付けられているサブスクリプションに VM をデプロイした場合に、"ディスク マネージャーでの内部エラーです" というエラー メッセージが表示され、失敗することがあります。
+- マルチテナント環境を使用している場合は、[この記事](../operator/azure-stack-enable-multitenancy.md#register-azure-stack-hub-with-the-guest-directory)の次の手順に従って、各ゲスト ディレクトリを再構成するように (お客様の組織内またはサービス プロバイダーからの) クラウド オペレーターに依頼してください。 そうしないと、そのゲスト ディレクトリに関連付けられているサブスクリプションに VM をデプロイした場合に、"ディスク マネージャーでの内部エラーです" というエラー メッセージが表示され、失敗することがあります。
 
 ## <a name="next-steps"></a>次のステップ
 

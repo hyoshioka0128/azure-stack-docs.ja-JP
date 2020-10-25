@@ -7,12 +7,12 @@ ms.date: 03/21/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
-ms.openlocfilehash: e04fa2f3e9d03f1982ef67d4d19549b7b73a1f1a
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: ba57de42f882ce62d433768f4fd2a265b862459c
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77701685"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86489761"
 ---
 # <a name="app-service-recovery-on-azure-stack-hub"></a>Azure Stack 上の App Service の復旧
 
@@ -39,7 +39,7 @@ App Service データベースをホストするように [SQL Server インス�
 3. 両方の App Service データベースが正常に復旧されたことを確認し、SQL Server Management Studio を終了します。
 
 > [!NOTE]
-> フェールオーバー クラスター インスタンスの障害から復旧するには、「[フェールオーバー クラスター インスタンス障害からの復旧](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/recover-from-failover-cluster-instance-failure?view=sql-server-2017)」を参照してください。 
+> フェールオーバー クラスター インスタンスの障害から復旧するには、「[フェールオーバー クラスター インスタンス障害からの復旧](/sql/sql-server/failover-clusters/windows/recover-from-failover-cluster-instance-failure?view=sql-server-2017)」を参照してください。 
 
 ## <a name="restore-the-app-service-file-share-content"></a>App Service ファイル共有のコンテンツを復旧する
 App Service ファイル共有をホストするように[ファイル サーバーを順](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server)したら、テナント ファイル共有のコンテンツをバックアップから復旧する必要があります。 新しく作成された App Service ファイル共有場所にファイルをコピーするために、利用可能な任意の方法を使用できます。 ファイル サーバーで次の例を実行すると、リモート共有に接続してファイルを共有にコピーするために、PowerShell と Robocopy が使用されます。

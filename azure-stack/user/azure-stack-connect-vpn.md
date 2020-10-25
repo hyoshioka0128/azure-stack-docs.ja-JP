@@ -3,16 +3,16 @@ title: VPN を使用して Azure Stack Hub を Azure に接続する
 description: VPN を使用して Azure Stack Hub 内の仮想ネットワークを Azure 内の仮想ネットワークに接続する方法。
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 07/23/2020
 ms.author: sethm
-ms.reviewer: scottnap
+ms.reviewer: TBD
 ms.lastreviewed: 10/24/2019
-ms.openlocfilehash: 186559752531021ff74833ac71184e692d40a04d
-ms.sourcegitcommit: 3ee7e9ddffe2ca44af24052e60d808fbef42cf4c
+ms.openlocfilehash: 2ea7dfcccf2b2f4590e09f60db4530d7ebe6d319
+ms.sourcegitcommit: f2a5ce52fcf69e05fe89be8211b7360de46f4a94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82643582"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133760"
 ---
 # <a name="connect-azure-stack-hub-to-azure-using-vpn"></a>VPN を使用して Azure Stack Hub を Azure に接続する
 
@@ -35,7 +35,7 @@ ms.locfileid: "82643582"
 
 ネットワーク構成の例の表は、この記事の例で使用されている値を示しています。 これらの値を使用するか、この値を参考にしながら、この記事の例を確認していくこともできます。
 
-|   |Azure Stack Hub|Azure|
+| 値   |Azure Stack Hub|Azure|
 |---------|---------|---------|
 |仮想ネットワーク名     |Azs-VNet|AzureVNet |
 |仮想ネットワークのアドレス空間 |10.1.0.0/16|10.100.0.0/16|
@@ -119,9 +119,9 @@ Azure Stack Hub の[ビルド 1910 以降](azure-stack-vpn-gateway-settings.md#i
 1. カスタム ポリシーの作成:
 
    ```powershell
-     $IPSecPolicy = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup ECP384  `
-     -IpsecEncryption GCMAES256 -IpsecIntegrity GCMAES256 -PfsGroup ECP384 -SALifeTimeSeconds 27000 `
-     -SADataSizeKilobytes 102400000 
+   $IPSecPolicy = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup ECP384  `
+   -IpsecEncryption GCMAES256 -IpsecIntegrity GCMAES256 -PfsGroup ECP384 -SALifeTimeSeconds 27000 `
+   -SADataSizeKilobytes 102400000
    ```
 
 2. 接続へのポリシーの適用:
@@ -202,7 +202,7 @@ Azure Stack Hub の[ビルド 1910 以降](azure-stack-vpn-gateway-settings.md#i
 
 ### <a name="create-the-local-network-gateway"></a>ローカル ネットワーク ゲートウェイを作成する
 
-Azure Stack Hub における "*ローカル ネットワーク ゲートウェイ*" の概念は、Azure デプロイにおけるものと少し異なります。
+Azure Stack Hub における "*ローカル ネットワーク ゲートウェイ*" の概念は、Azure デプロイにおけるものと異なります。
 
 Azure デプロイでは、ローカル ネットワーク ゲートウェイは、Azure の仮想ネットワーク ゲートウェイに接続するオンプレミスの (ユーザーの位置にある) 物理デバイスを表します。 しかし、Azure Stack Hub では、接続の両端が仮想ネットワーク ゲートウェイになります。
 
@@ -256,8 +256,8 @@ VPN 接続を確認するには、2 つの VM を作成します。1 つは Azur
 * Azure Stack Hub で作成した VM にサインインして、Azure の VM に ping します。
 * Azure で作成した VM にサインインして、Azure Stack Hub の VM に ping します。
 
->[!NOTE]
->トラフィックがサイト間接続を通過するように、VIP ではなく、リモート サブネットの VM のダイレクト IP (DIP) に ping を実行します。
+> [!NOTE]
+> トラフィックがサイト間接続を通過するように、VIP ではなく、リモート サブネットの VM のダイレクト IP (DIP) に ping を実行します。
 
 ### <a name="sign-in-to-the-user-vm-in-azure-stack-hub"></a>Azure Stack Hub 内のユーザー VM にサインインする
 
@@ -318,4 +318,4 @@ VPN 接続を確認するには、2 つの VM を作成します。1 つは Azur
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure と Azure Stack Hub へのアプリのデプロイ](azure-stack-solution-pipeline.md)
+* [Azure と Azure Stack Hub へのアプリのデプロイ](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/hybrid-devops)

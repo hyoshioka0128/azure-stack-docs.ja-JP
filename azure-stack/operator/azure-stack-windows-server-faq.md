@@ -4,16 +4,16 @@ titleSuffix: Azure Stack Hub
 description: Azure Stack Hub Marketplace の Windows Server に関する FAQ 一覧。
 author: sethmanheim
 ms.topic: article
-ms.date: 03/19/2020
+ms.date: 07/23/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 08/29/2019
-ms.openlocfilehash: 95719c6b0651932ab41cef5321db06b77eb4fc63
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: fff299a0d537bb4190e66a57eb642db7e8b9824d
+ms.sourcegitcommit: f2a5ce52fcf69e05fe89be8211b7360de46f4a94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80069458"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133641"
 ---
 # <a name="azure-stack-hub-marketplace-faq"></a>Azure Stack Hub Marketplace のよくあるご質問
 
@@ -23,15 +23,15 @@ ms.locfileid: "80069458"
 
 ### <a name="who-should-i-contact-for-support-issues-with-azure-stack-hub-marketplace-items"></a>Azure Stack Hub Marketplace アイテムのサポートに関する問題については、だれに問い合わせる必要がありますか?
 
-Azure Marketplace のサポート ガイダンスは、Azure Stack Hub Marketplace アイテムにも適用されます。 発行元は、Azure Stack Hub Marketplace 上の製品のテクニカル サポートを提供する責任を負います。 Azure Marketplace アイテムのサポート ガイダンスについて詳しくは、Azure Marketplace FAQ 記事の[サポートに関するセクション](/azure/marketplace/marketplace-faq-publisher-guide#customer-support)をご覧ください。
+Azure Marketplace のサポート ガイダンスは、Azure Stack Hub Marketplace アイテムにも適用されます。 発行元は、Azure Stack Hub Marketplace 上の製品のテクニカル サポートを提供する責任を負います。 Azure Marketplace アイテムのサポート ガイダンスの詳細については、Azure Marketplace FAQ 記事の[サポートに関するセクション](/azure/marketplace/marketplace-faq-publisher-guide#customer-support)を参照してください。
 
 ### <a name="how-do-i-update-to-a-newer-windows-image"></a>より新しい Windows イメージに更新するにはどうすればよいですか?
 
 まず、Azure Resource Manager テンプレートが特定のバージョンを参照しているかどうかを確認します。 該当する場合は、それらのテンプレートを更新するか、以前のバージョンのイメージを維持します。 **version: latest** を使用することをお勧めします。
 
-次に、仮想マシン スケール セットが特定のバージョンを参照している場合、これらを後でスケーリングするかどうかを検討し、さらに以前のバージョンを維持するかどうかを決める必要があります。 どの条件も該当しない場合は、新しいイメージをダウンロードする前に、Azure Stack Hub Marketplace 内の以前のイメージを削除してください。 元のイメージのダウンロードに Marketplace 管理を使用した場合は、それを使って行ってください。 そのうえで、新しいバージョンをダウンロードします。
+次に、仮想マシン スケール セットが特定のバージョンを参照している場合、これらを後でスケーリングするかどうかを検討し、さらに以前のバージョンを維持するかどうかを決める必要があります。 どの条件も該当しない場合は、新しいイメージをダウンロードする前に、Azure Stack Hub Marketplace 内の以前のイメージを削除してください。 元のイメージのダウンロードに Marketplace 管理を使用した場合は、それを使って削除してください。 そのうえで、新しいバージョンをダウンロードします。
 
-### <a name="what-are-the-licensing-options-for-windows-server-marketplace-images-on-azure-stack-hub"></a>Azure Stack Hub における Windows Server Marketplace イメージのライセンス オプションを教えてください。
+### <a name="what-are-the-licensing-options-for-windows-server-images-on-azure-stack-hub-marketplace"></a>Azure Stack Hub Marketplace には、Windows Server イメージにどのようなライセンス オプションがありますか?
 
 Microsoft は、2 つのバージョンの Windows Server イメージを Azure Stack Hub Marketplace で提供しています。 Azure Stack Hub 環境で使用できるのは、このイメージの 1 バージョンのみです。  
 
@@ -78,7 +78,7 @@ Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 
 これらのイメージは、**licenseType** パラメーターが適用されるため、PAYG となります。 このパラメーターは自分で設定することができます (前出の FAQ の回答を参照)。 これが適用されるのは、Windows Server ソフトウェアだけです。自分のライセンスの持ち込みが必要となる階層化された製品 (SQL など) には適用されません。 PAYG ライセンスは、階層化されたソフトウェア製品には適用されません。
 
-Azure Stack Hub Marketplace から SQL Server イメージの **licenseType** プロパティを変更できるのは、バージョンが XX.X.20190410 以降の場合のみです。 Azure Stack Hub Marketplace から古いバージョンの SQL Server イメージを実行している場合は、**licenseType** 属性を変更することはできず、Azure Stack Hub Marketplace から最新の SQL Server イメージを使用して再デプロイする必要があります。
+Azure Stack Hub Marketplace から SQL Server イメージの **licenseType** プロパティを変更できるのは、バージョンが **XX.X.20190410** 以降の場合のみです。 Azure Stack Hub Marketplace から古いバージョンの SQL Server イメージを実行している場合は、**licenseType** 属性を変更することはできず、Azure Stack Hub Marketplace から最新の SQL Server イメージを使用して再デプロイする必要があります。
 
 ### <a name="i-have-an-enterprise-agreement-ea-and-will-be-using-my-ea-windows-server-license-how-do-i-make-sure-images-are-billed-correctly"></a>私はマイクロソフト エンタープライズ契約 (EA) を所有しており、EA Windows Server ライセンスを使う予定です。イメージに対して正しく課金されるようにするには、どうすればよいですか?
 
@@ -115,11 +115,11 @@ slmgr /ipk <AVMA key>
 
 `sysprep` コマンドを実行する前に、適切なキーを指定して `slmgr /ipk` コマンド ラインを実行することをお勧めします。 または、Unattend.exe セットアップ ファイルに AVMA キーを含めます。
 
-### <a name="i-am-trying-to-use-my-windows-server-2016-image-created-on-azure-and-its-not-activating-or-using-kms-activation"></a>Azure 上で作成した Windows Server 2016 イメージを使おうとしているのですが、ライセンス認証が実行されません (または KMS ライセンス認証が使用されません)。
+### <a name="i-am-trying-to-use-my-windows-server-2016-image-created-on-azure-and-its-not-activating-or-using-kms-activation"></a>Azure 上で作成した Windows Server 2016 イメージを使おうとしているのですが、ライセンス認証が実行されません (または KMS ライセンス認証が使用されません)
 
 `slmgr /ipk` コマンドを実行します。 Azure のイメージが正しく AVMA にフォールバックされないことがありますが、Azure KMS システムに到達できれば、ライセンス認証が行われます。 これらの VM が AVMA を使用する設定になっていることを確認するようお勧めします。
 
-### <a name="i-have-performed-all-of-these-steps-but-my-vms-are-still-not-activating"></a>これらの手順はすべて実行しましたが、まだ VM がライセンス認証されません。
+### <a name="i-have-performed-all-of-these-steps-but-my-vms-are-still-not-activating"></a>これらの手順はすべて実行しましたが、まだ VM がライセンス認証されません
 
 ハードウェア サプライヤーに問い合わせて、正しい BIOS マーカーがインストールされていることを確認してください。
 

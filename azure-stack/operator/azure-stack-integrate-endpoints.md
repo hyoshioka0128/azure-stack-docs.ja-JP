@@ -1,18 +1,18 @@
 ---
 title: データセンターに Azure Stack Hub サービスを発行する
 description: データセンターに Azure Stack Hub サービスを発行する方法を学習します。
-author: IngridAtMicrosoft
+author: myoung
 ms.topic: article
-ms.date: 04/10/2020
-ms.author: inhenkel
+ms.date: 09/24/2020
+ms.author: v-myoung
 ms.reviewer: wamota
-ms.lastreviewed: 12/11/2019
-ms.openlocfilehash: 5717da90dabc08c6e987b080fd12742acdcf8496
-ms.sourcegitcommit: b185ab34c4c799892948536dd6d1d1b2fc31174e
+ms.lastreviewed: 09/24/2020
+ms.openlocfilehash: ed9f2a8eeeeb2cfdfcc4e96c1672d7da8fff64b2
+ms.sourcegitcommit: 703be61f2f1565bf478b8c184753869c29e5c33c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150262"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91495747"
 ---
 # <a name="publish-azure-stack-hub-services-in-your-datacenter"></a>データセンターに Azure Stack Hub サービスを発行する
 
@@ -64,7 +64,7 @@ Azure Stack Hub エンドポイントを外部ネットワークに発行する�
 |  |&#42;.scm.appservice. *&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)|
 |  |api.appservice. *&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)<br>44300 (Azure Resource Manager)|
 |  |ftp.appservice. *&lt;region>.&lt;fqdn>*|TCP、UDP|21、1021、10001-10100 (FTP)<br>990 (FTPS)|
-|VPN ゲートウェイ|     |     |[VPN Gateway に関する FAQ を参照してください](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vpn-faq#can-i-traverse-proxies-and-firewalls-using-point-to-site-capability)。|
+|VPN ゲートウェイ|     |     |[VPN Gateway に関する FAQ を参照してください](/azure/vpn-gateway/vpn-gateway-vpn-faq#can-i-traverse-proxies-and-firewalls-using-point-to-site-capability)。|
 |     |     |     |     |
 
 ## <a name="ports-and-urls-outbound"></a>ポートと URL (送信)
@@ -93,7 +93,7 @@ SSL トラフィックのインターセプトは[サポートされておらず
 |LDAP GC|Graph 統合のために用意されている Active Directory フォレスト|TCP|3268|パブリック VIP - /27|
 |LDAP GC SSL|Graph 統合のために用意されている Active Directory フォレスト|TCP|3269|パブリック VIP - /27|
 |AD FS|AD FS 統合のために用意されている AD FS メタデータ エンドポイント|TCP|443|パブリック VIP - /27|
-|診断ログ収集サービス|Azure Storage により提供される BLOB SAS の URL|HTTPS|443|パブリック VIP - /27|
+| 診断ログの収集 |https://*.blob.core.windows.net<br>https://azsdiagprdlocalwestus02.blob.core.windows.net<br>https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com<br>https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com | HTTPS | 443 | パブリック VIP - /27 |
 |     |     |     |     |     |
 
 送信 URL は Azure Traffic Manager を使用して負荷分散され、地理的な場所に基づいて可能な限り最適な接続が提供されます。 URL を負荷分散することで、Microsoft は、顧客に影響を与えることなくバックエンド エンドポイントを更新および変更することができます。 Microsoft では、負荷分散される URL の IP アドレスのリストを共有していません。 IP ではなく URL によるフィルター処理をサポートするデバイスを使用してください。

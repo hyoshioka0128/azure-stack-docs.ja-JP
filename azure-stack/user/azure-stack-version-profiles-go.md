@@ -3,16 +3,16 @@ title: Azure Stack Hub での GO による API バージョンのプロファイ
 description: Azure Stack Hub での GO による API バージョンのプロファイルの使用方法について説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 09/02/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/26/2019
-ms.openlocfilehash: e40c51d44f93fae4e7293113ab7f06bad03677e3
-ms.sourcegitcommit: 70c344b3c9c63f8c12867b2cdfdd1794fcc518dc
+ms.openlocfilehash: 3b8df9de2975c7ba0e6eefdb10a2731cd5d47ca6
+ms.sourcegitcommit: 7c01ab4b2e2250a7acd67d1c5ba27d15c1e8bce0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836191"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89448675"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack-hub"></a>Azure Stack Hub での GO による API バージョンのプロファイルの使用
 
@@ -145,9 +145,9 @@ Authorizer には、リソース クライアントの承認者を設定する�
    }
    ```
 
-   `<activeDirectoryEndpoint>` に、このドキュメントの前のセクションで取得した `loginEndpoint` メタデータの `ResourceManagerUrl` プロパティの値を設定します。 `<tenantID>` 値に、お使いの Azure Stack Hub テナント ID を設定します。
+   `<activeDirectoryEndpoint>` に、このドキュメントの前のセクションで取得した `ResourceManagerUrl` メタデータの `loginEndpoint` プロパティの値を設定します。 `<tenantID>` 値に、お使いの Azure Stack Hub テナント ID を設定します。
 
-4. 最後に、`NewServicePrincipalToken`adal**モジュールの** メソッドを使用して、サービス プリンシパルのトークンを作成します。
+4. 最後に、**adal** モジュールの `NewServicePrincipalToken` メソッドを使用して、サービス プリンシパルのトークンを作成します。
 
    ```go
    package main

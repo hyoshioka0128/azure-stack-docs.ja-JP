@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub 内の仮想マシンに Java WAR をデプロイする
+title: Azure Stack Hub 内の VM に Java WAR をデプロイする
 description: Azure Stack Hub 内の仮想マシンに Java WAR をデプロイします。
 author: mattbriggs
 ms.topic: how-to
@@ -7,12 +7,13 @@ ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 05/05/2020
-ms.openlocfilehash: 1a7915743314481630dc489f733b3123ae2fafe8
-ms.sourcegitcommit: db3c9179916a36be78b43a8a47e1fd414aed3c2e
+ms.custom: conteperfq4
+ms.openlocfilehash: a7efe4a1329ba96ab9365c9c17022fc647b868a5
+ms.sourcegitcommit: 53b0dde60a6435936a5e0cb9e931245f262d637a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84147007"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91107198"
 ---
 # <a name="deploy-a-java-web-app-to-a-vm-in-azure-stack-hub"></a>Azure Stack Hub 内の VM に Java Web アプリをデプロイする
 
@@ -176,7 +177,7 @@ Azure Stack Hub でご自分の Java Web アプリをホストする仮想マシ
 
 1. Azure Stack Hub と同じネットワークでブラウザーを開いてから、サーバー *yourmachine.local.cloudapp.azurestack.external:8080* を開きます。
 
-    ![Azure Stack Hub VM 上の Apache Tomcat](media/azure-stack-dev-start-howto-vm-java/apache-tomcat.png)
+    ![Apache Tomcat ページを示すスクリーンショット。](media/azure-stack-dev-start-howto-vm-java/apache-tomcat.png)
 
     ご自分のサーバー上の Apache Tomcat ページが読み込まれます。 次に、Server Status、Manager App、Host Manager にアクセスできるようにサーバーを構成します。
 

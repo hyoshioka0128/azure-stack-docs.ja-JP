@@ -1,22 +1,22 @@
 ---
-title: Azure Stack Hub の認証情報を取得する方法
+title: Azure Stack Hub の認証情報を取得する
 description: Azure Stack Hub の認証情報を取得する方法について説明します
 author: mattbriggs
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 10/05/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 12/13/2019
-ms.openlocfilehash: ba55e6b5a6025d93f4e630d17fa9af731460105b
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.lastreviewed: 10/05/2020
+ms.openlocfilehash: 25245bff433d4cf92225ec20b5423b08a6ddfc12
+ms.sourcegitcommit: 8ffa29f71d69191534d42f86f49f719b4198a097
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661093"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92354048"
 ---
 # <a name="get-authentication-information-for-azure-stack-hub"></a>Azure Stack Hub の認証情報を取得する
 
-Azure Stack Hub に対して認証を行うには、サブスクリプション ID、テナント ID、場所、および Azure Stack Hub Resource Manager エンドポイントを指定する必要があります。 これらの値は、Azure Stack Hub の [Azure Stack Hub Resource Manager エンドポイント](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-ruby?view=azs-1910#the-azure-stack-hub-resource-manager-endpoint)から取得できます。 または、この記事の手順を使用して取得することもできます。
+Azure Stack Hub に対して認証を行うには、サブスクリプション ID、テナント ID、場所、および Azure Stack Hub Resource Manager エンドポイントを指定する必要があります。 これらの値は、Azure Stack Hub の [Azure Stack Hub Resource Manager エンドポイント](./azure-stack-version-profiles-ruby.md?view=azs-1910#the-azure-stack-hub-resource-manager-endpoint)から取得できます。 または、この記事の手順を使用して取得することもできます。
 
 ## <a name="values-needed-to-authenticate"></a>認証に必要な値
 
@@ -30,7 +30,7 @@ Azure Stack Hub に対して認証を行うには、サブスクリプション 
 
     ディレクトリとは、ユーザー、アプリケーション、グループ、およびサービス プリンシパルに関する情報を保持するコンテナーのことです。 ディレクトリ テナントとは、Microsoft や自分の会社のなどの組織のことです。
 
--   **Location**
+-   **場所**
 
     場所 (またはリージョン) は、待ち時間で定義された境界内にデプロイされ、待ち時間の短い専用リージョン ネットワークを介して接続される一連のデータセンターです。 Azure Stack Hub では、場所に Azure リージョンではなくローカル データセンターが含まれる場合があります。
 
@@ -46,7 +46,7 @@ Azure Stack Hub に対して認証を行うには、サブスクリプション 
 
 2.  **[すべてのサービス]** を選択します。
 
-    > ![Azure Stack Hub の認証情報のサブスクリプション ID、テナント ID](./media/authenticate-azure-stack-hub/azure-stack-hub-auth-info.png)
+    > ![Azure Stack Hub の認証情報のサブスクリプション ID、テナント ID](./media/authenticate-azure-stack-hub/azure-stack-hub-auth-infoa.png)
 
 3.  **[サブスクリプション]** を選択します。
 
@@ -74,4 +74,4 @@ Azure Resource Manager エンドポイントは、Azure Stack Hub のデプロ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Stack Hub での [Azure Stack Resource Manager](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1910) の使用について詳細に説明します。
+Azure Stack Hub での [Azure Stack Resource Manager](./azure-stack-version-profiles.md?view=azs-1910) の使用について詳細に説明します。

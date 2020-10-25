@@ -1,46 +1,49 @@
 ---
-title: Azure Stack HCI のドライブの選択
-description: Azure Stack HCI で記憶域スペース ダイレクトのドライブを選択する方法。
+title: Azure Stack HCI のドライブを選択する
+description: Azure Stack HCI のドライブを選択する方法。
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 03/06/2020
-ms.openlocfilehash: ee51dc973c26335cfb6c75de991508a6063e0993
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.topic: conceptual
+ms.service: azure-stack
+ms.subservice: azure-stack-hci
+ms.date: 09/01/2020
+ms.openlocfilehash: a1283982ba04acd8de0b54c02fbc0bb88da9ebc6
+ms.sourcegitcommit: 4af79f4fa2598d57c81e994192c10f8c6be5a445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80806672"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89742304"
 ---
-# <a name="choosing-drives-for-azure-stack-hci"></a>Azure Stack HCI のドライブの選択
+# <a name="choose-drives-for-azure-stack-hci"></a>Azure Stack HCI のドライブを選択する
 
->適用対象:Windows Server 2019
+> 適用対象:Azure Stack HCI バージョン 20H2、Windows Server 2019
 
-このトピックでは、Azure Stack HCI のパフォーマンスと容量の要件を満たすために、[記憶域スペース ダイレクト](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)のドライブを選択する方法に関するガイダンスを提供します。
+このトピックでは、Azure Stack HCI のパフォーマンスおよび容量の要件を満たすドライブを選択する方法に関するガイダンスを提供します。
 
 ## <a name="drive-types"></a>ドライブの種類
 
-記憶域スペース ダイレクトは現在、次の 3 種類のドライブで動作します。
+Azure Stack HCI は現在、次の 4 種類のドライブで動作します。
 
-|||
+| ドライブの種類 | 説明 |
 |----------------------|--------------------------|
-|![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe** (Non-Volatile Memory Express) とは、PCIe バスに直接接続されたソリッドステート ドライブを指します。 一般的なフォーム ファクターは、2.5 インチU.2、PCIe Add-In-Card (AIC)、および M.2 です。 NVMe では、現在サポートされている他の種類のドライブよりも高い IOPS と IO スループットおよび低待機時間が実現します。|
+|![PMem](media/choose-drives/pmem-100px.png)|**PMem** とは永続メモリを意味します。これは、低待機時間かつ高パフォーマンスの新しい種類の記憶域です。|
+|![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe** (Non-Volatile Memory Express) とは、PCIe バスに直接接続されたソリッドステート ドライブを指します。 一般的なフォーム ファクターは、2.5 インチU.2、PCIe Add-In-Card (AIC)、および M.2 です。 NVMe では、PMem を除いて、現在サポートされている他の種類のドライブよりも高い IOPS と IO スループットおよび低待機時間が実現します。|
 |![SSD](media/choose-drives/SSD-100-px.png)|**SSD** は、従来の SATA または SAS 経由で接続されるソリッドステート ドライブを指します。|
 |![HDD](media/choose-drives/HDD-100-px.png)|**HDD** は、大容量の記憶域容量を提供する、回転式の磁気ハード ディスク ドライブを指します。|
 
 ## <a name="built-in-cache"></a>ビルトイン キャッシュ
 
-記憶域スペース ダイレクトは、組み込みのサーバー側キャッシュを特徴とします。 これは、大容量で永続的な、リアルタイムの読み取りおよび書き込みキャッシュです。 複数の種類のドライブを使用するデプロイでは、"最速" の種類のすべてのドライブを使用するように自動的に構成されます。 残りのドライブは、キャパシティとして使用されます。
+Azure Stack HCI は、組み込みのサーバー側キャッシュを特徴とします。 これは、大容量で永続的な、リアルタイムの読み取りおよび書き込みキャッシュです。 複数の種類のドライブを使用するデプロイでは、"最速" の種類のすべてのドライブを使用するように自動的に構成されます。 残りのドライブは、キャパシティとして使用されます。
 
-詳細については、「[記憶域スペース ダイレクトのキャッシュについて](/windows-server/storage/storage-spaces/understand-the-cache)」を参照してください。
+詳細については、[Azure Stack HCI のキャッシュの概要](cache.md)に関する記事を参照してください。
 
 ## <a name="option-1--maximizing-performance"></a>オプション 1 – パフォーマンスの最大化
 
-任意のデータに対するランダムな読み取りと書き込みで予測可能かつ一貫したミリ秒未満の待機時間を実現するか、非常に高い IOPS ([600 万以上](https://www.youtube.com/watch?v=0LviCzsudGY&t=28m)を達成済み) または IO スループット ([1 Tb/秒以上](https://www.youtube.com/watch?v=-LK2ViRGbWs&t=16m50s)を達成済み) を実現するには、"オール フラッシュ" を選択する必要があります。
+任意のデータに対するランダムな読み取りと書き込みで予測可能かつ一貫したミリ秒未満の待機時間を実現するか、非常に高い IOPS ([1300 万以上](https://techcommunity.microsoft.com/t5/storage-at-microsoft/the-new-hci-industry-record-13-7-million-iops-with-windows/ba-p/428314)を達成済み) または IO スループット (500 GB/秒以上の読み取りを達成済み) を実現するには、"オール フラッシュ" を選択する必要があります。
 
-これを行うには、現在次の 3 つの方法があります。
+これを行うには複数の方法があります。
 
-![All-Flash-Deployment-Possibilities](media/choose-drives/All-Flash-Deployment-Possibilities.png)
+![この図は、容量用の NVMe のみ、キャッシュ用の NVMe と容量用の SSD、容量用の SSD のみなど、デプロイ オプションを示しています。](media/choose-drives/All-Flash-Deployment-Possibilities.png)
 
 1. **NVMe のみ。** NVMe のみを使用すると、最も予測可能な低待機時間を含む、比類のないパフォーマンスが得られます。 すべてのドライブが同じモデルの場合、キャッシュはありません。 耐久性の高い NVMe モデルと耐久性の低い NVMe モデルを混在させ、後者に対する書き込みをキャッシュするように前者を構成することもできます ([セットアップが必要です](/windows-server/storage/storage-spaces/understand-the-cache#manual-configuration))。
 
@@ -55,7 +58,7 @@ ms.locfileid: "80806672"
 
 さまざまなアプリケーションやワークロードがあり、パフォーマンス要件が厳しい環境や、非常に多くのストレージ容量を必要とする環境では、大容量の HDD に対して NVMe または SSD キャッシュを使用して "ハイブリッド" にする必要があります。
 
-![Hybrid-Deployment-Possibilities](media/choose-drives/Hybrid-Deployment-Possibilities.png)
+![この図は、キャッシュ用の NVMe と容量用の HDD、キャッシュ用の SSD と容量用の HDD、キャッシュ用の NVMe と容量用の SSD と HDD の混合など、可能なデプロイを示しています。](media/choose-drives/Hybrid-Deployment-Possibilities.png)
 
 1. **NVMe + HDD**。 NVMe ドライブは、読み取りと書き込みをキャッシュすることによって、その両方を高速化します。 読み取りのキャッシュにより、HDD は書き込みに集中することができます。 書き込みのキャッシュは、バーストを吸収し、必要な場合にのみ書き込みの結合とデステージングを可能にします。これは、HDD IOPS と IO スループットを最大化する、人為的にシリアル化された方法で行われます。 これにより、NVMe に似た書き込み特性が得られ、頻繁にまたは最近読み取られたデータに対して、NVMe に似た読み取り特性も得られます。
 
@@ -85,7 +88,7 @@ ms.locfileid: "80806672"
 
 各サーバーには、少なくとも 2 つのキャッシュ ドライブ (冗長性のために必要な最小値) が必要です。 容量ドライブの数は、キャッシュ ドライブの数の倍数にすることをお勧めします。 たとえば、4 台のキャッシュ ドライブがある場合、7 台や 9 台よりも 8 台の容量ドライブ (1:2 の比率) を使用した方がより一貫性のあるパフォーマンスを得ることができます。
 
-キャッシュは、お使いのアプリケーションとワークロードのワーキング セット、つまり、それらが常にアクティブに読み取りおよび書き込みを行っているすべてのデータに対応できるようにサイズ設定する必要があります。 それを超えるキャッシュ サイズの要件はありません。 HDD を使用したデプロイでは、適正な初期構成は容量の 10% です。たとえば、各サーバーに 16 TB (4 x 4 TB HDD) の容量がある場合、サーバーあたりのキャッシュは 1.6 TB (2 x 800 GB SSD) になります。 オール フラッシュのデプロイ、特に非常に[耐久性の高い](https://blogs.technet.microsoft.com/filecab/2017/08/11/understanding-dwpd-tbw/) SSD を使用する場合は、容量の 5% 近くから開始するのが妥当な場合があります。たとえば、各サーバーに 28.8 TB (24 x 1.2 TB SSD) の容量がある場合、サーバーあたりのキャッシュは 1.5 TB (2 x 750 GB NVMe) になります。 キャッシュ ドライブは、後でいつでも追加または削除して調整できます。
+キャッシュは、お使いのアプリケーションとワークロードのワーキング セット、つまり、それらが常にアクティブに読み取りおよび書き込みを行っているすべてのデータに対応できるようにサイズ設定する必要があります。 それを超えるキャッシュ サイズの要件はありません。 HDD を使用したデプロイでは、適正な初期構成は容量の 10% です。たとえば、各サーバーに 16 TB (4 x 4 TB HDD) の容量がある場合、サーバーあたりのキャッシュは 1.6 TB (2 x 800 GB SSD) になります。 オール フラッシュのデプロイ、特に非常に[耐久性の高い](https://techcommunity.microsoft.com/t5/storage-at-microsoft/understanding-ssd-endurance-drive-writes-per-day-dwpd-terabytes/ba-p/426024) SSD を使用する場合は、容量の 5% 近くから開始するのが妥当な場合があります。たとえば、各サーバーに 28.8 TB (24 x 1.2 TB SSD) の容量がある場合、サーバーあたりのキャッシュは 1.5 TB (2 x 750 GB NVMe) になります。 キャッシュ ドライブは、後でいつでも追加または削除して調整できます。
 
 ### <a name="general"></a>全般
 
@@ -95,8 +98,9 @@ ms.locfileid: "80806672"
 
 詳細については、次のトピックも参照してください。
 
-- [Azure Stack HCI の概要](../overview.md)
-- [Azure Stack HCI のキャッシュについて](cache.md)
-- [記憶域スペース ダイレクトのハードウェア要件](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
-- [Azure Stack HCI でのボリュームの計画](plan-volumes.md)
+- [キャッシュについて](cache.md)
+- [ハードウェア要件を判断する](../deploy/before-you-start.md#determine-hardware-requirements)
+- [ドライブの対称性に関する考慮事項](drive-symmetry-considerations.md)
+- [ボリュームの計画](plan-volumes.md)
 - [フォールト トレランスとストレージの効率性](fault-tolerance.md)
+- [永続メモリの理解と配置](/windows-server/storage/storage-spaces/deploy-pmem)

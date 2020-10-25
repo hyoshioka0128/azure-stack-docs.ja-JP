@@ -7,12 +7,12 @@ ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2020
-ms.openlocfilehash: 1b4db2cf67231f8660948af43d4935bbcf9c846c
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: d94f9130825493ea521441a43a58aa053ff2cc05
+ms.sourcegitcommit: 6306e0c2506106ad01ff50010f36466f3325d0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111899"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84631412"
 ---
 # <a name="connect-to-azure-stack-hub"></a>Azure Stack Hub に接続する
 
@@ -28,7 +28,7 @@ ms.locfileid: "84111899"
 
 2. Development Kit コンピューターからサーバー マネージャーを開き、 **[ローカル サーバー]** をクリックし、Internet Explorer セキュリティ強化を無効にして、サーバー マネージャーを閉じます。
 
-3. ポータルを開くには、(https://portal.local.azurestack.external/) に移動し、ユーザーの資格情報を使用してサインインします。
+3. ポータルを開くには、`https://portal.local.azurestack.external/` に移動し、ユーザーの資格情報を使用してサインインします。
 
 
 ## <a name="connect-to-azure-stack-hub-with-vpn"></a>VPN を使用して Azure Stack Hub に接続する
@@ -97,7 +97,7 @@ Add-AzsVpnConnection `
 
 ### <a name="test-the-vpn-connectivity"></a>VPN 接続のテスト
 
-ポータル接続をテストするには、ブラウザーを開き、ユーザー ポータル (https://portal.local.azurestack.external/) に移動し、サインインしてリソースを作成します。  
+ポータル接続をテストするには、ブラウザーを開き、ユーザー ポータル `https://portal.local.azurestack.external/` に移動し、サインインしてリソースを作成します。  
 
 ## <a name="next-steps"></a>次のステップ
 

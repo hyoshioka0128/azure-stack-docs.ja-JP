@@ -1,18 +1,18 @@
 ---
 title: Azure Stack Hub 用の PowerShell AzureRM モジュールをインストールする
-description: PowerShell for Azure Stack Hub をインストールする方法について説明します。
+description: PowerShell for Azure Stack Hub をインストールする方法について説明します。 PowerShell AzureRM モジュールのインストール方法と必要な API プロファイルを確認します。
 author: mattbriggs
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 08/04/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/14/2020
-ms.openlocfilehash: d2c40307daa37b8f522fde9010a3d285eebff0fc
-ms.sourcegitcommit: 7b8e067cb449e67ca9c2935580684d78840ad495
+ms.lastreviewed: 08/04/2020
+ms.openlocfilehash: bbf1a5d296ddbef554a4401e66eab4226ae38dd3
+ms.sourcegitcommit: a1e2003fb9c6dacdc76f97614ff5a26a5b197b49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106943"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91623168"
 ---
 # <a name="install-powershell-azurerm-module-for-azure-stack-hub"></a>Azure Stack Hub 用の PowerShell AzureRM モジュールをインストールする
 
@@ -24,12 +24,14 @@ API プロファイルには、Azure と Azure Stack Hub のバージョンの�
 
 Azure Stack Hub と互換性のある PowerShell モジュールは、インターネットに接続されたシナリオ、部分的に接続されたシナリオ、または接続が切断されたシナリオでインストールできます。 この記事では、これらのシナリオの詳細な手順について説明します。
 
+Docker コンテナーで Azure Stack Hub の AzureRM モジュールを実行することもできます。 手順については、[Docker を使用して Azure Stack Hub に対して PowerShell を実行する](../user/azure-stack-powershell-user-docker.md)方法に関するページを参照してください。
+
 ## <a name="1-verify-your-prerequisites"></a>1.前提条件を確認する
 
 Azure Stack Hub と PowerShell AzureRM モジュールの使用を開始する前に、次の前提条件を満たしている必要あります。
 
 - **PowerShell バージョン 5.1** <br>
-バージョンを確認するには、 **$PSVersionTable.PSVersion** を実行して、**メジャー** バージョンを比較します。 PowerShell 5.1 を使用していない場合は、「[Windows PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)」に従ってください。
+バージョンを確認するには、 **$PSVersionTable.PSVersion** を実行して、**メジャー** バージョンを比較します。 PowerShell 5.1 を使用していない場合は、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)」に従ってください。
 
   > [!Note]
   > PowerShell 5.1 には、Windows マシンが必要です。
@@ -86,7 +88,7 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 次の PowerShell スクリプトを実行して、これらのモジュールを開発用ワークステーションにインストールします。
 
 ::: moniker range=">=azs-2002"
-Azure Stack Hub 2002 以降の場合: 
+Azure Stack Hub 2002 以降の場合:
 
 AzureRm モジュールまたは Az プレビュー モジュールのいずれかを使用できます。 Az モジュールを使用するには Azure Stack Hub 2002 と最新の修正プログラムが必要です。
 
@@ -98,7 +100,7 @@ Install-Module -Name AzureRM.BootStrapper
 
 # Install and import the API Version Profile required by Azure Stack Hub into the current PowerShell session.
 Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-Install-Module -Name AzureStack -RequiredVersion 1.8.1
+Install-Module -Name AzureStack -RequiredVersion 1.8.2
 ```
 
 ::: moniker-end
@@ -174,7 +176,7 @@ Import-Module -Name PackageManagement -ErrorAction Stop
 
 $Path = "<Path that is used to save the packages>"
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.1
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.2
 ```
 ::: moniker-end
 
@@ -223,7 +225,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
 2. 接続が切断されたワークステーションにサインインし、パッケージを USB デバイスからワークステーション上の場所にコピーします。
 
-3. 切断されたワークステーション上で NuGet プロバイダーを手動でブートストラップします。 手順については、「[インターネットに接続されていないマシンで NuGet プロバイダーを手動でブートストラップする](https://docs.microsoft.com/powershell/scripting/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet)」をご覧ください。
+3. 切断されたワークステーション上で NuGet プロバイダーを手動でブートストラップします。 手順については、「[インターネットに接続されていないマシンで NuGet プロバイダーを手動でブートストラップする](/powershell/scripting/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet)」をご覧ください。
 
 4. この場所を既定のレポジトリとして登録し、このレポジトリから AzureRM モジュールと `AzureStack` モジュールをインストールします。
 
@@ -266,6 +268,25 @@ Get-Module -Name "Azs*" -ListAvailable
    #Alternatively, to prompt for separate credentials that can be used for #proxy authentication
    [System.Net.WebRequest]::DefaultWebProxy.Credentials = Get-Credential
    ```
+
+## <a name="known-issue"></a>既知の問題
+
+###  <a name="method-get_serializationsettings-error"></a>get_SerializationSettings メソッドのエラー 
+
+- 原因: PowerShell Az モジュールと PowerShell AzureRM モジュールには互換性がありません。
+
+    次のエラーは、AzureRM モジュールと Az モジュールが同じセッションに読み込まれたことを示しています。 
+
+    ```powershell  
+    >  Method 'get_SerializationSettings' in type 'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' does 
+    not have an implementation.
+    ```
+
+- 修復: 競合しているモジュールをアンインストールします。 
+
+  AzureRM モジュールを使用する場合は、Az モジュールをアンインストールします。 または、Az モジュールを使用する場合は、AzureRM をアンインストールします。 ご自分の PowerShell セッションを閉じ、Az または AzureRM モジュールのいずれかをアンインストールします。 
+  
+  手順については、「[既存のバージョンの Azure Stack Hub PowerShell モジュールをアンインストールする](#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

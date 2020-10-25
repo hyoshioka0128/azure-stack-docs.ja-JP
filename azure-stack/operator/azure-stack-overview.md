@@ -7,12 +7,13 @@ ms.date: 04/20/2020
 ms.author: justinha
 ms.reviewer: unknown
 ms.lastreviewed: 11/08/2019
-ms.openlocfilehash: a1e49ef9138c04557c8cd0a54b11ada30d97f334
-ms.sourcegitcommit: f2d80d705a222095c2ea785b9797bbac0cf96fcc
+ms.custom: conteperfq4
+ms.openlocfilehash: 5acbe557c58d33785e0c227c2014264fbcd06a06
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82605639"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86488418"
 ---
 # <a name="azure-stack-hub-overview"></a>Azure Stack Hub の概要
 
@@ -67,13 +68,13 @@ Azure Stack Hub では、Azure と同じ操作モデルが使用されます。 
 
 ![Azure Stack Hub ジョブの役割を示す図](./media/azure-stack-overview/azure-stack-job-roles.svg)
 
-Azure Stack Hub は、管理者ポータル、ユーザー ポータル、または [PowerShell](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1) で管理することができます。 Azure Stack Hub のポータルは、それぞれが Azure Resource Manager の個別のインスタンスでサポートされています。 **Azure Stack Hub オペレーター**は、管理者ポータルを使用して Azure Stack Hub を管理し、テナント オファリングの作成などの操作を行い、統合システムの正常性の維持や状態の監視を行います。 ユーザー ポータルでは、仮想マシン (VM) やストレージ アカウント、Web アプリなどのクラウド リソースを消費するためのセルフサービス エクスペリエンスが提供されます。
+Azure Stack Hub は、管理者ポータル、ユーザー ポータル、または [PowerShell](/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1) で管理することができます。 Azure Stack Hub のポータルは、それぞれが Azure Resource Manager の個別のインスタンスでサポートされています。 **Azure Stack Hub オペレーター**は、管理者ポータルを使用して Azure Stack Hub を管理し、テナント オファリングの作成などの操作を行い、統合システムの正常性の維持や状態の監視を行います。 ユーザー ポータルでは、仮想マシン (VM) やストレージ アカウント、Web アプリなどのクラウド リソースを消費するためのセルフサービス エクスペリエンスが提供されます。
 
 > 管理者ポータルを使用した Azure Stack Hub の管理について詳しくは、[Azure Stack Hub 管理ポータルのクイック スタート](azure-stack-manage-portals.md)のページをご覧ください。
 
-Azure Stack Hub オペレーターは、[VM](azure-stack-tutorial-tenant-vm.md)、[Web アプリ](azure-stack-app-service-overview.md)、高可用性 [SQL Server](azure-stack-tutorial-sql.md)、[MySQL Server](azure-stack-tutorial-mysql.md) データベースを提供できます。 また、[Azure Stack Hub クイックスタートの Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates)を使用して、SharePoint や Exchange などを展開できます。
+Azure Stack Hub オペレーターは、[VM](./tutorial-offer-services.md?view=azs-2002)、[Web アプリ](azure-stack-app-service-overview.md)、高可用性 [SQL Server](azure-stack-tutorial-sql.md)、[MySQL Server](azure-stack-tutorial-mysql.md) データベースを提供できます。 また、[Azure Stack Hub クイックスタートの Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates)を使用して、SharePoint や Exchange などを展開できます。
 
-オペレーターは、[管理者ポータル](azure-stack-manage-portals.md)または [PowerShell](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1) を使って Azure Stack Hub を管理できます。 プラン、クォータ、オファー、およびサブスクリプションを使用してテナントに[サービスを提供](service-plan-offer-subscription-overview.md)するように Azure Stack Hub を構成できます。 テナント ユーザーは複数のオファーにサブスクライブできます。 オファーは 1 つまたは複数のプランを含むことができ、プランは 1 つまたは複数のサービスを含むことができます。 さらに、オペレーターは、容量を管理し、アラートに対処します。
+オペレーターは、[管理者ポータル](azure-stack-manage-portals.md)または [PowerShell](/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1) を使って Azure Stack Hub を管理できます。 プラン、クォータ、オファー、およびサブスクリプションを使用してテナントに[サービスを提供](service-plan-offer-subscription-overview.md)するように Azure Stack Hub を構成できます。 テナント ユーザーは複数のオファーにサブスクライブできます。 オファーは 1 つまたは複数のプランを含むことができ、プランは 1 つまたは複数のサービスを含むことができます。 さらに、オペレーターは、容量を管理し、アラートに対処します。
 
 ユーザーは、オペレーターが提供するサービスを使用します。 ユーザーは、サブスクライブしたサービス (Web アプリ、Storage、VM など) のプロビジョニング、監視、管理を行うことができます。 ユーザーは、ユーザー ポータルまたは PowerShell を使って Azure Stack Hub を管理できます。
 
@@ -89,7 +90,7 @@ Azure Stack Hub オペレーターは、[VM](azure-stack-tutorial-tenant-vm.md)�
 
 - **コンピューティング**:コンピューティング リソース プロバイダーでは、Azure Stack Hub テナントが独自の VM を作成できます。 コンピューティング リソース プロバイダーには、VM と VM 拡張機能を作成する機能があります。 VM 拡張機能サービスは、Windows および Linux の VM で使用する IaaS 機能を提供します。 たとえば、コンピューティング リソース プロバイダーを使用して Linux VM をプロビジョニングし、デプロイ中に Bash スクリプトを実行して VM を構成できます。
 - **ネットワーク リソース プロバイダー**:ネットワーク リソース プロバイダーは、プライベート クラウドでソフトウェアによるネットワーク制御 (SDN) およびネットワーク機能の仮想化 (NFV) に使用する一連の機能を提供します。 ネットワーク リソース プロバイダーを使用して、ソフトウェア ロード バランサー、パブリック IP、ネットワーク セキュリティ グループ、仮想ネットワークなどのリソースを作成できます。
-- **ストレージ リソース プロバイダー**:ストレージ リソース プロバイダーによって、一貫性のある 4 つの Azure ストレージ サービス ([blob](https://docs.microsoft.com/azure/storage/common/storage-introduction#blob-storage)、[queue](https://docs.microsoft.com/azure/storage/common/storage-introduction#queue-storage)、[table](https://docs.microsoft.com/azure/storage/common/storage-introduction#table-storage)、[Key Vault](https://docs.microsoft.com/azure/key-vault/)) のアカウント管理が提供され、シークレット (パスワードや証明書) の管理と監査が提供されます。 ストレージ リソース プロバイダーは、Azure との一貫性があるストレージ サービスのサービス プロバイダーによる管理を容易にするためのストレージ クラウド管理サービスも提供します。 Azure Storage には柔軟性があり、ドキュメントやメディア ファイルなどの大量の構造化されていないデータは Azure BLOB により、構造化された NoSQL ベースのデータは Azure テーブルにより格納と取得が行われます。
+- **ストレージ リソース プロバイダー**:ストレージ リソース プロバイダーによって、一貫性のある 4 つの Azure ストレージ サービス ([blob](/azure/storage/common/storage-introduction#blob-storage)、[queue](/azure/storage/common/storage-introduction#queue-storage)、[table](/azure/storage/common/storage-introduction#table-storage)、[Key Vault](/azure/key-vault/)) のアカウント管理が提供され、シークレット (パスワードや証明書) の管理と監査が提供されます。 ストレージ リソース プロバイダーは、Azure との一貫性があるストレージ サービスのサービス プロバイダーによる管理を容易にするためのストレージ クラウド管理サービスも提供します。 Azure Storage には柔軟性があり、ドキュメントやメディア ファイルなどの大量の構造化されていないデータは Azure BLOB により、構造化された NoSQL ベースのデータは Azure テーブルにより格納と取得が行われます。
 
 ### <a name="optional-resource-providers"></a>オプションのリソース プロバイダー
 

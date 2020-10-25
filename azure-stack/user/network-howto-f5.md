@@ -1,18 +1,18 @@
 ---
-title: 2 つの Azure Stack Hub インスタンスに F5 をデプロイする方法
+title: 2 つの Azure Stack Hub インスタンスに F5 をデプロイする
 description: 2 つの Azure Stack Hub インスタンスに F5 をデプロイする方法について説明します。
 author: mattbriggs
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 11/06/2019
-ms.openlocfilehash: cfbd828923c7653da0f0bfd86ee74703897996c7
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: 3512584e4109d86a9ee6a0d71924d560b9ecba92
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661441"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90574212"
 ---
 # <a name="how-to-deploy-f5-across-two-azure-stack-hub-instances"></a>2 つの Azure Stack Hub インスタンスに F5 をデプロイする方法
 
@@ -46,23 +46,23 @@ Azure Stack Hub インスタンス A とインスタンス B にデプロイし�
 
 4. **F5 BIG-IP VE – ALL (BYOL, 2 Boot Locations)** を選択します。
 
-    ![](./media/network-howto-f5/image1.png)
+    ![[ダッシュボード > 新規 > Marketplace > すべて > F5 BIG-IP VE - ALL (BYOL, 2 Boot Locations)] ダイアログ ボックスの検索ボックスに "f5" と示されています。 1 件の検索結果は "F5 BIG-IP VE - ALL (BYOL, 2 Boot Locations)" です。](./media/network-howto-f5/image1.png)
 
 5. 次のページの下部にある **[作成]** を選択します。
 
-    ![](./media/network-howto-f5/image2.png)
+    ![[F5 BIG-IP VE - ALL (BYOL, 2 Boot Locations)] ダイアログ ボックスに、BIG-IP VE に関する情報と、お使いのライセンスに応じてデプロイできるモジュールが表示されます。 [作成] ボタンがあります。](./media/network-howto-f5/image2.png)
 
 6. **F5-GSLB** という名前で新しいリソース グループを作成します。
 
 7. デプロイを完了します。次の値は例です。
 
-    ![](./media/network-howto-f5/image3.png)
+    ![[Microsoft.Template] ダイアログ ボックスの [入力] ページに、デプロイ例の値を含む、[VIRTUALMACHINENAME] や [ADMINUSERNAME] などの 15 個のテキスト ボックスが表示されています。](./media/network-howto-f5/image3.png)
 
 8. デプロイが正常に完了したことを確認します。
 
-    ![](./media/network-howto-f5/image4.png)
+    ![[Microsoft.Template] ダイアログ ボックスの [概要] ページに "デプロイが完了しました" と表示され、デプロイに関する詳細が表示されています。](./media/network-howto-f5/image4.png)
 
-    > [!Note]  
+    > [!NOTE]  
     > 各 BIG-IP のデプロイには約 20 分かかります。
 
 ## <a name="configure-big-ip-appliances"></a>BIG-IP アプライアンスを構成する
@@ -71,7 +71,7 @@ Azure Stack Hub A と B の両方で、次の手順に従う必要がありま�
 
 1. Azure Stack Hub インスタンス A で Azure Stack Hub ユーザー ポータルにサインインし、BIG-IP テンプレートのデプロイから作成されたリソースを確認します。
 
-    ![](./media/network-howto-f5/image18.png)
+    ![[F5-GSLB] ダイアログ ボックスの [概要] ページに、デプロイされたリソースと関連情報が表示されています。](./media/network-howto-f5/image18.png)
 
 2. [BIG-IP の構成項目](https://clouddocs.f5.com/training/community/dns/html/class1/class1.html)については F5 の指示に従います。 
 
@@ -90,18 +90,18 @@ Azure Stack Hub A と B の両方で、次の手順に従う必要がありま�
 
 1. BIG-IP にサインインし、DNS 同期グループを作成します。 手順については、「[BIG-IP DNS 同期グループの作成](https://f5-dns-automation-demo-12-1-x.readthedocs.io/en/latest/lab2/sync-group.html)」を参照してください。
 
-    > [!Note]  
+    > [!NOTE]  
     > BIP-IP アプライアンスのローカル IP アドレスは、**F5-GSLB** リソース グループにあります。 ネットワーク インターフェイスは "f5stack1-ext" であり、(アクセスに応じて) パブリック IP アドレスまたはプライベート IP アドレスに接続します。
 
-    ![](./media/network-howto-f5/image5.png)
+    ![[DNS >> GSLB : Data Centers : Data Center List]\(DNS >> GSLB : データ センター : データセンターの一覧\) ダイアログ ボックスに、データ センターと状態が表示されています。 選択したデータ センターに適用する [Enable]\(有効\)、[Disable]\(無効\)、[Delete]\(削除\) の各ボタンがあります。](./media/network-howto-f5/image5.png)
           
-    ![](./media/network-howto-f5/image6.png)
+    ![[DNS >> GSLB : Servers : Server List]\(DNS >> GSLB : サーバー : サーバーの一覧\) ダイアログ ボックスに、サーバーと状態が表示されています。 選択したサーバーに適用する [Enable]\(有効\)、[Disable]\(無効\)、[Delete]\(削除\)、[Reconnect]\(再接続\) の各ボタンがあります。](./media/network-howto-f5/image6.png)
 
 1. 新しいリソース グループ **F5-GSLB** を選択し、**f5stack1** 仮想マシンを選択して、 **[Settings]\(設定\)** で **[Networking]\(ネットワーク\)** を選択します。
 
 ## <a name="post-install-configurations"></a>インストール後の構成
 
-インストールした後は、Azure Stack Hub NSG を構成し、ソース IP アドレスをロックダウンする必要があります。
+インストールした後は、Azure Stack Hub の NSG を構成し、ソース IP アドレスをロック ダウンする必要があります。
 
 1. 信頼が確立された後、ポート 22 を無効にします。
 
@@ -109,20 +109,20 @@ Azure Stack Hub A と B の両方で、次の手順に従う必要がありま�
 
 3. GTM_DNS のルールがポート 53 (DNS) の入力トラフィックを許可するように設定され、BIG-IP リゾルバーが 1 回動作を開始します。 リスナーが作成されます。
 
-    ![](./media/network-howto-f5/image7.png)
+    ![[ネットワーク インターフェイス] ダイアログ ボックスの [fStack1-ext] ページに、fstack1-ext インターフェイスに関する情報と、その NSG である fstack1-ext-nsg に関する情報が表示されています。 受信ポートの規則または送信ポートの規則を表示するタブがあります。](./media/network-howto-f5/image7.png)
 
 4. Azure Stack Hub 環境内に基本的な Web アプリケーション ワークロードをデプロイし、BIG-IP の内側の負荷を分散します。 NGNIX サーバーを使用する例については、「[NGINX と NGINX Plus を Docker にデプロイする](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-docker/)」を参照してください。
 
-    > [!Note]  
+    > [!NOTE]  
     > Azure Stack Hub A と Azure Stack Hub B の両方に NGNIX のインスタンスをデプロイします。
 
 5. 各 Azure Stack Hub インスタンス内の Ubuntu VM 上 Docker コンテナーに NGINX をデプロイした後、サーバー上の既定の Web ページに接続できることを確認します。
 
-    ![](./media/network-howto-f5/image8.png)
+    ![[Welcome to nginx!]\(nginx へようこそ\) ページに、nginx Web サーバーが正常にインストールされたことと、追加の構成が必要であることが表示されています。 サポート情報へのリンクが 2 つあります。](./media/network-howto-f5/image8.png)
 
 6. BIG-IP アプライアンスの管理インターフェイスにサインインします。 この例では、**f5-stack1-ext** のパブリック IP アドレスを使用します。
 
-    ![](./media/network-howto-f5/image9.png)
+    ![ユーザー名とパスワードを求める BIG-IP 構成ユーティリティのログイン画面。](./media/network-howto-f5/image9.png)
 
 7. BIG-IP 経由で NGINX へのアクセスを公開します。
     
@@ -132,55 +132,55 @@ Azure Stack Hub A と B の両方で、次の手順に従う必要がありま�
 
 9. お使いの NGINX ネットワーク インターフェイスを選択します。
 
-    ![](./media/network-howto-f5/image10.png)
+    ![[ダッシュボード > リソース グループ > NGINX > ubuntu2673] ダイアログ ボックスの [概要] ページに、ubuntu2673 ネットワーク インターフェイスに関する情報が表示されています。](./media/network-howto-f5/image10.png)
 
 10. BIG-IP コンソールで、 **[Local traffic]\(ローカル トラフィック\) > [Pools]\(プール\) > [Pool List]\(プール リスト\)** に移動し、 **[+]** を選択します。 次の表の値を使用して、プールを構成します。 他のすべてのフィールドは既定値のままにします。
 
-    ![](./media/network-howto-f5/image11.png)
+    ![左側のペインに、新しいプールの作成をナビゲートする機能が用意されています。 右側のペインのタイトルは、[Local Traffic >> Pools : Pool List >> New Pool]\(ローカル トラフィック >> プール : プール一覧 >> 新しいプール\) であり、新しいプールに関する情報を指定する機能が用意されています。 [Finished]\(完了\) ボタンがあります。](./media/network-howto-f5/image11.png)
     
     | Key | 値 |
     | --- | --- |
     | 名前 | NGINX_Pool |
     | Health Monitor (正常性モニター) | HTTPS |
     | Node Name (ノード名) | NGINX |
-    | Address | \<お使いの NGINX プライベート IP アドレス> |
+    | Address | \<your NGINX private IP address> |
     | Service Port (サービス ポート) | 443 |
 
 11. **[完了]** を選択します。 正しく構成すると、プールの状態が緑になります。
 
-    ![](./media/network-howto-f5/image12.png)
+    ![右側のペインのタイトルは、[Local Traffic >> Pools : Pool List]\(ローカル トラフィック >> プール : プール一覧\) であり、新しく作成されたプールが一覧の唯一のエントリです。](./media/network-howto-f5/image12.png)
 
     次に、仮想サーバーを構成する必要があります。 そのためには、まず、F5 BIG-IP のプライベート IP アドレスを確認する必要があります。
 
-12. BIG-IP コンソールで、 **[Network]\(ネットワーク\) > [Self IPs]\(セルフ IP\)** に移動し、IP アドレスを記録します。
+12. BIG-IP コンソールで、**[Network]\(ネットワーク\) > [Self IPs]\(セルフ IP\)** に移動し、IP アドレスを記録します。
 
-    ![](./media/network-howto-f5/image13.png)
+    ![左側のペインに、セルフ IP の表示をナビゲートする機能が用意されています。 右側のペインのタイトルは、[Network >> Self IPs]\(ネットワーク >> セルフ IP\) です。 2 つのセルフ IP が表示され、最初の self_2nic が強調表示されています。](./media/network-howto-f5/image13.png)
 
 13. **[Local Traffic]\(ローカル トラフィック\)**  >  **[Virtual Servers]\(仮想サーバー\)**  >  **[Virtual Server List]\(仮想サーバー一覧\)** に移動し、 **[+]** を選択して、仮想サーバーを作成します。 次の表の値を使用して、プールを構成します。 他のすべてのフィールドは既定値のままにします。
 
     | Key | 値 |
     | --- | --- |
     |名前 | NGINX |
-    |Destination Address (宛先アドレス) | \<BIG-IP のセルフ IP アドレス> |
+    |Destination Address (宛先アドレス) | \<Self IP address of the BIG-IP> |
     |Service Port (サービス ポート) | 443 |
     |SSL Profile (Client) (SSL プロファイル (クライアント)) | clientssl |
     |Source Address Translation (ソース アドレス変換) | Auto Map (自動マップ) |
         
-    ![](./media/network-howto-f5/image14.png)
+    ![左側のペインは、右側のペインを [Local Traffic >> Virtual Servers : Virtual Server List >> NGINX]\(ローカル トラフィック >> 仮想サーバー >> 仮想サーバー一覧 >> NGINX\) にナビゲートするために使用されます。ここで、必要な情報を入力します。](./media/network-howto-f5/image14.png)
 
-    ![](./media/network-howto-f5/image15.png)
+    ![このページには、追加情報を入力する機能が用意されています。 [Update]\(更新\) と [Delete]\(削除\) ボタンがあります。](./media/network-howto-f5/image15.png)
 
 14. これで、NGINX アプリケーション用の BIG-IP の構成は完了です。 適切な機能を確認するには、サイトを参照し、F5 の統計を確認します。
 
 15. ブラウザーで `https://<F5-public-VIP-IP>` を開き、NGINX の既定のページが表示されることを確認します。
 
-    ![](./media/network-howto-f5/image16.png)
+    ![[Welcome to nginx!]\(nginx へようこそ\) ページは、nginx Web サーバーが正常にインストールされたことと、追加の構成が必要であることを示しています。 サポート情報へのリンクが 2 つあります。](./media/network-howto-f5/image16.png)
 
-16. 次に、 **[Statistics]\(統計\) > [Module Statistics]\(モジュールの統計\) > [Local Traffic]\(ローカル トラフィック\)** に移動し、仮想サーバーの統計情報を調べて、トラフィック フローを確認します。
+16. 次に、**[Statistics]\(統計\) > [Module Statistics]\(モジュールの統計\) > [Local Traffic]\(ローカル トラフィック\)** に移動し、仮想サーバーの統計情報を調べて、トラフィック フローを確認します。
 
-17. **[Statistics Type]\(統計の種類\)** で、 **[Virtual Servers]\(仮想サーバー\)** を選択します。
+17. **[Statistics Type]\(統計の種類\)** で、**[Virtual Servers]\(仮想サーバー\)** を選択します。
 
-    ![](./media/network-howto-f5/image17.png)
+    ![左側のペインの操作によって、右側のペインが [Statistics >> Module Statistics : Local Traffic >> Virtual Servers]\(統計 >> モジュールの統計 : ローカル トラフィック >> 仮想サーバー\) にナビゲートされ、一覧に NGINX 仮想サーバーとその他の内容が表示されています。 NGINX が強調表示されています。](./media/network-howto-f5/image17.png)
 
 
 ## <a name="for-more-information"></a>詳細情報

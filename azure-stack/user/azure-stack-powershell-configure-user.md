@@ -1,18 +1,18 @@
 ---
 title: ユーザーとして PowerShell を使用して Azure Stack Hub に接続する
-description: PowerShell を使用して Azure Stack Hub に接続する方法について説明します。
+description: 対話形式のプロンプトを使用するため、またはスクリプトを記述するために、PowerShell を使用して Azure Stack Hub に接続する方法について説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 8/4/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: a8fa6f179b2ff310a291d10f40b2f9a5eaa4e2d9
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.lastreviewed: 8/4/2020
+ms.openlocfilehash: 0539bd452db54b298f681fc47ba7b9183ba75202
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111786"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90574025"
 ---
 # <a name="connect-to-azure-stack-hub-with-powershell-as-a-user"></a>ユーザーとして PowerShell を使用して Azure Stack Hub に接続する
 
@@ -36,7 +36,7 @@ PowerShell を使用して Azure Stack Hub に接続し、Azure Stack Hub リソ
 - **Azure AD テナントの名前**  
   Azure Stack Hub の管理に使用される Azure AD テナントの名前。 たとえば、yourdirectory.onmicrosoft.com です。
 - **Azure Resource Manager エンドポイント**  
-  Azure Stack 開発キットの場合、この値は https://management.local.azurestack.external に設定されます。 Azure Stack Hub 統合システムのこの値を取得するには、サービス プロバイダーにお問い合わせください。
+  Azure Stack 開発キットの場合、この値は `https://management.local.azurestack.external` に設定されます。 Azure Stack Hub 統合システムのこの値を取得するには、サービス プロバイダーにお問い合わせください。
 
 ## <a name="connect-to-azure-stack-hub-with-azure-ad"></a>Azure AD を使用して Azure Stack Hub に接続する
 
@@ -74,6 +74,8 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider
     }
 ```
 
+[!Include [AD FS only supports interactive authentication with user identities](../includes/note-powershell-adfs.md)]
+
 ## <a name="test-the-connectivity"></a>接続のテスト
 
 すべての設定が完了したら、PowerShell を使って接続をテストし、Azure Stack Hub でリソースを作成します。 テストとして、アプリケーションのリソース グループを作成し、VM を追加します。 次のコマンドを実行し、"MyResourceGroup" という名前のリソース グループを作成します。
@@ -86,5 +88,5 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 - [Azure Stack Hub のテンプレートの開発](azure-stack-develop-templates.md)
 - [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
-- [Azure Stack Hub PowerShell Module リファレンス](https://docs.microsoft.com/powershell/azure/azure-stack/overview)
+- [Azure Stack Hub PowerShell Module リファレンス](/powershell/azure/azure-stack/overview)
 - クラウド オペレーター環境用に PowerShell を設定する場合、[Azure Stack Hub オペレーターの PowerShell 環境の構成](../operator/azure-stack-powershell-configure-admin.md)に関する記事をご覧ください。

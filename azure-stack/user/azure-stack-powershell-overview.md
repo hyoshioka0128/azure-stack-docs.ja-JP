@@ -7,12 +7,12 @@ ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: b54e8a184c90408c0d27054446a91f09c34749fb
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: 9731586043f42358bef0e8e37f9de7e23feebbff
+ms.sourcegitcommit: 0aa5f7f20690839661c8bb3bfdbe32f82bec0c64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111806"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86567044"
 ---
 # <a name="get-started-with-powershell-in-azure-stack-hub"></a>Azure Stack Hub 内の PowerShell の概要
 
@@ -22,9 +22,9 @@ PowerShell は、コマンド ラインからリソースを管理できるよ�
 
 | API | PowerShell リファレンス | REST リファレンス |
 | --- | --- | --- |
-| グローバルな Azure Resource Manager | [Azure PowerShell モジュール](https://github.com/Azure/azure-powershell/blob/master/documentation/azure-powershell-modules.md) | [REST API ブラウザー](https://docs.microsoft.com/rest/api/) |
+| グローバルな Azure Resource Manager | [Azure PowerShell モジュール](https://github.com/Azure/azure-powershell/blob/master/documentation/azure-powershell-modules.md) | [REST API ブラウザー](/rest/api/) |
 | Azure Stack Hub Resource Manager | [Azure Stack Hub での API バージョンのプロファイルの管理](azure-stack-version-profiles.md) | [Azure Stack Hub での API バージョンのプロファイルの管理](azure-stack-version-profiles.md) |
-| Azure Stack Hub の管理者エンドポイント | [Azure Stack Hub 管理モジュール](https://docs.microsoft.com/powershell/azure/azure-stack/overview) | [REST API ブラウザー - Azure Stack Hub](https://docs.microsoft.com/rest/api/?term=Azure%20Azure%20Stack%20Admin) |
+| Azure Stack Hub の管理者エンドポイント | [Azure Stack Hub 管理モジュール](/powershell/azure/azure-stack/overview) | [REST API ブラウザー - Azure Stack Hub](/rest/api/?term=Azure Azure Stack Admin) |
 | Azure Stack Hub の特権エンドポイント | [Azure Stack Hub で特権エンドポイントを使用する](../operator/azure-stack-privileged-endpoint.md) | |
 
 各インターフェイスでは、グローバル Azure または Azure Stack Hub のリソース プロバイダーに接続します。 リソース プロバイダーにより、Azure の機能が有効になります。 たとえば、Azure コンピューティングのリソース プロバイダーでは、仮想マシンとそれに対応するリソースの作成および管理へのプログラムによるアクセスを提供します。
@@ -39,7 +39,7 @@ PowerShell は、コマンド ラインからリソースを管理できるよ�
 
 ### <a name="global-azure"></a>グローバル Azure
 
-Azure PowerShell には、お使いの Azure リソースの操作に Azure Resource Manager の最新バージョンを使用する一連のコマンドレットが含まれています。 Azure PowerShell では .NET Standard バージョンが使用されます。つまり、Windows、macOS、Linux で PowerShell のバージョンを使用することができます。 Azure PowerShell は、Azure Cloud Shell 上で利用することもできます。 詳細については、[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/get-started-azureps)に関するページを参照してください。
+Azure PowerShell には、お使いの Azure リソースの操作に Azure Resource Manager の最新バージョンを使用する一連のコマンドレットが含まれています。 Azure PowerShell では .NET Standard バージョンが使用されます。つまり、Windows、macOS、Linux で PowerShell のバージョンを使用することができます。 Azure PowerShell は、Azure Cloud Shell 上で利用することもできます。 詳細については、[Azure PowerShell の概要](/powershell/azure/get-started-azureps)に関するページを参照してください。
 
 ### <a name="azure-stack-hub-resource-manager"></a>Azure Stack Hub Resource Manager
 

@@ -1,20 +1,22 @@
 ---
 title: アプリ ID を使用してリソースにアクセスする
-description: アプリ ID を使用して Azure Stack Hub リソースにアクセスする方法について説明します。 アプリ ID は、リソースへのサインインとアクセスを目的としてロールベースのアクセス制御と共に使用できます。
+description: アプリ ID を使用して Azure Stack Hub リソースにアクセスする方法について説明します。アプリ ID は、リソースへのサインインおよびアクセスのためにロールベースのアクセス制御で使用できます。
 author: BryanLa
 ms.author: bryanla
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.lastreviewed: 05/07/2020
-ms.openlocfilehash: 011018493cee92d23675369a9704f5bcf3503ebe
-ms.sourcegitcommit: fe9b2fae89e595c8e739251b7a0d6ea3a0d8659a
+ms.custom: contperfq4
+ms.openlocfilehash: 5842ac27969a136ceaace4647ed5791bc3260b1c
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84262669"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90573141"
 ---
 # <a name="use-an-app-identity-to-access-azure-stack-hub-resources"></a>アプリ ID を使用して Azure Stack Hub リソースにアクセスする
-<meta name="robots" content="nosnippet"> リソースのデプロイや構成を Azure Resource Manager を通じて行う必要があるアプリケーションは、それ自体の ID で表す必要があります。 ユーザー プリンシパルと呼ばれているセキュリティ プリンシパルでユーザーが表されるように、アプリはサービス プリンシパルで表されます。 サービス プリンシパルは、開発者が開発するアプリの ID となり、開発者は必要なアクセス許可のみをそのアプリに委任することができます。  
+
+アプリケーションのリソースのデプロイや構成を Azure Resource Manager を通じて行う必要がある場合は、そのアプリケーションをその ID で表す必要があります。 ユーザー プリンシパルと呼ばれているセキュリティ プリンシパルでユーザーが表されるように、アプリはサービス プリンシパルで表されます。 サービス プリンシパルは、開発者が開発するアプリの ID となり、開発者は必要なアクセス許可のみをそのアプリに委任することができます。  
 
 たとえば、Azure Resource Manager を使用して Azure リソースのインベントリを作成する構成管理アプリがあります。 このシナリオでは、サービス プリンシパルを作成し、これに "閲覧者" ロールを付与して、構成管理アプリのアクセスを読み取り専用に制限します。
 
@@ -351,5 +353,5 @@ VERBOSE: Remove-GraphApplication : END on AZS-ADFS01 under ADFSGraphEndpoint con
 ## <a name="next-steps"></a>次のステップ
 
 [ユーザー アクセス許可の管理](azure-stack-manage-permissions.md)  
-[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)  
-[Active Directory フェデレーション サービス (AD FS)](https://docs.microsoft.com/windows-server/identity/active-directory-federation-services)
+[Azure Active Directory のドキュメント](/azure/active-directory)  
+[Active Directory フェデレーション サービス (AD FS)](/windows-server/identity/active-directory-federation-services)

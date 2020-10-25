@@ -3,15 +3,15 @@ title: Azure Stack Hub ポリシー モジュールを使用する
 description: Azure Stack Hub サブスクリプションと同様の動作をするように、Azure サブスクリプションを制限する方法を説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 06/09/2020
 ms.author: sethm
 ms.lastreviewed: 03/26/2019
-ms.openlocfilehash: 7af2662c52de8085b6b77fa0c9a2b36f401168fc
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: f39bbf689cd3b847b29c2d5b046721029078a5dd
+ms.sourcegitcommit: d91e47a51a02042f700c6a420f526f511a6db9a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77703827"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84666483"
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-hub-policy-module"></a>Azure Stack Hub ポリシー モジュールを使用して Azure ポリシーを管理する
 
@@ -30,7 +30,7 @@ Azure Stack Hub ポリシー モジュールを使用すると、Azure Stack Hub
 
 ## <a name="apply-policy-to-azure-subscription"></a>Azure サブスクリプションにポリシーを適用する
 
-以下のコマンドを使用して、Azure サブスクリプションに対して既定の Azure Stack Hub ポリシーを適用できます。 これらのコマンドを実行する前に、`Azure subscription name` を自分の Azure サブスクリプションの名前に置き換えてください。
+以下のコマンドを使用して、Azure サブスクリプションに既定の Azure Stack Hub ポリシーを適用できます。 これらのコマンドを実行する前に、`Azure subscription name` を自分の Azure サブスクリプションの名前に置き換えてください。
 
 ```powershell
 Add-AzureRmAccount

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.reviewer: shriramnat
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 772871cffa3d5394d1d8b939fa22ae91bc90d4ac
-ms.sourcegitcommit: bdd4d529bd3e115a9f76eece62b1613448d5d020
+ms.openlocfilehash: f2716bfbdab58c90401e3c6b10908c35f774feed
+ms.sourcegitcommit: 53b0dde60a6435936a5e0cb9e931245f262d637a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "80423904"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91107188"
 ---
 # <a name="create-a-service-offering-for-users-in-azure-stack-hub"></a>Azure Stack Hub でユーザー用にサービス オファリングを作成する
 
@@ -80,23 +80,23 @@ Azure Stack Hub では、リソース プロバイダーに 2 つの一般的な
 
     続いて、 **[+ リソースの作成]** > **[オファー + プラン]** > **[オファー]** を選択します。
 
-    ![Azure Stack Hub 管理ポータル内の新しいオファー](media/tutorial-offer-services/1-create-resource-offer.png)
+    ![Azure Stack Hub 管理ポータル内で新しいオファーを作成する方法を示すスクリーンショット。](media/tutorial-offer-services/1-create-resource-offer.png)
 
 1. **[Create a new offer]\(新しいオファーの作成\)** の **[基本]** タブで、 **[表示名]** と **[リソース名]** を入力し、既存の **[リソース グループ]** を選択するか、新しいリソース グループを作成ます。 表示名は、オファーのフレンドリ名です。 クラウド オペレーターのみがリソース名を見ることができます。リソース名は、Azure Resource Manager リソースとしてオファーを操作するために、管理者が使用する名前です。
 
-   ![Azure Stack Hub 管理ポータル内の表示名](media/tutorial-offer-services/2-create-new-offer.png)
+   ![Azure Stack Hub 管理ポータル内で基本情報を追加する場所を示すスクリーンショット。](media/tutorial-offer-services/2-create-new-offer.png)
 
 1. **[基本プラン]** タブを選択し、 **[新しいプランの作成]** を選択して新しいプランを作成します。 プランは、基本プランとしてオファーにも追加されます。
 
-   ![Azure Stack Hub 管理ポータルでのプランの追加](media/tutorial-offer-services/3-create-new-offer-base-plans.png)
+   ![Azure Stack Hub 管理ポータル内でプランを追加する方法を示すスクリーンショット。](media/tutorial-offer-services/3-create-new-offer-base-plans.png)
 
 1. **[新しいプラン]** の **[基本]** タブで、 **[表示名]** と **[リソース名]** を入力します。 表示名は、ユーザーに表示されるプランのフレンドリ名です。 クラウド オペレーターのみがリソース名を見ることができます。リソース名は、Azure Resource Manager リソースとしてプランを操作するために、クラウド オペレーターが使用する名前です。 **[リソース グループ]** は、オファーに対して指定されているものに設定されます。
 
-   ![Azure Stack Hub 管理ポータル内のプランの表示名](media/tutorial-offer-services/4-create-new-plan-basics.png)
+   ![Azure Stack Hub 管理ポータル内のプランの表示名を示すスクリーンショット。](media/tutorial-offer-services/4-create-new-plan-basics.png)
 
 1. **[サービス]** タブを選択すると、インストールされているリソース プロバイダーから利用可能なサービスの一覧が表示されます。 **Microsoft.Compute**、**Microsoft.Network**、**Microsoft.Storage** を選択します。
 
-   ![Azure Stack Hub 管理ポータル内のプランのサービス](media/tutorial-offer-services/5-create-new-plan-services.png)
+   ![Azure Stack Hub 管理ポータル内のプラン サービスを示すスクリーンショット。](media/tutorial-offer-services/5-create-new-plan-services.png)
 
 1. **[クォータ]** タブを選択すると、このプランで有効にしたサービスの一覧が表示されます。 **[新規作成]** を選択して、**Microsoft. Compute** に対するカスタム クォータを指定します。 クォータの **[名前]** は必須です。各クォータ値は、そのままにすることも、変更することもできます。 終わったら **[OK]** を選択し、残りのサービスについても同じ手順を繰り返します。
 
@@ -133,7 +133,7 @@ Azure Stack Hub では、リソース プロバイダーに 2 つの一般的な
 1. クラウド管理者アカウントを使用して管理者ポータルにサインインします。
 
     - 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、`https://adminportal.<region>.<FQDN>` という形式です。
-    - Azure Stack Development Kit を使用している場合は、URL は <https://adminportal.local.azurestack.external> です。
+    - Azure Stack Development Kit を使用している場合は、URL は `https://adminportal.local.azurestack.external` です。
 
     続いて、 **[+ リソースの作成]** > **[オファー + プラン]** > **[オファー]** を選択します。
 

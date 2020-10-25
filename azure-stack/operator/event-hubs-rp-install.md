@@ -9,12 +9,12 @@ ms.date: 12/09/2019
 ms.reviewer: jfggdl
 ms.lastreviewed: 12/09/2019
 zone_pivot_groups: state-connected-disconnected
-ms.openlocfilehash: d92c8c8514020d3b33e236232aa07b95ade9f798
-ms.sourcegitcommit: c263a86d371192e8ef2b80ced2ee0a791398cfb7
+ms.openlocfilehash: f7eb790506c5dbbb7d49fc469dd61d394fb1f0fc
+ms.sourcegitcommit: 53b0dde60a6435936a5e0cb9e931245f262d637a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82848202"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91106848"
 ---
 # <a name="how-to-install-event-hubs-on-azure-stack-hub"></a>Azure Stack Hub に Event Hubs をインストールする方法
 
@@ -62,12 +62,12 @@ Event Hubs と共に、次のような追加のソフトウェア パッケー�
    [![Marketplace Management のダウンロード済みパッケージ](media/event-hubs-rp-install/2-marketplace-management-downloaded.png)](media/event-hubs-rp-install/2-marketplace-management-downloaded.png#lightbox)
  
 3. Event Hubs のインストール パッケージのページの上部に青いバナーが表示されます。 バナーを選択して Event Hubs のインストールを開始します。
-   [![Marketplace Management の Event Hubs - インストールの開始](media/event-hubs-rp-install/3-marketplace-management-install-ready.png)](media/event-hubs-rp-install/3-marketplace-management-install-ready.png#lightbox)
+   [![Marketplace Management の Event Hubs でインストールを開始する方法を示すスクリーンショット。](media/event-hubs-rp-install/3-marketplace-management-install-ready.png)](media/event-hubs-rp-install/3-marketplace-management-install-ready.png#lightbox)
 
 ### <a name="install-prerequisites"></a>必須コンポーネントのインストール
 
 1. 次に、インストール ページが表示されます。 インストール プロセスを開始するには、 **[必須コンポーネントのインストール]** を選択します。
-   ![Marketplace Management の Event Hubs - 必須コンポーネント](media/event-hubs-rp-install/4-marketplace-management-install-prereqs-start.png)
+   ![Marketplace Management の Event Hubs で必須コンポーネントのインストールを開始する方法を示すスクリーンショット。](media/event-hubs-rp-install/4-marketplace-management-install-prereqs-start.png)
  
 2. 必須コンポーネントのインストールが成功するまで待ちます。 **[必須コンポーネントのインストール]** の横に緑色のチェックマークが表示されるのを確認してから、次の手順に進みます。
 

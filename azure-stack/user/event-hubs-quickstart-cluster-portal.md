@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 01/22/2020
 ms.reviewer: bryanla
 ms.lastreviewed: 01/22/2020
-ms.openlocfilehash: 6af9ef6f562c9b31d7310b7f35d7b6b0533472ea
-ms.sourcegitcommit: 4138a2a15f78e7db38b3a29acc963a71937146fd
+ms.openlocfilehash: 7a2b8504a247048a4f90f7ec70772ff52b5ae9dc
+ms.sourcegitcommit: 53b0dde60a6435936a5e0cb9e931245f262d637a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "80479243"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91107239"
 ---
 # <a name="quickstart-create-an-event-hubs-cluster-using-the-azure-stack-hub-portal"></a>クイック スタート:Azure Stack Hub ポータルを使用して Event Hubs クラスターを作成する
 
@@ -116,7 +116,7 @@ Event Hubs クラスターは、1 つ以上の名前空間を作成できる固�
 1. 左側のナビゲーション ウィンドウから  **[すべてのサービス]**   をクリックします。 検索バーに「Event Hubs クラスター」と入力して、結果の一覧から **[Event Hubs クラスター]** の項目を選択します。
 2. **[Event Hub クラスター]** ページで、前に作成したクラスターを探して選択します。
 
-   [![Event Hubs クラスター - クラスターの削除](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png)](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png#lightbox)
+   [![削除するクラスターを選択する方法を示すスクリーンショット。](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png)](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png#lightbox)
 
 3. **[Event Hubs クラスター]** の**概要**ページで、次の操作を行います。
    - 上部のメニューから  **[削除]**   を選択します。  

@@ -7,12 +7,12 @@ ms.date: 04/10/2020
 ms.author: inhenkel
 ms.reviewer: wfayed
 ms.lastreviewed: 08/21/2019
-ms.openlocfilehash: d16aea039103c69302c8f84aa7de078907f1efce
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: be6ea1e8dbf8b17e02a4117f5f2d20cb9cfbbcfe
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81244081"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86488724"
 ---
 # <a name="azure-stack-hub-datacenter-dns-integration"></a>Azure Stack Hub データセンターの DNS の統合
 
@@ -133,7 +133,7 @@ Azure Stack Hub DNS サーバーの FQDN は、次の形式になります。
 
 Azure Stack Hub と DNS インフラストラクチャを統合する最も簡単で安全な方法は、親ゾーンをホストするサーバーから、ゾーンの条件付き転送を行うことです。 Azure Stack Hub の外部 DNS 名前空間の親ゾーンをホストする DNS サーバーを直接制御できる場合は、この方法をお勧めします。
 
-DNS で条件付き転送を行う方法がわからない場合は、次の TechNet の記事を参照してください。[ドメイン名の条件付きフォワーダーの割り当て](https://technet.microsoft.com/library/cc794735)に関する記事、またはお使いの DNS ソリューションに固有のドキュメントをご覧ください。
+DNS で条件付き転送を行う方法がわからない場合は、次の TechNet の記事を参照してください。[ドメイン名の条件付きフォワーダーの割り当て](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794735(v=ws.10))に関する記事、またはお使いの DNS ソリューションに固有のドキュメントをご覧ください。
 
 会社のドメイン名の子ドメインのように見える Azure Stack Hub の外部 DNS ゾーンを指定しているシナリオでは、条件付き転送は使用できません。 DNS 委任を構成する必要があります。
 

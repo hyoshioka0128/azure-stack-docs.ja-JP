@@ -1,19 +1,19 @@
 ---
 title: Azure Stack Hub 用のストレージ インフラストラクチャを管理する
 titleSuffix: Azure Stack
-description: Azure Stack Hub 用のストレージ インフラストラクチャを管理する方法について説明します。
+description: Azure Stack Hub 用のストレージ インフラストラクチャを管理する方法について説明します。 ボリュームとドライブの監視方法を確認します。 プールへのドライブの追加に関するトラブルシューティングのヒントを表示します。
 author: IngridAtMicrosoft
 ms.topic: article
-ms.date: 5/4/2020
+ms.date: 10/19/2020
 ms.author: inhenkel
 ms.lastreviewed: 5/4/2020
 ms.reviewer: jiaha
-ms.openlocfilehash: 3fff3c9c7742d22c24ab540d4bf523ade3e7a227
-ms.sourcegitcommit: c263a86d371192e8ef2b80ced2ee0a791398cfb7
+ms.openlocfilehash: 7141d52e100ce465a20637da2a40cbb75b417939
+ms.sourcegitcommit: e4e2cc6a68f02c3e856f58ca5ee51b3313c7ff8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82848337"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92179453"
 ---
 # <a name="manage-storage-infrastructure-for-azure-stack-hub"></a>Azure Stack Hub 用のストレージ インフラストラクチャを管理する
 この記事では、Azure Stack Hub のストレージ インフラストラクチャ リソースの正常性状態と操作状態について説明します。 この種のリソースには、ストレージ ドライブとストレージ ボリュームがあります。 このトピックの情報は、プールにドライブを追加できないなど、さまざまな問題のトラブルシューティングを行うときに役に立ちます。
@@ -93,7 +93,7 @@ Get-AzsDrive -ScaleUnit $scaleunit_name -StorageSubSystem $subsystem_name | Sele
 | [OK] | ボリュームは正常な状態です。 |
 | サービス中 | ドライブ内部でハウスキープ処理を実行中です。 処理が完了したら、ドライブの正常性状態が [OK] に戻ります。 |
 
-### <a name="drive-health-state-healthy"></a>ドライブの正常性状態:Healthy
+### <a name="drive-health-state-warning"></a>ドライブの正常性状態:警告
 
 ドライブが [警告] 状態の場合には、データの読み取りと書き込みは正常に実行できるものの、ドライブに何らかの問題が発生しています。
 

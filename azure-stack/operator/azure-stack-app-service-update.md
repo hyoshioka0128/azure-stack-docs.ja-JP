@@ -8,12 +8,12 @@ ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
 zone_pivot_groups: state-connected-disconnected
-ms.openlocfilehash: ecedd49789a20788f1f1ba40e568298c569d168d
-ms.sourcegitcommit: c263a86d371192e8ef2b80ced2ee0a791398cfb7
+ms.openlocfilehash: 5dc8599a62c4b9e10d603bf2f02f18bf5024e203
+ms.sourcegitcommit: edb60c948b445537e9411d6261c6c78359b71d0b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82848083"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91810662"
 ---
 # <a name="update-azure-app-service-on-azure-stack-hub"></a>Azure App Service on Azure Stack Hub を更新する
 
@@ -45,7 +45,7 @@ Azure App Service on Azure Stack Hub のデプロイをアップグレードす�
 
 2. 管理者として appservice.exe を実行します。
 
-    ![Azure App Service インストーラー][1]
+    ![App Service インストーラーでデプロイまたはアップグレードのプロセスを開始する方法を示すスクリーンショット。][1]
 
 3. **[Deploy Azure App Service or upgrade to the latest version]\(Azure App Service をデプロイするか、または最新バージョンにアップグレードする\)** をクリックします。
 
@@ -55,7 +55,7 @@ Azure App Service on Azure Stack Hub のデプロイをアップグレードす�
 
 6. Azure Stack Hub Azure Resource Manager エンドポイントと Active Directory テナントの情報が正しいことを確認します。 ASDK のデプロイ中に既定の設定を使用した場合は、ここで既定値をそのまま使用することもできます。 ただし、Azure Stack Hub のデプロイ時にオプションをカスタマイズした場合は、このウィンドウで値を編集する必要があります。 たとえば、ドメイン サフィックス *mycloud.com* を使用する場合は、Azure Stack Hub Azure Resource Manager エンドポイントを *management.region.mycloud.com* に変更する必要があります。 自分の情報を確認したら、 **[次へ]** をクリックします。
 
-    ![Azure Stack Hub クラウドの情報][2]
+    ![App Service インストーラー内の、ARM エンドポイントを構成する場所を示すスクリーンショット。][2]
 
 7. 次のページで、次の操作を行います。
 
@@ -73,20 +73,20 @@ Azure App Service on Azure Stack Hub のデプロイをアップグレードす�
 
     1. 既存の Azure App Service デプロイが検出された場合は、リソース グループとストレージ アカウントにデータが入力されており、使用できません。
 
-      ![検出された Azure App Service インストール][3]
+      ![App Service インストーラー内の、Azure Stack Hub のサブスクリプション情報を指定する場所を示すスクリーンショット。][3]
 
 8. 概要ページで、次のことを行います。
    1. 選択した内容を確認します。 変更を加えるには、 **[前へ]** を使って前のページに戻ります。
    2. 構成が正しい場合は、チェック ボックスをオンにします。
    3. アップグレードを開始するには、 **[次へ]** をクリックします。
 
-       ![Azure App Service アップグレードの概要][4]
+       ![App Service インストーラーで App Service のアップグレードの概要を示すスクリーンショット。][4]
 
 9. アップグレードの進行状況ページ:
     1. アップグレードの進行状況を追跡します。 Azure App Service on Azure Stack Hub のアップグレードの期間は、デプロイされるロール インスタンスの数によって異なります。
     2. アップグレードが正常に完了したら、 **[終了]** をクリックします。
 
-        ![Azure App Service アップグレードの進行状況][5]
+        ![App Service インストーラーでデプロイの進行状況を示すスクリーンショット。][5]
 ::: zone-end
 
 ::: zone pivot="state-disconnected"
@@ -96,7 +96,7 @@ Azure App Service on Azure Stack Hub のデプロイをアップグレードす�
 * Active Directory フェデレーション サービス (AD FS) によって保護されている
 
 > [!IMPORTANT]
-> アップグレードを実行する前に、[接続されていない環境への Azure App Service on Azure Stack Hub のデプロイ](azure-stack-app-service-deploy-offline.md)を完了しておく必要があります。 
+> アップグレードを実行する前に、[接続されていない環境への Azure App Service on Azure Stack Hub のデプロイ](./azure-stack-app-service-deploy.md?pivots=state-disconnected&view=azs-2002)を完了しておく必要があります。 
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>App Service リソースプロバイダーのインストーラーを実行する
 
@@ -120,11 +120,11 @@ Azure Stack Hub 環境内の App Service リソース プロバイダーをア�
 
 1. 管理者として appservice.exe を実行する
 
-    ![Azure App Service インストーラー][11]
+    ![切断環境でアップグレードを開始する方法を示すスクリーンショット。][11]
 
 2. **[詳細]**  >  **[Create offline package] (オフライン パッケージを作成する)** をクリックします。
 
-    ![Azure App Service インストーラーの [詳細]][12]
+    ![App Service インストーラーでオフライン パッケージを作成する方法を示すスクリーンショット。][12]
 
 3. Azure App Service インストーラーによってオフライン アップグレード パッケージが作成され、そのパスが表示されます。  **[フォルダーを開く]** をクリックすると、エクスプローラーでフォルダーが開きます。
 
@@ -137,11 +137,11 @@ Azure Stack Hub 環境内の App Service リソース プロバイダーをア�
 
 1. 管理者として appservice.exe を実行します。
 
-    ![Azure App Service インストーラー][11]
+    ![アップグレードを開始する方法を示すスクリーンショット。][11]
 
 2. **[詳細]**  >  **[Complete offline installation or upgrade] (オフライン インストールまたはアップグレードを完了する)** をクリックします。
 
-    ![Azure App Service インストーラーの [詳細]][12]
+    ![App Service インストーラーでオフラインのインストールまたはアップグレードを実行する方法を示すスクリーンショット。][12]
 
 3. 前に作成したオフライン アップグレード パッケージの場所を参照し、 **[次へ]** をクリックします。
 
@@ -151,7 +151,7 @@ Azure Stack Hub 環境内の App Service リソース プロバイダーをア�
 
 6. Azure Stack Hub Azure Resource Manager エンドポイントと Active Directory テナントの情報が正しいことを確認します。 Azure Stack Development Kit の展開中に既定の設定を使用した場合は、ここで既定値を受け入れることができます。 ただし、Azure Stack Hub のデプロイ時にオプションをカスタマイズした場合は、このウィンドウで値を編集する必要があります。 たとえば、ドメイン サフィックス *mycloud.com* を使用する場合は、Azure Stack Hub Azure Resource Manager エンドポイントを *management.region.mycloud.com* に変更する必要があります。 自分の情報を確認したら、 **[次へ]** をクリックします。
 
-    ![Azure Stack Hub クラウドの情報][13]
+    ![インストーラー内の、ARM エンドポイントを構成する場所を示すスクリーンショット。][13]
 
 7. 次のページで、次の操作を行います。
 
@@ -169,19 +169,19 @@ Azure Stack Hub 環境内の App Service リソース プロバイダーをア�
    
    1. 既存の App Service デプロイが検出された場合は、リソース グループとストレージ アカウントにデータが入力され、灰色表示されます。
 
-      ![検出された Azure App Service インストール][14]
+      ![インストーラー内の、Azure Stack Hub サブスクリプションを構成する場所を示すスクリーンショット。][14]
 8. 概要ページで、次のことを行います。
    1. 選択した内容を確認します。 変更を加えるには、 **[前へ]** を使って前のページに戻ります。
    2. 構成が正しい場合は、チェック ボックスをオンにします。
    3. アップグレードを開始するには、 **[次へ]** をクリックします。
 
-       ![Azure App Service アップグレードの概要][15]
+       ![インストーラーで収集された情報の概要を示すスクリーンショット。][15]
 
 9. アップグレードの進行状況ページ:
     1. アップグレードの進行状況を追跡します。 App Service on Azure Stack Hub のアップグレードの期間は、デプロイされるロール インスタンスの数によって異なります。
     2. アップグレードが正常に完了したら、 **[終了]** をクリックします。
 
-        ![Azure App Service アップグレードの進行状況][16]
+        ![アップグレードが正常に完了したことを示すスクリーンショット。][16]
 ::: zone-end
 
 ## <a name="next-steps"></a>次のステップ

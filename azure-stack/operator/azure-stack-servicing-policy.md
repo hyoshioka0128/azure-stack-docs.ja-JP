@@ -4,16 +4,16 @@ titleSuffix: Azure Stack Hub
 description: Azure Stack Hub サービス ポリシーの詳細と、サポートを受けられる状態に統合システムを維持する方法を説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/07/2020
+ms.date: 09/25/2020
 ms.author: sethm
-ms.reviewer: harik
+ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: 479343623f59720cd330c3f9d8d8b8c7836a8a0e
-ms.sourcegitcommit: c263a86d371192e8ef2b80ced2ee0a791398cfb7
+ms.openlocfilehash: ac110a3ee90cd0b1439e34a418bf7473b8487502
+ms.sourcegitcommit: 362081a8c19e7674c3029c8a44d7ddbe2deb247b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82848151"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91899790"
 ---
 # <a name="azure-stack-hub-servicing-policy"></a>Azure Stack Hub サービス ポリシー
 
@@ -21,11 +21,11 @@ ms.locfileid: "82848151"
 
 ## <a name="download-update-packages-for-integrated-systems"></a>統合システムの更新プログラム パッケージをダウンロードする
 
-Microsoft では、特定の問題に対処する修正プログラム パッケージだけでなく、完全な月例更新プログラム パッケージをリリースしています。
+Microsoft では、完全な更新プログラム パッケージと、特定の問題に対処する修正プログラム パッケージの両方をリリースしています。
 
-月例更新プログラム パッケージは、セキュリティで保護された Azure エンドポイントでホストされます。 これらは、[Azure Stack Hub 更新プログラム ダウンローダー ツール](https://aka.ms/azurestackupdatedownload)を使用して、手動でダウンロードできます。 スケール ユニットが接続されている場合、更新プログラムは、"**更新プログラムが利用可能です**" と自動的に管理者ポータルに表示されます。 月例更新プログラム パッケージは、各リリースで詳細にドキュメント化されます。 各リリースの詳細については、この記事の「[更新プログラム パッケージのリリース周期](#update-package-release-cadence)」セクションの任意のリリースをクリックしてください。
+完全な更新プログラム パッケージは、セキュリティで保護された Azure エンドポイントでホストされます。 これらは、[Azure Stack Hub 更新プログラム ダウンローダー ツール](https://aka.ms/azurestackupdatedownload)を使用して、手動でダウンロードできます。 スケール ユニットが接続されている場合、更新プログラムは、"**更新プログラムが利用可能です**" と自動的に管理者ポータルに表示されます。 各リリースの詳細については、この記事の「[更新プログラム パッケージのリリース周期](#update-package-release-cadence)」セクションの任意のリリースをクリックしてください。
 
-修正プログラム パッケージは、セキュリティで保護された同じ Azure エンドポイントでホストされます。 これらは、各修正プログラムの KB 記事 (たとえば、[Azure Stack Hub 修正プログラム 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114)) の埋め込みリンクを使用してダウンロードできます。 毎月の完全版更新プログラム パッケージと同様に、Azure Stack Hub オペレーターは、[Azure Stack Hub での更新プログラムの適用](azure-stack-apply-updates.md)に関する記事に記載されている手順を使用して、.xml、.bin、および .exe ファイルのダウンロードとインポートを行うことができます。 スケール ユニットが接続されている Azure Stack Hub オペレーターに対しては、修正プログラムが "**更新プログラムが利用可能です**" というメッセージと共に、自動的に管理者ポータルに表示されます。
+修正プログラム パッケージは、セキュリティで保護された同じ Azure エンドポイントでホストされます。 これらは、各修正プログラムの KB 記事 (たとえば、[Azure Stack Hub 修正プログラム 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114)) の埋め込みリンクを使用してダウンロードできます。 毎月の完全版更新プログラム パッケージと同様に、Azure Stack Hub オペレーターは、[Azure Stack Hub での更新プログラムの適用](azure-stack-apply-updates.md)に関する記事に記載されている手順を使用して、.xml および .zip ファイルのダウンロードとインポートを行うことができます。 スケール ユニットが接続されている Azure Stack Hub オペレーターに対しては、修正プログラムが "**更新プログラムが利用可能です**" というメッセージと共に、自動的に管理者ポータルに表示されます。
 
 スケール ユニットが接続されておらず、各修正プログラムのリリースについて通知を受け取る場合は、各リリースに記載されている [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) または [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) フィードを購読します。
 
@@ -39,42 +39,40 @@ Microsoft では、特定の問題に対処する修正プログラム パッケ
 
 ## <a name="update-package-release-cadence"></a>更新プログラム パッケージのリリース周期
 
-Microsoft は、毎月ソフトウェア更新プログラム パッケージをリリースします。 ただし、1 か月に複数の更新プログラムをリリースすることや、1 つも更新プログラムをリリースしないこともあります。 OEM ハードウェア ベンダーは、必要に応じて随時更新プログラムをリリースします。
+Microsoft は、ソフトウェア更新プログラム パッケージを 1 年を通して複数回リリースする予定です。
+
+OEM ハードウェア ベンダーは、必要に応じて随時更新プログラムをリリースします。 ハードウェアの最新の更新プログラムについては、OEM にご確認ください。
 
 更新を計画し、更新プログラムを管理する方法と、現在のバージョンを確認する方法については、[更新プログラムの管理の概要](azure-stack-updates.md)にあるドキュメントをご確認ください。
 
 更新プログラムのダウンロード方法など、特定の更新プログラムに関する情報については、リリース ノートを参照してください。
 
-- [Azure Stack Hub 2002 更新プログラム](/azure-stack/operator/release-notes?view=azs-2002)
-- [Azure Stack Hub 1910 更新プログラム](/azure-stack/operator/release-notes?view=azs-1910)
-- [Azure Stack Hub 1908 更新プログラム](/azure-stack/operator/release-notes?view=azs-1908)
-- [Azure Stack Hub 1907 更新プログラム](/azure-stack/operator/release-notes?view=azs-1907)
+- [Azure Stack Hub 2005 更新プログラム](./release-notes.md?view=azs-2005)
+- [Azure Stack Hub 2002 更新プログラム](./release-notes.md?view=azs-2002)
+- [Azure Stack Hub 1910 更新プログラム](./release-notes.md?view=azs-1910)
 
 ## <a name="hotfixes"></a>修正プログラム
 
-Microsoft は、予防可能または緊急な場合の多い特定の問題に対応するため、Azure Stack Hub の修正プログラムを随時提供します。 各修正プログラムは、問題、原因、および解決方法の詳細が記載された Microsoft のナレッジ ベースの記事に対応してリリースされます。
+Microsoft は、予防可能または緊急な場合の多い特定の問題に対応するため、Azure Stack Hub の修正プログラムを随時提供します。 各修正プログラムは、その修正プログラムで対処された問題の詳細が記載された、Microsoft サポート技術情報 (KB) の対応する記事と共にリリースされます。
 
-修正プログラムは、Azure Stack Hub の通常の完全版更新プログラム パッケージと同様に、ダウンロードおよびインストールできます。 ただし、完全な更新プログラムとは異なり、修正プログラムは数分でインストールできます。 修正プログラムをインストールする際に、Azure Stack Hub オペレーターがメンテナンス期間を設定することをお勧めします。 修正プログラムでは、修正プログラムが適用されているかを簡単に判別できるように、お使いの Azure Stack Hub クラウドのバージョンが更新されます。 まだサポート対象となっている Azure Stack Hub のバージョンごとに、個別の修正プログラムが提供されています。 特定のイテレーションの各修正プログラムは重複しており、同じバージョンの以前の更新プログラムが含まれています。 特定の修正プログラムの該当性については、対応するナレッジ ベースの記事を参照してください。 前のセクションのリリース ノートのリンクを参照してください。
+ビルド 2005 以降では、新しいメジャー バージョンに更新すると (たとえば、1.2002.x から 1.2005.x)、その新しいメジャー バージョン内の最新の修正プログラム (存在する場合) が自動的にインストールされます。 それ以降は、ビルドの修正プログラムがリリースされたら、それをインストールする必要があります。
+
+修正プログラムは、Azure Stack Hub の通常の完全版更新プログラム パッケージと同様に、ダウンロードおよびインストールできます。 ただし、完全な更新プログラムとは異なり、修正プログラムは数分でインストールできます。 修正プログラムをインストールする際に、Azure Stack Hub オペレーターがメンテナンス期間を設定することをお勧めします。 修正プログラムでは、修正プログラムが適用されているかを簡単に判別できるように、お使いの Azure Stack Hub クラウドのバージョンが更新されます。 まだサポート対象となっている Azure Stack Hub のバージョンごとに、個別の修正プログラムが提供されています。 **特定のイテレーションの各修正プログラムは重複しており、同じバージョンの以前の修正プログラムが含まれています。** 特定の修正プログラムの適合性の詳細については、KB の対応する記事をご覧ください。 前のセクションのリリース ノートのリンクを参照してください。
 
 現在利用可能な修正プログラムの詳細については、その更新のリリースノートを参照してください。
 
-- [Azure Stack Hub 2002 修正プログラム](/azure-stack/operator/release-notes?view=azs-2002#hotfixes)
-- [Azure Stack Hub 1910 修正プログラム](/azure-stack/operator/release-notes?view=azs-1910#hotfixes-1)
-- [Azure Stack Hub 1908 修正プログラム](/azure-stack/operator/release-notes?view=azs-1908#hotfixes-2)
-- [Azure Stack Hub 1907 修正プログラム](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-3)
+- [Azure Stack Hub 2005 修正プログラム](./release-notes.md?view=azs-2005#hotfixes)
+- [Azure Stack Hub 2002 修正プログラム](./release-notes.md?view=azs-2002#hotfixes-1)
+- [Azure Stack Hub 1910 修正プログラム](./release-notes.md?view=azs-1910#hotfixes-2)
 
 ## <a name="keep-your-system-under-support"></a>システムがサポートされる状態を維持する
 
-::: moniker range="azs-2002"
-
 > [!IMPORTANT]  
-> Azure Stack Hub 2002 更新プログラムでは、Microsoft は Azure Stack Hub サポート ポリシー ステートメントを一時的に延長しています。 Microsoft は現在、COVID-19 に対応中の、Azure Stack Hub システムとその更新方法と管理方法に関する重要な意思決定を行っている可能性のある世界中のお客様と連携して、お客様のデータセンターのビジネス運用を正常に継続するための取り組みを行っています。 Microsoft では、お客様をサポートするために、3 つ前までの更新プログラムのバージョンを含めるように一時的なサポート ポリシー変更の延長を行っています。 その結果、新しくリリースされた 2002 更新プログラムと、3 つ前までの更新プログラムのバージョン (1910、1908、1907 など) のすべてがサポートされます。
-
-::: moniker-end
+> Azure Stack Hub の [2002 リリース](release-notes.md?view=azs-2002)では、COVID-19 に対応中の、Azure Stack Hub システムに関する重要な意思決定を行う可能性がある世界中のお客様を支援するために、Microsoft はそのサポート ポリシーを一時的に延長して、3 つ前までの更新プログラムのバージョン (N-3) を含めました。 2005 リリースでは、この延長をさらに 45 日間 (2020 年 9 月 25 日まで) 継続しています。 その結果、新しくリリースされた 2005 更新プログラムと、3 つ前までの更新プログラムのバージョン (2002、1910、1908 (N-3)) のいずれか 1 つがサポートされます。 この 45 日を過ぎると (2020 年 9 月 25 日より後)、標準のサポート ポリシーに戻ります。つまり、サポートされるバージョンは、2005、2002、1910 (N-2) になります。
 
 サポートを受けられる状態に Azure Stack Hub インスタンスを維持するためには、インスタンスで、リリースされた最新バージョンの更新プログラムを実行するか、またはその前の 2 つの更新プログラムのバージョンのいずれかを実行する必要があります。
 
-修正プログラムはメジャー バージョンの更新プログラムとは見なされません。 お使いの Azure Stack Hub インスタンスが "*2 つ前の更新プログラム*" より古い場合、対応していないと見なされます。 サポートを受けるためには、少なくともサポートされる最低限のバージョンまで更新する必要があります。
+修正プログラムはメジャー バージョンの更新プログラムとは見なされません。 お使いの Azure Stack Hub インスタンスが 2 つ前の更新プログラムより古い場合、コンプライアンスに対応していないとみなされます。 サポートを受けるためには、少なくともサポートされる最低限のバージョンまで更新する必要があります。
 
 たとえば、最新バージョンの更新プログラムが 1904 の場合、その前の 2 つの更新プログラム パッケージは 1903 と 1902 であるため、1902 と 1903 は両方ともサポートされます。 ただし、1901 はサポート外です。 今後 1、2 か月のうちにリリースがないときはこのポリシーが適用されます。 たとえば、最新のリリースが 1807 で 1806 のリリースがなかった場合、その前の 2 つの更新プログラム パッケージである 1805 と 1804 がサポート対象となります。
 
@@ -88,7 +86,7 @@ Azure Stack Hub リソース プロバイダーでは、サポートされてい
 
 ## <a name="get-support"></a>サポートを受ける
 
-Azure Stack Hub には、Azure と同じサポート プロセスが適用されます。 企業のお客様は、[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)で説明されているプロセスに従ってください。 クラウド ソリューション プロバイダー (CSP) のお客様の場合は、担当の CSP までサポートについてお問い合わせください。 詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
+Azure Stack Hub には、Azure と同じサポート プロセスが適用されます。 企業のお客様は、[Azure サポート要求を作成する方法](/azure/azure-supportability/how-to-create-azure-support-request)で説明されているプロセスに従ってください。 クラウド ソリューション プロバイダー (CSP) のお客様の場合は、担当の CSP までサポートについてお問い合わせください。 詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 更新プログラムに関する問題のトラブルシューティングのヘルプについては、「[Azure Stack Hub の修正プログラムと更新プログラムに関する問題のトラブルシューティングのベスト プラクティス](azure-stack-troubleshooting.md)」を参照してください。
 

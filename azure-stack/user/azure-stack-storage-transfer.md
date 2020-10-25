@@ -3,16 +3,16 @@ title: Azure Stack Hub Storage でのデータ転送ツールの使用
 description: Azure Stack Hub Storage のデータ転送ツールについて説明します。
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/06/2019
-ms.openlocfilehash: d61ce13c46e53f5eb2b9ed8fa544096db6ca8590
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: 3f3f39a03220150a71fddc090cc6aeb84525bab9
+ms.sourcegitcommit: 65a115d1499b5fe16b6fe1c31cce43be21d05ef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81660151"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88818982"
 ---
 # <a name="use-data-transfer-tools-in-azure-stack-hub-storage"></a>Azure Stack Hub Storage でのデータ転送ツールの使用
 
@@ -32,7 +32,7 @@ Azure Stack Hub は、ディスク、BLOB、テーブル、キュー、および
 
     オープン ソースでクロスプラットフォームの Azure および Azure Stack Hub Platform で使用できるコマンド群が提供されます。
 
-* [Microsoft ストレージ エクスプローラー](#microsoft-azure-storage-explorer)
+* [Microsoft Azure ストレージ エクスプローラー](#microsoft-azure-storage-explorer)
 
     ユーザー インターフェイスを備えた使いやすいスタンドアロンのアプリ。
 
@@ -276,7 +276,7 @@ Azure Storage Explorer は、Microsoft のスタンドアロン アプリです�
 
 [blobfuse](https://github.com/Azure/azure-storage-fuse) は、ストレージ アカウント内の既存のブロック BLOB データに Linux ファイル システム経由でアクセスできるようにする、Azure Blob Storage 用の仮想ファイル システム ドライバーです。 Azure Blob Storage はオブジェクト ストレージ サービスであるため、階層型名前空間を持っていません。 blobfuse は、フォワードスラッシュ `/` を区切り記号として使用して、仮想ディレクトリ スキームによってこの名前空間を提供します。 blobfuse は、Azure と Azure Stack Hub の両方で動作します。 
 
-Linux 上で blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法の詳細については、「[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)」を参照してください。 
+Linux 上で blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法の詳細については、「[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](/azure/storage/blobs/storage-how-to-mount-container-linux)」を参照してください。 
 
 Azure Stack Hub の場合、ストレージ アカウントの資格情報を構成する際に、accountName、accountKey/sasToken、および containerName と共に *blobEndpoint* を指定する必要があります。
 
@@ -303,6 +303,6 @@ blobEndpoint myaccount.blob.local.azurestack.external
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stack Hub サブスクリプションに Microsoft Azure Storage Explorer を接続する](azure-stack-storage-connect-se.md)
-* [ストレージ エクスプローラーの概要](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Storage Explorer の概要](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * [Azure 互換ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)
 * [Microsoft Azure ストレージの概要](/azure/storage/common/storage-introduction)

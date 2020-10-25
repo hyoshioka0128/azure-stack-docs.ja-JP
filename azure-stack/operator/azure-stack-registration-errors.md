@@ -3,16 +3,16 @@ title: Azure Stack Hub での使用量と請求の登録エラー コード
 description: Azure Stack Hub での使用量と請求の登録エラーコードについて説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 08/27/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019
-ms.openlocfilehash: d4cd7b00b00f4447f9ba9a8bc341452ae6464897
-ms.sourcegitcommit: 804f94f288859027b8249d138b14e8bc1501e009
+ms.openlocfilehash: 0c143a2a997a044e102eef63018dba5a492a3e11
+ms.sourcegitcommit: 03aad17afe8519536066c735c59ad1bdfe8de083
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84158335"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89041606"
 ---
 # <a name="usage-and-billing-registration-error-codes"></a>使用量と請求の登録エラー コード
 

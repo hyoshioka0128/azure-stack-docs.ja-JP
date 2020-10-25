@@ -1,5 +1,5 @@
 ---
-title: VNET ピアリングを通じて 2 つの Azure Stack Hub を接続する方法
+title: VNET ピアリングを通じて 2 つの Azure Stack Hub を接続する
 description: VNET ピアリングを通じて 2 つの Azure Stack Hub を接続する方法について説明します。
 author: mattbriggs
 ms.topic: how-to
@@ -7,23 +7,23 @@ ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
-ms.openlocfilehash: 428c95a4f9d387cd298a1965f165278dfdc5a763
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: 6ce27df08aeb885c6a04f97bb2b16292a6ffca96
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111984"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90572529"
 ---
 # <a name="vnet-peering-in-azure-stack-hub-with-vms"></a>Azure Stack Hub での VM との VNET ピアリング
 
-同じ Azure Stack Hub 環境内で、2 つの Azure Stack Hub VNet を相互に接続できます。 現時点では、組み込みの [Virtual Network ゲートウェイ](https://docs.microsoft.com/azure-stack/user/azure-stack-network-differences)を使用して Azure Stack Hub VNet に接続することはできません。 NVA アプライアンスを使用して、2 つの Azure Stack Hub VNet 間に VPN トンネルを作成する必要があります。 この記事のテンプレート リファレンスでは、RRAS がインストールされた 2 つの Windows Server 2016 VM がデプロイされています。 2 つの RRAS サーバーは、2 つの VNET 間に S2SVPN IKEv2 トンネルを実装するように構成されています。 **内部**として指定された各 VNET のサブネット間のルーティングを許可する適切な NSG と UDR のルールが作成されています。 
+同じ Azure Stack Hub 環境内で、2 つの Azure Stack Hub VNet を相互に接続できます。 現時点では、組み込みの [Virtual Network ゲートウェイ](./azure-stack-network-differences.md)を使用して Azure Stack Hub VNet に接続することはできません。 NVA アプライアンスを使用して、2 つの Azure Stack Hub VNet 間に VPN トンネルを作成する必要があります。 この記事のテンプレート リファレンスでは、RRAS がインストールされた 2 つの Windows Server 2016 VM がデプロイされています。 2 つの RRAS サーバーは、2 つの VNET 間に S2SVPN IKEv2 トンネルを実装するように構成されています。 **内部**として指定された各 VNET のサブネット間のルーティングを許可する適切な NSG と UDR のルールが作成されています。 
 
 このデプロイ パターンは、Azure Stack Hub インスタンス内だけでなく、Windows RRAS S2S VPN トンネルを使用して Azure Stack Hub インスタンス間と他のリソース (オンプレミス ネットワークなど) への VPN トンネルの作成を可能にする基盤です。 
 
 テンプレートは [Azure Intelligent Edge Patterns GitHub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns
 ) リポジトリにあります。 テンプレートは **S2SVPNTunnel** フォルダーにあります。
 
-![alt text](./media/azure-stack-network-howto-vnet-peering/overview.svg)
+![この図は、2 つの VNET 間に VPN トンネルを提供する実装を示しています。 各 VNET に、RRAS サーバー、内部サブネット、トンネル サブネットがあります。](./media/azure-stack-network-howto-vnet-peering/overview.svg)
 
 ## <a name="requirements"></a>必要条件
 
@@ -44,14 +44,14 @@ ms.locfileid: "84111984"
 - このテンプレートでは、DS3v2 VM を使用しています。 RRAS サービスにより、Windows 内部 SQL Server がインストールされ、実行されます。 VM のサイズが小さすぎると、メモリの問題が発生する可能性があります。 VM サイズを小さくする前にパフォーマンスを確認してください。
 - これは高可用なソリューションではありません。 さらに HA スタイルのソリューションが必要な場合は、2 つ目の VM を追加できます。また、ルート テーブルのルートをセカンダリ インターフェイスの内部 IP に手動で変更する必要があります。 また、複数のトンネルを相互接続するように構成する必要があります。
 
-## <a name="options"></a>オプション
+## <a name="options"></a>Options
 
 - _artifactsLocation および_artifactsLocationSasToken パラメーターを使用して、独自の BLOB ストレージ アカウントと SAS トークンを使用できます
 - このテンプレート INTERNALSUBNETREFVNET1 と INTERNALSUBNETREFVNET2 には 2 つの出力があります。これは、パイプライン スタイルのデプロイ パターンでこれを使用する場合、内部サブネットのリソース ID です。
 
 このテンプレートには、VNet の名前付けと IP アドレス指定の既定値が指定されています。 管理者 (rrasadmin) のパスワードが必要です。また、SAS トークンで独自のストレージ BLOB を使用することもできます。 デプロイが失敗する可能性があるため、これらの値を適切な範囲内に保つように注意します。 PowerShell RDS パッケージは各 RRAS VM で実行され、ルーティングと必要なすべての依存サービスと機能がインストールされます。 この DSC は、必要に応じてさらにカスタマイズできます。 カスタム スクリプト拡張機能では、次のスクリプトが実行され、`Add-Site2Site.ps1` によって 2 つの RRAS サーバー間の VPNS2S トンネルが共有キーを使用して構成されます。 カスタム スクリプト拡張機能からの詳細な出力を表示して、VPN トンネル構成の結果を確認できます。
 
-![alt text](./media/azure-stack-network-howto-vnet-peering/s2svpntunnels2.svg)
+!["S2SVPNTunnel" というタイトルの図に、サイト間 VPN トンネルによって接続された 2 つの VNET が示されています。](./media/azure-stack-network-howto-vnet-peering/s2svpntunnels2.svg)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
-ms.openlocfilehash: ed14d3a482a61b3daad827d559ef96926b65c551
-ms.sourcegitcommit: c263a86d371192e8ef2b80ced2ee0a791398cfb7
+ms.openlocfilehash: e2b53b4b99b02267a6f88b22a2ee373695445081
+ms.sourcegitcommit: b2337a9309c52aac9f5a1ffd89f1426d6c178ad5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82848066"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87250199"
 ---
 # <a name="app-service-on-azure-stack-hub-update-3-release-notes"></a>App Service on Azure Stack Hub Update 3 のリリース ノート
 
@@ -75,7 +75,7 @@ Azure App Service on Azure Stack Hub Update 3 には、次の機能強化と修�
 >
 >
 
-1. [AppService データベース (appservice_hosting and appservice_metering) を可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)に追加します。
+1. [AppService データベース (appservice_hosting and appservice_metering) を可用性グループ](/sql/database-engine/availability-groups/windows/availability-group-add-a-database)に追加します。
 
 1. 包含データベースを有効にします。
     ```sql
@@ -126,9 +126,9 @@ Azure App Service on Azure Stack Hub Update 3 には、次の機能強化と修�
             GO  
 
             /********[appservice_hosting] Migration End********/
-    '''
+    ```
 
-1. Migrate logins to contained database users.
+1. 包含データベース ユーザーにログインを移行します。
 
     ```sql
         IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)

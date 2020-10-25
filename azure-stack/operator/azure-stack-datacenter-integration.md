@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub 統合システムのデータセンター統合計画に関する考慮事項
+title: Azure Stack Hub 統合システムのデータセンター統合を計画する
 description: Azure Stack Hub 統合システムとのデータセンター統合を計画し、準備する方法について説明します。
 author: IngridAtMicrosoft
 ms.topic: conceptual
@@ -7,12 +7,12 @@ ms.date: 04/02/2020
 ms.author: inhenkel
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2019
-ms.openlocfilehash: fbcca6d24f37162fa62729f38d50a6ceb0f0374c
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 825db573a614d1a1dd9b54cd87d8894c981fce4b
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80638196"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90573035"
 ---
 # <a name="datacenter-integration-planning-considerations-for-azure-stack-hub-integrated-systems"></a>Azure Stack Hub 統合システムのデータセンター統合計画に関する考慮事項
 
@@ -111,7 +111,7 @@ Azure Stack Hub を同期するために使用される特定のタイム サー
 
 ハイブリッド クラウド シナリオでは、Azure Stack Hub を Azure に接続する方法を計画する必要があります。 Azure Stack Hub 内の仮想ネットワークを Azure 内の仮想ネットワークに接続する 2 つの方法がサポートされています。
 
-- **サイト間**:IPsec (IKE v1 および IKE v2) 経由の仮想プライベート ネットワーク (VPN) 接続。 この種の接続には、VPN デバイスまたは RRAS (ルーティングとリモート アクセス サービス) が必要です。 Azure での VPN Gateway の詳細については、「[VPN Gateway について](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)」を参照してください。 このトンネル経由の通信は暗号化されており、安全です。 ただし、帯域幅はトンネルの最大スループット (100 - 200 Mbps) によって制限されます。
+- **サイト間**:IPsec (IKE v1 および IKE v2) 経由の仮想プライベート ネットワーク (VPN) 接続。 この種の接続には、VPN デバイスまたは RRAS (ルーティングとリモート アクセス サービス) が必要です。 Azure での VPN Gateway の詳細については、「[VPN Gateway について](/azure/vpn-gateway/vpn-gateway-about-vpngateways)」を参照してください。 このトンネル経由の通信は暗号化されており、安全です。 ただし、帯域幅はトンネルの最大スループット (100 - 200 Mbps) によって制限されます。
 
 - **送信 NAT**:既定では、Azure Stack Hub 内のすべての VM が送信 NAT を経由して外部ネットワークに接続できます。 Azure Stack Hub 内に作成される各仮想ネットワークには、パブリック IP アドレスが割り当てられます。 VM にパブリック IP アドレスが直接割り当てられているか、パブリック IP アドレスを持つロード バランサーを介しているかにかかわらず、仮想ネットワークの VIP を使用して送信 NAT 経由の送信アクセスが可能です。 この方法は、VM によって開始され、外部ネットワーク (インターネットまたはイントラネット) を接続先とする通信についてのみ有効です。 外部から VM と通信するために使用することはできません。
 
@@ -139,7 +139,7 @@ Azure Stack Hub を同期するために使用される特定のタイム サー
 
 ### <a name="using-expressroute"></a>ExpressRoute の使用
 
-シングル テナントのイントラネットとマルチテナントの両方のシナリオで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) を経由して Azure Stack Hub を Azure に接続することができます。 [接続プロバイダー](https://docs.microsoft.com/azure/expressroute/expressroute-locations)経由でプロビジョニングされている ExpressRoute 回線が必要です。
+シングル テナントのイントラネットとマルチテナントの両方のシナリオで、[ExpressRoute](/azure/expressroute/expressroute-introduction) を経由して Azure Stack Hub を Azure に接続することができます。 [接続プロバイダー](/azure/expressroute/expressroute-locations)経由でプロビジョニングされている ExpressRoute 回線が必要です。
 
 次の図は、シングル テナント シナリオの ExpressRoute ("顧客の接続" が ExpressRoute 回線) を示しています。
 

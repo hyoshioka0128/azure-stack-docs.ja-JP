@@ -7,12 +7,12 @@ ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2019
-ms.openlocfilehash: 0760e7d796c6e17c88089675fa6ff659eb684cc7
-ms.sourcegitcommit: 721b82b3a1711f2825ec76ab6d75964b4f508631
+ms.openlocfilehash: 8fc10bd53bfcf9822f46eb977c02055db1a65cb7
+ms.sourcegitcommit: 1ab1293b594fe8ffc00dc800c663cf1323dc41ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84301030"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87939295"
 ---
 # <a name="infrastructure-backup-service-reference"></a>インフラストラクチャ バックアップ サービスのリファレンス
 
@@ -75,30 +75,15 @@ Infrastructure Backup コントローラーは、Azure Stack Hub クラウド向
 
 #### <a name="smb-encryption"></a>SMB 暗号化
 
-**1907 以降**
+::: moniker range=">=azs-1907"
 
 Infrastructure Backup サービスでは、サーバー側で SMB 暗号化が有効になっている外部の保存場所へのバックアップ データの転送がサポートされています。 サーバーで SMB 暗号化がサポートされていない場合、または機能が有効になっていない場合、Infrastructure Backup サービスでは暗号化されていないデータ転送にフォールバックされます。 外部の保存場所に配置されるバックアップ データは、保存時に常に暗号化され、SMB 暗号化に依存しません。
+
+::: moniker-end
 
 #### <a name="storage-location-sizing"></a>保存場所のサイズ設定
 
 少なくとも 1 日に 2 回はバックアップを行い、バックアップは最長で 7 日間保持することをお勧めします。 これは、Azure Stack Hub でインフラストラクチャ バックアップを有効にした場合の既定の動作です。
-
-**1907 以降**
-
-***Azure AD ID プロバイダーに接続されているシステム***
-
-| 環境のスケール | バックアップの予測サイズ | 必要な領域の合計サイズ |
-|-------------------|--------------------------|--------------------------------|
-| 4 ノードから 16 ノード/ASDK   | 1 GB                     | 20 GB                          |
-
-***ADFS 経由で企業の AD ID プロバイダーに接続されているシステム***
-
-| 環境のスケール | バックアップの予測サイズ | 必要な領域の合計サイズ |
-|-------------------|--------------------------|--------------------------------|
-| 4-16 ノード        | 20 GB                    | 280 GB                        |
-| ASDK              | 10 GB                    | 140 GB                        |
-
-**1907 より前**
 
 | 環境のスケール | バックアップの予測サイズ | 必要な領域の合計サイズ |
 |-------------------|--------------------------|--------------------------------|

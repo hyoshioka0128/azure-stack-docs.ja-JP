@@ -3,19 +3,19 @@ title: Azure Stack Hub でアプリに Key Vault に格納されているシー�
 description: Azure Stack Hub で Key Vault からキーとシークレットを取得するサンプル アプリを実行する方法を説明します。
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 06/15/2020
 ms.author: sethm
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: 16973c1c381cfecb611370f940f92a7695f9434f
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 2941adf109f9e8c142523f607bce969427127ec3
+ms.sourcegitcommit: c9737939f4e437f1d954e163db972d58b3f98ffd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77702773"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84813790"
 ---
 # <a name="allow-apps-to-access-azure-stack-hub-key-vault-secrets"></a>Azure Stack Hub でアプリに Key Vault に格納されているシークレットへのアクセスを許可する
 
-この記事の手順に従って、Azure Stack Hub のキー コンテナーからキーとシークレットを取得するサンプル アプリ **HelloKeyVault** を実行します。
+この記事の手順は、Azure Stack Hub のキー コンテナーからキーとシークレットを取得するサンプル アプリ **HelloKeyVault** を実行する方法を説明するものです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -130,7 +130,7 @@ Write-Host
 
 ## <a name="download-and-configure-the-sample-application"></a>サンプル アプリケーションのダウンロードと構成
 
-「[Azure Key Vault client samples (Azure Key Vault クライアントのサンプル)](https://www.microsoft.com/download/details.aspx?id=45343)」ページから、キー コンテナーのサンプルをダウンロードします。 .zip ファイルの内容を自分の開発ワークステーションに抽出します。 samples フォルダー内には 2 つのアプリがあります。 この記事では、**HelloKeyVault** を使用します。
+「[Azure Key Vault client samples (Azure Key Vault クライアントのサンプル)](https://www.microsoft.com/download/details.aspx?id=45343)」ページから、キー コンテナーのサンプルをダウンロードします。 .zip ファイルの内容を自分の開発ワークステーションに抽出します。 samples フォルダーには 2 つのアプリがあります。この記事では、**HelloKeyVault** を使用します。
 
 **HelloKeyVault** サンプルを読み込むには:
 

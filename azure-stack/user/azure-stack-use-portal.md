@@ -7,12 +7,12 @@ ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: efemmano
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: f60094812a5bc0b27a05ec7e66ac7bf65d747d76
-ms.sourcegitcommit: db3c9179916a36be78b43a8a47e1fd414aed3c2e
+ms.openlocfilehash: 26225b1b6ba55ed0f5934130e361f1dbab4b664e
+ms.sourcegitcommit: 6306e0c2506106ad01ff50010f36466f3325d0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84147024"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84631396"
 ---
 # <a name="use-the-azure-stack-hub-user-portal"></a>Azure Stack Hub ユーザー ポータルの使用
 
@@ -23,7 +23,7 @@ Azure Stack Hub ポータルを使用して、パブリック オファーをサ
 Azure Stack Hub オペレーター (サービス プロバイダーまたは組織内の管理者のいずれか) から、ポータルにアクセスするための正しい URL が通知されます。
 
 - 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、 https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; の形式になります。
-- Azure Stack Development Kit (ASDK) を使用している場合、ポータル アドレスは https://portal.local.azurestack.external です。
+- Azure Stack Development Kit (ASDK) を使用している場合、ポータル アドレスは `https://portal.local.azurestack.external` です。
 - すべての Azure Stack Hub デプロイの既定のタイム ゾーンは、協定世界時 (UTC) に設定されています。 Azure Stack Hub のインストール時にタイム ゾーンを選択できますが、インストール中に既定として UTC に自動的に戻ります。
 
 ## <a name="customize-the-dashboard"></a>ダッシュボードのカスタマイズ

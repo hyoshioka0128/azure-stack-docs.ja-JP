@@ -1,6 +1,6 @@
 ---
 title: Azure Stack Hub 上の Event Hubs の概要
-description: Azure Stack Hub の Event Hubs リソースプロバイダーについて説明します。
+description: Azure Stack Hub 上の Event Hubs について説明します。 ハイブリッド ソリューションの構築方法を確認します。 Azure Stack Hub 上の Azure Event Hubs と Event Hubs の機能を比較します。
 author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 11/27/2019
 ms.reviewer: jfggdl
 ms.lastreviewed: 11/27/2019
-ms.openlocfilehash: c7c1d11d2ef432ddc8b750fde5cb6970c4076db4
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 117fd4cd1d688b9ace109f6c2038cd3ffe0d9e6f
+ms.sourcegitcommit: a1e2003fb9c6dacdc76f97614ff5a26a5b197b49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80614407"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91623151"
 ---
-# <a name="event-hubs-on-azure-stack-hub-overview"></a>Azure Stack Hub 上の Event Hubs の概要
+# <a name="overview-of-event-hubs-on-azure-stack-hub"></a>Azure Stack Hub 上の Event Hubs の概要
 
 [!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
 
@@ -57,7 +57,7 @@ Azure Resource Management の操作は、Azure Resource Manager テンプレー�
 
 ## <a name="feature-documentation"></a>機能のドキュメント
 
-[Azure Event Hubs のドキュメント](/azure/event-hubs/)は、Azure Stack Hub 上の Event Hubs と Azure Event Hubs の両方のエディションの Event Hubs を対象としています。 このドキュメントでは、Event Hubs とアクティビティの使用に関する次のようなトピックを扱っています。
+[Azure Event Hubs のドキュメント](/azure/event-hubs/)は、両方の Event Hubs エディションを対象としています。Azure Stack Hub 上の Event Hubs、および Azure Event Hubs。 このドキュメントでは、Event Hubs とアクティビティの使用に関する次のようなトピックを扱っています。
 
 - [Event Hubs の概念](/azure/event-hubs/event-hubs-features)に関する詳細情報
 - [Event Hubs クラスターと名前空間を作成](event-hubs-quickstart-cluster-portal.md)する方法
@@ -66,7 +66,7 @@ Azure Resource Management の操作は、Azure Resource Manager テンプレー�
 
 ### <a name="operator-documentation"></a>オペレーター ドキュメント 
  
-Azure Stack Hub 上の Event Hubs のオペレーター エクスペリエンスについて詳しくは、[Event Hubs のオペレーター ドキュメント](/azure-stack/operator/event-hubs-rp-overview)を参照してください。 このドキュメントでは、次のようなアクティビティについての情報を取り上げています。
+Azure Stack Hub 上の Event Hubs のオペレーター エクスペリエンスについて詳しくは、[Event Hubs のオペレーター ドキュメント](../operator/event-hubs-rp-overview.md)を参照してください。 このドキュメントでは、次のようなアクティビティについての情報を取り上げています。
 
 - Event Hubs をインストールする。
 - Event Hubs をユーザーが利用できるようにする。

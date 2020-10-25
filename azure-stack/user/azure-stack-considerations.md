@@ -3,15 +3,15 @@ title: サービスを使用する場合やアプリを作成する場合の Azu
 description: サービスを使用する場合やアプリを作成する場合の Azure と Azure Stack Hub の違いについて説明します。
 author: sethmanheim
 ms.topic: overview
-ms.date: 01/06/2020
+ms.date: 09/21/2020
 ms.author: sethm
 ms.lastreviewed: 12/27/2019
-ms.openlocfilehash: 9d60c9300d2a717f280ab16a7f6c55d67a13f28c
-ms.sourcegitcommit: 4138a2a15f78e7db38b3a29acc963a71937146fd
+ms.openlocfilehash: 25d836bece262f881901df6c62b5dc8f4aeaf11d
+ms.sourcegitcommit: dabbe44c3208fbf989b7615301833929f50390ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "80362153"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90946457"
 ---
 # <a name="differences-between-azure-stack-hub-and-azure-when-using-services-and-building-apps"></a>サービスを使用する場合やアプリを作成する場合の Azure Stack Hub と Azure の違い
 
@@ -27,22 +27,20 @@ Azure Stack Hub オペレーターは、ユーザーに使用可能なサービ�
 
 * Azure Stack Hub では、Azure で利用可能なサービスと機能のサブセットが提供されます。
 * 会社またはサービス プロバイダーは、提供するサービスを選択できます。 使用可能なオプションには、カスタマイズされたサービスまたはアプリケーションが含まれる場合があります。 独自のカスタマイズされたドキュメントが提供される場合もあります。
-* 適切な Azure Stack Hub 固有のエンドポイント (ポータル アドレスや Azure Resource Manager エンドポイントの URL など) を使用する必要があります。
+* 適切な Azure Stack Hub 固有のエンドポイント (ポータル アドレスや Azure Resource Manager エンドポイントの URL など) を使用します。
 * Azure Stack Hub でサポートされている PowerShell および API のバージョンを使用する必要があります。 サポートされているバージョンを使用すると、確実に Azure Stack Hub と Azure の両方でアプリが動作するようになります。
 
-## <a name="cheat-sheet-high-level-differences"></a>チート シート: 違いの概要
+## <a name="cheat-sheet-high-level-differences"></a>チート シート:大まかな違い
 
 次の表では、Azure Stack Hub と Azure の大まかな違いを示します。 Azure Stack Hub 向けに開発する場合や、Azure Stack Hub サービスを使用する場合は以下の相違点に注意してください。
 
 | 領域 | Azure (グローバル) | Azure Stack Hub |
 | -------- | ------------- | ----------|
 | 運用担当(オペレーター) | Microsoft | 組織またはサービス プロバイダー。|
-| サポートに関する連絡先 | Microsoft | 統合システムについては、(組織またはサービス プロバイダーの) Azure Stack Hub オペレーターにお問い合わせください。<br><br>Azure Stack Development Kit (ASDK) のサポートについては、[Microsoft フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack)にアクセスして確認してください。 開発キットは評価環境であるため、Microsoft カスタマー サポート サービス (CSS) を通した正式なサポートは提供されていません。
-
-| 利用可能なサービス | [Azure 製品](https://azure.microsoft.com/services/?b=17.04b)の一覧を参照してください。 利用可能なサービスは Azure リージョンによって異なります。 | Azure Stack Hub では Azure サービスのサブセットがサポートされます。 提供される実際のサービスは、組織またはサービス プロバイダーによる選択内容によって異なります。
-| Azure Resource Manager のエンドポイント* | https://management.azure.com | Azure Stack Hub 統合システムの場合は、Azure Stack Hub オペレーターによって提供されたエンドポイントを使用します。<br><br>開発キットの場合は、 https://management.local.azurestack.external を使用します。
-
-| ポータル URL* | [https://portal.azure.com](https://portal.azure.com) | Azure Stack Hub 統合システムの場合は、Azure Stack Hub オペレーターによって提供される URL を使用します。<br><br>開発キットの場合は、 https://portal.local.azurestack.external を使用します。
+| サポートに関する連絡先 | Microsoft | 統合システムについては、(組織またはサービス プロバイダーの) Azure Stack Hub オペレーターにお問い合わせください。<br><br>Azure Stack Development Kit (ASDK) のサポートについては、[Microsoft フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack)にアクセスして確認してください。 開発キットは評価環境であるため、Microsoft サポートを通じた正式なサポートは提供されていません。
+| 利用可能なサービス | [Azuer 製品](https://azure.microsoft.com/services/?b=17.04b)の一覧を参照してください。 利用可能なサービスは Azure リージョンによって異なります。 | Azure Stack Hub では Azure サービスのサブセットがサポートされます。 提供される実際のサービスは、組織またはサービス プロバイダーによる選択内容によって異なります。
+| Azure Resource Manager のエンドポイント* | `https://management.azure.com` | Azure Stack Hub 統合システムの場合は、Azure Stack Hub オペレーターによって提供されたエンドポイントを使用します。<br><br>開発キットの場合は、`https://management.local.azurestack.external` を使用します。
+| ポータル URL* | [https://portal.azure.com](https://portal.azure.com) | Azure Stack Hub 統合システムの場合は、Azure Stack Hub オペレーターによって提供される URL を使用します。<br><br>開発キットの場合は、`https://portal.local.azurestack.external` を使用します。
 | リージョン | デプロイ先のリージョンを選択することができます。 | Azure Stack Hub 統合システムの場合は、システムで利用可能なリージョンを使用します。<br><br>Azure Stack Development Kit (ASDK) の場合、リージョンは常に**ローカル**になります。
 | リソース グループ | リソース グループは複数のリージョンにまたがることができます。 | 統合システムと開発キットのいずれも、リージョンは 1 つのみです。
 |サポートされている名前空間、リソースの種類、および API のバージョン | 最新 (またはまだ非推奨ではない以前のバージョン)。 | Azure Stack Hub では特定のバージョンがサポートされます。 この記事の「[バージョンの要件](#version-requirements)」セクションを参照してください。
@@ -77,7 +75,7 @@ Get-AzureRmResourceProvider | Select ProviderNamespace -Expand ResourceTypes | S
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```
 
-出力例 (一部): ![Get-AzureRmResourceProvider コマンドの出力例](media/azure-stack-considerations/image1.png)
+出力例 (抜粋):![Get-AzureRmResourceProvider コマンドの出力例](media/azure-stack-considerations/image1.png)
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -86,3 +84,4 @@ Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}
 * [Azure Stack Hub の VM に関する考慮事項](azure-stack-vm-considerations.md)
 * [Azure Stack Hub のストレージに関する考慮事項](azure-stack-acs-differences.md)
 * [Azure Stack Hub ネットワークに関する考慮事項](azure-stack-network-differences.md)
+* [Azure Stack Hub SQL リソース プロバイダーに関する考慮事項](../operator/azure-stack-sql-resource-provider.md)

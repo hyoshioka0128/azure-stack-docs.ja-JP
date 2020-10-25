@@ -7,12 +7,12 @@ ms.date: 03/04/2020
 ms.author: inhenkel
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
-ms.openlocfilehash: 995342f471ed7300d2fb9dd95a6623588a13d1a9
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: a99339b2a8708bac8c20b5f2fb507e42fc7588de
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "79295330"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86488656"
 ---
 # <a name="manage-azure-stack-hub-storage-accounts"></a>Azure Stack Hub のストレージ アカウントを管理する
 
@@ -22,7 +22,7 @@ Azure Stack Hub のストレージ アカウントを管理する方法を学習
 
 リージョン内のストレージ アカウントのリストは、これらの手順に従うことで Azure Stack Hub で表示できます。
 
-1. [管理者ポータル](https://adminportal.local.azurestack.external)にサインインします。
+1. 管理者ポータル `https://adminportal.local.azurestack.external` にサインインします。
 
 2. **[すべてのサービス]**  >  **[ストレージ]**  >  **[ストレージ アカウント]** の順に選択します。
 
@@ -89,8 +89,8 @@ Azure Stack Hub では、これを行う簡単な方法があります。
 
 **保有期間を変更するには:**
 
-1. [管理者ポータル](https://adminportal.local.azurestack.external)にサインインします。
-2. **[管理]** の下で、**[すべてのサービス]** > **[リージョン管理]** を選択します。
+1. 管理者ポータル `https://adminportal.local.azurestack.external` にサインインします。
+2. **[管理]** の下で、 **[すべてのサービス]**  >  **[リージョン管理]** を選択します。
 3. **[リソース プロバイダー]**  >  **[ストレージ]**  >  **[設定]** の順に選択します。 パスは、[ホーム] > [<*リージョン*> - リソース プロバイダー] > [ストレージ] です。
 4. **[構成]** を選択してリテンション期間の値を編集します。
 
@@ -123,7 +123,7 @@ PowerShell を使用して保有期間を明示的にオーバーライドし、
 **PowerShell を使用して容量を回収するには:**
 
 1. Azure PowerShell がインストールおよび構成されていることを確認します。 それ以外の場合は、次の手順を実行します。 
-   * Azure PowerShell の最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、[Azure PowerShell のインストールおよび構成方法](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)に関するページをご覧ください。
+   * Azure PowerShell の最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、[Azure PowerShell のインストールおよび構成方法](/powershell/azure/)に関するページをご覧ください。
    Azure Resource Manager コマンドレットの詳細については、[Azure Resource Manager での Azure PowerShell の使用](https://go.microsoft.com/fwlink/?LinkId=394767)に関するページを参照してください。
 2. 次のコマンドレットを実行します。
 
@@ -135,7 +135,7 @@ PowerShell を使用して保有期間を明示的にオーバーライドし、
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ```
 
-詳細については、[Azure Stack Hub PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/azure-stack/overview)を参照してください。
+詳細については、[Azure Stack Hub PowerShell のドキュメント](/powershell/azure/azure-stack/overview)を参照してください。
  
 
 ## <a name="next-steps"></a>次のステップ

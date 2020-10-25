@@ -3,16 +3,16 @@ title: PowerShell を使用して Azure Stack Hub に接続する
 description: PowerShell を使用して Azure Stack Hub に接続する方法について説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 8/4/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 09/19/2019
-ms.openlocfilehash: 56782d79483f544dc019b4c162ed9af1a1163e4b
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.lastreviewed: 8/4/2020
+ms.openlocfilehash: 3001d06deb81e275f3b62127cb555d3afceaff3c
+ms.sourcegitcommit: c75e2cfd96f37a3497958eb87446888477f85bc9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111237"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810798"
 ---
 # <a name="connect-to-azure-stack-hub-with-powershell"></a>PowerShell を使用して Azure Stack Hub に接続する
 
@@ -61,8 +61,7 @@ Azure Stack Hub オペレーター環境に Azure Active Directory フェデレ�
   Login-AzureRmAccount -EnvironmentName "AzureStackAdmin"
   ```
 
-> [!Note]  
-> AD FS でサポートされるのは、ユーザー ID を使用した対話型認証のみです。 資格情報オブジェクトが必要な場合は、サービス プリンシパル (SPN) を使用する必要があります。 Azure Stack Hub と AD FS を ID 管理サービスとしてサービス プリンシパルを設定する方法の詳細については、[AD FS のアプリ ID の管理](azure-stack-create-service-principals.md#manage-an-ad-fs-app-identity)に関する記事を参照してください。
+[!Include [AD FS only supports interactive authentication with user identities](../includes/note-powershell-adfs.md)]
 
 ## <a name="test-the-connectivity"></a>接続のテスト
 
@@ -76,4 +75,4 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 - [Azure Stack Hub のテンプレートを開発します](../user/azure-stack-develop-templates.md)。
 - [PowerShell を使用したテンプレートのデプロイ](../user/azure-stack-deploy-template-powershell.md)
-  - [Azure Stack Hub モジュールのリファレンス](https://docs.microsoft.com/powershell/azure/azure-stack/overview)
+  - [Azure Stack Hub モジュールのリファレンス](/powershell/azure/azure-stack/overview)
