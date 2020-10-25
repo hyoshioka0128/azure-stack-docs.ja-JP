@@ -152,9 +152,9 @@ Linux VM のパスワードを忘れて、VMAccess 拡張機能の問題が原�
 
 |Edition|AVMA キー|
 |-|-|
-|データセンター|Y4TGP-NPTV9-HTC2H-7MGQ3-DV4TW|
+|Datacenter|Y4TGP-NPTV9-HTC2H-7MGQ3-DV4TW|
 |Standard|DBGBW-NPF86-BJVTX-K3WKJ-MTB6V|
-|要点|K2XGM-NMBT3-2R6Q8-WF2FK-P36R2|
+|Essentials|K2XGM-NMBT3-2R6Q8-WF2FK-P36R2|
 
 VM で、次のコマンドを実行します。
 
