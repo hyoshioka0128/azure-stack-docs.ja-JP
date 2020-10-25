@@ -3,17 +3,17 @@ title: Azure Stack Hub でのソリューションの検証
 description: ソリューション検証ワークフローを使用して、新しい Azure Stack Hub ソリューションを検証する方法について説明します。
 author: mattbriggs
 ms.topic: quickstart
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2d47450af602928eb9220238ae945610fd9f0477
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: 65984da8615d9146db98800c710efee004f021c2
+ms.sourcegitcommit: 4922a14fdbc8a3b67df065336e8a21a42f224867
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661158"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88764887"
 ---
 # <a name="validate-a-solution-in-azure-stack-hub"></a>Azure Stack Hub でのソリューションの検証
 

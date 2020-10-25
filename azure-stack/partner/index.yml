@@ -1,40 +1,57 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Stack Hub のパートナー向けドキュメント
+summary: Azure Stack Hub をホストするためにハードウェアを検証する方法について説明します。 サービスとしての検証とは、Microsoft と共同でサービスを開発しているソリューション パートナーが使用できるように設計されたネイティブの Azure サービスです。
 metadata:
-  title: Azure Stack Hub のパートナー向けドキュメント - チュートリアル、API リファレンス
-  description: Azure Stack Hub をホストするためにハードウェアを検証する方法について説明します。 サービスとしての検証とは、Microsoft と共同で Azure Stack Hub のサービスを開発しているソリューション パートナーが使用できるように設計されたネイティブの Azure サービスです。
-  services: azure-stack
-  author: mattbriggs
-  manager: femila
+  title: Azure Stack Hub パートナー
+  description: Azure Stack Hub をホストするためにハードウェアを検証する方法について説明します。 サービスとしての検証とは、Microsoft と共同でサービスを開発しているソリューション パートナーが使用できるように設計されたネイティブの Azure サービスです。
   ms.service: azure-stack
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: partner
   ms.topic: landing-page
-  ms.date: 07/25/2018
+  author: mattbriggs
   ms.author: mabrigg
-  ms.reviewer: johnhas
-abstract:
-  description: サービスとしての検証を使用して、Azure Stack Hub での使用についてハードウェアを検証できます。 このサービスは、Microsoft と共同で Azure Stack Hub のサービスを開発しているソリューション パートナーが使用できるように設計されたネイティブの Azure サービスです。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: サービスとしての検証ポータルを使って、ハードウェアでのテストをスケジュールする方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/i_account-management.svg
-            text: サービスとしての検証のポータルを使用して最初のテストをスケジュールする
-            href: azure-stack-vaas-schedule-test-pass.md
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure Stack Hub ハードウェアの検証方法を説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-solution-new">新しい Azure Stack Hub ソリューションの検証</a>
-          - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-oem-package">OEM パッケージの検証</a>
-          - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-microsoft-updates">Microsoft のソフトウェア更新プログラムの検証</a>
+  ms.date: 06/22/2020
+  ms.openlocfilehash: 1e1deb2af682bbe732d374873e0b0ccbd292fce7
+  ms.sourcegitcommit: 76af742a42e807c400474a337e29d088ede8a60d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/22/2020
+  ms.locfileid: "85197023"
+landingContent:
+- title: Azure Stack Hub のサービスとしての検証について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: サービスとしての検証とは
+      url: azure-stack-vaas-overview.md
+  - linkListType: whats-new
+    links:
+    - text: リリース ノート
+      url: azure-stack-vaas-release-notes.md
+- title: はじめに
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: サービスとしての検証のポータルを使用する方法を学習する
+      url: azure-stack-vaas-schedule-test-pass.md
+    - text: ソリューションを検証する
+      url: azure-stack-vaas-validate-solution-new.md
+- title: 使用方法
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 新しい Azure Stack Hub ソリューションの検証
+      url: azure-stack-vaas-validate-solution-new.md
+    - text: OEM パッケージの検証
+      url: azure-stack-vaas-validate-oem-package.md
+    - text: Microsoft のソフトウェア更新プログラムの検証
+      url: azure-stack-vaas-validate-microsoft-updates.md
+    - text: サービスとしての検証のトラブルシューティング
+      url: azure-stack-vaas-troubleshoot.md
+  - linkListType: concept
+    links:
+    - text: 主要な概念
+      url: azure-stack-vaas-key-concepts.md
+    - text: ベスト プラクティス
+      url: azure-stack-vaas-best-practice.md
+    - text: 共通パラメーター
+      url: azure-stack-vaas-parameters.md

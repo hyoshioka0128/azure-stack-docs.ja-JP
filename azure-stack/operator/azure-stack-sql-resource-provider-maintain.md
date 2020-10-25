@@ -4,20 +4,20 @@ titleSuffix: Azure Stack Hub
 description: Azure Stack Hub での SQL リソース プロバイダーのメンテナンス操作について説明します。
 author: bryanla
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 9/22/2020
 ms.author: bryanla
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2020
-ms.openlocfilehash: 134839230eef3bb76c8df82cb2bd79b5127dfed9
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 0de06d7bf13919be95b3d97aa1113221f4378625
+ms.sourcegitcommit: 69cfff119ab425d0fbb71e38d1480d051fc91216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77697265"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91572825"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL リソース プロバイダーの保守操作
 
-SQL リソース プロバイダーは、ロックダウンされた仮想マシン (VM) 上で実行されます。 メンテナンス操作を有効にするには、VM のセキュリティを更新する必要があります。 最小限の特権の原則を使用してそれを行うには、[PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) エンドポイント *DBAdapterMaintenance* を使用します。 リソース プロバイダーのインストール パッケージには、この操作のためのスクリプトが含まれています。
+SQL リソース プロバイダーは、ロックダウンされた仮想マシン (VM) 上で実行されます。 メンテナンス操作を有効にするには、VM のセキュリティを更新する必要があります。 最小限の特権の原則を使用してそれを行うには、[PowerShell Just Enough Administration (JEA)](/powershell/scripting/learn/remoting/jea/overview) エンドポイント *DBAdapterMaintenance* を使用します。 リソース プロバイダーのインストール パッケージには、この操作のためのスクリプトが含まれています。
 
 ## <a name="patching-and-updating"></a>修正プログラム適用と更新
 
@@ -44,6 +44,7 @@ Azure Stack Hub 統合システムで SQL および MySQL リソース プロバ
 - [デプロイ時に提供](azure-stack-pki-certs.md)された外部 SSL 証明書。
 - デプロイ時に提供された、リソース プロバイダー VM のローカル管理者アカウントのパスワード。
 - リソース プロバイダーの診断ユーザー (dbadapterdiag) のパスワード。
+- (バージョン 1.1.47.0 以上) デプロイ時に生成された Key Vault 証明書。
 
 ### <a name="powershell-examples-for-rotating-secrets"></a>PowerShell のシークレットのローテーション例
 
@@ -57,7 +58,8 @@ Azure Stack Hub 統合システムで SQL および MySQL リソース プロバ
     -DiagnosticsUserPassword $passwd `
     -DependencyFilesLocalPath $certPath `
     -DefaultSSLCertificatePassword $certPasswd  `
-    -VMLocalCredential $localCreds
+    -VMLocalCredential $localCreds `
+    -KeyVaultPfxPassword $keyvaultCertPasswd
 ```
 
 **診断ユーザーのパスワードを変更する。**
@@ -91,22 +93,34 @@ Azure Stack Hub 統合システムで SQL および MySQL リソース プロバ
     -DefaultSSLCertificatePassword $certPasswd
 ```
 
+**Key Vault 証明書のパスワードを変更する。**
+
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    -KeyVaultPfxPassword $keyvaultCertPasswd
+```
+
 ### <a name="secretrotationsqlproviderps1-parameters"></a>SecretRotationSQLProvider.ps1 のパラメーター
 
-|パラメーター|説明|
-|-----|-----|
-|AzCredential|Azure Stack Hub サービス管理者アカウントの資格情報。|
-|CloudAdminCredential|Azure Stack Hub クラウド管理者ドメイン アカウントの資格情報。|
-|PrivilegedEndpoint|Get-AzureStackStampInformation にアクセスするための特権エンドポイント。|
-|DiagnosticsUserPassword|診断ユーザー アカウントのパスワード。|
-|VMLocalCredential|MySQLAdapter VM のローカル管理者アカウント。|
-|DefaultSSLCertificatePassword|既定の SSL 証明書 (*pfx) のパスワード。|
-|DependencyFilesLocalPath|依存関係ファイルのローカル パス。|
-|     |     |
+|パラメーター|説明|解説|
+|-----|-----|-----|
+|AzureEnvironment|Azure Stack Hub のデプロイに使用するサービス管理者アカウントの Azure 環境。 Azure AD のデプロイでのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure Active Directory を使用している場合は **AzureChinaCloud** です。|省略可能|
+|AzCredential|Azure Stack Hub サービス管理者アカウントの資格情報。|Mandatory|
+|CloudAdminCredential|Azure Stack Hub クラウド管理者ドメイン アカウントの資格情報。|Mandatory|
+|PrivilegedEndpoint|Get-AzureStackStampInformation にアクセスするための特権エンドポイント。|Mandatory|
+|DiagnosticsUserPassword|診断ユーザー アカウントのパスワード。|省略可能|
+|VMLocalCredential|MySQLAdapter VM のローカル管理者アカウント。|省略可能|
+|DefaultSSLCertificatePassword|既定の SSL 証明書 (*pfx) のパスワード。|省略可能|
+|DependencyFilesLocalPath|依存関係ファイルのローカル パス。|省略可能|
+|KeyVaultPfxPassword|データベース アダプターの Key Vault 証明書の生成に使用されるパスワード。|省略可能|
+|     |     |     |
 
 ### <a name="known-issues"></a>既知の問題
 
-**問題点**:<br>
+**問題**:<br>
 シークレット ローテーション ログ。 シークレット ローテーションのカスタム スクリプトが実行され、失敗した場合、シークレット ローテーションのログは自動的に収集されません。
 
 **回避策**:<br>
@@ -116,12 +130,12 @@ Get-AzsDBAdapterLogs コマンドレットを使用して、C:\Logs に保存さ
 
 VM のオペレーティング システムを更新するには、次のいずれかの方法を使用します。
 
-- 現在パッチが適用されている Windows Server 2016 Core イメージを使用して最新のリソース プロバイダーのパッケージをインストールする。
+- 現在パッチが適用されている VM イメージを使用して最新のリソース プロバイダーのパッケージをインストールする。
 - リソース プロバイダーのインストールまたは更新中に Windows 更新プログラム パッケージをインストールする。
 
 ## <a name="update-the-vm-windows-defender-definitions"></a>VM の Windows Defender の定義を更新する
 
-Windows Defender の定義を更新するには:
+Windows Defender の定義を更新するには: 
 
 1. [Windows Defender のセキュリティ インテリジェンスの更新](https://www.microsoft.com/wdsi/definitions)に関するページから Windows Defender 定義の更新プログラムをダウンロードします。
 
@@ -230,13 +244,13 @@ Azure Diagnostics 拡張機能は、既定で SQL リソース プロバイダ�
 
 2. 左側のペインで **[仮想マシン]** を選択し、SQL リソース プロバイダー アダプター VM を検索して、その VM を選択します。
 
-3. VM の **[診断設定]** で、 **[ログ]** タブにアクセスし、 **[カスタム]** を選択して、収集するイベント ログをカスタマイズします。
+3. VM の **[診断設定]** で、**[ログ]** タブにアクセスし、**[カスタム]** を選択して、収集するイベント ログをカスタマイズします。
 ![診断設定への移動](media/azure-stack-sql-resource-provider-maintain/sqlrp-diagnostics-settings.png)
 
 4. SQL リソース プロバイダーの操作イベント ログを収集するために、**Microsoft-AzureStack-DatabaseAdapter/Operational!\*** を追加します。
 ![イベント ログの追加](media/azure-stack-sql-resource-provider-maintain/sqlrp-event-logs.png)
 
-5. IIS ログの収集を有効にするには、 **[IIS ログ]** と **[失敗した要求のログ]** をオンにします。
+5. IIS ログの収集を有効にするには、**[IIS ログ]** と **[失敗した要求のログ]** をオンにします。
 ![IIS ログの追加](media/azure-stack-sql-resource-provider-maintain/sqlrp-iis-logs.png)
 
 6. 最後に、 **[保存]** を選択して、すべての診断設定を保存します。

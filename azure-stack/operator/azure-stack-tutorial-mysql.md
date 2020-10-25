@@ -8,12 +8,12 @@ ms.date: 10/07/2019
 ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/23/2019
-ms.openlocfilehash: 327b63e2b21ea545fd6e0d175d531862ceeac0d6
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 52dee37571715f6093609609b4f31a45739df1f7
+ms.sourcegitcommit: 69cfff119ab425d0fbb71e38d1480d051fc91216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77696925"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91572910"
 ---
 # <a name="create-highly-available-mysql-databases"></a>高可用性 MySQL データベースの作成
 
@@ -28,7 +28,7 @@ Azure Stack Hub オペレーターとして、MySQL Server データベースを
 
 > [!div class="checklist"]
 > * マーケットプレースの項目から MySQL Server クラスターを作成する。
-> * Azure Stack Hub MySQL ホスティング サーバーを作成する。
+> * MySQL Server クラスターを Azure Stack Hub MySQL ホスティング サーバーとして構成する。
 > * 高可用性 MySQL データベースを作成する。
 
 利用可能な Azure Stack Marketplace の項目を使用して、3 つの VM MySQL Server クラスターを作成および構成します。
@@ -139,7 +139,7 @@ MySQL クラスターを Azure Stack Hub MySQL Server ホストとして追加�
 
 3. Azure Stack Hub MySQL ホスティング サーバーが MySQL に接続し、SSH クライアントを終了するために使用するリモート アクセス ユーザー アカウントを作成します。
 
-    前に作成したルート パスワードを使用して、次のコマンドを実行して MySQL に root としてログインします。 新しい管理者ユーザーを作成し、環境に合わせて *\<username\>* および *\<password\>* を置き換えます。 この例では、作成されたユーザーの名前は **sqlsa** であり、強力なパスワードが使用されています。
+    前に作成したルート パスワードを使用して、次のコマンドを実行して MySQL に root としてログインします。 新しい管理者ユーザーを作成し、お使いの環境に合わせて *\<username\>* と *\<password\>* を置き換えます。 この例では、作成されたユーザーの名前は **sqlsa** であり、強力なパスワードが使用されています。
 
    ```mysql
    mysql -u root -p
@@ -154,9 +154,9 @@ MySQL クラスターを Azure Stack Hub MySQL Server ホストとして追加�
 
     Azure Stack Hub オペレーターには、このユーザー名とパスワードと共に、クラスターのパブリック IP アドレスまたはパブリック IP の完全な FQDN を渡し、この MySQL クラスターを使用して MySQL ホスティング サーバーを作成できるようにする必要があります。
 
-## <a name="create-an-azure-stack-hub-mysql-hosting-server"></a>Azure Stack Hub MySQL ホスティング サーバーを作成する
+## <a name="configure-an-azure-stack-hub-mysql-hosting-server"></a>Azure Stack Hub MySQL ホスティング サーバーを構成する
 
-MySQL Server クラスターが作成され適切に構成されたら、Azure Stack Hub オペレーターは、Azure Stack Hub MySQL ホスティング サーバーを作成して、ユーザーがデータベースを作成できるように追加容量を利用可能にする必要があります。
+MySQL Server クラスターが作成されて適切に構成されたら、Azure Stack Hub オペレーターはそれを Azure Stack Hub MySQL ホスティング サーバーとして追加する必要があります。
 
 以前に MySQL クラスターのリソース グループを作成したときにメモした、MySQL クラスターのプライマリ VM のパブリック IP、またはパブリック IP の完全な FQDN を必ず使用してください (**mysqlip**)。 また、オペレーターは、MySQL クラスター データベースにリモート アクセスするために作成した MySQL Server の認証資格情報を知っておく必要があります。
 

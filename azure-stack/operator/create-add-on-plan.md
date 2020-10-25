@@ -8,12 +8,12 @@ ms.date: 10/05/2019
 ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
-ms.openlocfilehash: 2fd22acfe6f47d3a12502d5528e1f3fd96294460
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 29ae7acf1954dfafad1583bf037603f8ccac7514
+ms.sourcegitcommit: 53b0dde60a6435936a5e0cb9e931245f262d637a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77696483"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91106788"
 ---
 # <a name="create-add-on-plans-in-azure-stack-hub"></a>Azure Stack Hub でアドオン プランを作成する
 
@@ -35,19 +35,19 @@ ms.locfileid: "77696483"
 2. [新しい基本プランを作成](azure-stack-create-plan.md)したときと同じ手順で、これまでは提供されていなかったサービスを提供する新しいプランを作成します。
 3. 管理者ポータルで **[オファー]** を選択し、アドオン プランで更新するオファーを選択します。
 
-   ![Azure Stack 管理者ポータルで、アドオン プランで更新するオファーを選択する](media/create-add-on-plan/add-on1.png)
+   ![Azure Stack 管理者ポータルで、アドオン プランで更新するオファーを選択する方法を示すスクリーンショット。](media/create-add-on-plan/add-on1.png)
 
 4. オファーのプロパティの一番下で、 **[アドオン プラン]** を選択します。 **[追加]** を選択します。
 
-    ![Azure Stack 管理者ポータルでアドオン プランを選択する](media/create-add-on-plan/add-on2.png)
+    ![Azure Stack 管理者ポータルでアドオン プランを選択する方法を示すスクリーンショット。](media/create-add-on-plan/add-on2.png)
 
 5. 追加するプランを選択します。 この例では、プランの名前は **20-storageaccounts** です。 プランの選択後、 **[選択]** をクリックして、オファーにプランを追加します。 プランがオファーに正常に追加されたという通知が届きます。
 
-    ![Azure Stack 管理者ポータルで追加するアドオン プランを選択する](media/create-add-on-plan/add-on3.png)
+    ![Azure Stack 管理者ポータルで追加するアドオン プランを選択する方法を示すスクリーンショット。](media/create-add-on-plan/add-on3.png)
 
 6. オファーに含まれているアドオン プランの一覧を見て、新しいアドオン プランが一覧に表示されていることを確認します。
 
-    ![[Azure Stack 管理者ポータルでアドオン プランのリストを確認する]\(media/create-add-on-plan/add-on4.png "アドオン プランを作成する")](media/create-add-on-plan/add-on4lg.png#lightbox)
+    ![Azure Stack 管理者ポータルで確認するアドオン プランの一覧を示すスクリーンショット。](media/create-add-on-plan/add-on4.png "アドオン プランを作成する")](media/create-add-on-plan/add-on4lg.png#lightbox)
 ::: moniker-end
 
 ::: moniker range="<=azs-1901"

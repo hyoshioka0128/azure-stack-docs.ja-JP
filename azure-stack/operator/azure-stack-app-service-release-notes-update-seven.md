@@ -8,12 +8,12 @@ ms.date: 10/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
-ms.openlocfilehash: b29b5963326a49b5e74c786f22b53e20e32c2bd6
-ms.sourcegitcommit: ddcd083430ca905653d412dc2f7b813218d79509
+ms.openlocfilehash: 449c1dac3e983aacefe4d69581ee854239d435ae
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83374698"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86489608"
 ---
 # <a name="app-service-on-azure-stack-hub-update-7-release-notes"></a>App Service on Azure Stack Hub update 7 のリリース ノート
 
@@ -75,7 +75,7 @@ Azure App Service on Azure Stack Hub Update 7 には、次の機能強化と修�
   - [x64 ベース システム用 Windows Server 2016 に対する 2019-08 累積的な更新プログラム (KB4512495)](https://support.microsoft.com/help/4512495)
 
 - **ユーザー ポータルでアクセス制限が有効になりました**:
-  - ユーザーは、公開されているドキュメント「[Azure App Service のアクセス制限](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)」に従って Web、API、関数アプリのアクセス制限を構成できるようになりました。
+  - ユーザーは、公開されているドキュメント「[Azure App Service のアクセス制限](/azure/app-service/app-service-ip-restrictions)」に従って Web、API、関数アプリのアクセス制限を構成できるようになりました。
   
   > [!NOTE]
   > Azure App Service on Azure Stack Hub ではサービス エンドポイントはサポートされていません。
@@ -98,7 +98,7 @@ Azure App Service on Azure Stack Hub Update 7 には、次の機能強化と修�
 ## <a name="post-deployment-steps"></a>デプロイ後の手順
 
 > [!IMPORTANT]
-> SQL Always On インスタンスを使用して App Service リソース プロバイダーを提供している場合は、データベースのフェールオーバーが発生したときにサービスが失われないように、[appservice_hosting と appservice_metering データベースを可用性グループに追加](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する "必要があります"。
+> SQL Always On インスタンスを使用して App Service リソース プロバイダーを提供している場合は、データベースのフェールオーバーが発生したときにサービスが失われないように、[appservice_hosting と appservice_metering データベースを可用性グループに追加](/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する "必要があります"。
 
 ## <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
 
@@ -118,7 +118,7 @@ Azure App Service on Azure Stack Hub Update 7 には、次の機能強化と修�
 
 ## <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>Azure App Service on Azure Stack Hub を運用するクラウド管理者に対する既知の問題
 
-[Azure Stack Hub 1907 リリース ノート](azure-stack-release-notes-1907.md)内のドキュメントを参照してください。
+[Azure Stack Hub 1907 リリース ノート](./release-notes.md?view=azs-2002)内のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

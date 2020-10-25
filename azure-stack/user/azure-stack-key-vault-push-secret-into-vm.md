@@ -3,15 +3,15 @@ title: Azure Stack Hub に安全に格納された証明書で VM をデプロ�
 description: Azure Stack Hub の Key Vault を使って、仮想マシンをデプロイして証明書を仮想マシンにプッシュする方法について説明します。
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 09/01/2020
 ms.author: sethm
 ms.lastreviewed: 12/27/2019
-ms.openlocfilehash: f808d3dca853ef114d215be08f3e6ae3f6737fb5
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 5f99d816470649366703da5de4bf68ebdbe26a61
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77702790"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90571832"
 ---
 # <a name="deploy-a-vm-with-a-securely-stored-certificate-on-azure-stack-hub"></a>Azure Stack Hub に安全に格納された証明書で VM をデプロイする
 
@@ -44,7 +44,7 @@ Active Directory への認証、Web トラフィックの暗号化など、多�
 
 ## <a name="create-a-key-vault-secret"></a>キー コンテナー シークレットを作成する
 
-次のスクリプトは、.pfx 形式で証明書を作成し、Key Vault を作成して、Key Vault にシークレットとして証明書を格納します。
+次のスクリプトは、.pfx 形式で証明書を作成し、Key Vault を作成して、Key Vault にシークレットとして証明書を格納します。 シークレットの `contentType` は `pfx` に設定する必要があります。
 
 > [!IMPORTANT]
 > キー コンテナーを作成するときは、`-EnabledForDeployment` パラメーターを使う必要があります。 このパラメーターにより、Azure Resource Manager テンプレートから Key Vault を確実に参照できます。

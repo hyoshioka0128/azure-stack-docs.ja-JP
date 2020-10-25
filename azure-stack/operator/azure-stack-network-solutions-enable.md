@@ -7,12 +7,12 @@ ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/30/2019
-ms.openlocfilehash: 12dc8715b90aa257953b5dc13bf671c9264aea8d
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: a145a95207fb923d736582f79a315ae625d7223b
+ms.sourcegitcommit: 53b0dde60a6435936a5e0cb9e931245f262d637a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111165"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91107022"
 ---
 # <a name="offer-a-network-solution-in-azure-stack-hub-with-fortinet-fortigate"></a>Fortinet FortiGate を使用して Azure Stack Hub にネットワーク ソリューションを提供する
 
@@ -30,7 +30,7 @@ Azure Marketplace での FortiGate の詳細については、「[Fortinet Forti
     - Fortinet FortiGate - Azure BYOL 用の VM
     - FortiGate NGFW - 単一の VM のデプロイ (BYOL)
 
-    ![Azure Stack Hub の FortiGate Fortinet](./media/azure-stack-network-solutions-enable/azure-stack-marketplace-FortiGate-fortinet.png)
+    ![使用可能なダウンロードされた項目を示すスクリーンショット。](./media/azure-stack-network-solutions-enable/azure-stack-marketplace-FortiGate-fortinet.png)
 
 4. Marketplace のアイテムの状態が **[ダウンロード済み]** になるまで待機します。 アイテムのダウンロードには、数分かかる可能性があります。
 

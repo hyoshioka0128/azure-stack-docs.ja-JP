@@ -3,16 +3,16 @@ title: コミュニティ テンプレートを使用して VM を作成する
 description: Azure Stack Development Kit (ASDK) を使用し、定義済みテンプレートと GitHub カスタム テンプレートを使って VM を作成する方法を学習します。
 author: sethmanheim
 ms.topic: tutorial
-ms.date: 01/23/2020
+ms.date: 06/15/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 9e8df158444b0cbb2b6efaea6f99766f36b26241
-ms.sourcegitcommit: bdd4d529bd3e115a9f76eece62b1613448d5d020
+ms.openlocfilehash: dc666d486f0b36a043ba8da969312879ad785e50
+ms.sourcegitcommit: c9737939f4e437f1d954e163db972d58b3f98ffd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "77704337"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84813822"
 ---
 # <a name="tutorial-create-a-vm-using-a-community-template"></a>チュートリアル:コミュニティ テンプレートを使用して VM を作成する
 
@@ -31,7 +31,7 @@ Azure Stack Hub クイック スタート テンプレートは、GitHub の[グ
 
 長期間にわたって多くの GitHub ユーザーがリポジトリに貢献してきた結果、400 を超えるデプロイ テンプレートが集まりました。 このリポジトリは、さまざまな種類の環境を Azure Stack Hub にどのようにデプロイできるかをより深く理解するのによい出発点です。
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > これらのテンプレートの一部は、Microsoft ではなく、コミュニティのメンバーによって作成されています。 各テンプレートは、Microsoft ではなく、テンプレートの所有者によるライセンス契約に基づいて使用許諾されます。 Microsoft は、これらのテンプレートに対して責任を負わず、セキュリティ、互換性、パフォーマンスなどについての調査を行っていません。 コミュニティ テンプレートは、Microsoft サポート プログラムまたはサービスのサポート対象ではなく、"手を加えず" に提供され、いかなる保証もありません。
 
 Azure Resource Manager テンプレートを GitHub に提供したい場合は、必ず、[AzureStack-QuickStart-Templates](https://github.com/Azure/AzureStack-QuickStart-Templates) リポジトリに提供してください。 このリポジトリの詳細と、リポジトリへの提供方法については、[readme ファイル](https://aka.ms/aa6zktg)を参照してください。
@@ -118,7 +118,7 @@ Minikube は、Kubernetes をローカルで簡単に実行できるようにす
 
     ![ダッシュボード](media/azure-stack-create-vm-template/12.PNG)
 
-5. サンプル アプリケーションをデプロイする場合は、公式 Kubernetes ドキュメント ページにアクセスします。「Create Minikube Cluster」 (Minikube クラスターを作成する) のセクションは、既にクラスターを作成済みなので、スキップします。 [https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/](https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/ ) の「Create your Node.js application (Node.js アプリケーションを作成する)」のセクションに移動します。
+5. サンプル アプリケーションをデプロイする場合は、公式 Kubernetes ドキュメント ページにアクセスします。「Create Minikube Cluster」 (Minikube クラスターを作成する) のセクションは、既にクラスターを作成済みなので、スキップします。 「[Create your Node.js application (Node.js アプリケーションを作成する)](https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/)」のセクションに移動します。
 
 ## <a name="next-steps"></a>次のステップ
 

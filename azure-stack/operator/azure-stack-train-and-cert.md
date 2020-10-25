@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.author: inhenkel
 ms.lastreviewed: 11/11/2019
 ms.reviewer: efemm
-ms.openlocfilehash: 984a8dc52409c22481148c28ac47939543680896
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: a1fa7c9ee34532857a8968a286c2248947115acd
+ms.sourcegitcommit: 2d2ae0b6db2e4f43f8496b184f30cddbb08b2cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77696840"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91815361"
 ---
 # <a name="azure-stack-hub-training-and-certification"></a>Azure Stack Hub のトレーニングと認定
 
@@ -22,10 +22,6 @@ ms.locfileid: "77696840"
 Azure Stack Hub について学習し、Azure Stack Hub の能力を実証したいですか? 次のトレーニングと認定の機会を確認してください。
 
 ## <a name="training"></a>トレーニング
-
-- オンデマンドの Microsoft 公式コース:
-   - [ODX20537: Microsoft Azure Stack Hub を使用した Hybrid Cloud の設定と運用 (180 日)](https://www.microsoft.com/learning/course.aspx?cid=ODX20537)
-   - [OD20537: Microsoft Azure Stack Hub を使用した Hybrid Cloud の設定と運用 (90 日)](https://www.microsoft.com/learning/course.aspx?cid=OD20537)
 
 - Microsoft IT トレーニング コース:
    - [コース 20537A: Microsoft Azure Stack Hub を使用した Hybrid Cloud の設定と運用](https://aka.ms/azsmoc)
@@ -42,4 +38,4 @@ Azure Stack Hub について学習し、Azure Stack Hub の能力を実証した
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Hub のドキュメント](/azure-stack/operator)
+[Azure Stack Hub のドキュメント](./index.yml)

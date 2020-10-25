@@ -7,16 +7,16 @@ ms.date: 01/10/2020
 ms.author: justinha
 ms.reviewer: adshar
 ms.lastreviewed: 01/10/2020
-ms.openlocfilehash: 9b082876dca1e39f99ac0b98a7e438aa1231b3c2
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 40a916a282f4808d9897cc5c23ea953739b0a0cf
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "79512543"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90572937"
 ---
 # <a name="validate-azure-stack-hub-system-state"></a>Azure Stack Hub システムの状態を検証する
 
-Azure Stack Hub のオペレーターは、使用しているシステムの正常性と状態をオンデマンドで判断できる必要があります。 Azure Stack Hub の検証ツール (**Test-AzureStack**) は、お使いのシステムで実行した一連のテストから、存在する場合に障害を特定する PowerShell コマンドレットです。 通常このツールは、問題について Microsoft カスタマー サービス サポート (CSS) に問い合わせるときに、[特権エンドポイント (PEP)](azure-stack-privileged-endpoint.md) から実行するよう求められます。 手元にシステム全体の正常性および状態情報があれば、CSS は詳細ログを収集して分析し、エラーが発生した領域に焦点を当て、お客様と連携して問題を修正できます。
+Azure Stack Hub のオペレーターは、使用しているシステムの正常性と状態をオンデマンドで判断できる必要があります。 Azure Stack Hub の検証ツール (**Test-AzureStack**) は、お使いのシステムで実行した一連のテストから、存在する場合に障害を特定する PowerShell コマンドレットです。 通常このツールは、問題について Microsoft カスタマー サービス サポート (Microsoft サポート) に問い合わせるときに、[特権エンドポイント (PEP)](azure-stack-privileged-endpoint.md) から実行するよう求められます。 手元にシステム全体の正常性および状態情報があれば、Microsoft サポートは詳細ログを収集して分析し、エラーが発生した領域に焦点を当て、お客様と連携して問題を修正できます。
 
 ## <a name="running-the-validation-tool-and-accessing-results"></a>検証ツールを実行して結果にアクセスする
 
@@ -49,9 +49,9 @@ Azure Stack Hub のオペレーターは、使用しているシステムの正�
 
 1. いずれかのテストで **FAIL** が報告された場合は、`Get-AzureStackLog` を実行します。 統合システムでの手順については、[Azure Stack Hub 統合システムでの Get-AzureStackLog](azure-stack-get-azurestacklog.md)の実行方法を参照してください。
 
-   このコマンドレットは、Test-azurestack によって生成されたログを収集します。 テストで **WARN** が報告される場合は、ログを収集せずに CSS に連絡することをお勧めします。
+   このコマンドレットは、Test-azurestack によって生成されたログを収集します。 テストで **WARN** が報告される場合は、ログを収集せずに Microsoft サポートに連絡することをお勧めします。
 
-1. CSS により検証ツールを実行するように指示された場合、CSS の担当者から、問題のトラブルシューティングを続行するために、お客様が収集したログの提出が求められます。
+1. Microsoft サポートにより検証ツールを実行するように指示された場合、Microsoft サポートの担当者から、問題のトラブルシューティングを続行するために、お客様が収集したログの提出が求められます。
 
 ## <a name="tests-available"></a>利用可能なテスト
 
@@ -234,6 +234,6 @@ Test-AzureStack -Include AzsNetworkInfra -Debug
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Stack Hub 診断ツールと問題のログ記録の詳細については、[Azure Stack Hub の診断ツール](azure-stack-diagnostic-log-collection-overview-tzl.md)に関する記事を参照してください。
+Azure Stack Hub 診断ツールと問題のログ記録の詳細については、[Azure Stack Hub の診断ツール](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)に関する記事を参照してください。
 
 トラブルシューティングの詳細については、[Microsoft Azure Stack Hub でのトラブルシューティング](azure-stack-troubleshooting.md)に関する記事を参照してください。

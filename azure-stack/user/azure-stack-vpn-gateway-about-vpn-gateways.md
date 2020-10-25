@@ -3,15 +3,15 @@ title: Azure Stack Hub の VPN ゲートウェイの作成
 description: Azure Stack Hub の VPN ゲートウェイを作成して構成します。
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 06/15/2020
 ms.author: sethm
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 35e17b6527b39bc12ad8f140b98a27fa6f4b69ac
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 2393a088e64ec0a3144fe7d5f4c5c3d2c8e25ab1
+ms.sourcegitcommit: c9737939f4e437f1d954e163db972d58b3f98ffd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "79295258"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84813722"
 ---
 # <a name="create-vpn-gateways-for-azure-stack-hub"></a>Azure Stack Hub の VPN ゲートウェイの作成
 
@@ -25,8 +25,8 @@ VPN ゲートウェイは、パブリック接続で暗号化されたトラフ�
 
 Azure Stack Hub 用の VPN ゲートウェイを作成して構成する前に、[Azure Stack Hub ネットワークに関する考慮事項](azure-stack-network-differences.md)に関する記事を確認し、Azure Stack Hub と Azure での構成方法の違いを理解してください。
 
->[!NOTE]
->Azure では、選択する VPN ゲートウェイ SKU の帯域幅スループットが、ゲートウェイに接続されるすべての接続に分配される必要があります。 一方、Azure Stack Hub では、VPN ゲートウェイ SKU の帯域幅値が、ゲートウェイに接続される各接続リソースに適用されます。
+> [!NOTE]
+> Azure では、選択する VPN ゲートウェイ SKU の帯域幅スループットが、ゲートウェイに接続されるすべての接続に分配される必要があります。 一方、Azure Stack Hub では、VPN ゲートウェイ SKU の帯域幅値が、ゲートウェイに接続される各接続リソースに適用されます。
 >
 > 次に例を示します。
 >
@@ -48,7 +48,7 @@ VPN Gateway の個々のリソースと設定については、[Azure Stack Hub 
 
 ### <a name="deployment-tools"></a>デプロイ ツール
 
-Azure Portal などの 1 つの構成ツールを使用して、リソースを作成し、構成できます。 後で、追加のリソースを構成したり、該当する場合に既存のリソースを変更したりするために、PowerShell などの別のツールに切り替えることができます。 現時点では、すべてのリソースとリソースの設定を Azure Portal で構成することはできません。 各接続トポロジの記事の手順では、特定の構成ツールが必要な場合が指定されています。
+Azure Portal などの 1 つの構成ツールを使用して、リソースを作成し、構成できます。 後で、追加のリソースを構成したり、該当する場合に既存のリソースを変更したりするために、PowerShell などの別のツールに切り替えることができます。 現時点では、すべてのリソースとリソースの設定を Azure portal で構成することはできません。 各接続トポロジの記事の手順では、特定の構成ツールが必要な場合が指定されています。
 
 ## <a name="connection-topology-diagrams"></a>接続トポロジの図
 
@@ -116,8 +116,8 @@ Azure Stack Hub には 3 つのマルチテナント ゲートウェイ イン�
 **(2)** - トンネルの最大数は、すべてのサブスクリプションの Azure Stack Hub デプロイごとの合計です。  
 **(3)** BGP ルーティングは、Basic SKU ではサポートされていません。
 
->[!NOTE]
->2 つの Azure Stack Hub デプロイ間に作成できるのは、1 つのサイト間 VPN 接続だけです。 これは、同じ IP アドレスに対して許容される VPN 接続が 1 つだけであるというプラットフォームの制限によるものです。 Azure Stack Hub では、Azure Stack Hub システム内のすべての VPN Gateway に対して単一のパブリック IP を使用するマルチテナント ゲートウェイが活用されているため、2 つの Azure Stack Hub システム間に存在できる VPN 接続は 1 つだけです。 この制限は、単一の IP アドレスを使用する VPN ゲートウェイに複数のサイト間 VPN 接続を接続する場合にも当てはまります。 Azure Stack Hub では、同じ IP アドレスを使用して複数のローカル ネットワーク ゲートウェイ リソースを作成することはできません。
+> [!NOTE]
+> 2 つの Azure Stack Hub デプロイ間に作成できるのは、1 つのサイト間 VPN 接続だけです。 これは、同じ IP アドレスに対して許容される VPN 接続が 1 つだけであるというプラットフォームの制限によるものです。 Azure Stack Hub では、Azure Stack Hub システム内のすべての VPN Gateway に対して単一のパブリック IP を使用するマルチテナント ゲートウェイが活用されているため、2 つの Azure Stack Hub システム間に存在できる VPN 接続は 1 つだけです。 この制限は、単一の IP アドレスを使用する VPN ゲートウェイに複数のサイト間 VPN 接続を接続する場合にも当てはまります。 Azure Stack Hub では、同じ IP アドレスを使用して複数のローカル ネットワーク ゲートウェイ リソースを作成することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,16 +3,16 @@ title: Azure Stack Hub に使用量と課金用のテナントを追加する
 description: Azure Stack Hub に使用量と課金用のテナントを追加する方法について説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 5/28/2020
+ms.date: 9/02/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 5/28/2020
-ms.openlocfilehash: 08185a25c608c735aa99ca7f7d2b060c8b67042b
-ms.sourcegitcommit: 804f94f288859027b8249d138b14e8bc1501e009
+ms.openlocfilehash: e0d426ac19645cbbc318f66b827946534539d125
+ms.sourcegitcommit: 7c01ab4b2e2250a7acd67d1c5ba27d15c1e8bce0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84158386"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89448573"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack-hub"></a>Azure Stack Hub に使用量と課金用のテナントを追加する
 
@@ -74,7 +74,7 @@ ms.locfileid: "84158386"
 |registrationSubscriptionID | Azure Stack Hub の初期登録に使用された Azure サブスクリプション。|
 | customerSubscriptionID | 登録する顧客が所有する (Azure Stack Hub ではない) Azure サブスクリプション。 CSP のオファー内で作成する必要があります。 実際には、パートナー センターを介することを意味します。 顧客が複数の Azure Active Directory テナントを持っている場合は、Azure Stack Hub へのログインに使用するテナントでこのサブスクリプションを作成する必要があります。 顧客サブスクリプション ID は大文字と小文字の区別があります。 |
 | resourceGroup | 登録が格納されている Azure 内のリソース グループ。 |
-| registrationName | お使いの Azure Stack Hub の登録名。 Azure に格納されているオブジェクトです。 
+| registrationName | お使いの Azure Stack Hub の登録名。 Azure に格納されているオブジェクトです。
 
 > [!NOTE]  
 > テナントは、使用する各 Azure Stack Hub に登録されている必要があります。 Azure Stack Hub のデプロイが 2 つあり、テナントがその両方を使用している場合は、各デプロイの初期登録をそのテナントのサブスクリプションで更新する必要があります。

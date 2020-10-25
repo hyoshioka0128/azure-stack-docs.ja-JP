@@ -8,12 +8,12 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
-ms.openlocfilehash: 2e8a4e4fe4de85e981bb0f33366b003c5ee907f8
-ms.sourcegitcommit: c263a86d371192e8ef2b80ced2ee0a791398cfb7
+ms.openlocfilehash: 48ba500c7b9315c4fbc8a622b99d4707f4eb86a7
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82847760"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86489625"
 ---
 # <a name="app-service-on-azure-stack-hub-update-1-release-notes"></a>App Service on Azure Stack Hub Update 1 のリリース ノート
 
@@ -29,7 +29,7 @@ App Service on Azure Stack Hub Update 1 のビルド番号は **69.0.13698.9** �
 ## <a name="prerequisites"></a>前提条件
 
 > [!IMPORTANT]
-> Azure App Service で Kudu の SSO の処理方法が改善されたため、Azure App Service on Azure Stack Hub の新しいデプロイには、3 つのサブジェクトのワイルドカード証明書が必要になります。 新しいサブジェクトは、 **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>** です。
+> Azure App Service で Kudu の SSO の処理方法が改善されたため、Azure App Service on Azure Stack Hub の新しいデプロイには、3 つのサブジェクトのワイルドカード証明書が必要になります。 新しいサブジェクトは、 **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>** です
 
 デプロイを開始する前に、[App Service on Azure Stack Hub の前提条件](azure-stack-app-service-before-you-get-started.md)に関するページを参照してください。
 
@@ -203,7 +203,7 @@ Azure App Service on Azure Stack Hub Update 1 には、次の機能強化と修�
 
 ## <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>Azure App Service on Azure Stack Hub を運用するクラウド管理者に対する既知の問題
 
-[Azure Stack Hub 1802 リリース ノート](azure-stack-update-1903.md)内のドキュメントを参照してください。
+[Azure Stack Hub 1802 リリース ノート](./release-notes.md?view=azs-2002)内のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

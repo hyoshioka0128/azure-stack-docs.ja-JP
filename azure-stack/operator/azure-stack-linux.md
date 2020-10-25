@@ -3,16 +3,16 @@ title: Linux イメージを Azure Stack Hub Marketplace に追加する
 description: Azure Stack Hub Marketplace へ Linux イメージを追加する方法について説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/07/2020
+ms.date: 08/24/2020
 ms.author: sethm
 ms.reviewer: ''
 ms.lastreviewed: 11/16/2019
-ms.openlocfilehash: 32cdb1ec98f9825a63b5acfa68e4c8e3f43089a7
-ms.sourcegitcommit: 9894804f31527234d43f4a93a9b7c106c8540435
+ms.openlocfilehash: 32e16bac548193a7c0af517c3a60e78a3e52f3ce
+ms.sourcegitcommit: d73637146daaba0ef0ab1729683bb52c65466099
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82967728"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88857527"
 ---
 # <a name="add-linux-images-to-the-azure-stack-hub-marketplace"></a>Linux イメージを Azure Stack Hub Marketplace に追加する
 
@@ -106,7 +106,7 @@ runcmd:
 Azure Stack Hub Linux VM からアクセスできる Azure ストレージ アカウント、Azure Stack Hub ストレージ アカウント、または GitHub リポジトリにファイルをアップロードします。
 現時点では、VM のデプロイでの cloud-init の使用は、REST、Powershell、CLI でのみサポートされており、Azure Stack Hub に関連付けられたポータル UI はありません。
 
-[こちら](../user/azure-stack-quick-create-vm-linux-powershell.md)の手順に従って、Powershell を使用して Linux VM を作成できますが、`-CustomData` フラグの一部として cloud-init.txt を必ず参照してください。
+[こちら](../user/azure-stack-quick-create-vm-linux-powershell.md)の手順に従って、PowerShell を使用して Linux VM を作成できますが、`-CustomData` フラグの一部として cloud-init.txt を必ず参照してください。
 
 ```powershell
 $VirtualMachine =Set-AzureRmVMOperatingSystem -VM $VirtualMachine `

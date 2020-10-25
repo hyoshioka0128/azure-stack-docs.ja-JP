@@ -9,12 +9,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b3cbaff12c4d4decb0d7204fa558dd5690fe638
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: 1076dc69190b79728d28be99c7b84629e80b5709
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112018"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86490169"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>チュートリアル:サービスとしての検証のためのリソースを設定する
 
@@ -30,13 +30,13 @@ ms.locfileid: "84112018"
 
 ## <a name="configure-an-azure-ad-tenant"></a>Azure AD テナントの構成
 
-Azure AD テナントは、組織を登録し、VaaS を使用するユーザーを認証します。 パートナーは、テナントのロールベースのアクセス制御 (RBAC) 機能を使って、パートナーの組織内でだれが VaaS を使用できるかを管理します。 詳細については、「[Azure Active Directory とは](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)」を参照してください。
+Azure AD テナントは、組織を登録し、VaaS を使用するユーザーを認証します。 パートナーは、テナントのロールベースのアクセス制御 (RBAC) 機能を使って、パートナーの組織内でだれが VaaS を使用できるかを管理します。 詳細については、「[Azure Active Directory とは](/azure/active-directory/fundamentals/active-directory-whatis)」を参照してください。
 
 ### <a name="create-a-tenant"></a>テナントの作成
 
 組織が VaaS サービスへのアクセスに使用するテナントを作成します。 わかりやすい名前 (たとえば、`ContosoVaaS@onmicrosoft.com`) を付けます。
 
-1. [Azure portal](https://portal.azure.com) で Azure AD テナントを作成するか、既存のテナントを使用します。 <!-- For instructions on creating new Azure AD tenants, see [Get started with Azure AD](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad). -->
+1. [Azure portal](https://portal.azure.com) で Azure AD テナントを作成するか、既存のテナントを使用します。 <!-- For instructions on creating new Azure AD tenants, see [Get started with Azure AD](/azure/active-directory/get-started-azure-ad). -->
 
 2. 組織のメンバーをテナントに追加します。 これらのユーザーは、サービスを使用してテストを表示またはスケジュール設定する責任を負います。 登録が完了したら、ユーザーのアクセス レベルを定義します。
 
@@ -68,7 +68,7 @@ Azure AD テナントは、組織を登録し、VaaS を使用するユーザー
     |--------------------------------|---------------------------------------------------------------------------------------------|
     | 組織名 | 組織の正式名称。 |
     | Azure AD テナント ディレクトリ名 | 登録する Azure AD テナント ディレクトリ名。 |
-    | Azure AD テナント ディレクトリ ID | Azure AD テナント ディレクトリに関連付けられている GUID。 Azure AD テナント ディレクトリ ID の確認方法については、「[Get tenant ID (テナント ID を取得する)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-values-for-signing-in)」を参照してください。 |
+    | Azure AD テナント ディレクトリ ID | Azure AD テナント ディレクトリに関連付けられている GUID。 Azure AD テナント ディレクトリ ID の確認方法については、「[Get tenant ID (テナント ID を取得する)](/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-values-for-signing-in)」を参照してください。 |
 
 2. ご利用のテナントで Azure Stack Hub 検証ポータルを使用できるかどうかを Azure Stack Hub 検証チームがチェックし、確認するのを待ちます。
 

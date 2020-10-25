@@ -4,16 +4,16 @@ titleSuffix: Azure Stack Hub
 description: Azure Stack Hub 適合性チェッカーを使用して、Azure ID を検証します。
 author: BryanLa
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 06/25/2020
 ms.author: bryanla
-ms.reviewer: unknown
-ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 0852c977494dcd91545b1ea13430811b83eeeddb
-ms.sourcegitcommit: d930d52e27073829b8bf8ac2d581ec2accfa37e3
+ms.reviewer: jerskine
+ms.lastreviewed: 06/25/2020
+ms.openlocfilehash: 63f071b50b2e0dac09b5a8ae628001734457d7b8
+ms.sourcegitcommit: 28850ae18844213ee410cfe96fc936655b5f6412
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82173833"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86148116"
 ---
 # <a name="validate-azure-identity"></a>Azure ID の検証
 
@@ -28,13 +28,21 @@ Azure Stack Hub のユーザー、アプリケーション、グループ、お�
 
 ## <a name="get-the-readiness-checker-tool"></a>適合性チェッカー ツールを取得する
 
-最新バージョンの Azure Stack Hub 適合性チェッカー ツール (AzsReadinessChecker) を [PowerShell ギャラリー](https://aka.ms/AzsReadinessChecker)からダウンロードします。  
+最新バージョンの Azure Stack Hub 適合性チェッカー ツール (AzsReadinessChecker) を [PowerShell ギャラリー](https://aka.ms/AzsReadinessChecker)からダウンロードします。
+
+## <a name="install-and-configure"></a>インストールと構成
+
+### <a name="azurerm-powershell"></a>[AzureRM PowerShell](#tab/rm)
 
 ## <a name="prerequisites"></a>前提条件
 
 以下の前提条件が必要です。
 
-**ツールを実行するコンピューター:**
+#### <a name="azurerm-powershell-modules"></a>AzureRM PowerShell モジュール
+
+Az PowerShell モジュールをインストールしておく必要があります。 手順については、[PowerShell AzureRM モジュールのインストール](azure-stack-powershell-install.md)に関するページを参照してください。
+
+#### <a name="the-computer-on-which-the-tool-runs"></a>ツールを実行するコンピューター
 
 - インターネットに接続された Windows 10 または Windows Server 2016。
 - PowerShell 5.1 以降。 お使いのバージョンを確認するには、次の PowerShell コマンドを実行し、"**メジャー**" バージョンと "**マイナー**" バージョンを確かめます。  
@@ -44,7 +52,7 @@ Azure Stack Hub のユーザー、アプリケーション、グループ、お�
 - [Azure Stack Hub 用に構成された PowerShell](azure-stack-powershell-install.md)。
 - 最新バージョンの [Microsoft Azure Stack Hub 適合性チェッカー](https://aka.ms/AzsReadinessChecker) ツール。
 
-**Azure AD 環境:**
+#### <a name="azure-ad-environment"></a>Azure AD 環境
 
 - Azure Stack Hub に使用する Azure AD アカウントを特定し、それが確実に Azure AD グローバル管理者であるようにします。
 - Azure AD テナントの名前を特定します。 テナント名は、Azure AD のプライマリ ドメイン名である必要があります (例: **contoso.onmicrosoft.com**)。
@@ -88,6 +96,62 @@ Azure Stack Hub のユーザー、アプリケーション、グループ、お�
    Invoke-AzsAzureIdentityValidation Completed
    ```
 
+
+### <a name="az-powershell"></a>[Az PowerShell](#tab/az)
+
+### <a name="prerequisites"></a>前提条件
+
+以下の前提条件が必要です。
+
+#### <a name="az-powershell-modules"></a>Az PowerShell モジュール
+
+Az PowerShell モジュールをインストールしておく必要があります。 手順については、「[PowerShell Az プレビュー モジュールをインストールする](powershell-install-az-module.md)」を参照してください。
+
+#### <a name="azure-active-directory-azure-ad-environment"></a>Azure Active Directory (Azure AD) 環境
+
+- Azure Stack Hub に使用する Azure AD アカウントを特定し、それが確実に Azure AD グローバル管理者であるようにします。
+- Azure AD テナントの名前を特定します。 テナント名は、Azure AD のプライマリ ドメイン名である必要があります (例: **contoso.onmicrosoft.com**)。
+
+### <a name="steps-to-validate-azure-identity"></a>Azure ID を検証する手順
+
+1. 前提条件を満たしているコンピューターで、管理者特権の PowerShell コマンド プロンプトを開き、次のコマンドを実行して、**AzsReadinessChecker** をインストールします。  
+
+   ```powershell
+   Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
+   Install-AzProfile -Profile 2019-03-01-hybrid -Force
+   Install-Module -Name Microsoft.AzureStack.ReadinessChecker -AllowPrerelease
+   ```
+
+2. PowerShell プロンプトから、次のコマンドを実行します。 `contoso.onmicrosoft.com` を Azure AD テナント名に置き換えます。
+
+   ```powershell
+   Connect-AzAccount -tenant contoso.onmicrosoft.com
+   ```
+
+3. PowerShell プロンプトから次のコマンドを実行して、Azure AD の検証を開始します。 `contoso.onmicrosoft.com` を Azure AD テナント名に置き換えます。
+
+   ```powershell
+   Invoke-AzsAzureIdentityValidation -AADDirectoryTenantName contoso.onmicrosoft.com 
+   ```
+
+4. ツールの実行後、出力を確認します。 インストールの要件について、状態が **OK** であることを確認します。 次の図のように、検証が成功したことが表示されます。
+
+   ```powershell
+   Invoke-AzsAzureIdentityValidation v1.2005.1269 started.
+   Starting Azure Identity Validation
+
+   Checking Installation Requirements: OK
+
+   Finished Azure Identity Validation
+
+   Log location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+   Report location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+   Invoke-AzsAzureIdentityValidation Completed
+   ```
+
+--- 
+
+
 ## <a name="report-and-log-file"></a>レポートとログ ファイル
 
 検証を実行するたびに、結果のログが **AzsReadinessChecker.log** と **AzsReadinessCheckerReport.json** に出力されます。 これらのファイルの場所は、PowerShell に検証結果と共に表示されます。
@@ -97,7 +161,7 @@ Azure Stack Hub のユーザー、アプリケーション、グループ、お�
 既定では、両方のファイルが `C:\Users\<username>\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json` に書き込まれます  
 
 - 別のレポートの場所を指定するには、実行コマンド ラインの末尾に `-OutputPath <path>` パラメーターを使用します。
-- ツールの以前の実行に関する情報を `-CleanReport`AzsReadinessCheckerReport.json**からクリアするには、実行コマンド ラインの末尾に** パラメーターを使用します。
+- ツールの以前の実行に関する情報を **AzsReadinessCheckerReport.json** からクリアするには、実行コマンド ラインの末尾に `-CleanReport` パラメーターを使用します。
 
 詳細については、「[Azure Stack Hub 検証レポート](azure-stack-validation-report.md)」を参照してください。
 

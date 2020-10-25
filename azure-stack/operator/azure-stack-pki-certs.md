@@ -1,36 +1,41 @@
 ---
 title: Azure Stack Hub 公開キー インフラストラクチャ証明書の要件
-description: Azure Stack Hub 統合システムの Azure Stack Hub PKI 証明書のデプロイ要件について説明します。
+description: Azure Stack Hub 統合システムの Azure Stack Hub PKI 証明書の要件について説明します。
 author: IngridAtMicrosoft
 ms.topic: conceptual
-ms.date: 3/04/2020
+ms.date: 08/19/2020
 ms.author: inhenkel
 ms.reviewer: ppacent
 ms.lastreviewed: 12/16/2019
-ms.openlocfilehash: c4565ce33faf1f76a4774736d9195c9d7256b6da
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: a5ccf4ecd9ab6f70f54af22c343f28eb692f9c54
+ms.sourcegitcommit: 373e9e3e84eaa33331db9f78e52486fbb6beb907
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80423826"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91592886"
 ---
 # <a name="azure-stack-hub-public-key-infrastructure-pki-certificate-requirements"></a>Azure Stack Hub 公開キー インフラストラクチャ (PKI) 証明書の要件
 
 Azure Stack Hub には、少数の Azure Stack Hub サービスやテナント VM に割り当てられた外部からアクセス可能なパブリック IP アドレスを使用するパブリック インフラストラクチャ ネットワークが存在します。 Azure Stack Hub のデプロイ中に、これらの Azure Stack Hub パブリック インフラストラクチャ エンドポイントの適切な DNS 名を持つ PKI 証明書が必要です。 この記事では、次の項目に関する情報を提供します。
 
-- Azure Stack Hub をデプロイするために必要な証明書。
-- これらの仕様に一致する証明書を取得するプロセス。
-- デプロイ中にこれらの証明書を準備、検証、および使用する方法。
+- Azure Stack Hub の証明書要件。
+- Azure Stack Hub のデプロイに必須の証明書。
+- 付加価値リソース プロバイダーをデプロイするときに必要なオプションの証明書。
 
 > [!NOTE]
-> 既定で Azure Stack Hub では、ノード間の認証に、内部の Active Directory 統合証明機関 (CA) から発行された証明書も使用されます。 証明書を検証するには、すべての Azure Stack Hub インフラストラクチャ マシンで、その証明書をローカルの証明書ストアに追加することによって、内部 CA のルート証明書を信頼します。 Azure Stack Hub には、証明書のピン留めまたはホワイトリスト登録がありません。 各サーバー証明書の SAN は、ターゲットの FQDN に対して検証されます。 証明書の有効期限 (証明書のピン留めがない標準 TLS サーバー認証) と共に、信頼チェーン全体も検証されます。
+> 既定で Azure Stack Hub では、ノード間の認証に、内部の Active Directory 統合証明機関 (CA) から発行された証明書も使用されます。 証明書を検証するには、すべての Azure Stack Hub インフラストラクチャ マシンで、その証明書をローカルの証明書ストアに追加することによって、内部 CA のルート証明書を信頼します。 Azure Stack Hub には、証明書のピン留めもフィルター処理もありません。 各サーバー証明書の SAN は、ターゲットの FQDN に対して検証されます。 証明書の有効期限 (証明書のピン留めがない標準 TLS サーバー認証) と共に、信頼チェーン全体も検証されます。
 
 ## <a name="certificate-requirements"></a>証明書の要件
-次の一覧では、Azure Stack Hub をデプロイするために必要な証明書の要件について説明します。
+次の一覧では、一般的な証明書の発行、セキュリティ、および書式設定の要件について説明します。
 
 - 証明書は、内部の証明機関または公的証明機関のどちらかから発行されている必要があります。 公的証明機関が使用されている場合は、Microsoft の信頼されたルート機関プログラムの一部として基本オペレーティング システム イメージに含まれている必要があります。 完全な一覧については、[Microsoft の信頼されたルート証明書プログラム: 参加者](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)に関するページに完全な一覧があります。
 - お使いの Azure Stack Hub インフラストラクチャは、証明書において公開されている証明機関の証明書失効リスト (CRL) の場所にネットワークでアクセスできる必要があります。 この CRL は、http エンドポイントである必要があります。
-- 1903 より前のビルドで証明書を交換する場合、証明書は、デプロイ時に指定された証明書の署名に使用したのと同じ内部の証明機関、または上記の公的パブリック証明機関のいずれかから発行されたものである必要があります。 1903 以降では、証明書は、企業や公共の証明機関によって発行できます。
+::: moniker range="< azs-1903"
+- 1903 より前のビルドで証明書を交換する場合、証明書は、デプロイ時に指定された証明書の署名に使用したのと同じ内部の証明機関、または上記の公的パブリック証明機関のいずれかから発行されたものである必要があります。
+::: moniker-end
+::: moniker range=">= azs-1903"
+- 1903 以降のビルドで証明書を交換する場合、証明書は、企業や公共の証明機関によって発行できます。
+::: moniker-end
 - 自己署名証明書の使用はサポートされていません。
 - デプロイおよびローテーションの場合は、証明書のサブジェクト名フィールドとサブジェクトの別名 (SAN) フィールドのすべての名前空間をカバーする 1 つの証明書を使用するか、各名前空間で利用する予定の Azure Stack Hub サービスで必要な個別の証明書を使用することができます。 どちらの方法でも、それらが必要とされるエンドポイントに対してワイルド カードを使用する必要があります (例: **KeyVault**､**KeyVaultInternal**)。
 - 証明書の PFX 暗号化は、3 DES になっている必要があります。
@@ -63,7 +68,7 @@ Azure Stack Hub には、少数の Azure Stack Hub サービスやテナント V
 運用環境では、各証明書がエンドポイントごとに生成され、対応するディレクトリにコピーされることをお勧めします。 開発環境では、証明書は、すべてのディレクトリにコピーされるサブジェクト フィールドおよびサブジェクトの別名 (SAN) フィールドのすべての名前空間をカバーする 1 つのワイルドカード証明書として提供することができます。 すべてのエンドポイントとサービスを対象とする単一の証明書は安全ではないため、開発専用です。 どちらのオプションでも、証明書を必要とする **acs** や Key Vault などのエンドポイントにはワイルドカード証明書を使う必要があることに注意してください。
 
 > [!Note]  
-> デプロイ時には、その対象となる ID プロバイダー (Azure AD または AD FS) に合ったデプロイ フォルダーに証明書をコピーする必要があります。 すべてのエンドポイントについて 1 つの証明書を使用する場合は、次の表に記載した各デプロイ フォルダーに、その証明書ファイルをコピーする必要があります。 フォルダー構造は、デプロイ仮想マシンにあらかじめ作成されており、次の場所で確認できます。C:\CloudDeployment\Setup\Certificates
+> デプロイ時には、その対象となる ID プロバイダー (Azure AD または AD FS) に合ったデプロイ フォルダーに証明書をコピーする必要があります。 すべてのエンドポイントについて 1 つの証明書を使用する場合は、次の表に記載した各デプロイ フォルダーに、その証明書ファイルをコピーする必要があります。フォルダー構造は、デプロイ仮想マシンにあらかじめ作成されており、C:\CloudDeployment\Setup\Certificates で確認できます。
 
 | デプロイ フォルダー | 必要な証明書のサブジェクト名とサブジェクトの別名 (SAN) | スコープ (リージョンごと) | サブドメインの名前空間 |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
@@ -76,8 +81,8 @@ Azure Stack Hub には、少数の Azure Stack Hub サービスやテナント V
 | ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>(ワイルドカード SSL 証明書) | Queue Storage | queue.&lt;region>.&lt;fqdn> |
 | KeyVault | *.vault.&lt;region>.&lt;fqdn><br>(ワイルドカード SSL 証明書) | Key Vault | vault.&lt;region>.&lt;fqdn> |
 | KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>(ワイルドカード SSL 証明書) |  内部 Keyvault |  adminvault.&lt;region>.&lt;fqdn> |
-| 管理者拡張機能ホスト | *.adminhosting.\<リージョン>.\<FQDN> (ワイルドカード SSL 証明書) | 管理者拡張機能ホスト | adminhosting.\<リージョン>.\<FQDN> |
-| パブリック拡張機能ホスト | *.hosting.\<リージョン>.\<FQDN> (ワイルドカード SSL 証明書) | パブリック拡張機能ホスト | hosting.\<リージョン>.\<FQDN> |
+| 管理者拡張機能ホスト | *.adminhosting.\<region>.\<fqdn> (ワイルドカード SSL 証明書) | 管理者拡張機能ホスト | adminhosting.\<region>.\<fqdn> |
+| パブリック拡張機能ホスト | *.hosting.\<region>.\<fqdn> (ワイルドカード SSL 証明書) | パブリック拡張機能ホスト | hosting.\<region>.\<fqdn> |
 
 Azure AD デプロイ モードを使用して Azure Stack Hub をデプロイする場合は、前の表に一覧表示されている証明書を要求するだけで済みます。 ただし、AD FS デプロイ モードを使用して Azure Stack Hub をデプロイする場合は、次の表で説明されている証明書も要求する必要があります。
 

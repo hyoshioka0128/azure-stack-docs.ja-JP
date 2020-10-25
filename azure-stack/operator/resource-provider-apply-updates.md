@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub リソース プロバイダーに更新プログラムを適用する方法。
+title: Azure Stack Hub リソース プロバイダーに更新プログラムを適用する
 description: Azure Stack Hub のリソース プロバイダーにサービス更新プログラムを適用する方法について説明します。
 author: BryanLa
 ms.author: bryanla
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.reviewer: jfggdl
 ms.lastreviewed: 11/18/2019
-ms.openlocfilehash: 5ec6f85fc2f2e526c4b85521337ab65dc2b939cc
-ms.sourcegitcommit: 519f4298dc1ed5c33f9c4fef811f61d61731dd84
+ms.openlocfilehash: ff1a6258e682d3230ea7968a97b9e392991ca72b
+ms.sourcegitcommit: 53b0dde60a6435936a5e0cb9e931245f262d637a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82799868"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91107122"
 ---
 # <a name="how-to-update-an-azure-stack-hub-resource-provider"></a>Azure Stack Hub リソース プロバイダーを更新する方法
 
@@ -32,7 +32,7 @@ Marketplace からインストールされたリソース プロバイダーに�
 
 3. **[更新プログラム]** ページの **[リソース プロバイダー]** セクションに、リソース プロバイダーの更新プログラムが表示されます。
 
-   [![使用可能な更新プログラム ページ](media/resource-provider-apply-updates/3-update-available.png)](media/resource-provider-apply-updates/3-update-available.png#lightbox)
+   [![[リソース プロバイダー] セクションを示すスクリーンショット。](media/resource-provider-apply-updates/3-update-available.png)](media/resource-provider-apply-updates/3-update-available.png#lightbox)
 
 ## <a name="apply-an-update"></a>更新プログラムを適用する
 

@@ -3,16 +3,16 @@ title: Azure Stack Hub での Ruby による API バージョンのプロファ�
 description: Azure Stack Hub での Ruby による API バージョンのプロファイルの使用方法について説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 09/03/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: b59adea78b5325a449bd52b211edc5e04ea5e566
-ms.sourcegitcommit: 70c344b3c9c63f8c12867b2cdfdd1794fcc518dc
+ms.openlocfilehash: 6813bf18656e034688255bcdb46b9b943359ce9c
+ms.sourcegitcommit: 7c01ab4b2e2250a7acd67d1c5ba27d15c1e8bce0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836242"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89448624"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack-hub"></a>Azure Stack Hub での Ruby による API バージョンのプロファイルの使用
 
@@ -38,7 +38,7 @@ API プロファイルは、リソース プロバイダーとサービス バ�
   - Ruby のインストール時にプロンプトが表示された場合は、開発キットをインストールします。
   - 次に、下記のコマンドを使用して bundler をインストールします。 
 
-       ```Ruby
+       ```ruby
        Gem install bundler
        ```
 
@@ -50,7 +50,7 @@ API プロファイルは、リソース プロバイダーとサービス バ�
 
 Azure RubyGem パッケージは直接インストールできます。
 
-```Ruby  
+```ruby  
 gem install azure_mgmt_compute
 gem install azure_mgmt_storage
 gem install azure_mgmt_resources
@@ -59,7 +59,7 @@ gem install azure_mgmt_network
 
 または、Gemfile でそれらを使用します。
 
-```Ruby
+```ruby
 gem 'azure_mgmt_storage'
 gem 'azure_mgmt_compute'
 gem 'azure_mgmt_resources'
@@ -74,7 +74,7 @@ Azure Resource Manager Ruby SDK は現在プレビュー段階であり、今後
 
 azure_sdk ロールアップ gem は、次のコマンドを使用してインストールできます。  
 
-```Ruby  
+```ruby  
 gem install 'azure_sdk'
 ```
 
@@ -120,7 +120,7 @@ Resource Manager エンドポイントからメタデータ情報を取得でき
 
 環境変数を設定するには、Windows コマンド プロンプトで次の形式を使用します。
 
-```shell
+```console
 set AZURE_TENANT_ID=<YOUR_TENANT_ID>
 ```
 
@@ -146,7 +146,7 @@ Azure Stack Hub および API プロファイルについて詳しくは、「[A
 
 次のコードを使用して、プロファイル クライアントをインスタンス化します。 このパラメーターは、Azure Stack Hub またはまたはその他のプライベート クラウドにのみ必要です。 グローバル Azure では、既定でこれらの設定が使用されます。
 
-```Ruby  
+```ruby  
 active_directory_settings = get_active_directory_settings(ENV['ARM_ENDPOINT'])
 
 provider = MsRestAzure::ApplicationTokenProvider.new(
@@ -169,7 +169,7 @@ client = Azure::Resources::Profiles::V2019_03_01_Hybrid::Mgmt::Client.new(option
 
 プロファイル クライアントは、個別のリソース プロバイダー (Compute、Storage、Network など) にアクセスするために使用できます。
 
-```Ruby  
+```ruby  
 # To access the operations associated with Compute
 profile_client.compute.virtual_machines.get 'RESOURCE_GROUP_NAME', 'VIRTUAL_MACHINE_NAME'
 
@@ -185,7 +185,7 @@ purchase_plan_obj = Azure::Profiles::V2019_03_01_Hybrid::Compute::Mgmt::Models::
 
 サービス プリンシパルを Azure Stack Hub 環境に対して認証するには、`get_active_directory_settings()` を使用してエンドポイントを定義します。 このメソッドでは、前に設定した **ARM_Endpoint**環境変数を使用します。
 
-```Ruby  
+```ruby  
 # Get Authentication endpoints using Arm Metadata Endpoints
 def get_active_directory_settings(armEndpoint)
   settings = MsRestAzure::ActiveDirectoryServiceSettings.new
@@ -220,13 +220,13 @@ Ruby と Azure Stack Hub の API のプロファイルを使用してソリュ�
 
 1. リポジトリを複製します。
 
-   ```bash
+   ```console
    git clone https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups.git
    ```
 
 2. bundle を使用して依存関係をインストールします。
 
-   ```Bash
+   ```console
    cd Hybrid-Resource-Manager-Ruby-Resources-And-Groups
    bundle install
    ```
@@ -258,7 +258,7 @@ Ruby と Azure Stack Hub の API のプロファイルを使用してソリュ�
 
 5. Azure Stack Hub またはその他のプライベート クラウドを使用している場合は、次のコード行を追加して、適切な Active Directory エンドポイントをターゲットにします。
 
-   ```Ruby  
+   ```ruby  
    active_directory_settings = get_active_directory_settings(ENV['ARM_ENDPOINT'])
    ```
 
@@ -300,7 +300,7 @@ Ruby と Azure Stack Hub の API のプロファイルを使用してソリュ�
 
 9. サンプルを実行します。
 
-   ```Ruby
+   ```ruby
    bundle exec ruby example.rb
    ```
 

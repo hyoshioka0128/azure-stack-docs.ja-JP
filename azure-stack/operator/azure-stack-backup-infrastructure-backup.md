@@ -1,18 +1,18 @@
 ---
 title: Infrastructure Backup サービスを使用した Azure Stack Hub のデータの回復
 description: Infrastructure Backup サービスを使用して、Azure Stack Hub の構成とサービス データをバックアップおよび復元する方法について学習します。
-author: justinha
+author: myoungerman
 ms.topic: article
 ms.date: 05/16/2019
-ms.author: justinha
+ms.author: v-myoung
 ms.reviewer: hectorl
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 96d1062b7b6b4c30d1d635965b51de27c0b49269
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: c73e95677bb1666fb315ad73e1dd6d62f73c68b7
+ms.sourcegitcommit: bf7b1a394ede397dba2b75f90bdf953b3ff2f2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77703283"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91367242"
 ---
 # <a name="recover-data-in-azure-stack-hub-with-the-infrastructure-backup-service"></a>Infrastructure Backup サービスを使用した Azure Stack Hub のデータの回復
 
@@ -40,7 +40,7 @@ Azure Stack Hub の Infrastructure Backup サービスを使用して、構成�
 ## <a name="verify-requirements-for-the-infrastructure-backup-service"></a>インフラストラクチャ バックアップ サービスの要件を確認する
 
 - **保存場所**  
-  7 個のバックアップを保存できる、Azure Stack Hub からアクセス可能なファイル共有が必要です。 各バックアップは約 10 GB です。 共有には 140 GB のバックアップを保存できる必要があります。 Infrastructure Backup サービスの保存場所の選択の詳細については、「[バックアップ コントローラーの要件](azure-stack-backup-reference.md#backup-controller-requirements)」を参照してください。
+  14 個のバックアップを格納できる、Azure Stack Hub からアクセス可能なファイル共有が必要です。 各バックアップは約 10 GB です。 ファイル共有には 140 GB のバックアップを格納できる必要があります。 Infrastructure Backup サービスの保存場所の選択の詳細については、「[バックアップ コントローラーの要件](azure-stack-backup-reference.md#backup-controller-requirements)」を参照してください。
 - **資格情報**  
   ドメイン ユーザー アカウントと資格情報が必要です。 たとえば、お使いの Azure Stack Hub の管理者資格情報を使用します。
 - **暗号化証明書**  

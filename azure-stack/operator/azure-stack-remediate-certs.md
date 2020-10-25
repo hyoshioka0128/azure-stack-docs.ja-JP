@@ -8,12 +8,12 @@ ms.date: 03/04/2020
 ms.author: inhenkel
 ms.reviewer: unknown
 ms.lastreviewed: 11/19/2019
-ms.openlocfilehash: 079bec68836af5491d9f39bcf24e68001ffcfe2b
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: c7f17c603a6b54474db4036953f0fbd755d496cf
+ms.sourcegitcommit: e72145ebb5eac17a47ba1c9119fd31de545fdace
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "78367796"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724848"
 ---
 # <a name="fix-common-issues-with-azure-stack-hub-pki-certificates"></a>Azure Stack Hub PKI 証明書に関する一般的な問題を修復する
 
@@ -45,19 +45,19 @@ ms.locfileid: "78367796"
 
 **問題** - 秘密キーがないか、秘密キーにローカル コンピューター属性が含まれていません。  
 
-**解決策** - 「[デプロイ用の Azure Stack Hub PKI 証明書の準備](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)」の手順を使用して、CSR を生成したコンピューターから証明書を再度エクスポートします。 この手順には、ローカル コンピューターの証明書ストアからのエクスポートが含まれます。
+**解決策** - 「[デプロイ用の Azure Stack Hub PKI 証明書の準備](azure-stack-prepare-pki-certs.md#prepare-certificates-azure-stack-readiness-checker)」の手順を使用して、CSR を生成したコンピューターから証明書を再度エクスポートします。 この手順には、ローカル コンピューターの証明書ストアからのエクスポートが含まれます。
 
 ## <a name="certificate-chain"></a>証明書チェーン
 
 **問題** - 証明書チェーンが完全ではありません。  
 
-**解決策** - 証明書には、完全な証明書チェーンが含まれている必要があります。 「[デプロイ用の Azure Stack Hub PKI 証明書の準備](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)」の手順を使用して証明書を再度エクスポートし、 **[証明のパスにある証明書を可能であればすべて含む]** オプションを選択します。
+**解決策** - 証明書には、完全な証明書チェーンが含まれている必要があります。 「[デプロイ用の Azure Stack Hub PKI 証明書の準備](azure-stack-prepare-pki-certs.md#prepare-certificates-azure-stack-readiness-checker)」の手順を使用して証明書を再度エクスポートし、 **[証明のパスにある証明書を可能であればすべて含む]** オプションを選択します。
 
 ## <a name="dns-names"></a>DNS 名
 
 **問題** - 証明書の **DNSNameList** に、Azure Stack Hub サービス エンドポイント名または有効なワイルドカード一致が含まれていません。 ワイルドカード一致は、DNS 名の左端の名前空間に対してのみ有効です。 たとえば、`*.region.domain.com` は `portal.region.domain.com` のみで有効であり、`*.table.region.domain.com` では有効ではありません。
 
-**解決策** - 「Azure Stack Hub 証明書署名要求の生成」の手順を使用して、Azure Stack Hub エンドポイントをサポートする正しい DNS 名で CSR を再生成します。 CSR を証明機関に再送信します。 その後、「[デプロイ用の Azure Stack Hub PKI 証明書の準備](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)」の手順に従って、CSR を生成したマシンから、証明書をエクスポートします。  
+**解決策** - 「Azure Stack Hub 証明書署名要求の生成」の手順を使用して、Azure Stack Hub エンドポイントをサポートする正しい DNS 名で CSR を再生成します。 CSR を証明機関に再送信します。 その後、「[デプロイ用の Azure Stack Hub PKI 証明書の準備](azure-stack-prepare-pki-certs.md#prepare-certificates-azure-stack-readiness-checker)」の手順に従って、CSR を生成したマシンから、証明書をエクスポートします。  
 
 ## <a name="key-usage"></a>キー使用法
 
@@ -75,13 +75,13 @@ ms.locfileid: "78367796"
 
 **問題** - 証明書チェーンの順序が正しくありません。  
 
-**解決策** - 「[デプロイ用の Azure Stack Hub PKI 証明書の準備](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)」の手順を使用して証明書を再度エクスポートし、 **[証明のパスにある証明書を可能であればすべて含む]** オプションを選択します。 リーフ証明書のみがエクスポート用に選択されていることを確認します。
+**解決策** - 「[デプロイ用の Azure Stack Hub PKI 証明書の準備](azure-stack-prepare-pki-certs.md#prepare-certificates-azure-stack-readiness-checker)」の手順を使用して証明書を再度エクスポートし、 **[証明のパスにある証明書を可能であればすべて含む]** オプションを選択します。 リーフ証明書のみがエクスポート用に選択されていることを確認します。
 
 ## <a name="other-certificates"></a>他の証明書
 
 **問題** - PFX パッケージに、リーフ証明書または証明書チェーンの一部ではない証明書が含まれています。  
 
-**解決策** - 「[デプロイ用の Azure Stack Hub PKI 証明書の準備](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)」の手順を使用して証明書を再度エクスポートし、 **[証明のパスにある証明書を可能であればすべて含む]** オプションを選択します。 リーフ証明書のみがエクスポート用に選択されていることを確認します。
+**解決策** - 「[デプロイ用の Azure Stack Hub PKI 証明書の準備](azure-stack-prepare-pki-certs.md#prepare-certificates-azure-stack-readiness-checker)」の手順を使用して証明書を再度エクスポートし、 **[証明のパスにある証明書を可能であればすべて含む]** オプションを選択します。 リーフ証明書のみがエクスポート用に選択されていることを確認します。
 
 ## <a name="fix-common-packaging-issues"></a>パッケージに関する一般的な問題の修正
 

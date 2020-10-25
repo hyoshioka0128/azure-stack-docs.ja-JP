@@ -3,16 +3,16 @@ title: Azure Stack Hub にスケール ユニット ノードを追加する
 description: Azure Stack Hub のスケール ユニットにスケール ユニット ノードを追加する方法について説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 09/09/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 09/17/2019
-ms.openlocfilehash: c264e0abc0fdc5a382b83a23158f860a56aea260
-ms.sourcegitcommit: a3ae6dd8670f8fb24224880df7eee256ebbcc4ef
+ms.lastreviewed: 08/03/2020
+ms.openlocfilehash: bf1cbd3dc999a90fb53ef30b48dc6f06e82f4d5a
+ms.sourcegitcommit: 69c859a89941ee554d438d5472308eece6766bdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772590"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89621301"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack-hub"></a>Azure Stack Hub のスケール ユニット ノードを追加する
 
@@ -27,14 +27,14 @@ Azure Stack Hub オペレーターは、物理コンピューターを追加す�
 
 新しいノードを追加する作業は、完了までに数時間から数日かかることがあります。 他のスケール ユニット ノードが追加されている間、システム上の実行中のワークロードに影響はありません。
 
-> [!Note]  
+> [!NOTE]  
 > スケール ユニット ノードの追加の操作が既に進行中の場合、次の操作は行わないでください。
 >
 >  - Azure Stack Hub の更新
 >  - 証明書のローテーション
 >  - Azure Stack Hub の停止
 >  - スケール ユニット ノードの修復
-
+>  - 別のノードの追加 (前のノードの追加アクションの失敗も進行中であると見なされます)
 
 ## <a name="add-scale-unit-nodes"></a>スケール ユニット ノードの追加
 
@@ -51,7 +51,7 @@ Azure Stack Hub オペレーターは、物理コンピューターを追加す�
 
 新しいノードは、管理者ポータルまたは PowerShell を使って追加できます。 ノードの追加操作では、まず新しいスケール ユニット ノードを利用可能な計算処理能力として追加します。その後、ストレージ容量が自動的に拡張されます。 Azure Stack Hub は、"*計算*" と "*ストレージ*" が一体となってスケーリングされるハイパーコンバージド システムであるため、容量は自動的に拡張されます。
 
-### <a name="use-the-administrator-portal"></a>管理者ポータルを使用する
+### <a name="administrator-portal"></a>[管理者ポータル](#tab/portal)
 
 1. Azure Stack Hub 管理者ポータルに Azure Stack Hub オペレーターとしてサインインします。
 2. **[+ リソースの作成]**  >  **[キャパシティ]**  >  **[Scale Unit Node]\(スケール ユニット ノード\)** に移動します。
@@ -60,7 +60,7 @@ Azure Stack Hub オペレーターは、物理コンピューターを追加す�
    ![ノードの詳細の追加](media/azure-stack-add-scale-node/select-node2.png)
  
 
-### <a name="use-powershell"></a>PowerShell の使用
+### <a name="powershell-azurerm"></a>[PowerShell AzureRM](#tab/AzureRM)
 
 ノードの追加には、**New-AzsScaleUnitNodeObject** コマンドレットを使用します。  
 
@@ -76,6 +76,23 @@ Azure Stack Hub オペレーターは、物理コンピューターを追加す�
  
   Add-AzsScaleUnitNode -NodeList $NewNode -ScaleUnit "<name_of_scale_unit_cluster>" 
   ```  
+
+### <a name="powershell-az"></a>[PowerShell Az](#tab/Az)
+
+ノードの追加には、**Add-AzsScaleUnitNode** コマンドレットを使用します。  
+
+次のいずれかのサンプル PowerShell スクリプトを使用する前に、*name_of_new_node*、*name_of_scale_unit_cluster*、*BMCIP_address_of_new_node* の値を実際の Azure Stack Hub 環境の値に置き換えてください。
+
+  > [!Note]  
+  > ノードの名前を付けるときは、長さを 15 文字未満にする必要があります。 また、スペースを含む名前や次の文字を含む名前は使用できません。`\`、`/`、`:`、`*`、`?`、`"`、`<`、`>`、`|`、`\`、`~`、`!`、`@`、`#`、`$`、`%`、`^`、`&`、`(`、`)`、`{`、`}`、`_`。
+
+**ノードを追加する: **
+  ```powershell
+  ## Add a single Node 
+    Add-AzsScaleUnitNode -BMCIPv4Address "<BMCIP_address_of_new_node>" -computername "<name_of_new_node>" -ScaleUnit "<name_of_scale_unit_cluster>" 
+  ```  
+
+---
 
 ## <a name="monitor-add-node-operations"></a>ノードの追加操作の監視 
 ノードの追加操作の状態は、管理者ポータルまたは PowerShell を使用して取得します。 ノードの追加操作は、完了までに数時間から数日かかることがあります。

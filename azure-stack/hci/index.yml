@@ -1,19 +1,19 @@
 ### YamlMime:Landing
 title: Azure Stack HCI のドキュメント
-summary: Azure Stack HCI は、仮想化されたワークロードをオンプレミスで実行するために検証済みのハードウェアを使用するハイパー集約型の Windows Server 2019 クラスターであり、ユーザーが古くなったインフラストラクチャを統合し、クラウド サービスのために Azure に接続することが簡単にできるようにします。
+summary: Azure Stack HCI は、仮想化されたワークロードをオンプレミスで実行するために検証済みのハードウェアを使用するハイパー集約型のクラスターであり、これを使うと、古くなったインフラストラクチャの統合と、クラウド サービスのための Azure への接続が簡単になります。
 metadata:
   title: Azure Stack HCI のドキュメント
-  description: Azure Stack HCI は、検証済みのハードウェアを使用して、仮想化されたワークロードをオンプレミスで実行するハイパーコンバージド Windows Server 2019 クラスターです。
+  description: Azure Stack HCI は、検証済みのハードウェアを使用して、仮想化されたワークロードをオンプレミスで実行するハイパーコンバージド クラスターです。
   ms.topic: landing-page
   author: khdownie
   ms.author: v-kedow
-  ms.date: 04/17/2020
-  ms.openlocfilehash: f277947b8de05c0a038c01bf9ab994510aa95b4f
-  ms.sourcegitcommit: 355e21dd9b8c3f44e14abaae0b4f176443cf7495
+  ms.date: 10/5/2020
+  ms.openlocfilehash: f66164d37b0e5fa1fab243f73b81df3b732205bc
+  ms.sourcegitcommit: 1621f2748b2059fd47ccacd48595a597c44ee63f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "81624960"
+  ms.lasthandoff: 10/08/2020
+  ms.locfileid: "91853144"
 landingContent:
 - title: Azure Stack HCI について
   linkLists:
@@ -25,33 +25,123 @@ landingContent:
     links:
     - text: Windows Admin Center で Azure Stack HCI を使用する
       url: get-started.md
-- title: Azure Stack HCI の管理
+- title: Deploy Azure Stack HCI のデプロイ
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 開始する前に
+      url: deploy/before-you-start.md
+    - text: Azure Stack HCI OS のデプロイ
+      url: deploy/operating-system.md
+    - text: クラスターの作成
+      url: deploy/create-cluster.md
+    - text: クラスター監視のセットアップ
+      url: deploy/witness.md
+    - text: Azure に登録する
+      url: deploy/register-with-azure.md
+    - text: クラスターを検証する
+      url: deploy/validate.md
+- title: ストレージの管理
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: ボリュームの作成
       url: manage/create-volumes.md
+    - text: 拡張ボリュームの作成
+      url: manage/create-stretched-volumes.md
+    - text: ボリュームの保護
+      url: manage/volume-encryption-deduplication.md
     - text: ボリュームの拡張
       url: manage/extend-volumes.md
     - text: ボリュームを削除する
       url: manage/delete-volumes.md
     - text: ドライブの交換
       url: manage/replace-drives.md
-    - text: Azure Monitor による監視
-      url: manage/azure-monitor.md
-    - text: Linux VM への GPU のアタッチ
-      url: manage/attach-gpu-to-linux-vm.md
+    - text: CSV キャッシュの使用
+      url: manage/use-csv-cache.md
+    - text: SMB マルチチャネルの管理
+      url: manage/manage-smb-multichannel.md
+- title: クラスターの管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Windows Admin Center でクラスターを管理する
+      url: manage/cluster.md
+    - text: PowerShell でクラスターを管理する
+      url: manage/cluster-powershell.md
+    - text: サーバーの追加または削除
+      url: manage/add-cluster.md
+    - text: クラスターの監視
+      url: manage/monitor-cluster.md
+    - text: クラスターの更新
+      url: manage/update-cluster.md
+    - text: 言語の変更
+      url: manage/vm-powershell.md
+- title: VM の管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Windows Admin Center で VM を管理する
+      url: manage/vm.md
+    - text: PowerShell で VM を管理する
+      url: manage/vm-powershell.md
+    - text: VM アフィニティ ルールの設定
+      url: deploy/before-you-start.md
 - title: Azure Stack HCI の概念
   linkLists:
   - linkListType: concept
     links:
+    - text: ストレッチ クラスター
+      url: concepts/stretched-clusters.md
+    - text: 課金
+      url: concepts/billing.md
+    - text: 更新とアップグレード
+      url: concepts/updates.md
     - text: ドライブの選択
       url: concepts/choose-drives.md
+    - text: ドライブの対称性に関する考慮事項
+      url: concepts/drive-symmetry-considerations.md
     - text: ボリュームの計画
       url: concepts/plan-volumes.md
-    - text: キャッシュの理解
-      url: concepts/cache.md
     - text: フォールト トレランスとストレージの効率性
       url: concepts/fault-tolerance.md
+    - text: セキュリティに関する考慮事項
+      url: concepts/security.md
+    - text: 記憶域プールのキャッシュ
+      url: concepts/cache.md
     - text: クラスターと記憶域プールのクォーラム
       url: concepts/quorum.md
+- title: Azure に接続する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure 登録の管理
+      url: manage/manage-azure-registration.md
+    - text: Windows Admin Center を Azure に登録する
+      url: manage/register-windows-admin-center.md
+    - text: Azure Site Recovery を使用する
+      url: manage/azure-site-recovery.md
+    - text: Azure Monitor による監視
+      url: manage/azure-monitor.md
+    - text: Azure ネットワーク アダプターを使用する
+      url: manage/use-azure-network-adapter.md
+    - text: Azure Backup の使用
+      url: manage/use-azure-backup.md
+- title: ソフトウェアによるネットワーク
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ソフトウェア定義ネットワーク (SDN) の概要
+      url: concepts/software-defined-networking.md
+    - text: SDN インフラストラクチャを計画する
+      url: concepts/plan-software-defined-networking-infrastructure.md
+    - text: ネットワーク コント ローラーの概要
+      url: concepts/network-controller-overview.md
+    - text: ネットワーク コントローラーを計画する
+      url: concepts/network-controller.md
+    - text: ソフトウェア ロード バランサーの概要
+      url: concepts/software-load-balancer.md
+    - text: RAS ゲートウェイの概要
+      url: concepts/gateway-overview.md
+    - text: ルート リフレクターの概要
+      url: concepts/route-reflector-overview.md

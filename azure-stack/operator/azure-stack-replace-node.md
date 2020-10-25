@@ -8,12 +8,12 @@ ms.date: 03/04/2020
 ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 9d39763397ce39c83a50bb57d97f0b5b8e07de6b
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: a96ee2a4ffb2abb3c3e11db23d4fb676ace8c1c0
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "78367990"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90572632"
 ---
 # <a name="replace-a-scale-unit-node-on-an-azure-stack-hub-integrated-system"></a>Azure Stack Hub 統合システムのスケール ユニット ノードを交換する
 
@@ -29,7 +29,7 @@ ms.locfileid: "78367990"
 \* このアクションは、ハードウェアの物理的な状態によっては必須でありません。
 
 > [!Note]  
-> シャットダウン操作に失敗した場合は、ドレイン操作に続けて停止操作を実行することをお勧めします。 詳細については、「[Azure Stack Hub でのスケール ユニット ノードの操作](https://docs.microsoft.com/azure-stack/operator/azure-stack-node-actions)」を参照してください。
+> シャットダウン操作に失敗した場合は、ドレイン操作に続けて停止操作を実行することをお勧めします。 詳細については、「[Azure Stack Hub でのスケール ユニット ノードの操作](./azure-stack-node-actions.md)」を参照してください。
 
 ## <a name="review-alert-information"></a>アラート情報を見直す
 

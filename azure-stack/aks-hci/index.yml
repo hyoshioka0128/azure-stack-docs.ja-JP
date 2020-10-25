@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Stack HCI の Azure Kubernetes Service のドキュメント
+summary: Azure Stack HCI の Azure Kubernetes Service は、一般的な Azure Kubernetes Service (AKS) オーケストレーターのオンプレミスの実装であり、コンテナー化されたアプリケーションの大規模な実行を自動化します。 Azure Kubernetes Service が Azure Stack HCI でプレビュー段階になりました。これにより、お客様のデータセンターで Linux および Windows コンテナーを簡単にホストできます。
+metadata:
+  title: Azure Stack HCI の Azure Kubernetes Service のドキュメント
+  description: Azure Stack HCI の Azure Kubernetes Service は、一般的な Azure Kubernetes Service (AKS) オーケストレーターのオンプレミスの実装であり、コンテナー化されたアプリケーションの大規模な実行を自動化します。 Azure Kubernetes Service が Azure Stack HCI でプレビュー段階になりました。これにより、お客様のデータセンターで Linux および Windows コンテナーを簡単にホストできます。
+  ms.topic: landing-page
+  author: jasongerend
+  ms.author: jgerend
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 25ac5eecb2f198613c3402a269c1aeafd7df4cc0
+  ms.sourcegitcommit: dabbe44c3208fbf989b7615301833929f50390ff
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90949438"
+landingContent:
+- title: Azure Kubernetes Service について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Stack HCI の Azure Kubernetes Service とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: AKS に対する Kubernetes の中心概念
+      url: kubernetes-concepts.md
+- title: 作業開始
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: システム要件を確認する
+      url: system-requirements.md
+  - linkListType: quickstart
+    links:
+    - text: Windows Admin Center を使用して AKS を設定する
+      url: setup.md
+    - text: PowerShell を使用して AKS を設定する
+      url: setup-powershell.md
+    - text: Windows Admin Center を使用して Kubernetes クラスターを作成する
+      url: create-kubernetes-cluster.md
+    - text: PowerShell を使用して Kubernetes クラスターを作成する
+      url: create-kubernetes-cluster-powershell.md
+- title: Windows および Linux アプリケーションのデプロイ
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Windows Server コンテナーを使用する
+      url: deploy-windows-application.md
+    - text: Linux コンテナーを使用する
+      url: deploy-linux-application.md
+  - linkListType: how-to-guide
+    links:
+    - text: 混合 OS の Kubernetes クラスター用にアプリを調整する
+      url: adapt-apps-mixed-os-clusters.md
+    - text: Windows コンテナーで永続ストレージを使用し、gMSA に備える
+      url: persistent-storage-windows-nodes.md
+- title: Azure との統合
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Arc for Kubernetes に接続する
+      url: connect-to-arc.md

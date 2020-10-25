@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/21/2020
 ms.author: sethm
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: fdc1f71e5d4c5afa8b3989b69795d150cf96de67
-ms.sourcegitcommit: d69eacbf48c06309b00d17c82ebe0ce2bc6552df
+ms.openlocfilehash: 88013fbde291d05daa41adf0c65db563c867ff5a
+ms.sourcegitcommit: 52b33ea180c38a5ecce150f5a9ea4a026344cc3d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780678"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88074300"
 ---
 # <a name="configure-ipsecike-policy-for-site-to-site-vpn-connections"></a>サイト間 VPN 接続の IPsec/IKE ポリシーを構成する
 
@@ -73,12 +73,14 @@ IPsec/IKE 標準プロトコルでは、幅広い暗号アルゴリズムがさ�
 |------------------------------------------------------|--------------------------------------------------------------------------|
 | IKEv2 暗号化                                     | AES256、AES192、AES128、DES3、DES                                        |
 | IKEv2 整合性                                      | SHA384、SHA256、SHA1、MD5                                                |
-| DH グループ                                             | ECP384、ECP256、DHGroup24、DHGroup14、DHGroup2、DHGroup1                 |
+| DH グループ                                             | ECP384、DHGroup14、DHGroup2、DHGroup1、ECP256 *、DHGroup24*             |
 | IPsec 暗号化                                     | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、なし |
-| IPsec 整合性                                      | GCMASE256、GCMAES192、GCMAES128                                          |
+| IPsec 整合性                                      | GCMAES256、GCMAES192、GCMAES128                                          |
 | PFS グループ                                            | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、PFSMM、なし                  |
 | QM SA の有効期間                                       | (オプション: 指定されていない場合、既定値が使用されます)<br />                         秒 (整数: 最小 300/既定値 27,000 秒)<br />                         キロバイト数 (整数: 最小 1,024/既定値 102,400,000 キロバイト) |
 | トラフィック セレクター                                     | Azure Stack Hub ではポリシー ベースのトラフィック セレクターはサポートされていません。         |
+
+\* これらのパラメーターは、ビルド 2002 以降でのみ使用できます。 
 
 - ご使用のオンプレミス VPN デバイスの構成は、Azure IPsec/IKE ポリシーで指定した次のアルゴリズムおよびパラメーターと一致している (または含んでいる) 必要があります。
 
@@ -108,9 +110,11 @@ IPsec/IKE 標準プロトコルでは、幅広い暗号アルゴリズムがさ�
 | 1                    | DHGroup1  | PFS1          | 768 ビット MODP  |
 | 2                    | DHGroup2  | PFS2          | 1024 ビット MODP |
 | 14                   | DHGroup14<br/>DHGroup2048 | PFS2048       | 2048 ビット MODP |
-| 19                   | ECP256    | ECP256        | 256 ビット ECP   |
+| 19                   | ECP256*    | ECP256        | 256 ビット ECP   |
 | 20                   | ECP384    | ECP384        | 384 ビット ECP   |
-| 24                   | DHGroup24 | PFS24         | 2048 ビット MODP |
+| 24                   | DHGroup24* | PFS24         | 2048 ビット MODP |
+
+\* これらのパラメーターは、ビルド 2002 以降でのみ使用できます。 
 
 詳細については、[RFC3526](https://tools.ietf.org/html/rfc3526) および [RFC5114](https://tools.ietf.org/html/rfc5114) を参照してください。
 

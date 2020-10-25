@@ -7,16 +7,17 @@ ms.date: 04/28/2020
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/28/2020
-ms.openlocfilehash: ff1a4f255f81c10c29c87320bdb71fcbaf9b234b
-ms.sourcegitcommit: 804f94f288859027b8249d138b14e8bc1501e009
+ms.custom: conteperfq4
+ms.openlocfilehash: 2906846b3f9aac2a748955032d8f9bce060f14cd
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84158352"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86488248"
 ---
 # <a name="use-the-privileged-endpoint-in-azure-stack-hub"></a>Azure Stack Hub での特権エンドポイントの使用
 
-Azure Stack Hub オペレーターは、管理ポータル、PowerShell、または Azure Resource Manager API を使用して、ほとんどの日常的な管理タスクを実行します。 ただし、あまり一般的でない一部の操作については、*特権エンドポイント* (PEP) を使用する必要があります。 この PEP は、あらかじめ構成されたリモート PowerShell コンソールであり、必要なタスクを実行するために十分な機能だけを提供します。 エンドポイントは [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) を使用して、コマンドレットの限定的なセットのみを公開します。 PEP にアクセスしてコマンドレットの限定的なセットを起動するために、低権限のアカウントが使用されます。 管理者アカウントは必要ありません。 セキュリティ強化のため、スクリプトは許可されません。
+Azure Stack Hub オペレーターは、管理ポータル、PowerShell、または Azure Resource Manager API を使用して、ほとんどの日常的な管理タスクを実行します。 ただし、あまり一般的でない一部の操作については、*特権エンドポイント* (PEP) を使用する必要があります。 この PEP は、あらかじめ構成されたリモート PowerShell コンソールであり、必要なタスクを実行するために十分な機能だけを提供します。 エンドポイントは [PowerShell JEA (Just Enough Administration)](/powershell/scripting/learn/remoting/jea/overview) を使用して、コマンドレットの限定的なセットのみを公開します。 PEP にアクセスしてコマンドレットの限定的なセットを起動するために、低権限のアカウントが使用されます。 管理者アカウントは必要ありません。 セキュリティ強化のため、スクリプトは許可されません。
 
 PEP を使用すると、次のタスクを実行できます。
 
@@ -40,7 +41,7 @@ IP アドレスは Azure Stack Hub 管理者ポータルでも見つかります
 特権エンドポイントの実行時には、現在のカルチャ設定を `en-US` に設定する必要があります。そうしないと、Test-AzureStack や Get-AzureStackLog などのコマンドレットが想定されているように機能しません。
 
 > [!NOTE]
-> セキュリティ上の理由から、PEP への接続は、ハードウェア ライフサイクル ホスト上で実行されているセキュリティ強化された VM から、または[特権アクセス ワークステーション](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)のような専用のセキュリティで保護されたコンピューターからに限定して行う必要があります。 ハードウェア ライフサイクル ホストは、元の構成から変更しないようにし (新しいソフトウェアのインストールするなど)、PEP への接続にも使わないようにする必要があります。
+> セキュリティ上の理由から、PEP への接続は、ハードウェア ライフサイクル ホスト上で実行されているセキュリティ強化された VM から、または[特権アクセス ワークステーション](/windows-server/identity/securing-privileged-access/privileged-access-workstations)のような専用のセキュリティで保護されたコンピューターからに限定して行う必要があります。 ハードウェア ライフサイクル ホストは、元の構成から変更しないようにし (新しいソフトウェアのインストールするなど)、PEP への接続にも使わないようにする必要があります。
 
 1. 信頼関係を確立します。
 
@@ -113,7 +114,7 @@ IP アドレスは Azure Stack Hub 管理者ポータルでも見つかります
 
 ## <a name="how-to-use-the-privileged-endpoint"></a>特権エンドポイントの使用方法 
 
-前述のとおり、PEP は、[PowerShell JEA](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) エンドポイントです。 JEA エンドポイントにより、強力なセキュリティ層が提供される一方で、スクリプトやタブ補完などの基本的な PowerShell の機能の一部が失われます。 何らかの種類のスクリプト操作を試みると、エラー **ScriptsNotAllowed** で操作は失敗します。 このエラーは予想される動作です。
+前述のとおり、PEP は、[PowerShell JEA](/powershell/scripting/learn/remoting/jea/overview) エンドポイントです。 JEA エンドポイントにより、強力なセキュリティ層が提供される一方で、スクリプトやタブ補完などの基本的な PowerShell の機能の一部が失われます。 何らかの種類のスクリプト操作を試みると、エラー **ScriptsNotAllowed** で操作は失敗します。 このエラーは予想される動作です。
 
 たとえば、特定のコマンドレットについてパラメーターの一覧を取得するには、次のコマンドを実行します。
 
@@ -121,7 +122,7 @@ IP アドレスは Azure Stack Hub 管理者ポータルでも見つかります
     Get-Command <cmdlet_name> -Syntax
 ```
 
-または、[**Import-PSSession**](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) コマンドレット使用して、ローカル コンピューターの現在のセッションにすべての PEP コマンドレットをインポートすることもできます。 PEP のすべてコマンドレットと関数を、タブ補完や、より一般にはスクリプトと共に、ローカル コンピューターで利用できるようになります。 **[Get-Help](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-help)** モジュールを実行して、コマンドレットの手順を確認することもできます。
+または、[**Import-PSSession**](/powershell/module/microsoft.powershell.utility/import-pssession?view=powershell-5.1) コマンドレット使用して、ローカル コンピューターの現在のセッションにすべての PEP コマンドレットをインポートすることもできます。 PEP のすべてコマンドレットと関数を、タブ補完や、より一般にはスクリプトと共に、ローカル コンピューターで利用できるようになります。 **[Get-Help](/powershell/module/microsoft.powershell.core/get-help)** モジュールを実行して、コマンドレットの手順を確認することもできます。
 
 ローカル コンピューターに PEP セッションをインポートするには、次の手順を実行します。
 
@@ -199,5 +200,5 @@ IP アドレスは Azure Stack Hub 管理者ポータルでも見つかります
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Hub の診断ツール](azure-stack-diagnostic-log-collection-overview-tzl.md)
+- [Azure Stack Hub の診断ツール](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)
 - [Azure Stack Hub の特権エンドポイント リファレンス](../reference/pep-2002/index.md)

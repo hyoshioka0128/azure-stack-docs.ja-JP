@@ -1,29 +1,54 @@
 ---
-title: Windows Admin Center を使用して Azure Stack HCI 上の VM を管理する
+title: Windows Admin Center を使用して VM を管理する - Azure Stack HCI
 description: Windows Admin Center を使用して Azure Stack HCI 上のクラスターで仮想マシンを作成および管理する方法について説明します。
 author: v-dasis
-ms.topic: article
-ms.date: 05/20/2020
+ms.topic: how-to
+ms.date: 07/21/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
-ms.openlocfilehash: f3ba9415cd5d91260067a1648bdb38c196be206a
-ms.sourcegitcommit: d69eacbf48c06309b00d17c82ebe0ce2bc6552df
+ms.openlocfilehash: 42c8062fb18b011365a0b245f713f5cd378885aa
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83794409"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90573668"
 ---
 # <a name="manage-vms-on-azure-stack-hci-using-windows-admin-center"></a>Windows Admin Center を使用して Azure Stack HCI 上の VM を管理する
 
-> 適用対象: Windows Server 2019
+> 適用対象: Azure Stack HCI バージョン 20H2、Windows Server 2019
 
 Windows Admin Center を使用して、Azure Stack HCI 上の仮想マシン (VM) を作成および管理できます。
+
+## <a name="create-a-new-vm"></a>新しい仮想マシンを作成する
+
+Windows Admin Center を使用して、新しい仮想マシンを簡単に作成できます。
+
+:::image type="content" source="media/manage-vm/new-vm.png" alt-text="新しい VM 画面" lightbox="media/manage-vm/new-vm.png":::
+
+1. Windows Admin Center のホームの **[すべての接続]** で、仮想マシンを作成するサーバーまたはクラスターを選択します。
+1. **[ツール]** で下方向にスクロールし、 **[仮想マシン]** を選択します。
+1. **[仮想マシン]** で、 **[インベントリ]** タブを選択し、 **[新規作成]** を選択します。
+1. **[新しい仮想マシン]** で、VM の名前を入力します。
+1. **[第 2 世代]\(推奨)** を選択します。
+1. 事前に割り当てられたファイル パスをドロップダウン リストから選択するか、 **[参照]** をクリックして VM 構成と仮想ハード ディスク (VHD) ファイルを保存するフォルダーを選択します。 ネットワーク上にある使用可能な任意の SMB 共有を参照するには、パスを *\\server\share* として入力します。
+
+1. **[仮想プロセッサ]** で、仮想プロセッサの数と、入れ子になった仮想化を有効にするかどうかを選択します。
+1. **[メモリ]** で、起動メモリの量 (最小の推奨値は 4 GB) と、必要に応じて、VM に割り当てる動的メモリの最小範囲と最大範囲を選択します。
+1. **[ネットワーク]** で、ドロップダウン リストからネットワーク アダプターを選択します。
+1. **[ストレージ]** で、 **[追加]** をクリックし、新しい仮想ハード ディスクを作成するか、既存の仮想ハード ディスクを使用するかを選択します。 既存の仮想ハード ディスクを使用する場合は、 **[参照]** をクリックして、該当するファイル パスを選択します。  
+1. **[オペレーティング システム]** で、次のいずれかの操作を行います。
+   - 後で VM にオペレーティング システムをインストールする場合は、 **[後でオペレーティング システムをインストールする]** を選択します。
+   - **[Install an operating system from an image file (*.iso)]\(イメージ ファイル (*.iso) からオペレーティング システムをインストールする\)** を選択し、 **[参照]** をクリックして、使用する適用可能な .iso イメージ ファイルを選択します。
+   - この方法を使用して後で OS を VM にインストールする場合は、 **[ネットワーク ベースのインストール サーバーからオペレーティング システムをインストールする]** を選択します。 あらかじめネットワーク アダプターを選択していることを確認してください。選択していないと動作しません。
+1. 完了したら、 **[作成]** をクリックして VM を作成します。
+1. VM を起動するには、 **[仮想マシン]** の一覧で、新しい VM にマウス ポインターを移動し、左側のチェック ボックスをオンにして、 **[開始]** を選択します。
+1. **[状態]** で、VM の状態が **[実行中]** になっていることを確認します。
 
 ## <a name="get-a-list-of-vms"></a>VM の一覧の取得
 
 サーバー上またはクラスター内のすべての VM を簡単に確認できます。
 
-:::image type="content" source="media/manage-vm/vm-inventory.png" alt-text="仮想マシンの画面":::
+:::image type="content" source="media/manage-vm/vm-inventory.png" alt-text="仮想マシンの画面" lightbox="media/manage-vm/vm-inventory.png":::
 
 1. Windows Admin Center で、 **[ツール]** で下方向にスクロールし、 **[仮想マシン]** を選択します。
 1. 右側の **[インベントリ]** タブには、現在のサーバーまたはクラスターで使用可能なすべての VM が一覧表示され、個々の VM を管理するためのコマンドが用意されています。 次のようにすることができます。
@@ -40,7 +65,7 @@ Windows Admin Center を使用して、Azure Stack HCI 上の仮想マシン (VM
 
 専用のページから、特定の VM の詳細情報とパフォーマンス グラフを表示できます。
 
-:::image type="content" source="media/manage-vm/vm-details.png" alt-text="仮想マシンの詳細情報画面":::
+:::image type="content" source="media/manage-vm/vm-details.png" alt-text="仮想マシンの詳細情報画面" lightbox="media/manage-vm/vm-details.png":::
 
 1. **[ツール]** で下方向にスクロールし、 **[仮想マシン]** を選択します。
 1. 右側の **[インベントリ]** タブをクリックし、VM を選択します。 後続のページでは、次の操作を実行できます。
@@ -58,10 +83,10 @@ Windows Admin Center を使用して、Azure Stack HCI 上の仮想マシン (VM
 
 クラスター内のすべての VM のリソース使用率とパフォーマンス メトリックを表示できます。
 
-:::image type="content" source="media/manage-vm/host-metrics.png" alt-text="ホスト メトリック画面":::
+:::image type="content" source="media/manage-vm/host-metrics.png" alt-text="ホスト メトリック画面" lightbox="media/manage-vm/host-metrics.png":::
 
 1. **[ツール]** で下方向にスクロールし、 **[仮想マシン]** を選択します。
-1. 右側の **[概要]** タブには、次のような、選択したサーバーまたはクラスターの Hyper-v ホストのリソースとパフォーマンスの総合的なビューが表示されます。 
+1. 右側の **[概要]** タブには、次のような、選択したサーバーまたはクラスターの Hyper-v ホストのリソースとパフォーマンスの総合的なビューが表示されます。
     - 実行中、停止、一時停止、および保存されている VM の数
     - クラスターの最近の正常性アラートまたは Hyper-V イベント ログのイベント
     - ホストとゲストの CPU とメモリの使用率の内訳
@@ -82,19 +107,19 @@ VM では、さまざまな設定を変更できます。
     - 既定の VM の開始/停止アクションを変更するには、ドロップダウン ボックスから適切な設定を選択します。
     - VM を一時停止または開始するための時間間隔を変更するには、表示されたフィールドに適切な値を入力します。
 
-        :::image type="content" source="media/manage-vm/vm-settings-general.png" alt-text="VM の全般設定画面":::
+        :::image type="content" source="media/manage-vm/vm-settings-general.png" alt-text="VM の全般設定画面" lightbox="media/manage-vm/vm-settings-general.png":::
 
 1. VM の起動メモリ、動的メモリの範囲、メモリ バッファーの割合、およびメモリの優先度を変更するには、 **[メモリ]** を選択します。
 
-    :::image type="content" source="media/manage-vm/vm-settings-memory.png" alt-text="VM メモリ設定の変更画面":::
+    :::image type="content" source="media/manage-vm/vm-settings-memory.png" alt-text="VM メモリ設定の変更画面" lightbox="media/manage-vm/vm-settings-memory.png":::
 
 1. 仮想プロセッサの数を変更したり、入れ子になった仮想化を有効にしたり、同時マルチスレッド (SMT) を有効にしたりするには、 **[プロセッサ]** を選択します。
 
-    :::image type="content" source="media/manage-vm/vm-settings-processor.png" alt-text="VM のプロセッサ設定の変更画面":::
+    :::image type="content" source="media/manage-vm/vm-settings-processor.png" alt-text="VM のプロセッサ設定の変更画面" lightbox="media/manage-vm/vm-settings-processor.png":::
 
 1. 新しい仮想ディスクを追加するには、 **[ディスク]** を選択し、空の仮想ディスクを作成するか、既存の仮想ディスクまたは ISO (.iso) イメージ ファイルを使用するかを選択します。 **[参照]** をクリックして、仮想ディスクまたはイメージ ファイルへのパスを選択します。
 
-    :::image type="content" source="media/manage-vm/vm-settings-disk.png" alt-text="VM ディスク設定の変更画面":::
+    :::image type="content" source="media/manage-vm/vm-settings-disk.png" alt-text="VM ディスク設定の変更画面" lightbox="media/manage-vm/vm-settings-disk.png":::
 
 1. ネットワーク アダプターの設定を追加、削除、または変更するには、 **[ネットワーク]** を選択し、次の操作を行います。
     - 使用する仮想スイッチを指定し、仮想 LAN 識別を有効にするかどうかを指定します (VLAN ID も指定する必要があります)。
@@ -103,18 +128,18 @@ VM では、さまざまな設定を変更できます。
         - MAC アドレスのスプーフィングを有効にする
         - 帯域幅管理を有効にし、最大/最小範囲を指定する
 
-        :::image type="content" source="media/manage-vm/vm-settings-network.png" alt-text="VM ネットワーク設定の変更画面":::
+        :::image type="content" source="media/manage-vm/vm-settings-network.png" alt-text="VM ネットワーク設定の変更画面" lightbox="media/manage-vm/vm-settings-network.png":::
 
 1. ブート デバイスを追加したり、VM のブート シーケンスを変更したりするには、 **[Boot order]\(ブート順序\)** を選択します。
 
-    :::image type="content" source="media/manage-vm/vm-settings-boot.png" alt-text="VM ブート順序の変更画面":::
+    :::image type="content" source="media/manage-vm/vm-settings-boot.png" alt-text="VM ブート順序の変更画面" lightbox="media/manage-vm/vm-settings-boot.png":::
 
 1. **[チェックポイント]** を選択して、VM チェックポイントを有効にし、チェックポイントの種類を選択して、チェックポイントの場所を選択します。
 
     > [!NOTE]
     > **運用**チェックポイント設定が推奨されます。この設定では、ゲスト オペレーティング システムでバックアップ テクノロジを使用して、データ整合性チェックポイントが作成されます。 **標準**設定では、VHD スナップショットを使用して、アプリケーションとサービスの状態によってチェックポイントが作成されます。
 
-     :::image type="content" source="media/manage-vm/vm-settings-checkpoint.png" alt-text="VM チェックポイントの変更画面":::
+     :::image type="content" source="media/manage-vm/vm-settings-checkpoint.png" alt-text="VM チェックポイントの変更画面" lightbox="media/manage-vm/vm-settings-checkpoint.png":::
 
 1. VM のセキュリティ設定を変更するには、 **[セキュリティ]** を選択し、次の手順を実行します。
     - 未承認のコードが起動時に実行されないようにするには、 **[セキュア ブートを有効にする]** を選択します (推奨)。 また、ドロップダウン ボックスから Microsoft またはオープンソースのテンプレートを選択します。
@@ -130,38 +155,13 @@ VM では、さまざまな設定を変更できます。
 
     - **[セキュリティ ポリシー]** で、VM の追加の保護オプションとして **[シールドを有効にする]** を選択します。
 
-        :::image type="content" source="media/manage-vm/vm-settings-security.png" alt-text="VM のセキュリティ設定の変更":::
-
-## <a name="create-a-new-vm"></a>新しい仮想マシンを作成する
-
-Windows Admin Center を使用して、新しい仮想マシンを簡単に作成できます。
-
-:::image type="content" source="media/manage-vm/new-vm.png" alt-text="新しい VM 画面":::
-
-1. Windows Admin Center のホームの **[すべての接続]** で、仮想マシンを作成するサーバーまたはクラスターを選択します。
-1. **[ツール]** で下方向にスクロールし、 **[仮想マシン]** を選択します。
-1. **[仮想マシン]** で、 **[インベントリ]** タブを選択し、 **[新規作成]** を選択します。
-1. **[新しい仮想マシン]** で、VM の名前を入力します。
-1. **[第 2 世代](推奨)** を選択します。
-1. 事前に割り当てられたファイル パスをドロップダウン リストから選択するか、 **[参照]** をクリックして VM 構成と仮想ハード ディスク (VHD) ファイルを保存するフォルダーを選択します。 ネットワーク上にある使用可能な任意の SMB 共有を参照するには、パスを *\\server\share* として入力します。
-
-1. **[仮想プロセッサ]** で、仮想プロセッサの数と、入れ子になった仮想化を有効にするかどうかを選択します。
-1. **[メモリ]** で、起動メモリの量 (最小の推奨値は 4 GB) と、必要に応じて、VM に割り当てる動的メモリの最小範囲と最大範囲を選択します。
-1. **[ネットワーク]** で、ドロップダウン リストからネットワーク アダプターを選択します。
-1. **[ストレージ]** で、 **[追加]** をクリックし、新しい仮想ハード ディスクを作成するか、既存の仮想ハード ディスクを使用するかを選択します。 既存の仮想ハード ディスクを使用する場合は、 **[参照]** をクリックして、該当するファイル パスを選択します。  
-1. **[オペレーティング システム]** で、次のいずれかの操作を行います。
-   - 後で VM にオペレーティング システムをインストールする場合は、 **[後でオペレーティング システムをインストールする]** を選択します。
-   - **[Install an operating system from an image file (*.iso)]\(イメージ ファイル (*.iso) からオペレーティング システムをインストールする\)** を選択し、 **[参照]** をクリックして、使用する適用可能な .iso イメージ ファイルを選択します。
-   - この方法を使用して後で OS を VM にインストールする場合は、 **[ネットワーク ベースのインストール サーバーからオペレーティング システムをインストールする]** を選択します。 あらかじめネットワーク アダプターを選択していることを確認してください。選択していないと動作しません。
-1. 完了したら、 **[作成]** をクリックして VM を作成します。
-1. VM を起動するには、 **[仮想マシン]** の一覧で、新しい VM にマウス ポインターを移動し、左側のチェック ボックスをオンにして、 **[開始]** を選択します。
-1. **[状態]** で、VM の状態が **[実行中]** になっていることを確認します。
+        :::image type="content" source="media/manage-vm/vm-settings-security.png" alt-text="VM のセキュリティ設定の変更" lightbox="media/manage-vm/vm-settings-security.png":::
 
 ## <a name="move-a-vm-to-another-server-in-the-cluster"></a>クラスター内の別のサーバーに VM を移動する
 
 次のようにして、仮想マシンをクラスター内の別のサーバーに簡単に移動できます。
 
-:::image type="content" source="media/manage-vm/vm-more-move.png" alt-text="VM の移動画面":::
+:::image type="content" source="media/manage-vm/vm-more-move.png" alt-text="VM の移動画面" lightbox="media/manage-vm/vm-more-move.png":::
 
 1. **[ツール]** で下方向にスクロールし、 **[仮想マシン]** を選択します。
 1. 右側の **[インベントリ]** タブを選択します。 一覧から仮想マシンを選択し、 **[その他] > [移動]** を選択します。
@@ -173,7 +173,7 @@ Windows Admin Center を使用して、新しい仮想マシンを簡単に作�
 
 VM は簡単にインポートまたはエクスポートできます。 次の手順では、インポート プロセスについて説明します。
 
-:::image type="content" source="media/manage-vm/vm-more-import.png" alt-text="VM のインポート画面":::
+:::image type="content" source="media/manage-vm/vm-more-import.png" alt-text="VM のインポート画面" lightbox="media/manage-vm/vm-more-import.png":::
 
 1. **[ツール]** で下方向にスクロールし、 **[仮想マシン]** を選択します。
 1. 右側の **[インベントリ]** タブを選択します。 クラスター化された仮想マシンを一覧から選択し、 **[その他] > [インポート]** を選択します。
@@ -207,8 +207,8 @@ Windows Admin Center を使用する代わりに、リモート デスクトッ�
 
 Windows Admin Center を使用して Azure Site Recovery を構成し、オンプレミスの VM を Azure にレプリケートできます。 これはオプションの付加価値サービスです。 開始するには、[Azure Site Recovery を使用した VM の保護](azure-site-recovery.md)に関する記事を参照してください。
 
-:::image type="content" source="media/manage-vm/vm-more-azure.png" alt-text="Azure Site Recovery のセットアップ画面":::
+:::image type="content" source="media/manage-vm/vm-more-azure.png" alt-text="Azure Site Recovery のセットアップ画面" lightbox="media/manage-vm/vm-more-azure.png":::
 
 ## <a name="next-steps"></a>次のステップ
 
-Windows PowerShell の Hyper-V コマンドレットを使用して、VM を作成および管理することもできます。 詳細については、「[Hyper-V](https://docs.microsoft.com/powershell/module/hyper-v/?view=win10-ps)」を参照してください。
+Windows PowerShell を使用して、VM を作成および管理することもできます。 詳しくは、「[Windows PowerShell を使用して Azure Stack HCI 上の VM を管理する](vm-powershell.md)」をご覧ください。

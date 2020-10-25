@@ -3,16 +3,16 @@ title: Azure Stack Hub で Kubernetes クラスターをスケーリングする
 description: Azure Stack Hub で Kubernetes クラスターをスケーリングする方法を学習します。
 author: mattbriggs
 ms.topic: article
-ms.date: 3/19/2020
+ms.date: 09/02/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/19/2020
-ms.openlocfilehash: e5a9c44d91137d8f9868a9a9c6a809a54ca09026
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.lastreviewed: 09/02/2020
+ms.openlocfilehash: cfa531c42ebcc191461d4a801d0c17ce9526b912
+ms.sourcegitcommit: b80d529ff47b15b8b612d8a787340c7b0f68165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80069110"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89473148"
 ---
 # <a name="scale-a-kubernetes-cluster-on-azure-stack-hub"></a>Azure Stack Hub で Kubernetes クラスターをスケーリングする
 
@@ -34,7 +34,7 @@ AKS エンジンで **scale** コマンドを使用して、クラスターを�
 | subscription-id |  | ご使用のクラスターによって使用されるリソースを含むサブスクリプションの GUID。 スケールするサブスクリプションに十分なクォータがあることを確認します。 | 
 | client-id |  | AKS エンジンからクラスターを作成するときに使用されるサービス プリンシパルのクライアント ID。 | 
 | client-secret |  | クラスターの作成時に使用されるサービス プリンシパル シークレット。 | 
-| api-model | kube-rg/apimodel.json | クラスター定義ファイルへのパス (apimodel.json)。 これは、_output/\<dnsPrefix>/apimodel.json にすることができます。 | 
+| api-model | kube-rg/apimodel.json | クラスター定義ファイルへのパス (apimodel.json)。 たとえば、_output/\<dnsPrefix>/apimodel.json などです | 
 | -new-node-count | 9 | 目的のノード数。 | 
 | -master-FQDN |  | マスター FQDN。 スケールダウンするときに必要です。 |
 | identity-system | adfs | 省略可能。 Active Directory フェデレーション サービス (AD FS) を使用している場合に、ID 管理ソリューションを指定します。 |

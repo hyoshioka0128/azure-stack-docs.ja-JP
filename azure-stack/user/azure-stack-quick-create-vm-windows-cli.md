@@ -1,17 +1,17 @@
 ---
-title: Azure CLI を使用して Azure Stack Hub に Windows 仮想マシンを作成する
+title: Azure CLI を使用して Azure Stack Hub に Windows VM を作成する
 description: Azure CLI を使用して Azure Stack Hub に Windows 仮想マシンを作成する
 author: mattbriggs
 ms.topic: quickstart
 ms.date: 5/27/2020
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2020
-ms.openlocfilehash: 5c4c9c5f173b65051ba86e02ae7623a24a406f39
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: 81406ed38a31f07f201523b06e761165654d3333
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111848"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90573889"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-using-azure-cli-in-azure-stack-hub"></a>クイック スタート:Azure Stack Hub で Azure CLI を使用して Windows Server 仮想マシンを作成する
 

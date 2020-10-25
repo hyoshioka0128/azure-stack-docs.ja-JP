@@ -4,26 +4,26 @@ description: Azure Stack Hub で AzureRM モジュールから新しい Az モ�
 author: mattbriggs
 ms.author: mabrigg
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 10/05/2020
 ms.reviewer: sijuman
 ms.lastreviewed: 04/14/2020
-ms.openlocfilehash: bcfd4b467013a6f207efa37bc02917d3800e3eb0
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: ea3ec5389aa00d0b606d86e483a8ca5a2607aa1a
+ms.sourcegitcommit: af21e3097e833bcb0670733a5e92d6fc3deaa53b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81395183"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729238"
 ---
 # <a name="migrate-from-azurerm-to-azure-powershell-az-in-azure-stack-hub"></a>Azure Stack Hub での AzureRM から Azure PowerShell Az への移行
 
 Az モジュールには AzureRM との機能パリティがありますが、より短く一貫性のあるコマンドレット名が使用されます。
 AzureRM コマンドレット用に記述されたスクリプトは、新しいモジュールで自動的に機能するわけではありません。 移行を容易にするために、Az には AzureRM を使用する既存のスクリプトを実行できるようにするツールが用意されています。 新しいコマンド セットへの移行がないに越したことはありませんが、この記事は、新しいモジュールへの切り替えを開始する際に役立ちます。
 
-AzureRM と Az の間の破壊的変更の完全な一覧については、「[Migration guide for Az 1.0.0 (Az 1.0.0 の移行ガイド)](https://docs.microsoft.com/powershell/azure/migrate-az-1.0.0)」を参照してください。
+AzureRM と Az の間の破壊的変更の完全な一覧については、「[Migration guide for Az 1.0.0 (Az 1.0.0 の移行ガイド)](/powershell/azure/migrate-az-1.0.0)」を参照してください。
 
 ## <a name="check-for-installed-versions-of-azurerm"></a>インストールされている AzureRM のバージョンを確認する
 
-Az モジュールは AzureRM モジュールと同時にインストールできますが、これはお勧めしません。 移行手順を実行する前に、システムにインストールされている AzureRM のバージョンを確認します。 これにより、スクリプトが最新のリリースで既に実行中であることを確認し、AzureRM をアンインストールせずにコマンドの別名を有効にできるかどうかを把握することができます。
+移行手順を実行する前に、システムにインストールされている AzureRM のバージョンを確認します。 これにより、スクリプトが最新のリリースで既に実行中であることを確認し、AzureRM をアンインストールせずにコマンドの別名を有効にできるかどうかを把握することができます。
 
 インストールされている AzureRM のバージョンを確認するには、次のコマンドを実行します。
 
@@ -43,7 +43,7 @@ Azure PowerShell Az モジュールをインストールするには、次の手
 
 * __推奨__:[AzureRM モジュールをアンインストールする](/powershell/azure/uninstall-az-ps#uninstall-the-azurerm-module)。
   最新のバージョンだけでなく、インストールした "_すべて_" のバージョンの AzureRM を必ず削除します。
-* [Az モジュールをインストールする](https://docs.microsoft.com/powershell/azure/install-az-ps)
+* [Az モジュールをインストールする](/powershell/azure/install-az-ps)
 
 ## <a name="enable-azurerm-compatibility-aliases"></a>AzureRM と互換性のあるエイリアスを有効にする 
 

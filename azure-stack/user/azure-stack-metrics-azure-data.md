@@ -6,24 +6,24 @@ ms.topic: article
 ms.date: 5/27/2020
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2019
-ms.openlocfilehash: ea2ccd33bc64c01b4ab5ba56024a54aa82453e63
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: 7d0a11f8a559f1f40ae797392f27caa815129c69
+ms.sourcegitcommit: a5d3cbe1a10c2a63de95b9e72391dd83473ee299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112035"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88920782"
 ---
 # <a name="use-azure-monitor-on-azure-stack-hub"></a>Azure Stack Hub 上の Azure Monitor を使用する
 
 この記事では、Azure Stack Hub 上の Azure Monitor サービスの概要を説明します。 Azure Monitor の動作について説明し、Azure Stack Hub での Azure Monitor の使用方法に関するその他の情報を紹介します。
 
-Azure Monitor の概要については、[Azure Stack Hub 上の Azure Monitor の概要](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started)に関するグローバル Azure の記事を参照してください。
+Azure Monitor の概要については、[Azure Stack Hub 上の Azure Monitor の概要](/azure/monitoring-and-diagnostics/monitoring-get-started)に関するグローバル Azure の記事を参照してください。
 
 ![Azure Stack Hub の Monitor ブレード](./media/azure-stack-metrics-azure-data/azs-monitor.png)
 
 Azure Monitor は、Azure リソースを監視するための 1 つのソースを提供するプラットフォーム サービスです。 Azure Monitor では、Azure のリソースのメトリックとログを視覚化、クエリ、ルーティング、アーカイブし、そのメトリックとログに対してその他のアクションを実行できます。 このデータは、Azure Stack Hub 管理者ポータル、Monitor PowerShell コマンドレット、クロス プラットフォーム CLI、または Azure Monitor REST API を使用して操作できます。 Azure Stack Hub でサポートされている特定の接続については、「[Azure Stack Hub の監視データの使用](azure-stack-metrics-monitor.md)」を参照してください。
 
-> [!Note]
+> [!NOTE]
 > Azure Stack Development Kit では、メトリックと診断ログを使用できません。
 
 ## <a name="prerequisites-for-azure-monitor-on-azure-stack-hub"></a>Azure Stack Hub 上の Azure Monitor の前提条件
@@ -62,7 +62,7 @@ Azure Stack Hub 上の **Microsoft.Compute** リソース プロバイダーに�
  - クラッシュ ダンプ
  - カスタム エラー ログ
 
-> [!Note]  
+> [!NOTE]  
 > Azure Stack Hub 上の Linux 診断拡張機能はサポートされていません。
 
 ### <a name="host-and-guest-vm-metrics"></a>ホスト VM とゲスト VM のメトリック
@@ -71,7 +71,7 @@ Azure Stack Hub 上の **Microsoft.Compute** リソース プロバイダーに�
 
 ### <a name="activity-log"></a>アクティビティ ログ
 
-計算リソースの情報については、Azure Stack Hub インフラストラクチャで確認できるようなアクティビティ ログを検索できます。 このログには、リソースが作成された時点や破棄された時点などの情報が記載されています。 Azure Stack Hub のアクティビティ ログには、Azure との整合性があります。 詳細については、[Azure のアクティビティ ログの概要](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)に関するページを参照してください。 
+計算リソースの情報については、Azure Stack Hub インフラストラクチャで確認できるようなアクティビティ ログを検索できます。 このログには、リソースが作成された時点や破棄された時点などの情報が記載されています。 Azure Stack Hub のアクティビティ ログには、Azure との整合性があります。 詳細については、[Azure のアクティビティ ログの概要](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)に関するページを参照してください。 
 
 
 ## <a name="azure-monitor-sources-everything-else"></a>Azure Monitor のソース: 上記以外のすべて
@@ -114,9 +114,9 @@ Azure Monitor REST API、クロスプラットフォーム コマンドライン
 次のいずれかの方法を使用して、データの追跡、ルーティング、および取得を行うことができます。 ただし、アクションやデータの種類によっては利用できない方法もあります。 
 
  - [Azure Stack Hub ユーザー ポータル ](azure-stack-use-portal.md)
- - [PowerShell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples)
- - [クロスプラットフォーム コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples)
- - [REST API](https://docs.microsoft.com/rest/api/monitor)
+ - [PowerShell](/azure/monitoring-and-diagnostics/insights-powershell-samples)
+ - [クロスプラットフォーム コマンド ライン インターフェイス (CLI)](/azure/monitoring-and-diagnostics/insights-cli-samples)
+ - [REST API](/rest/api/monitor)
  - [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
 > [!Important]  

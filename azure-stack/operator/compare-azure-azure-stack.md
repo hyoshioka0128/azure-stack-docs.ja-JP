@@ -4,16 +4,16 @@ titleSuffix: Azure Stack Hub
 description: グローバル Azure、Azure Stack Hub、および Azure Stack HCI の違いについて説明します。
 author: justinha
 ms.topic: overview
-ms.date: 05/03/2019
+ms.date: 07/10/2020
 ms.author: justinha
 ms.reviewer: unknown
 ms.lastreviewed: 03/29/2019
-ms.openlocfilehash: f71367c86dcb360297fed7250e3a5dfb4bd6beda
-ms.sourcegitcommit: a3ae6dd8670f8fb24224880df7eee256ebbcc4ef
+ms.openlocfilehash: 96730a5afb143d8a5198c07bdc5b5df14c6483bd
+ms.sourcegitcommit: 0e52f460295255b799bac92b40122a22bf994e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772443"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86866158"
 ---
 # <a name="differences-between-global-azure-azure-stack-hub-and-azure-stack-hci"></a>グローバル Azure、Azure Stack Hub、および Azure Stack HCI の違い
 
@@ -29,7 +29,7 @@ Microsoft Azure は、ビジネス上の課題への対応を支援するため�
 
 グローバル Azure では、世界 54 の地域で 100 を超えるサービスが提供されています。 グローバル Azure サービスの最新の一覧については、「[*リージョン別の利用可能な製品*](https://azure.microsoft.com/regions/services)」を参照してください。 Azure で利用可能なサービスがカテゴリ別に一覧表示され、一般提供かプレビューかも示されます。
 
-グローバル Azure サービスについて詳しくは、[Azure の作業開始](https://docs.microsoft.com/azure/?pivot=get-started&panel=get-started1)に関するページをご覧ください。
+グローバル Azure サービスについて詳しくは、[Azure の作業開始](/azure/?panel=get-started1&pivot=get-started)に関するページをご覧ください。
 
 ## <a name="azure-stack-hub"></a>Azure Stack Hub
 
@@ -68,15 +68,9 @@ Azure Stack Hub についての詳細は、「[Azure Stack Hub とは](azure-sta
 
 ## <a name="azure-stack-hci"></a>Azure Stack HCI
 
-[Azure Stack HCI](../hci/overview.md) ソリューションでは、ハイパーコンバージド インフラストラクチャ (HCI) ソリューションを使用して、仮想マシンをオンプレミスで実行し、Azure に簡単に接続できます。 規制要件または技術要件を満たすために、一貫性のあるオンプレミスの Azure サービスを使用してクラウド アプリをビルドおよび実行します。 仮想化されたアプリをオンプレミスで実行するだけでなく、Azure Stack HCI では、経年劣化したサーバー インフラストラクチャを交換および整理し、クラウド サービスを利用するために Windows Admin Center を使用して Azure に接続できます。
+[Azure Stack HCI](../hci/overview.md) は、検証済みのハードウェアを使用して仮想化された Windows と Linux のワークロードをオンプレミスで実行し、クラウドベースのバックアップ、復旧、監視のために Azure に簡単に接続する、ハイパーコンバージド クラスターです。 Azure Stack HCI は、最初は Windows Server 2019 が基になっていましたが、今では、サブスクリプション ベースのライセンス モデルとハイブリッド機能が組み込まれた Azure サービスとして提供されています。 Azure Stack HCI は、Windows Server と同じコア オペレーティング システム コンポーネントに基づいていますが、最適な仮想化ホストとなることに重点が置かれたまったく新しい製品ラインです。
 
-Azure Stack HCI では、Hyper-V および Windows Server 2019 Software-Defined Datacenter (SDDC) の記憶域スペース ダイレクトによって強化された検証済みの HCI ソリューションが提供されます。 Windows Admin Center は、次のような Azure サービスの管理と統合アクセスのために使用されます。
-
-- Azure Backup
-- Azure Site Recovery
-- Azure Monitor および更新プログラム
-
-Azure Stack HCI を接続できる Azure サービスの最新一覧については、「[Connecting Windows Server to Azure hybrid services (Windows Server と Azure ハイブリッド サービスの接続)](https://docs.microsoft.com/windows-server/azure-hybrid-services/index)」をご覧ください。
+Azure Stack HCI では、最適なパフォーマンスと信頼性を確保するために、Microsoft による検証済みの OEM パートナーのハードウェアが使用されています。 このソリューションには、NVMe ドライブ、永続メモリ、リモート ダイレクト メモリ アクセス (RDMA) ネットワークなどのテクノロジのサポートが含まれています。
 
 ### <a name="example-use-cases-for-azure-stack-hci"></a>Azure Stack HCI のユース ケース例
 
@@ -86,7 +80,7 @@ Azure Stack HCI を接続できる Azure サービスの最新一覧について
 - ビジネスに不可欠なインフラストラクチャ
 - 記憶域のコスト削減
 - クラウドの高可用性と障害復旧
-- SQL Server などのエンタープライズ アプリ
+- SQL Server のようなエンタープライズ アプリの仮想化
 
 [Azure Stack HCI Web サイト](https://azure.microsoft.com/overview/azure-stack/hci/)にアクセスして、現在 Microsoft パートナーから提供されている 70 を超える Azure Stack HCI ソリューションを確認してください。
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Stack Hub に Linux VM をデプロイする
-description: Azure Stack Hub にアプリをデプロイします。
+description: Ubuntu イメージを使用して Linux 仮想マシンをデプロイし、Azure Stack Hub で Web アプリをホストします。
 author: mattbriggs
 ms.topic: overview
 ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: 35863d41776ece59592d57264db6522e47ee4208
-ms.sourcegitcommit: db3c9179916a36be78b43a8a47e1fd414aed3c2e
+ms.openlocfilehash: 2a3eb313122f5f8798129592f35656bdad443f02
+ms.sourcegitcommit: 8ffa29f71d69191534d42f86f49f719b4198a097
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84146956"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92353844"
 ---
 # <a name="deploy-a-linux-vm-to-host-a-web-app-in-azure-stack-hub"></a>Web アプリをホストする Linux VM を Azure Stack Hub にデプロイする
 
@@ -46,7 +46,7 @@ VM をデプロイするには、以降のいくつかのセクションの手�
 1. お使いのサーバー用の Secure Shell (SSH) 公開キーを作成します。 詳細については、「[SSH 公開キーの使用方法](azure-stack-dev-start-howto-ssh-public-key.md)」を参照してください。
 1. Azure Stack Hub ポータルで、 **[リソースの作成]**  >  **[Compute]**  >  **[Ubuntu Server 16.04 LTS]** の順に選択します。
 
-    ![Web アプリを Azure Stack Hub VM にデプロイする](media/azure-stack-dev-start-howto-deploy-linux/001-portal-compute.png)
+    ![Web アプリを Azure Stack Hub VM にデプロイする](media/azure-stack-dev-start-howto-deploy-linux/001-portal-computea.png)
 
 4. **[仮想マシンの作成]** ウィンドウの **[1.基本設定の構成]** で以下を実行します。
 
@@ -87,7 +87,7 @@ VM をデプロイするには、以降のいくつかのセクションの手�
 
     b. **[ストレージ]** で、 **[Premium ディスク (SSD)]** または **[Standard ディスク (HDD)]** を選択します。 Premium ディスク (SSD) の実体はソリッドステート ドライブであり、待ち時間の短い一貫したパフォーマンスが得られます。 価格とパフォーマンスのバランスが最良であり、I/O 集約型アプリケーションや運用環境のワークロードに適しています。 Standard ディスクは、磁気ドライブを基盤としており、データへのアクセス頻度が低いアプリケーションに適しています。 ゾーン冗長ディスクは、データを複数のゾーンをまたいでレプリケートし、1 つのゾーンがダウンしてもデータを利用可能なゾーン冗長ストレージ (ZRS) を基盤としています。 
 
-    c. **[マネージド ディスクを使用]** を選択します。 この機能を有効にすると、Azure によって自動的にディスクの可用性が管理されます。 ストレージ アカウントを自分で作成および管理しなくても、データの冗長性とフォールト トレランスによるメリットが得られます。 マネージド ディスクは、すべてのリージョンで使用できるわけではありません。 詳細については、「[Azure マネージド ディスクの概要](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)」を参照してください。
+    c. **[マネージド ディスクを使用]** を選択します。 この機能を有効にすると、Azure によって自動的にディスクの可用性が管理されます。 ストレージ アカウントを自分で作成および管理しなくても、データの冗長性とフォールト トレランスによるメリットが得られます。 マネージド ディスクは、すべてのリージョンで使用できるわけではありません。 詳細については、「[Azure マネージド ディスクの概要](/azure/virtual-machines/windows/managed-disks-overview)」を参照してください。
 
     d. ネットワークを構成するには、 **[仮想ネットワーク]** を選択します。 Azure では、論理的には仮想ネットワークは互いに分離されています。 データセンターの従来のネットワークと同様に、IP アドレス範囲、サブネット、ルート テーブル、ゲートウェイ、セキュリティ設定を構成できます。 同じ仮想ネットワーク内の仮想マシンは、既定で相互にアクセスできます。 
 

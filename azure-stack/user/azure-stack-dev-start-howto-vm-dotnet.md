@@ -1,18 +1,18 @@
 ---
-title: Azure Stack Hub 内の仮想マシンに C# ASP.NET Web アプリをデプロイする
+title: Azure Stack Hub 内の VM に C# ASP.NET Web アプリをデプロイする
 description: Azure Stack Hub 内の VM に C# ASP.NET Web アプリをデプロイします。
 author: mattbriggs
 ms.topic: overview
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 1f986c1d09397fae9d765f2a64a7fda267f4ac98
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: c28a5bbb50b4694358eec4375db6c20a00ba9e99
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661068"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90574195"
 ---
 # <a name="deploy-a-c-aspnet-web-app-to-a-vm-in-azure-stack-hub"></a>Azure Stack Hub 内の VM に C# ASP.NET Web アプリをデプロイする
 
@@ -93,12 +93,11 @@ Azure Stack Hub 内にご自分の C# ASP.NET Web アプリをホストする仮
 
     e. **[割り当て]** で **[動的]** を選択します。
 
-    f. 完全な URL が **mywebapp.local.cloudapp.azurestack.external** になるように、*mywebapp* などの DNS 名ラベルを入力します。
+    f. 完全な URL が *mywebapp.local.cloudapp.azurestack.external* になるように、**mywebapp** などの DNS 名ラベルを入力します。
 
 ## <a name="create-an-app"></a>アプリを作成する 
 
-ご自分の Web アプリを使用することも、[Visual Studio を使用した Azure への ASP.NET Core アプリの発行](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-2.2&tabs=visual-studio
-)に関するページの例を使用することもできます。 この記事では、Visual Studio 2017 の Azure Virtual Machines 発行機能を使用して、ASP.NET Web アプリを作成して Azure 仮想マシンに発行する方法について説明します。 インストールし、ご自分のアプリがローカルで実行されていることを確認したら、発行ターゲットをご使用の Azure Stack Hub インスタンス内の Windows VM に更新します。
+ご自分の Web アプリを使用することも、[Visual Studio を使用した Azure への ASP.NET Core アプリの発行](/aspnet/core/tutorials/razor-pages/razor-pages-start?tabs=visual-studio&view=aspnetcore-2.2)に関するページの例を使用することもできます。 この記事では、Visual Studio 2017 の Azure Virtual Machines 発行機能を使用して、ASP.NET Web アプリを作成して Azure 仮想マシンに発行する方法について説明します。 インストールし、ご自分のアプリがローカルで実行されていることを確認したら、発行ターゲットをご使用の Azure Stack Hub インスタンス内の Windows VM に更新します。
 
 ## <a name="deploy-and-run-the-app"></a>アプリのデプロイと実行
 
@@ -136,4 +135,4 @@ Azure Stack Hub 内のご自分の VM への発行ターゲットを作成しま
 
 - [Azure Stack Hub 内で開発環境を設定する](azure-stack-dev-start.md)方法について学習する。
 - [IaaS としての Azure Stack Hub 向けの一般的なデプロイ](azure-stack-dev-start-deploy-app.md)を確認する。
-- C# プログラミング言語の詳細および C# の他のリソースについては、「[C# のガイド](https://docs.microsoft.com/dotnet/csharp/)」を参照してください。
+- C# プログラミング言語の詳細および C# の他のリソースについては、「[C# のガイド](/dotnet/csharp/)」を参照してください。

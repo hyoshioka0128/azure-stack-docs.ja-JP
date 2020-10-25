@@ -3,18 +3,18 @@ title: Azure Stack HCI で Linux VM に GPU をアタッチする
 description: Azure Stack HCI 上の Ubuntu Linux VM で実行されている AI ワークロードに GPU を使用する方法について説明します。
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 03/24/2020
-ms.openlocfilehash: c1f1ddbfb9f362261a8e55d32a0d8c28b7b64629
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.topic: how-to
+ms.date: 07/01/2020
+ms.openlocfilehash: 1d881db2d8802e93611437cbc14fe9782540be16
+ms.sourcegitcommit: 53b0dde60a6435936a5e0cb9e931245f262d637a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80402859"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91106957"
 ---
 # <a name="attaching-a-gpu-to-an-ubuntu-linux-vm-on-azure-stack-hci"></a>Azure Stack HCI 上の Ubuntu Linux VM に GPU をアタッチする
 
-> 適用対象:Windows Server 2019
+> 適用対象:Azure Stack HCI バージョン 20H2、Windows Server 2019
 
 このトピックでは、Azure Stack HCI と Discrete Device Assignment (DDA) テクノロジを使用して、Ubuntu 仮想マシン (VM) に NVIDIA グラフィックス処理装置 (GPU) をインストールして構成する詳細な手順を紹介します。
 このドキュメントは、Azure Stack HCI クラスターがデプロイされ、VM がインストールされていることを前提としています。
@@ -27,13 +27,18 @@ ms.locfileid: "80402859"
 4. **デバイス マネージャー**を開いて *[その他のデバイス]* セクションに移動します。 デバイスが "3D ビデオ コントローラー" として表示されているのがわかります。
 5. [3D ビデオ コントローラー] を右クリックして **[プロパティ]** ページを表示します。 **[詳細]** をクリックします。 **[プロパティ]** ボックスの一覧から [Location paths]\(場所のパス\) を選択します。
 6. 下のスクリーンショットで強調表示されている PCIRoot という文字列を含む値に注目してください。 **[値]** を右クリックし、コピーして保存します。
-    :::image type="content" source="media/attach-gpu-to-linux-vm/pciroot.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/pciroot.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
 7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
     ```PowerShell
-    Dismount-VMHostAssignableDevice -LocationPath "PCIROOT(16)#PCI(0000)#PCI(0000)" -force
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
     ```
-8. **デバイス マネージャー**のシステム デバイスに、このデバイスが "マウント解除済み" として表示されていることを確認します。
-    :::image type="content" source="media/attach-gpu-to-linux-vm/dismounted.png" alt-text="マウント解除済みデバイスのスクリーンショット":::
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み" として表示されていることを確認します。
+    :::image type="content" source="media/attach-gpu-to-linux-vm/dismounted.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
 ## <a name="create-and-configure-an-ubuntu-virtual-machine"></a>Ubuntu 仮想マシンを作成して構成する
 
@@ -54,7 +59,12 @@ ms.locfileid: "80402859"
     Get-VMAssignableDevice -VMName Ubuntu
     ```
 
-    VM への GPU の割り当てに成功すると、次の出力が表示されます。:::image type="content" source="media/attach-gpu-to-linux-vm/assign-gpu.png" alt-text="GPU 割り当てのスクリーンショット":::
+    VM への GPU の割り当てに成功すると、次の出力が表示されます。:::image type="content" source="media/attach-gpu-to-linux-vm/assign-gpu.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
     GPU に関する[こちら](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda)のドキュメントに従って、その他の値を構成します。
 
@@ -74,27 +84,27 @@ ms.locfileid: "80402859"
 
 5. Hyper-V マネージャーを使用して、VM に接続し、Ubuntu OS のインストールを開始します。 既定値を選択すると、Ubuntu OS が VM にインストールされます。
 
-6. インストールの完了後、**Hyper-V マネージャー**を使用して VM をシャットダウンし、ゲスト オペレーティング システムをシャットダウンするように VM の **[Automatic Stop Action]\(自動停止アクション\)** を構成します (以下のスクリーンショットを参照)。:::image type="content" source="media/attach-gpu-to-linux-vm/guest-shutdown.png" alt-text="ゲスト OS のシャットダウンのスクリーンショット":::
-
-7. Ubuntu にログインし、ターミナルを開いて SSH をインストールします。
-
-   ```shell
-    $ sudo apt install openssh-server
-   ```
-
-8. **ifconfig** コマンドを使用して Ubuntu インストール用の TCP/IP アドレスを探し、**eth0** インターフェイスの IP アドレスをコピーします。
-
-9. さらに構成を行うために、[Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/) などの SSH クライアントを使用して Ubuntu VM に接続します。
-
-10. SSH クライアント経由でログインしたら、**lspci** コマンドを発行して、NVIDIA GPU が "3D コントローラー" として表示されていることを確認します。
-
-    > [!IMPORTANT]
-    > NVIDIA GPU が "3D コントローラー" として表示されない場合は、先に進まないでください。 必ず上記の手順に従ったうえで、次の手順に進むようにしてください。
+6. インストールの完了後、**Hyper-V マネージャー**を使用して VM をシャットダウンし、ゲスト オペレーティング システムをシャットダウンするように VM の **[Automatic Stop Action]\(自動停止アクション\)** を構成します (以下のスクリーンショットを参照)。:::image type="content" source="media/attach-gpu-to-linux-vm/guest-shutdown.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み" として表示されない場合は、先に進まないでください。 必ず上記の手順に従ったうえで、次の手順に進むようにしてください。
 
 11. VM 内で、 **[Software & Updates]\(ソフトウェアと更新プログラム\)** を探して開きます。 **[追加ドライバー]** に移動し、最新の NVIDIA GPU ドライバーを一覧から選択します。 **[変更の適用]** をクリックして、ドライバーのインストールを完了します。
-    :::image type="content" source="media/attach-gpu-to-linux-vm/driver-install.png" alt-text="ドライバー インストールのスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/driver-install.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
-12. ドライバーのインストールの完了後、Ubuntu VM を再起動します。 VM の起動後、SSH クライアント経由で接続し、**nvidia-smi** コマンドを発行して、NVIDIA GPU ドライバーのインストールが正常に完了したことを確認します。 以下のスクリーンショットのような出力が表示されます。:::image type="content" source="media/attach-gpu-to-linux-vm/nvidia-smi.png" alt-text="nvidia-smi のスクリーンショット":::
+12. ドライバーのインストールの完了後、Ubuntu VM を再起動します。 VM の起動後、SSH クライアント経由で接続し、**nvidia-smi** コマンドを発行して、NVIDIA GPU ドライバーのインストールが正常に完了したことを確認します。 出力は次のスクリーンショットのようになるはずです。:::image type="content" source="media/attach-gpu-to-linux-vm/nvidia-smi.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
 13. SSH クライアントを使用してリポジトリを設定し、Docker CE エンジンをインストールします。
 
@@ -188,36 +198,19 @@ ms.locfileid: "80402859"
     sudo docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
     ```
 
-    インストールに成功した場合の出力は、次のスクリーンショットのようになります。:::image type="content" source="media/attach-gpu-to-linux-vm/docker.png" alt-text="Docker のインストールに成功した場合のスクリーンショット":::
-
-5. 以下の手順に従って、Azure IoT Edge のインストールに進みます。ランタイムのインストールはスキップしてください。
-
-    ```shell
-    curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
-
-    sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-    sudo apt-get update
-
-    sudo apt-get install iotedge
+    インストールに成功した場合の出力は、次のスクリーンショットのようになります。:::image type="content" source="media/attach-gpu-to-linux-vm/docker.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
     ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み" (手動プロビジョニングの構成) セクションをコメント解除します。 device_connection_string の値をご自分の IoT Edge デバイスの接続文字列で更新します。 他のプロビジョニング セクションがすべてコメント アウトされていることを確認します。provisioning: の行に先行する空白文字がなく、入れ子になった項目が 2 つの空白でインデントされていることを確認します。
 
-    > [!NOTE]
-    > Azure IoT Edge のインストール後、Ubuntu VM の /etc/iotedge/config.yaml に config.yaml が存在することを確認します。
-
-6. Azure portal で、[こちら](/azure/iot-edge/how-to-register-device#register-in-the-azure-portal)のガイダンスに従って IoT Edge デバイス ID を作成します。 次に、新しく作成した IoT Edge 用のデバイス接続文字列をコピーします。
-
-7. SSH クライアントを使用して、Ubuntu VM 上の config.yaml にあるデバイス接続文字列を更新します。
-
-    ```shell
-    sudo nano /etc/iotedge/config.yaml
+    :::image type="content" source="media/attach-gpu-to-linux-vm/manual-provisioning.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
     ```
-
-    ファイルのプロビジョニング構成を見つけ、"Manual provisioning configuration" (手動プロビジョニングの構成) セクションをコメント解除します。 device_connection_string の値をご自分の IoT Edge デバイスの接続文字列で更新します。 他のプロビジョニング セクションがすべてコメント アウトされていることを確認します。provisioning: の行に先行する空白文字がなく、入れ子になった項目が 2 つの空白でインデントされていることを確認します。
-
-    :::image type="content" source="media/attach-gpu-to-linux-vm/manual-provisioning.png" alt-text="手動プロビジョニング構成のスクリーンショット":::
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
     クリップボードの内容を Nano に貼り付けるには、Shift キーを押しながら右クリックするか、Shift キーを押しながら Ins キーを押します。 ファイルを保存して閉じます (Ctrl + X、Y、Enter)。
 
@@ -261,7 +254,12 @@ ms.locfileid: "80402859"
 
     ディレクトリ /var/deepstream/custom_streams は、次のスクリーンショットに示したような内容になっています。
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/custom-streams.png" alt-text="custom_streams のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/custom-streams.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
 11. /var/deepstream/custom_configs ディレクトリに、test5_config_file_src_infer_azure_iotedge_edited.txt という新しいファイルを作成します。 テキスト エディターを使用してファイルを開き、次のコードを貼り付けてから、ファイルを保存して閉じます。
 
@@ -273,12 +271,12 @@ ms.locfileid: "80402859"
     # and any modifications thereto.  Any use, reproduction, disclosure or
     # distribution of this software and related documentation without an express
     # license agreement from NVIDIA Corporation is strictly prohibited.
-    
+
     [application]
     enable-perf-measurement=1
     perf-measurement-interval-sec=5
     #gie-kitti-output-dir=streamscl
-    
+
     [tiled-display]
     enable=1
     rows=2
@@ -292,7 +290,7 @@ ms.locfileid: "80402859"
     #(3): nvbuf-mem-cuda-unified - Allocate Unified cuda memory, applicable for Tesla
     #(4): nvbuf-mem-surface-array - Allocate Surface Array memory, applicable for Jetson
     nvbuf-memory-type=0
-    
+
     [source0]
     enable=1
     #Type - 1=CameraV4L2 2=URI 3=MultiURI
@@ -301,7 +299,7 @@ ms.locfileid: "80402859"
     num-sources=2
     gpu-id=0
     nvbuf-memory-type=0
-    
+
     [source1]
     enable=1
     #Type - 1=CameraV4L2 2=URI 3=MultiURI
@@ -310,10 +308,10 @@ ms.locfileid: "80402859"
     num-sources=2
     gpu-id=0
     nvbuf-memory-type=0
-    
+
     [sink0]
     enable=0
-    
+
     [sink3]
     enable=1
     #Type - 1=FakeSink 2=EglSink 3=File 4=RTSPStreaming
@@ -325,7 +323,7 @@ ms.locfileid: "80402859"
     # set below properties in case of RTSPStreaming
     rtsp-port=8554
     udp-port=5400
-    
+
     [sink1]
     enable=1
     #Type - 1=FakeSink 2=EglSink 3=File 4=UDPSink 5=nvoverlaysink 6=MsgConvBroker
@@ -340,7 +338,7 @@ ms.locfileid: "80402859"
     topic=mytopic
     #Optional:
     #msg-broker-config=../../../../libs/azure_protocol_adaptor/module_client/cfg_azure.txt
-    
+
     [sink2]
     enable=0
     type=3
@@ -353,7 +351,7 @@ ms.locfileid: "80402859"
     bitrate=2000000
     output-file=out.mp4
     source-id=0
-    
+
     [osd]
     enable=1
     gpu-id=0
@@ -368,7 +366,7 @@ ms.locfileid: "80402859"
     clock-text-size=12
     clock-color=1;0;0;0
     nvbuf-memory-type=0
-    
+
     [streammux]
     gpu-id=0
     ##Boolean property to inform muxer that sources are live
@@ -384,7 +382,7 @@ ms.locfileid: "80402859"
     ##along with width, height properties
     enable-padding=0
     nvbuf-memory-type=0
-    
+
     [primary-gie]
     enable=1
     gpu-id=0
@@ -401,7 +399,7 @@ ms.locfileid: "80402859"
     labelfile-path=../../../../../samples/models/Primary_Detector/labels.txt
     config-file=../../../../../samples/configs/deepstream-app/config_infer_primary.txt
     #infer-raw-output-dir=../../../../../samples/primary_detector_raw_output/
-    
+
     [tracker]
     enable=1
     tracker-width=600
@@ -413,72 +411,73 @@ ms.locfileid: "80402859"
     gpu-id=0
     #enable-batch-process applicable to DCF only
     enable-batch-process=0
-    
+
     [tests]
     file-loop=1
     ```
 
 12. Azure Portal に移動します。 **[IoT Hub Provisioned]\(プロビジョニングされている IoT Hub\)** を選択し、 **[デバイスの自動管理]** をクリックして、 **[IoT Edge]** をクリックします。
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/iot-edge.png" alt-text="[デバイスの自動管理] のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/iot-edge.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
 13. 右側のペインで、先ほど使用したデバイス接続文字列に対応するデバイス ID を選択します。 [モジュールの設定] をクリックします。
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/set-modules.png" alt-text="[モジュールの設定] のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/set-modules.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
 14. [IoT Edge モジュール] で、[Marketplace モジュール] をクリックして選択します。
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/marketplace-module.png" alt-text="[Marketplace モジュール] のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/marketplace-module.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
 15. NVIDIA を検索し、下図のような DeepStream SDK を選択します。
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/deepstream.png" alt-text="DeepStream SDK のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/deepstream.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
 16. [IoT Edge モジュール] に NvidiaDeepStreamSDK モジュールが一覧表示されます。
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/edge-modules.png" alt-text="[IoT Edge モジュール] のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/edge-modules.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み" モジュールをクリックし、[コンテナーの作成オプション] を選択します。 既定の構成は次のとおりです。
 
-17. "NVIDIADeepStreamSDK" モジュールをクリックし、[コンテナーの作成オプション] を選択します。 既定の構成は次のとおりです。
-
-    :::image type="content" source="media/attach-gpu-to-linux-vm/container-create-options.png" alt-text="[コンテナーの作成オプション] のスクリーンショット":::
-
-    上記の構成を下記の構成に置き換えます。
-
-    ```shell
-    {
-      "ExposedPorts": {
-        "8554/tcp": {}
-      },
-      "Entrypoint": [
-        "/usr/bin/deepstream-test5-app",
-        "-c",
-        "test5_config_file_src_infer_azure_iotedge_edited.txt",
-        "-p",
-        "1",
-        "-m",
-        "1"
-      ],
-      "HostConfig": {
-        "runtime": "nvidia",
-        "Binds": [
-          "/var/deepstream/custom_configs:/root/deepstream_sdk_v4.0.2_x86_64/sources/apps/sample_apps/deepstream-test5/custom_configs/",
-          "/var/deepstream/custom_streams:/root/deepstream_sdk_v4.0.2_x86_64/sources/apps/sample_apps/deepstream-test5/custom_streams/"
-        ],
-        "PortBindings": {
-          "8554/tcp": [
-            {
-              "HostPort": "8554"
-            }
-          ]
-        }
-      },
-      "WorkingDir": "/root/deepstream_sdk_v4.0.2_x86_64/sources/apps/sample_apps/deepstream-test5/custom_configs/"
+    :::image type="content" source="media/attach-gpu-to-linux-vm/container-create-options.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み"
     }
     ```
 
 18. **[確認と作成]** をクリックし、次のページで **[作成]** をクリックします。 これで Azure portal には、IoT Edge デバイスの 3 つのモジュールが表示されます。
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/edge-hub-connections.png" alt-text="[モジュール] と [IoT Edge ハブの接続] のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/edge-hub-connections.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
 19. SSH クライアントを使用して Ubuntu VM に接続し、適切なモジュールが実行されていることを確認します。
 
@@ -486,16 +485,23 @@ ms.locfileid: "80402859"
     sudo iotedge list
     ```
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/verify-modules-sudo.png" alt-text="iotedge list のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify-modules-sudo.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
     ```shell
     nvidia-smi
     ```
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/verify-modules-nvidia-smi.png" alt-text="nvidia-smi のスクリーンショット":::
-
-    > [!NOTE]
-    > NvidiaDeepstream コンテナーがダウンロードされるまでに数分かかります。 "journalctl -u iotedge --no-pager --no-full" コマンドを使用して iotedge デーモンのログを確認することで、ダウンロードを検証することができます。
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify-modules-nvidia-smi.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み" コマンドを使用して iotedge デーモンのログを確認することで、ダウンロードを検証することができます。
 
 20. NvdiaDeepStreem コンテナーが稼動していることを確認します。 次のスクリーンショットのコマンド出力から、正常に実行されていることがわかります。
 
@@ -503,19 +509,34 @@ ms.locfileid: "80402859"
     sudo iotedge list
     ```
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/verify1.png" alt-text="iotedge list のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify1.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
     ```shell
     sudo iotedge logs -f NVIDIADeepStreamSDK
     ```
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/verify2.png" alt-text="iotedge list のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify2.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
     ```shell
     nvidia-smi
     ```
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/verify3.png" alt-text="iotedge list のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify3.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
 21. **ifconfig** コマンドを使用して Ubuntu VM の TCP/IP アドレスを確認し、**eth0** インターフェイスの横の TCP/IP アドレスを探します。
 
@@ -525,7 +546,12 @@ ms.locfileid: "80402859"
 
     ipaddress には、自分の VM の TCP/IP アドレスを指定します。
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/vlc-player.png" alt-text="VLC Player のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/vlc-player.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット&quot;:::
+7. VM への DDA を行うため、昇格された特権で Windows PowerShell を開き、`Dismount-VMHostAssignableDevice` コマンドレットを実行して、GPU デバイスのマウントを解除します。 *LocationPath* の値は、手順 6. で取得した実際のデバイスの値に置き換えてください。
+    ```PowerShell
+    Dismount-VMHostAssignableDevice -LocationPath &quot;PCIROOT(16)#PCI(0000)#PCI(0000)&quot; -force
+    ```
+8. **デバイス マネージャー**のシステム デバイスに、このデバイスが &quot;マウント解除済み":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.date: 11/26/2019
 ms.author: justinha
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/26/2019
-ms.openlocfilehash: cf116e392cc75119eabe8fbea9ccb37f72f4b1a0
-ms.sourcegitcommit: ddcd083430ca905653d412dc2f7b813218d79509
+ms.openlocfilehash: 5bc03134a859182909e62c60159049d639eb8ffe
+ms.sourcegitcommit: 08a421ab5792ab19cc06b849763be22f051e6d78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83375140"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89364679"
 ---
 # <a name="mysql-resource-provider-11470-release-notes"></a>MySQL リソース プロバイダー 1.1.47.0 のリリース ノート
 
@@ -39,7 +39,7 @@ Azure Stack Hub が 1910 リリースにアップグレードされた後に MyS
 
 ## <a name="known-issues"></a>既知の問題
 
-[なし] :
+Azure Stack Hub 統合システムの[証明書をローテーションする](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)場合、Key Vault 証明書のパスワードを更新する意図がなくても、KeyVaultPfxPassword 引数は必須となります。
 
 ## <a name="next-steps"></a>次のステップ
 

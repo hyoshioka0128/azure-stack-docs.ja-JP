@@ -3,16 +3,16 @@ title: Azure Stack Hub での Python による API バージョンのプロフ�
 description: Azure Stack Hub での Python による API バージョンのプロファイルの使用方法について説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 09/03/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 42a00b997031850a61077ec59a92d5df5b6776ef
-ms.sourcegitcommit: 70c344b3c9c63f8c12867b2cdfdd1794fcc518dc
+ms.openlocfilehash: 88c2ecd1448a210daddd1d7da34ffea03c67a6b1
+ms.sourcegitcommit: 7c01ab4b2e2250a7acd67d1c5ba27d15c1e8bce0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82835902"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89448641"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack-hub"></a>Azure Stack Hub での Python による API バージョンのプロファイルの使用
 
@@ -37,7 +37,7 @@ Python SDK では、以下の API プロファイルをサポートします。
 
 ## <a name="install-the-azure-python-sdk"></a>Azure Python SDK をインストールする
 
-1. Git を[公式サイト](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)からインストールします。
+1. [Git をインストールします](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)。
 2. Python SDK のインストール方法については、[Python 開発者向け Azure](/python/azure/python-sdk-azure-install?view=azure-python) に関する記事を参照してください。
 3. 使用できない場合は、サブスクリプションを作成し、サブスクリプション ID を保存して後で使用します。 サブスクリプションの作成の詳細については、「[Azure Stack Hub でオファーのサブスクリプションを作成する](../operator/azure-stack-subscribe-plan-provision-vm.md)」を参照してください。
 4. サービス プリンシパルを作成し、その ID とシークレットを保存します。 Azure Stack Hub 用のサービス プリンシパルの作成方法については、[Azure Stack Hub へのアクセスのアプリケーションへの提供](../operator/azure-stack-create-service-principals.md)に関するページを参照してください。
@@ -187,6 +187,6 @@ Python SDK を使用した Azure Stack Hub 向けの入手可能なコード サ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Python 開発センター](https://azure.microsoft.com/develop/python/)
+- [Azure Python デベロッパー センター](https://azure.microsoft.com/develop/python/)
 - [Azure Virtual Machines 関係のドキュメント](https://azure.microsoft.com/services/virtual-machines/)
 - [Virtual Machines のラーニング パス](/learn/paths/deploy-a-website-with-azure-virtual-machines/)

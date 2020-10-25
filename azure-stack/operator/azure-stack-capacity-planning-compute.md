@@ -4,19 +4,19 @@ description: Azure Stack Hub デプロイのためのコンピューティング
 author: IngridAtMicrosoft
 ms.topic: conceptual
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 06/13/2019
-ms.openlocfilehash: 3ec8b0b3ac6f4687fd782dfc692f1c705c5ed733
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 67e1961a0f1f739e550cc55d100900190892bb5e
+ms.sourcegitcommit: 362081a8c19e7674c3029c8a44d7ddbe2deb247b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "78366349"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91899756"
 ---
 # <a name="azure-stack-hub-compute-capacity"></a>Azure Stack Hub のコンピューティング能力
 
-Azure Stack Hub 上でサポートされる[仮想マシン (VM) サイズ](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes)は、Azure 上でサポートされている VM サイズのサブセットです。 Azure では、リソース (サーバーのローカルおよびサービス レベル) の過剰消費を防ぐため、多くのベクターに沿ってリソースの制限を適用します。 テナントの消費量にいくつかの制限を適用しないと、あるテナントでリソースが過剰消費された場合に、別のテナントのエクスペリエンスに影響します。 VM からのネットワーク エグレスの場合、Azure Stack Hub では、Azure の制限と一致する帯域幅の上限が設けられます。 Azure Stack Hub のストレージ リソースの場合、ストレージ IOPS を制限することにより、テナントがストレージ アクセスのために使用するリソースの基本的な過剰消費を防ぎます。
+Azure Stack Hub 上でサポートされる[仮想マシン (VM) サイズ](../user/azure-stack-vm-sizes.md)は、Azure 上でサポートされている VM サイズのサブセットです。 Azure では、リソース (サーバーのローカルおよびサービス レベル) の過剰消費を防ぐため、多くのベクターに沿ってリソースの制限を適用します。 テナントの消費量にいくつかの制限を適用しないと、あるテナントでリソースが過剰消費された場合に、別のテナントのエクスペリエンスに影響します。 VM からのネットワーク エグレスの場合、Azure Stack Hub では、Azure の制限と一致する帯域幅の上限が設けられます。 Azure Stack Hub のストレージ リソースの場合、ストレージ IOPS を制限することにより、テナントがストレージ アクセスのために使用するリソースの基本的な過剰消費を防ぎます。
 
 >[!IMPORTANT]
 >[Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) では、IOPS パフォーマンスは考慮されず、保証もされません。
@@ -25,9 +25,9 @@ Azure Stack Hub 上でサポートされる[仮想マシン (VM) サイズ](http
 
 Azure Stack Hub 配置エンジンでは、使用可能なホスト間でテナント VM を配置します。
 
-Azure Stack Hub では、VM を配置する際に次の 2 つの点が考慮されます。 1 つ目は、その VM の種類に十分なメモリがホスト上にあるかどうかです。 2 つ目は、VM が[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)の一部であるか、[仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)であるかです。
+Azure Stack Hub では、VM を配置する際に次の 2 つの点が考慮されます。 1 つ目は、その VM の種類に十分なメモリがホスト上にあるかどうかです。 2 つ目は、VM が[可用性セット](/azure/virtual-machines/windows/manage-availability)の一部であるか、[仮想マシン スケール セット](/azure/virtual-machine-scale-sets/overview)であるかです。
 
-Azure Stack Hub 内でマルチ VM による運用システムの高可用性を実現するため、仮想マシン (VM) は、複数の障害ドメインに分散される可用性セット内に配置されます。 可用性セット内の障害ドメインは、スケール ユニット内の 1 つのノードとして定義されます。 Azure Stack Hub では、Azure との一貫性がある最大 3 つの障害ドメインを持つ可用性セットを用意することをサポートしています。 可用性セットに配置された VM は、複数の障害ドメイン (Azure Stack Hub ホスト) にできる限り均等に分散させることによって、互いに物理的に分離されます。 ハードウェア障害が発生した場合、障害が発生した障害ドメインの VM は、他の障害ドメインで再起動されます。 可能であれば、これらは同じ可用性セット内の、他の VM とは別の障害ドメインに保持されます。 ホストがオンラインに戻ると、高可用性を維持するために VM の再配置が行われます。  
+Azure Stack Hub 内でマルチ VM による運用ワークロードの高可用性を実現するために、仮想マシン (VM) は、複数の障害ドメインに分散される可用性セット内に配置されます。 可用性セット内の障害ドメインは、スケール ユニット内の 1 つのノードとして定義されます。 Azure Stack Hub では、Azure との一貫性がある最大 3 つの障害ドメインを持つ可用性セットを用意することをサポートしています。 可用性セットに配置された VM は、複数の障害ドメイン (Azure Stack Hub ノード) にできる限り均等に分散させることによって、互いに物理的に分離されます。 ハードウェア障害が発生した場合、障害が発生した障害ドメインの VM は、他の障害ドメインで再起動されます。 可能であれば、これらは同じ可用性セット内の、他の VM とは別の障害ドメインに保持されます。 ホストがオンラインに戻ると、高可用性を維持するために VM の再配置が行われます。  
 
 仮想マシン スケール セットは、バックエンド上で可用性セットを使用し、各仮想マシン スケール セット インスタンスが異なる障害ドメインに配置されていることを確認します。 つまり、これらは別々の Azure Stack Hub インフラストラクチャ ノードを使用します。 たとえば、4 ノードの Azure Stack Hub システムの場合、3 つのインスタンスの仮想マシン スケール セットの作成時に 4 ノードの容量が不足しているために 3 つの別々の Azure Stack Hub ノードに 3 つの仮想マシン スケール セット インスタンスを配置できない状況になる場合があります。 さらに、Azure Stack Hub ノードは、配置を試行する前に、さまざまなレベルでいっぱいになることがあります。
 
@@ -41,13 +41,9 @@ Azure Stack Hub の容量を正確に計画するための新しい考慮事項�
 
 VM のスケールの上限に達すると、結果として次のエラー コードが返されます: `VMsPerScaleUnitLimitExceeded`、`VMsPerScaleUnitNodeLimitExceeded`。
 
-## <a name="considerations-for-deallocation"></a>割り当て解除に関する考慮事項
+## <a name="consideration-for-batch-deployment-of-vms"></a>VM のバッチ デプロイに関する考慮事項
 
-VM が_割り当て解除済み_の状態にある場合、メモリ リソースは使用されていません。 このため、他の VM をシステムに配置できます。
-
-その後、割り当てが解除された VM が再起動されると、メモリの使用量または割り当てはシステムに配置された新しい VM と同じように扱われ、使用可能なメモリが消費されます。
-
-使用可能なメモリがない場合、VM は起動しません。
+2002 以前のリリースでは、700 のスケールに到達するまで確実に VM をデプロイしようとすると、5 分間のバッチ間隔ではバッチあたり 2 から 5 の VM しかデプロイできませんでした。 Azure Stack Hub の 2005 バージョンでは、バッチ デプロイの間に 5 分間の間隔を空けた場合、バッチ サイズ 40 で VM を確実にプロビジョニングすることができます。
 
 ## <a name="azure-stack-hub-memory"></a>Azure Stack Hub メモリ
 
@@ -87,11 +83,86 @@ VM の配置に利用可能なメモリ = ホストの合計メモリ - 回復�
 
 値 V (スケール ユニット内の最大 VM) は、最大テナント VM メモリ サイズに動的に基づきます。 たとえば、最大 VM 値は、7 GB、112 GB、または Azure Stack Hub ソリューションでサポートされるその他の VM メモリのサイズになります。 Azure Stack Hub ファブリック上で最大の VM を変更すると、VM 自体のメモリが増加するだけでなく、回復性のための予約も増加します。
 
+## <a name="considerations-for-deallocation"></a>割り当て解除に関する考慮事項
+
+VM が_割り当て解除済み_の状態にある場合、メモリ リソースは使用されていません。 このため、他の VM をシステムに配置できます。
+
+その後、割り当てが解除された VM が再起動されると、メモリの使用量または割り当てはシステムに配置された新しい VM と同じように扱われ、使用可能なメモリが消費されます。 使用可能なメモリがない場合、VM は起動しません。
+
+現在デプロイされている大規模な VM には、112 GB のメモリが割り当てられていますが、これらの VM に必要なメモリは約 2 から 3 GB です。
+    
+| 名前 | 割り当てられたメモリ (GB) | 必要なメモリ (GB) | [ComputerName] |  
+| ---- | -------------------- | ------------------ | ------------ |                                        
+| ca7ec2ea-40fd-4d41-9d9b-b11e7838d508 |                 112  |     2.2392578125  |  LISSA01P-NODE01 |
+| 10cd7b0f-68f4-40ee-9d98-b9637438ebf4  |                112  |     2.2392578125  |   LISSA01P-NODE01 |
+| 2e403868-ff81-4abb-b087-d9625ca01d84   |               112   |    2.2392578125  |   LISSA01P-NODE04 |
+
+**回復性のための予約 = H + R * ((N-1) * H) + V * (N-2)** の数式を使用して、VM 配置用のメモリの割り当てを解除する方法は 3 つあります。
+* 最大 VM のサイズを減らす
+* ノードのメモリを増やす
+* ノードを追加する
+
+### <a name="reduce-the-size-of-the-largest-vm"></a>最大 VM のサイズを減らす 
+
+最大 VM のサイズを、スタンプ内で次に小さい VM のサイズ (24 GB) に減らすと、回復性のための予約のサイズが減ります。
+
+![VM のサイズを減らす](media/azure-stack-capacity-planning/decrease-vm-size.png)        
+        
+ 回復性のための予約 = 384 + 172.8 + 48 = 604.8 GB
+        
+| メモリの合計 | インフラストラクチャ GB | テナント GB | 回復性のための予約 | 予約済みのメモリの合計          | 配置に使用可能な GB の合計 |
+|--------------|--------------------|---------------------|--------------------|--------------------------------|----------------------------------|
+| 1,536 GB      | 258 GB             | 329.25 GB           | 604.8 GB           | 258 + 329.25 + 604.8 = 1168 GB | **約 344 GB**                         |
+     
+### <a name="add-a-node"></a>ノードを追加する
+
+[Azure Stack Hub ノードを追加すると](./azure-stack-add-scale-node.md)、2 つのノード間でメモリが均等に分配され、メモリの割り当てが解除されます。
+
+![ノードを追加する](media/azure-stack-capacity-planning/add-a-node.png)
+
+回復性のための予約 = 384 + (0.15) ((5)*384) + 112 * (3) = 1008 GB
+    
+| メモリの合計 | インフラストラクチャ GB | テナント GB | 回復性のための予約 | 予約済みのメモリの合計          | 配置に使用可能な GB の合計 |
+|--------------|--------------------|---------------------|--------------------|--------------------------------|----------------------------------|
+| 1,536 GB      | 258 GB             | 329.25 GB           | 604.8 GB           | 258 + 329.25 + 604.8 = 1168 GB | **約 344 GB**                         |
+
+### <a name="increase-memory-on-each-node-to-512-gb"></a>各ノードのメモリを 512 GB に増やす
+
+[各ノードのメモリを増やすと](./azure-stack-manage-storage-physical-memory-capacity.md)、使用可能なメモリの合計が増えます。
+
+![ノードのサイズを増やす](media/azure-stack-capacity-planning/increase-node-size.png)
+
+回復性のための予約 = 512 + 230.4 + 224 = 966.4 GB
+    
+| メモリの合計    | インフラストラクチャ GB | テナント GB | 回復性のための予約 | 予約済みのメモリの合計 | 配置に使用可能な GB の合計 |
+|-----------------|----------|-----------|--------------------|-----------------------|----------------------------------|
+| 2048 (4*512) GB | 258 GB   | 505.75 GB | 966.4 GB           | 1730.15 GB            | **約 318 GB**                         |
+
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 **Q**: テナントで新しい VM がデプロイされました。管理者ポータルの容量グラフで残存容量を表示するのにかかる時間はどれくらいですか?
 
 **A**: 容量ブレードは 15 分ごとに更新されるため、それを考慮してください。
+
+**Q**: 使用可能なコアと割り当てられたコアを確認するにはどうすればよいですか?
+
+**A**: **PowerShell** で `test-azurestack -include AzsVmPlacement -debug` を実行すると、次のような出力が生成されます。
+
+```console
+    Starting Test-AzureStack
+    Launching AzsVmPlacement
+     
+    Azure Stack Scale Unit VM Placement Summary Results
+     
+    Cluster Node    VM Count VMs Running Physical Core Total Virtual Co Physical Memory Total Virtual Mem
+    ------------    -------- ----------- ------------- ---------------- --------------- -----------------
+    LNV2-Node02     20       20          28            66               256             119.5            
+    LNV2-Node03     17       16          28            62               256             110              
+    LNV2-Node01     11       11          28            47               256             111              
+    LNV2-Node04     10       10          28            49               256             101              
+    
+    PASS : Azure Stack Scale Unit VM Placement Summary
+```
 
 **Q**: Azure Stack Hub にデプロイされている VM の数は変更されていませんが、容量は変動しています。 なぜですか?
 

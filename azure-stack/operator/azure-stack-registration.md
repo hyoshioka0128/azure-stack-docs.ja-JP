@@ -3,18 +3,19 @@ title: Azure Stack Hub を Azure に登録する
 titleSuffix: Azure Stack Hub
 description: Azure Stack Hub 統合システムを Azure に登録することで、Azure Marketplace 項目をダウンロードしてデータ レポートを設定できるようにする方法について説明します。
 author: IngridAtMicrosoft
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: inhenkel
 ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
+ms.custom: contperfq4
 zone_pivot_groups: state-connected-disconnected
-ms.openlocfilehash: 497a051c67b05683a874de955c069256c19bba9a
-ms.sourcegitcommit: d69eacbf48c06309b00d17c82ebe0ce2bc6552df
+ms.openlocfilehash: f6d307b7fe165681e93c842596007ca1fde3a152
+ms.sourcegitcommit: 8122672409954815e472a5b251bb7319fab8f951
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780788"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92060186"
 ---
 # <a name="register-azure-stack-hub-with-azure"></a>Azure Stack Hub を Azure に登録する
 
@@ -98,12 +99,7 @@ Azure Stack Hub ツールの GitHub リポジトリには、Azure Stack Hub 機�
 > [!NOTE]
 > 容量ベースの課金モデルを使用している Azure Stack Hub 登録では、[期限切れの登録を削除](#renew-or-change-registration)して Azure に再登録するのでない限り、年単位のサブスクリプションの期限が切れた後の再登録で一意の名前を変更する必要があります。
 
-Azure Stack Hub デプロイのクラウド ID を調べるには、特権エンドポイントにアクセスできるコンピューターで管理者として PowerShell を開き、次のコマンドを実行して、**CloudID** の値を書き留めます。
-
-```powershell
-Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
-Run: Get-AzureStackStampInformation
-```
+Azure Stack Hub デプロイのクラウド ID を確認する場合は、「[クラウド ID を検索する](azure-stack-find-cloud-id.md)」をご覧ください。
 
 ::: zone pivot="state-connected"
 ## <a name="register-with-pay-as-you-use-billing"></a>従量課金制の課金で登録する
@@ -326,7 +322,7 @@ Get-AzsActivationKey から作成されたアクティブ化キーのファイ�
 
 Azure Stack Hub の登録に成功したことは、 **[Region management]\(リージョン管理\)** タイルを使用して確認できます。 このタイルは、管理者ポータルの既定のダッシュボードにあります。 状態には、登録済みと未登録とがあります。 登録済みである場合は、Azure Stack Hub の登録に使用した Azure サブスクリプション ID が、登録のリソース グループおよび名前と共に表示されます。
 
-1. [Azure Stack Hub 管理者ポータル](https://adminportal.local.azurestack.external)にサインインします。
+1. Azure Stack Hub 管理者ポータル `https://adminportal.local.azurestack.external` にサインインします。
 
 2. ダッシュボードで、 **[Region management]\(リージョン管理\)** を選択します。
 
@@ -379,7 +375,7 @@ Azure Stack Hub の登録に成功したことは、 **[Region management]\(リ�
   # switch to new subscription id
   Select-AzureRmSubscription -Subscription '<New subscription ID>'
   # register 
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel '<Billing model>' -RegistrationName '<Registration name>' --ResourceGroupName '<Registration resource group name>'
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel '<Billing model>' -RegistrationName '<Registration name>' -ResourceGroupName '<Registration resource group name>'
   ```
 
 ### <a name="change-billing-model-how-features-are-offered-or-re-register-your-instance"></a>課金モデルと機能の提供方法の変更、インスタンスの再登録

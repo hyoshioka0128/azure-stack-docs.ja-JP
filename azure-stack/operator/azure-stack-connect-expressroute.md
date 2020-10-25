@@ -3,16 +3,16 @@ title: ExpressRoute を使用して Azure Stack Hub を Azure に接続する
 description: ExpressRoute を使用して Azure Stack Hub 内の仮想ネットワークを Azure 内の仮想ネットワークに接続する方法について説明します。
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 10/20/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2019
-ms.openlocfilehash: 5d2f30813cc0a7a42e376ec7fb9c76be1f7994eb
-ms.sourcegitcommit: f2d80d705a222095c2ea785b9797bbac0cf96fcc
+ms.openlocfilehash: f736f95105b12bdb51fe452c2749e6331c390065
+ms.sourcegitcommit: 81e2d627c9dc4cc365deb4a0e0674b5ab3a7efbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82605699"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92297928"
 ---
 # <a name="connect-azure-stack-hub-to-azure-using-azure-expressroute"></a>Azure ExpressRoute を使用して Azure Stack Hub を Azure に接続する
 
@@ -597,8 +597,6 @@ New-NetFirewallRule `
 1. 一覧から **[ConnectToAzure]** 接続を選択します。
 1. **[接続]**  >  **[概要]** で、 **[受信データ]** と **[送信データ]** の統計情報を確認できます。0 以外の何らかの値が表示されていると思います。
 
-   ![受信データと送信データ](media/azure-stack-connect-expressroute/DataInDataOut.png)
-
 ## <a name="next-steps"></a>次のステップ
 
-[Azure と Azure Stack Hub へのアプリのデプロイ](../user/azure-stack-solution-pipeline.md)
+[Azure と Azure Stack Hub へのアプリのデプロイ](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/hybrid-devops)

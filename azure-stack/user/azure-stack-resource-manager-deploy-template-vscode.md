@@ -1,18 +1,18 @@
 ---
 title: Visual Studio Code を使用して Azure Stack Hub にデプロイする
-description: ユーザーとして、Visual Studio Code で Azure Resource Manager テンプレートを作成し、デプロイ スキーマを使って、使用しているバージョンの Azure Stack Hub と互換性のあるテンプレートを準備します。
+description: Visual Studio Code で Azure Resource Manager テンプレートを作成し、デプロイ スキーマを使用して、ご使用のバージョンの Azure Stack Hub と互換性のあるテンプレートを準備します。
 author: mattbriggs
 ms.topic: article
 ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/30/2019
-ms.openlocfilehash: 8f0205425b49ee9e828056e5613a8166d02d95d9
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: 3f97ec57900119543e37b0d99a7d82e30c900f42
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111624"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90574246"
 ---
 # <a name="deploy-with-visual-studio-code-to-azure-stack-hub"></a>Visual Studio Code を使用して Azure Stack Hub にデプロイする
 
@@ -37,7 +37,7 @@ Azure Stack Hub デプロイ スキーマでは、Visual Studio Code での Azur
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - Azure Stack Hub へのアクセス
-- 管理エンドポイントに到達するマシンに、[Azure Stack Hub PowerShell がインストールされている](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json)
+- 管理エンドポイントに到達するマシンに、[Azure Stack Hub PowerShell がインストールされている](../operator/azure-stack-powershell-install.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json)
 
 ## <a name="install-resource-manager-tools-extension"></a>Resource Manager ツール拡張機能のインストール
 

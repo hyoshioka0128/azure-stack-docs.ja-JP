@@ -7,12 +7,12 @@ ms.date: 04/20/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/13/2019
-ms.openlocfilehash: 99a8425901213d50c17175ab946aeff78a5aa81d
-ms.sourcegitcommit: 278aaeca069213a98b90751253f6b15423634849
+ms.openlocfilehash: 1c5ecd53aab4b6116b044585a1a46497cb46f827
+ms.sourcegitcommit: 9557a5029cf329599f5b523c68e8305b876108d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82742598"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88965274"
 ---
 # <a name="extending-storage-to-azure-stack-hub"></a>ストレージを Azure Stack Hub に拡張する
 
@@ -30,7 +30,7 @@ ms.locfileid: "82742598"
 
 この図は、ワークロードを実行している単一の仮想マシンを、データの読み取り/書き込みなどの目的で、外部 (VM や Azure Stack Hub 自体の) ストレージに接続して利用するシナリオを示しています。この記事では、ファイルの簡単な取得に焦点を当てますが、データベース ファイルのリモート ストレージなど、より複雑なシナリオに合わせてこの例を拡張することもできます。
 
-![](./media/azure-stack-network-howto-extend-datacenter/azure-stack-network-howto-extend-datacenter-image1.svg)
+![Azure Stack Hub システム上のワークロード VM が外部ストレージにアクセスする。 VM には 2 つの NIC があり、それぞれにパブリック IP アドレスとプライベート IP アドレスの両方がある。](./media/azure-stack-network-howto-extend-datacenter/azure-stack-network-howto-extend-datacenter-image1.svg)
 
 この図では、Azure Stack Hub システム上の VM が複数の NIC を使用してデプロイされていることがわかります。 冗長性だけでなく、ストレージのベスト プラクティスからも、ターゲットと宛先の間に複数のパスを用意することが重要です。 状況が複雑になるのは、Azure と同様に、Azure Stack Hub の VM にパブリック IP とプライベート IP の両方がある場合です。 外部ストレージから VM に到達する必要がある場合は、パブリック IP を使用する必要があります。これは、プライベート IP は主に Azure Stack Hub システム内、vNet およびサブネット内で使用されるためです。 外部ストレージは、サイト間 VPN を経由して vNet 自体に接続しない限り、VM のプライベート IP 空間と通信できません。 したがって、この例では、パブリック IP 空間を介した通信に注目します。 この図のパブリック IP 空間で注目する点は、2 つの異なるパブリック IP プール サブネットがあることです。 既定で、パブリック IP アドレスの目的では Azure Stack Hub には 1 つのプールのみが必要ですが、冗長ルーティングのためには、2 つ目のプールを追加することも考えられます。 ただし、現時点では、1 つの特定のプールから IP アドレスを選択することはできないため、実際には、複数の仮想ネットワーク カードにまたがる同じプールのパブリック IP を持つ VM を使用することになる可能性があります。
 
@@ -44,13 +44,13 @@ ms.locfileid: "82742598"
 
 1.  **Azure Stack Hub 管理ポータル**から、このシステムが正しく登録され、マーケットプレースに接続されていると仮定して、 **[Marketplace Management]\(マーケットプレースの管理\)** を選択します。次に、Windows Server 2019 イメージをまだ持っていないと仮定して、 **[Add from Azure]\(Azure から追加\)** を選択し、**Windows Server 2019** を検索し、**Windows Server 2019 Datacenter** イメージを追加します。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image2.png)
+    ![[Dashboard > Marketplace management - Marketplace items > Add from Azure]\(ダッシュボード > マーケットプレースの管理 - Marketplace の項目 > Azure から追加\) ダイアログ ボックスで、検索ボックス内に "windows server 2019" が示され、その文字列を含む項目の一覧が表示されている。](./media/azure-stack-network-howto-extend-datacenter/image2.png)
 
     Windows Server 2019 イメージのダウンロードには時間がかかる場合があります。
 
 2.  Azure Stack Hub 環境に Windows Server 2019 イメージを用意できたら、**Azure Stack Hub ユーザー ポータルにサインインします**。
 
-3.  Azure Stack Hub ユーザー ポータルにログインしたら、[オファーのサブスクリプション](https://docs.microsoft.com/azure-stack/operator/azure-stack-subscribe-plan-provision-vm?view=azs-1908)があることを確認します。これを使用して、IaaS リソース (コンピューティング、ストレージ、ネットワーク) をプロビジョニングできます。
+3.  Azure Stack Hub ユーザー ポータルにログインしたら、[オファーのサブスクリプション](../operator/azure-stack-subscribe-plan-provision-vm.md?view=azs-1908)があることを確認します。これを使用して、IaaS リソース (コンピューティング、ストレージ、ネットワーク) をプロビジョニングできます。
 
 4.  サブスクリプションを用意できたら、Azure Stack Hub ユーザー ポータルの**ダッシュボード**に戻り、 **[リソースの作成]** を選択し、 **[コンピューティング]** を選択してから、**Windows Server 2019 Datacenter ギャラリー項目**を選択します。
 
@@ -60,9 +60,9 @@ ms.locfileid: "82742598"
 
     b.  **ユーザー名**: localadmin
 
-    c.  **[パスワード]** 、 **[パスワードの確認]** : \<ご自分が選択したパスワード>
+    c.  **[パスワード]** と **[パスワードの確認入力]** : \<password of your choice>
 
-    d.  **サブスクリプション**: \<ご自分が選択したサブスクリプション、コンピューティング/ストレージ/ネットワークのリソースを含む>
+    d.  **[サブスクリプション]** : \<subscription of your choice, with compute/storage/network resources>。
 
     e.  **リソース グループ**: storagetesting (新規作成)
 
@@ -78,13 +78,13 @@ ms.locfileid: "82742598"
 
 10. 他の既定値をそのまま使用し、 **[OK]** を選択します。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image3.png)
+    ![[ダッシュボード > 新規 > 仮想マシンの作成 > 概要] ダイアログ ボックスに "検証に成功しました" と示され、VM001 に関する情報が表示されている。](./media/azure-stack-network-howto-extend-datacenter/image3.png)
 
 11. 概要を読み、検証を待ってから **[OK]** を選択し、デプロイを開始します。 デプロイは約 10 分で完了します。
 
 12. デプロイが完了したら、 **[リソース]** で仮想マシン名 **[VM001]** を選択し、 **[概要]** を開きます。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image4.png)
+    ![[概要] 画面に VM001 に関する情報が表示されている。](./media/azure-stack-network-howto-extend-datacenter/image4.png)
 
 13. [DNS 名] の下で **[構成]** を選択し、DNS 名前ラベル「**vm001**」を指定し、 **[保存]** を選択して、 **[VM001]** を選択します。
 
@@ -140,11 +140,11 @@ ms.locfileid: "82742598"
 
 2.  管理者として **CMD** を開き、**route print** を実行します。これにより、この VM 内の 2 つのインターフェイス (Hyper-V ネットワーク アダプター) が返されます。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image5.png)
+    !["route print" の出力は次の 2 つのHyper-V ネットワーク アダプターを含むインターフェイスの一覧: インターフェイス 6 は Hyper-V ネットワーク アダプター #2 で、インターフェイス 7 はアダプター #3。](./media/azure-stack-network-howto-extend-datacenter/image5.png)
 
 3.  次に、**ipconfig** を実行して、セカンダリ ネットワーク インターフェイスに割り当てられている IP アドレスを確認します。 この例では、インターフェイス 6 には 10.10.11.4 が割り当てられています。 セカンダリ ネットワーク インターフェイスに対して、既定のゲートウェイ アドレスは返されません。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image6.png)
+    ![ipconfig の部分的なリストに Ethernet アダプター Ethernet 2 の IPv4 アドレス 10.10.11.4 が示されている。](./media/azure-stack-network-howto-extend-datacenter/image6.png)
 
 4.  セカンダリ ネットワーク インターフェイスのサブネットの外部にあるアドレスに宛てたすべてのトラフィックを、サブネットのゲートウェイにルーティングするには、**CMD** から次のコマンドを実行します。
 
@@ -154,11 +154,11 @@ ms.locfileid: "82742598"
 
     `<ipaddress>` は、現在のサブネットの .1 アドレスで、`<interface>` はインターフェイス番号です。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image7.png)
+    ![ipaddress 値 10.10.11.1 とインターフェイス番号 6 を指定した route add コマンドの実行。](./media/azure-stack-network-howto-extend-datacenter/image7.png)
 
 5.  追加されたルートがルート テーブル内にあることを確認するには、**route print** コマンドを入力します。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image8.png)
+    ![追加されたルートがゲートウェイ アドレス 10.10.11.1 およびメトリック 5015 の固定ルートとして表示されている。](./media/azure-stack-network-howto-extend-datacenter/image8.png)
 
 6.  次の ping コマンドを実行して送信通信を検証することもできます。  
     `ping 8.8.8.8 -S 10.10.11.4`  
@@ -170,7 +170,7 @@ ms.locfileid: "82742598"
 
 このシナリオでは、Windows Server 2019 iSCSI ターゲットが、Azure Stack Hub 環境の外の Hyper-V 上で実行されている仮想マシンである構成を検証します。 この仮想マシンは、8 つの仮想プロセッサ、1 つの VHDX ファイル、そして最も重要な 2 つの仮想ネットワーク アダプターで構成されます。 理想的なシナリオでは、これらのネットワーク アダプターはルーティング可能なサブネットが異なりますが、この検証では、同じサブネット上にネットワーク アダプターがあります。
 
-![](./media/azure-stack-network-howto-extend-datacenter/image9.png)
+![ipconfig コマンドの部分的な出力に、同じサブネット上の 2 つの Ethernet アダプターが示されている。IP アドレスは 10.33.131.15 と 10.33.131.16。](./media/azure-stack-network-howto-extend-datacenter/image9.png)
 
 iSCSI ターゲット サーバーの場合、これは、Hyper-V、VMware、または任意の代替アプライアンス (専用の物理 iSCSI SAN など) で実行される Windows Server 2016 または 2019 (物理または仮想) です。 ここで重要な焦点は、Azure Stack Hub システムとの相互接続ですが、ソースと宛先の間に複数のパスを用意することが推奨されます。これは、追加の冗長性を実現し、MPIO など、より高度な機能を使用してパフォーマンスを向上させるためです。
 
@@ -184,7 +184,7 @@ iSCSI ターゲット サーバーの場合、これは、Hyper-V、VMware、ま
 
 3.  **[ファイル サービスと記憶域サービス]** を展開し、 **[ファイル サービスおよび iSCSI サービス]** を展開して **[iSCSI ターゲット サーバー]** ボックスをオンにし、新しい機能を追加するポップアップ プロンプトを受け入れ、完了まで進みます。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image10.png)
+    ![役割と機能の追加ウィザードの [インストール オプションの確認] というタイトルの付いた確認ページ。 [ファイル サービスと記憶域サービス] が展開され、[ファイル サービスおよび iSCSI サービス] が展開されて [iSCSI ターゲット サーバー] が表示されている。](./media/azure-stack-network-howto-extend-datacenter/image10.png)
 
     完了したら、**サーバー マネージャー**を閉じます。
 
@@ -200,7 +200,7 @@ iSCSI ターゲット サーバーの場合、これは、Hyper-V、VMware、ま
 
 9.  仮想ディスクのサイズを **10GB** に設定し、 **[固定サイズ]** を選択して、 **[次へ]** を選択します。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image11.png)
+    ![新しい iSCSI 仮想ディスク ウィザードの [iSCSI 仮想ディスクのサイズ] ページに 10GB の固定サイズが指定され、[割り当てで仮想ディスクを消去する] オプションがオンになっている。](./media/azure-stack-network-howto-extend-datacenter/image11.png)
 
 10) これは新しいターゲットであるため、 **[New iSCSI target]\(新しい iSCSI ターゲット\)** を選択し、 **[次へ]** を選択します。
 
@@ -208,15 +208,15 @@ iSCSI ターゲット サーバーの場合、これは、Hyper-V、VMware、ま
 
 12) **[アクセス サーバーの指定]** ページで **[追加]** を選択します。 これにより、iSCSI ターゲットへの接続が承認される特定の**イニシエーター**を入力するためのダイアログが開きます。
 
-13) **[イニシエーター ID の追加]** ウィンドウで、 **[選択した種類の値の入力]** を選択し、 **[種類]** で、IQN がドロップダウン メニューで選択されていることを確認します。 **iqn.1991-05.com.microsoft:\<computername>** と入力し (ここで、\<computername> は、**VM001** の**コンピューター名**)、 **[次へ]** を選択します。
+13) **[イニシエーター ID の追加]** ウィンドウで、 **[選択した種類の値の入力]** を選択し、 **[種類]** で、IQN がドロップダウン メニューで選択されていることを確認します。 「**iqn.1991-05.com.microsoft:\<computername>** 」と入力し (\<computername> は、**VM001** の**コンピューター名**)、 **[次へ]** を選択します。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image12.png)
+    ![[イニシエーター ID の追加] ウィンドウにイニシエーター ID を指定する値が示されている。](./media/azure-stack-network-howto-extend-datacenter/image12.png)
 
 14) **[認証を有効にする]** ページで、ボックスを空白のままにして、 **[次へ]** を選択します。
 
 15) 選択内容を確認して **[作成]** を選択してから、閉じます。 サーバー マネージャーで作成した iSCSI 仮想ディスクが表示されます。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image13.png)
+    ![新しい iSCSI 仮想ディスク ウィザードの [結果] ページに ISCSI 仮想ディスクが正常に作成されたことが示されている。](./media/azure-stack-network-howto-extend-datacenter/image13.png)
 
 ### <a name="configure-the-windows-server-2019-iscsi-initiator-and-mpio"></a>Windows Server 2019 iSCSI イニシエーターと MPIO を構成する
 
@@ -228,7 +228,7 @@ iSCSI イニシエーターを設定するには、まず、**Azure Stack Hub** 
 
 3.  **[機能]** ページで **[マルチパス I/O]** を追加し、 **[次へ]** を選択します。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image14.png)
+    ![役割と機能の追加ウィザードの [機能] ページで [マルチパス I/O] という 1 つの機能が選択されている。](./media/azure-stack-network-howto-extend-datacenter/image14.png)
 
 4.  **[必要に応じてターゲット サーバーを自動的に再起動する]** ボックスをオンにして **[インストール]** を選択し、 **[閉じる]** を選択します。 再起動が必要になる可能性が高いため、完了したら VM001 に再接続します。
 
@@ -236,7 +236,7 @@ iSCSI イニシエーターを設定するには、まず、**Azure Stack Hub** 
 
 6.  **[マルチパスの検出]** タブを選択し **[iSCSI デバイスのサポートを追加する]** ボックスをオンにし、 **[追加]** を選択し、 **[はい]** を選択して VM001 を**再起動**します。 ウィンドウが表示されない場合は、 **[OK]** を選択し、手動で再起動します。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image15.png)
+    ![MPIO ダイアログ ボックスの [マルチパスの検出] ページで [iSCSI デバイスのサポートを追加する] オプションがオンになっているのが示されている。 [追加] ボタンがある。](./media/azure-stack-network-howto-extend-datacenter/image15.png)
 
 7.  再起動したら、**VM001 への新しい RDP 接続**を確立します。
 
@@ -244,7 +244,7 @@ iSCSI イニシエーターを設定するには、まず、**Azure Stack Hub** 
 
 9.  Microsoft iSCSI ウィンドウが表示されたら、 **[はい]** を選択して、既定で iSCSI サービスを実行できるようにします。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image16.png)
+    ![[Microsoft iSCSI] ダイアログ ボックスに iSCSI サービスが実行されていないことが報告されている。サービスを開始するための [はい] ボタンがある。](./media/azure-stack-network-howto-extend-datacenter/image16.png)
 
 10. [iSCSI イニシエーターのプロパティ] ウィンドウで、 **[探索]** タブを選択します。
 
@@ -252,7 +252,7 @@ iSCSI イニシエーターを設定するには、まず、**Azure Stack Hub** 
 
 12. iSCSI ターゲット サーバーの最初の IP アドレスを入力し、 **[詳細]** を選択します。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image17.png)
+    ![[ターゲット ポータルの探索] ウィンドウの [IP アドレスまたは DNS 名:] テキスト ボックスに "10.33.131.15"、[ポート] テキスト ボックスに "3260" (既定値) が示されている。 [詳細] ボタンがある。](./media/azure-stack-network-howto-extend-datacenter/image17.png)
 
 13. **[詳細設定]** ウィンドウで、次のものを選択し、 **[OK]** を選択します。
 
@@ -272,13 +272,13 @@ iSCSI イニシエーターを設定するには、まず、**Azure Stack Hub** 
 
 16. ターゲット ポータルは次のようになります。 **[アドレス]** 列には、独自の iSCSI ターゲット IP が指定されています。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image18.png)
+    ![[ターゲット ポータル] ダイアログ ボックスに作成されたばかりの 2 つのポータルが示されている。 IP アドレスは 10.33.131.15 と 10.33.131.16。](./media/azure-stack-network-howto-extend-datacenter/image18.png)
 
 17. **[ターゲット]** タブに戻り、ウィンドウの中央から iSCSI ターゲットを選択し、 **[接続]** を選択します。
 
 18. **[ターゲットへの接続]** ウィンドウで、 **[複数パスを有効にする]** チェック ボックスをオンにし、 **[詳細]** を選択します。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image19.png)
+    ![[ターゲットへの接続] ダイアログ ボックスに指定した値が示されている。 [詳細] ボタンと [OK] ボタンがある。](./media/azure-stack-network-howto-extend-datacenter/image19.png)
 
 19. 次の情報を入力して **[OK]** を選択し、 **[ターゲットへの接続]** ウィンドウで **[OK]** を選択します。
 
@@ -286,9 +286,9 @@ iSCSI イニシエーターを設定するには、まず、**Azure Stack Hub** 
 
     b.  **イニシエーター IP**: 10.10.10.4。
 
-    c.  **ターゲット ポータル IP**: \<最初の iSCSI ターゲット IP / 3260>。
+    c.  **ターゲット ポータル IP**: \<your first iSCSI Target IP / 3260>。
 
-![](./media/azure-stack-network-howto-extend-datacenter/image20.png)
+    ![[接続方法] ダイアログ ボックスにターゲット ポータル 10.33.131.15/3260 に指定した情報が示されている。](./media/azure-stack-network-howto-extend-datacenter/image20.png)
 
 1.  2 番目のイニシエーターとターゲットの組み合わせに対して、このプロセスを繰り返します。
 
@@ -296,33 +296,33 @@ iSCSI イニシエーターを設定するには、まず、**Azure Stack Hub** 
 
     b.  **イニシエーター IP**: 10.10.11.4。
 
-    c.  **ターゲット ポータル IP**: \<2 番目の iSCSI ターゲット IP / 3260>。
+    c.  **ターゲット ポータル IP**: \<your second iSCSI Target IP / 3260>。
 
-        ![](./media/azure-stack-network-howto-extend-datacenter/image21.png)
+    ![[接続方法] ダイアログ ボックスにターゲット ポータル 10.33.131.16/3260 に指定した情報が示されている。](./media/azure-stack-network-howto-extend-datacenter/image21.png)
 
 2.  **[ボリュームとデバイス]** タブを選択し、 **[自動構成]** を選択します。次のように MPIO ボリュームが提示されます。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image22.png)
+    ![[ボリュームの一覧] ウィンドウに 1 つのボリュームのボリューム名、マウント ポイント、デバイスが表示されている。](./media/azure-stack-network-howto-extend-datacenter/image22.png)
 
 3.  **[ターゲット]** タブに戻り、 **[デバイス]** を選択すると、前に作成した 1 つの iSCSI VHD への 2 つの接続が表示されます。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image23.png)
+    ![[デバイス] ダイアログ ボックスに Disk 2 が 2 行に表示されている。 最初の行のターゲットは 0、2 行目は 1。](./media/azure-stack-network-howto-extend-datacenter/image23.png)
 
 4.  **[MPIO]** ボタンを選択すると、負荷分散ポリシーとパスの詳細情報が表示されます。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image24.png)
+    ![[デバイスの詳細] ダイアログ ボックスの [MPIO] ページの [負荷分散ポリシー] に [ラウンド ロビン] が表示されている。](./media/azure-stack-network-howto-extend-datacenter/image24.png)
 
 5.  **[OK]** を 3 回選択してウィンドウと iSCSI イニシエーターを閉じます。
 
 6.  ディスク管理 (diskmgmt.msc) を開くと、 **[ディスクの初期化]** ウィンドウが表示されます。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image25.png)
+    ![[ディスクの初期化] ダイアログ ボックスで [Disk 2] が選択され、パーティション スタイルとして [MBR (マスター ブート レコード)] が選択されている。 [OK] ボタンがある。](./media/azure-stack-network-howto-extend-datacenter/image25.png)
 
 7.  **[OK]** を選択して既定値を受け入れ、新しいディスクまでスクロールダウンし、右クリックして、 **[新しいシンプル ボリューム]** を選択します。
 
 8.  ウィザードの指示に従って、既定値を受け入れます。 ボリューム ラベルを「**iSCSIdisk1**」に変更し、 **[完了]** を選択します。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image26.png)
+    ![[新しいシンプル ボリューム ウィザード] ダイアログ ボックスに、ボリュームが既定のアロケーション ユニット サイズでボリューム ラベルが "iSCSIdisk1" である NTFS となることが示されている。 クイック フォーマットが選択されている。 [次へ] ボタンがある。](./media/azure-stack-network-howto-extend-datacenter/image26.png)
 
 9.  これにより、ドライブがフォーマットされ、ドライブ文字が表示されます。
 
@@ -345,11 +345,11 @@ iSCSI イニシエーターを設定するには、まず、**Azure Stack Hub** 
     2. 新しい CMD ウィンドウが開きます。次のように入力してください。  
         `**Create vdisk file="c:\\test.vhd" type=fixed maximum=5120**`
     
-    ![](./media/azure-stack-network-howto-extend-datacenter/image27.png)
+    ![CMD ウィンドウに、指定したコマンドが DiskPart に対して発行され、そこで正常に実行され、仮想ディスク ファイルが作成されたことが示されている。](./media/azure-stack-network-howto-extend-datacenter/image27.png)
     
     3.  作成にはしばらく時間がかかります。 作成されたら、作成を検証するために、**エクスプローラー**を開き、C:\\ に移動します。新しい test.vhd があり、サイズが 5 GB であることを確認できます。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image28.png)
+    ![ファイル test.vhd が予期した通りに C:\, 内に表示され、指定したサイズである。](./media/azure-stack-network-howto-extend-datacenter/image28.png)
 
     4. CMD ウィンドウを閉じて ISE に戻り、スクリプト ウィンドウに次のコマンドを入力します。 F:\\ は、前に適用した iSCSI ターゲット ドライブ文字に置き換えます。
 
@@ -359,7 +359,7 @@ iSCSI イニシエーターを設定するには、まず、**Azure Stack Hub** 
 
     7. コマンドが実行されている間、2 つのネットワーク アダプターを監視し、VM001 の両方のネットワーク アダプター間でデータの転送が行われていることを確認します。 また、各ネットワーク アダプターで負荷が均等に共有されていることにも注意してください。
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image29.png)
+    ![両方のアダプターの負荷が 2.6 Mbps であることが示されている。](./media/azure-stack-network-howto-extend-datacenter/image29.png)
 
 このシナリオは、Azure Stack Hub で実行されているワークロードと外部ストレージ アレイ (この場合、Windows Server ベースの iSCSI ターゲット) との間の接続に焦点を当てるように設計されました。 これは、パフォーマンス テストとして使用するように設計されたものではなく、また別の iSCSI ベースのアプライアンスを使用している場合に実行する必要がある手順も反映していません。これは、Azure Stack Hub にワークロードをデプロイする際や Azure Stack Hub 環境の外のストレージ システムに接続する際のいくつかの主な考慮事項に焦点を当てています。
 

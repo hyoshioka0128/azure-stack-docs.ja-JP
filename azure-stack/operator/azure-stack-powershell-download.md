@@ -3,16 +3,16 @@ title: GitHub からの Azure Stack Hub ツールのダウンロード
 description: Azure Stack Hub の操作に必要なツールをダウンロードする方法について説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 4/22/2020
+ms.date: 8/28/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 4/22/2020
-ms.openlocfilehash: c85982690578cbfbed65c83fb2c83792ce6b4fb2
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.lastreviewed: 8/28/2020
+ms.openlocfilehash: 8aa2c3cad35af9d6c887217ea977a92eae7428cf
+ms.sourcegitcommit: 7c01ab4b2e2250a7acd67d1c5ba27d15c1e8bce0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111190"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89448454"
 ---
 # <a name="download-azure-stack-hub-tools-from-github"></a>GitHub からの Azure Stack Hub ツールのダウンロード
 
@@ -20,7 +20,7 @@ ms.locfileid: "84111190"
 
 ## <a name="get-tools-for-azure-stack-hub-azurerm-module"></a>Azure Stack Hub AzureRM モジュール用のツールを入手する
 
-これらのツールを取得するには、`master` ブランチから GitHub リポジトリをクローンするか、次のスクリプトを実行して **AzureStack-Tools** フォルダーをダウンロードします。
+これらのツールを取得するには、`master` ブランチから GitHub リポジトリを複製するか、管理者特権の PowerShell プロンプトで次のスクリプトを実行して **AzureStack-Tools** フォルダーをダウンロードします。
 
 ```powershell
 # Change directory to the root directory.
@@ -55,15 +55,15 @@ cd \
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/az.zip `
-  -OutFile master.zip
+  -OutFile az.zip
 
 # Expand the downloaded files.
-expand-archive master.zip `
+expand-archive az.zip `
   -DestinationPath . `
   -Force
 
 # Change to the tools directory.
-cd AzureStack-Tools-master
+cd AzureStack-Tools-az
 
 ```
 

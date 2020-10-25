@@ -5,14 +5,14 @@ author: mattbriggs
 ms.author: mabrigg
 ms.date: 5/27/2020
 ms.topic: conceptual
-ms.reviewer: xiaofmao
-ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: bc682604e5c57c3a878c7c5dc17a0bfc18e36e60
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.reviewer: jiahan
+ms.lastreviewed: 08/12/2020
+ms.openlocfilehash: 28b1d8ade7b56a767d436b918ad7d386ef4759bd
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111802"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90574144"
 ---
 # <a name="get-started-with-azure-stack-hub-storage-development-tools"></a>Azure Stack Hub ストレージの開発ツールの概要
 
@@ -27,8 +27,40 @@ Microsoft Azure Stack Hub には、Blob Storage、Table Storage、Queue Storage 
 
 したがって、ストレージのクライアント ライブラリについて、REST API と互換性のあるバージョンを把握しておいてください。 また、コード内で Azure Stack Hub エンドポイントも指定する必要があります。
 
-::: moniker range=">=azs-1811"
-### <a name="1811-update-or-newer-versions"></a>更新プログラム 1811 以降のバージョン
+
+::: moniker range=">=azs-2005"
+### <a name="2005-update-or-newer-versions"></a>更新プログラム 2005 以降のバージョン
+
+| クライアント ライブラリ | Azure Stack Hub でサポートされるバージョン | Link | エンドポイントの指定 |
+|----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
+| .NET | 11.0.0 | NuGet パッケージ:<br>共通: <https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/11.0.0><br>BLOB: <https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/11.0.0><br>キュー:<br><https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/11.0.0><br> <br>GitHub リリース:<br><https://github.com/Azure/azure-storage-net/releases/tag/v11.0.0> | app.config ファイル |
+| Java | 12.0.0-preview.3 | Maven パッケージ:<br><https://mvnrepository.com/artifact/com.azure/azure-storage-file/12.0.0-preview.3><br> <br>GitHub リリース:<br><https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage> | 接続文字列の設定 |
+| Node.js | 2.8.3 | NPM リンク:<br><https://www.npmjs.com/package/azure-storage><br>(次のコマンドを実行: `npm install azure-storage@2.8.3`)<br> <br>GitHub リリース:<br><https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3> | サービス インスタンスの宣言 |
+| C++ | 7.1.0 | GitHub リリース:<br><https://github.com/Azure/azure-storage-cpp/releases/tag/v7.1.0> | 接続文字列の設定 |
+| PHP | 1.2.0 | GitHub リリース:<br>共通: <https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common><br>BLOB: <https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob><br>キュー:<br><https://github.com/Azure/azure-storage-php/releases/tag/v1.1.1-queue><br>テーブル: <https://github.com/Azure/azure-storage-php/releases/tag/v1.1.0-table><br> <br>Composer 経由でインストールする (詳細については[下記参照](#install-php-client-via-composer---current)) | 接続文字列の設定 |
+| Python | 2.1.0 | GitHub リリース:<br>共通:<br><https://github.com/Azure/azure-storage-python/releases/tag/v2.1.0-common><br>BLOB:<br><https://github.com/Azure/azure-storage-python/releases/tag/v2.1.0-blob><br>キュー:<br><https://github.com/Azure/azure-storage-python/releases/tag/v2.1.0-queue> | サービス インスタンスの宣言 |
+| Ruby | 1.0.1 | RubyGems パッケージ:<br>共通:<br><https://rubygems.org/gems/azure-storage-common/versions/1.0.1><br>BLOB: <https://rubygems.org/gems/azure-storage-blob/versions/1.0.1><br>キュー: <https://rubygems.org/gems/azure-storage-queue/versions/1.0.1><br>テーブル: <https://rubygems.org/gems/azure-storage-table/versions/1.0.1><br> <br>GitHub リリース:<br>共通: <https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common><br>BLOB: <https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob><br>キュー: <https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-queue><br>テーブル: <https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-table> | 接続文字列の設定 |
+
+#### <a name="install-php-client-via-composer---current"></a>Composer 経由で PHP クライアントをインストールする (現在)
+
+Composer 経由でインストールするには (BLOB の例):
+
+1. プロジェクトのルートに **composer.json** という名前のファイルを次のコードを使用して作成します。
+
+    ```json
+    {
+      "require": {
+      "Microsoft/azure-storage-blob":"1.2.0"
+      }
+    }
+    ```
+
+2. [composer.phar](https://getcomposer.org/composer.phar) をプロジェクトのルートにダウンロードします。
+3. `php composer.phar install` を実行します。
+::: moniker-end
+
+::: moniker range=">=azs-1811 <=azs-2005"
+### <a name="previous-versions-1811-to-2002-update"></a>以前のバージョン (1811 から 2002 までの更新プログラム)
 
 | クライアント ライブラリ | Azure Stack Hub でサポートされるバージョン | Link | エンドポイントの指定 |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|

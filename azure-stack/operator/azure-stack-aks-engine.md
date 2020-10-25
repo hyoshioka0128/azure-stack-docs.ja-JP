@@ -3,20 +3,23 @@ title: Azure Kubernetes Services (AKS) エンジンの前提条件を Azure Stac
 description: AKS エンジンの前提条件を Azure Stack Hub Marketplace に追加する方法について説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 2/27/2020
+ms.date: 09/16/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 11/21/2019
-ms.openlocfilehash: 5bebac9b3c604b2726cf5cd8f895fb17e0db3486
-ms.sourcegitcommit: 8646eba1674ca708baf6699f4a4b56d134766e85
+ms.lastreviewed: 09/16/2020
+ms.openlocfilehash: 4cbb253b88f86f18c69c7528b6beabb58d277d14
+ms.sourcegitcommit: 362081a8c19e7674c3029c8a44d7ddbe2deb247b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82861386"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91899450"
 ---
 # <a name="add-the-azure-kubernetes-services-aks-engine-prerequisites-to-the-azure-stack-hub-marketplace"></a>Azure Kubernetes Services (AKS) エンジンの前提条件を Azure Stack Hub Marketplace に追加する
 
-この記事で説明する項目を Azure Stack Hub に追加することによって、ユーザーが Azure Kubernetes Services (AKS) エンジンを設定できるようになります。 ユーザーはその後、1 回の連携した操作で Kubernetes クラスターをデプロイできます。 この記事では、接続されている環境と接続されていない環境の両方で、ユーザーが AKS エンジンを使用できるようにするために必要な手順について説明します。 AKS エンジンは、サービス プリンシパル ID と、Marketplace のカスタム スクリプト拡張機能および AKS 基本イメージに依存します。 AKS エンジンを使用するには、[Azure Stack Hub 1910](release-notes.md?view=azs-1910) 以降を実行している必要があります。
+ユーザー向けに Azure Kubernetes Services (AKS) エンジンを設定することができます。 この記事で説明する項目を Azure Stack ハブに追加します。 ユーザーはその後、1 回の連携した操作で Kubernetes クラスターをデプロイできます。 この記事では、接続されている環境と接続されていない環境の両方で、ユーザーが AKS エンジンを使用できるようにするために必要な手順について説明します。 AKS エンジンは、サービス プリンシパル ID と、Marketplace のカスタム スクリプト拡張機能および AKS 基本イメージに依存します。 AKS エンジンを使用するには、[Azure Stack Hub 1910](release-notes.md?view=azs-1910&preserve-view=true) 以降を実行している必要があります。
+
+> [!NOTE]  
+> Azure Stack Hub と AKS エンジンのバージョン番号のマッピングについては、[AKS エンジンのリリース ノート](../user/kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping)をご覧ください。
 
 ## <a name="check-your-users-service-offering"></a>ユーザーのサービス オファリングを確認する
 
@@ -42,7 +45,7 @@ Azure から項目を取得して、AKS 基本イメージを Marketplace に追
 
 次の項目を Marketplace に追加します。
 
-1. [管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
+1. 管理ポータル `https://adminportal.local.azurestack.external` にサインインします。
 
 1. **[すべてのサービス]** を選択し、 **[管理]** カテゴリで **[Marketplace management] (Marketplace 管理)** を選択します。
 
@@ -50,12 +53,13 @@ Azure から項目を取得して、AKS 基本イメージを Marketplace に追
 
 1. 「`AKS Base`」と入力します。
 
-1. AKS エンジンのバージョンと一致するイメージ バージョンを選択します。 AKS エンジンと AKS 基本イメージの対応一覧については、「[Supported Kubernetes Versions (サポートされている Kubernetes バージョン)](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions)」を参照してください。 
+1. AKS エンジンのバージョンと一致するイメージ バージョンを選択します。 AKS エンジンと AKS 基本イメージの対応一覧については、「[Supported Kubernetes Versions (サポートされている Kubernetes バージョン)](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions)」を参照してください。 
 
     一覧で、次のように選択します。
     - **[発行者]** : Azure Kubernetes Service
     - **オファー**: aks
-    - **バージョン**:AKS 基本イメージ 16.04-LTS のイメージ配布、2019 年 10 月 (2019.10.24 または AKS Engine にマップされているバージョン)
+    - **Name**:AKS 基本 Ubuntu 16.04-LTS のイメージ ディストリビューション、2020 年 8 月 (2020.09.14 または AKS エンジンにマップされているバージョン)
+    - **バージョン**:2020.09.14
 
 1. **[ダウンロード]** を選択します。
 
@@ -63,7 +67,7 @@ Azure から項目を取得して、AKS 基本イメージを Marketplace に追
 
 Azure から項目を取得して、カスタム スクリプトを Marketplace に追加できます。 ただし、Azure Stack Hub が切断されている場合は、次の手順に従って、[Azure から Marketplace の項目をダウンロード](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected)し、項目を追加します。  手順 5 で指定した項目を追加します。
 
-1. [管理ポータル](https://adminportal.local.azurestack.external)を開きます。
+1. 管理ポータル `https://adminportal.local.azurestack.external` を開きます。
 
 1. **[すべてのサービス]** を選択し、 **[管理]** カテゴリで **[Marketplace management] (Marketplace 管理)** を選択します。
 
