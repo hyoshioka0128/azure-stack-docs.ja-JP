@@ -18,10 +18,10 @@ ms.locfileid: "96869022"
 
 Microsoft Azure Stack Hub には、Blob Storage、Table Storage、Queue Storage など一連のストレージ サービスがあります。
 
-この記事は、Azure Stack Hub ストレージの開発ツールを初めて使うときのガイドとしてご利用ください。 より詳細な情報とサンプル コードについては、該当する Azure ストレージのチュートリアルでご覧いただけます。
+この記事は、Azure Stack Hub ストレージの開発ツールを初めて使うときのガイドとしてご利用ください。 より詳細な情報とサンプル コードについては、該当する Azure Storage のチュートリアルでご覧いただけます。
 
 > [!NOTE]  
-> Azure Stack Hub ストレージと Azure ストレージには、プラットフォームごとの固有の要件などの違いがあります。 たとえば、Azure Stack Hub には、クライアント ライブラリとエンドポイント サフィックスの特定の要件があります。 詳しくは、「[Azure Stack Hub ストレージ:違いと考慮事項](azure-stack-acs-differences.md)」をご覧ください。
+> Azure Stack Hub ストレージと Azure Storage には、プラットフォームごとの固有の要件などの違いがあります。 たとえば、Azure Stack Hub には、クライアント ライブラリとエンドポイント サフィックスの特定の要件があります。 詳しくは、「[Azure Stack Hub ストレージ:違いと考慮事項](azure-stack-acs-differences.md)」をご覧ください。
 
 ## <a name="azure-client-libraries"></a>Azure のクライアント ライブラリ
 
@@ -273,4 +273,4 @@ Azure Stack Hub に、次の Azure Table storage のチュートリアルを応�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Microsoft Azure ストレージの概要](/azure/storage/common/storage-introduction)
+* [Microsoft Azure Storage の概要](/azure/storage/common/storage-introduction)
