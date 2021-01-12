@@ -44,6 +44,8 @@
           href: deploy/create-cluster-powershell.md
     - name: ワークロードのデプロイ
       items:
+        - name: SQL Server を展開する
+          href: deploy/deploy-sql-server-workload.md
         - name: エンタープライズ向け高信頼仮想化のデプロイ
           href: deploy/deploy-trusted-enterprise-virtualization.md
 - name: 管理する
