@@ -1,18 +1,18 @@
 ---
 title: EMC PowerEdge Tactical のインジケーターとコード
 description: EMC PowerEdge Tactical のインジケーターとコードについて説明します
-author: myoungerman
+author: PatAltimore
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: 5b4920fb2ab174867092c44ca51a5193412a9a9a
-ms.sourcegitcommit: 3bd42be22e626564b62e560dc037aed4d462011f
+ms.openlocfilehash: 8a820d02ef1832343ba5110a244793c70b73aed3
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97393086"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910280"
 ---
 # <a name="dell-emc-poweredge-tactical-indicators-and-codes"></a>Dell EMC PowerEdge Tactical のインジケーターとコード
 
@@ -25,7 +25,7 @@ ms.locfileid: "97393086"
 
 図 10: LED の動作
 
-![](media/image-75.png)
+![LED 動作のシステム情報ラベル。](media/image-75.png)
 
 ## <a name="idrac-direct-led-indicator-codes"></a>iDRAC ダイレクト LED インジケーター コード
 
@@ -49,7 +49,7 @@ iDRAC ダイレクトは、USB からマイクロ USB への (タイプ AB) ケ�
 
 図 11: 左側のコントロール パネル
 
-![](media/image-76.png)
+![左側コントロール パネルにある状態インジケーターと正常性インジケーターを示す図。](media/image-76.png)
 
 次の表では、左側のパネルにある機能について説明します。
 
@@ -58,7 +58,7 @@ iDRAC ダイレクトは、USB からマイクロ USB への (タイプ AB) ケ�
 |    <br>項目       |    <br>インジケーターまたはボタン                       |    <br>アイコン                                |    <br>説明                                                                                                  |
 |-------------------|--------------------------------------------------|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
 |    <br>1          |    <br>状態 LED インジケーター                     |    <br>該当なし                                 |    <br>システムの状態を示します。 詳細については、61 ページで PowerEdge の状態 LED インジケーターについて参照してください。    |
-|    <br>2 と 3    |    <br>システム正常性インジケーターとシステム ID インジケーター    | ![](media/image-77.png) |    <br>システムの正常性を示します。                                                                                 |
+|    <br>2 と 3    |    <br>システム正常性インジケーターとシステム ID インジケーター    | ![システム正常性アイコン](media/image-77.png) |    <br>システムの正常性を示します。                                                                                 |
 
 次の表に、PowerEdge の状態 LED インジケーターを示します。
 
@@ -83,7 +83,7 @@ AC 電源装置 (PSU) には、インジケーターとして機能する半透�
 
 図 12. AC PSU
 
-![](media/image-83.png)
+![LED が示されている AC PSU を示す図。](media/image-83.png)
 
 次の表では、インジケーター コードを定義します。
 

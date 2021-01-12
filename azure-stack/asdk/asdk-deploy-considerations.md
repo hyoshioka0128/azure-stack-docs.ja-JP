@@ -1,18 +1,18 @@
 ---
 title: ASDK の要件と考慮事項
 description: Azure Stack Development Kit (ASDK) のハードウェア、ソフトウェア、環境の要件を確認します。
-author: myoungerman
+author: PatAltimore
 ms.topic: article
 ms.date: 09/23/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 09/23/2020
-ms.openlocfilehash: dbd0398b7f6582c12288c2ae72137c4a673ddfcc
-ms.sourcegitcommit: 950dbc793b3498173923d0bc9fe56662a349abf1
+ms.openlocfilehash: 64b0209ad669c42b7a792498369ca0f48bfcca52
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92082090"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97873284"
 ---
 # <a name="asdk-requirements-and-considerations"></a>ASDK の要件と考慮事項
 
@@ -66,7 +66,7 @@ Azure Stack Development Kit (ASDK) をデプロイする前に、ASDK のホス�
 
 - 2 テラバイトを超えるシステムの HDD 容量が必要です。
 - ご使用の ASDK に SSD がない場合、双方向ミラー構成には少なくとも 8 個の HDD が必要です。
-- ご使用の ASDK に SSD も HDD もある場合は、少なくとも 5 個の HDD が必要です。 ただし、6 個の HHD が推奨されます。 6 個の HDD の場合は、さらに、対応する SSD をシステム内に少なくとも 3 個持つことをお勧めします。それにより、1 個のキャッシュ ディスク (SSD) で 2 個の容量ドライブ (HDD) に対応することができます。
+- ご使用の ASDK に SSD も HDD もある場合は、少なくとも 5 個の HDD が必要です。 ただし、6 個の HDD が推奨されます。 6 個の HDD の場合は、さらに、対応する SSD をシステム内に少なくとも 3 個持つことをお勧めします。それにより、1 個のキャッシュ ディスク (SSD) で 2 個の容量ドライブ (HDD) に対応することができます。
 
 双方向ミラー構成の例:
 
@@ -102,7 +102,7 @@ Azure AD アカウントを使って Azure Stack をデプロイするには、�
    | 有効な中国の Azure サブスクリプションのある職場または学校アカウント |はい |
    | 有効な米国政府の Azure サブスクリプションのある職場または学校アカウント |はい |
 
-デプロイの後、Azure AD の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要な場合があります。 そのような操作の例には、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に復元するか、*既定のプロバイダー サブスクリプション*の所有者である別の全体管理者アカウントを使用します。
+デプロイの後、Azure AD の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要な場合があります。 そのような操作の例には、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に復元するか、*既定のプロバイダー サブスクリプション* の所有者である別の全体管理者アカウントを使用します。
 
 ## <a name="network"></a>ネットワーク
 ### <a name="switch"></a>スイッチ

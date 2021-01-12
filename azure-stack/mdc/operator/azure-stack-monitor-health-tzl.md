@@ -1,6 +1,6 @@
 ---
-title: Azure Stack での正常性およびアラートの監視 | Microsoft Docs
-description: Azure Stack で正常性およびアラートを監視する方法を説明します。
+title: Azure Stack での正常性およびアラートの監視 - MDC | Microsoft Docs
+description: Modular Data Center (MDC) の Azure Stack で正常性およびアラートを監視する方法について説明します。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 10/26/2020
 ms.author: mabrigg
 ms.lastreviewed: 10/26/2020
-ms.openlocfilehash: 4a14700a081e8c85f29a7edc69c471ba9bd3d249
-ms.sourcegitcommit: 6db48bd8e6ccfaaa897713ad7eb2846a8d506358
+ms.openlocfilehash: bdc027e8c61053fddddd5ad365eff8069acb840d
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94885786"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910824"
 ---
-# <a name="monitor-health-and-alerts-in-azure-stack"></a>Azure Stack での正常性およびアラートの監視
+# <a name="monitor-health-and-alerts-in-azure-stack---modular-data-center-mdc"></a>Azure Stack での正常性およびアラートの監視 - Modular Data Center (MDC)
 
 Azure Stack には、ユーザーが Azure Stack リージョンの正常性とアラートを表示できるようにするインフラストラクチャ監視機能が含まれています。 **[リージョン管理]** タイルには、Azure Stack のすべてのデプロイ済みリージョンが一覧表示されます。 それは、既定では、既定のプロバイダー サブスクリプション用の管理者ポータルに固定されています。 タイルには、アクティブな重大アラートおよび警告アラートの数がリージョンごとに表示されます。 このタイルは、Azure Stack の正常性とアラートの機能へのエントリ ポイントです。
 
@@ -73,7 +73,7 @@ Azure Stack では、アラートは、2 つの重大度(**警告** または **
 
 また、**[View API]\(APIの表示\)** アクションには、リスト ビューの生成に使用された REST API が表示されます。 このアクションにより、アラートの照会に使用できる REST API 構文をすばやく理解できます。 この API は、自動化、または既存のデータ センターの監視、レポート、およびチケット発行ソリューションとの統合に使用できます。
 
-特定のアラートをクリックすると、アラートの詳細を表示できます。 アラートの詳細には、アラートに関連付けられているすべてのフィールドが表示され、影響を受けているコンポーネントとアラートのソースにすばやく移動できます。 たとえば、インフラストラクチャ ロール インスタンスの 1 つがオフラインになるか、アクセスできない場合、次のアラートが発生します。 アラートの詳細の **[Remediation]\(修復\)** セクションにある[相互参照リンク](aks-refer-table-tzl.md)を参照して、この記事を確認できます。
+特定のアラートをクリックすると、アラートの詳細を表示できます。 アラートの詳細には、アラートに関連付けられているすべてのフィールドが表示され、影響を受けているコンポーネントとアラートのソースにすばやく移動できます。 たとえば、インフラストラクチャ ロール インスタンスの 1 つがオフラインになるか、アクセスできない場合、次のアラートが発生します。 アラートの詳細の **[Remediation]\(修復\)** セクションにある [相互参照リンク](aks-refer-table-tzl.md)を参照して、この記事を確認できます。
 
 ![Azure Stack 管理者ポータルの [アラートの詳細] ブレード](media/azure-stack-monitor-health/alert-detail.png)
 

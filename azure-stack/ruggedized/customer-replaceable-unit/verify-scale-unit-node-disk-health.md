@@ -1,18 +1,18 @@
 ---
 title: スケール ユニット ノードのディスク正常性の確認
 description: スケール ユニット ノードのディスク正常性を確認する方法について説明します
-author: myoungerman
+author: PatAltimore
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: bebff3ff8970a43d0893f057a94ec3dfbf0a7fc9
-ms.sourcegitcommit: 3bd42be22e626564b62e560dc037aed4d462011f
+ms.openlocfilehash: 35deff6c48c02c1deda13bb3cd8dec87e54f52ef
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97392842"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97909873"
 ---
 # <a name="verifying-scale-unit-node-disk-health"></a>スケール ユニット ノードのディスク正常性の確認
 
@@ -28,7 +28,7 @@ ms.locfileid: "97392842"
 
         システムで **OperationalStatus** の **OK** と **HealthStatus** の **Healthy** が返されない場合は、数分待ってからコマンドを再実行します。
         
-        ![](media/image-57.png)
+        !["OperationsStatus" と "HealthStatus" 列が強調表示されている Windows PowerShell を示すスクリーンショット。](media/image-57.png)
         
     1.  `Get-VirtualDisk -cimsession "S-Cluster" | Get-StorageJob` を実行して、実行中のすべての記憶域ジョブが完了していることを確認します。
     

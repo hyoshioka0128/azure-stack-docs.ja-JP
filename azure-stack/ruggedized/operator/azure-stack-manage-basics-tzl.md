@@ -1,21 +1,21 @@
 ---
-title: Azure Stack Hub の管理の基本
+title: Azure Stack Hub の管理の基本 - ラグド
 titleSuffix: Azure Stack Hub
 description: Azure Stack Hub の管理の基本について説明します。
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 06/16/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 06/16/2020
-ms.openlocfilehash: afbfbf5c1fe7149b4d12f1cd96af79b1116e4a3a
-ms.sourcegitcommit: 50b362d531c2d35a3a935811fee71252971bd5d8
+ms.openlocfilehash: f94a8ba25c595ac231beda9e235245d25541f334
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96941320"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97909686"
 ---
-# <a name="azure-stack-hub-administration-basics"></a>Azure Stack Hub の管理の基本
+# <a name="azure-stack-hub-administration-basics---ruggedized"></a>Azure Stack Hub の管理の基本 - ラグド
 
 Azure Stack Hub の管理が初めての場合は、知っておく必要があることがいくつかあります。 この記事では、Azure Stack Hub オペレーターとしての役割の概要と、ユーザーにその生産性を高めるのに役立つように伝える必要がある内容について説明します。
 

@@ -1,18 +1,18 @@
 ---
 title: USB 接続経由で iDRAC にアクセスする
 description: USB 接続経由で iDRAC にアクセスする方法について説明します
-author: myoungerman
+author: PatAltimore
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: 7381aae6b7b08de01e27f895d79519a024a1955a
-ms.sourcegitcommit: 3bd42be22e626564b62e560dc037aed4d462011f
+ms.openlocfilehash: 5c270de88d78bb8cb7ba1f7b9216c4a160a4aae8
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97393081"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910060"
 ---
 # <a name="accessing-the-idrac-interface-over-a-direct-usb-connection"></a>直接 USB 接続経由で iDRAC インターフェイスにアクセスする
 
@@ -29,7 +29,7 @@ USB ポート経由で iDRAC インターフェイスにアクセスするには
 2.  ノート PC からサーバーの前面にある iDRAC ダイレクト ポートにマイクロ USB ケーブルを接続します。
     図の項目 4 を参照してください。
 
-    ![](media/image-67.png)
+    ![電源ボタン、USB、およびマイクロ USB ポートを示す図。](media/image-67.png)
 
 3.  ノート PC が IP アドレス 169.254.0.4 を取得するまで待ちます。
 

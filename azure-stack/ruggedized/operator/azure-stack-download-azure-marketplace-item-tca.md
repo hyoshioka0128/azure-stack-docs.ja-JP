@@ -15,14 +15,14 @@ ms.date: 01/02/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 01/02/2020
-ms.openlocfilehash: 734c84c1226a9e1ed4a9f3e34b787f1677ab6902
-ms.sourcegitcommit: 50b362d531c2d35a3a935811fee71252971bd5d8
+ms.openlocfilehash: a3d8fcc1c3ffa65539b233a8b89f55d57f61a5ef
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96941264"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910620"
 ---
-# <a name="download-marketplace-items-to-azure-stack-hub"></a>Azure Stack Hub に Marketplace の項目をダウンロードする 
+# <a name="download-marketplace-items-to-azure-stack-hub-ruggedized"></a>Azure Stack Hub (ラグド) に Marketplace の項目をダウンロードする
 
 クラウド オペレーターは、Azure Marketplace から項目をダウンロードし、Azure Stack Hub 環境を使用して、すべてのユーザーがそれらを利用可能にすることができます。 選択できる項目は、Azure Marketplace の精選された一覧にある項目です。これらの項目は、Azure Stack で動作するように、事前にテストされ、サポートされています。 一覧には新しいアイテムが頻繁に追加されるので、定期的に新しいコンテンツを確認してください。
 
@@ -60,7 +60,7 @@ Azure Stack Hub デプロイは、インターネット接続を備えていて�
 
 4. 各行項目には、現在使用可能なバージョンも表示されます。 Marketplace 項目の複数のバージョンを使用できる場合、 **[バージョン]** 列には **[複数]** が表示されます。 各項目をクリックして、その説明と、ダウンロード サイズなどの追加情報を表示できます。
 
-   ![Azure から追加する](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure1.png)
+   ![[複数] のバージョン エントリが強調表示されている [Azure から追加する] ページを示すスクリーンショット。](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure1.png)
 
 5. 項目のバージョンが **[複数]** と表示されている場合は、その項目を選択した後表示されるバージョン セレクターのドロップダウンから特定のバージョンを選択できます。
 

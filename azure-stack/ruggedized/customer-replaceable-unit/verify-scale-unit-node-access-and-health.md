@@ -1,18 +1,18 @@
 ---
 title: スケール ユニット ノードのアクセスと正常性の確認
 description: スケール ユニット ノードのアクセスと正常性の確認方法について説明します
-author: myoungerman
+author: PatAltimore
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: cec29fed89fa02f6a5142f9eb179d8fc8437f37d
-ms.sourcegitcommit: 3bd42be22e626564b62e560dc037aed4d462011f
+ms.openlocfilehash: 74addf295c35099e90e3a7fe4fd95aad34e47361
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97392962"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910637"
 ---
 # <a name="verifying-scale-unit-node-access-and-health"></a>スケール ユニット ノードのアクセスと正常性の確認
 
@@ -31,13 +31,13 @@ ms.locfileid: "97392962"
 
     **[Region Management]\(リージョン管理\)** タイルで、 **[プロパティ]** を選択します。 ペインの一番下までスクロールし、 **[Privileged endpoint IP addresses]\(特権エンドポイントの IP アドレス\)** フィールドで IP アドレスを見つけます。 これらは、この手順で後ほど必要になる場合や、問題が発生した場合にサポートで必要になることもあるため、メモしておきます。
 
-    [![](media/image-18-inline.png)](media/image-18-expanded.png)
+    [![[Privileged endpoint IP addresses]\(特権エンドポイントの IP アドレス\) セクションが強調表示されている [管理] ページを示すスクリーンショット。](media/image-18-inline.png)](media/image-18-expanded.png)
     
 4.  現在のアラートを確認します。
 
     **[Region Management]\(リージョン管理\)** で、 **[アラート]** を選択して、現在のアラートを確認します。 予期しないアラートが存在する場合は、それらをクリアできるかまたは無視しても問題ないのかを Dell Technologie サポートに確認してください。
     
-    [![](media/image-19-inline.png)](media/image-19-expanded.png)
+    [![[名前] セクションが強調表示されている [プロパティ] ページを示すスクリーンショット。](media/image-19-inline.png)](media/image-19-expanded.png)
     
 5.  スケール ユニット ノードを特定します。
 
@@ -47,11 +47,11 @@ ms.locfileid: "97392962"
     
     1.  ノード サービス タグを取得するには、 **[BMC]** IP アドレス リンクを選択します。これにより、サーバーの iDRAC Web インターフェイスが新しいタブまたはウィンドウに表示されます。
 
-        [![](media/image-20-inline.png)](media/image-20-expanded.png) 
+        [![[BMC] 列が強調表示されている [ノード] ページを示すスクリーンショット。](media/image-20-inline.png)](media/image-20-expanded.png) 
     
     1.  iDRAC インターフェイスにログインし、 **[システム情報]** ペインでノードのサービス タグを確認します。
     
     1.  すべてのノードに対してこの手順を繰り返し、これらのサービス タグと予定されているハードウェアの交換を関連付けて、処理する必要があるノードを特定します。
 
-        [![](media/image-21-inline.png)](media/image-21-expanded.png)
+        [![[サービス タグ] が強調表示されている [ダッシュボード] を示すスクリーンショット。](media/image-21-inline.png)](media/image-21-expanded.png)
     

@@ -1,6 +1,6 @@
 ---
-title: PowerShell で Azure Stack のバックアップを有効にする | Microsoft Docs
-description: PowerShell で Infrastructure Backup サービスを有効にし、障害が発生した場合に Azure Stack を復元できるようにする方法について学習します。
+title: PowerShell で Azure Stack のバックアップを有効にする - MDC
+description: PowerShell で Infrastructure Backup サービスを有効にし、障害が発生した場合に Azure Stack を復元できるようにする方法について学習します。 Modular Data Center (MDC) の場合。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,14 +15,14 @@ ms.date: 10/27/2020
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 10/27/2020
-ms.openlocfilehash: 9f50a6096f0fb7881d37a67df34bdcd6f2487eb9
-ms.sourcegitcommit: 50b362d531c2d35a3a935811fee71252971bd5d8
+ms.openlocfilehash: f3d28fa9f5610f91ab8b35ad017c836745f5117d
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96935051"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910876"
 ---
-# <a name="configure-backup-for-azure-stack-with-powershell"></a>PowerShell を使用して Azure Stack のバックアップを構成する
+# <a name="configure-backup-for-azure-stack-with-powershell---modular-data-center-mdc"></a>PowerShell を使用して Azure Stack のバックアップを構成する - Modular Data Center (MDC)
 
 *適用対象:Modular Data Center、Azure Stack Hub ラグド*
 

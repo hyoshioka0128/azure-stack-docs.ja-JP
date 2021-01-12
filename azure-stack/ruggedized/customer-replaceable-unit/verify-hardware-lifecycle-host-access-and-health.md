@@ -1,18 +1,18 @@
 ---
 title: ハードウェア ライフサイクル ホストのアクセスと正常性の確認
 description: ハードウェア ライフサイクル ホストのアクセスと正常性の確認方法について説明します
-author: myoungerman
+author: PatAltimore
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: b14bff53b8c8d5545a00424a543656a190c06bf3
-ms.sourcegitcommit: 3bd42be22e626564b62e560dc037aed4d462011f
+ms.openlocfilehash: d4dd073e3ec9ec47110df916517ef0f5e3273a3a
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97392961"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910671"
 ---
 # <a name="verifying-hardware-lifecycle-host-access-and-health"></a>ハードウェア ライフサイクル ホストのアクセスと正常性の確認
 
@@ -22,15 +22,15 @@ iDRAC とハードウェア ライフサイクル ホスト (HLH) OS にログ�
 
     1.  Web ブラウザーを使用して、iDRAC Web インターフェイスに移動し、顧客から提供された資格情報を使用してログインします。
 
-        ![](media/image-3.png) 
+        ![iDRAC ログイン ページを示すスクリーンショット。](media/image-3.png) 
     
     1.  上部のナビゲーション メニューから、 **[システム]** を選択します。
 
-        ![](media/image-4.png)
+        ![[システム] メニューが強調表示されている [ダッシュボード] を示すスクリーンショット。](media/image-4.png)
         
     1.  **[概要]** タブで、システムが完全に正常であるか、またはこのハードウェアの交換中に修復が必要と思われる問題が発生しているかを確認します。
     
-        ![](media/image-5.png)
+        ![[概要] タイルが強調表示されている [システム] ページを示すスクリーンショット。](media/image-5.png)
     
 2.  iDRAC 仮想コンソールを使用して HLH OS に接続します。
 
@@ -39,35 +39,35 @@ iDRAC とハードウェア ライフサイクル ホスト (HLH) OS にログ�
     
     1.  iDRAC Web インターフェイスで、 **[ダッシュボード]** を選択します。
 
-        ![](media/image-6.png)
+        ![[ダッシュボード] ボタンが選択されていることを示すスクリーンショット。](media/image-6.png)
     
     1.  **[仮想コンソール]** ウィンドウで、 **[設定]** を選択します。
     
-        ![](media/image-7.png)
+        ![[設定] ボタンが選択されている画面のスクリーンショット。](media/image-7.png)
         
     1.  **[プラグインの種類]** が **[HTML 5]** に設定されていることを確認します。 そうでない場合は、これを変更し、 **[適用]** を選択します。メッセージが表示されたら **[OK]** を選択します。
     
-        ![](media/image-8.png)
+        ![[プラグインの種類] - [HTML5] と [適用] ボタンが選択されている [Configuration]\(構成\) ページを示すスクリーンショット。](media/image-8.png)
         
     1.  **[Launch Virtual Console]\(仮想コンソールを起動\)** を選択します。
 
-        ![](media/image-9.png)
+        ![[Launch Virtual Console]\(仮想コンソールを起動\) オプションが強調表示されている [Configuration]\(構成\) ページを示すスクリーンショット。](media/image-9.png)
     
     1.  ポップアップの警告が表示された場合、ブラウザーの設定を [常に許可] に変更します。 たとえば、Internet Explorer で、 **[このサイトのオプション]** を選択し、 **[常に許可]** を選択します。 必要に応じて、ブラウザーの設定を変更したら、前の手順を繰り返して仮想コンソールを起動します。
     
-        ![](media/image-10.png)
+        ![[警告] ポップアップが表示されているスクリーンショット。](media/image-10.png)
         
     1.  これで、仮想コンソールが表示されます。 オペレーティング システムにログインするには、上部のメニューから **[Console Controls]\(コンソール コントロール\)** を選択します。
     
-        ![](media/image-11.png)
+        ![[Console Controls]\(コンソール コントロール\) ボタンが選択されている仮想コンソールを示すスクリーンショット。](media/image-11.png)
         
     1.  **[Keyboard Macro]\(キーボード マクロ\)** を選択し、**Ctrl + Alt + Del** キーを押して、 **[適用]** 、 **[閉じる]** の順に選択します。
     
-        ![](media/image-12.png)
+        ![[Keyboard Macro]\(キーボード マクロ\) と [閉じる] ボタンが選択されている [Console Controls]\(コンソール コントロール\) 画面を示すスクリーンショット。](media/image-12.png)
         
     1.  顧客から提供された資格情報に基づいて **ユーザー** を選択し、パスワードを入力し、**矢印** を選択してログインします。
     
-        ![](media/image-13.png)
+        ![入力されているユーザーの資格情報を示すスクリーンショット。](media/image-13.png)
         
         これで HLH にログインしました。
         
@@ -75,14 +75,14 @@ iDRAC とハードウェア ライフサイクル ホスト (HLH) OS にログ�
 
     1.  **サーバー マネージャー** を起動します。
 
-        ![](media/image-14.png)
+        ![選択されている [サーバー マネージャー] を示すスクリーンショット。](media/image-14.png)
         
     1.  **[ユーザー アカウント制御]** プロンプトに対して **[はい]** を選択します。
     
-        ![](media/image-15.png)
+        ![[はい] ボタンが選択されている [ユーザー アカウント制御] プロンプトを示すスクリーンショット。](media/image-15.png)
         
     1.  **[ツール]** メニューの **[Hyper-V マネージャー]** を選択します。
     
-        ![](media/image-16.png)
+        ![[ツール] メニューが開き、[Hyper-V マネージャー] が選択されているスクリーンショット。](media/image-16.png)
         
     1.  **[Hyper-V マネージャー]** で、左側のメニューの一番上のノードを選択してから、必要に応じて **特権アクセス ワークステーション** などの VM が **[実行中]** の状態にあることを確認します。

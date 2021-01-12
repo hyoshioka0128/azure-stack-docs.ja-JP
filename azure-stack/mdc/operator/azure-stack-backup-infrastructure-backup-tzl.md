@@ -1,6 +1,6 @@
 ---
-title: Infrastructure Backup サービスを使用した Azure Stack のデータの回復 | Microsoft Docs
-description: Infrastructure Backup サービスを使用して、Azure Stack の構成とサービス データをバックアップおよび復元する方法について学習します。
+title: Infrastructure Backup サービスを使用した Azure Stack のデータの回復 - MDC
+description: Infrastructure Backup サービスを使用して、Azure Stack の構成とサービス データをバックアップおよび復元する方法について学習します。 Modular Data Center (MDC) の場合。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -14,14 +14,14 @@ ms.date: 10/26/2020
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 10/26/2020
-ms.openlocfilehash: c32065beeeb446d7d8e494634bc68318e280a693
-ms.sourcegitcommit: 9ecf9c58fbcc4bc42c1fdc688f370c643c761a29
+ms.openlocfilehash: 5a9e8615168714b3346f735d9182c38b2c604cca
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93330209"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910807"
 ---
-# <a name="recover-data-in-azure-stack-with-the-infrastructure-backup-service"></a>Infrastructure Backup サービスを使用した Azure Stack のデータの回復
+# <a name="recover-data-in-azure-stack-with-the-infrastructure-backup-service---modular-data-center-mdc"></a>Infrastructure Backup サービスを使用した Azure Stack のデータの回復 - Modular Data Center (MDC)
 
 *適用対象:Modular Data Center および Azure Stack Hub ラグド*
 

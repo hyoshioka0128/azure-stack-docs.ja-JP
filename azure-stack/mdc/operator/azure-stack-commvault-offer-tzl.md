@@ -1,6 +1,6 @@
 ---
-title: Azure Stack で Commvault Marketplace アイテムを提供する | Microsoft Docs
-description: Azure Stack Marketplace から Commvault をデプロイする
+title: Azure Stack で Commvault Marketplace アイテムを提供する - MDC
+description: Modular Data Center (MDC) の Azure Stack Marketplace から Commvault をデプロイします。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,14 +15,14 @@ ms.date: 10/26/2020
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 10/26/2020
-ms.openlocfilehash: 6ece6792602d90fd43bc682d7547061180ea9289
-ms.sourcegitcommit: 9ecf9c58fbcc4bc42c1fdc688f370c643c761a29
+ms.openlocfilehash: c2f98725a93dbd471f257d8a038a989d9f892c68
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93330210"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910841"
 ---
-# <a name="offer-commvault-marketplace-item-in-azure-stack"></a>Azure Stack で Commvault Marketplace アイテムを提供する
+# <a name="offer-commvault-marketplace-item-in-azure-stack---modular-data-center-mdc"></a>Azure Stack で Commvault Marketplace アイテムを提供する - Modular Data Center (MDC)
 
 *適用対象:Modular Data Center、Azure Stack Hub ラグド*
 

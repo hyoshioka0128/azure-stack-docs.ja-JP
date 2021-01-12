@@ -1,18 +1,18 @@
 ---
 title: スケール ユニット ノードの電源をオフにする
 description: スケール ユニット ノードの電源をオフにする方法について説明します
-author: myoungerman
+author: PatAltimore
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: fde7496a54f0c2d3b28d98584295a761c683e17c
-ms.sourcegitcommit: 3bd42be22e626564b62e560dc037aed4d462011f
+ms.openlocfilehash: 2eb2c85bcdb350173923b3d8b5a3b463ce6a16ff
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97392861"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910722"
 ---
 # <a name="powering-off-scale-unit-nodes"></a>スケール ユニット ノードの電源をオフにする
 
@@ -26,15 +26,15 @@ ms.locfileid: "97392861"
 
     1.  管理ポータルで修復が必要なノードを選択し、 **[ドレイン]** を選択します。
 
-        ![](media/image-23.png)
+        ![[ドレイン] 操作が選択されて、ノードが強調表示されている [管理] ページのスクリーンショット。](media/image-23.png)
         
     1.  メッセージが表示されたら、ドレインするノードの名前を入力し、 **[はい]** を選択します。
 
-        ![](media/image-24.png)
+        ![[管理] - [ノード] ページを示すスクリーンショット。](media/image-24.png)
     
     1.  ドレインが進行中であることを示す通知が表示されます。
     
-        ![](media/image-25.png)
+        ![ドレインの通知が表示された [管理] - [ノード] ページを示すスクリーンショット。](media/image-25.png)
         
     1.  iDRAC インターフェイスにログインし、 **[システム情報]** でノードのサービス タグを確認します。
     
@@ -43,17 +43,17 @@ ms.locfileid: "97392861"
 
     1.  ドレインが完了したら、もう一度ノードを選択し、 **[動作状態]** が **[メンテナンス]** であることを確認し、 **[シャットダウン]** を選択します。
 
-        ![](media/image-26.png)
+        ![ノードと [シャットダウン] 操作が選択されている [管理] - [ノード] ページを示すスクリーンショット。](media/image-26.png)
         
     1.  メッセージが表示されたら **[はい]** を選択してシャットダウンを確定します。
     
-        ![](media/image-27.png)
+        ![[Start node]\(ノードの開始\) ダイアログが表示された [管理] - [ノード] ページを示すスクリーンショット。](media/image-27.png)
         
     1.  シャットダウンが進行中であることを示す通知が表示されます。
 
-        ![](media/image-28.png)
+        ![シャットダウンが進行中であることを示すダイアログが表示された [管理] - [ノード] ページを示すスクリーンショット。](media/image-28.png)
     
     1.  シャットダウンが完了すると、 **[電源の状態]** は **[停止]** になります。
     
-        ![](media/image-29.png)
+        ![ノードが選択されていて、[電源の状態] で [停止] が強調表示されている [管理] - [ノード] ページを示すスクリーンショット。](media/image-29.png)
         

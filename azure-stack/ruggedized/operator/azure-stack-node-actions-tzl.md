@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub でのスケール ユニットのノード操作
+title: Azure Stack Hub でのスケール ユニットのノード操作 - ラグド
 description: 電源オン、電源オフ、無効化、再開を含むスケール ユニットのノード アクションと、Azure Stack Hub 統合システムでノードの状態を表示する方法について説明します。
 services: azure-stack
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.date: 12/20/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 12/20/2020
-ms.openlocfilehash: 768d51257e1d70979c2ee0f43aad4db8430cf8cf
-ms.sourcegitcommit: 50b362d531c2d35a3a935811fee71252971bd5d8
+ms.openlocfilehash: 48cb9d6e659f8b6f3507f5c0b4d6b7e60622f025
+ms.sourcegitcommit: c5d46662492887b70a599a60f3c3d27e3460a742
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96941291"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97965479"
 ---
-# <a name="scale-unit-node-actions-in-azure-stack-hub"></a>Azure Stack Hub でのスケール ユニットのノード操作
+# <a name="scale-unit-node-actions-in-azure-stack-hub---ruggedized"></a>Azure Stack Hub でのスケール ユニットのノード操作 - ラグド
 
 この記事では、スケール ユニットの状態を確認する方法について説明します。 ユニットのノードは、表示することができます。 電源オン、電源オフ、シャットダウン、ドレイン、再開、修復などのノード アクションを実行できます。 通常、これらのノード アクションは、パーツのフィールド交換時に使用されるほか、ノードの復旧の手段として使用されます。
 
@@ -80,7 +80,7 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
 
 **停止** アクションは、ノードをオフにします。 これは、電源ボタンを押した場合と同じです。 オペレーティング システムにシャットダウン信号は送られません。 計画されている停止操作の場合は、最初に必ずシャットダウン操作を行ってください。
 
-この操作は通常、ノードが停止状態であり要求に応答しないときに使用されます。
+この操作は通常、ノードが要求に応答しなくなったときに使用されます。
 
 停止アクションを実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
 
@@ -169,4 +169,4 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Hub Fabric オペレーター モジュールについて](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0)。
+[Azure Stack Hub Fabric オペレーター モジュールについて](https://docs.microsoft.com/powershell/module/azs.fabric.admin/)。

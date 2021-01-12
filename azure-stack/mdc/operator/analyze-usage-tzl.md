@@ -1,6 +1,6 @@
 ---
-title: Azure Stack の使用状況とリソース使用状況 API を分析する| Microsoft Docs
-description: Azure Stack の使用状況とリソース使用状況 API のリファレンスの分析。これにより、Azure Stack の使用状況情報を取得します。
+title: Azure Stack の使用状況とリソース使用状況 API を分析する - MDC
+description: Azure Stack の使用状況とリソース使用状況 API のリファレンスの分析。これにより、Azure Stack の使用状況情報を取得します。 Modular Data Center (MDC) の場合。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,14 +15,14 @@ ms.date: 10/27/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/27/2020
-ms.openlocfilehash: 9e7bb8b8174423a21c4f08e09cdb10d2a37bf556
-ms.sourcegitcommit: 50b362d531c2d35a3a935811fee71252971bd5d8
+ms.openlocfilehash: efbbfbb76215cdd3322c57ca0c5def8575f5f023
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96935068"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910910"
 ---
-# <a name="analyze-azure-stack-usage-with-local-usage-meters"></a>ローカルの使用状況測定を使用して、Azure Stack の使用状況を分析する
+# <a name="analyze-azure-stack-usage-with-local-usage-meters---modular-data-center-mdc"></a>ローカルの使用状況測定を使用して、Azure Stack の使用状況を分析する - Modular Data Center (MDC)
 
 どのサブスクリプションがどのリソースを使用しているかに関する情報は、ローカルの使用状況データベースに格納されています。 管理者はこのデータを取得して、リソースを使用しているユーザーを分析できます。
 

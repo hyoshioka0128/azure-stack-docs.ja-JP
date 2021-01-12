@@ -1,18 +1,18 @@
 ---
 title: iDRAC を使用してファームウェアをインストールする
 description: iDRAC を使用してファームウェアをインストールする方法について説明します
-author: myoungerman
+author: PatAltimore
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: 5b42b0a1f6be6e9fdf8110854e37f602d25b18ad
-ms.sourcegitcommit: 3bd42be22e626564b62e560dc037aed4d462011f
+ms.openlocfilehash: 3b6a257d5f5f42c951313c2220559306577de15d
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97392915"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910246"
 ---
 # <a name="installing-firmware-using-the-idrac-interface"></a>iDRAC インターフェイスを使用してファームウェアをインストールする
 
@@ -26,7 +26,7 @@ ms.locfileid: "97392915"
 
 1.  **[Maintenance]\(メンテナンス\)** \*[*System Update**]\(システム更新\) に移動します。 **[Firmware Update]\(ファームウェアの更新\)** ページが表示されます。
 
-    ![](media/image-85.png)
+    ![[Integrated Dell Remote Access Controller 9 | Enterprise] の [Maintenance]\(メンテナンス\) ページを示すスクリーンショット。](media/image-85.png)
 
 2.  **[Update]\(更新\)** タブで **[ローカル]** をファイルの場所として選択します。
 

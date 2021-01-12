@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub の Windows に AKS エンジンをデプロイする
+title: Azure Stack Hub の Windows に AKS エンジンをデプロイする - ラグド
 description: Kubernetes クラスターをデプロイおよび管理するために、Azure Stack Hub の Windows マシンを使用して AKS エンジンをホストする方法について説明します。
 services: azure-stack
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 12/20/2019
-ms.openlocfilehash: 65c0588cb0820c541578418d8de42be85bb34242
-ms.sourcegitcommit: 50b362d531c2d35a3a935811fee71252971bd5d8
+ms.openlocfilehash: 8d74f6c8ec16f5efb6ccbdf8fa860830c20a6587
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96941331"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910978"
 ---
-# <a name="install-the-aks-engine-on-windows-in-azure-stack-hub"></a>Azure Stack Hub の Windows に AKS エンジンをインストールする
+# <a name="install-the-aks-engine-on-windows-in-azure-stack-hub---ruggedized"></a>Azure Stack Hub の Windows に AKS エンジンをインストールする - ラグド
 
 Kubernetes クラスターをデプロイおよび管理するには、Azure Stack Hub の Windows マシンを使用して AKS エンジンをホストできます。 この記事では、接続環境の Azure Stack Hub インスタンスと非接続環境の Azure Stack Hub インスタンスのクラスターを管理するためのクライアント VM を準備し、インストールを検証します。
 <!-- TZLASDKFIX2 Line above was previously:

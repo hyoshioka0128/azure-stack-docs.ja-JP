@@ -3,16 +3,16 @@ title: Azure Stack Hub Marketplace の最新情報
 description: Azure Stack Hub Marketplace の最新情報をご覧ください。マーケットプレースの新しい項目、非推奨になった項目、更新された項目などが含まれています。
 author: sethmanheim
 ms.topic: article
-ms.date: 12/22/2020
+ms.date: 01/04/2021
 ms.author: sethm
 ms.reviewer: gara
 ms.lastreviewed: 05/28/2020
-ms.openlocfilehash: ac442a5ad52c67fc23472dc54eac0cb52f1b1b50
-ms.sourcegitcommit: f4a1a7e9d0b64ca84105d48170a23e1f473e976c
+ms.openlocfilehash: bd738fab6a424c07bd33a41f80621121e93345c4
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743575"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97869918"
 ---
 # <a name="azure-stack-hub-marketplace-changes"></a>Azure Stack Hub Marketplace の変更
 
@@ -22,6 +22,7 @@ ms.locfileid: "97743575"
 
 ## <a name="new-marketplace-items"></a>新しい Marketplace 項目
 
+- 2021 年 1 月 4 日:Versa Operating System 21.1.1 – バージョン 21.1.1
 - 2020 年 9 月 8 日Qualys Virtual Scanner Appliance
 - 2020/01/21:Teradici Cloud Access Software
 - 2019/12/26:CloudGuard IaaS High Availability

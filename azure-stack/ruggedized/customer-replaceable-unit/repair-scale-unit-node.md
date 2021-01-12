@@ -1,18 +1,18 @@
 ---
 title: スケール ユニット ノードの電源オンと修復
 description: スケール ユニット ノードを電源オンにして修復する方法について説明します
-author: myoungerman
+author: PatAltimore
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: 255a40bc2439ae1a6995d4ddf89df192d5e57551
-ms.sourcegitcommit: 3bd42be22e626564b62e560dc037aed4d462011f
+ms.openlocfilehash: d05c696f62aad4d9305137edab777d69b6442814
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97393018"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97909924"
 ---
 # <a name="powering-on-and-repairing-a-scale-unit-node"></a>スケール ユニット ノードの電源オンと修復
 
@@ -25,15 +25,15 @@ ms.locfileid: "97393018"
 
 1.  **管理ポータル** で、ノードを選択し、 **[修復]** を選択します。
 
-    ![](media/image-52.png)
+    ![ノードと [修復] 操作が選択されている [管理] - [ノード] ページを示すスクリーンショット。](media/image-52.png)
 
 1.  修復するノードに対応する **BMC IP アドレス** を指定して、 **[修復]** を選択します。
 
-    ![](media/image-53.png)
+    ![ノードが選択され、IP アドレスが強調表示され、[Repair node]\(ノードの修復\) ダイアログが表示されている [管理] - [ノード] ページを示すスクリーンショット。](media/image-53.png)
 
 1.  通知ウィンドウで進行状況を監視します。
 
-    ![](media/image-54.png)
+    ![[通知] ペインと [Repairing node]\(ノードの修復\) - [実行中] が表示されているスクリーンショット。](media/image-54.png)
     
     
     > [!NOTE]

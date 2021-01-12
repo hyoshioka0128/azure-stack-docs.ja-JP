@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: abhilashaagarwala
 ms.author: abha
 ms.date: 12/02/2020
-ms.openlocfilehash: 2bbd32a8117955a18c525a4a0483d152c5a3ed0c
-ms.sourcegitcommit: 0efffe1d04a54062a26d5c6ce31a417f511b9dbf
+ms.openlocfilehash: 3a4ad6203ba14188ff24629f07775285417c306b
+ms.sourcegitcommit: 0e2c814cf2c154ea530a4e51d71aaf0835fb2b5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96612473"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97918654"
 ---
 # <a name="system-requirements-for-azure-kubernetes-service-on-azure-stack-hci"></a>Azure Stack HCI での Azure Kubernetes Service のシステム要件
 
@@ -30,9 +30,9 @@ Active Directory 環境で、Azure Stack HCI または Windows Server 2019 Datac
 
  - Azure Stack HCI または Windows Server 2019 Datacenter クラスターで Azure Kubernetes Service を追加、更新、管理するユーザー アカウントが、Active Directory で適切なアクセス許可を持っていることを確認します。 組織単位 (OU) を使用してサーバーとサービスのグループ ポリシーを管理しようとしている場合は、ユーザー アカウントに、OU 内のすべてのオブジェクトに対する一覧表示、読み取り、変更、削除のアクセス許可が必要です。 
 
- - Azure Stack HCI または Windows Server 2019 Datacenter クラスターに Azure Kubernetes Service を追加するサーバーとサービスに対しては、別個の OU を使用することが推奨されます。 これで、アクセスとアクセス許可をよりきめ細かに制御できるようになります。
+ - Azure Stack HCI または Windows Server 2019 Datacenter クラスター上に Azure Kubernetes Service を追加するサーバーとサービスに対しては、別個の OU を使用することが推奨されます。 別個の OU を使用することで、アクセスとアクセス許可をよりきめ細かに制御できるようになります。
 
- - Active Directory のコンテナーに対して GPO テンプレートを使用しようとしている場合は、そのポリシーから AKS HCI のデプロイが除外されていることを確認します。 サーバーのセキュリティ強化は、後続のプレビュー リリースで使用できるようになります。
+ - Active Directory のコンテナーに対して GPO テンプレートを使用しようとしている場合は、ポリシーから AKS HCI のデプロイが除外されていることを確認します。 サーバーのセキュリティ強化は、後続のプレビュー リリースで使用できるようになります。
 
 ## <a name="compute-requirements"></a>コンピューティングの要件
 
@@ -52,20 +52,14 @@ Azure Stack HCI クラスターと Windows Server 2019 Datacenter フェール�
 
  - すべてのネットワーク アダプターで IPv6 が無効になっていることを確認します。 
 
- - VM と VM ホストに TCP/IP アドレスを提供するため、ネットワークに使用可能な DHCP サーバーがある必要があります。 DHCP サーバーには、NTP と DNS のホスト情報も含まれている必要があります。 
-
- - また、Azure Stack HCI クラスターからアクセスできる専用の IPv4 アドレス スコープを持つ DHCP サーバーを用意することが推奨されます。 たとえば、既定のゲートウェイには 10.0.1.1 を予約し、Kubernetes のサービスには 10.0.1.2 から 10.0.1.102 を予約し (Set-AksHciConfig 内で -vipPoolStartIp と -vipPoolEndIp を使用します)、Kubernetes クラスター VM には 10.0.1.103 から 10.0.1.254 を使用できます。 
-
- - デプロイを成功させるには、Azure Stack HCI クラスター ノードと Kubernetes クラスター VM に外部インターネット接続が必要です。
-
- - DHCP サーバーによって提供される IPv4 アドレスはルーティング可能であり、VM の更新や再プロビジョニングの場合に IP 接続が失われないようにするために 30 日間のリースの有効期限が設定されている必要があります。  
+ - デプロイを成功させるには、Azure Stack HCI クラスター ノードと Kubernetes クラスター VM に外部インターネット接続が必要です。 
 
  - すべてのノードが相互に通信できるようにするには、DNS 名前解決が必要です。 Kubernetes の外部名前解決には、IP アドレスが取得されたときに DHCP サーバーによって指定される DNS サーバーを使用します。 Kubernetes の内部名前解決には、Kubernetes の既定の、DNS ベースのコア ソリューションが使用されます。 
- 
- - このプレビュー リリースでは、デプロイ全体に対して 1 つの VLAN サポートのみが提供されています。
 
- - このプレビュー リリースでは、PowerShell を使用して作成される Kubernetes クラスターに対するプロキシ サポートは限定的です。
+ - このプレビュー リリースでは、デプロイ全体に対して 1 つの VLAN サポートのみが提供されています。 
 
+ - このプレビュー リリースでは、PowerShell を使用して作成される Kubernetes クラスターに対するプロキシ サポートは限定的です。 
+  
 ### <a name="network-port-and-url-requirements"></a>ネットワーク ポートと URL の要件 
 
 Azure Stack HCI 上に Azure Kubernetes クラスターを作成すると、クラスター内の各サーバーで、以下のファイアウォール ポートが自動的に開かれます。 
@@ -76,12 +70,13 @@ Azure Stack HCI 上に Azure Kubernetes クラスターを作成すると、ク�
 | 45000           | wssdagent GPRC サーバー ポート           |
 | 45001             | wssdagent GPRC 認証ポート  | 
 | 55000           | wssdcloudagent GPRC サーバー ポート           |
-| 55001             | wssdcloudagent GPRC 認証ポート  | 
+| 65000             | wssdcloudagent GPRC 認証ポート  | 
+
 
 
 Windows Admin Center マシンと Azure Stack HCI クラスター内のすべてのノードについて、ファイアウォールの URL の例外が必要です。 
 
-| URL        | Port | サービス | メモ |
+| URL        | Port | サービス | Notes |
 | ---------- | ---- | --- | ---- |
 https://helm.sh/blog/get-helm-sh/  | 443 | ダウンロード エージェント、WAC | Helm バイナリのダウンロードに使用 
 https://storage.googleapis.com/  | 443 | クラウドの初期化 | Kubernetes バイナリのダウンロード 
@@ -97,7 +92,7 @@ git://:9418 | 9418 | TCP | Azure Arc エージェントをサポートするた�
 
 Azure Stack HCI 上の Azure Kubernetes Service では、以下のストレージの実装がサポートされています。 
 
-|  名前                         | ストレージ型 | 必要な容量 |
+|  名前                         | ストレージの種類 | 必要な容量 |
 | ---------------------------- | ------------ | ----------------- |
 | Azure Stack HCI クラスター          | CSV          | 1 TB (テラバイト)              |
 | Windows Server 2019 Datacenter フェールオーバー クラスター          | CSV          | 1 TB (テラバイト)              |

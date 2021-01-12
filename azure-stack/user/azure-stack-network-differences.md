@@ -2,17 +2,17 @@
 title: Azure Stack Hub のネットワークの相違点
 description: Azure Stack Hub でネットワークを操作する際の違いと考慮事項について説明します。
 author: mattbriggs
-ms.date: 5/27/2020
+ms.date: 12/16/2020
 ms.topic: article
 ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 07/10/2019
-ms.openlocfilehash: f081d0fa91e967ca00b46ac2a9ffaf4b56933e87
-ms.sourcegitcommit: 79e8df69b139bfa21eb83aceb824b97e7f418c03
+ms.openlocfilehash: e93197f1906aba53097d5d7123ccc2e85aec0622
+ms.sourcegitcommit: 0e2c814cf2c154ea530a4e51d71aaf0835fb2b5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97364117"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97918684"
 ---
 # <a name="differences-and-considerations-for-azure-stack-hub-networking"></a>Azure Stack Hub ネットワークの違いと考慮事項
 
@@ -53,7 +53,7 @@ Azure Stack Hub ネットワークは、Azure ネットワークで提供され�
 |  | 高可用性構成 | アクティブ/アクティブ | アクティブ/パッシブ |
 |  | UsePolicyBasedTrafficSelectors | Azure では、ルート ベースのゲートウェイ接続によるポリシー ベースのトラフィック セレクターの使用がサポートされています。 | まだサポートされていません。 |
 |  | 監視とアラート | Azure では Azure Monitor を使用し、VPN リソースのアラートを設定するための機能を提供します。 | まだサポートされていません。|
-| Load Balancer | SKU | Basic Load Balancer と Standard Load Balancer がサポートされています | Basic Load Balancer のみがサポートされています。<br>SKU のプロパティはサポートされていません。<br>Basic SKU ロード バランサーの /path/ には、5 つを超えるフロントエンド IP 構成を含めることはできません。  |
+| Load Balancer | SKU | Basic Load Balancer と Standard Load Balancer がサポートされています | Basic Load Balancer のみがサポートされています。<br>SKU のプロパティはサポートされていません。<br>Basic SKU のロードバランサーでは、リリース 1807-1906 では 10 個のフロントエンド IP 構成が、リリース 1907 以降では 200 個のフロントエンド IP 構成が、ロード バランサーごとにサポートされています。  |
 |  | ゾーン | Availability Zones がサポートされています。 | まだサポートされていません |
 |  | サービス エンドポイントの受信 NAT ルール サポート | Azure では、受信 NAT 規則のサービス エンドポイントの指定がサポートされています。 | Azure Stack Hub でサービス エンドポイントはまだサポートされていないため、指定できません。 |
 |  | Protocol | Azure では、GRE または ESP の指定がサポートされています。 | Azure Stack Hub では、プロトコル クラスはサポートされていません。 |

@@ -1,18 +1,18 @@
 ---
 title: 障害が発生した外部ストレージ ディスクを交換する
 description: 障害が発生した外部ストレージ ディスクを交換する方法について説明します
-author: myoungerman
+author: PatAltimore
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: 46320af2b4eeb6eddbca92a6749550eed05f6627
-ms.sourcegitcommit: 3bd42be22e626564b62e560dc037aed4d462011f
+ms.openlocfilehash: e53d81e7606c6440ce535726199af31a1dbfd950
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97392858"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910654"
 ---
 # <a name="replacing-a-failed-external-storage-disk"></a>障害が発生した外部ストレージ ディスクの交換
 
@@ -69,11 +69,11 @@ ms.locfileid: "97392858"
 
     1.  上部のメニューで、 **[ストレージ]** を選択します。
 
-        ![](media/image-30.png)
+        ![[ストレージ] 操作が選択されている [iDRAC] ページのスクリーンショット。](media/image-30.png)
     
     1.  交換したディスクを見つけて、その項目を展開します。 ディスクの **リビジョン** をサポート マトリックス内のリビジョンと比較します。 ディスクがサポート マトリックスに含まれていない場合は、サポートに連絡して問題を修復してください。
 
-        ![](media/image-31.png)
+        ![[製造元]、[製品 ID]、および [リビジョン] が強調表示されている iDRAC の [詳細プロパティ] ページを示すスクリーンショット。](media/image-31.png)
         
 ## <a name="next-steps"></a>次の手順
 

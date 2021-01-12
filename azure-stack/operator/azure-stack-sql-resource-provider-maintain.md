@@ -8,12 +8,12 @@ ms.date: 9/22/2020
 ms.author: bryanla
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2020
-ms.openlocfilehash: ec2eebc7aa8195c0560beb8c61f0f98ce1689b07
-ms.sourcegitcommit: 97ecba06aeabf2f30de240ac283b9bb2d49d62f0
+ms.openlocfilehash: 3472cf330efb250f20eb66a5df50239a66293307
+ms.sourcegitcommit: 6efe456173ce77d52789144709195b6291d0d707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97011350"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97950707"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL リソース プロバイダーの保守操作
 
@@ -186,6 +186,14 @@ $session | Remove-PSSession
 ```
 
 ## <a name="collect-diagnostic-logs"></a>診断ログの収集
+
+::: moniker range=">= azs-2008"
+
+Azure Stack Hub には、診断ログを収集、保存して Microsoft サポートに送信するための方法が複数用意されています。 バージョン 1.1.93 から、SQL リソース プロバイダーは、Azure Stack Hub 環境からログを収集するための標準的な方法をサポートしています。 詳細については、「[診断ログの収集](diagnostic-log-collection.md)」を参照してください。
+
+::: moniker-end
+
+バージョン 1.1.93 から、SQL リソース プロバイダーは、Azure Stack Hub 環境からログを収集するための標準的な方法をサポートしています。 以前のバージョンを使用している場合は、SQL リソース プロバイダーを最新バージョンに更新することをお勧めします。
 
 ロックダウンされた VM からログを収集するには、PowerShell Just Enough Administration (JEA) エンドポイント *DBAdapterDiagnostics* を使用します。 このエンドポイントでは、次のコマンドが提供されます。
 

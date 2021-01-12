@@ -1,6 +1,6 @@
 ---
-title: Azure Stack のバックアップ | Microsoft Docs
-description: Azure Stack でオンデマンド バックアップを行う方法について学習します。
+title: Azure Stack のバックアップ - MDC | Microsoft Docs
+description: Modular Data Center (MDC) の Azure Stack でオンデマンド バックアップを行う方法について学習します。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,14 +15,14 @@ ms.date: 10/26/2020
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 10/26/2020
-ms.openlocfilehash: 0455c96449d0547d94d8d904fe59f268145da3a8
-ms.sourcegitcommit: 9ecf9c58fbcc4bc42c1fdc688f370c643c761a29
+ms.openlocfilehash: f64b656b6a0a0d5310b6d6e2fbb8ff26d5206ad1
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93330226"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910893"
 ---
-# <a name="back-up-azure-stack"></a>Azure Stack のバックアップ
+# <a name="back-up-azure-stack---modular-data-center-mdc"></a>Azure Stack のバックアップ - Modular Data Center (MDC)
 
 *適用対象:Modular Data Center、Azure Stack Hub ラグド*
 
@@ -55,7 +55,7 @@ Start-AzsBackup -Force
 >
 > 実際の状態は、次のコードを使用するとより適切に監視できます。
 
-最初に 1 ミリ秒の遅延を入れたのは、コードがジョブを正しく登録するには早すぎるためです。 コードにより、 **PSBeginTime** なしが報告され、次にジョブの **State** なしが報告されます。
+最初に 1 ミリ秒の遅延を入れたのは、コードがジョブを正しく登録するには早すぎるためです。 コードにより、**PSBeginTime** なしが報告され、次にジョブの **State** なしが報告されます。
 
 ```powershell
 $BackupJob = Start-AzsBackup -Force -AsJob

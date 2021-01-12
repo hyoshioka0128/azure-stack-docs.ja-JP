@@ -3,21 +3,23 @@ title: クラスター検証レポートのトラブルシューティング
 description: クラスター検証レポートのトラブルシューティングを行い、Azure Stack HCI クラスターに対する QoS 設定の構成を検証します
 author: khdownie
 ms.topic: troubleshooting
-ms.date: 07/21/2020
+ms.date: 01/05/2021
 ms.author: v-kedow
 ms.reviewer: JasonGerend
-ms.openlocfilehash: c4da92a6d88a3d2046ee6136f2481ac23e5bd476
-ms.sourcegitcommit: 0e52f460295255b799bac92b40122a22bf994e27
+ms.openlocfilehash: a5b6ef03701daf1c1f4115f88a2a4e44bac1bd61
+ms.sourcegitcommit: 0e2c814cf2c154ea530a4e51d71aaf0835fb2b5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86868033"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97918631"
 ---
 # <a name="troubleshoot-cluster-validation-reporting"></a>クラスター検証レポートのトラブルシューティング
 
 > 適用対象:Azure Stack HCI バージョン 20H2、Windows Server 2019
 
 このトピックは、Azure Stack HCI クラスター内のサーバー間でのネットワークとストレージの QoS (サービスの品質) 設定に関するクラスター検証レポートのトラブルシューティングを行い、重要なルールが定義されていることを確認するのに役立ちます。 最適な接続とパフォーマンスのため、クラスター検証プロセスでは、データ センター ブリッジング (DCB) の QoS 構成が一貫していること、そして定義されている場合は、フェールオーバー クラスタリングと SMB/SMB ダイレクト トラフィック クラスに適した規則が含まれていることが確認されます。
+
+DCB は RDMA over Converged Ethernet (RoCE) ネットワークに必須であり、Internet Wide Area RDMA Protocol (iWARP) ネットワークでは省略可能です (ただし推奨されます)。
 
 ## <a name="install-data-center-bridging"></a>データ センター ブリッジングをインストールする
 
@@ -87,7 +89,7 @@ Enable-NetQosFlowControl –Priority 3
 
 ### <a name="qos-rule-for-failover-clustering"></a>フェールオーバー クラスタリングの QoS ルール
 
-クラスターで**何らかの**ストレージ QoS ルールが定義されている場合は、フェールオーバー クラスタリングに対する QoS ルールが存在する必要があります。ないと、接続の問題が発生する可能性があります。 フェールオーバー クラスタリングに新しい QoS ルールを追加するには、次の例のように `New-NetQosPolicy` コマンドレットを使用します。
+クラスターで **何らかの** ストレージ QoS ルールが定義されている場合は、フェールオーバー クラスタリングに対する QoS ルールが存在する必要があります。ないと、接続の問題が発生する可能性があります。 フェールオーバー クラスタリングに新しい QoS ルールを追加するには、次の例のように `New-NetQosPolicy` コマンドレットを使用します。
 
 ```PowerShell
 New-NetQosPolicy "Cluster" -IPDstPort 3343 -Priority 6

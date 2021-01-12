@@ -1,18 +1,18 @@
 ---
 title: EMC PowerEdge Tactical R640 サーバーの概要
 description: EMC PowerEdge Tactical R640 サーバーについて説明します
-author: myoungerman
+author: PatAltimore
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: d1f0e141c4ca4966aab9735064287121718dee87
-ms.sourcegitcommit: 3bd42be22e626564b62e560dc037aed4d462011f
+ms.openlocfilehash: 13ce0e654a4cc7059ffe3f463190d56aa36fd583
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97392923"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910450"
 ---
 # <a name="dell-emc-poweredge-tactical-r640-server-overview"></a>Dell EMC PowerEdge Tactical R640 サーバーの概要
 
@@ -24,7 +24,7 @@ ms.locfileid: "97392923"
 
 図 3: PowerEdge Tactical R640 HLH および SU のシャーシの前面ビュー
 
-![](media/image-60.png)
+![PowerEdge Tactical R640 サーバーのシャーシの前面を示す図。](media/image-60.png)
 
 次の表は、PowerEdge Tactical R640 のフロント パネルの機能について説明しています。
 
@@ -42,7 +42,7 @@ ms.locfileid: "97392923"
 
 図 4: PowerEdge Tactical R640 HLH のシャーシ背面ビュー
 
-![](media/image-61.png)
+![PowerEdge Tactical R640 サーバーのシャーシの背面を示す図。](media/image-61.png)
 
 次の表は、PowerEdge Tactical R640 のバック パネルの機能について説明しています。
 
@@ -53,12 +53,12 @@ ms.locfileid: "97392923"
 | ハード ドライブ                   | 該当なし                       | HLH および SU のサーバー ノード用の OS とデータ ストレージ。                                                                                                                                                                                                                        |
 | BOSS モジュール                   | 該当なし                       | オペレーティング システムまたはハイパーバイザーのインストールに使用されるブート最適化ストレージ ソリューション (BOSS)。                                                                                                                                                                                 |
 | 電源装置ユニット (2)        | 該当なし                       | これらはサーバーに電力を供給し、冗長性のために同時に提供されます。                                                                                                                                                                                                 |
-| USB 3.0 ポート                 |  ![](media/image-62.png)   | USB ポートは 9 ピンで 3.0 に準拠しています。 これらのポートを使用すると、USB デバイスをシステムに接続できます。                                                                                                                                                                     |
-| VGA ポート                      |   ![](media/image-63.png)  | ディスプレイ デバイスをシステムに接続できます。                                                                                                                                                                                                                      |
-| シリアル ポート                   |   ![](media/image-64.png)  | シリアル デバイスをシステムに接続できます。                                                                                                                                                                                                                       |
-| iDRAC9 Enterprise ポート        |   ![](media/image-65.png)  | iDRAC にリモートでアクセスできるようにします。                                                                                                                                                                                                                                       |
+| USB 3.0 ポート                 |  :::image type="icon" source="media/image-62.png"::: | USB ポートは 9 ピンで 3.0 に準拠しています。 これらのポートを使用すると、USB デバイスをシステムに接続できます。                                                                                                                                                                     |
+| VGA ポート                      |   :::image type="icon" source="media/image-63.png":::  | ディスプレイ デバイスをシステムに接続できます。                                                                                                                                                                                                                      |
+| シリアル ポート                   |   :::image type="icon" source="media/image-64.png":::  | シリアル デバイスをシステムに接続できます。                                                                                                                                                                                                                       |
+| iDRAC9 Enterprise ポート        |   :::image type="icon" source="media/image-65.png":::  | iDRAC にリモートでアクセスできるようにします。                                                                                                                                                                                                                                       |
 | CMA 電源ポート                | 該当なし                       | ケーブル管理アーム (CMA) 電源ポートを使用すると、状態インジケーター ケーブルを CMA に接続できます。                                                                                                                                                                     |
-| システム識別ボタン  |   ![](media/image-66.png) | システム識別 (ID) ボタンは、サーバーの前面と背面にあります。 このボタンを押すと、システムの正常性\システム ID インジケーターが点滅します。 システム ID ボタンを使用して、iDRAC をリセットしたり、ステップスルー モードで BIOS にアクセスしたりすることもできます。  |
+| システム識別ボタン  |   :::image type="icon" source="media/image-66.png"::: | システム識別 (ID) ボタンは、サーバーの前面と背面にあります。 このボタンを押すと、システムの正常性\システム ID インジケーターが点滅します。 システム ID ボタンを使用して、iDRAC をリセットしたり、ステップスルー モードで BIOS にアクセスしたりすることもできます。  |
 
 ## <a name="right-control-panel"></a>右コントロール パネル
 
@@ -66,7 +66,7 @@ ms.locfileid: "97392923"
 
 図 5: PowerEdge Tactical R640 右コントロール パネル
 
-![](media/image-67.png)
+![コントロールパネルの電源ボタンと USB ポートを示す図。](media/image-67.png)
 
 次の表は、右側のパネルのコントロールとインジケーターについて説明しています。
 
@@ -74,10 +74,10 @@ ms.locfileid: "97392923"
 
 | 項目  | インジケーターまたはボタン  | アイコン                      | 説明                                                                                                                                                                                               |
 |-------|----------------------|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1     | 電源ボタン         |   ![](media/image-68.png)  | システムの電源がオンかオフかを示します。 システムの電源を手動でオンまたはオフにするには、電源ボタンを押します。  **注:** 電源ボタンを押すと、ACPI に準拠しているオペレーティング システムが正常にシャットダウンします。  |
-| 2     | USB ポート             | ![](media/image-70.png)    | USB ポートは 4 ピンで、2.0 に準拠しています。 このポートを使用すると、USB デバイスをシステムに接続できます。                                                                                                         |
+| 1     | 電源ボタン         |   :::image type="icon" source="media/image-68.png":::  | システムの電源がオンかオフかを示します。 システムの電源を手動でオンまたはオフにするには、電源ボタンを押します。  **注:** 電源ボタンを押すと、ACPI に準拠しているオペレーティング システムが正常にシャットダウンします。  |
+| 2     | USB ポート             | :::image type="icon" source="media/image-70.png":::    | USB ポートは 4 ピンで、2.0 に準拠しています。 このポートを使用すると、USB デバイスをシステムに接続できます。                                                                                                         |
 | 3     | iDRAC ダイレクト LED     | 該当なし                       | iDRAC ダイレクト LED インジケーターは、iDRAC ダイレクト ポートがデバイスにアクティブに接続されていると点灯します。                                                                                        |
-| 4     | iDRAC ダイレクト ポート    |   ![](media/image-65.png) | iDRAC ダイレクト ポートはマイクロ USB 2.0 に準拠しています。 このポートを使用すると、iDRAC ダイレクトの機能にアクセスできます。                                                                                              |
+| 4     | iDRAC ダイレクト ポート    |   :::image type="icon" source="media/image-65.png"::: | iDRAC ダイレクト ポートはマイクロ USB 2.0 に準拠しています。 このポートを使用すると、iDRAC ダイレクトの機能にアクセスできます。                                                                                              |
 
 ## <a name="inside-the-poweredge-tactical-r640"></a>PowerEdge Tactical R640 の内部
 
@@ -85,11 +85,11 @@ ms.locfileid: "97392923"
 
 図 6: PowerEdge Tactical R640 HLH の内部
 
-![](media/image-71.png)
+![R640 HLH サーバー コンポーネントの内部を上側から見た図。](media/image-71.png)
 
 図 7: PowerEdge Tactical R640 SU の内部
 
-![](media/image-72.png)
+![R6R640 SU サーバー コンポーネントの内部を上側から見た図。](media/image-72.png)
 
 ## <a name="motherboard"></a>マザーボード
 
@@ -97,7 +97,7 @@ ms.locfileid: "97392923"
 
 図 8: PowerEdge Tactical R640 のマザーボードのレイアウト
 
-![](media/image-73.png)
+![R640 のサービス情報とマザーボードのレイアウトを示す図。](media/image-73.png)
 
 ## <a name="memory"></a>メモリ
 
@@ -105,4 +105,4 @@ ms.locfileid: "97392923"
 
 図 9: PowerEdge Tactical R640 のメモリ情報
 
-![](media/image-74.png)
+![R640 のメモリ情報を示す図。](media/image-74.png)

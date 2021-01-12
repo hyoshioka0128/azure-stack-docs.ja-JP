@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 12/28/2020
-ms.openlocfilehash: de2ad8fecc2d79e8c8ff56e3a53a0769698a6fc1
-ms.sourcegitcommit: 8790b8a4ecf4421409534df5ff510d537cc000da
+ms.openlocfilehash: b2576bed615d6a65a5e0c61e5e3ccbc2c052132b
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97801965"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97872706"
 ---
 # <a name="connect-azure-stack-hci-to-azure"></a>Azure Stack HCI を Azure に接続する
 
@@ -21,7 +21,7 @@ ms.locfileid: "97801965"
 Azure Stack HCI は Azure サービスとして提供され、Azure オンライン サービス条件に従ってインストールから 30 日以内に登録する必要があります。 このトピックでは、監視、サポート、課金、およびハイブリッド サービスのために、Azure Stack HCI クラスターを [Azure Arc](https://azure.microsoft.com/services/azure-arc/) に登録する方法について説明します。 登録時に、オンプレミスの個々の Azure Stack HCI クラスターを表す Azure Resource Manager リソースが作成されます。これにより、Azure 管理プレーンが Azure Stack HCI に効果的に拡張されます。 Azure リソースとオンプレミス クラスターの間で情報が定期的に同期されます。
 
    > [!IMPORTANT]
-   > Azure への登録が必要です。登録がアクティブになるまでクラスターは完全にはサポートされません。 デプロイ後 30 日以内にクラスターを Azure に登録しなかった場合、またはクラスターは登録したが 30 日以上 Azure に接続しなかった場合は、新しい仮想マシン (VM) を作成または追加することはできません。 これが発生した場合は、VM を作成しようとすると、次のエラー メッセージが表示されます。
+   > Azure への登録が必要です。登録がアクティブになるまでクラスターは完全にはサポートされません。 デプロイ時にクラスターを Azure に登録しなかった場合、またはクラスターは登録したが 30 日以上 Azure に接続しなかった場合は、新しい仮想マシン (VM) を作成または追加することはできません。 これが発生した場合は、VM を作成しようとすると、次のエラー メッセージが表示されます。
    >
    > *'vmname' の仮想マシン ロールを構成中にエラーが発生しました。ジョブが失敗しました。"Vmname" のクラスター化されたロールを開くときにエラーが発生しました。アクセスされるサービスには、特定の数の接続のライセンスが付与されています。サービスで受け入れることができる数の接続が既に存在するため、現時点ではサービスにこれ以上接続することはできません。*
    >

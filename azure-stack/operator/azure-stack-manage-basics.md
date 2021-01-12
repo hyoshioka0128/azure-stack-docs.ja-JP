@@ -1,17 +1,17 @@
 ---
 title: Azure Stack Hub の管理の基本
 description: Azure Stack Hub の管理の基本について学習します。
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 06/16/2020
-ms.author: justinha
+ms.author: patricka
 ms.lastreviewed: 06/16/2020
-ms.openlocfilehash: b277eb9dcb1ac66af870db68c919e711aadc1ac7
-ms.sourcegitcommit: b50dd116d6d1f89d42bd35ad0f85bb25c5192921
+ms.openlocfilehash: da6e4d78d2464468b75ab2bd22d9bb81dd01e33b
+ms.sourcegitcommit: c5d46662492887b70a599a60f3c3d27e3460a742
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "94543512"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97965513"
 ---
 # <a name="azure-stack-hub-administration-basics"></a>Azure Stack Hub の管理の基本
 
@@ -51,13 +51,15 @@ Azure Stack Hub をデプロイすると、Azure Stack Hub に既定で次の "�
 - App Service
 - Azure Functions
 - SQL および MySQL データベース
+- Event Hubs
+- IoT Hub (プレビュー段階)
 - Kubernetes (プレビュー段階)
 
 これらのサービスをユーザーに提供する前には、追加の構成が必要です。 詳細については、Azure Stack Hub オペレーター ドキュメントの「チュートリアル」と、「操作方法ガイド」の「サービスの提供」セクションを参照してください。
 
 **サービスのロードマップ**
 
-Azure Stack Hub には、引き続き Azure サービスのサポートが追加される予定です。 予想されるロードマップについては、「[Azure Stack Hub: Azure の拡張機能](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)」ホワイトペーパーを参照してください。 新しい発表については、[Azure Stack Hub のブログ投稿](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview)を確認することもできます。
+Azure Stack Hub には、引き続き Azure サービスのサポートが追加される予定です。 予想されるロードマップについては、「[Azure Stack Hub: Azure の拡張機能](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)」ホワイトペーパーを参照してください。 新しい発表については、[Azure Stack Hub のブログ投稿](https://techcommunity.microsoft.com/t5/azure-stack-blog/bg-p/AzureStackBlog)を確認することもできます。
 
 ## <a name="what-account-should-i-use"></a>使用するアカウントについて
 

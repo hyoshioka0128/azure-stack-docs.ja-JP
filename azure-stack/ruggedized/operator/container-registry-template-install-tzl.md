@@ -1,7 +1,7 @@
 ---
-title: Azure Stack Hub にコンテナー レジストリを追加する | Microsoft Docs
+title: コンテナー レジストリを追加する - Azure Stack Hub | Microsoft Docs
 titleSuffix: Azure Stack
-description: Azure Stack Hub Marketplace にコンテナー レジストリを追加する方法について説明します。
+description: Azure Stack Hub Marketplace (ラグド) にコンテナー レジストリを追加する方法について説明します。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,18 +12,18 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/10/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: chasat
 ms.lastreviewed: 12/17/2019
-ms.openlocfilehash: 5d97f12e6bc933edf7b5b335ebd52a86a1a7f01d
-ms.sourcegitcommit: 50b362d531c2d35a3a935811fee71252971bd5d8
+ms.openlocfilehash: a517fc2bef86584c6bdf5aff6f9b7907ac9c0b1e
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96941239"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910569"
 ---
-# <a name="add-a-container-registry-to-azure-stack-hub"></a>Azure Stack Hub にコンテナー レジストリを追加する
+# <a name="add-a-container-registry-to-azure-stack-hub-ruggedized"></a>Azure Stack Hub (ラグド) にコンテナー レジストリを追加する
 
 Azure Stack Hub Marketplace には、自分のユーザーが各自のコンテナー レジストリをデプロイして管理できるようコンテナー レジストリを追加することができます。 このソリューション テンプレートを使用すると、AKS 基本 Ubuntu 16.04-LTS イメージ上で動作するオープンソースの Docker コンテナー レジストリがユーザー サブスクリプションにインストールされ、構成されます。 このテンプレートでは、接続型のデプロイと非接続型 (エアギャップ) のデプロイの両方がサポートされ、Azure Active Directory (AAD) と Active Directory フェデレーション サービス (AD FS) でデプロイされた Azure Stack Hubs の両方がサポートされます。
 
@@ -117,15 +117,15 @@ Marketplace アイテムをデプロイするために必要なその他の入�
 
 2. **[作成]**  >  **[コンピューティング]**  >  **[Container Registry Template]\(コンテナー レジストリ テンプレート\)** を選択します。
 
-    ![コンテナー レジストリ テンプレート](./media/container-registry-template-install-tzl/image1.png)
+    ![[コンピューティング] が選択され、[Container Registry Template]\(コンテナー レジストリ テンプレート\) が選択して表示されている [ダッシュボード] > [新規] ページを示すスクリーンショット。](./media/container-registry-template-install-tzl/image1.png)
 
 3. コンテナー レジストリ テンプレートをデプロイするサブスクリプション、リソース グループ、場所を選択します。
 
-    ![コンテナー レジストリ テンプレート](./media/container-registry-template-install-tzl/image2.png)
+    ![[Create Container Registry Template]\(コンテナー レジストリ テンプレートの作成\) - [基本] ページを示すスクリーンショット。](./media/container-registry-template-install-tzl/image2.png)
 
 4. 仮想マシンの構成の詳細を入力します。 このイメージ SKU は、既定で **aks-ubuntu-1604-201909** になりますが、`Set-ContainerRegistryPrerequisites` 関数の出力には、デプロイに使用可能な SKU のリストが含まれます。 複数の SKU が存在する場合は、デプロイに使用する最新の SKU を選択してください。
 
-    ![コンテナー レジストリ テンプレート](./media/container-registry-template-install-tzl/image3.png)
+    ![[Create Container Registry Template]\(コンテナー レジストリ テンプレートの作成\) - [仮想マシンの構成] ページを示すスクリーンショット。](./media/container-registry-template-install-tzl/image3.png)
 
     | パラメーター | 詳細 |
     | --- | --- |
@@ -141,7 +141,7 @@ Marketplace アイテムをデプロイするために必要なその他の入�
 
 1. ストレージと Key Vault の構成を入力します。
 
-    ![コンテナー レジストリ テンプレート](./media/container-registry-template-install-tzl/image4.png)
+    ![[Create Container Registry Template]\(コンテナー レジストリ テンプレートの作成\) - [ストレージと Key Vault の構成] ページを示すスクリーンショット。](./media/container-registry-template-install-tzl/image4.png)
 
     | パラメーター | 詳細 |
     | --- | --- |

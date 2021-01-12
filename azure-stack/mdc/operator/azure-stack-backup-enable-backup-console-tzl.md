@@ -1,6 +1,6 @@
 ---
-title: 管理者ポータルで Azure Stack のバックアップを有効にする | Microsoft Docs
-description: エラーが発生した場合に Azure Stack を復元できるように、管理者ポータルで Infrastructure Backup サービスを有効にする方法を学習します。
+title: 管理者ポータルで Azure Stack のバックアップを有効にする - MDC
+description: エラーが発生した場合に Azure Stack を復元できるように、管理者ポータルで Infrastructure Backup サービスを有効にする方法を学習します。 Modular Data Center の場合。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,14 +15,14 @@ ms.date: 12/16/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 12/16/2019
-ms.openlocfilehash: 3864183ecda856500db1fcbfe38df84d70f3bae9
-ms.sourcegitcommit: 9ecf9c58fbcc4bc42c1fdc688f370c643c761a29
+ms.openlocfilehash: db0980511b2272a6c92c1644401ce1d577ddcf8d
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93330225"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910944"
 ---
-# <a name="configure-backup-for-azure-stack-hub-from-the-administrator-portal"></a>管理者ポータルで Azure Stack Hub のバックアップを構成する
+# <a name="configure-backup-for-azure-stack-hub-from-the-administrator-portal---modular-data-center-mdc"></a>管理者ポータルで Azure Stack Hub のバックアップを構成する - Modular Data Center (MDC)
 
 *適用対象:Modular Data Center、Azure Stack Hub ラグド*
 

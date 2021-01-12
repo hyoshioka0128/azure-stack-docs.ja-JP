@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Hub ヘルプ リンクの相互参照
-description: Azure Stack Hub に関するポータルのリファレンス リンクを紹介します。
+title: Azure Stack Hub ヘルプ リンクの相互参照 - MDC
+description: Modular Data Center (MDC) から操作している場合の Azure Stack Hub のポータル参照リンクを参照します。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,14 +15,14 @@ ms.date: 10/26/2020
 ms.author: mabrigg
 ms.lastreviewed: 10/26/2020
 ms.reviewer: efemmano
-ms.openlocfilehash: dd52df36363e45868e586c0e980950b10b7c6836
-ms.sourcegitcommit: 9ecf9c58fbcc4bc42c1fdc688f370c643c761a29
+ms.openlocfilehash: bfc9c4aeb2e3dfb003d3cd1e1fc9dcc71b0caf82
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93330158"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910927"
 ---
-# <a name="alerts-akams-link-reference-for-azure-stack-hub"></a>Azure Stack Hub に関するアラートの aka.ms リンク リファレンス
+# <a name="alerts-akams-link-reference-for-azure-stack-hub---modular-data-center-mdc"></a>Azure Stack Hub のアラート aka.ms リンクの参照 - Modular Data Center (MDC)
 
 このトピックでは、管理者ポータルのアラート内に表示されるリンクの相互参照一覧を紹介しています。 
 

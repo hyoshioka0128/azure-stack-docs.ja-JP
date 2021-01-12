@@ -1,6 +1,6 @@
 ---
-title: Azure Stack の Windows Server に関する FAQ | Microsoft Docs
-description: Azure Stack Marketplace の Windows Server に関する FAQ 一覧
+title: Azure Stack の Windows Server に関する FAQ - MDC | Microsoft Docs
+description: Modular Data Center (MDC) で操作されている場合の Azure Stack Marketplace の Windows Server に関する FAQ の一覧をお読みください。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,14 +15,14 @@ ms.date: 10/26/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 10/26/2020
-ms.openlocfilehash: 3570eeb9edadd359081c429f821a09e3d9954439
-ms.sourcegitcommit: 9ecf9c58fbcc4bc42c1fdc688f370c643c761a29
+ms.openlocfilehash: 64ccefb0a6644d2cd613a39d8beaaf1f82ee9fc0
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93330172"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910790"
 ---
-# <a name="windows-server-in-azure-stack-marketplace-faq"></a>Azure Stack Marketplace 内の Windows Server に関する FAQ
+# <a name="windows-server-in-azure-stack-marketplace-faq---modular-data-center-mdc"></a>Azure Stack Marketplace 内の Windows Server に関する FAQ - Modular Data Center (MDC)
 
 この記事では、[Azure Stack Hub Marketplace](../../operator/azure-stack-marketplace.md) 内の Windows Server イメージについてよく寄せられるいくつかの質問に回答します。
 
@@ -34,7 +34,7 @@ Azure Stack Hub ラグドと MDC のユーザーは、Windows Server をゲス�
 
 Microsoft は、2 つのバージョンの Windows Server イメージを Azure Stack Marketplace で提供しています。 特定の Azure Stack 環境内で一度に使用できるのは、このイメージの 1 バージョンのみです。
 
-- **従量課金制** : これらのイメージを、Azure Stack Hub ラグドまたは MDC 上で使用することはできません。
+- **従量課金制**: これらのイメージを、Azure Stack Hub ラグドまたは MDC 上で使用することはできません。
 
 - **ライセンス持ち込み (BYOL)** : これらのイメージは、Azure Stack Hub ラグドおよび MDC で使用できます。
 

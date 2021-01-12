@@ -1,6 +1,6 @@
 ---
-title: Azure Stack の顧客課金モデルの概要 | Microsoft Docs
-description: Azure Stack ユーザーに対して、リソース使用量の請求がどのように行われるのかについて説明します。
+title: Azure Stack の顧客課金モデルの概要 - MDC | Microsoft Docs
+description: Modular Data Center (MDC) で Azure Stack ユーザーに対して、リソース使用量の請求がどのように行われるのかについて説明します。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,14 +15,14 @@ ms.date: 12/04/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 12/23/2019
-ms.openlocfilehash: bd20dee177ac1f061b954eb0285b3103747675d1
-ms.sourcegitcommit: 50b362d531c2d35a3a935811fee71252971bd5d8
+ms.openlocfilehash: 15f894a668374be5380f322d368b76d88bb93cba
+ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96934847"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97910756"
 ---
-# <a name="billing-model-overview"></a>課金モデルの概要
+# <a name="billing-model-overview---modular-data-center-mdc"></a>課金モデルの概要 - Modular Data Center (MDC)
 
 MDC または Azure Stack Hub ラグドのユーザーは、各アプライアンスの保有期間に基づいて Microsoft から請求されます。 料金は期間単位であり、基本的なコンピューティング、ストレージ、およびネットワーク サービスを使用する権利が含まれています。 App Service、Event Hubs、およびその他の PaaS サービスの使用状況に基づいて課金され、Azure Stack Hub ラグド と MDC で実行される Windows Server PAYG VM も課金されます。 完全に切断され、使用状況データを報告できない場合は、PaaS サービスの容量ライセンスを取得し、Windows VM の BYOL (ライセンス持ち込み) を取得する必要があります。
 

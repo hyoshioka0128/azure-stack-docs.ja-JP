@@ -1,18 +1,18 @@
 ---
 title: Azure Stack Hub での拡張機能ホストを準備する
 description: Azure Stack Hub 内で、拡張機能ホストの準備を行う方法について学習します。これは、バージョン 1808 以降では、Azure Stack Hub 更新プログラム パッケージを通じて自動的に有効化されます。
-author: IngridAtMicrosoft
-ms.author: inhenkel
+author: PatAltimore
+ms.author: patricka
 ms.date: 1/22/2020
 ms.topic: article
 ms.reviewer: thoroet
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 69c7d14bef07e3664299c7e78ed1e8bf555f19dd
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 43cb091b3076f26880599e35a770383182e944d0
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77699900"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97870615"
 ---
 # <a name="prepare-for-extension-host-in-azure-stack-hub"></a>Azure Stack Hub での拡張機能ホストを準備する
 
@@ -26,8 +26,8 @@ ms.locfileid: "77699900"
 
 | デプロイ フォルダー | 必要な証明書のサブジェクト名とサブジェクトの別名 (SAN) | スコープ (リージョンごと) | サブドメインの名前空間 |
 |-----------------------|------------------------------------------------------------------|-----------------------|------------------------------|
-| 管理者拡張機能ホスト | *.adminhosting.\<リージョン>.\<FQDN> (ワイルドカード SSL 証明書) | 管理者拡張機能ホスト | adminhosting.\<リージョン>.\<FQDN> |
-| パブリック拡張機能ホスト | *.hosting.\<リージョン>.\<FQDN> (ワイルドカード SSL 証明書) | パブリック拡張機能ホスト | hosting.\<リージョン>.\<FQDN> |
+| 管理者拡張機能ホスト | *.adminhosting.\<region>.\<fqdn> (ワイルドカード SSL 証明書) | 管理者拡張機能ホスト | adminhosting.\<region>.\<fqdn> |
+| パブリック拡張機能ホスト | *.hosting.\<region>.\<fqdn> (ワイルドカード SSL 証明書) | パブリック拡張機能ホスト | hosting.\<region>.\<fqdn> |
 
 証明書の詳細な要件については、「[Azure Stack Hub 公開キー インフラストラクチャ証明書の要件](azure-stack-pki-certs.md)」を参照してください。
 
@@ -123,10 +123,10 @@ Azure Stack Hub 対応性チェッカー ツールを使用すると、必要と
 > DNS 統合に DNS ゾーンの委任を使用した場合、この手順は必要ありません。
 Azure Stack Hub エンドポイントを公開するよう個別のホスト A レコードが構成されている場合、追加のホスト A レコードを 2 つ作成する必要があります。
 
-| IP | hostname | 種類 |
+| IP | hostname | Type |
 |----|------------------------------|------|
-| \<IP> | *.Adminhosting.\<リージョン>.\<FQDN> | A |
-| \<IP> | *.Hosting.\<リージョン>.\<FQDN> | A |
+| \<IP> | *.Adminhosting.\<Region>.\<FQDN> | A |
+| \<IP> | *.Hosting.\<Region>.\<FQDN> | A |
 
 割り当てられた IP は、**Get-AzureStackStampInformation** コマンドレットを実行することで、特権エンドポイントを使用して取得できます。
 
@@ -188,7 +188,7 @@ The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn
 ### <a name="update-existing-publishing-rules-post-enablement-of-extension-host"></a>既存の公開規則の更新 (拡張機能ホストの今後の有効化)
 
 > [!Note]  
-> 1808 Azure Stack Hub 更新プログラム パッケージでは、まだ拡張機能ホストは有効化**されません**。 必須の証明書をインポートして、拡張機能ホストの準備を行うことができます。 1808 更新プログラム以降の Azure Stack Hub 更新プログラム パッケージを通じて拡張機能ホストが自動的に有効になる前に、ポートを閉じないようにしてください。
+> 1808 Azure Stack Hub 更新プログラム パッケージでは、まだ拡張機能ホストは有効化 **されません**。 必須の証明書をインポートして、拡張機能ホストの準備を行うことができます。 1808 更新プログラム以降の Azure Stack Hub 更新プログラム パッケージを通じて拡張機能ホストが自動的に有効になる前に、ポートを閉じないようにしてください。
 
 以下の既存のエンドポイント ポートは、既存のファイアウォール規則で閉じる必要があります。
 
