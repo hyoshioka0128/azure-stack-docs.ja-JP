@@ -8,12 +8,12 @@ ms.date: 9/22/2020
 ms.author: bryanla
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2020
-ms.openlocfilehash: 3472cf330efb250f20eb66a5df50239a66293307
-ms.sourcegitcommit: 6efe456173ce77d52789144709195b6291d0d707
+ms.openlocfilehash: 212d6c89bedc6f46eb6db2cbf735fa61ea0ad909
+ms.sourcegitcommit: 1465bca8b7f87ea6f24faf47e86c2ba497943b28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97950707"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98103104"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL リソース プロバイダーの保守操作
 
@@ -193,6 +193,8 @@ Azure Stack Hub には、診断ログを収集、保存して Microsoft サポ�
 
 ::: moniker-end
 
+::: moniker range="< azs-2008"
+
 バージョン 1.1.93 から、SQL リソース プロバイダーは、Azure Stack Hub 環境からログを収集するための標準的な方法をサポートしています。 以前のバージョンを使用している場合は、SQL リソース プロバイダーを最新バージョンに更新することをお勧めします。
 
 ロックダウンされた VM からログを収集するには、PowerShell Just Enough Administration (JEA) エンドポイント *DBAdapterDiagnostics* を使用します。 このエンドポイントでは、次のコマンドが提供されます。
@@ -245,6 +247,9 @@ $cleanup = Invoke-Command -Session $session -ScriptBlock {Remove-AzsDBAdapterLog
 # Close the session.
 $session | Remove-PSSession
 ```
+
+::: moniker-end
+
 ## <a name="configure-azure-diagnostics-extension-for-sql-resource-provider"></a>SQL リソース プロバイダーの Azure Diagnostics 拡張機能の構成
 Azure Diagnostics 拡張機能は、既定で SQL リソース プロバイダー アダプター VM にインストールされます。 次の手順では、トラブルシューティングと監査の目的で SQL リソース プロバイダーの操作イベント ログと IIS ログを収集するために拡張機能をカスタマイズする方法について説明します。
 

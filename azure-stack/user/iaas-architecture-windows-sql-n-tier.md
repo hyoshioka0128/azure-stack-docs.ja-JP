@@ -7,12 +7,12 @@ ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
-ms.openlocfilehash: 50b08f594b121601b8e049c4c4875cb31143cbaa
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: b543a94c75ac50c7b0e75f5635956093340b970d
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97873675"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97973582"
 ---
 # <a name="windows-n-tier-application-on-azure-stack-hub-with-sql-server"></a>SQL Server を使用した Azure Stack Hub の Windows N 層アプリケーション
 
@@ -34,7 +34,7 @@ ms.locfileid: "97873675"
 
 -   **仮想ネットワークとサブネット**。 すべての Azure VM が、サブネットにセグメント化できる仮想ネットワーク内にデプロイされます。 階層ごとに個別のサブネットを作成します。
 
--   **第 7 層のロード バランサー。** Azure Stack Hub では Application Gateway がまだ利用できないため、[Azure Stack Hub Marketplace](../operator/azure-stack-marketplace-azure-items.md?view=azs-1908) には代替手段が用意されています ([KEMP LoadMaster Load Balancer ADC Content Switch](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure)/ [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best) または [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1) など)。
+-   **第 7 層のロード バランサー。** Azure Stack Hub では Application Gateway がまだ利用できないため、[Azure Stack Hub Marketplace](../operator/azure-stack-marketplace-azure-items.md) には代替手段が用意されています ([KEMP LoadMaster Load Balancer ADC Content Switch](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure)/ [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best) または [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1) など)。
 
 -   **ロード バランサー**。 [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) は、Web 層からビジネス層へ、ビジネス層から SQL Server へとネットワーク トラフィックを分散するために使用します。
 
@@ -98,15 +98,15 @@ NSG ルールを使用して階層間のトラフィックを制限します。 
 
 ## <a name="sql-server-always-on-availability-groups"></a>SQL Server Always On 可用性グループ
 
-SQL Server の高可用性のために [Always On 可用性グループ](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-ver15)の使用をお勧めします。 Windows Server 2016 に先立って、Always On 可用性グループはドメイン コントローラーを必要とし、可用性グループ内のすべてのノードが同じ AD ドメイン内にある必要があります。
+SQL Server の高可用性のために [Always On 可用性グループ](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-ver15&preserve-view=true)の使用をお勧めします。 Windows Server 2016 に先立って、Always On 可用性グループはドメイン コントローラーを必要とし、可用性グループ内のすべてのノードが同じ AD ドメイン内にある必要があります。
 
 VM レイヤーの高可用性を実現するには、すべての SQL VM が可用性セットに含まれている必要があります。
 
-他の層は[可用性グループ リスナー](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover?view=sql-server-ver15)を使用してデータベースに接続します。 リスナーを使用することで、SQL クライアントは SQL Server の物理インスタンスの名前を知らなくても接続できます。 データベースにアクセスする VM はドメインに参加している必要があります。 クライアント (ここでは、別の層) は、DNS を使用してリスナーの仮想ネットワーク名を IP アドレスに解決します。
+他の層は[可用性グループ リスナー](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover?view=sql-server-ver15&preserve-view=true)を使用してデータベースに接続します。 リスナーを使用することで、SQL クライアントは SQL Server の物理インスタンスの名前を知らなくても接続できます。 データベースにアクセスする VM はドメインに参加している必要があります。 クライアント (ここでは、別の層) は、DNS を使用してリスナーの仮想ネットワーク名を IP アドレスに解決します。
 
 SQL Server Always On 可用性グループを構成する手順は、次のとおりです。
 
-1.  Windows Server フェールオーバー クラスタリング (WSFC) クラスター、SQL Server Always On 可用性グループ、プライマリ レプリカを作成します。 詳細については、「[AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/getting-started-with-always-on-availability-groups-sql-server?view=sql-server-ver15)」を参照してください。
+1.  Windows Server フェールオーバー クラスタリング (WSFC) クラスター、SQL Server Always On 可用性グループ、プライマリ レプリカを作成します。 詳細については、「[AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/getting-started-with-always-on-availability-groups-sql-server?view=sql-server-ver15&preserve-view=true)」を参照してください。
 
 2.  静的プライベート IP アドレスを持つ内部ロード バランサーを作成します。
 
@@ -121,9 +121,9 @@ SQL クライアントが接続を試みると、ロード バランサーがプ
 
 フェールオーバー中は、既存のクライアント接続は閉じられます。 フェールオーバーが完了すると、新しい接続は新しいプライマリ レプリカにルーティングされます。
 
-アプリケーションで書き込みよりも多くの読み取りが行われる場合は、読み取り専用クエリの一部をセカンダリ レプリカにオフロードできます。 「[リスナーを使用した読み取り専用セカンダリ レプリカへの接続 (読み取り専用ルーティング)](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover?view=sql-server-ver15#ConnectToSecondary)」を参照してください。
+アプリケーションで書き込みよりも多くの読み取りが行われる場合は、読み取り専用クエリの一部をセカンダリ レプリカにオフロードできます。 「[リスナーを使用した読み取り専用セカンダリ レプリカへの接続 (読み取り専用ルーティング)](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover?view=sql-server-ver15&preserve-view=true#ConnectToSecondary)」を参照してください。
 
-可用性グループの[手動フェールオーバーの強制](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server?view=sql-server-ver15)によってデプロイをテストします。
+可用性グループの[手動フェールオーバーの強制](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server?view=sql-server-ver15&preserve-view=true)によってデプロイをテストします。
 
 SQL パフォーマンスの最適化については、記事「[Azure Stack Hub におけるパフォーマンスを最適化するための SQL サーバーのベスト プラクティス](./azure-stack-sql-server-vm-considerations.md)」も参照できます。
 

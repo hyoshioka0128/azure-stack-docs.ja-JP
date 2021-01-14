@@ -7,12 +7,12 @@ ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 12/2/2020
-ms.openlocfilehash: 676cd4fe93a464df0cd0a4cddeb3e12ddee1f229
-ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
+ms.openlocfilehash: 1359ce67220040a326251802b35ad72ec526d09e
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96526035"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97973981"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack-hub"></a>Azure Stack Hub での Python による API バージョンのプロファイルの使用
 
@@ -38,7 +38,7 @@ Python SDK では、以下の API プロファイルをサポートします。
 ## <a name="install-the-azure-python-sdk"></a>Azure Python SDK をインストールする
 
 1. [Git をインストールします](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)。
-2. Python SDK のインストール方法については、[Python 開発者向け Azure](/python/azure/python-sdk-azure-install?view=azure-python) に関する記事を参照してください。
+2. Python SDK のインストール方法については、[Python 開発者向け Azure](/python/azure/python-sdk-azure-install?view=azure-python&preserve-view=true) に関する記事を参照してください。
 3. 使用できない場合は、サブスクリプションを作成し、サブスクリプション ID を保存して後で使用します。 サブスクリプションの作成の詳細については、「[Azure Stack Hub でオファーのサブスクリプションを作成する](../operator/azure-stack-subscribe-plan-provision-vm.md)」を参照してください。
 4. サービス プリンシパルを作成し、その ID とシークレットを保存します。 Azure Stack Hub 用のサービス プリンシパルの作成方法については、[Azure Stack Hub へのアクセスのアプリケーションへの提供](../operator/azure-stack-create-service-principals.md)に関するページを参照してください。
 5. サブスクリプションでサービス プリンシパルのロールが共同作成者/所有者であることを確認します。 サービス プリンシパルへのロールの割り当て手順については、[Azure Stack Hub へのアクセスのアプリケーションへの提供](../operator/azure-stack-create-service-principals.md)に関するページを参照してください。

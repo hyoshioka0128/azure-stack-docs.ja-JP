@@ -7,12 +7,12 @@ ms.date: 11/13/2020
 ms.author: patricka
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: 35deff6c48c02c1deda13bb3cd8dec87e54f52ef
-ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
+ms.openlocfilehash: 7928ab8ba09ed834f00c05e6c606e993fc2f3ebe
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97909873"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974168"
 ---
 # <a name="verifying-scale-unit-node-disk-health"></a>スケール ユニット ノードのディスク正常性の確認
 
@@ -34,5 +34,5 @@ ms.locfileid: "97909873"
     
     1.  結果が返されないことを確認します。 **JobState** で示されているようにジョブがまだ実行中の場合、またはすべてのジョブが完了とマークされている場合は、10 分待ってから、同じコマンドをもう一度実行します。 最終的な状態は、ジョブが一覧表示されないことです。
     
-    1.  必要な場合は、「[Azure Stack Hub PowerShell を使用した仮想ディスクの修復状態の確認](https://docs.microsoft.com/azure-stack/operator/azure-stack-replace-disk?view=azs-2002&check-the-status-of-virtual-disk-repair-using-azure-stack-hub-powershell)」で記憶域の正常性確認の追加手順を確認できます。
+    1.  必要な場合は、「[Azure Stack Hub PowerShell を使用した仮想ディスクの修復状態の確認](../../operator/azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair-using-azure-stack-hub-powershell)」で記憶域の正常性確認の追加手順を確認できます。
         

@@ -8,12 +8,12 @@ ms.date: 12/10/2020
 ms.author: patricka
 ms.reviewer: prchint
 ms.lastreviewed: 12/10/2020
-ms.openlocfilehash: ef2bbc0fe85b0d6a1db605af440eab2d0e80a805
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 4c5117469e1a568252e23f2794996f8d367942af
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97868983"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974253"
 ---
 # <a name="troubleshoot-issues-in-azure-stack-hub"></a>Azure Stack Hub の問題のトラブルシューティングを行う
 
@@ -203,7 +203,7 @@ Azure Stack Hub の修正プログラムと更新プログラムのプロセス�
 
 1. 更新が失敗したときに作成されたエラー アラートの修復手順に従います。
 
-2. 問題を解決できない場合は、[Azure Stack Hub のサポート チケット](./azure-stack-help-and-support-overview.md?view=azs-2002)を作成します。 問題が発生した期間に[収集されたログ](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now)があることを確認してください。
+2. 問題を解決できない場合は、[Azure Stack Hub のサポート チケット](./azure-stack-help-and-support-overview.md)を作成します。 問題が発生した期間に[収集されたログ](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now)があることを確認してください。
 
 ## <a name="common-azure-stack-hub-patch-and-update-issues"></a>Azure Stack Hub の修正プログラムと更新プログラムに関する一般的な問題
 
@@ -236,5 +236,5 @@ Azure Stack Hub の修正プログラムと更新プログラムのプロセス�
 
 **原因**:2002 更新プログラムを実行しようとすると、更新プログラムが失敗し、`The private network parameter is missing from cloud parameters. Please use set-azsprivatenetwork cmdlet to set private networkTrace` というメッセージが表示されることがあります。
 
-**対応策**: [プライベート内部ネットワークを設定します](./azure-stack-network.md?view=azs-2002#private-network)。
+**対応策**: [プライベート内部ネットワークを設定します](./azure-stack-network.md?view=azs-2002&preserve-view=true#private-network)。
 ::: moniker-end

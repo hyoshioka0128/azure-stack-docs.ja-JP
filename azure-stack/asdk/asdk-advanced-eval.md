@@ -7,12 +7,12 @@ ms.date: 02/12/2019
 ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 912fb68695d281ee83273ff49f2f2aa24e468247
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 853a67fab66c064f7cc68093dece1030319ea1f1
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97873608"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97973318"
 ---
 # <a name="advanced-asdk-evaluation-tasks"></a>高度な ASDK 評価タスク
 基本的な Azure Stack Development Kit (ASDK) サービスの機能について把握したら、より高度なシナリオをテストして Azure Stack の理解を深めることができます。 これらのより高度な評価タスクは、Azure Stack のオペレーター ドキュメントに詳しく記載されています。
@@ -28,12 +28,12 @@ Azure Stack オペレーターとして、オファー作成とユーザー サ�
 ## <a name="make-sql-databases-available-to-your-azure-stack-users"></a>SQL データベースを Azure Stack ユーザーから使用可能にする
 Azure Stack オペレーターとして、ユーザー (テナント) が自分のクラウド ネイティブなアプリ、Web サイト、およびワークロードで使用できる SQL データベースを作成できるようにするオファーを作成できます。 これらのカスタムの、オンデマンドで、クラウド ベースのデータベースをユーザーに提供することによって、ユーザーの時間とリソースの節約になります。
 
-SQL Server リソースプロバイダー アダプターを使って、[SQL データベースを Azure Stack ユーザーが Azure Stack のサービスとして使用できるようにします](../operator/azure-stack-sql-resource-provider.md?view=azs-2002)。 リソース プロバイダーをインストールした後で、1 つまたは複数の SQL Server インスタンスに接続します。
+SQL Server リソースプロバイダー アダプターを使って、[SQL データベースを Azure Stack ユーザーが Azure Stack のサービスとして使用できるようにします](../operator/azure-stack-sql-resource-provider.md)。 リソース プロバイダーをインストールした後で、1 つまたは複数の SQL Server インスタンスに接続します。
 
 ## <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにする
 Azure Stack オペレーターは、ユーザー (テナント) が Azure Functions、Web アプリ、API アプリを作成できるようにするオファーを作成できます。 これらのオンデマンドで、クラウドベースのアプリへのアクセスをユーザーに提供することによって、ユーザーの時間とリソースを節約できます。
 
-App Service リソース プロバイダーをデプロイして、[Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにします](../operator/azure-stack-app-service-overview.md?view=azs-2002)。
+App Service リソース プロバイダーをデプロイして、[Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにします](../operator/azure-stack-app-service-overview.md)。
 
 ## <a name="next-steps"></a>次のステップ
 

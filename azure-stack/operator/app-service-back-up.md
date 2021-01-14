@@ -7,12 +7,12 @@ ms.date: 04/23/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
-ms.openlocfilehash: 3b12c794550c3d39809369ae86117d9c684e1a53
-ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
+ms.openlocfilehash: d1177361f8980c44f67a0d1757f7bb146aed04be
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86489795"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97973437"
 ---
 # <a name="back-up-app-service-on-azure-stack-hub"></a>Azure Stack Hub 上の App Service をバックアップする
 
@@ -61,7 +61,7 @@ SQL Server へのログイン中にこれらのデータベースを手動でバ
   ```
 
 > [!NOTE]
-> SQL AlwaysOn データベースをバックアップする必要がある場合、[これらの手順](/sql/database-engine/availability-groups/windows/configure-backup-on-availability-replicas-sql-server?view=sql-server-2017)に従ってください。 
+> SQL AlwaysOn データベースをバックアップする必要がある場合、[これらの手順](/sql/database-engine/availability-groups/windows/configure-backup-on-availability-replicas-sql-server?view=sql-server-2017&preserve-view=true)に従ってください。 
 
 すべてのデータベースを正常にバックアップできたら、.bak ファイルを App Service のシークレット情報と共に安全な場所にコピーします。
 

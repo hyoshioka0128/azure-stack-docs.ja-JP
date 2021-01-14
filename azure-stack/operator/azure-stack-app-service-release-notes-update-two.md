@@ -8,12 +8,12 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 05/18/2019
-ms.openlocfilehash: b06ab0601616f8c089d7bcf90526dae97a8c6e5f
-ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
+ms.openlocfilehash: 518062e13e06dead8564aa649796621dfb93db7a
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86489540"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974355"
 ---
 # <a name="app-service-on-azure-stack-hub-update-2-release-notes"></a>App Service on Azure Stack Hub Update 2 のリリース ノート
 
@@ -37,9 +37,9 @@ App Service on Azure Stack Hub Update 2 のビルド番号は **72.0.13698.10** 
 
 Azure App Service on Azure Stack Hub Update 2 には、次の機能強化と修正が含まれています。
 
-- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Hub Portal SDK バージョンと一貫性があります。
+- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール** の更新。 Azure Stack Hub Portal SDK バージョンと一貫性があります。
 
-- **Azure Functions ランタイム**が **v1.0.11612** に更新されました。
+- **Azure Functions ランタイム** が **v1.0.11612** に更新されました。
 
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 
@@ -85,7 +85,7 @@ Azure App Service on Azure Stack Hub Update 2 には、次の機能強化と修�
 
 ## <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>Azure App Service on Azure Stack Hub を運用するクラウド管理者に対する既知の問題
 
-[Azure Stack Hub 1804 リリース ノート](./release-notes.md?view=azs-2002)内のドキュメントを参照してください。
+[Azure Stack Hub 1804 リリース ノート](./release-notes.md?view=azs-1804&preserve-view=true)内のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

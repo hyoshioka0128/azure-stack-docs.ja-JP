@@ -7,12 +7,12 @@ ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/16/2020
-ms.openlocfilehash: 798b3d9e94f6263b02c291d2f5725768f1a8522a
-ms.sourcegitcommit: f30e5178e0b4be4e3886f4e9f699a2b51286e2a8
+ms.openlocfilehash: d187058561f166084b672d941262c7979f7deec2
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97620689"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974049"
 ---
 # <a name="use-docker-to-run-powershell-for-azure-stack-hub"></a>Docker を使用して Azure Stack Hub に対して PowerShell を実行する
 
@@ -34,7 +34,7 @@ ms.locfileid: "97620689"
 
 PowerShell を使用して Azure Stack Hub 内のリソースにアクセスするには、お使いの Azure Active Directory (Azure AD) テナントのサービス プリンシパルが必要になります。 ユーザーのロールベースのアクセス制御 (RBAC) を使用してアクセス許可を委任します。 クラウド オペレーターにサービス プリンシパルを要求することが必要になる場合があります。
 
-1. サービス プリンシパルを設定するには、[サービス プリンシパルを作成することによるアプリケーションへの Azure Stack Hub リソースに対するアクセスの付与](../operator/azure-stack-create-service-principals.md?view=azs-2002)に関するページの手順に従います。
+1. サービス プリンシパルを設定するには、[サービス プリンシパルを作成することによるアプリケーションへの Azure Stack Hub リソースに対するアクセスの付与](../operator/azure-stack-create-service-principals.md)に関するページの手順に従います。
 
 2. 後で使用するので、アプリケーション ID、シークレット、テナント ID、オブジェクト ID を記録しておきます。
 

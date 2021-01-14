@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/09/2020
 ms.author: sethm
 ms.lastreviewed: 01/16/2020
-ms.openlocfilehash: c17ba69fedfd51681c5038efde591115ce54bddf
-ms.sourcegitcommit: 0aa5f7f20690839661c8bb3bfdbe32f82bec0c64
+ms.openlocfilehash: e1409105c0682552875a524aab9a222f6ab0c459
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86567520"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974083"
 ---
 # <a name="store-service-principal-credentials-in-azure-stack-hub-key-vault"></a>Azure Stack Hub でサービス プリンシパルの資格情報を Key Vault に格納する
 
@@ -36,7 +36,7 @@ Azure Stack Hub の Key Vault は、クラウド アプリやクラウド サー
 
    ![キー コンテナーの作成](media/azure-stack-key-vault-store-credentials/create-key-vault.png)
 
-3. **[Key Vault の作成]** ウィンドウで、Vault に**名前**を割り当てます。 Vault の名前には、英数字とハイフン (-) 文字のみを含めることができます。 名前を数字で始めることはできません。
+3. **[Key Vault の作成]** ウィンドウで、Vault に **名前** を割り当てます。 Vault の名前には、英数字とハイフン (-) 文字のみを含めることができます。 名前を数字で始めることはできません。
 
 4. 使用可能なサブスクリプションの一覧から選択します。
 
@@ -60,7 +60,7 @@ Azure Stack Hub の Key Vault は、クラウド アプリやクラウド サー
 
 4. **[Active Directory]** 、 **[アプリの登録]** を順に選択し、目的のアプリケーションを選択します。
 
-5. **アプリケーション ID** をコピーし、アプリ コードに保存します。 サンプル アプリでは、**アプリケーション ID** を参照するときに**クライアント ID** を使用します。
+5. **アプリケーション ID** をコピーし、アプリ コードに保存します。 サンプル アプリでは、**アプリケーション ID** を参照するときに **クライアント ID** を使用します。
 
 6. 認証キーを生成するには、 **[キー]** を選択します。
 
@@ -68,7 +68,7 @@ Azure Stack Hub の Key Vault は、クラウド アプリやクラウド サー
 
 8. **[保存]** を選択します。
 
-9. **[保存]** をクリックした後、利用可能になった**キー**をコピーします。
+9. **[保存]** をクリックした後、利用可能になった **キー** をコピーします。
 
 ## <a name="store-the-service-principal-inside-key-vault"></a>Key Vault 内にサービス プリンシパルを格納する
 
@@ -78,7 +78,7 @@ Azure Stack Hub の Key Vault は、クラウド アプリやクラウド サー
 
 3. **[シークレットの作成]** ウィンドウで、オプションの一覧から **[手動]** を選択します。 証明書を使用してサービス プリンシパルを作成した場合、ドロップダウン リストから証明書を選択し、ファイルをアップロードします。
 
-4. キーの名前として、サービス プリンシパルからコピーした**アプリケーション ID** を入力します。 キーの名前には、英数字とハイフン (-) 文字のみを含めることができます。
+4. キーの名前として、サービス プリンシパルからコピーした **アプリケーション ID** を入力します。 キーの名前には、英数字とハイフン (-) 文字のみを含めることができます。
 
 5. サービス プリンシパルから **[値]** タブにキーの値を貼り付けます。
 
@@ -92,6 +92,6 @@ Azure Stack Hub の Key Vault は、クラウド アプリやクラウド サー
 
 ## <a name="next-steps"></a>次のステップ
 
-- [サービス プリンシパルの使用](../operator/azure-stack-create-service-principals.md?view=azs-2002)
+- [サービス プリンシパルの使用](../operator/azure-stack-create-service-principals.md)
 - [ポータルを使用して Azure Stack Hub の Key Vault を管理する](azure-stack-key-vault-manage-portal.md)  
 - [PowerShell を使用して Azure Stack Hub の Key Vault を管理する](azure-stack-key-vault-manage-powershell.md)

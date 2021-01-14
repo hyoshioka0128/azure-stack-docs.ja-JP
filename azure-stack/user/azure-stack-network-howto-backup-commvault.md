@@ -7,12 +7,12 @@ ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/2/2020
-ms.openlocfilehash: e9f6c41097085a0342b2c0a2fc5b5b995c2d9186
-ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
+ms.openlocfilehash: 0d5b48c04e546d3b8776f436e5562786b8e77f33
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96524794"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974134"
 ---
 # <a name="back-up-your-vm-on-azure-stack-hub-with-commvault"></a>Commvault を使用して Azure Stack Hub で VM をバックアップする
 
@@ -111,12 +111,12 @@ ID マネージャーが Azure AD か ADFS かを把握する必要がありま�
 
 | 要素 | 説明 | source |
 |--------------------------|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Resource Manager URL | Azure Stack Hub Resource Manager エンドポイント。 | https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-ruby?view=azs-1908#the-azure-stack-hub-resource-manager-endpoint |
+| Azure Resource Manager URL | Azure Stack Hub Resource Manager エンドポイント。 | https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-hub-resource-manager-endpoint |
 | アプリケーション名 |  |  |
-| アプリケーション ID | この記事の前のセクションでサービス プリンシパルが作成されたときに保存した、サービス プリンシパル アプリ ID。 | https://docs.microsoft.com/azure-stack/operator/azure-stack-create-service-principals?view=azs-1908 |
-| サブスクリプション ID | サブスクリプション ID は、Azure Stack Hub 内のオファーにアクセスするために使用します。 | https://docs.microsoft.com/azure-stack/operator/service-plan-offer-subscription-overview?view=azs-1908#subscriptions |
-| テナント ID (ディレクトリ ID) | Azure Stack Hub のテナント ID。 | https://docs.microsoft.com/azure-stack/operator/azure-stack-identity-overview?view=azs-1908 |
-| アプリケーションのパスワード | サービス プリンシパルの作成時に保存した、サービス プリンシパル アプリ シークレット。 | https://docs.microsoft.com/azure-stack/operator/azure-stack-create-service-principals?view=azs-1908 |
+| アプリケーション ID | この記事の前のセクションでサービス プリンシパルが作成されたときに保存した、サービス プリンシパル アプリ ID。 | https://docs.microsoft.com/azure-stack/operator/azure-stack-create-service-principals |
+| サブスクリプション ID | サブスクリプション ID は、Azure Stack Hub 内のオファーにアクセスするために使用します。 | https://docs.microsoft.com/azure-stack/operator/service-plan-offer-subscription-overview#subscriptions |
+| テナント ID (ディレクトリ ID) | Azure Stack Hub のテナント ID。 | https://docs.microsoft.com/azure-stack/operator/azure-stack-identity-overview |
+| アプリケーションのパスワード | サービス プリンシパルの作成時に保存した、サービス プリンシパル アプリ シークレット。 | https://docs.microsoft.com/azure-stack/operator/azure-stack-create-service-principals |
 
 ## <a name="configure-backup-using-the-commvault-console"></a>Commvault Console を使用してバックアップを構成する
 

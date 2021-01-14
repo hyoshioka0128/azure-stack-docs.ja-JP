@@ -7,12 +7,12 @@ ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
-ms.openlocfilehash: df65f32abdc7c643c953f176ae8a4fd0b47309f5
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 6978e6c86df577fc3d0446a8ecc8ce13a57781b7
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97873743"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97973583"
 ---
 # <a name="run-an-n-tier-application-in-multiple-azure-stack-hub-regions-for-high-availability"></a>高可用性を得るために複数の Azure Stack Hub リージョンで n 層アプリケーションを実行する
 
@@ -35,9 +35,9 @@ ms.locfileid: "97873743"
 
 -   **仮想ネットワーク**。 リージョンごとに個別の仮想ネットワークを作成します。 アドレス空間が重複していないことを確認してください。
 
--   **SQL Server Always On 可用性グループ**。 SQL Server を使用している場合は、[SQL Always On 可用性グループ](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-ver15)を使用して高可用性を実現することをお勧めします。 両方のリージョンの SQL Server インスタンスを含む単一の可用性グループを作成します。
+-   **SQL Server Always On 可用性グループ**。 SQL Server を使用している場合は、[SQL Always On 可用性グループ](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-ver15&preserve-view=true)を使用して高可用性を実現することをお勧めします。 両方のリージョンの SQL Server インスタンスを含む単一の可用性グループを作成します。
 
--   **VNET 間 VPN 接続**。 Azure Stack Hub で VNET ピアリングがまだ使用できないため、2 つの VNET を接続するには、VNET 間 VPN 接続を使用します。 詳細については、[Azure Stack Hub での VNET 対 VNET](./azure-stack-network-howto-vnet-to-vnet.md?view=azs-1908) に関するページを参照してください。
+-   **VNET 間 VPN 接続**。 Azure Stack Hub で VNET ピアリングがまだ使用できないため、2 つの VNET を接続するには、VNET 間 VPN 接続を使用します。 詳細については、[Azure Stack Hub での VNET 対 VNET](./azure-stack-network-howto-vnet-to-vnet.md) に関するページを参照してください。
 
 ## <a name="recommendations"></a>Recommendations
 
@@ -113,7 +113,7 @@ Windows Server 2016 より前に、SQL Server Always On 可用性グループで
     az network vnet update --resource-group <resource-group> --name <vnet-name> --dns-servers "10.0.0.4,10.0.0.6,172.16.0.4,172.16.0.6"
     ```
 
--   両方のリージョンの SQL Server インスタンスを含む [Windows Server フェールオーバー クラスタリング](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-ver15) (WSFC) クラスターを作成します。
+-   両方のリージョンの SQL Server インスタンスを含む [Windows Server フェールオーバー クラスタリング](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-ver15&preserve-view=true) (WSFC) クラスターを作成します。
 
 -   プライマリ リージョンとセカンダリ リージョンの SQL Server インスタンスを含む SQL Server Always On 可用性グループを作成します。 手順については、[Always On 可用性グループのリモート Azure データセンターへの拡張 (PowerShell)](https://techcommunity.microsoft.com/t5/DataCAT/Extending-AlwaysOn-Availability-Group-to-Remote-Azure-Datacenter/ba-p/305217)に関する記事を参照してください。
 
@@ -134,10 +134,10 @@ Traffic Manager は、システムの障害ポイントになる可能性があ�
 
 SQL Server クラスターでは、2 つのフェールオーバー シナリオを考慮する必要があります。
 
--   プライマリ リージョン内のすべての SQL Server データベースのレプリカが失敗する。 これは、たとえば地域的な停止中に発生することがあります。 この場合は、Traffic Manager がフロント エンドで自動的にフェールオーバーを実行する場合でも、可用性グループを手動でフェールオーバーする必要があります。 「[Perform a Forced Manual Failover of a SQL Server Availability Group](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server?view=sql-server-ver15)」(SQL Server 可用性グループの強制手動フェールオーバーを実行する) の手順に従います。この記事では、SQL Server 2016 で SQL Server Management Studio、Transact-SQL、または PowerShell を使用して強制フェールオーバーを実行する方法が説明されています。
+-   プライマリ リージョン内のすべての SQL Server データベースのレプリカが失敗する。 これは、たとえば地域的な停止中に発生することがあります。 この場合は、Traffic Manager がフロント エンドで自動的にフェールオーバーを実行する場合でも、可用性グループを手動でフェールオーバーする必要があります。 「[Perform a Forced Manual Failover of a SQL Server Availability Group](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server?view=sql-server-ver15&preserve-view=true)」(SQL Server 可用性グループの強制手動フェールオーバーを実行する) の手順に従います。この記事では、SQL Server 2016 で SQL Server Management Studio、Transact-SQL、または PowerShell を使用して強制フェールオーバーを実行する方法が説明されています。
 
     > [!Warning]  
-    > 強制フェールオーバーには、データ損失のリスクがあります。 プライマリ リージョンがオンラインに戻ったら、データベースのスナップショットを取得し、[tablediff](/sql/tools/tablediff-utility?view=sql-server-ver15) を使用して差異を検出してください。
+    > 強制フェールオーバーには、データ損失のリスクがあります。 プライマリ リージョンがオンラインに戻ったら、データベースのスナップショットを取得し、[tablediff](/sql/tools/tablediff-utility?view=sql-server-ver15&preserve-view=true) を使用して差異を検出してください。
 
 -   Traffic Manager がセカンダリ リージョンへのフェールオーバーを実行するが、SQL Server データベースのプライマリ レプリカが引き続き使用可能である。 たとえば SQL Server VM に影響しない障害がフロント エンド層で発生することがあります。 この場合、インターネット トラフィックはセカンダリ リージョンにルーティングされますが、セカンダリ リージョンは引き続きプライマリ レプリカに接続できます。 ただし、SQL Server の接続がリージョンにまたがるため、待機時間が長くなります。 この状況では、次のように手動フェールオーバーを実行する必要があります。
 

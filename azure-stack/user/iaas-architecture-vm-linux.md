@@ -7,12 +7,12 @@ ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
-ms.openlocfilehash: 0803dc8332e296c0b92912967d34a6dfd885d4df
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 7ad8f412ca4dd984f2d16217efd1a84d632ef829
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97873726"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97973743"
 ---
 # <a name="run-a-linux-virtual-machine-on-azure-stack-hub"></a>Azure Stack Hub で Linux 仮想マシンを実行する
 
@@ -82,7 +82,7 @@ VM は一時ディスクを使用して作成されます。 このディスク�
 
 **診断** 基本的な正常性メトリック、診断インフラストラクチャ ログ、[ブート診断](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)などの監視と診断を有効にします。 VM が起動不可能な状態になった場合は、起動エラーを診断するのにブート診断が役立ちます。 ログを格納するための Azure Storage アカウントを作成します。 診断ログには、標準的なローカル冗長ストレージ (LRS) アカウントがあれば十分です。 詳細については、「[監視と診断の有効化](./azure-stack-metrics-azure-data.md)」を参照してください。
 
-**可用性**。 Azure Stack Hub オペレーターによってスケジュールされた計画メンテナンスにより、VM が再起動される場合があります。 可用性を高めるには、複数の VM を[可用性セット](../operator/azure-stack-app-service-deploy.md?view=azs-2002)内にデプロイします。
+**可用性**。 Azure Stack Hub オペレーターによってスケジュールされた計画メンテナンスにより、VM が再起動される場合があります。 可用性を高めるには、複数の VM を[可用性セット](../operator/azure-stack-app-service-deploy.md)内にデプロイします。
 
 **バックアップ**。Azure Stack Hub IaaS VM の保護に関する推奨事項については、[こちらの](./azure-stack-manage-vm-protect.md)記事を参照してください。
 

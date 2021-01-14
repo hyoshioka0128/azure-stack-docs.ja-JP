@@ -7,12 +7,12 @@ ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/2/2020
-ms.openlocfilehash: 0d8425fa11f6de0e909a697527074c779acd27da
-ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
+ms.openlocfilehash: 02a3fdb862f3a4c04a63d5e5694487b62435ee16
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96525797"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974100"
 ---
 # <a name="extending-storage-to-azure-stack-hub"></a>ストレージを Azure Stack Hub に拡張する
 
@@ -50,7 +50,7 @@ ms.locfileid: "96525797"
 
 2.  Azure Stack Hub 環境に Windows Server 2019 イメージを用意できたら、**Azure Stack Hub ユーザー ポータルにサインインします**。
 
-3.  Azure Stack Hub ユーザー ポータルにログインしたら、[オファーのサブスクリプション](../operator/azure-stack-subscribe-plan-provision-vm.md?view=azs-1908)があることを確認します。これを使用して、IaaS リソース (コンピューティング、ストレージ、ネットワーク) をプロビジョニングできます。
+3.  Azure Stack Hub ユーザー ポータルにログインしたら、[オファーのサブスクリプション](../operator/azure-stack-subscribe-plan-provision-vm.md)があることを確認します。これを使用して、IaaS リソース (コンピューティング、ストレージ、ネットワーク) をプロビジョニングできます。
 
 4.  サブスクリプションを用意できたら、Azure Stack Hub ユーザー ポータルの **ダッシュボード** に戻り、 **[リソースの作成]** を選択し、 **[コンピューティング]** を選択してから、**Windows Server 2019 Datacenter ギャラリー項目** を選択します。
 

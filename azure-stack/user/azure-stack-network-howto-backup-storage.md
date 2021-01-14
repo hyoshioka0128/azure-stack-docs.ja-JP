@@ -7,12 +7,12 @@ ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/2/2020
-ms.openlocfilehash: 40ec516f2f10f02716257077a4676c5724acf4ec
-ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
+ms.openlocfilehash: 6bbca7a38e23a0dfadcd0e7654430430d55da3f2
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96525695"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974066"
 ---
 # <a name="back-up-your-storage-accounts-on-azure-stack-hub"></a>Azure Stack Hub でストレージ アカウントをバックアップする
 
@@ -32,7 +32,7 @@ ms.locfileid: "96525695"
 
 AzCopy は、ローカル ファイルシステム、Azure Cloud Storage、Azure Stack Hub ストレージ、および s3 からデータをコピーするために利用できる優れたツールです。 現在、AzCopy では、2 つの Azure Stack Hub ストレージ アカウント間でデータをコピーすることはできません。 ソース Azure Stack Hub ストレージ アカウントからターゲット Azure Stack Hub ストレージ アカウントにオブジェクトをコピーするには、中継ローカル ファイルシステムが必要です。
 
-詳細については、記事「[Azure Stack Hub Storage でのデータ転送ツールの使用](./azure-stack-storage-transfer.md?view=azs-1908#azcopy)」の「AzCopy」を参照してください。
+詳細については、記事「[Azure Stack Hub Storage でのデータ転送ツールの使用](./azure-stack-storage-transfer.md#azcopy)」の「AzCopy」を参照してください。
 
 ### <a name="azure-stack-hub-source"></a>Azure Stack Hub (ソース)
 

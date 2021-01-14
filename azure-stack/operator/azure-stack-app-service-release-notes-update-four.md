@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
-ms.openlocfilehash: 636d4834b391055911ffc37a005fe40d253ec1d6
-ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
+ms.openlocfilehash: da5fc9162eacb1c9d6d5e91d79871d8fb7be63c8
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86489676"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974236"
 ---
 # <a name="app-service-on-azure-stack-hub-update-4-release-notes"></a>App Service on Azure Stack Hub Update 4 のリリース ノート
 
@@ -46,7 +46,7 @@ Azure App Service on Azure Stack Hub の 1.4 へのアップグレードを開�
   > [!Important]
   > ファイル サーバーと SQL Server の保守と操作を担当するのは、クラウド オペレーターです。  リソース プロバイダーは、これらのリソースの管理は行いません。  クラウドオ ペレーターが、App Service データベースとテナント コンテンツ ファイル共有のバックアップを行います。
 
-- Azure Marketplace から**カスタム スクリプト拡張機能**バージョン **1.9** を配信します。
+- Azure Marketplace から **カスタム スクリプト拡張機能** バージョン **1.9** を配信します。
 
 ## <a name="new-features-and-fixes"></a>新機能と修正
 
@@ -56,9 +56,9 @@ Azure App Service on Azure Stack Hub Update 4 には、次の機能強化と修�
 
 - App Service 2018-02-01 API バージョンのサポートが追加されました。
 
-- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Hub Portal SDK バージョンと一貫性があります。
+- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール** の更新。 Azure Stack Hub Portal SDK バージョンと一貫性があります。
 
-- **Azure Functions ランタイム**が **v1.0.11959** に更新されました。
+- **Azure Functions ランタイム** が **v1.0.11959** に更新されました。
 
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 
@@ -243,7 +243,7 @@ Azure App Service on Azure Stack Hub Update 4 には、次の機能強化と修�
 
 ## <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>Azure App Service on Azure Stack Hub を運用するクラウド管理者に対する既知の問題
 
-[Azure Stack Hub 1809 リリース ノート](./release-notes.md?view=azs-2002)内のドキュメントを参照してください。
+[Azure Stack Hub 1809 リリース ノート](./release-notes.md?view=azs-1809&preserve-view=true)内のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

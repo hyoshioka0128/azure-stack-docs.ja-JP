@@ -7,12 +7,12 @@ ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/16/2020
-ms.openlocfilehash: a1307ca10a2655e166b41d43da4ac83cbe601dc5
-ms.sourcegitcommit: f30e5178e0b4be4e3886f4e9f699a2b51286e2a8
+ms.openlocfilehash: 2e3c25e282a84a0e41d6c69d0af6e2f352bbfba5
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97620723"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974015"
 ---
 # <a name="install-azure-cli-on-azure-stack-hub"></a>Azure CLI を Azure Stack Hub にインストールする
 
@@ -99,7 +99,7 @@ Azure CLI をインストールすると、Windows マシンまたは Linux マ�
 
    - *サービス プリンシパル* を使ってサインインする｡ 
     
-        サインインする前に、CLI または [Azure Portal でサービス プリンシパルを作成](../operator/azure-stack-create-service-principals.md?view=azs-2002)してロールに割り当てます。 次のコマンドを使用してサインインします。
+        サインインする前に、CLI または [Azure Portal でサービス プリンシパルを作成](../operator/azure-stack-create-service-principals.md)してロールに割り当てます。 次のコマンドを使用してサインインします。
     
         ```azurecli  
         az login `
@@ -282,7 +282,7 @@ az group create -n MyResourceGroup -l local
    
    * *サービス プリンシパル* としてサインインする場合:
     
-     サインインする前に、CLI または [Azure Portal でサービス プリンシパルを作成](../operator/azure-stack-create-service-principals.md?view=azs-2002)してロールに割り当てます。 次のコマンドを使用してサインインします。
+     サインインする前に、CLI または [Azure Portal でサービス プリンシパルを作成](../operator/azure-stack-create-service-principals.md)してロールに割り当てます。 次のコマンドを使用してサインインします。
 
      ```azurecli  
      az login \

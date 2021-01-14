@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 008c49c4db50be2ac7c7544211c0f0a82f3b2e2b
-ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
+ms.openlocfilehash: 3a4b2ae49e052731e372f4bfdaf8ff30c9b5490e
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86489693"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974406"
 ---
 # <a name="app-service-on-azure-stack-hub-update-5-release-notes"></a>App Service on Azure Stack Hub Update 5 のリリース ノート
 
@@ -46,17 +46,17 @@ Azure App Service on Azure Stack Hub の 1.5 へのアップグレードを開�
   > [!Important]
   > ファイル サーバーと SQL Server の保守と操作を担当するのは、クラウド オペレーターです。  リソース プロバイダーは、これらのリソースの管理は行いません。  クラウドオ ペレーターが、App Service データベースとテナント コンテンツ ファイル共有のバックアップを行います。
 
-- Marketplace から**カスタム スクリプト拡張機能**バージョン **1.9.1** を配信します。
+- Marketplace から **カスタム スクリプト拡張機能** バージョン **1.9.1** を配信します。
 
 ## <a name="new-features-and-fixes"></a>新機能と修正
 
 Azure App Service on Azure Stack Hub Update 5 には、次の機能強化と修正が含まれています。
 
-- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Hub Portal SDK バージョンと一貫性があります。
+- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール** の更新。 Azure Stack Hub Portal SDK バージョンと一貫性があります。
 
-- **Azure Functions ランタイム**が **v1.0.12205** に更新されました。
+- **Azure Functions ランタイム** が **v1.0.12205** に更新されました。
 
-- **切断された** Azure Stack Hub をお客様が操作する場合のスタイル設定と機能に関する問題を解決する、**Kudu ツール**の更新。 
+- **切断された** Azure Stack Hub をお客様が操作する場合のスタイル設定と機能に関する問題を解決する、**Kudu ツール** の更新。 
 
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 
@@ -221,7 +221,7 @@ Azure App Service on Azure Stack Hub Update 5 には、次の機能強化と修�
 
 ## <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>Azure App Service on Azure Stack Hub を運用するクラウド管理者に対する既知の問題
 
-[Azure Stack Hub 1809 リリース ノート](./release-notes.md?view=azs-2002)内のドキュメントを参照してください。
+[Azure Stack Hub 1809 リリース ノート](./release-notes.md)内のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

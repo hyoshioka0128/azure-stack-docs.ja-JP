@@ -7,12 +7,12 @@ ms.date: 02/26/2020
 ms.author: patricka
 ms.reviewer: shisab
 ms.lastreviewed: 02/26/2020
-ms.openlocfilehash: 7c4bb5f75118552d7f8379edac7083f8830082a5
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: cb2fb8ce9ad1b24430cf545eba3f31ac9e754c43
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97870717"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974321"
 ---
 # <a name="azure-stack-hub-help-and-support"></a>Azure Stack Hub のヘルプとサポート
 
@@ -105,6 +105,6 @@ ASDK については、[Azure Stack Hub MSDN フォーラム](https://social.msd
 
 ## <a name="next-steps"></a>次のステップ
 
-- [診断ログの収集](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)について学習する。
+- [診断ログの収集](./azure-stack-diagnostic-log-collection-overview.md)について学習する。
 - [クラウド ID を検索する](azure-stack-find-cloud-id.md)方法について学習する。
 - [Azure Stack Hub のトラブルシューティング](azure-stack-troubleshooting.md)について学習する。
