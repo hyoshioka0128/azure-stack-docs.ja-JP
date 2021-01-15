@@ -58,6 +58,8 @@
           href: manage/vm-powershell.md
         - name: VM アフィニティ ルールの作成
           href: manage/vm-affinity.md
+        - name: VM の負荷分散
+          href: manage/vm-load-balancing.md
         - name: Linux VM への GPU のアタッチ
           href: manage/attach-gpu-to-linux-vm.md
     - name: ストレージの管理

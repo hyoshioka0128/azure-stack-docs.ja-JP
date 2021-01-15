@@ -37,11 +37,11 @@
       href: adapt-apps-mixed-os-clusters.md
     - name: Windows Server コンテナーを使用する
       items:
-        - name: Azure Stack HCI の AKS に .NET アプリケーションをデプロイする
+        - name: .NET アプリケーションをデプロイする
           href: deploy-windows-application.md
         - name: グループの管理サービス アカウントをサポートするための Windows ノードの準備
           href: prepare-windows-nodes-gmsa.md
-        - name: Azure Stack HCI クラスターの AKS で永続ボリュームを使用する
+        - name: 永続ボリュームの使用
           href: persistent-volume.md
     - name: トラブルシューティング
       href: troubleshoot.md
