@@ -370,7 +370,7 @@
                 - name: バックアップと復元
                   href: azure-stack-backup-infrastructure-backup.md
                 - name: ログの収集
-                  href: azure-stack-diagnostic-log-collection-overview.md
+                  href: ./diagnostic-log-collection.md
                 - name: 正常性とアラート
                   href: azure-stack-monitor-health.md
                 - name: 管理する

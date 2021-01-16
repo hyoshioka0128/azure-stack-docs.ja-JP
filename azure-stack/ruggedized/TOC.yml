@@ -125,9 +125,9 @@
                     - name: App Service のデプロイ
                       href: ../operator/azure-stack-app-service-deploy.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
                     - name: 高可用性のための App Service のデプロイ
-                      href: ../operator/app-service-deploy-ha.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                      href: ../operator/azure-stack-app-service-deploy.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
                     - name: App Service のオフライン デプロイ
-                      href: ../operator/azure-stack-app-service-deploy-offline.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                      href: ../operator/azure-stack-app-service-deploy.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&pivots=state-disconnected%3fpivots%3dstate-disconnected&toc=%2fazure-stack%2fruggedized%2ftoc.json
                 - name: Event Hubs
                   items:
                     - name: 容量計画
@@ -165,7 +165,7 @@
                     - name: 高可用性 SQL データベースのデプロイ
                       href: ../operator/azure-stack-tutorial-sql.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
             - name: Start-AzsReadiness コマンドレット リファレンス
-              href: ../operator/azure-stack-azsreadiness-cmdlet.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+              href: ../operator/azure-stack-validate-identity.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
             - name: 対応状況レポートの表示
               href: ../operator/azure-stack-validation-report.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: データセンターの統合
@@ -233,7 +233,7 @@
                 - name: App Service の更新
                   href: ../operator/azure-stack-app-service-update.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
                 - name: App Service のオフライン更新
-                  href: ../operator/azure-stack-app-service-update-offline.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                  href: ../operator/azure-stack-app-service-update.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&pivots=state-disconnected%3fpivots%3dstate-disconnected&toc=%2fazure-stack%2fruggedized%2ftoc.json
                 - name: Event Hubs の更新
                   href: ../operator/resource-provider-apply-updates.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
                 - name: MySQL サーバーの更新
@@ -353,13 +353,13 @@
                 - name: App Service のデプロイ
                   href: ../operator/azure-stack-app-service-deploy.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
                 - name: 高可用性のための App Service のデプロイ
-                  href: ../operator/app-service-deploy-ha.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                  href: ../operator/azure-stack-app-service-deploy.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
                 - name: App Service のオフライン デプロイ
-                  href: ../operator/azure-stack-app-service-deploy-offline.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                  href: ../operator/azure-stack-app-service-deploy.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&pivots=state-disconnected%3fpivots%3dstate-disconnected&toc=%2fazure-stack%2fruggedized%2ftoc.json
                 - name: App Service の更新
                   href: ../operator/azure-stack-app-service-update.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
                 - name: App Service のオフライン更新
-                  href: ../operator/azure-stack-app-service-update-offline.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                  href: ../operator/azure-stack-app-service-update.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&pivots=state-disconnected%3fpivots%3dstate-disconnected&toc=%2fazure-stack%2fruggedized%2ftoc.json
                 - name: App Service のインフラストラクチャ ロールの追加
                   href: ../operator/azure-stack-app-service-add-worker-roles.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
                 - name: デプロイ ソースを構成する
@@ -391,7 +391,7 @@
                     - name: バックアップと復元
                       href: operator/azure-stack-backup-infrastructure-backup-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
                     - name: ログの収集
-                      href: ../operator/azure-stack-diagnostic-log-collection-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                      href: ../operator/diagnostic-log-collection.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
                     - name: 正常性とアラート
                       href: operator/azure-stack-monitor-health-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
                     - name: 管理する
@@ -417,7 +417,7 @@
                     - name: バックアップと復元
                       href: ../operator/azure-stack-backup-infrastructure-backup.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
                     - name: ログの収集
-                      href: ../operator/azure-stack-diagnostic-log-collection-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                      href: ../operator/diagnostic-log-collection.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
                     - name: 正常性とアラート
                       href: ../operator/azure-stack-monitor-health.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
                     - name: 管理する
@@ -499,11 +499,11 @@
                 - name: 診断ログの収集
                   items:
                     - name: 概要
-                      href: ../operator/azure-stack-diagnostic-log-collection-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                      href: ../operator/diagnostic-log-collection.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
                     - name: 事前の収集
-                      href: ../operator/azure-stack-configure-automatic-diagnostic-log-collection.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                      href: ../operator/diagnostic-log-collection.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
                     - name: オンデマンドでの収集
-                      href: ../operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                      href: ../operator/diagnostic-log-collection.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
             - name: Azure Stack Hub の状態の取得
               href: ../operator/azure-stack-diagnostic-test.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
             - name: トラブルシューティング
@@ -627,7 +627,7 @@
                     - name: Azure Stack PowerShell の概要
                       href: ../user/azure-stack-powershell-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
                     - name: Azure Stack PowerShell のインストール
-                      href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                      href: ../operator/azure-stack-powershell-install.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fuser%2ftoc.json
                       maintainContext: true
                     - name: PowerShell で接続する
                       href: ../user/azure-stack-powershell-configure-user.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
@@ -692,7 +692,7 @@
                 - name: ロールベースのアクセス制御を使用する
                   href: ../user/azure-stack-manage-permissions.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
                 - name: アプリ ID を使用してリソースにアクセスする
-                  href: /azure-stack/operator/azure-stack-create-service-principals?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                  href: ../operator/azure-stack-create-service-principals.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fuser%2ftoc.json
             - name: サービスの使用
               items:
                 - name: Compute
