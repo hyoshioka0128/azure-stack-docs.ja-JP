@@ -3,22 +3,21 @@ title: ASDK のトラブルシューティング
 description: Azure Stack Development Kit (ASDK) のトラブルシューティング方法について説明します。
 author: PatAltimore
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 01/06/2021
 ms.author: patricka
 ms.reviewer: misainat
-ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: b5b0310aa778cf470c436f0770c9b5ca0d46fd8f
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.lastreviewed: 01/06/2021
+ms.openlocfilehash: 002015d0d00e09de07e4a46f5ad6525dac2b7254
+ms.sourcegitcommit: 502df315764bbc4ff6d3de50b957dfd4a6c0043a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97872944"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98130226"
 ---
 # <a name="troubleshoot-the-asdk"></a>ASDK のトラブルシューティング
 この記事では、Azure Stack Development Kit (ASDK) の一般的なトラブルシューティング情報を提供します。 Azure Stack 統合システムに関するヘルプについては、「[Microsoft Azure Stack のトラブルシューティング](../operator/azure-stack-troubleshooting.md)」を参照してください。 
 
-ASDK は評価環境であるため、Microsoft サポートによるサポートは提供されません。 記載されていない問題が発生している場合は、[Azure Stack MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)で専門家からのヘルプを得られます。 
-
+ASDK は評価環境であるため、Microsoft サポートによるサポートは提供されません。 記載されていない問題が発生している場合は、[Azure Stack 用の Microsoft Q&A](https://docs.microsoft.com/answers/questions/topics/azure-stack-hub.html) で専門家からのヘルプを得られます。
 
 ## <a name="deployment"></a>デプロイ
 ### <a name="deployment-failure"></a>デプロイの失敗

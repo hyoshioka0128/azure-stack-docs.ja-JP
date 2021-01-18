@@ -298,6 +298,8 @@
               href: azure-stack-dev-start-howto-vm-python.md
             - name: NodeJS Web アプリをデプロイする
               href: azure-stack-dev-start-howto-vm-nodejs.md
+        - name: GitHub アクションの作成 - ログイン
+          href: ci-cd-github-action-login-cli.md
         - name: GPU IoT モジュールをデプロイする
           href: gpu-deploy-sample-module.md
     - name: 基本パターンのデプロイ

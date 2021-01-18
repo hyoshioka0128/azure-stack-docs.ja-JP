@@ -7,12 +7,12 @@ ms.date: 10/16/2020
 ms.author: patricka
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2020
-ms.openlocfilehash: 85f3aed4ebf5b57b1e77a5b58604eeb881204396
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: c6f58a2364378180641a7b3ea2e3a38e4bb4f183
+ms.sourcegitcommit: 330d04d39e0cf3e8965e2ccbc181c968cb71d9ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97870037"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052308"
 ---
 # <a name="manage-storage-capacity-for-azure-stack-hub"></a>Azure Stack Hub のストレージ容量を管理する
 
@@ -345,4 +345,4 @@ PowerShell または管理者ポータルを使用してボリュームを監視
 
 ## <a name="next-steps"></a>次のステップ
 
-ユーザーへの VM の提供の詳細については、「[Azure Stack Hub のストレージ容量を管理する](./tutorial-offer-services.md?view=azs-2002)」を参照してください。
+ユーザーへの VM の提供の詳細については、「[Azure Stack Hub のストレージ容量を管理する](./tutorial-offer-services.md)」を参照してください。

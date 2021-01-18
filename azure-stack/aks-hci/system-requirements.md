@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: abhilashaagarwala
 ms.author: abha
 ms.date: 12/02/2020
-ms.openlocfilehash: 3a4ad6203ba14188ff24629f07775285417c306b
-ms.sourcegitcommit: 0e2c814cf2c154ea530a4e51d71aaf0835fb2b5a
+ms.openlocfilehash: 71c842cf44963988da7926003646b246bf80f802
+ms.sourcegitcommit: 8776cbe4edca5b63537eb10bcd83be4b984c374a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918654"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98175738"
 ---
 # <a name="system-requirements-for-azure-kubernetes-service-on-azure-stack-hci"></a>Azure Stack HCI での Azure Kubernetes Service のシステム要件
 
@@ -46,32 +46,70 @@ Active Directory 環境で、Azure Stack HCI または Windows Server 2019 Datac
 
 ## <a name="network-requirements"></a>ネットワークの要件 
 
-Azure Stack HCI クラスターと Windows Server 2019 Datacenter フェールオーバー クラスターには、次の要件が適用されます。 
+Azure Stack HCI クラスターと Windows Server 2019 Datacenter クラスターには、次の要件が適用されます。 
 
  - Windows Admin Center を使用している場合は、既存の外部仮想スイッチを構成済みであることを確認します。 Azure Stack HCI クラスターの場合、このスイッチとその名前は、すべてのクラスター ノードにわたって同じである必要があります。 
 
  - すべてのネットワーク アダプターで IPv6 が無効になっていることを確認します。 
 
- - デプロイを成功させるには、Azure Stack HCI クラスター ノードと Kubernetes クラスター VM に外部インターネット接続が必要です。 
+ - デプロイを成功させるには、Azure Stack HCI クラスター ノードと Kubernetes クラスター VM に外部インターネット接続が必要です。
+  
+ - Azure Stack HCI ホストとテナント VM の間にネットワーク接続が存在することを確認します。
 
  - すべてのノードが相互に通信できるようにするには、DNS 名前解決が必要です。 Kubernetes の外部名前解決には、IP アドレスが取得されたときに DHCP サーバーによって指定される DNS サーバーを使用します。 Kubernetes の内部名前解決には、Kubernetes の既定の、DNS ベースのコア ソリューションが使用されます。 
 
  - このプレビュー リリースでは、デプロイ全体に対して 1 つの VLAN サポートのみが提供されています。 
 
  - このプレビュー リリースでは、PowerShell を使用して作成される Kubernetes クラスターに対するプロキシ サポートは限定的です。 
+ 
+### <a name="ip-address-assignment"></a>IP アドレスの割り当て  
+ 
+Azure Stack HCI での AKS のデプロイを成功させるため、DHCP サーバーで仮想 IP プールの範囲を構成することをお勧めします。 すべてのワークロード クラスターに対して、3 から 5 個の高可用性コントロール プレーン ノードを構成することもお勧めします。 
+
+> [!NOTE]
+> 静的 IP アドレスの割り当てのみを使用することはサポートされていません。 このプレビュー リリースの一環として、DHCP サーバーを構成する必要があります。
+
+#### <a name="dhcp"></a>[DHCP]
+DHCP を使用してクラスター全体に IP アドレスを割り当てるときは、次の要件に従ってください。  
+
+ - VM と VM ホストに TCP/IP アドレスを提供するため、ネットワークに使用可能な DHCP サーバーがある必要があります。 DHCP サーバーには、ネットワーク タイム プロトコル (NTP) と DNS ホストの情報も含まれている必要があります。
+ 
+ - Azure Stack HCI クラスターからアクセスできる専用の IPv4 アドレス スコープを持つ DHCP サーバー。
+ 
+ - DHCP サーバーによって提供される IPv4 アドレスはルーティング可能であり、VM の更新や再プロビジョニングの場合に IP 接続が失われないようにするために 30 日間のリースの有効期限が設定されている必要があります。  
+
+少なくとも、次の数の DHCP アドレスを予約する必要があります。
+
+| クラスターの種類  | コントロール プレーン ノード | ワーカー ノード | 更新 | Load Balancer  |
+| ------------- | ------------------ | ---------- | ----------| -------------|
+| AKS ホスト |  1  |  0  |  2  |  0  |
+| ワークロード クラスター  |  ノードあたり 1  | ノードあたり 1 |  5  |  1  |
+
+ご覧のように、ご使用の環境におけるワークロード クラスター、コントロール プレーン、およびワーカー ノードの数に応じて、必要な IP アドレスの数は異なります。 DHCP IP プールでは、256 の IP アドレス (/24 サブネット) を予約することをお勧めします。
+  
+    
+#### <a name="vip-pool-range"></a>VIP プールの範囲
+
+仮想 IP (VIP) プールは Azure Stack HCI デプロイの AKS に強くお勧めします。 VIP プールとは、デプロイおよびアプリケーションのワークロードに常に到達可能であることを保証するために、長期間のデプロイに使用される予約済みの静的 IP アドレスの範囲です。 現時点では、IPv4 アドレスしかサポートされていないため、すべてのネットワーク アダプターで IPv6 が無効となっていることを確認する必要があります。 また、仮想 IP アドレスが DHCP IP 予約に含まれていないことを確認します。
+
+少なくとも、クラスター (ワークロードと AKS ホスト) ごとに 1 つの IP アドレスを予約し、Kubernetes サービスごとに 1 つの IP アドレスを予約する必要があります。 ご使用の環境におけるワークロード クラスターと Kubernetes サービスの数に応じて、VIP プールの範囲内の必要な IP アドレスの数は異なります。 AKS HCI のデプロイには、16 個の静的 IP アドレスを予約することをお勧めします。 
+
+AKS ホストを設定するとき、`Set-AksHciConfig` の `-vipPoolStartIp` パラメーターと `-vipPoolEndIp` パラメーターを使用して、VIP プールを作成します。
+
+#### <a name="mac-pool-range"></a>MAC プールの範囲
+各クラスターで複数のコントロール プレーン ノードを使用できるようにするには、範囲内で 16 個以上の MAC アドレスを設定することをお勧めします。 AKS ホストを設定するとき、`Set-AksHciConfig` の `-macPoolStart` および `-macPoolEnd` パラメーターを使用して、Kubernetes サービスに DHCP MAC プールの MAC アドレスを予約します。
   
 ### <a name="network-port-and-url-requirements"></a>ネットワーク ポートと URL の要件 
 
 Azure Stack HCI 上に Azure Kubernetes クラスターを作成すると、クラスター内の各サーバーで、以下のファイアウォール ポートが自動的に開かれます。 
 
 
-| ファイアウォール ポート               | 説明         | 
+| ファイアウォール ポート               | 説明     | 
 | ---------------------------- | ------------ | 
-| 45000           | wssdagent GPRC サーバー ポート           |
+| 45000           | wssdagent GPRC サーバー ポート     |
 | 45001             | wssdagent GPRC 認証ポート  | 
-| 55000           | wssdcloudagent GPRC サーバー ポート           |
-| 65000             | wssdcloudagent GPRC 認証ポート  | 
-
+| 55000           | wssdcloudagent GPRC サーバー ポート      |
+| 65000            | wssdcloudagent GPRC 認証ポート  | 
 
 
 Windows Admin Center マシンと Azure Stack HCI クラスター内のすべてのノードについて、ファイアウォールの URL の例外が必要です。 
@@ -82,7 +120,8 @@ https://helm.sh/blog/get-helm-sh/  | 443 | ダウンロード エージェント
 https://storage.googleapis.com/  | 443 | クラウドの初期化 | Kubernetes バイナリのダウンロード 
 https://azurecliprod.blob.core.windows.net/ | 443 | クラウドの初期化 | バイナリとコンテナーのダウンロード 
 https://aka.ms/installazurecliwindows | 443 | WAC | Azure CLI のダウンロード 
-https://:443 | 443 | TCP | Azure Arc エージェントをサポートするために使用されます 
+https://:443 | 443 | TCP | Azure Arc エージェントをサポートするために使用されます  
+*.blob.core.windows.net | 443 | TCP | ダウンロードに必要です
 *.api.cdp.microsoft.com、*.dl.delivery.mp.microsoft.com、*.emdl.ws.microsoft.com | 80、443 | エージェントのダウンロード | メタデータのダウンロード 
 *.dl.delivery.mp.microsoft.com、*.do.dsp.mp.microsoft.com. | 80、443 | エージェントのダウンロード | VHD イメージのダウンロード 
 ecpacr.azurecr.io | 443 | Kubernetes | コンテナー イメージのダウンロード 

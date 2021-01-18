@@ -8,12 +8,12 @@ ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviwer: jiahan
 ms.lastreviewed: 08/12/2020
-ms.openlocfilehash: 9cac2ee9798388f955bfd3376395d21438889fc9
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: e49092e87f8e6801343ae0550aff4c71dd40408b
+ms.sourcegitcommit: 1465bca8b7f87ea6f24faf47e86c2ba497943b28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97867368"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98103071"
 ---
 # <a name="azure-stack-hub-storage-differences-and-considerations"></a>Azure Stack Hub のストレージ: 相違点と考慮事項
 
@@ -43,7 +43,7 @@ Azure Stack Hub ストレージは、Microsoft Azure Stack Hub 内のストレ�
 |テーブルのパーティション キーと行キーのサイズ|1,024 文字 (2,048 バイト)。|400 文字 (800 バイト)。
 |BLOB スナップショット|1 つの BLOB の最大スナップショット数は制限されていません。|1 つの BLOB の最大スナップショット数は 1,000 です。
 |ストレージの Azure AD Authentication|プレビュー段階です。 |まだサポートされていません。
-|不変 BLOB|一般提供。 |まだサポートされていません。
+|不変 BLOB|一般提供。 |使用バージョンが 2008 以降の場合にサポートされます。
 |ストレージのファイアウォールおよび仮想ネットワーク規則|一般提供。 |まだサポートされていません。|
 
 ストレージ メトリックにも相違点があります。
