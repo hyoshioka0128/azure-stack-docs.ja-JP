@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
-ms.openlocfilehash: 1e42f830683a1faefd8e068da1e968f9332b7e0a
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: e26299a53583fa7d4e4b4b61fc46be7d2faa9eba
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97872723"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255012"
 ---
 # <a name="physical-network-requirements-for-azure-stack-hci"></a>Azure Stack HCI の物理ネットワーク要件
 
@@ -26,7 +26,7 @@ ms.locfileid: "97872723"
 
 Microsoft では、以下の「**ネットワーク スイッチの要件**」セクションで特定された標準とプロトコルに対して Azure Stack HCI をテストします。 Microsoft ではネットワーク スイッチを認定していませんが、ベンダーと協力して、Azure Stack HCI 要件をサポートするデバイスを特定します。
 
-これらの要件は、「[Windows ハードウェア互換性プログラムの仕様とポリシー](https://docs.microsoft.com/windows-hardware/design/compatibility/whcp-specifications-policies)」でも公開されています。  **[仕様とポリシー、バージョン 1809 をダウンロードする]** を選択し、ZIP ファイルを開き、**WHCP-Components-Peripherals-Specification-1809.pdf** を開いて、「**Device.Network.Switch.SDDC**」セクションを参照します。
+これらの要件は、「[Windows ハードウェア互換性プログラムの仕様とポリシー](/windows-hardware/design/compatibility/whcp-specifications-policies)」でも公開されています。  **[仕様とポリシー、バージョン 1809 をダウンロードする]** を選択し、ZIP ファイルを開き、**WHCP-Components-Peripherals-Specification-1809.pdf** を開いて、「**Device.Network.Switch.SDDC**」セクションを参照します。
 
 > [!IMPORTANT]
 > ここに記載されていないテクノロジやプロトコルを使用するその他のネットワーク スイッチも動作する可能性がありますが、Microsoft は Azure Stack HCI での動作を保証できません。また、発生する問題のトラブルシューティングをサポートできないおそれがあります。
@@ -145,6 +145,6 @@ Azure Stack HCI では、クラスター内の各ノードがクラスター内�
 
 - ネットワーク アダプターとホストの要件について学習する。 「[ホスト ネットワークの要件](host-network-requirements.md)」を参照してください。
 - フェールオーバー クラスタリングの基礎を復習する。 [フェールオーバー クラスタリング ネットワークの基礎](https://techcommunity.microsoft.com/t5/failover-clustering/.failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09)に関するページを参照してください。
-- SET の使用を復習する。 「[リモート ダイレクト メモリ アクセス (RDMA) とスイッチ埋め込みチーミング (SET)](https://docs.microsoft.com/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming)」を参照してください。
-- デプロイについては、[Windows Admin Center を使用したクラスターの作成](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster)に関する記事を参照してください。
-- デプロイについては、[Windows PowerShell を使用したクラスターの作成](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster-powershell)に関する記事を参照してください。
+- SET の使用を復習する。 「[リモート ダイレクト メモリ アクセス (RDMA) とスイッチ埋め込みチーミング (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming)」を参照してください。
+- デプロイについては、[Windows Admin Center を使用したクラスターの作成](../deploy/create-cluster.md)に関する記事を参照してください。
+- デプロイについては、[Windows PowerShell を使用したクラスターの作成](../deploy/create-cluster-powershell.md)に関する記事を参照してください。

@@ -7,12 +7,12 @@ ms.date: 10/08/2019
 ms.author: patricka
 ms.reviewer: shisab
 ms.lastreviewed: 10/08/2019
-ms.openlocfilehash: 5483aa6859e839b978da7449d124811d3e2fb0bb
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 6da70761e8a37967d3debdff28b67447596c632a
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97870581"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255964"
 ---
 # <a name="find-your-cloud-id"></a>クラウド ID を検索する
 
@@ -51,5 +51,5 @@ ms.locfileid: "97870581"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ログを事前に送信する](./azure-stack-diagnostic-log-collection-overview.md#send-logs-proactively)
-* [今すぐログを送信する](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now)
+* [ログを事前に送信する](./diagnostic-log-collection.md#send-logs-proactively)
+* [今すぐログを送信する](./diagnostic-log-collection.md#send-logs-now)

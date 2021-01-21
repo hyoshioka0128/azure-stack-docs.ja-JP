@@ -8,12 +8,12 @@ ms.date: 03/04/2020
 ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2019
-ms.openlocfilehash: a79fcab4bb96eb7e32121095c521e4db0a3b02f9
-ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
+ms.openlocfilehash: 4f9a6e7ddd52ece2b417221ded8afe9d92c16bca
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97973267"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255726"
 ---
 # <a name="start-and-stop-azure-stack-hub"></a>Azure Stack Hub の開始と停止
 
@@ -84,4 +84,4 @@ Azure Stack Hub 環境の電源投入後 2 時間経ってもインフラスト�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Hub 診断ツール](./azure-stack-diagnostic-log-collection-overview.md)の詳細を確認する
+[Azure Stack Hub 診断ツール](./diagnostic-log-collection.md)の詳細を確認する

@@ -5,12 +5,12 @@ author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
 ms.date: 10/7/2020
-ms.openlocfilehash: ec9ddb62dc876fbd4b99ebc2c8e2a3af4a54e8a7
-ms.sourcegitcommit: 9a91dbdaa556725f51bcf3d8e79a4ed2dd5a209f
+ms.openlocfilehash: 3ac17ca9cd54c2ec387ceb39cbda76f7cb539305
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91847683"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255080"
 ---
 # <a name="plan-to-deploy-network-controller"></a>ネットワーク コントローラーのデプロイを計画する
 
@@ -36,11 +36,11 @@ Windows Admin Center を使用したネットワーク コントローラーの�
 
     **オプション 2**:管理ネットワークがワークロード ネットワークから物理的に分離されています。 このオプションを選択すると、コンピューティング専用に 1 つの仮想スイッチが使用されます。
 
-    :::image type="content" source="./media/network-controller/topology-option-2.png" alt-text="ネットワーク コントローラーの物理ネットワークを作成するためのオプション 1。" lightbox="./media/network-controller/topology-option-2.png":::
+    :::image type="content" source="./media/network-controller/topology-option-2.png" alt-text="ネットワーク コントローラーの物理ネットワークを作成するためのオプション 2。" lightbox="./media/network-controller/topology-option-2.png":::
 
     **オプション 3**:管理ネットワークがワークロード ネットワークから物理的に分離されています。 このオプションを選択すると、2 つの仮想スイッチ (1 つはコンピューティング用で、もう 1 つはストレージ用) が使用されます。
 
-    :::image type="content" source="./media/network-controller/topology-option-3.png" alt-text="ネットワーク コントローラーの物理ネットワークを作成するためのオプション 1。" lightbox="./media/network-controller/topology-option-3.png":::
+    :::image type="content" source="./media/network-controller/topology-option-3.png" alt-text="ネットワーク コントローラーの物理ネットワークを作成するためのオプション 3。" lightbox="./media/network-controller/topology-option-3.png":::
 
 - 管理物理アダプターをチーム化して、同じ管理スイッチを使用することもできます。 この場合でも、このセクションのオプションのいずれかを使用することをお勧めします。
 - ネットワーク コントローラーが Windows Admin Center および Hyper-V ホストと通信するために使用する管理ネットワーク情報。
@@ -60,7 +60,7 @@ Windows Admin Center を使用したネットワーク コントローラーの�
 
 詳細については、次を参照してください。
 - [Azure Stack HCI クラスターを作成する](../deploy/create-cluster.md)
-- [Windows PowerShell を使用してネットワーク コントローラーを展開する](../deploy/network-controller-powershell.md)
+- [Windows PowerShell を使用してネットワーク コントローラーを展開する](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts)
 
 ## <a name="see-also"></a>関連項目
 - [ネットワーク コントローラー](/windows-server/networking/sdn/technologies/network-controller/network-controller)

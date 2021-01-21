@@ -16,12 +16,12 @@ ms.date: 10/20/2020
 ms.author: patricka
 ms.reviewer: asganesh
 ms.lastreviewed: 10/20/2020
-ms.openlocfilehash: 605ce80e2f88f5c798c955d5ba45a49856086f2e
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 5d59532308239f9eda95ba9f81599235a8c8f61c
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97872485"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255556"
 ---
 # <a name="mdc-requirements-overview"></a>MDC の要件の概要
 
@@ -65,9 +65,9 @@ MDC は、標準の 40 フィート金属製出荷コンテナーに収められ
 ### <a name="planning-phase"></a>計画フェーズ
 1. データセンターの電力の計画。
 1. Azure Stack Hub の論理ネットワーク構成の計画。
-1. [データセンターのネットワーク統合](https://docs.microsoft.com/azure-stack/operator/azure-stack-network)の計画。
-1. [ID とセキュリティの統合](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)の計画。
-1. [PKI 証明書](https://docs.microsoft.com/azure-stack/operator/azure-stack-pki-certs)の計画。
+1. [データセンターのネットワーク統合](../operator/azure-stack-network.md)の計画。
+1. [ID とセキュリティの統合](/azure/security/fundamentals/identity-management-best-practices)の計画。
+1. [PKI 証明書](../operator/azure-stack-pki-certs.md)の計画。
 
 ### <a name="preparation-phase"></a>準備フェーズ
 1. インベントリの収集。

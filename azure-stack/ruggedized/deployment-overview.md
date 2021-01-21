@@ -16,12 +16,12 @@ ms.date: 10/14/2020
 ms.author: patricka
 ms.reviewer: asganesh
 ms.lastreviewed: 10/14/2020
-ms.openlocfilehash: 0fd077f405256ff0a112dd9730cdc3e8fefb10f8
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: e6fccf96e44a481a0e1e0c5bb300ec238937f86b
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97867538"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256185"
 ---
 # <a name="azure-stack-hub-ruggedized-deployment-overview"></a>Azure Stack Hub ラグドの配置の概要
 
@@ -38,7 +38,7 @@ ms.locfileid: "97867538"
 
 このガイドの内容を完全に理解するには、仮想化、サーバー、オペレーティング システム、ネットワーク、ストレージ ソリューションについての技術的な経験が必要です。 デプロイ エンジニアは、Hyper-V、Azure Stack Hub、Azure、および Microsoft PowerShell を使用する Microsoft Windows Server 2019 に関する知識を持っている必要があります。
 
-このガイドの中心的なテーマは、Microsoft Azure Stack Hub のコア コンポーネントのデプロイと、Azure Stack Hub ラグド ソリューションの詳細です。 このガイドでは、Azure Stack Hub の操作手順と、Azure Stack Hub で利用できるすべての機能については説明しません。 詳細については、[Azure Stack Hub オペレーター ガイド](https://docs.microsoft.com/azure-stack/operator/)に関するページを参照してください。
+このガイドの中心的なテーマは、Microsoft Azure Stack Hub のコア コンポーネントのデプロイと、Azure Stack Hub ラグド ソリューションの詳細です。 このガイドでは、Azure Stack Hub の操作手順と、Azure Stack Hub で利用できるすべての機能については説明しません。 詳細については、[Azure Stack Hub オペレーター ガイド](../operator/index.yml)に関するページを参照してください。
 
 ## <a name="introduction"></a>はじめに
 

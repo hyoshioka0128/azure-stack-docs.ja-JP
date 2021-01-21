@@ -3,16 +3,16 @@ title: Azure Stack Hub オペレーター アクセス ワークステーショ�
 description: Azure Stack Hub オペレーター アクセス ワークステーションをダウンロードして構成する方法について説明します。
 author: ashika789
 ms.topic: article
-ms.date: 11/04/2020
+ms.date: 1/15/2021
 ms.author: patricka
 ms.reviewer: asganesh
-ms.lastreviewed: 11/04/2020
-ms.openlocfilehash: f65235e83e0086ad340efbabc311966a0aa6d621
-ms.sourcegitcommit: 5f3adb99b40fa4473955fa408e7ff63d5e1b439f
+ms.lastreviewed: 1/15/2021
+ms.openlocfilehash: 011a75dcdbe8818af568eb5cc6bb6123a4f11c4e
+ms.sourcegitcommit: 48a46142ea7bccd6c8a609e188dd7f3f6444f3c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98105113"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98561963"
 ---
 # <a name="azure-stack-hub-operator-access-workstation"></a>Azure Stack Hub オペレーター アクセス ワークステーション 
 

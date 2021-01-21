@@ -15,12 +15,12 @@ ms.date: 10/26/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 10/26/2020
-ms.openlocfilehash: 2a3dec7699911988c4c9a958c31386c127f70694
-ms.sourcegitcommit: 5fbc60b65d27c916ded7a95ba4102328d550c7e5
+ms.openlocfilehash: 7a296065696200d83e30e33f973ed16e62e789b5
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97598234"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255403"
 ---
 # <a name="download-marketplace-items-to-azure-stack-hub---modular-data-center-mdc"></a>Azure Stack Hub に Marketplace の項目をダウンロードする - Modular Data Center (MDC) 
 
@@ -74,7 +74,7 @@ Azure Stack Hub デプロイは、インターネット接続を備えていて�
 
 接続されていない環境では、Azure から Marketplace 項目をダウンロードすることはできません。 オフライン シンジケーション ツールを使用して、Marketplace 項目をローカル ドライブにダウンロードし、そこからそれらの項目をお使いの Azure Stack Hub にアップロードする必要があります。
 
-[オフライン シンジケーション ツールはこちらからダウンロード](https://aka.ms/azsSyndicationtool)できます。
+[オフライン シンジケーション ツールはこちらからダウンロード](../../operator/azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected)できます。
 
 ### <a name="download-marketplace-items-from-azure"></a>Azure から Marketplace 項目をダウンロードする
 

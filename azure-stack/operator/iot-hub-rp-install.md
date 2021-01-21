@@ -7,12 +7,12 @@ ms.service: azure-stack
 ms.topic: how-to
 ms.date: 1/6/2020
 zone_pivot_groups: state-connected-disconnected
-ms.openlocfilehash: 13bac36ffd7d771d1b5504067bfe1d679cdda5e6
-ms.sourcegitcommit: 0e3296fb27b9dabbc2569bf85656c4c7b1d58ba9
+ms.openlocfilehash: 47d06bc7363a9ce8d4de8971bf26c38bfdb16bcc
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050360"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256117"
 ---
 # <a name="how-to-install-iot-hub-on-azure-stack-hub"></a>Azure Stack Hub に IoT Hub をインストールする方法
 
@@ -33,7 +33,7 @@ Azure Stack Hub が Azure Marketplace にアクセスできる場合は、この
 
     [![Marketplace での RP の検索](media/iot-hub-rp-install/marketplace-rp-add-from-azure.png)](media/iot-hub-rp-install/marketplace-rp-add-from-azure.png#lightbox)
 
-3. 必要に応じて "IoT Hub" をフィルター処理し、 **IoT Hub** パッケージを選択します。
+3. 必要に応じて "IoT Hub" をフィルター処理し、**IoT Hub** パッケージを選択します。
 
     [![Marketplace の IoT Hub RP](../operator/media/iot-hub-rp-install/download1.png)](../operator/media/iot-hub-rp-install/download1.png#lightbox)
 
@@ -105,9 +105,9 @@ Azure Stack Hub が Azure Marketplace にアクセスできる場合は、この
 
 IoT Hub リソース プロバイダーが正常にインストールされました。 使用を開始するには、次の手順を実行します。
 
-1. 必要に応じて、指示に従って[プラン、オファー、サブスクリプションを作成](azure-stack-plan-offer-quota-overview.md)します。
+1. 必要に応じて、指示に従って[プラン、オファー、サブスクリプションを作成](./service-plan-offer-subscription-overview.md)します。
 
-2. サブスクリプションが既に存在する場合は、関連付けられているオファーまたはプランを更新して、 **Microsoft.Devices** サービスを含めます。 **[プラン]**  -> **更新するプランの選択** ->  **[Add Service and quota]\(サービスとクォータの追加\)** に移動します。
+2. サブスクリプションが既に存在する場合は、関連付けられているオファーまたはプランを更新して、**Microsoft.Devices** サービスを含めます。 **[プラン]**  -> **更新するプランの選択** ->  **[Add Service and quota]\(サービスとクォータの追加\)** に移動します。
 
 3. **Microsoft.Devices サービス** を追加し、 **[保存]** をクリックします。
 

@@ -5,18 +5,18 @@ author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
 ms.date: 12/11/2020
-ms.openlocfilehash: 5b25fdcefd61cb8fa5a497a3477b1f33ab67ece5
-ms.sourcegitcommit: f56a5b287c90b2081ae111385c8b7833931d4059
+ms.openlocfilehash: f5dc475cde9baeb053fbaec1144d1ff65cc4e2ba
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97343343"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98254383"
 ---
 # <a name="get-support-for-azure-stack-hci"></a>Azure Stack HCI のサポートを受ける
 
 >適用対象:Azure Stack HCI バージョン 20H2
 
-このトピックでは、Azure Stack HCI オペレーティング システムのサポートを受ける方法についてのガイダンスを提供します。 Azure Stack HCI には、Azure と同じサポート プロセスが適用されます。 企業のお客様は、「[Azure サポート要求を作成する](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」で説明されているプロセスに従ってください。 クラウド ソリューション プロバイダー (CSP) のお客様の場合は、担当の CSP までサポートについてお問い合わせください。
+このトピックでは、Azure Stack HCI オペレーティング システムのサポートを受ける方法についてのガイダンスを提供します。 Azure Stack HCI には、Azure と同じサポート プロセスが適用されます。 企業のお客様は、「[Azure サポート要求を作成する](/azure/azure-portal/supportability/how-to-create-azure-support-request)」で説明されているプロセスに従ってください。 クラウド ソリューション プロバイダー (CSP) のお客様の場合は、担当の CSP までサポートについてお問い合わせください。
 
 Azure Stack HCI のサポート リクエストを作成するには、Standard または Professional Direct Azure サポート プランが必要です。 Basic および Developer プランは使用できません。
 

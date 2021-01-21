@@ -5,12 +5,12 @@ author: v-susbo
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: v-susbo
-ms.openlocfilehash: 754ebc1a365efb7efa0e96eef438ae2347a069ab
-ms.sourcegitcommit: 0efffe1d04a54062a26d5c6ce31a417f511b9dbf
+ms.openlocfilehash: fd08f288d816468610dadf7e5c063c08b63c0cf2
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96612575"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98254706"
 ---
 # <a name="prepare-windows-nodes-for-group-managed-service-account-support"></a>グループの管理サービス アカウントをサポートするための Windows ノードの準備
 
@@ -43,7 +43,7 @@ netdom.exe join %computername% /domain:DomainName /UserD:DomainName\UserName /Pa
 
 すべての Windows ワーカー ノードがドメインに参加したら、[gMSA の構成](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/)に関する記事で詳しく説明されている手順に従います。 これらの手順は、Kubernetes クラスターに Kubernetes gMSA カスタム リソース定義と Webhook を適用するのに役立ちます。
 
-gMSA を使用する Windows コンテナーの詳細については、[Windows コンテナーと gMSA](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts) に関する記事を参照してください。 
+gMSA を使用する Windows コンテナーの詳細については、[Windows コンテナーと gMSA](/virtualization/windowscontainers/manage-containers/manage-serviceaccounts) に関する記事を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 

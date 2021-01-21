@@ -7,18 +7,18 @@ ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/2/2020
-ms.openlocfilehash: 7b408e28ff70e66c0460473f54304cbf50fa2c92
-ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
+ms.openlocfilehash: 32a09b833e2e5a76abf0c9a6c67540ca124bfe94
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96524684"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98254587"
 ---
 # <a name="setting-up-certificates-for-azure-cli-on-azure-stack-development-kit"></a>Azure Stack Development Kit での Azure CLI 用の証明書の設定
 
 この記事の手順に従って、Linux、Mac、Windows クライアントのプラットフォームから Azure Stack Development Kit (ASDK) のリソースを管理するように Azure コマンド ライン インターフェイス (CLI) を設定します。
 
-この記事では、リモート管理コンピューターで証明書を取得して信頼する方法について説明します。 Azure CLI をインストールして、お使いの環境に接続するには、[Azure Stack Hub への Azure CLI のインストール](/azure-stack/user/azure-stack-version-profiles-azurecli2)に関するページをご覧ください。
+この記事では、リモート管理コンピューターで証明書を取得して信頼する方法について説明します。 Azure CLI をインストールして、お使いの環境に接続するには、[Azure Stack Hub への Azure CLI のインストール](../user/azure-stack-version-profiles-azurecli2.md)に関するページをご覧ください。
 
 ## <a name="prepare-for-azure-cli"></a>Azure CLI の準備
 
@@ -126,7 +126,7 @@ ASDK で Azure CLI を使用する場合は、リモート マシン上で CA �
     Write-Host "Python Cert store was updated to allow the Azure Stack Hub CA root certificate"
     ```
 
-Azure CLI を使用してインストールおよび接続する手順については、[Azure Stack Hub への Azure CLI のインストール](/azure-stack/user/azure-stack-version-profiles-azurecli2)に関するページをご覧ください。
+Azure CLI を使用してインストールおよび接続する手順については、[Azure Stack Hub への Azure CLI のインストール](../user/azure-stack-version-profiles-azurecli2.md)に関するページをご覧ください。
 
 ### <a name="linux"></a>[Linux](#tab/lin)
 
@@ -154,7 +154,7 @@ CLI を設定するときに、Azure Stack Hub の CA ルート証明書を Pyth
      sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
      ```
 
-Azure CLI を使用してインストールおよび接続する手順については、[Azure Stack Hub への Azure CLI のインストール](/azure-stack/user/azure-stack-version-profiles-azurecli2)に関するページをご覧ください。
+Azure CLI を使用してインストールおよび接続する手順については、[Azure Stack Hub への Azure CLI のインストール](../user/azure-stack-version-profiles-azurecli2.md)に関するページをご覧ください。
 
 ---
 

@@ -7,12 +7,12 @@ ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 12/2/2020
-ms.openlocfilehash: fe28503ec5072cb11996563efcb70662bb1025fa
-ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
+ms.openlocfilehash: 0d5bd91af5c320d3e6dcbb73d87b704d4903e817
+ms.sourcegitcommit: 8526f642ef859b0006c3991d966f93608a87288a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97973964"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98243444"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack-hub"></a>Azure Stack Hub での API バージョンのプロファイルの管理
 
@@ -73,7 +73,7 @@ API プロファイルは、Azure Resource Manager を使用するツール (Pow
 - **.NET** <br>
 .NET API プロファイルを使用して、リソース プロバイダーのパッケージに含まれる各リソースの種類の、最も安定した最新バージョンを取得します。 詳細については、[Azure Stack Hub での .NET による API バージョンのプロファイルの使用](azure-stack-version-profiles-net.md)についてのページを参照してください。
 - **PowerShell**  
-PowerShell ギャラリーから入手できる **Az.Bootstrapper** モジュールを使用して、API バージョンのプロファイルを使用するために必要な PowerShell コマンドレットを取得します。 詳しくは、「[Use API version profiles for PowerShell (PowerShell 向け API バージョン プロファイルの使用)](azure-stack-version-profiles-powershell.md)」をご覧ください。
+PowerShell ギャラリーから入手できる **Az.Bootstrapper** モジュールを使用して、API バージョンのプロファイルを使用するために必要な PowerShell コマンドレットを取得します。 詳しくは、「[Use API version profiles for PowerShell (PowerShell 向け API バージョン プロファイルの使用)](../operator/azure-stack-powershell-install.md)」をご覧ください。
 PowerShell ギャラリーから入手できる **AzureRM.Bootstrapper** モジュールを使用して、API バージョンのプロファイルを操作するために必要な PowerShell コマンドレットを取得します。 詳しくは、「[Use API version profiles for PowerShell (PowerShell 向け API バージョン プロファイルの使用)](../operator/powershell-install-az-module.md)」をご覧ください。
 - **Azure CLI**  
 Azure Stack Hub 固有の API バージョンのプロファイルを使用するようにお使いの環境の構成を更新します。 詳細については、[Azure CLI での API バージョンのプロファイルの使用](azure-stack-version-profiles-azurecli2.md)に関するページを参照してください。

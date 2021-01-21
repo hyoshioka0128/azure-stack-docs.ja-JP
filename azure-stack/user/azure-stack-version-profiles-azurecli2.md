@@ -7,12 +7,12 @@ ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/16/2020
-ms.openlocfilehash: 2e3c25e282a84a0e41d6c69d0af6e2f352bbfba5
-ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
+ms.openlocfilehash: fe68722e2cabea2cc863bbd6fb6d8414eb91031c
+ms.sourcegitcommit: 8526f642ef859b0006c3991d966f93608a87288a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97974015"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98243580"
 ---
 # <a name="install-azure-cli-on-azure-stack-hub"></a>Azure CLI を Azure Stack Hub にインストールする
 
@@ -67,7 +67,7 @@ Azure CLI をインストールすると、Windows マシンまたは Linux マ�
           --endpoint-active-directory-graph-resource-id "https://graph.windows.net/"
       ```
 
-    [register コマンド](https://docs.microsoft.com/cli/azure/cloud?view=azure-cli-latest#az_cloud_register)のリファレンスは、Azure CLI リファレンス ドキュメントにあります。
+    [register コマンド](/cli/azure/cloud?view=azure-cli-latest#az_cloud_register)のリファレンスは、Azure CLI リファレンス ドキュメントにあります。
 
 
 4. 次のコマンドを使用して、アクティブな環境を設定します。
@@ -402,4 +402,4 @@ Azure Stack Hub 内で CLI を使用する場合、次のような既知の問�
 
 - [Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
 - [Azure Stack Hub ユーザー (オペレーター) に対する Azure CLI の有効化](../operator/azure-stack-cli-admin.md)
-- [ユーザー アクセス許可の管理](azure-stack-manage-permissions.md) 
+- [ユーザー アクセス許可の管理](azure-stack-manage-permissions.md)

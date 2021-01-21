@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.author: patricka
 ms.reviewer: TBD
 ms.lastreviewed: 01/14/2020
-ms.openlocfilehash: 53e34636ab29194f1c99fdb86aaf0f17315163c9
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 740fa4fe450121f27211001974e91d47d3aed692
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97868388"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256083"
 ---
 # <a name="azure-stack-hub-update-activity-checklist"></a>Azure Stack Hub 更新アクティビティのチェックリスト
 
@@ -26,7 +26,7 @@ Azure Stack Hub の更新を準備するために、このチェックリスト�
 | セキュリティ更新プログラムの確認 | [セキュリティ更新プログラムの一覧](release-notes-security-updates.md)      |
 | アドオン リソース プロバイダーの更新プログラムを確認する | [App Service](azure-stack-app-service-update.md)<br>[Event Hubs](resource-provider-apply-updates.md)<br> [MySQL](azure-stack-mysql-resource-provider-update.md)<br>[SQL](azure-stack-sql-resource-provider-update.md)<br>  |
 | 最新の OEM パッケージの適用 | お使いのシステムがアップグレードされる予定の Azure Stack Hub バージョンに関して OEM に問い合わせて、システムが最小 OEM パッケージ要件を満たしていることを確認してください。 OEM パッケージが、更新する Azure Stack Hub バージョンと互換性があることを確認します。 OEM パッケージが更新後の Azure Stack Hub バージョンと互換性がない場合は、Azure Stack Hub 更新プログラムを実行する前に OEM パッケージの更新を実行する必要があります。 手順については、「Azure Stack Hub に OEM (相手先ブランド供給) の更新プログラムを適用する」を参照してください。 |
-| 省略可能:自動ログ収集の構成 | サポート チケットを開く必要がある場合にシステム ログを収集するプロセスを効率化するため、Azure Stack Hub 環境で自動ログ収集を構成することをお勧めします。 自動ログ収集を構成するには、「[ログを事前に送信する](./azure-stack-diagnostic-log-collection-overview.md#send-logs-proactively)」の手順を参照してください。 |
+| 省略可能:自動ログ収集の構成 | サポート チケットを開く必要がある場合にシステム ログを収集するプロセスを効率化するため、Azure Stack Hub 環境で自動ログ収集を構成することをお勧めします。 自動ログ収集を構成するには、「[ログを事前に送信する](./diagnostic-log-collection.md#send-logs-proactively)」の手順を参照してください。 |
 | 最新の修正プログラムの適用 | 現在インストールされているリリースに適用される最新の修正プログラムを適用します。 最新の修正プログラムの一覧については、[リリース ノートの修正プログラム](release-notes.md)のセクションを参照してください。 |
 | 容量計画ツールの実行 | ワークロードの計画とサイズ設定を行うには、最新バージョンの [Azure Stack Hub キャパシティ プランニング ツール](azure-stack-capacity-planning-overview.md)を使用します。 最新バージョンにはバグの修正プログラムが含まれていて、Azure Stack Hub の各更新プログラムでリリースされる新機能が提供されます。 |
 | **Test-AzureStack** の実行 | `Test-AzureStack -Group UpdateReadiness` を実行して、操作上の問題を特定します。 コマンドレットには、特権エンドポイント セッション (PEP) を使用してアクセスできます。 詳細については、「[Azure Stack Hub システムの状態を検証する](azure-stack-diagnostic-test.md)」を参照してください。 |

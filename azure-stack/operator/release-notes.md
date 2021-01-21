@@ -7,12 +7,12 @@ ms.date: 12/23/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
-ms.openlocfilehash: 3c10ea13f3780a7c7e1e0f999d8203d4d03f4e49
-ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
+ms.openlocfilehash: 9276cff891cd4f69c35c0890a2bf02108407bbe0
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97974151"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256066"
 ---
 # <a name="azure-stack-hub-release-notes"></a>Azure Stack Hub のリリース ノート
 
@@ -282,8 +282,8 @@ Azure Stack Hub 2002 更新プログラムのビルドの種類は **完全** �
 - Azure Stack Hub 適合性チェッカー ツールは、AD Graph に割り当てられているすべての TCP IP ポートを使用して AD Graph の統合を検証するようになりました。
 - オフライン シンジケーション ツールは、信頼性に関する機能強化によって更新されました。 このツールは GitHub では入手できなくなり、[PowerShell ギャラリーに移動されました](https://www.powershellgallery.com/packages/Azs.Syndication.Admin/)。 詳細については、「[Azure Stack Hub に Marketplace の項目をダウンロードする](azure-stack-download-azure-marketplace-item.md)」を参照してください。
 - 新しい監視機能が導入されています。 物理ホストとインフラストラクチャ VM のディスク領域不足のアラートは、プラットフォームによって自動的に修復されます。この操作が失敗した場合にのみ、オペレーターがアクションを実行するために、Azure Stack Hub 管理者ポータルにアラートが表示されます。
-- [診断ログの収集](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002&preserve-view=true)に対する改善。 新しいエクスペリエンスでは、BLOB ストレージ アカウントを事前に構成する必要がなくなるため、診断ログの収集が合理化されて簡素化されます。 ストレージ環境が事前構成されるため、サポート ケースを開く前にログを送信でき、サポート コールにかかる時間が短縮されます。
-- [事前ログ収集とオンデマンドのログ収集](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002&preserve-view=true)の両方にかかる時間が 80% 削減されました。 ログ収集時間は、この予想値より長くなることがありますが、ログ収集が失敗しない限り、Azure Stack Hub オペレーターによる操作は必要ありません。
+- [診断ログの収集](./diagnostic-log-collection.md?preserve-view=true&view=azs-2002)に対する改善。 新しいエクスペリエンスでは、BLOB ストレージ アカウントを事前に構成する必要がなくなるため、診断ログの収集が合理化されて簡素化されます。 ストレージ環境が事前構成されるため、サポート ケースを開く前にログを送信でき、サポート コールにかかる時間が短縮されます。
+- [事前ログ収集とオンデマンドのログ収集](./diagnostic-log-collection.md?preserve-view=true&view=azs-2002)の両方にかかる時間が 80% 削減されました。 ログ収集時間は、この予想値より長くなることがありますが、ログ収集が失敗しない限り、Azure Stack Hub オペレーターによる操作は必要ありません。
 - 更新が開始された後、Azure Stack Hub 更新パッケージのダウンロードの進行状況が更新ブレードに表示されるようになりました。 これは、[自動ダウンロードを使用して更新パッケージを準備する](azure-stack-update-prepare-package.md#automatic-download-and-preparation-for-update-packages)ことを選択した、接続済みの Azure Stack Hub システムに対してのみ適用されます。
 - ネットワーク コントローラーのホスト エージェントの信頼性に関する機能強化。
 - 修正プログラムや更新プログラムを適用中の内部 DNS サービスの回復性ロジックを向上させる、DNS Orchestrator と呼ばれる新しいマイクロサービスが導入されました。

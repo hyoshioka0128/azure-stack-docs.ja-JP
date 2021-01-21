@@ -8,12 +8,12 @@ ms.date: 10/26/2020
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 10/26/2020
-ms.openlocfilehash: ab28418b30c2e17cdd48471b30206397ed476ed8
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: b5221162dd4a75fd9ffbd5fb382ab05560d622f6
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97872128"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255318"
 ---
 # <a name="azure-stack-hub-administration-basics---modular-data-center-mdc"></a>Azure Stack Hub の管理の基本 - Modular Data Center (MDC)
 
@@ -49,7 +49,7 @@ Azure Stack Hub をデプロイすると、Azure Stack Hub に既定で次の基
 - IoT Hub
 - イベント ハブ
 
-これらのサービスをユーザーに提供する前には、追加の構成が必要です。 詳細については、「[Azure Stack Hub のオペレーター ドキュメント](https://docs.microsoft.com/azure-stack/operator/)」の「**チュートリアル**」と、「**操作方法ガイド**」 > 「**サービスの提供**」を参照してください。
+これらのサービスをユーザーに提供する前には、追加の構成が必要です。 詳細については、「[Azure Stack Hub のオペレーター ドキュメント](../../operator/index.yml)」の「**チュートリアル**」と、「**操作方法ガイド**」 > 「**サービスの提供**」を参照してください。
 
 ### <a name="service-roadmap"></a>サービスのロードマップ
 
@@ -88,11 +88,11 @@ Azure Stack Hub ではデプロイ、管理、整理のための基礎となる�
 - [ネットワーク](../../operator/azure-stack-viewing-public-ip-address-consumption.md)と[ストレージ](../../operator/azure-stack-manage-storage-accounts.md)のリソースを管理します。
 - [Azure Stack Hub を開始および停止します](../../operator/azure-stack-start-and-stop.md)。
 - [拡張ストレージを運用します](../../user/azure-stack-network-howto-extend-datacenter.md)。
-- [IoT Hub を管理します](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)。
-- [イベント ハブを管理します](https://docs.microsoft.com/azure-stack/operator/event-hubs-rp-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl)。
-- [App Service を管理します](https://docs.microsoft.com/azure-stack/operator/azure-stack-app-service-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl)。
+- [IoT Hub を管理します](/azure/iot-hub/about-iot-hub)。
+- [イベント ハブを管理します](../../operator/event-hubs-rp-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json&view=azs-2002)。
+- [App Service を管理します](../../operator/azure-stack-app-service-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json&view=azs-2002)。
 - ハードウェアを交換します。 こちらに、[交換可能な部分](../../operator/azure-stack-replace-component.md)の一覧があります。
-- [サポートを受けます](https://docs.microsoft.com/azure-stack/operator/azure-stack-help-and-support-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl)。
+- [サポートを受けます](../../operator/azure-stack-help-and-support-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json&view=azs-2002)。
 
 ## <a name="operator-tasks"></a>オペレーターのタスク
 
@@ -135,7 +135,7 @@ Azure Stack Hub ではデプロイ、管理、整理のための基礎となる�
 
 ## <a name="what-to-tell-your-users"></a>ユーザーに伝えること
 
-ユーザーには、Azure Stack Hub 内のサービスを操作する方法、環境に接続する方法、およびオファーをサブスクライブする方法を知らせる必要があります。 ユーザーに提供できるカスタム ドキュメントのほかに、ユーザーには [Azure Stack Hub ユーザー ドキュメント](https://docs.microsoft.com/azure-stack/user/)を案内できます。
+ユーザーには、Azure Stack Hub 内のサービスを操作する方法、環境に接続する方法、およびオファーをサブスクライブする方法を知らせる必要があります。 ユーザーに提供できるカスタム ドキュメントのほかに、ユーザーには [Azure Stack Hub ユーザー ドキュメント](../../user/index.yml)を案内できます。
 
 ### <a name="understand-how-to-work-with-services-in-azure-stack-hub"></a>Azure Stack Hub 内のサービスを操作する方法について
 

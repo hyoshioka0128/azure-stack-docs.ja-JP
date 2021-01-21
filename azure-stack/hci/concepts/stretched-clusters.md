@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
-ms.openlocfilehash: 2a09d459a44171a864729fd4163197de35995f2e
-ms.sourcegitcommit: a745662c7a5a18f135accf3f70d8508b57e83e2b
+ms.openlocfilehash: 8e544ff72338149c4d7ffe7a49c9ea47490a5316
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97737931"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98254927"
 ---
 # <a name="stretched-clusters-overview"></a>ストレッチ クラスターの概要
 
@@ -25,7 +25,7 @@ ms.locfileid: "97737931"
 - 非同期レプリケーションは、大都市圏外のサイト間で待機時間の長いネットワーク リンクを通じてデータをミラーリングしますが、障害時に両方のサイトでデータが一致する保証はありません。
 
 >[!NOTE]
-> 非同期レプリケーションの場合は、フェールオーバー後に、他のサイトのターゲット ボリュームを手動でオンラインにする必要があります。 詳細については、「[非同期レプリケーション](https://docs.microsoft.com/windows-server/storage/storage-replica/storage-replica-overview#asynchronous-replication)」を参照してください。
+> 非同期レプリケーションの場合は、フェールオーバー後に、他のサイトのターゲット ボリュームを手動でオンラインにする必要があります。 詳細については、「[非同期レプリケーション](/windows-server/storage/storage-replica/storage-replica-overview#asynchronous-replication)」を参照してください。
 
 ストレッチ クラスターには、アクティブ - パッシブとアクティブ - アクティブの 2 種類があります。 優先されるサイトとレプリケーションの方向がある、アクティブ - パッシブのサイト レプリケーションを設定できます。 アクティブ - アクティブ レプリケーションでは、どちらのサイトからでも双方向のレプリケーションを実行できます。 この記事では、アクティブ - パッシブ構成のみについて説明します。
 
@@ -50,8 +50,8 @@ Azure Stack HCI でのストレッチ クラスターについては、少し時
 
 ## <a name="next-steps"></a>次のステップ
 
-- 記憶域レプリカの詳細を確認します。 「[記憶域レプリカの概要](https://docs.microsoft.com/windows-server/storage/storage-replica/storage-replica-overview)」を参照してください。
-- 記憶域レプリカの使用の詳細を確認してください。 「[Hyper-V フェールオーバー クラスターまたは汎用クラスター用のファイル サーバーを構成する](https://docs.microsoft.com/windows-server/storage/storage-replica/stretch-cluster-replication-using-shared-storage#configure-a-hyper-v-failover-cluster-or-a-file-server-for-a-general-use-cluster)」を参照してください。
+- 記憶域レプリカの詳細を確認します。 「[記憶域レプリカの概要](/windows-server/storage/storage-replica/storage-replica-overview)」を参照してください。
+- 記憶域レプリカの使用の詳細を確認してください。 「[Hyper-V フェールオーバー クラスターまたは汎用クラスター用のファイル サーバーを構成する](/windows-server/storage/storage-replica/stretch-cluster-replication-using-shared-storage#configure-a-hyper-v-failover-cluster-or-a-file-server-for-a-general-use-cluster)」を参照してください。
 - ストレッチ クラスターのハードウェアおよび他の要件について学習します。 [システム要件](system-requirements.md)に関するページを参照してください。
 - Windows Admin Center を使用してストレッチ クラスターをデプロイする方法について学習します。 [Windows Admin Center を使用したクラスターの作成](../deploy/create-cluster.md)に関する記事を参照してください。
 - PowerShell を使用してストレッチ クラスターをデプロイする方法について学習します。 [PowerShell を使用したクラスターの作成](../deploy/create-cluster-powershell.md)に関する記事を参照してください。

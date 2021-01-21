@@ -8,12 +8,12 @@ ms.date: 12/10/2020
 ms.author: patricka
 ms.reviewer: prchint
 ms.lastreviewed: 12/10/2020
-ms.openlocfilehash: 4c5117469e1a568252e23f2794996f8d367942af
-ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
+ms.openlocfilehash: ff3164e16262ecfd4cdf84bbdb5fbb24942fc6ab
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97974253"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255709"
 ---
 # <a name="troubleshoot-issues-in-azure-stack-hub"></a>Azure Stack Hub の問題のトラブルシューティングを行う
 
@@ -30,7 +30,7 @@ ms.locfileid: "97974253"
 
 ### <a name="updates-and-diagnostics"></a>更新と診断
 
-* [Azure Stack Hub で診断ツールを使用する方法](./azure-stack-diagnostic-log-collection-overview.md)
+* [Azure Stack Hub で診断ツールを使用する方法](./diagnostic-log-collection.md)
 * [Azure Stack Hub システムの状態を検証する方法](azure-stack-diagnostic-test.md)
 * [更新プログラム パッケージのリリース周期](azure-stack-servicing-policy.md#update-package-release-cadence)
 * [ノードの状態の確認とトラブルシューティング](azure-stack-node-actions.md)
@@ -199,11 +199,11 @@ App Service に必要な Create-AADIdentityApp.ps1 スクリプトが失敗す�
 
 Azure Stack Hub の修正プログラムと更新プログラムのプロセスは、オペレーターが更新プログラム パッケージを一貫した合理的な方法で適用できるように設計されています。 まれに、修正プログラムや更新プログラムのプロセス中に問題が発生することがあります。 修正プログラムや更新プログラムのプロセス中に問題が発生した場合は、以下の手順を実行することをお勧めします。
 
-0. **前提条件**:[更新プログラムのアクティビティのチェックリスト](release-notes-checklist.md)に従っていること、および [事前ログ収集を有効](./azure-stack-diagnostic-log-collection-overview.md#send-logs-proactively)にしていることを確認してください。
+0. **前提条件**:[更新プログラムのアクティビティのチェックリスト](release-notes-checklist.md)に従っていること、および [事前ログ収集を有効](./diagnostic-log-collection.md#send-logs-proactively)にしていることを確認してください。
 
 1. 更新が失敗したときに作成されたエラー アラートの修復手順に従います。
 
-2. 問題を解決できない場合は、[Azure Stack Hub のサポート チケット](./azure-stack-help-and-support-overview.md)を作成します。 問題が発生した期間に[収集されたログ](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now)があることを確認してください。
+2. 問題を解決できない場合は、[Azure Stack Hub のサポート チケット](./azure-stack-help-and-support-overview.md)を作成します。 問題が発生した期間に[収集されたログ](./diagnostic-log-collection.md#send-logs-now)があることを確認してください。
 
 ## <a name="common-azure-stack-hub-patch-and-update-issues"></a>Azure Stack Hub の修正プログラムと更新プログラムに関する一般的な問題
 

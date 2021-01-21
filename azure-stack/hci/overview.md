@@ -6,13 +6,13 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/15/2020
-ms.openlocfilehash: 6eef8388367bb1bba3f419fba5b61c54fd729743
-ms.sourcegitcommit: 32d77de1a554315f53473407279e464a72aa9aa1
+ms.date: 01/13/2021
+ms.openlocfilehash: c4280a9b120530b84bbaac9f7f963a695c0eaf99
+ms.sourcegitcommit: 649540e30e1018b409f4b1142bf2cb392c9e8b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97515014"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208031"
 ---
 # <a name="azure-stack-hci-solution-overview"></a>Azure Stack HCI ソリューションの概要
 
@@ -136,7 +136,7 @@ Azure Stack HCI は、Azure と Azure Stack ファミリの一員であり、Azu
 Windows Admin Center バージョン 2009 では、次のような多数の機能が Azure Stack HCI に追加されています。
 
 - **Azure Kubernetes Service のホスティング機能**:[Azure Stack HCI 上の Azure Kubernetes Service](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) のプレビュー バージョンをインストールできるようになりました。
-- **クラスター作成ウィザードでのソフトウェア定義ネットワークの追加**:クラスター作成ウィザードで、[クラスターの作成](deploy/create-cluster.md#step-5-sdn-optional)中に、[ソフトウェア定義ネットワーク (SDN)](concepts/software-defined-networking.md) ネットワーク コントローラーの機能をデプロイするオプションが追加されました。
+
 - **クラスター作成ウィザードでのリモート ダイレクト メモリ アクセス (RDMA) の機能強化**: クラスター作成ウィザードで、データ センター ブリッジング (DCB) を含む iWARP および RoCE ネットワーク アダプターの RDMA を構成できるようになりました。
 
 新機能の詳細については、「[Windows Admin Center のクラスター作成拡張機能の一般提供に関する告知](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/announcing-general-availability-of-the-cluster-creation/ba-p/1978332)」を参照してください。

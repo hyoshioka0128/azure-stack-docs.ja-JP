@@ -3,16 +3,16 @@ title: ASDK を使用してAzure Stack のバックアップを検証する
 description: ASDK を使用して、Azure Stack 統合システムのバックアップを検証する方法について説明します。
 author: PatAltimore
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 1/15/2020
 ms.author: patricka
 ms.reviewer: hectorl
-ms.lastreviewed: 03/11/2020
-ms.openlocfilehash: 0829174ab080ebc482e99490b7a5af5c2e0f2806
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.lastreviewed: 1/15/2020
+ms.openlocfilehash: d04116cb3eeb74eda7241c35c377d34df97dde28
+ms.sourcegitcommit: 48a46142ea7bccd6c8a609e188dd7f3f6444f3c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97873046"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98561980"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>ASDK を使用してAzure Stack のバックアップを検証する
 Azure Stack をデプロイし、オファー、プラン、クォータ、およびサブスクリプションなどのユーザー リソースのプロビジョニング後に、[Azure Stack インフラストラクチャのバックアップを有効にする](../operator/azure-stack-backup-enable-backup-console.md)必要があります。 スケジュール設定とインフラストラクチャの定期的なバックアップの実行により、突発的的なハードウェアの故障またはサービスのエラーがある場合に、インフラストラクチャ管理のデータが失われないこようにします。
@@ -162,7 +162,7 @@ Azure Stack オペレーターとしてログインした後、[Azure Stack Powe
 
 ```powershell
 $decryptioncertpassword = Read-Host -AsSecureString -Prompt "Password for the decryption certificate"
-Restore-AzsBackup -ResourceId "<BackupID>" `
+Restore-AzsBackup -Name "<BackupID>" `
  -DecryptionCertPath "<path to decryption certificate with file name (.pfx)>" `
  -DecryptionCertPassword $decryptioncertpassword
 ```

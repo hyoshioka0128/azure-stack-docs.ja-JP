@@ -15,12 +15,12 @@ ms.date: 12/21/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 12/20/2019
-ms.openlocfilehash: 3d24ba3a714c8ea8f17189a7c63a134dab0f8d12
-ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
+ms.openlocfilehash: 34dbff445ed06291712223b17f8443b384b8cac8
+ms.sourcegitcommit: 8526f642ef859b0006c3991d966f93608a87288a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97909805"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98243529"
 ---
 # <a name="register-azure-stack-hub-with-azure---azure-stack-hub-ruggedized"></a>Azure Stack Hub を Azure に登録する - Azure Stack Hub ラグド
 
@@ -310,7 +310,7 @@ Azure Stack Hub の登録に成功したことは、 **[Region management]\(リ�
 
 4. Azure portal を使用して Azure Stack Hub 登録リソースを表示し、登録が成功したことを確認できます。 Azure Stack Hub の登録に使用したサブスクリプションに関連付けられているアカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。 **[すべてのリソース]** を選択し、 **[非表示の型の表示]** チェックボックスをオンにして、登録名を選択します。
 
-5. 登録が成功しなかった場合、この問題を解決するには、[使用するサブスクリプションを変更](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration#change-the-subscription-you-use)して再登録する必要があります。
+5. 登録が成功しなかった場合、この問題を解決するには、[使用するサブスクリプションを変更](../../operator/azure-stack-registration.md#change-the-subscription-you-use)して再登録する必要があります。
 
 また、登録が成功したかどうかは、Marketplace の管理機能を使用して確認することもできます。 **[Marketplace management]\(Marketplace の管理\)** ブレードに Marketplace 項目の一覧が表示されたら、登録は成功しています。 ただし、切断されている環境では、[Marketplace management]\(Marketplace の管理\) に Marketplace 項目は表示されません。
 
@@ -319,4 +319,4 @@ Azure Stack Hub の登録に成功したことは、 **[Region management]\(リ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Hub の管理の基本](../../operator/azure-stack-manage-basics.md)  
+[Azure Stack Hub の管理の基本](../../operator/azure-stack-manage-basics.md)

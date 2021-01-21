@@ -7,17 +7,17 @@ ms.date: 01/06/2021
 ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 01/06/2021
-ms.openlocfilehash: 002015d0d00e09de07e4a46f5ad6525dac2b7254
-ms.sourcegitcommit: 502df315764bbc4ff6d3de50b957dfd4a6c0043a
+ms.openlocfilehash: ab4a7166f0a6ae43259f3f1f919c3b24af017c1e
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98130226"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255216"
 ---
 # <a name="troubleshoot-the-asdk"></a>ASDK のトラブルシューティング
 この記事では、Azure Stack Development Kit (ASDK) の一般的なトラブルシューティング情報を提供します。 Azure Stack 統合システムに関するヘルプについては、「[Microsoft Azure Stack のトラブルシューティング](../operator/azure-stack-troubleshooting.md)」を参照してください。 
 
-ASDK は評価環境であるため、Microsoft サポートによるサポートは提供されません。 記載されていない問題が発生している場合は、[Azure Stack 用の Microsoft Q&A](https://docs.microsoft.com/answers/questions/topics/azure-stack-hub.html) で専門家からのヘルプを得られます。
+ASDK は評価環境であるため、Microsoft サポートによるサポートは提供されません。 記載されていない問題が発生している場合は、[Azure Stack 用の Microsoft Q&A](/answers/questions/topics/azure-stack-hub.html) で専門家からのヘルプを得られます。
 
 ## <a name="deployment"></a>デプロイ
 ### <a name="deployment-failure"></a>デプロイの失敗

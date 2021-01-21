@@ -5,12 +5,12 @@ author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.date: 12/10/2020
-ms.openlocfilehash: 9acbb273ea67d989f3ec1e1e88c51a96dd440256
-ms.sourcegitcommit: 97ecba06aeabf2f30de240ac283b9bb2d49d62f0
+ms.openlocfilehash: a81a1973d7324371cb42b23ca7905d39492401cf
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97010874"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98254434"
 ---
 # <a name="manage-azure-registration"></a>Azure 登録の管理
 
@@ -108,7 +108,7 @@ Azure Active Directory で、 **[ユーザー設定] > [アプリの登録]** �
       New-AzureADMSPermissionGrantPolicy -Id "AzSHCI-registration-consent-policy" -DisplayName "Azure Stack HCI registration admin app consent policy" -Description "Azure Stack HCI registration admin app consent policy"
       ```
 
-   3. アプリ ID が 1322e676-dee7-41ee-a874-ac923822781c である Azure Stack HCI サービスに必要なアプリのアクセス許可を含む条件を追加します。 次のアクセス許可は Azure Stack HCI の GA リリース用です。クラスター内のすべてのサーバーに [2020 年 11 月 23 日のプレビュー更新プログラム (KB4586852)](../release-notes.md) を適用し、Az.StackHCI モジュール バージョン 0.4.1 以降をダウンロードしていない限り、パブリック プレビューでは機能しません。
+   3. アプリ ID が 1322e676-dee7-41ee-a874-ac923822781c である Azure Stack HCI サービスに必要なアプリのアクセス許可を含む条件を追加します。 次のアクセス許可は Azure Stack HCI の GA リリース用です。クラスター内のすべてのサーバーに [2020 年 11 月 23 日のプレビュー更新プログラム (KB4586852)](https://support.microsoft.com/help/4595086/azure-stack-hci-release-notes-overview) を適用し、Az.StackHCI モジュール バージョン 0.4.1 以降をダウンロードしていない限り、パブリック プレビューでは機能しません。
    
       ```powershell
       New-AzureADMSPermissionGrantConditionSet -PolicyId "AzSHCI-registration-consent-policy" -ConditionSetType "includes" -PermissionType "application" -ResourceApplication "1322e676-dee7-41ee-a874-ac923822781c" -Permissions "bbe8afc9-f3ba-4955-bb5f-1cfb6960b242","8fa5445e-80fb-4c71-a3b1-9a16a81a1966","493bd689-9082-40db-a506-11f40b68128f","2344a320-6a09-4530-bed7-c90485b5e5e2"

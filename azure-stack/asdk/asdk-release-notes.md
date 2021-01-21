@@ -7,18 +7,18 @@ ms.date: 11/16/2020
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2020
-ms.openlocfilehash: 6eb124193f477eb4418909f6b8e79781e948d135
-ms.sourcegitcommit: 6db48bd8e6ccfaaa897713ad7eb2846a8d506358
+ms.openlocfilehash: 416b00b66b62788c49554e8dbc358a871a681dab
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94885752"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98254723"
 ---
 # <a name="asdk-release-notes"></a>ASDK リリース ノート
 
 この記事では、Azure Stack Development Kit (ASDK) の変更、修正、および既知の問題に関する情報を提供します。 実行しているバージョンが不明な場合は、[ポータルを使用して確認](../operator/azure-stack-updates.md)します。
 
-![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS フィード](https://aka.ms/asdkrss)をサブスクライブして、ASDK の新着情報を常に把握するようにしてください。
+![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS フィード](/api/search/rss?locale=en-us&search=ASDK+release+notes)をサブスクライブして、ASDK の新着情報を常に把握するようにしてください。
 
 ::: moniker range="azs-2008"
 ## <a name="build-12008059"></a>ビルド 1.2008.0.59

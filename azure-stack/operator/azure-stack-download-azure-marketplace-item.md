@@ -8,12 +8,12 @@ ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 12/16/2020
 zone_pivot_groups: state-connected-disconnected
-ms.openlocfilehash: f0aafd572aa50760a7b326d5ca699e3f1331b3e9
-ms.sourcegitcommit: f30e5178e0b4be4e3886f4e9f699a2b51286e2a8
+ms.openlocfilehash: 9560e9e2fcf5d7b01ca44b409d14a7827cac4060
+ms.sourcegitcommit: 0983c1f90734b7ea5e23ae614eeaed38f9cb3c9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97620655"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98571401"
 ---
 # <a name="download-marketplace-items-to-azure-stack-hub"></a>Azure Stack Hub に Marketplace の項目をダウンロードする
 
@@ -128,7 +128,7 @@ Azure Stack の登録の完了後、[Marketplace management]\(Marketplace 管理
    Azure アカウントの資格情報の入力を求めるメッセージが表示されます。アカウントの構成によっては、2 要素認証を使用する必要があります。
 
    > [!NOTE]
-   > セッションの有効期限が切れた、パスワードが変更された、またはアカウントを切り替えたい場合は、`Add-AzRmAccount` を使用してサインインする前に、コマンドレット `RemoveAzAccount -Scope Process` を実行します。
+   > セッションの有効期限が切れた、パスワードが変更された、またはアカウントを切り替えたい場合は、`Add-AzAccount` を使用してサインインする前に、コマンドレット `Remove-AzAccount -Scope Process` を実行します。
 
 3. 複数のサブスクリプションがある場合は、次のコマンドを実行して、登録に使用したものを選択します。
 
@@ -187,7 +187,7 @@ Azure Stack の登録の完了後、[Marketplace management]\(Marketplace 管理
 
 1. インターネットに接続されているコンピューターで、PowerShell コンソールを管理者として開きます。
 
-2. Azure Stack Hub を登録するために使用した Azure アカウントを使用して、適切な Azure クラウドと AzureAD ディレクトリ テナントにサインインします。 アカウントを追加するには、PowerShell で `Add-AzureRMureRmAccount` を実行します。
+2. Azure Stack Hub を登録するために使用した Azure アカウントを使用して、適切な Azure クラウドと AzureAD ディレクトリ テナントにサインインします。 アカウントを追加するには、PowerShell で `Add-AzureRMAccount` を実行します。
 
    ```powershell  
    Login-AzureRMAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
@@ -196,7 +196,7 @@ Azure Stack の登録の完了後、[Marketplace management]\(Marketplace 管理
    Azure アカウントの資格情報の入力を求めるメッセージが表示されます。アカウントの構成によっては、2 要素認証を使用する必要があります。
 
    > [!NOTE]
-   > セッションの有効期限が切れた、パスワードが変更された、またはアカウントを切り替えたい場合は、`Add-AzureRMRmAccount` を使用してサインインする前に、コマンドレット `RemoveAzAccount -Scope Process` を実行します。
+   > セッションの有効期限が切れた、パスワードが変更された、またはアカウントを切り替えたい場合は、`Add-AzureRMAccount` を使用してサインインする前に、コマンドレット `Remove-AzureRMAccount -Scope Process` を実行します。
 
 3. 複数のサブスクリプションがある場合は、次のコマンドを実行して、登録に使用したものを選択します。
 
@@ -213,7 +213,7 @@ Azure Stack の登録の完了後、[Marketplace management]\(Marketplace 管理
 5. VM イメージ、拡張機能、ソリューション テンプレートなどのダウンロードする Marketplace 項目を選択するには、次のコマンドを実行します。
 
    ```powershell
-   $products = Select-AzureRMsMarketplaceItem
+   $products = Select-AzsMarketplaceItem
    ```
 
    これにより、選択したサブスクリプションで使用可能なすべての Azure Stack 登録を一覧表示するテーブルが表示されます。 Marketplace 項目をダウンロードする Azure Stack 環境と一致する登録を選択し、 **[OK]** を選択します。

@@ -14,12 +14,12 @@ ms.date: 01/02/2020
 ms.author: patricka
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/02/2020
-ms.openlocfilehash: 2b941c47b9c9662998b8d55bc6878e935969d1a4
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 1fb2542680f0fa6d7c020db77ce5e59663d87f9c
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97872536"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255607"
 ---
 # <a name="gpu-vms-on-azure-stack"></a>Azure Stack 上の GPU VM 
 
@@ -47,8 +47,8 @@ GPU VM では、修正プログラムと更新プログラム (PnU) の適用時
 
 ## <a name="guest-driver-installation"></a>ゲスト ドライバーのインストール 
 
-[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup)のドキュメントでは、NVv4 GPU-P 対応 VM 内の AMD ゲスト ドライバーの設定と、ドライバーのインストールを確認する手順が説明されています。 
+[こちら](/azure/virtual-machines/windows/n-series-amd-driver-setup)のドキュメントでは、NVv4 GPU-P 対応 VM 内の AMD ゲスト ドライバーの設定と、ドライバーのインストールを確認する手順が説明されています。 
 
 ## <a name="next-steps"></a>次のステップ 
 
-[Azure Stack VM の機能](azure-stack-vm-considerations.md) 
+[Azure Stack VM の機能](azure-stack-vm-considerations.md)

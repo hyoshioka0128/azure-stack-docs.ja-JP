@@ -6,18 +6,18 @@ ms.topic: how-to
 ms.date: 12/10/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
-ms.openlocfilehash: 16fb7544fb223a1038b3f27d0416f0eda04012b6
-ms.sourcegitcommit: 97ecba06aeabf2f30de240ac283b9bb2d49d62f0
+ms.openlocfilehash: 7a0c0ca7a99b3554b74cc80911acbee92793aa52
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97011797"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98254825"
 ---
 # <a name="migrate-to-azure-stack-hci-on-new-hardware"></a>新しいハードウェア上の Azure Stack HCI に移行する
 
 > 適用対象:Azure Stack HCI バージョン 20H2、Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2008 R2
 
-このトピックでは、Windows PowerShell と Robocopy を使用して、Windows Server 2012 R2、Windows Server 2016、または Windows Server 2019 上の仮想マシン (VM) ファイルを、新しい Azure Stack HCI サーバー ハードウェアに移行する方法について説明します。 Robocopy は、サーバー間でファイルをコピーするための堅牢な方法です。 切断された場合は再開され、最後の既知の状態から処理が続けられます。 また、Robocopy では、サーバー メッセージ ブロック (SMB) を利用したマルチスレッド ファイルのコピーもサポートされています。 詳細については、「[Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy)」を参照してください。
+このトピックでは、Windows PowerShell と Robocopy を使用して、Windows Server 2012 R2、Windows Server 2016、または Windows Server 2019 上の仮想マシン (VM) ファイルを、新しい Azure Stack HCI サーバー ハードウェアに移行する方法について説明します。 Robocopy は、サーバー間でファイルをコピーするための堅牢な方法です。 切断された場合は再開され、最後の既知の状態から処理が続けられます。 また、Robocopy では、サーバー メッセージ ブロック (SMB) を利用したマルチスレッド ファイルのコピーもサポートされています。 詳細については、「[Robocopy](/windows-server/administration/windows-commands/robocopy)」を参照してください。
 
 > [!NOTE]
 > Windows Server から Azure Stack HCI への Hyper-V ライブ マイグレーションと Hyper-V レプリカはサポートされていません。
@@ -57,7 +57,7 @@ ms.locfileid: "97011797"
 
 - 必要に応じて VM のインポートと更新を行うため、Azure Stack HCI で VM のバージョンがサポートされているかどうかを確認します。 それを行う方法については、「[VM のバージョンのサポートと更新](#vm-version-support-and-update)」セクションを参照してください。
 
-- 移行元クラスター上のすべての VM をバックアップします。 すべてのアプリケーションとデータのクラッシュ整合バックアップ、およびすべてのデータベースのアプリケーション整合バックアップを完了します。 Azure へのバックアップについては、[Azure Backup の使用](https://docs.microsoft.com/azure-stack/hci/manage/use-azure-backup)に関するページを参照してください。
+- 移行元クラスター上のすべての VM をバックアップします。 すべてのアプリケーションとデータのクラッシュ整合バックアップ、およびすべてのデータベースのアプリケーション整合バックアップを完了します。 Azure へのバックアップについては、[Azure Backup の使用](../manage/use-azure-backup.md)に関するページを参照してください。
 
 - 以前の状態にロールバックする必要がある場合に備えて、移行元クラスターの VM とドメイン コントローラーのチェックポイントを作成します。 これは、物理サーバーには適用されません。
 
@@ -336,9 +336,9 @@ Windows 2008 SP1 および Windows 2008 R2-SP1 でホストされている VM �
 
     `Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\ \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /E /MT:32 /R:0 /w:1 /NFL /NDL /copyall /log:c:\log.txt /xf`
 
-1. 第 1 世代の新しい VM を作成します。 これを行う方法の詳細については、[VM の管理](https://docs.microsoft.com/azure-stack/hci/manage/vm)に関するページを参照してください。
+1. 第 1 世代の新しい VM を作成します。 これを行う方法の詳細については、[VM の管理](../manage/vm.md)に関するページを参照してください。
 
-1. コピーした VHD ファイルを新しい VM にアタッチします。 詳細については、「[仮想ハード ディスク (VHD) の管理](https://docs.microsoft.com/windows-server/storage/disk-management/manage-virtual-hard-disks)」を参照してください
+1. コピーした VHD ファイルを新しい VM にアタッチします。 詳細については、「[仮想ハード ディスク (VHD) の管理](/windows-server/storage/disk-management/manage-virtual-hard-disks)」を参照してください
 
 参考までに、次の Windows Server ゲスト オペレーティング システムでは第 2 世代の VM がサポートされています。
 
@@ -349,7 +349,7 @@ Windows 2008 SP1 および Windows 2008 R2-SP1 でホストされている VM �
 - Windows 10
 - 64 ビット バージョンの Windows 8.1 (64 ビット)
 - 64 ビット バージョンの Windows 8 (64 ビット)
-- Linux ([サポートされる Linux と FreeBSD の VM](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows) に関するページを参照)
+- Linux ([サポートされる Linux と FreeBSD の VM](/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows) に関するページを参照)
 
 ## <a name="next-steps"></a>次のステップ
 

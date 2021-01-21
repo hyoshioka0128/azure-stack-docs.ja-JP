@@ -7,12 +7,12 @@ ms.date: 10/26/2020
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 10/26/2020
-ms.openlocfilehash: 835b6a39e089bbe959c7c5cf5283d2b516b6d4f7
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: e07e06d2dbe90c846fc8ea96f18e74b0be3caf49
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97872060"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255352"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack-hub---modular-data-center-mdc"></a>Azure Stack Hub のスケール ユニットのノード操作 - Modular Data Center (MDC)
 
@@ -82,7 +82,7 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
 
 まれなケースで、停止アクションが機能しない場合には、操作を再試行し、2 度目も失敗するようであれば、代わりに BMC Web インターフェイスを使用してください。
 
-詳細については、「[Stop-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/stop-azsscaleunitnode)」を参照してください。
+詳細については、「[Stop-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/stop-azsscaleunitnode)」を参照してください。
 
 ## <a name="start"></a>[開始]
 
@@ -96,7 +96,7 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
 
 めったにありませんが、開始操作が機能しない場合は、操作を再試行します。 2 回目も失敗した場合は、代わりに BMC Web インターフェイスを使用します。
 
-詳細については、「[Start-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/start-azsscaleunitnode)」を参照してください。
+詳細については、「[Start-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/start-azsscaleunitnode)」を参照してください。
 
 ## <a name="drain"></a>ドレイン
 
@@ -113,7 +113,7 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
   Disable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```
 
-詳細については、「[Disable-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/disable-azsscaleunitnode)」を参照してください。
+詳細については、「[Disable-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/disable-azsscaleunitnode)」を参照してください。
 
 ## <a name="resume"></a>Resume
 
@@ -125,7 +125,7 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
   Enable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```
 
-詳細については、「[Enable-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/enable-azsscaleunitnode)」を参照してください。
+詳細については、「[Enable-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/enable-azsscaleunitnode)」を参照してください。
 
 ## <a name="repair"></a>修復
 
@@ -161,4 +161,4 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Hub Fabric オペレーター モジュールについて](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0)。
+[Azure Stack Hub Fabric オペレーター モジュールについて](/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0)。

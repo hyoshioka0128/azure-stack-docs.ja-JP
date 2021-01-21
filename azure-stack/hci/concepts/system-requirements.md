@@ -6,13 +6,13 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/29/2020
-ms.openlocfilehash: 2d4aebd0609dff744f4c8f6ae9113fba1b7b0ba9
-ms.sourcegitcommit: 26901a61a44390bc9b7804c22018c213036e680d
+ms.date: 01/14/2021
+ms.openlocfilehash: 3b29dfb35bad91ef02feebc22255b89116da1505
+ms.sourcegitcommit: 8526f642ef859b0006c3991d966f93608a87288a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354158"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98243461"
 ---
 # <a name="system-requirements-for-azure-stack-hci"></a>Azure Stack HCI のシステム要件
 
@@ -61,20 +61,6 @@ Azure Stack HCI クラスターでは、各サーバー ノード間に信頼性
 
 - クラスター管理専用に少なくとも 1 つのネットワーク アダプターが使用可能であることを確認します。
 - 使用するすべての VLAN 上のトラフィックを許可するようにネットワーク内の物理スイッチが構成されていることを確認します。
-
-サーバー ノード間で行われる通信には、次のような複数の種類があります。
-
-- クラスター通信 (ノードの結合、クラスターの更新、レジストリの更新)
-- クラスター ハートビート
-- クラスター共有ボリューム (CSV) のリダイレクト トラフィック
-- 仮想マシンのライブ マイグレーション トラフィック
-
-記憶域スペース ダイレクトでは、次のような追加のネットワーク トラフィックを考慮する必要があります。
-
-- 記憶域バス レイヤー (SBL) – ノード間で分散されるエクステントまたはデータ
-- 正常性 – オブジェクト (ノード、ドライブ、ネットワーク カード、クラスター サービス) の監視と管理
-
-ストレッチ クラスターの場合は、さらにサイト間の記憶域レプリカのトラフィックも発生します。 記憶域バス レイヤー (SBL) とクラスター共有ボリューム (CSV) のトラフィックは、サイト間ではなく、各サイト内のサーバー ノード間でのみ発生します。
 
 ホスト ネットワークの考慮事項と要件については、「[ホスト ネットワークの要件](host-network-requirements.md)」を参照してください。
 

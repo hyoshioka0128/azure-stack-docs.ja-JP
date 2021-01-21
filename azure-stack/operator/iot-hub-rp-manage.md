@@ -6,12 +6,12 @@ ms.author: yiygu
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 1/6/2020
-ms.openlocfilehash: ca410a3ec5b66a3ab3243ae06f82f4cb736af836
-ms.sourcegitcommit: 0e3296fb27b9dabbc2569bf85656c4c7b1d58ba9
+ms.openlocfilehash: 3fe1459d28c399269ccdb1d4cffed024bd741000
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050356"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255743"
 ---
 # <a name="how-to-manage-iot-hub-on-azure-stack-hub"></a>Azure Stack Hub で IoT Hub を管理する方法
 
@@ -104,5 +104,4 @@ IoT Hub に含まれる VM の種類は 1 つだけです。 IoT Hub のデプ�
 
 アラートなど、Azure Stack Hub の監視機能については、[正常性とアラートの監視](azure-stack-monitor-health.md)に関するページを参照してください。
 
-Azure Stack Hub のログの収集については、[Azure Stack 診断ログの収集の概要](azure-stack-diagnostic-log-collection-overview.md)に関するページを参照してください。
-
+Azure Stack Hub のログの収集については、[Azure Stack 診断ログの収集の概要](./diagnostic-log-collection.md)に関するページを参照してください。

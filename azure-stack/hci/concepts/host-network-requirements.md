@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 11/25/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
-ms.openlocfilehash: 2d31294b2b3a402efcfd4376988d1de6c3dbabd1
-ms.sourcegitcommit: 26901a61a44390bc9b7804c22018c213036e680d
+ms.openlocfilehash: 3e31852e554c85ffab18aacaa336a007a97874f2
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355599"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255301"
 ---
 # <a name="host-network-requirements-for-azure-stack-hci"></a>Azure Stack HCI のホスト ネットワーク要件
 
@@ -156,7 +156,7 @@ SET は、品質やパフォーマンスの向上など、LBFO を超える追�
 - 速度 (スループット)
 - configuration
 
-アダプターが対称であるかどうかを識別する最も簡単な方法は、速度が同じで、かつインターフェイスの説明が一致するかどうかを確認することです。 相違が許容されるのは、説明に記載されている数字のみです。 [`Get-NetAdapterAdvancedProperty`](https://docs.microsoft.com/powershell/module/netadapter/get-netadapteradvancedproperty) コマンドレットを使用して、報告された構成に必ず同じプロパティ値が表示されるようにします。
+アダプターが対称であるかどうかを識別する最も簡単な方法は、速度が同じで、かつインターフェイスの説明が一致するかどうかを確認することです。 相違が許容されるのは、説明に記載されている数字のみです。 [`Get-NetAdapterAdvancedProperty`](/powershell/module/netadapter/get-netadapteradvancedproperty) コマンドレットを使用して、報告された構成に必ず同じプロパティ値が表示されるようにします。
 
 次の表で、数字 (#) のみが異なっているインターフェイスの説明の例を確認してください。
 
@@ -298,6 +298,6 @@ SMB には、SMB マルチチャネルを含む Azure Stack HCI 用のストレ�
 
 - ネットワーク スイッチと物理ネットワークの要件について学習する。 「[物理ネットワークの要件](physical-network-requirements.md)」を参照してください。
 - フェールオーバー クラスタリングの基礎を復習する。 [フェールオーバー クラスタリング ネットワークの基礎](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09)に関するページを参照
-- SET の使用を復習する。 「[リモート ダイレクト メモリ アクセス (RDMA) とスイッチ埋め込みチーミング (SET)](https://docs.microsoft.com/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming)」を参照
-- 展開については、[Windows Admin Center を使用したクラスターの作成](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster)に関する記事を参照
-- 展開については、[Windows PowerShell を使用したクラスターの作成](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster-powershell)に関する記事を参照
+- SET の使用を復習する。 「[リモート ダイレクト メモリ アクセス (RDMA) とスイッチ埋め込みチーミング (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming)」を参照
+- 展開については、[Windows Admin Center を使用したクラスターの作成](../deploy/create-cluster.md)に関する記事を参照
+- 展開については、[Windows PowerShell を使用したクラスターの作成](../deploy/create-cluster-powershell.md)に関する記事を参照

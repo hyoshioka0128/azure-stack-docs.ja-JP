@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
-ms.openlocfilehash: ba28d5904e58d84a913777fe80c5aa05a8ecdffe
-ms.sourcegitcommit: 6a99a188bbad491e7d2817de0b9500a27797107e
+ms.openlocfilehash: 968782c4fd5ac0f4e057815c526fbde8f90164af
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97658298"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98254842"
 ---
 # <a name="deploy-an-sdn-infrastructure-using-sdn-express"></a>SDN Express を使用して SDN インフラストラクチャをデプロイする
 
@@ -21,7 +21,7 @@ ms.locfileid: "97658298"
 
 スクリプトでは段階的デプロイがサポートされており、ネットワーク コントローラーのみをデプロイして、最小限のネットワーク要件に対応するコア セットの機能を実現できます。 Windows Admin Center でクラスターの作成ウィザードを使用して、ネットワーク コントローラーを展開することもできます。 ただし、SLB やゲートウェイなどの他の SDN コンポーネントをデプロイするには、SDN Express スクリプトを使用する必要があります。
 
-System Center Virtual Machine Manager (VMM) を使用して SDN インフラストラクチャをデプロイすることもできます。 詳細については、「[VMM ファブリックで SDN リソースを管理する](https://docs.microsoft.com/system-center/vmm/network-sdn)」を参照してください。
+System Center Virtual Machine Manager (VMM) を使用して SDN インフラストラクチャをデプロイすることもできます。 詳細については、「[VMM ファブリックで SDN リソースを管理する](/system-center/vmm/network-sdn)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -62,7 +62,7 @@ SDN のデプロイを開始する前に、物理およびホストのネット�
     SDNExpress\scripts\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose
     ```
 
-1. ネットワーク コントローラー VM を作成した後、DNS サーバー上にあるネットワーク コントローラーのクラスター名に対して動的 DNS 更新を構成します。 詳細については、「[ネットワーク コントローラーをデプロイするための要件](https://docs.microsoft.com/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller#step-3-configure-dynamic-dns-registration-for-network-controller)」の手順 3 を参照してください。
+1. ネットワーク コントローラー VM を作成した後、DNS サーバー上にあるネットワーク コントローラーのクラスター名に対して動的 DNS 更新を構成します。 詳細については、「[ネットワーク コントローラーをデプロイするための要件](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller#step-3-configure-dynamic-dns-registration-for-network-controller)」の手順 3 を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

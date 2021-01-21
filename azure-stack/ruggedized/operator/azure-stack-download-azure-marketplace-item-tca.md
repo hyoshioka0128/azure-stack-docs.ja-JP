@@ -15,12 +15,12 @@ ms.date: 01/02/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 01/02/2020
-ms.openlocfilehash: a3d8fcc1c3ffa65539b233a8b89f55d57f61a5ef
-ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
+ms.openlocfilehash: 8b173f26fdd731de1d7eb21ee7a5c6947da78b55
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97910620"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256151"
 ---
 # <a name="download-marketplace-items-to-azure-stack-hub-ruggedized"></a>Azure Stack Hub (ラグド) に Marketplace の項目をダウンロードする
 
@@ -74,7 +74,7 @@ Azure Stack Hub デプロイは、インターネット接続を備えていて�
 
 接続されていない環境では、Azure から Marketplace 項目をダウンロードすることはできません。 オフライン シンジケーション ツールを使用して、Marketplace 項目をローカル ドライブにダウンロードし、そこからそれらの項目をお使いの Azure Stack Hub にアップロードする必要があります。
 
-[オフライン シンジケーション ツールはこちらからダウンロード](https://aka.ms/azsSyndicationtool)できます。
+[オフライン シンジケーション ツールはこちらからダウンロード](../../operator/azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected)できます。
 
 ### <a name="download-marketplace-items-from-azure"></a>Azure から Marketplace 項目をダウンロードする
 

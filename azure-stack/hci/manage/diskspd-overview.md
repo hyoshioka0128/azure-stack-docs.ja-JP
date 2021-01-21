@@ -5,12 +5,12 @@ author: jasonnyi
 ms.author: jasonyi
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.openlocfilehash: 03d5bf97e29009c67e9520ea59a802c55659db3b
-ms.sourcegitcommit: 2562b86f47db20e2652d4636227afb9cfd0e03ae
+ms.openlocfilehash: 8d8a78d0a5faaa3c041e17c3c38f208132f19834
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94811314"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98254791"
 ---
 # <a name="use-diskspd-to-test-workload-storage-performance"></a>DISKSPD を使用してワークロード ストレージのパフォーマンスをテストする
 
@@ -116,7 +116,7 @@ DISKSPD について理解したところで、この使用タイミングにつ
 
 後で説明するように、VM やドライブの制限で IOPS や帯域幅の上限に個別に到達する可能性はあります。 そのため、VM のサイズとドライブの種類を理解しておくことが重要です。これは、どちらにも最大 IOPS 制限と帯域幅の上限があるためです。 この知識は、ボトルネックを特定し、パフォーマンスの結果を理解する上で役立ちます。 ワークロードに適したサイズの詳細については、次のリソースを参照してください。
 
-- [VM サイズ](https://docs.microsoft.com/azure/virtual-machines/sizes-general?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)
+- [VM サイズ](/azure/virtual-machines/sizes-general?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [ディスクの種類](https://azure.microsoft.com/pricing/details/managed-disks/)
 
 ## <a name="understand-the-output"></a>出力を理解する
@@ -174,7 +174,7 @@ DISKSPD の使用を開始したところで、実際のテスト結果を取得
 DISKSPD の人工的なテストでは、実際のワークロードと比べて近い結果が得られます。 しかし、設定したパラメーターと、それが実際のシナリオに一致するかどうかに注意する必要があります。 合成ワークロードでは、デプロイ時におけるアプリケーションの実際のワークロードを完全には再現できないことを理解することが重要です。
 
 ### <a name="preparation"></a>準備
-DISKSPD テストを実行する前に行うことが推奨される、いくつかのアクションがあります。 これには、記憶域スペースの正常性の確認、別のプログラムがテストに干渉しないためのリソースの使用状況の確認、および追加データを収集する必要がある場合はパフォーマンス マネージャーの準備などが含まれます。 しかし、このトピックの目的は DISKSPD をすばやく実行することであるため、これらの操作の詳細については説明しません。 詳細については、「[Windows Server で合成ワークロードを使用して記憶域スペースのパフォーマンスをテストする](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11))」を参照してください。
+DISKSPD テストを実行する前に行うことが推奨される、いくつかのアクションがあります。 これには、記憶域スペースの正常性の確認、別のプログラムがテストに干渉しないためのリソースの使用状況の確認、および追加データを収集する必要がある場合はパフォーマンス マネージャーの準備などが含まれます。 しかし、このトピックの目的は DISKSPD をすばやく実行することであるため、これらの操作の詳細については説明しません。 詳細については、「[Windows Server で合成ワークロードを使用して記憶域スペースのパフォーマンスをテストする](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11))」を参照してください。
 
 ### <a name="variables-that-affect-performance"></a>パフォーマンスに影響を与える変数
 ストレージのパフォーマンスは、非常に繊細です。 つまり、これはパフォーマンスに影響を与える可能性のある変数が多数あることを意味します。 そのため、期待通りではない数字に遭遇することも稀ではないでしょう。 次に、パフォーマンスに影響を与えるいくつかの変数を示します。ただし、これはすべての一覧ではありません。
@@ -213,7 +213,7 @@ CSV の所有権を確認するには:
 - **ファイルのコピーが最適化されていない可能性がある** 並列処理には、内部と外部の 2 つのレベルがあります。 内部的には、リモート ターゲットに対するファイル コピーが行われている場合、CopyFileEx エンジンにはいくつかの並列処理が適用されます。 外部的には、CopyFileEx エンジンを呼び出すにはさまざまな方法があります。 たとえば、ファイル エクスプローラーからのコピーはシングル スレッドですが、Robocopy はマルチスレッドです。 このような理由から、テストが意味することが自分の求めているものなのかどうかを理解することが大切です。
 - **すべてのコピーには 2 つの側がある。** 単にファイルをコピーして貼り付ける場合、ソース ディスクとコピー先ディスクの 2 つのディスクを使用していると考えられます。 ある一方の速度がもう一方より遅い場合、基本的にはより遅い方のディスクのパフォーマンスを測定することになります。 他にも、ソース、コピー先、およびコピー エンジン間の通信が、独自の方法でパフォーマンスに影響を与える場合があります。
     
-    詳細については、[ファイル コピーを使用してストレージのパフォーマンスを測定する](https://docs.microsoft.com/archive/blogs/josebda/using-file-copy-to-measure-storage-performance-why-its-not-a-good-idea-and-what-you-should-do-instead?ranMID=24542&ranEAID=je6NUbpObpQ&ranSiteID=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&epi=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&irgwc=1&OCID=AID2000142_aff_7593_1243925&tduid=%28ir__rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00%29%287593%29%281243925%29%28je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q%29%28%29&irclickid=_rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00)方法に関するページを参照してください。
+    詳細については、[ファイル コピーを使用してストレージのパフォーマンスを測定する](/archive/blogs/josebda/using-file-copy-to-measure-storage-performance-why-its-not-a-good-idea-and-what-you-should-do-instead?epi=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&irclickid=_rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00&irgwc=1&OCID=AID2000142_aff_7593_1243925&ranEAID=je6NUbpObpQ&ranMID=24542&ranSiteID=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&tduid=(ir__rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00)(7593)(1243925)(je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q)())方法に関するページを参照してください。
 
 ## <a name="experiments-and-common-workloads"></a>実験と一般的なワークロード
 このセクションには、他のいくつかの例、実験、およびワークロードの種類が含まれています。
@@ -259,5 +259,5 @@ OLAP ワークロードはデータ取得と分析に重点を置いており、
 
 ## <a name="next-steps"></a>次の手順
 回復性の設定を最適化する方法と、その詳細な例については、以下も参照してください。
-- [OLTP と OLAP](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11))
+- [OLTP と OLAP](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11))
 - [回復性の選択](https://techcommunity.microsoft.com/t5/storage-at-microsoft/volume-resiliency-and-efficiency-in-storage-spaces-direct/ba-p/425831)

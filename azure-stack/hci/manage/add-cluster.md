@@ -6,12 +6,12 @@ author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
 ms.date: 01/06/2021
-ms.openlocfilehash: 8b27859b7afab0a6e279774e43d0269f6d58065a
-ms.sourcegitcommit: 1465bca8b7f87ea6f24faf47e86c2ba497943b28
+ms.openlocfilehash: 77f1800323f57721d3f6f70050841e4adf0fd4c5
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98103137"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98254740"
 ---
 # <a name="add-or-remove-servers-for-an-azure-stack-hci-cluster"></a>Azure Stack HCI クラスターのサーバーを追加または削除する
 
@@ -71,9 +71,9 @@ Azure Stack HCI のクラスターに対してサーバーを簡単に追加ま�
 
 > [!VIDEO https://www.youtube.com/embed/AVHPkRmsZ5Y]
 
-ストレッチ クラスターのサーバーの追加または削除は、Windows PowerShell を使用して行います。 [Get-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/get-clusterfaultdomainxml) および [Set-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/set-clusterfaultdomainxml) コマンドレットを使用して、サーバーを追加する前に、まずサイト (障害ドメイン) の情報を変更します。
+ストレッチ クラスターのサーバーの追加または削除は、Windows PowerShell を使用して行います。 [Get-ClusterFaultDomainXML](/powershell/module/failoverclusters/get-clusterfaultdomainxml) および [Set-ClusterFaultDomainXML](/powershell/module/failoverclusters/set-clusterfaultdomainxml) コマンドレットを使用して、サーバーを追加する前に、まずサイト (障害ドメイン) の情報を変更します。
 
-次に、[Add-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/add-clusternode) コマンドレットを使用して、各サイトにサーバー ペアを同時に追加できます。これにより、新しいサーバーの各ドライブも同時に追加できます。
+次に、[Add-ClusterNode](/powershell/module/failoverclusters/add-clusternode) コマンドレットを使用して、各サイトにサーバー ペアを同時に追加できます。これにより、新しいサーバーの各ドライブも同時に追加できます。
 
 通常、クラスターは、クラスター内のサーバーではなく、リモート コンピューターから管理します。 このリモート コンピューターは、管理コンピューターと呼ばれます。
 
@@ -167,7 +167,7 @@ Azure Stack HCI のクラスターに対してサーバーを簡単に追加ま�
 
 ## <a name="remove-server-pairs-from-a-stretched-cluster"></a>ストレッチ クラスターからサーバー ペアを削除する
 
-ストレッチ クラスターからのサーバー ペアの削除は、サーバー ペアの追加と同様のプロセスですが、代わりに [Remove-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/remove-clusternode) コマンドレットを使用します。
+ストレッチ クラスターからのサーバー ペアの削除は、サーバー ペアの追加と同様のプロセスですが、代わりに [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode) コマンドレットを使用します。
 
 1. 次の PowerShell コマンドレットを使用して、クラスターの状態を確認します。
 

@@ -7,12 +7,12 @@ ms.date: 02/24/2020
 ms.author: patricka
 ms.reviewer: chengwei
 ms.lastreviewed: 02/24/2020
-ms.openlocfilehash: fd383d25f34bcd8342b8e37468fb34f455cb790f
-ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
+ms.openlocfilehash: 60301776ae496a33622005bed3011e773ea321f2
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97974202"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255981"
 ---
 # <a name="azure-stack-hub-log-and-customer-data-handling"></a>Azure Stack Hub でのログおよび顧客データの処理 
 
@@ -21,7 +21,7 @@ Microsoft は、Azure Stack Hub に関係する個人データのプロセッサ
 - [オンライン サービス使用条件](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)の "データ保護条件" セクションの "個人データの処理: GDPR" 条項。
 - [オンライン サービス使用条件](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)の特則 4 の EU 一般データ保護規則の条件。
 
-Azure Stack Hub がお客様のデータセンター内に存在している間、Microsoft は、[診断](./azure-stack-diagnostic-log-collection-overview.md)、[テレメトリ](azure-stack-telemetry.md)、[課金](azure-stack-usage-reporting.md)を通じて Microsoft と共有されるデータのみを制御します。  
+Azure Stack Hub がお客様のデータセンター内に存在している間、Microsoft は、[診断](./diagnostic-log-collection.md)、[テレメトリ](azure-stack-telemetry.md)、[課金](azure-stack-usage-reporting.md)を通じて Microsoft と共有されるデータのみを制御します。  
 
 ## <a name="data-access-controls"></a>データ アクセスの制御 
 特定のサポート ケースを調査するために割り当てられた Microsoft の従業員には、暗号化されたデータを読み取り専用でアクセスする権限が付与されます。 また、Microsoft の従業員は、必要に応じてデータの削除に使用するツールにアクセスできます。 顧客データへのアクセスは、すべて監査および記録されます。  
@@ -41,7 +41,7 @@ Microsoft は、お客様の要求に応じたオンデマンドでのデータ�
 オンデマンドでのデータ削除アクションを実行する場合、Microsoft サポート エンジニアはオンデマンドでデータを削除できるようにするツールにアクセスできます。 完了したら、その旨を電話でお客様に確認します。
 
 ## <a name="diagnostic-data"></a>診断データ
-サポート プロセスの一環として、Azure Stack Hub オペレーターは、トラブルシューティングに役立てるため、Azure Stack Hub のサポート チームおよびエンジニアリング チームと[診断ログを共有](./azure-stack-diagnostic-log-collection-overview.md)できます。
+サポート プロセスの一環として、Azure Stack Hub オペレーターは、トラブルシューティングに役立てるため、Azure Stack Hub のサポート チームおよびエンジニアリング チームと[診断ログを共有](./diagnostic-log-collection.md)できます。
 
 Microsoft は、お客様が、要求された診断ログ ファイルを収集してアップロードするためのツールおよびスクリプトを提供します。 収集されたログ ファイルは、HTTPS で保護された暗号化接続を通じて Microsoft に転送されます。 HTTPS では、ネットワーク データが暗号化されるため、転送時に暗号化のためのパスワードは不要です。 受信されたログは、サポート ケースが終了して 90 日後に自動削除されるまで、暗号化された状態で保管されます。
 
@@ -57,4 +57,4 @@ Azure Stack Hub オペレーターは、課金のための使用状況情報を 
 
 
 ## <a name="next-steps"></a>次のステップ 
-[Azure Stack Hub のセキュリティについて詳しく学習する](azure-stack-security-foundations.md) 
+[Azure Stack Hub のセキュリティについて詳しく学習する](azure-stack-security-foundations.md)

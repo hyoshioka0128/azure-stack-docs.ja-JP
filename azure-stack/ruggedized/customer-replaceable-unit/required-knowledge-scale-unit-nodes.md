@@ -7,12 +7,12 @@ ms.date: 11/13/2020
 ms.author: patricka
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: a46ae218cbf4b041b836ad2f204093daa449c785
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 4df7cfa84ff9b4a08d6751aa19ffdb1430a80605
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874559"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256134"
 ---
 # <a name="required-knowledge-for-working-with-scale-unit-nodes-in-a-tactical-cloud-appliance"></a>戦術的クラウド アプライアンスでスケール ユニット ノードを使用するために必要な知識
 
@@ -30,8 +30,8 @@ PAW にアクセスするには、リモート デスクトップを使用して
 ## <a name="azure-stack-hub-administrator-portal"></a>Azure Stack Hub 管理者ポータル
 
 顧客から管理者ポータルの資格情報と URL を取得します。
-詳細については、「[Azure Stack Hub で](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals)
-[管理者ポータルを使用する](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals)」を参照してください。
+詳細については、「[Azure Stack Hub で](../../operator/azure-stack-manage-portals.md)
+[管理者ポータルを使用する](../../operator/azure-stack-manage-portals.md)」を参照してください。
 
 ## <a name="dell-emc-poweredge-r640-installation-and-service-manual"></a>Dell EMC PowerEdge R640 設置およびサービス マニュアル
 
@@ -46,4 +46,3 @@ Microsoft Azure Stack Hub 戦略的クラウド アプライアンス サービ�
 ## <a name="dell-emc-poweredge-idrac"></a>Dell EMC PowerEdge iDRAC
 
 Dell EMC PowerEdge iDRAC Web インターフェイスを移動して使用する方法について理解しておく必要があります。 iDRAC の使用方法の詳細については、「[Integrated Dell Remote Access Controller 9 ユーザー ガイド](https://www.dell.com/support/manuals/us/en/04/poweredge-r840/idrac9_4.00.00.00_ug_new/overview-of-idrac?guid=guid-a03c2558-4f39-40c8-88b8-38835d0e9003)」を参照してください。\'
-

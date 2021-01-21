@@ -15,18 +15,18 @@ ms.date: 10/01/2020
 ms.author: patricka
 ms.reviewer: karlt
 ms.lastreviewed: 10/01/2020
-ms.openlocfilehash: ebb39f3eab90b0f976e5fee2896cbe85d0d023f5
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 8dea13880e2703290e1528fca47b777f98fca7b2
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97872400"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255522"
 ---
 # <a name="extended-storage-health-checks"></a>拡張ストレージの正常性チェック
 
 この記事では、データセンターの拡張ストレージ ハードウェアと Azure Stack Hub のデプロイの正常性を確認するためのガイダンスを提供します。
 
-始める前に、[拡張ストレージのファームウェアの更新](extended-storage-firmware-updates.md)に関するページの手順を確認して従ってください。
+始める前に、[拡張ストレージのファームウェアの更新]()に関するページの手順を確認して従ってください。
 
 システムを出荷する前の最後のステップは、システムをシャットダウンすることです。 クイック スタート ガイドの手順に従ってください。
 
@@ -110,4 +110,4 @@ Azure Stack の診断の詳細については、「[Azure Stack Hub システム
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ファームウェアを更新する](extended-storage-firmware-updates.md)
+- [ファームウェアを更新する]()

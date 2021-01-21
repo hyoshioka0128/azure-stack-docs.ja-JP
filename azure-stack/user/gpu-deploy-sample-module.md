@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/13/2020
 ms.reviewer: gara
 ms.lastreviewed: 11/13/2020
-ms.openlocfilehash: b8aef224c5694cd6b8408538473dce3b86996c4d
-ms.sourcegitcommit: 8187658b1d45dceed727aca3ae1b9b57aca04392
+ms.openlocfilehash: 7a5a29c48533874cf2c859780ab0332b8410811f
+ms.sourcegitcommit: 8526f642ef859b0006c3991d966f93608a87288a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94632839"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98243478"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-hub"></a>GPU 対応 IoT モジュールを Azure Stack Hub デバイスにデプロイする
 
@@ -41,7 +41,7 @@ Azure Stack Hub インスタンス、グローバル Azure、およびローカ�
     Azure Stack Hub の GPU の詳細については、[「Azure Stack Hub 上のグラフィックス処理装置 (GPU) VM」](gpu-vms-about.md)を参照してください。
   - グローバル Azure サブスクリプション。 グローバル Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 - [Azure Container Registry (ACR)](/)。 ACR サインイン サーバー、ユーザー名とパスワードをメモしておきます。
--   グローバル Azure の Free レベルまたは Standard レベルの [IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)。
+-   グローバル Azure の Free レベルまたは Standard レベルの [IoT Hub](/azure/iot-hub/iot-hub-create-through-portal)。
 
 ### <a name="a-development-machine"></a>開発用コンピューター
 
@@ -63,13 +63,13 @@ Azure Stack Hub インスタンス、グローバル Azure、およびローカ�
 
 Linux VM を使用して Azure で IoT Edge デバイスを作成します。
 
-1.  Azure Stack Hub で [N シリーズの Linux サーバー VM](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal) を作成します。 サーバーのコンポーネントをインストールするときに、SSH を使用してサーバーと通信します。 詳細については、「[SSH 公開キーの使用方法](/azure-stack/user/azure-stack-dev-start-howto-ssh-public-key)」を参照してください。
+1.  Azure Stack Hub で [N シリーズの Linux サーバー VM](./azure-stack-quick-linux-portal.md) を作成します。 サーバーのコンポーネントをインストールするときに、SSH を使用してサーバーと通信します。 詳細については、「[SSH 公開キーの使用方法](./azure-stack-dev-start-howto-ssh-public-key.md)」を参照してください。
 
-2.  [IoT Edge デバイスの作成と登録](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
+2.  [IoT Edge デバイスの作成と登録](/azure/iot-edge/how-to-register-device)
 
 ## <a name="prepare-a-gpu-enabled-vm"></a>GPU 対応 VM の準備
 
-1. [「Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする」](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)の記事の手順に従って NVIDA GPU ドライバーを N シリーズ Linux サーバーにインストールします。
+1. [「Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする」](/azure/virtual-machines/linux/n-series-driver-setup)の記事の手順に従って NVIDA GPU ドライバーを N シリーズ Linux サーバーにインストールします。
 
     > [!NOTE]  
     > ソフトウェアのインストールには、Bash コマンド ラインを使用します。 この同じコマンドを使用して GPU 対応 VM 上の Docker で実行されているコンテナーにドライバーをインストールするため、コマンドをメモしておきます
@@ -84,7 +84,7 @@ Docker 19.02 以上をインストールする必要があります。 Docker �
 
 ### <a name="install-docker"></a>Docker のインストール
 
-Docker コンテナーは、オンプレミスのカスタマー データセンター内、外部サービス プロバイダー内、Azure 上のクラウド内など、どこでも実行できます。 Docker イメージ コンテナーは、Linux と Windows 上でネイティブに実行できます。 ただし、Windows イメージは Windows ホスト上でのみ実行でき、Linux イメージは (現在のところ Hyper-V Linux VM を使用して) Linux ホストと Windows ホスト上で実行できます (ここで言うホストとは、サーバーまたは VM です)。 詳細については、「[Docker について](https://docs.microsoft.com/dotnet/architecture/microservices/container-docker-introduction/docker-defined)」を参照してください。
+Docker コンテナーは、オンプレミスのカスタマー データセンター内、外部サービス プロバイダー内、Azure 上のクラウド内など、どこでも実行できます。 Docker イメージ コンテナーは、Linux と Windows 上でネイティブに実行できます。 ただし、Windows イメージは Windows ホスト上でのみ実行でき、Linux イメージは (現在のところ Hyper-V Linux VM を使用して) Linux ホストと Windows ホスト上で実行できます (ここで言うホストとは、サーバーまたは VM です)。 詳細については、「[Docker について](/dotnet/architecture/microservices/container-docker-introduction/docker-defined)」を参照してください。
 
 1. SSH クライアントを使用して N シリーズ Linux サーバーに接続します。
 
@@ -177,4 +177,4 @@ Azure portal に戻り、IoT マーケットプレースを使用してエッジ
 
   - 「[コンピューティングの未来: インテリジェント クラウドとインテリジェント エッジ](https://azure.microsoft.com/overview/future-of-cloud)」を参照して Azure Stack Hub、Data Box Edge とインテリジェント エッジの詳細について確認する
 
-  - [ハイブリッド クラウド ソリューション](https://docs.microsoft.com/hybrid/app-solutions/)に関するページを参照してハイブリッド クラウド アプリケーションの詳細について確認する
+  - [ハイブリッド クラウド ソリューション](/hybrid/app-solutions/)に関するページを参照してハイブリッド クラウド アプリケーションの詳細について確認する

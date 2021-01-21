@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: Azure Stack Hub でシークレットをローテーションする方法について説明します。
 author: BryanLa
 ms.topic: how-to
-ms.date: 01/07/2021
+ms.date: 01/19/2021
 ms.reviewer: fiseraci
 ms.author: bryanla
-ms.lastreviewed: 01/07/2021
+ms.lastreviewed: 01/19/2021
 monikerRange: '>=azs-1803'
-ms.openlocfilehash: ec65268a76a8616d5fea213d6c4f0551a5b5ba38
-ms.sourcegitcommit: a90b146769279ffbdb09c68ca0506875a867e177
+ms.openlocfilehash: d7c75bc9864e564736b03477a3c37140e752d850
+ms.sourcegitcommit: 0983c1f90734b7ea5e23ae614eeaed38f9cb3c9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98123699"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98571350"
 ---
 # <a name="rotate-secrets-in-azure-stack-hub"></a>Azure Stack Hub でシークレットをローテーションする
 
@@ -67,6 +67,7 @@ Azure Stack Hub はシークレットを使用して、インフラストラク�
 > - **セキュリティで保護されたキーや文字列などの証明書ではないシークレット** は、管理者が手動で実行する必要があります。 これには、ユーザーと管理者のアカウントのパスワード、[ネットワーク スイッチのパスワード](azure-stack-customer-defined.md)などがあります。
 > - **付加価値リソース プロバイダー (RP) のシークレット** については、個別のガイダンスで説明されています。
 >    - [Azure Stack Hub 上の App Service](app-service-rotate-certificates.md)
+>    - [Azure Stack Hub 上の Event Hubs](event-hubs-rp-rotate-secrets.md)
 >    - [Azure Stack Hub 上の IoT Hub](iot-hub-rp-rotate-secrets.md)
 >    - [Azure Stack Hub 上の MySQL](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)
 >    - [Azure Stack Hub 上の SQL](azure-stack-sql-resource-provider-maintain.md#secrets-rotation)
@@ -238,9 +239,6 @@ Azure Stack Hub はシークレットを使用して、インフラストラク�
     $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS_Machine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
 
     # Run Secret Rotation
-    $CertPassword = ConvertTo-SecureString "<Cert_Password>" -AsPlainText -Force
-    $CertShareCreds = Get-Credential
-    $CertSharePath = "<Network_Path_Of_CertShare>"
     Invoke-Command -Session $PEPSession -ScriptBlock {
         Start-SecretRotation -Internal
     }

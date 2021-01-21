@@ -14,12 +14,12 @@ ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 1/9/2020
-ms.openlocfilehash: c0de30c44d2938d17bbd4c48abbd1372bb7f6f79
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 34dafb113d2e87dddd0d744878c8be5e406751d0
+ms.sourcegitcommit: 8526f642ef859b0006c3991d966f93608a87288a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874287"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98243563"
 ---
 # <a name="manage-and-deploy-resources-to-azure-stack-hub-with-azure-cli"></a>Azure CLI を使用した Azure Stack Hub へのリソースの管理とデプロイ
 
@@ -47,7 +47,7 @@ VM のエイリアス ファイルをホストする、パブリックにアク�
 
 ### <a name="install-or-upgrade-cli"></a>CLI をインストールまたはアップグレードする
 
-開発ワークステーションにサインインし、CLI をインストールします。 Azure Stack Hub には、Azure CLI のバージョン 2.0 以降が必要です。 API プロファイルの最新バージョンには、CLI の最新バージョンが必要です。 CLI をインストールするには、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」で説明されている手順を使用します。 
+開発ワークステーションにサインインし、CLI をインストールします。 Azure Stack Hub には、Azure CLI のバージョン 2.0 以降が必要です。 API プロファイルの最新バージョンには、CLI の最新バージョンが必要です。 CLI をインストールするには、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」で説明されている手順を使用します。 
 
 インストールが正常に完了したことを確認するには、ターミナルまたはコマンド プロンプト ウィンドウを開いて次のコマンドを実行します。
 
@@ -218,4 +218,4 @@ Azure Stack Hub 内で CLI を使用する場合、次のような既知の問�
 
 - [Azure CLI を使用したテンプレートのデプロイ](../../user/azure-stack-deploy-template-command-line.md)
 - [Azure Stack Hub ユーザー (オペレーター) に対する Azure CLI の有効化](../../operator/azure-stack-cli-admin.md)
-- [ユーザー アクセス許可の管理](../../user/azure-stack-manage-permissions.md) 
+- [ユーザー アクセス許可の管理](../../user/azure-stack-manage-permissions.md)

@@ -5,12 +5,12 @@ author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
 ms.date: 01/06/2020
-ms.openlocfilehash: 73e58c69295afc1a1bb106ea078e753647daa08d
-ms.sourcegitcommit: c5d46662492887b70a599a60f3c3d27e3460a742
+ms.openlocfilehash: a67881f2dd4be5e4dce5fb967c88484c27025624
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97965496"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255233"
 ---
 # <a name="configure-firewalls-for-azure-stack-hci"></a>Azure Stack HCI 用にファイアウォールを構成する
 
@@ -29,7 +29,7 @@ Azure Stack HCI は、定期的に Azure に接続する必要があります。
 このトピックでは、許可リストに含まれているものを除くすべての送信先へのすべてのトラフィックをブロックするために、頻繁にロックダウンされるファイアウォールの構成を必要に応じて使用する方法について説明します。
 
    >[!IMPORTANT]
-   > 送信接続が外部の企業のファイアウォールやプロキシ サーバーによって制限されている場合は、必ず、以下の表に一覧表示されている URL がブロックされないようにしてください。 関連情報については、「[Azure Arc 対応サーバー エージェントの概要](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#networking-configuration)」の「ネットワーク構成」セクションを参照してください。
+   > 送信接続が外部の企業のファイアウォールやプロキシ サーバーによって制限されている場合は、必ず、以下の表に一覧表示されている URL がブロックされないようにしてください。 関連情報については、「[Azure Arc 対応サーバー エージェントの概要](/azure/azure-arc/servers/agent-overview#networking-configuration)」の「ネットワーク構成」セクションを参照してください。
 
 
 以下に示すように、Azure Stack HCI の場合、複数のファイアウォールを使用して Azure にアクセスします。
@@ -37,7 +37,7 @@ Azure Stack HCI は、定期的に Azure に接続する必要があります。
 :::image type="content" source="./media/configure-firewalls/firewalls-diagram.png" alt-text="図は、ファイアウォールのポート 443 (HTTPS) を介してサービス タグ エンドポイントにアクセスする Azure Stack HCI を示しています。" lightbox="./media/configure-firewalls/firewalls-diagram.png":::
 
 ## <a name="working-with-service-tags"></a>サービス タグの使用
-"*サービス タグ*" は、指定された Azure サービスからの IP アドレスのグループを表します。 Microsoft では、サービス タグに含まれる IP アドレスを管理し、IP アドレスが変更されるとサービス タグを自動的に更新して更新を最小限に抑えるようにしています。 詳細については、「[仮想ネットワーク サービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)」を参照してください。
+"*サービス タグ*" は、指定された Azure サービスからの IP アドレスのグループを表します。 Microsoft では、サービス タグに含まれる IP アドレスを管理し、IP アドレスが変更されるとサービス タグを自動的に更新して更新を最小限に抑えるようにしています。 詳細については、「[仮想ネットワーク サービス タグ](/azure/virtual-network/service-tags-overview)」を参照してください。
 
 ## <a name="required-endpoint-daily-access-after-azure-registration"></a>必要なエンドポイントの毎日のアクセス (Azure の登録後)
 Azure では、サービス タグを使用してまとめられた Azure サービスの既知の IP アドレスを保持します。 Azure では、あらゆるサービスのすべての IP アドレスの週単位の JSON ファイルを発行します。 IP アドレスは頻繁には変更されませんが、年に数回変更されます。 次の表は、オペレーティング システムからアクセスする必要があるサービス タグ エンドポイントを示しています。
