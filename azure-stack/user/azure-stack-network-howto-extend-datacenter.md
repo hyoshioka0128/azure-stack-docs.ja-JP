@@ -7,12 +7,12 @@ ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/2/2020
-ms.openlocfilehash: 02a3fdb862f3a4c04a63d5e5694487b62435ee16
-ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
+ms.openlocfilehash: 02765dbc33fe1bbcb4100e1523be96526549f367
+ms.sourcegitcommit: 649540e30e1018b409f4b1142bf2cb392c9e8b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97974100"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208099"
 ---
 # <a name="extending-storage-to-azure-stack-hub"></a>ストレージを Azure Stack Hub に拡張する
 
@@ -264,7 +264,7 @@ iSCSI イニシエーターを設定するには、まず、**Azure Stack Hub** 
 
 15. 以下で、プロセスを繰り返します。
 
-    a. ** IP アドレス**: 2 番目の iSCSI ターゲットの IP アドレス。
+    a. **IP アドレス**: 2 番目の iSCSI ターゲットの IP アドレス。
 
     b.  **ローカル アダプター**: Microsoft iSCSI イニシエーター。
 
@@ -292,7 +292,7 @@ iSCSI イニシエーターを設定するには、まず、**Azure Stack Hub** 
 
 1.  2 番目のイニシエーターとターゲットの組み合わせに対して、このプロセスを繰り返します。
 
-    a. ** ローカル アダプター**: Microsoft iSCSI イニシエーター。
+    a. **ローカル アダプター**: Microsoft iSCSI イニシエーター。
 
     b.  **イニシエーター IP**: 10.10.11.4。
 
