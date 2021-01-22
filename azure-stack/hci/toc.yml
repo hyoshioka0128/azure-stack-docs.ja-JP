@@ -44,6 +44,8 @@
           href: deploy/create-cluster-powershell.md
     - name: ワークロードのデプロイ
       items:
+        - name: ブランチ オフィスとエッジ
+          href: deploy/branch-office-edge.md
         - name: 仮想デスクトップ インフラストラクチャ
           href: deploy/virtual-desktop-infrastructure.md
         - name: SQL Server
