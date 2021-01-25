@@ -6,6 +6,8 @@
       href: overview.md
     - name: Windows Server との比較
       href: concepts/compare-windows-server.md
+    - name: Azure Stack Hub との比較
+      href: concepts/compare-azure-stack-hub.md
     - name: リリース情報
       href: release-information.md
     - name: リリース ノート
