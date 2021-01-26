@@ -3,16 +3,16 @@ title: Azure Stack Hub Marketplace の最新情報
 description: Azure Stack Hub Marketplace の最新情報をご覧ください。マーケットプレースの新しい項目、非推奨になった項目、更新された項目などが含まれています。
 author: sethmanheim
 ms.topic: article
-ms.date: 01/04/2021
+ms.date: 01/15/2021
 ms.author: sethm
 ms.reviewer: gara
 ms.lastreviewed: 05/28/2020
-ms.openlocfilehash: bd738fab6a424c07bd33a41f80621121e93345c4
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 6a1825577f216ad16b0150ef4adecb237e9e1f1c
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97869918"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256015"
 ---
 # <a name="azure-stack-hub-marketplace-changes"></a>Azure Stack Hub Marketplace の変更
 
@@ -167,6 +167,29 @@ ms.locfileid: "97869918"
 
 ## <a name="updated-marketplace-items"></a>更新された Marketplace 項目
 
+- 2021 年 1 月 6 日:Windows Server 2016 の SQL Server 2017 Enterprise - ライセンス持ち込み - バージョン 14.0.20201111
+- 2021 年 1 月 6 日:Windows Server 2016 上の SQL Server 2017 Standard - 従量課金制 - バージョン 14.0.20201111
+- 2021 年 1 月 6 日:Windows Server 2016 の SQL Server 2017 Standard - ライセンス持ち込み - バージョン 14.0.20201111
+- 2021 年 1 月 6 日:Windows Server 2019 上の SQL Server 2019 Enterprise - 従量課金制 - バージョン 15.0.20201111
+- 2021 年 1 月 6 日:Windows Server 2019 上の SQL Server 2019 Enterprise - ライセンス持ち込み - バージョン 15.0.20201111
+- 2021 年 1 月 6 日:無料の SQL Server ライセンス: Windows Server 2019 上の SQL 2019 Developer - 従量課金制 - バージョン 15.0.20201111
+- 2021 年 1 月 6 日:無料の SQL Server ライセンス: Windows Server 2019 上の SQL 2019 Developer - ライセンス持ち込み - バージョン 15.0.20201111
+- 2021 年 1 月 6 日:Windows Server 2019 上の SQL Server 2019 Standard - 従量課金制 - バージョン 15.0.20201111
+- 2021 年 1 月 6 日:Windows Server 2019 上の SQL Server 2019 Standard - ライセンス持ち込み - バージョン 15.0.20201111
+- 2021 年 1 月 6 日:無料のライセンス:Windows Server 2016 の SQL Server 2016 SP2 Developer - 従量課金制 - バージョン 13.2.20201111
+- 2021 年 1 月 6 日:無料のライセンス:Windows Server 2016 の SQL Server 2016 SP2 Developer - ライセンス持ち込み - バージョン 13.2.20201111
+- 2021 年 1 月 6 日:無料のライセンス:Windows Server 2016 の SQL Server 2016 SP2 Express - 従量課金制 - バージョン 13.2.20201111
+- 2021 年 1 月 6 日:無料のライセンス:Windows Server 2016 の SQL Server 2016 SP2 Express - ライセンス持ち込み - バージョン 13.2.20201111
+- 2021 年 1 月 6 日:無料の SQL Server ライセンス: Windows Server 2016 の SQL Server 2017 Developer - 従量課金制 - バージョン 14.0.20201111
+- 2021 年 1 月 6 日:無料の SQL Server ライセンス: Windows Server 2016 の SQL Server 2017 Developer - ライセンス持ち込み - バージョン 14.0.20201111
+- 2021 年 1 月 6 日:無料の SQL Server ライセンス: Windows Server 2016 の SQL Server 2017 Express - 従量課金制 - バージョン 14.0.20201111
+- 2021 年 1 月 6 日:無料の SQL Server ライセンス: Windows Server 2016 の SQL Server 2017 Express - ライセンス持ち込み - バージョン 14.0.20201111
+- 2021 年 1 月 6 日:Windows Server 2016 の SQL Server 2016 SP2 Enterprise - 従量課金制 - バージョン 13.2.20201111
+- 2021 年 1 月 6 日:Windows Server 2016 の SQL Server 2016 SP2 Enterprise - ライセンス持ち込み - バージョン 13.2.20201111
+- 2021 年 1 月 6 日:Windows Server 2016 の SQL Server 2016 SP2 Standard - 従量課金制 - バージョン 13.2.20201111
+- 2021 年 1 月 6 日:Windows Server 2016 の SQL Server 2016 SP2 Standard - ライセンス持ち込み - バージョン 13.2.20201111
+- 2021 年 1 月 6 日:Windows Server 2016 の SQL Server 2017 Enterprise - 従量課金制 - バージョン 14.0.20201111
+- 2021 年 1 月 6 日:SqlIaaSExtension   1.3.20560
 - 12/22/2020:Rogue Wave Software Centos 7.8 – バージョン 7.8.2020062400
 - 2020 年 12 月 7 日Bitnami Elasticsearch Cluster - バージョン 1.0.2
 - 2020 年 12 月 7 日Bitnami Cassandra Cluster - バージョン 1.0.21

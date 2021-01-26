@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.author: caoyang
 ms.reviewer: xiaofmao
 ms.lastreviewed: 09/22/2020
-ms.openlocfilehash: 2312219d67741b9485a6070c00418762e50fac73
-ms.sourcegitcommit: a745662c7a5a18f135accf3f70d8508b57e83e2b
+ms.openlocfilehash: 225c765642dc48b299c899d71eb0d0ce13d4852d
+ms.sourcegitcommit: 0983c1f90734b7ea5e23ae614eeaed38f9cb3c9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97737839"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98571367"
 ---
 # <a name="mysql-resource-provider-1193x-release-notes"></a>MySQL リソース プロバイダー 1.1.93.x のリリース ノート
 
@@ -42,6 +42,8 @@ Azure Stack Hub が 2005 リリースにアップグレードされた後に MyS
 
 ## <a name="known-issues"></a>既知の問題
 不適切な AzureRmContext を使用すると、1.1.93.0 バージョンのデプロイが失敗する場合があります。 1\.1.93.1 バージョンに直接アップグレードすることをお勧めします。 1\.1.93.0 へのアップグレードが既に正常に完了している場合は、1.1.93.1 バージョンをスキップしても問題ありません。
+
+MySQL リソース プロバイダーを再デプロイするときに同じバージョンが既にデプロイされている (たとえば、MySQL リソース プロバイダー 1.1.93.1 が既にデプロイされているときに同じバージョンが再度デプロイされる) と、MySQL リソース プロバイダーをホストしている VM が停止されます。 この問題を解決するには、管理者ポータルに移動し、system.\<region\>.mysqladapter というリソース グループで mysqlvm\<version\> という名前の VM を見つけて再起動します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,16 +3,16 @@ title: Azure Stack Hub でのスケール ユニットのノード操作
 description: 電源オン、電源オフ、無効化、再開を含むスケール ユニットのノード アクションと、Azure Stack Hub 統合システムでノードの状態を表示する方法について説明します。
 author: PatAltimore
 ms.topic: how-to
-ms.date: 11/19/2020
+ms.date: 1/19/2021
 ms.author: patricka
 ms.reviewer: thoroet
-ms.lastreviewed: 11/19/2020
-ms.openlocfilehash: dc98263b16a72e6b9809e7ef3bc0c286b627749d
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.lastreviewed: 1/19/2021
+ms.openlocfilehash: 5bececf48222c9dc7401df7cb84d83f375c93d75
+ms.sourcegitcommit: 01abc9d81ced31bd727626195148b4e00cc2d62e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97869765"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98584294"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack-hub"></a>Azure Stack Hub でのスケール ユニットのノード操作
 
@@ -41,6 +41,8 @@ ms.locfileid: "97869765"
    - ベースボード管理コントローラー (BMC) の IP アドレス。
    - コアの合計数。
    - メモリの総量。
+   
+    ノード操作によって、予期されるアラートが管理者ポータルで発生することもあります。 
 
 ![スケール ユニットの状態](media/azure-stack-node-actions/multinodeactions.png)
 
@@ -61,8 +63,6 @@ Azure Stack Hub では、ドレイン、再開、修復、シャットダウン�
 これは、操作後に、ファブリック リソース プロバイダー ロールのキャッシュが更新されなかった場合に発生する可能性があります。 
 
 次の手順を適用する前に、現在進行中の操作がないことを確認してください。 お使いの環境に合わせてエンドポイントを更新します。
-
-
 
 ### <a name="az-modules"></a>[Az モジュール](#tab/az1)
 

@@ -3,15 +3,15 @@ title: Windows Admin Center を使用して Azure Stack HCI クラスターを�
 description: Windows Admin Center を使用して Azure Stack HCI 用のサーバー クラスターを作成する方法について説明します
 author: v-dasis
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
-ms.openlocfilehash: e33096b2667ad9d620e942b66934f341982e619b
-ms.sourcegitcommit: 79e8df69b139bfa21eb83aceb824b97e7f418c03
+ms.openlocfilehash: a81b684e86f9d13105c39607f9be1c6a1d56eaf0
+ms.sourcegitcommit: 649540e30e1018b409f4b1142bf2cb392c9e8b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97364219"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208057"
 ---
 # <a name="create-an-azure-stack-hci-cluster-using-windows-admin-center"></a>Windows Admin Center を使用して Azure Stack HCI クラスターを作成する
 
@@ -199,7 +199,7 @@ Azure Stack HCI の RDMA および Hyper-V ホスト ネットワークの詳細
 
     :::image type="content" source="media/cluster/create-cluster.png" alt-text="クラスターの作成ウィザード - クラスターの作成" lightbox="media/cluster/create-cluster.png":::
 
-1. **[IP address]\(IP アドレス\)** で、使用する静的または動的 IP アドレスを選択します。
+1. **[IP address]\(IP アドレス\)** で、使用する静的または動的 IP アドレスを選択します。 IP アドレスは次の形式で入力する必要があります。"*IP アドレス/現在のサブネットの長さ*"。 次に例を示します。10.0.0.200/24。
 1. **[Advanced] \(詳細設定)** を選択します。 いくつかのオプションがあります。
 
     - **Register the cluster with DNS and Active Directory (クラスターを DNS と Active Directory に登録する)**
@@ -231,74 +231,9 @@ Azure Stack HCI の RDMA および Hyper-V ホスト ネットワークの詳細
 
 しばらくしてもクラスターの解決が成功しない場合は、通常、クラスター名ではなく、サーバー名を使用することができます。
 
-## <a name="step-5-sdn-optional"></a>手順 5:SDN (省略可能)
-
-この省略可能な手順では、[ソフトウェア定義ネットワーク (SDN)](../concepts/software-defined-networking.md) のネットワーク コントローラー コンポーネントを設定します。 いったんネットワーク コントローラーが設定されると、必要に応じて、ソフトウェア ロード バランサー (SLB) や RAS ゲートウェイなど、SDN の他のコンポーネントを構成することができます。
-
-> [!NOTE]
-> ウィザードを使用して、SDN 用に SLB および RAS ゲートウェイを構成することはできません。 SDN Express スクリプトを使用すると、これらのコンポーネントを構成できます。 これを行う方法の詳細については、[SDNExpress の GitHub リポジトリ](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts)を参照してください。
-
-> [!NOTE]
-> ストレッチ クラスターでは SDN はサポートされていません。
-
-1. **[Next:SDN]** を選択します。
-
-    :::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="クラスターの作成ウィザード - SDN ネットワーク コントローラー" lightbox="media/cluster/create-cluster-network-controller.png":::
-
-1. **[5.1 Define the Network Controller cluster]\(5.1 ネットワーク コントローラー クラスターの定義\)** の **[Host]\(ホスト\)** で、ネットワーク コントローラーの名前を入力します。 これは、管理クライアント (Windows Admin Center など) がネットワーク コントローラーと通信するために使用する DNS 名です。
-1. Azure Stack HCI VHD ファイルへのパスを指定します。 すばやく見つけるには、 **[参照]** を使用します。
-1. ネットワーク コントローラー専用の VM の数を指定します。 高可用性のためには少なくと 3 台の VM が推奨されます。
-1. **[ネットワーク]** で、管理ネットワークの VLAN ID を入力します。 ネットワーク コントローラーでは、ホストと通信して構成するために、ホストと同じ管理ネットワークに接続する必要があります。
-
-    > [!NOTE]
-    > 使用可能な場合、ネットワーク コントローラー VM にはクラスター管理に使用される仮想スイッチが使用されます。それ以外の場合は、他のクラスター VM と同様に "コンピューティング" 仮想スイッチが使用されます。 詳細については、「[ネットワーク コントローラーのデプロイを計画する](../concepts/network-controller.md)」の「[ネットワーク コントローラーの要件](../concepts/network-controller.md#network-controller-requirements)」セクションを参照してください。
-
-1. **[VM ネットワーク アドレス指定]** で、 **[DHCP]** または **[静的]** を選択します。
-1. **[DHCP]** を選択した場合は、ネットワーク コントローラー VM の名前を入力します。
-1. **[Static]\(静的\)** を選択した場合は、次のように指定します。
-    1. IP アドレス。
-    1. サブネットのプレフィックス。
-    1. 既定のゲートウェイ。
-    1. 1 つまたは複数の DNS サーバー。 **[追加]** をクリックしてさらに DNS サーバーを追加します。
-1. **[資格情報]** で、ネットワーク コントローラー VM をクラスター ドメインに参加させるために使用するユーザー名とパスワードを入力します。
-1. これらの VM のローカル管理パスワードを入力します。
-1. **[詳細]** で、VM へのパスを入力します。
-1. **[MAC アドレス プールの開始]** と **[MAC アドレス プールの終了]** の値を入力します。
-1. 完了したら、 **[次へ]** をクリックします。
-1. **[Deploy the Network Controller]\(ネットワーク コントローラーのデプロイ\)** で、ウィザードによるジョブの完了まで待ちます。 進行状況のすべてのタスクが完了するまでこのページに留まります。 **[完了]** をクリックします。
-
-1. ネットワーク コントローラー VM を作成した後、DNS サーバー上にあるネットワーク コントローラーのクラスター名に対して動的 DNS 更新を構成します。 これを行う方法の詳細については、「[ネットワーク コントローラーの動的 DNS 登録を構成する](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller#step-3-configure-dynamic-dns-registration-for-network-controller)」を参照してください。
-
-1. ネットワーク コントローラーのデプロイに失敗した場合は、これを再試行する前に以下のことを行ってください。
-
-- ウィザードによって作成されたネットワーク コントローラー VM があればすべて停止し、削除します。  
-
-- ウィザードによって作成された VHD マウント ポイントがあればすべてクリーンアップします。  
-
-- Hyper-V ホストに少なくとも 50 から 100 GB の空き領域があることを確認します。  
-
-## <a name="after-you-complete-the-wizard"></a>ウィザードの完了後
-
-ウィザードが完了した後も、いくつかの重要なタスクを行う必要があります。
-
-最初に、セキュリティのため、各サーバーで資格情報セキュリティ サポート プロバイダー (CredSSP) プロトコルを無効にします。 CredSSP はウィザードのために有効にする必要があったことに注意してください。 CredSSP に関する問題が発生した場合は、「[CredSSP のトラブルシューティング](../manage/troubleshoot-credssp.md)」で詳しい情報を参照してください。
-
-1. Windows Admin Center の **[すべての接続]** で、作成したクラスターを選択します。
-1. **[ツール]** の下で、 **[サーバー]** を選択します。
-1. 右側のペインで、クラスター内の最初のサーバーを選択します。
-1. **[概要]** で **[Disable CredSSP]\(CredSSP を無効にする\)** を選択します。 上部の赤い **[CredSSP ENABLED]\(CredSSP が有効になっています\)** というバナーが表示されなくなります。
-1. クラスター内の各サーバーで、ステップ 3 と 4 を繰り返します。
-
-他に次のようなタスクを行う必要があります。
-
-- クラスター監視をセットアップします。 「[クラスター監視のセットアップ](witness.md)」を参照してください。
-- ボリュームを作成します。 [ボリュームの作成](../manage/create-volumes.md)に関する記事を参照してください。
-- ストレッチ クラスターの場合は、ボリュームを作成し、レプリケーションを設定します。 「[ストレッチ クラスター ボリュームの作成とレプリケーションの設定](../manage/create-stretched-volumes.md)」を参照してください。
-
 ## <a name="next-steps"></a>次のステップ
 
 - クラスターを Azure に登録します。 「[Azure の登録を管理する](../manage/manage-azure-registration.md)」を参照してください。
 - クラスターの最終検証を実行します。 「[Azure Stack HCI クラスターの検証](validate.md)」を参照してください
 - VM をプロビジョニングします。 「[Windows Admin Center を使用して Azure Stack HCI 上の VM を管理する](../manage/vm.md)」を参照してください。
 - PowerShell を使用してクラスターをデプロイすることもできます。 [PowerShell を使用した Azure Stack HCI クラスターの作成](create-cluster-powershell.md)に関する記事を参照してください。
-- PowerShell を使用してネットワーク コントローラーをデプロイすることもできます。 [PowerShell を使用してネットワーク コントローラーをデプロイする](network-controller-powershell.md)ことに関するページを参照してください。

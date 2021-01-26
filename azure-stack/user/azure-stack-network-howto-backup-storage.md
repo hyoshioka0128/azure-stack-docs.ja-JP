@@ -7,12 +7,12 @@ ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/2/2020
-ms.openlocfilehash: 6bbca7a38e23a0dfadcd0e7654430430d55da3f2
-ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
+ms.openlocfilehash: 5067c873b2313f76c9213d89674ce00926efadc1
+ms.sourcegitcommit: 51ce5ba6cf0a377378d25dac63f6f2925339c23d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97974066"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210973"
 ---
 # <a name="back-up-your-storage-accounts-on-azure-stack-hub"></a>Azure Stack Hub でストレージ アカウントをバックアップする
 
@@ -86,7 +86,7 @@ Windows Server を設定したら、[Azure Stack Hub PowerShell](../operator/pow
     azcopy sync "https:/<storagaccount>/<container>?<SAS Key>" "C:\\myFolder" --recursive=true --delete-destination=true
     ```
 
-5.  **ストレージ アカウント**、**SAS キー**、および**ローカル ディレクトリのパスを入力します。  これを使用して、**ターゲット** ストレージ アカウントにデータを増分コピーします
+5.  **ストレージ アカウント**、**SAS キー**、および **ローカル ディレクトリのパス** を入力します。  これを使用して、**ターゲット** ストレージ アカウントにデータを増分コピーします
     
     ```
     azcopy sync "C:\\myFolder" "https:// <storagaccount>/<container>?<SAS Key>" --recursive=true --delete-destination=true
