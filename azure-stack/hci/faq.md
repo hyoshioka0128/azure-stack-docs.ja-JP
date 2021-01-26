@@ -6,13 +6,13 @@ author: JohnCobb1
 ms.author: v-johcob
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/24/2020
-ms.openlocfilehash: f4c6b9585f41388281c6618fabd21932f6d48c38
-ms.sourcegitcommit: afdae61022037b5dba8345cb264049897e0aca8f
+ms.date: 1/15/2021
+ms.openlocfilehash: 97979a9fb96840337e89a4a3db3e3307cdb70eac
+ms.sourcegitcommit: 8526f642ef859b0006c3991d966f93608a87288a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97051600"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98243393"
 ---
 # <a name="azure-stack-hci-faq"></a>Azure Stack HCI の FAQ
 この Azure Stack HCI の FAQ は、Azure Stack HCI の接続に関するセクションと一般的な FAQ のセクションで構成されています。
@@ -24,7 +24,9 @@ Azure Stack HCI は、Azure のハイブリッド サービスとして提供さ
 
 **Azure Stack HCI に格納されたデータはクラウドに送信されますか?**
 
-いいえ。 オンプレミス仮想マシン (VM) の名前、メタデータ、構成、コンテンツがクラウドに送信されることは決してありません。ただし、それを目的として Azure Backup や Azure Site Recovery などの追加サービスを明示的に有効にした場合を除きます。 また、それらの VM を個別にクラウド管理サービス (Azure Arc など) に登録する場合も除きます。
+いいえ。 オンプレミス仮想マシン (VM) の名前、メタデータ、構成、コンテンツなどのデータがクラウドに送信されることは決してありません。ただし、それを目的として Azure Backup や Azure Site Recovery などの追加サービスを明示的に有効にした場合、またはそれらの VM を個別に Azure Arc などのクラウド管理サービスに登録した場合を除きます。
+
+Azure Stack HCI のセキュリティを維持しながら最新状態に保ち、予期した通りに作動するために収集する診断データの詳細については、「[Azure Stack HCI のデータ コレクション](concepts/data-collection.md)」および「[Azure でのデータ所在地](https://azure.microsoft.com/global-infrastructure/data-residency/)」を参照してください。
 
 ### <a name="edge-local-management-and-control"></a>エッジローカルな管理と制御
 
@@ -68,7 +70,7 @@ Azure Stack HCI が Azure と同期されないまま 30 日が経過した場�
 
 **同期された情報は、実際にはどこに送信されますか?**
 
-Azure Stack HCI は Azure と同期され、データは Microsoft が運営するセキュリティで保護されたデータセンターに格納されます。 詳細については、「[Azure Stack HCI のデータ コレクション](concepts/data-collection.md)」と「[Azure でのデータ所在地](https://azure.microsoft.com/global-infrastructure/data-residency/)」を参照してください。
+Azure Stack HCI は Azure と同期され、データは Microsoft が運営するセキュリティで保護されたデータセンターに格納されます。 Azure Stack HCI のセキュリティを維持しながら最新状態に保ち、予期した通りに作動するために収集する診断データの詳細については、「[Azure Stack HCI のデータ コレクション](concepts/data-collection.md)」および「[Azure でのデータ所在地](https://azure.microsoft.com/global-infrastructure/data-residency/)」を参照してください。
 
 ### <a name="disconnected-or-air-gapped"></a>非接続 (エアギャップ) 環境
 

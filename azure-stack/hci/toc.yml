@@ -28,10 +28,6 @@
       href: deploy/operating-system.md
     - name: クラスターの作成
       href: deploy/create-cluster.md
-    - name: クラスター監視のセットアップ
-      href: deploy/witness.md
-    - name: SDN インフラストラクチャの展開
-      href: deploy/sdn-express.md
     - name: 新しいハードウェアに移行する
       href: deploy/migrate-cluster-new-hardware.md
     - name: 同じハードウェア上で移行する
@@ -96,6 +92,8 @@
           href: manage/update-cluster.md
         - name: クラスターを監視する
           href: manage/monitor-cluster.md
+        - name: クラスター監視のセットアップ
+          href: manage/witness.md
         - name: データセンター ファイアウォールを使用する
           href: manage/use-datacenter-firewall.md
         - name: DISKSPD を使用してワークロードをテストする
@@ -114,6 +112,10 @@
           href: manage/validate-qos.md
         - name: CredSSP のトラブルシューティング
           href: manage/troubleshoot-credssp.md
+    - name: SDN の管理
+      items:
+        - name: SDN インフラストラクチャの展開
+          href: manage/sdn-express.md
     - name: Azure サービスの管理
       items:
         - name: Windows Admin Center を Azure に登録する

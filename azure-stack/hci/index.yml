@@ -8,12 +8,12 @@ metadata:
   author: khdownie
   ms.author: v-kedow
   ms.date: 12/10/2020
-  ms.openlocfilehash: e40fd475493f82a11f5d0b276133b2e939212bfa
-  ms.sourcegitcommit: f56a5b287c90b2081ae111385c8b7833931d4059
+  ms.openlocfilehash: 4be55308fade55861f57597f0b6d2c5f731f1834
+  ms.sourcegitcommit: e772df8ac78c86d834a68d1a8be83b7f738019b7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/11/2020
-  ms.locfileid: "97343144"
+  ms.lasthandoff: 01/26/2021
+  ms.locfileid: "98771948"
 landingContent:
 - title: Azure Stack HCI について
   linkLists:
@@ -36,7 +36,7 @@ landingContent:
     - text: クラスターの作成
       url: deploy/create-cluster.md
     - text: クラスター監視のセットアップ
-      url: deploy/witness.md
+      url: manage/witness.md
     - text: Azure に登録する
       url: deploy/register-with-azure.md
     - text: クラスターを検証する
