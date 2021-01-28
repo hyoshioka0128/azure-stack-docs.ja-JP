@@ -6,13 +6,13 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/11/2020
-ms.openlocfilehash: 2d2c122a2fd8a9e0be5d3ffd942f85f310845f2d
-ms.sourcegitcommit: f56a5b287c90b2081ae111385c8b7833931d4059
+ms.date: 01/22/2021
+ms.openlocfilehash: 6527623ba5b42f40eb24cd6269f5d45bbccb0d25
+ms.sourcegitcommit: e772df8ac78c86d834a68d1a8be83b7f738019b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97343178"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98772233"
 ---
 # <a name="quickstart-create-an-azure-stack-hci-cluster-and-register-it-with-azure"></a>クイックスタート: Azure Stack HCI クラスターを作成して Azure に登録する
 
@@ -58,7 +58,7 @@ ms.locfileid: "97343178"
 
 ## <a name="set-up-a-cluster-witness"></a>クラスター監視のセットアップ
 
-クラスター内のいずれかのサーバーがオフラインになった場合に、他のノードも使用できなくなることがないように、監視リソースを設定する必要があります。 このクイックスタートでは、別のサーバーにある SMB ファイル共有を監視用に使用します。 クラスター内のすべてのサーバー ノードに信頼性の高いインターネット接続がある場合は、Azure クラウド監視を使用しても構いません。 監視オプションの詳細については、「[クラスター監視のセットアップ](witness.md)」を参照してください。
+クラスター内のいずれかのサーバーがオフラインになった場合に、他のノードも使用できなくなることがないように、監視リソースを設定する必要があります。 このクイックスタートでは、別のサーバーにある SMB ファイル共有を監視用に使用します。 クラスター内のすべてのサーバー ノードに信頼性の高いインターネット接続がある場合は、Azure クラウド監視を使用しても構いません。 監視オプションの詳細については、「[クラスター監視のセットアップ](../manage/witness.md)」を参照してください。
 
 1. Windows Admin Center で、上部のドロップダウン矢印から **[Cluster Manager]\(クラスター マネージャー\)** を選択します。
 1. **[Cluster connections]\(クラスター接続\)** の下で、クラスターを選択します。

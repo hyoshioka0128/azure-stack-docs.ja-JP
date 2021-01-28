@@ -7,12 +7,12 @@ ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/16/2020
-ms.openlocfilehash: fe68722e2cabea2cc863bbd6fb6d8414eb91031c
-ms.sourcegitcommit: 8526f642ef859b0006c3991d966f93608a87288a
+ms.openlocfilehash: 8ffab5fa1ffff5012edfbce3da69f35a753ff72e
+ms.sourcegitcommit: e772df8ac78c86d834a68d1a8be83b7f738019b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98243580"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98772291"
 ---
 # <a name="install-azure-cli-on-azure-stack-hub"></a>Azure CLI を Azure Stack Hub にインストールする
 
@@ -53,7 +53,7 @@ Azure CLI をインストールすると、Windows マシンまたは Linux マ�
       | 値 | 例 | 説明 |
       | --- | --- | --- |
       | 環境名 | AzureStackUser | ユーザー環境の場合は、`AzureStackUser` を使用します。 オペレーターの場合は、`AzureStackAdmin` を指定します。 |
-      | Resource Manager エンドポイント | `https://management.contoso.onmicrosoft.com` | ASDK の **ResourceManagerUrl** は次のとおりです。`https://management.contoso.onmicrosoft.com/` になります。統合システムの **ResourceManagerUrl** は`https://management.<region>.<fqdn>/` になります。統合システム エンドポイントに関する質問がある場合は、お客様のクラウド オペレーターにお問い合わせください。 |
+      | Resource Manager エンドポイント | `https://management.contoso.onmicrosoft.com` | ASDK の **ResourceManagerUrl** は次のとおりです。`https://management.local.azurestack.external/` になります。統合システムの **ResourceManagerUrl** は`https://management.<region>.<fqdn>/` になります。統合システム エンドポイントに関する質問がある場合は、お客様のクラウド オペレーターにお問い合わせください。 |
       | ストレージ エンドポイント | local.contoso.onmicrosoft.com | `local.azurestack.external` は、ASDK の場合です。 統合システムの場合は、システムのエンドポイントを使用します。  |
       | Keyvault のサフィックス | .vault.contoso.onmicrosoft.com | `.vault.local.azurestack.external` は、ASDK の場合です。 統合システムの場合は、システムのエンドポイントを使用します。  |
       | エンドポイント Azure Active Directory Graph リソース ID | https://graph.windows.net/ | Active Directory リソース ID。 |

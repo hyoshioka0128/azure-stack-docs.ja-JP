@@ -5,13 +5,13 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 01/12/2021
-ms.openlocfilehash: 7f77855945ecfb31e223db46be8b2e2e3a012c16
-ms.sourcegitcommit: 502df315764bbc4ff6d3de50b957dfd4a6c0043a
+ms.date: 01/22/2021
+ms.openlocfilehash: 4b6e7537a1111ed2e38d1783acf7197a4249b2ac
+ms.sourcegitcommit: e772df8ac78c86d834a68d1a8be83b7f738019b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98130352"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98772104"
 ---
 # <a name="manage-azure-stack-hci-clusters-using-windows-admin-center"></a>Windows Admin Center を使用して Azure Stack HCI クラスターを管理する
 
@@ -97,7 +97,7 @@ Windows Admin Center を使用して、Azure Stack HCI クラスターを管理�
    - **ディスク監視** - ディスク リソースを監視として使用します (ストレッチ クラスターには使用しないでください)
    - **ファイル共有監視** - ファイル共有を監視として使用します。
 
-        監視を設定する方法の詳細については、「[クラスター監視のセットアップ](../deploy/witness.md)」を参照してください。 「[Azure Stack HCI のクラスターとプールのクォーラムについて](../concepts/quorum.md)」も参照してください。
+        監視を設定する方法の詳細については、「[クラスター監視のセットアップ](witness.md)」を参照してください。 「[Azure Stack HCI のクラスターとプールのクォーラムについて](../concepts/quorum.md)」も参照してください。
 
         :::image type="content" source="media/manage-cluster/cluster-settings-witness.png" alt-text="クラスターの [監視] 画面" lightbox="media/manage-cluster/cluster-settings-witness.png":::
 

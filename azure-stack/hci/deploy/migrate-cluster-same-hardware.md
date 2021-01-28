@@ -3,15 +3,15 @@ title: 同じハードウェア上の Azure Stack HCI に移行する
 description: 同じハードウェア上の Azure Stack HCI にクラスターを移行する方法について説明します
 author: v-dasis
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 01/22/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
-ms.openlocfilehash: d1e033ed2b8bbae2968be8125c7d0dccb3e9f3cf
-ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
+ms.openlocfilehash: 35c1de7da10fbecbf6b861a23cdebb752502ca44
+ms.sourcegitcommit: e772df8ac78c86d834a68d1a8be83b7f738019b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98254638"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98772267"
 ---
 # <a name="migrate-to-azure-stack-hci-on-same-hardware"></a>同じハードウェア上の Azure Stack HCI に移行する
 
@@ -181,7 +181,7 @@ PowerShell を使用してクラスターを作成する方法の詳細につい
     Get-StoragePool | ? IsPrimordial -eq $false | ft FriendlyName,Version
     ```
 
-1. クォーラム監視を作成します。 方法については、「[クラスター監視のセットアップ](./witness.md)」を参照してください。
+1. クォーラム監視を作成します。 方法については、「[クラスター監視のセットアップ](../manage/witness.md)」を参照してください。
 
 1. 以下を使用して、記憶域修復ジョブが完了していることを確認します。
 

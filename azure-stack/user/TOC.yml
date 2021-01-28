@@ -219,6 +219,8 @@
               items:
                 - name: 概要
                   href: iot-hub-overview.md
+                - name: IoT Edge デバイスの接続
+                  href: iot-hub-connect-iot-edge-device.md
             - name: Azure Monitor
               href: azure-stack-metrics-azure-data.md
               items:

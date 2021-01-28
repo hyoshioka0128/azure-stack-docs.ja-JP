@@ -6,13 +6,13 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/13/2021
-ms.openlocfilehash: 579ccb529ff2ac00a864a165fa5086244f0c0870
-ms.sourcegitcommit: 649540e30e1018b409f4b1142bf2cb392c9e8b0d
+ms.date: 01/22/2021
+ms.openlocfilehash: ee4046837b012f5ea55a85db418e2af35f84a7ee
+ms.sourcegitcommit: e772df8ac78c86d834a68d1a8be83b7f738019b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208014"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98772256"
 ---
 # <a name="software-defined-networking-sdn-in-azure-stack-hci"></a>Azure Stack HCI におけるソフトウェアによるネットワーク制御 (SDN)
 
@@ -38,7 +38,7 @@ Azure Stack HCI には、主要な SDN コンポーネントとしてネット�
 - 仮想ネットワークに仮想アプライアンスをアタッチする。
 - 仮想ネットワークまたは従来の VLAN ベースのネットワークにアタッチされた VM を対象に QoS (サービスの品質) ポリシーを構成する。
 
-Azure Stack HCI クラスターの作成後に、[SDN Express を使用してネットワーク コントローラーをデプロイ](../deploy/sdn-express.md)することをお勧めします。
+Azure Stack HCI クラスターの作成後に、[SDN Express を使用してネットワーク コントローラーをデプロイ](../manage/sdn-express.md)することをお勧めします。
 
 ## <a name="software-load-balancing"></a>ソフトウェア負荷分散
 
@@ -60,4 +60,4 @@ Azure Stack HCI クラスターの作成後に、[SDN Express を使用してネ
 
 - [ソフトウェア定義ネットワーク インフラストラクチャを計画する](plan-software-defined-networking-infrastructure.md)
 - [Windows Server の SDN の概要](/windows-server/networking/sdn/software-defined-networking)
-- [SDN Express を使用して SDN インフラストラクチャをデプロイする](../deploy/sdn-express.md)
+- [SDN Express を使用して SDN インフラストラクチャをデプロイする](../manage/sdn-express.md)

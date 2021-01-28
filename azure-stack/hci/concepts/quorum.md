@@ -4,13 +4,13 @@ description: Azure Stack HCI の記憶域スペース ダイレクトでのク�
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 0503e9a97a2ca2b15447dbd837eeac9162b84654
-ms.sourcegitcommit: 48a46142ea7bccd6c8a609e188dd7f3f6444f3c4
+ms.date: 01/22/2021
+ms.openlocfilehash: cd352017027b7e122b39e1d16c867d5b2e3576fc
+ms.sourcegitcommit: e772df8ac78c86d834a68d1a8be83b7f738019b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98561997"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98772222"
 ---
 # <a name="understanding-cluster-and-pool-quorum-on-azure-stack-hci"></a>Azure Stack HCI のクラスターとプールのクォーラムについて
 
@@ -227,4 +227,4 @@ Windows Server 2019 には、独自のクォーラム メカニズムを持つ�
 詳細については、「
 
 - [クォーラムを構成して管理する](/windows-server/failover-clustering/manage-cluster-quorum)
-- [クラスター監視をセットアップする](../deploy/witness.md)
+- [クラスター監視をセットアップする](../manage/witness.md)
