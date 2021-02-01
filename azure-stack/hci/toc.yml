@@ -102,8 +102,6 @@
           href: manage/add-cluster.md
         - name: メンテナンスのためにサーバーをオフラインにする
           href: manage/maintain-servers.md
-        - name: Azure 登録の管理
-          href: manage/manage-azure-registration.md
         - name: 言語の変更
           href: manage/languages.md
         - name: プライバシー設定を変更する
@@ -120,6 +118,8 @@
       items:
         - name: Windows Admin Center を Azure に登録する
           href: manage/register-windows-admin-center.md
+        - name: Azure でのクラスター登録の管理
+          href: manage/manage-azure-registration.md
         - name: Azure Portal の使用
           href: manage/azure-portal.md
         - name: Azure Monitor による監視
