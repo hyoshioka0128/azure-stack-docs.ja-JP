@@ -6,13 +6,13 @@ author: JohnCobb1
 ms.author: v-johcob
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 1/15/2021
-ms.openlocfilehash: 97979a9fb96840337e89a4a3db3e3307cdb70eac
-ms.sourcegitcommit: 8526f642ef859b0006c3991d966f93608a87288a
+ms.date: 1/21/2021
+ms.openlocfilehash: 6c84bad0de72235c6ccde1b8c23016afeb956cba
+ms.sourcegitcommit: c87d1e26a4f96be4651f63fbf5ea3d98d6f14832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98243393"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659359"
 ---
 # <a name="azure-stack-hci-faq"></a>Azure Stack HCI の FAQ
 この Azure Stack HCI の FAQ は、Azure Stack HCI の接続に関するセクションと一般的な FAQ のセクションで構成されています。
@@ -24,7 +24,7 @@ Azure Stack HCI は、Azure のハイブリッド サービスとして提供さ
 
 **Azure Stack HCI に格納されたデータはクラウドに送信されますか?**
 
-いいえ。 オンプレミス仮想マシン (VM) の名前、メタデータ、構成、コンテンツなどのデータがクラウドに送信されることは決してありません。ただし、それを目的として Azure Backup や Azure Site Recovery などの追加サービスを明示的に有効にした場合、またはそれらの VM を個別に Azure Arc などのクラウド管理サービスに登録した場合を除きます。
+いいえ。 オンプレミス仮想マシン (VM) の名前、メタデータ、構成、コンテンツなどの顧客データがクラウドに送信されることは決してありません。ただし、それを目的として Azure Backup や Azure Site Recovery などの追加サービスを明示的に有効にした場合、またはそれらの VM を個別に Azure Arc などのクラウド管理サービスに登録した場合を除きます。
 
 Azure Stack HCI のセキュリティを維持しながら最新状態に保ち、予期した通りに作動するために収集する診断データの詳細については、「[Azure Stack HCI のデータ コレクション](concepts/data-collection.md)」および「[Azure でのデータ所在地](https://azure.microsoft.com/global-infrastructure/data-residency/)」を参照してください。
 

@@ -4,13 +4,13 @@ description: このトピックでは、Azure Stack HCI オペレーティング
 author: burcuerdemir
 ms.author: burcue
 ms.topic: conceptual
-ms.date: 12/18/2020
-ms.openlocfilehash: ec7623243c09ffc93036ada1927cbe62acad0b9d
-ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
+ms.date: 01/22/2021
+ms.openlocfilehash: 79490100adaef813af6b8df05779620b315765b3
+ms.sourcegitcommit: ea4bb7bf0ba1bd642c769013a0280f24e71550bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98254961"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98718000"
 ---
 # <a name="utility-applications-for-azure-stack-hci"></a>Azure Stack HCI 用のユーティリティ アプリケーション
 
@@ -31,6 +31,7 @@ Altaro VM Backup は、Hyper-V および VMware 環境用の受賞歴のある V
 
 - アプリケーションの一覧:[Virtual Machine Backup and Replication for Hyper-V and VMware](https://www.altaro.com/vm-backup/)
 - アプリケーションのサポート:[Altaro による Azure Stack HCI のサポート](https://www.altaro.com/news/single/News-Altaro-applies-its-expertise-in-Hyper-V-backup-to-support-Microsoft.php)
+- レプリケーションのサポート: [Altaro WAN-Optimized Replication](https://www.altaro.com/vm-backup/wan-optimized-replication.php)
 
 :::image type="content" source="./media/utility-applications/veeam-logo.png" alt-text="Veeam 社のロゴ" border="false":::
 
@@ -38,6 +39,7 @@ Veeam Backup & Replication は、すべてのクラウド、仮想、および�
 
 - アプリケーションの一覧:[Veeam Backup & Replication](https://www.veeam.com/vm-backup-recovery-replication-software.html)
 - アプリケーションのサポート:[Veeam による Azure Stack HCI のサポート](https://www.veeam.com/kb4047)
+- [Replication による Hyper-V VM サポート](https://www.veeam.com/vm-advanced-replication.html?ad=in-text-link)
 
 :::image type="content" source="./media/utility-applications/commvault-logo.png" alt-text="Commvault 社のロゴ" border="false":::
 
@@ -45,6 +47,7 @@ Commvault は、オンプレミスとクラウドの場所全体でデータを�
 
 - アプリケーションの一覧:[Microsoft Azure Stack](https://www.commvault.com/supported-technologies/microsoft/azurestack)
 - アプリケーションのサポート:[Azure Stack HCI](https://documentation.commvault.com/11.21/essential/132799_microsoft_azure_stack_hci.html)
+- [Commvault のバックアップと復旧で Microsoft Azure Stack HCI がサポートされるようになりました](https://www.commvault.com/blogs/commvault-backup-and-recovery-now-supports-microsoft-azure-stack-hci)
 
 :::image type="content" source="./media/utility-applications/veritas-logo.png" alt-text="Veritas 社のロゴ" border="false":::
 
@@ -52,6 +55,7 @@ Veritas Backup Exec は、環境の仮想、物理、およびクラウドのリ
 
 - アプリケーションの一覧:[Backup Exec](https://www.veritas.com/protection/backup-exec)
 - アプリケーションのサポート:[Protect Azure Stack HCI with Backup Exec (Backup Exec を使用して Azure Stack HCI を保護する)](https://www.veritas.com/support/en_US/article.100048860)
+- [Veritas Backup Exec による Microsoft Azure のサポート](https://www.veritas.com/protection/backup-exec/azure)
 
 :::image type="content" source="./media/utility-applications/datadog-logo.png" alt-text="Datadag 社のロゴ" border="false":::
 

@@ -3,15 +3,15 @@ title: Windows PowerShell を使用して Azure Stack HCI クラスターを作�
 description: Windows PowerShell を使用して Azure Stack HCI 用のクラスターを作成する方法について説明します
 author: v-dasis
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 01/22/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
-ms.openlocfilehash: fa020531067f74fba2609296672e347d6804cb6b
-ms.sourcegitcommit: 97ecba06aeabf2f30de240ac283b9bb2d49d62f0
+ms.openlocfilehash: 2099d7e9dcd2d01f949d54ad5bd59ce06ecaccbc
+ms.sourcegitcommit: e772df8ac78c86d834a68d1a8be83b7f738019b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97010891"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98772204"
 ---
 # <a name="create-an-azure-stack-hci-cluster-using-windows-powershell"></a>Windows PowerShell を使用して Azure Stack HCI クラスターを作成する
 
@@ -37,9 +37,11 @@ Azure Stack HCI のテストには興味があるものの、ハードウェア�
 開始する前に次の点を確認します。
 
 - [Azure Stack HCI のシステム要件](../concepts/system-requirements.md)を確認します。
+- Azure Stack HCI の[物理ネットワークの要件](../concepts/physical-network-requirements.md)と[ホスト ネットワークの要件](../concepts/host-network-requirements.md)に関するページを読みます。
 - クラスター内の各サーバーに Azure Stack HCI OS をインストールします。 「[Azure Stack HCI オペレーティング システムのデプロイ](operating-system.md)」を参照してください。
 - 各サーバーでローカルの Administrators グループのメンバーであるアカウントを用意します。
 - Active Directory でオブジェクトを作成する権限を付与します。
+- ストレッチ クラスターの場合は、あらかじめ 2 つのサイトを Active Directory に設定します。
 
 ## <a name="using-windows-powershell"></a>Windows PowerShell を使用する
 
@@ -57,7 +59,9 @@ PowerShell は、ホスト サーバー上の RDP セッションでローカル
 
 サーバーに接続するには、まずネットワーク接続があり、同じドメインまたは完全に信頼されたドメインに参加していて、サーバーに対するローカル管理権限を持っている必要があります。
 
-PowerShell を開き、接続先のサーバーの完全修飾ドメイン名または IP アドレスを使用します。 各サーバー (Server1、Server2、Server3、Server4) で次のコマンドを実行すると、パスワードの入力を求められます。
+PowerShell を開き、接続先のサーバーの完全修飾ドメイン名または IP アドレスを使用します。 各サーバーで次のコマンドを実行すると、パスワードの入力を求められます。 
+
+この例では、サーバーの名前は Server1、Server2、Server3、Server4 であるものと想定しています。
 
    ```powershell
    Enter-PSSession -ComputerName "Server1" -Credential "Server1\Administrator"
@@ -134,44 +138,27 @@ Invoke-Command ($ServerList) {
 
 ```powershell
 $ServerList = "Server1", "Server2", "Server3", "Server4"
-Restart-Computer -ComputerName $ServerList
+Restart-Computer -ComputerName $ServerList -WSManAuthentication Kerberos
 ```
 
 ## <a name="step-2-configure-networking"></a>手順 2:ネットワークを構成する
 
-この手順では、環境内の各種ネットワーク要素の構成を行います。
+このステップでは、仮想スイッチやネットワーク アダプターなどのさまざまなネットワーク要素を環境内で構成します。 RDMA (iWARP と RoCE の両方) ネットワーク アダプターがサポートされています。
+
+Azure Stack HCI の RDMA および Hyper-V ホスト ネットワークの詳細については、[ホスト ネットワークの要件](../concepts/host-network-requirements.md)に関する記事を参照してください。
 
 ### <a name="disable-unused-networks"></a>未使用のネットワークを無効にする
 
 切断されているか、管理、ストレージ、またはワークロードのトラフィック (VM など) に使用されていないネットワークを、無効にする必要があります。 未使用のネットワークを識別する方法を次に示します。
 
 ```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
-Get-NetAdapter -CimSession $Servers | Where-Object Status -eq Disconnected
+$ServerList = "Server1", "Server2", "Server3", "Server4"
+Get-NetAdapter -CimSession $ServerList | Where-Object Status -eq Disconnected
 ```
 これらを無効にする方法は次のとおりです。
 
 ```powershell
-Get-NetAdapter -CimSession $Servers | Where-Object Status -eq Disconnected | Disable-NetAdapter -Confirm:$False
-```
-
-### <a name="assign-virtual-network-adapters"></a>仮想ネットワーク アダプターを割り当てる
-
-次に、以下の例のように、管理用および残りのトラフィック用の仮想ネットワーク アダプター (vNIC) を割り当てます。 クラスター管理用のネットワーク アダプターを少なくとも 1 つ構成する必要があります。
-
-```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
-$vSwitchName="vSwitch"
-Rename-VMNetworkAdapter -ManagementOS -Name $vSwitchName -NewName Management -ComputerName $Servers
-Add-VMNetworkAdapter -ManagementOS -Name SMB01 -SwitchName $vSwitchName -CimSession $Servers
-Add-VMNetworkAdapter -ManagementOS -Name SMB02 -SwitchName $vSwitchName -Cimsession $Servers
-```
-
-正常に追加され、割り当てられていることを確認します。
-
-```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
-Get-VMNetworkAdapter -CimSession $Servers -ManagementOS
+Get-NetAdapter -CimSession $ServerList | Where-Object Status -eq Disconnected | Disable-NetAdapter -Confirm:$False
 ```
 
 ### <a name="create-virtual-switches"></a>仮想スイッチを作成する
@@ -181,29 +168,51 @@ Get-VMNetworkAdapter -CimSession $Servers -ManagementOS
 複数の NIC をチーミングするには、すべてのネットワーク アダプターが同一である必要があります。
 
 ```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
+$ServerList = "Server1", "Server2", "Server3", "Server4"
 $vSwitchName="vSwitch"
 ```
 
 仮想スイッチを作成するには:
 
 ```powershell
-Invoke-Command -ComputerName $Servers -ScriptBlock {New-VMSwitch -Name $using:vSwitchName -EnableEmbeddedTeaming $TRUE -EnableIov $true -NetAdapterName (Get-NetAdapter | Where-Object Status -eq Up ).InterfaceAlias}
+Invoke-Command -ComputerName $ServerList -ScriptBlock {New-VMSwitch -Name $using:vSwitchName -EnableEmbeddedTeaming $TRUE -EnableIov $true -NetAdapterName (Get-NetAdapter | Where-Object Status -eq Up ).InterfaceAlias}
 ```
 
 ここで、スイッチが正常に作成されたことを確認します。
 
 ```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
-Get-VMSwitch -CimSession $Servers | Select-Object Name, IOVEnabled, IOVS*
-Get-VMSwitchTeam -CimSession $Servers
+$ServerList = "Server1", "Server2", "Server3", "Server4"
+Get-VMSwitch -CimSession $ServerList | Select-Object Name, IOVEnabled, IOVS*
+Get-VMSwitchTeam -CimSession $ServerList
+```
+
+### <a name="assign-virtual-network-adapters"></a>仮想ネットワーク アダプターを割り当てる
+
+次に、以下の例のように、管理用および残りのトラフィック用の仮想ネットワーク アダプター (vNIC) を割り当てます。 クラスター管理用のネットワーク アダプターを少なくとも 1 つ構成する必要があります。
+
+```powershell
+$ServerList = "Server1", "Server2", "Server3", "Server4"
+$vSwitchName="vSwitch"
+Rename-VMNetworkAdapter -ManagementOS -Name $vSwitchName -NewName Management -ComputerName $ServerList
+Add-VMNetworkAdapter -ManagementOS -Name SMB01 -SwitchName $vSwitchName -CimSession $ServerList
+Add-VMNetworkAdapter -ManagementOS -Name SMB02 -SwitchName $vSwitchName -Cimsession $ServerList
+```
+
+正常に追加され、割り当てられていることを確認します。
+
+```powershell
+$ServerList = "Server1", "Server2", "Server3", "Server4"
+Get-VMNetworkAdapter -CimSession $ServerList -ManagementOS
 ```
 
 ### <a name="configure-ip-addresses-and-vlans"></a>IP アドレスと VLAN を構成する
 
 1 つまたは 2 つのサブネットを構成できます。 スイッチの相互接続が過負荷にならないようにするには、2 つのサブネットをお勧めします。 たとえば、SMB ストレージ トラフィックでは、1 つの物理スイッチに専用のサブネットが常に使用されます。
 
-### <a name="obtain-network-interface-information"></a>ネットワーク インターフェイスの情報を取得する
+> [!NOTE]
+> IP アドレスの構成中、新しい IP アドレスを取得する間に仮想アダプターのいずれかに接続される可能性があるため、接続が数分間中断される場合があります。
+
+#### <a name="obtain-network-interface-information"></a>ネットワーク インターフェイスの情報を取得する
 
 ネットワーク インターフェイス カードの IP アドレスを設定するには、その前にまず、インターフェイス インデックス (`ifIndex`)、`Interface Alias`、`Address Family` など、必要な情報がいくつかあります。 これらは後で必要になるため、各サーバー ノードについて記録しておきます。
 
@@ -211,19 +220,19 @@ Get-VMSwitchTeam -CimSession $Servers
 
 ```powershell
 $ServerList = "Server1", "Server2", "Server3", "Server4"
-Get-NetIPInterface -ComputerName $ServerList
+Get-NetIPInterface -CimSession $ServerList
 ```
 
 #### <a name="configure-one-subnet"></a>1 つのサブネットを構成する
 
 ```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
+$ServerList = "Server1", "Server2", "Server3", "Server4"
 $StorNet="172.16.1."
 $StorVLAN=1
 $IP=1 #starting IP Address
 
 #Configure IP Addresses
-foreach ($Server in $Servers){
+foreach ($Server in $ServerList){
     New-NetIPAddress -IPAddress ($StorNet+$IP.ToString()) -InterfaceAlias "vEthernet (SMB01)" -CimSession $Server -PrefixLength 24
     $IP++
     New-NetIPAddress -IPAddress ($StorNet+$IP.ToString()) -InterfaceAlias "vEthernet (SMB02)" -CimSession $Server -PrefixLength 24
@@ -231,17 +240,16 @@ foreach ($Server in $Servers){
 }
 
 #Configure VLANs
-Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB01 -VlanId $StorVLAN -Access -ManagementOS -CimSession $Servers
-Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB02 -VlanId $StorVLAN -Access -ManagementOS -CimSession $Servers
+Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB01 -VlanId $StorVLAN -Access -ManagementOS -CimSession $ServerList
 #Restart each host vNIC adapter so that the Vlan is active.
-Restart-NetAdapter "vEthernet (SMB01)" -CimSession $Servers
-Restart-NetAdapter "vEthernet (SMB02)" -CimSession $Servers
+Restart-NetAdapter "vEthernet (SMB01)" -CimSession $ServerList
+Restart-NetAdapter "vEthernet (SMB02)" -CimSession $ServerList
 ```
 
 #### <a name="configure-two-subnets"></a>2 つのサブネットを構成する
 
 ```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
+$ServerList = "Server1", "Server2", "Server3", "Server4"
 $StorNet1="172.16.1."
 $StorNet2="172.16.2."
 $StorVLAN1=1
@@ -249,15 +257,15 @@ $StorVLAN2=2
 $IP=1 #starting IP Address
 
 #Configure IP Addresses
-foreach ($Server in $Servers){
+foreach ($Server in $ServerList){
     New-NetIPAddress -IPAddress ($StorNet1+$IP.ToString()) -InterfaceAlias "vEthernet (SMB01)" -CimSession $Server -PrefixLength 24
     New-NetIPAddress -IPAddress ($StorNet2+$IP.ToString()) -InterfaceAlias "vEthernet (SMB02)" -CimSession $Server -PrefixLength 24
     $IP++
 }
 
 #Configure VLANs
-Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB01 -VlanId $StorVLAN1 -Access -ManagementOS -CimSession $Servers
-Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB02 -VlanId $StorVLAN2 -Access -ManagementOS -CimSession $Servers
+Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB01 -VlanId $StorVLAN1 -Access -ManagementOS -CimSession $ServerList
+Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB02 -VlanId $StorVLAN2 -Access -ManagementOS -CimSession $ServerList
 #Restart each host vNIC adapter so that the Vlan is active.
 Restart-NetAdapter "vEthernet (SMB01)" -CimSession $Servers
 Restart-NetAdapter "vEthernet (SMB02)" -CimSession $Servers
@@ -266,12 +274,12 @@ Restart-NetAdapter "vEthernet (SMB02)" -CimSession $Servers
 #### <a name="verify-vlan-ids-and-subnets"></a>VLAN ID とサブネットを検証する
 
 ```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
+$ServerList = "Server1", "Server2", "Server3", "Server4"
 #verify ip config
-Get-NetIPAddress -CimSession $servers -InterfaceAlias vEthernet* -AddressFamily IPv4 | Sort-Object -Property PSComputername | ft pscomputername,interfacealias,ipaddress -AutoSize -GroupBy PSComputerName
+Get-NetIPAddress -CimSession $ServerList -InterfaceAlias vEthernet* -AddressFamily IPv4 | Sort-Object -Property PSComputername | ft pscomputername,interfacealias,ipaddress -AutoSize -GroupBy PSComputerName
 
 #Verify that the VlanID is set
-Get-VMNetworkAdapterVlan -ManagementOS -CimSession $servers | Sort-Object -Property Computername | Format-Table ComputerName,AccessVlanID,ParentAdapter -AutoSize -GroupBy ComputerName
+Get-VMNetworkAdapterVlan -ManagementOS -CimSession $ServerList | Sort-Object -Property Computername | Format-Table ComputerName,AccessVlanID,ParentAdapter -AutoSize -GroupBy ComputerName
 ```
 
 ## <a name="step-3-prep-for-cluster-setup"></a>手順 3:クラスターのセットアップを準備する
@@ -300,9 +308,6 @@ Get-ClusterNetwork
 
 記憶域スペース ダイレクトを有効にする前に、ドライブが空であることを確認します。 次のスクリプトを実行して、古いパーティションまたは他のデータをすべて削除します。
 
-> [!WARNING]
-> このスクリプトにより、Azure Stack HCI システム ブート ドライブ以外のすべてのドライブのすべてのデータが完全に削除されます。
-
 ```powershell
 # Fill in these variables with your values
 $ServerList = "Server1", "Server2", "Server3", "Server4"
@@ -329,7 +334,7 @@ Invoke-Command ($ServerList) {
 この手順では、サーバー ノードがクラスター作成用に正しく構成されていることを確認します。 `Test-Cluster` コマンドレットを使用してテストを実行し、構成がハイパーコンバージド クラスターとして機能するのに適していることを確認します。 次の例では、`-Include` パラメーターを使用して、特定のカテゴリのテストを指定しています。 これにより、正しいテストが検証に含まれるようになります。
 
 ```powershell
-Test-Cluster -Cluster –Node "Server1", "Server2", "Server3", "Server4" –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
+Test-Cluster –Node $ServerList –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
 ```
 
 ## <a name="step-4-create-the-cluster"></a>手順 4:クラスターを作成する
@@ -342,18 +347,27 @@ Test-Cluster -Cluster –Node "Server1", "Server2", "Server3", "Server4" –Incl
 > サーバーで静的 IP アドレスが使用されている場合は、次のコマンドを変更し、パラメーター `–StaticAddress <X.X.X.X>;` を追加して IP アドレスを指定することにより、静的 IP アドレスを反映させます。
 
 ```powershell
- New-Cluster –Name "Cluster1" –Node "Server1", "Server2", "Server3", "Server4" –NoStorage
+$ClusterName="cluster1" New-Cluster -Name $ClusterName –Node $ServerList –nostorage
 ```
 
 これでクラスターが作成されました。
 
-クラスターが作成された後、ドメイン全体にクラスター名がレプリケートされるまで時間がかかることがあります。特に、Active Directory にワークグループ サーバーが新たに追加されている場合は時間がかかります。 Windows Admin Center にクラスターが表示される場合がありますが、まだ接続することはできません。
+クラスターが作成された後、ドメイン全体に DNS 経由でクラスター名がレプリケートされるまで時間がかかることがあります。特に、Active Directory にワークグループ サーバーが新たに追加されている場合は時間がかかります。 Windows Admin Center にクラスターが表示される場合がありますが、まだ接続することはできません。
+
+すべてのクラスター リソースがオンラインであることを確認するための適切なチェック:
+
+```powershell
+Get-Cluster -Name $ClusterName | Get-ClusterResource
+```
 
 しばらくしてもクラスターの解決が成功しない場合は、クラスター名ではなく、いずれかのクラスター化サーバーの名前を使用することでほとんどの場合、接続できます。
 
 ## <a name="step-5-set-up-sites-stretched-cluster"></a>手順 5:サイトをセットアップする (ストレッチ クラスター)
 
-このタスクは、2 つのサイト間にストレッチ クラスターを作成する場合にのみ適用されます。
+このタスクは、2 つのサイト間にストレッチ クラスターを作成する場合にのみ適用されます。 
+
+> [!NOTE]
+> Active Directory のサイトとサービスを事前にセットアップしてある場合は、以下の説明に従って手動でサイトを作成する必要はありません。
 
 ### <a name="step-51-create-sites"></a>手順 5.1:サイトを作成する
 
@@ -436,7 +450,7 @@ Get-ClusterFaultDomain -CimSession "ClusterS1"
 次のコマンドを実行すると、記憶域スペース ダイレクトが有効になります。 次に示すように、記憶域プールのフレンドリ名を指定することもできます。
 
 ```powershell
-$session = New-CimSession -Cluster "Cluster1" | Enable-ClusterStorageSpacesDirect -PoolFriendlyName "Cluster1 Storage Pool"
+Enable-ClusterStorageSpacesDirect -PoolFriendlyName "$ClusterName Storage Pool" -CimSession $ClusterName
 ```
 
 記憶域プールを表示するには、以下を使用します。
@@ -445,13 +459,13 @@ $session = New-CimSession -Cluster "Cluster1" | Enable-ClusterStorageSpacesDirec
 Get-StoragePool -CimSession $session
 ```
 
-これで、必要最小限のクラスターが作成されました。
+これで、クラスターが作成されました。
 
 ## <a name="after-you-create-the-cluster"></a>クラスターを作成した後
 
 これで終わりですが、まだ、いくつかの重要なタスクを行う必要があります。
 
-- クラスター監視をセットアップします。 「[クラスター監視のセットアップ](witness.md)」を参照してください。
+- クラスター監視をセットアップします。 「[クラスター監視のセットアップ](../manage/witness.md)」を参照してください。
 - ボリュームを作成します。 [ボリュームの作成](../manage/create-volumes.md)に関する記事を参照してください。
 - ストレッチ クラスターの場合は、ボリュームを作成し、記憶域レプリカを使用してレプリケーションをセットアップします。 [ストレッチ クラスター用のボリュームの作成とレプリケーションの設定](../manage/create-stretched-volumes.md)に関する記事を参照してください。
 
@@ -459,5 +473,3 @@ Get-StoragePool -CimSession $session
 
 - クラスターを Azure に登録します。 「[Azure の登録を管理する](../manage/manage-azure-registration.md)」を参照してください。
 - クラスターの最終検証を実行します。 「[Azure Stack HCI クラスターの検証](validate.md)」を参照してください
-- VM をプロビジョニングします。 [PowerShell を使用した Azure Stack HCI 上の VM の管理](../manage/vm-powershell.md)に関する記事を参照してください。
-- Windows Admin Center を使用して、クラスターを作成することもできます。 「[Windows Admin Center を使用して Azure Stack HCI クラスターを作成する](create-cluster.md)」を参照してください。

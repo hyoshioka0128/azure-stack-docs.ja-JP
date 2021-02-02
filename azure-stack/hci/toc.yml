@@ -114,6 +114,8 @@
       items:
         - name: SDN インフラストラクチャの展開
           href: manage/sdn-express.md
+        - name: テナントの仮想ネットワークを管理する
+          href: manage/tenant-virtual-networks.md
     - name: Azure サービスの管理
       items:
         - name: Windows Admin Center を Azure に登録する

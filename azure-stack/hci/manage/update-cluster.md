@@ -4,13 +4,13 @@ description: Windows Admin Center と PowerShell を使用して、オペレー�
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 10/27/2020
-ms.openlocfilehash: 001cf81721423aad770093c0fe5cf92ec6b66af8
-ms.sourcegitcommit: 97ecba06aeabf2f30de240ac283b9bb2d49d62f0
+ms.date: 01/25/2020
+ms.openlocfilehash: 751551b827ef5d3c871f0224bfa60d9f79fc5d45
+ms.sourcegitcommit: e772df8ac78c86d834a68d1a8be83b7f738019b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97010823"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98771960"
 ---
 # <a name="update-azure-stack-hci-clusters"></a>Azure Stack HCI クラスターを更新する
 
@@ -24,14 +24,32 @@ Azure Stack HCI クラスターを更新する場合、その目標は、クラ�
 
 Windows Admin Center を使用すると、簡単なユーザー インターフェイスを使用して、クラスターを更新し、オペレーティング システムとソリューションの更新プログラムを簡単に適用することができます。 Microsoft のハードウェア パートナーから統合システムを購入した場合、適切なパートナーの更新プログラムの拡張機能をインストールすることにより、Windows Admin Center から直接、最新のドライバー、ファームウェア、およびその他の更新プログラムを簡単に入手できます。 統合システムとしてハードウェアを購入しなかった場合、ハードウェア ベンダーの推奨事項に従い、必要に応じてファームウェアとドライバーの更新プログラムを個別に実行します。
 
-Windows Admin Center では、クラスター対応更新を実行するようにクラスターが適切に構成されているかどうかが確認され、必要に応じて、Windows Admin Center による CAU の自動構成 (CAU クラスターの役割のインストールや、必要なファイアウォール規則の有効化など) を希望するかどうかが確認されます。
+更新プログラムをインストールするには、次の手順のようにします。
 
 1. クラスターに接続すると、1 つ以上のサーバーに更新プログラムをインストールする準備ができている場合は、Windows Admin Center ダッシュボードで通知され、すぐに更新するためのリンクが表示されます。 または、左側の **[ツール]** メニューから **[更新プログラム]** を選択することもできます。
-1. Windows Admin Center のクラスター対応更新ツールを使用するには、Credential Security Service Provider (CredSSP) を有効にし、明示的な資格情報を指定する必要があります。 CredSSP を有効にするかどうかを確認するメッセージが表示されたら、 **[はい]** をクリックします。
-1. ユーザー名とパスワードを指定して、 **[続行]** をクリックします。
-1. 利用可能な更新プログラムがすべて表示されます。 **[Check Available Updates]\(利用可能な更新プログラムを確認する\)** をクリックして一覧を更新します。
-1. インストールする更新プログラムを選択し、 **[Apply All Updates]\(すべての更新プログラムを適用する\)** をクリックします。 これで、クラスター内のすべてのサーバーに更新プログラムがインストールされます。 再起動が必要な場合、中断を防ぐために、仮想マシンなどのクラスターの役割は、あらかじめ別のサーバーに移動されます。
-1. セキュリティを向上させるには、更新プログラムのインストールが完了したらすぐに CredSSP を無効にします。
+
+2. クラスターを初めて更新する場合は、Windows Admin Center によって、クラスター対応更新を実行するようにクラスターが適切に構成されているかどうかが確認され、必要に応じて、Windows Admin Center による CAU の自動構成 (CAU クラスターの役割のインストールや、必要なファイアウォール規則の有効化など) を希望するかどうかが確認されます。 更新プロセスを開始するには、 **[作業の開始]** をクリックします。
+
+   :::image type="content" source="media/update-cluster/add-cau-role.png" alt-text="Windows Admin Center により、クラスター対応更新を実行するようにクラスターが自動的に構成される" lightbox="media/update-cluster/add-cau-role.png":::
+
+   > [!NOTE]
+   > Windows Admin Center のクラスター対応更新ツールを使用するには、Credential Security Service Provider (CredSSP) を有効にし、明示的な資格情報を指定する必要があります。 CredSSP を有効にするかどうかを確認するメッセージが表示される場合は、 **[はい]** をクリックします。 ユーザー名とパスワードを指定して、 **[続行]** をクリックします。
+
+3. クラスターの更新状態が表示されます。クラスター内の各サーバーで利用可能なオペレーティング システムの更新プログラムの一覧を取得するには、 **[更新プログラムの確認]** をクリックします。 場合によっては、管理者の資格情報を入力する必要があります。 利用可能なオペレーティング システムの更新プログラムがない場合は、 **[Next: hardware updates]\(次へ: ハードウェアの更新\)** をクリックして、ステップ 7 に進みます。
+
+4. **Next:Install\(次へ: インストール\)** を選択してオペレーティング システムの更新プログラムのインストールに進むか、**スキップ** をクリックしてそれらを除外します。 
+
+   :::image type="content" source="media/update-cluster/operating-system-updates.png" alt-text="[Next: Install]\(次へ: インストール\) を選択してオペレーティング システムの更新プログラムのインストールに進むか、[スキップ] をクリックしてそれらを除外する" lightbox="media/update-cluster/operating-system-updates.png":::
+
+5. クラスター内の各サーバーにオペレーティング システムの更新プログラムをインストールするには、 **[インストール]** を選択します。 更新の状態が "更新プログラムをインストールしています" に変わります。 いずれかの更新プログラムで再起動が必要な場合は、一度に 1 つずつサーバーが再起動され、ダウンタイムを防ぐために、仮想マシンなどのクラスターの役割がサーバー間で移動されます。
+
+   :::image type="content" source="media/update-cluster/install-os-updates.png" alt-text="クラスター内の各サーバーにオペレーティング システムの更新プログラムをインストールするには、[インストール] をクリックする" lightbox="media/update-cluster/install-os-updates.png":::
+
+6. オペレーティング システムの更新が完了すると、更新の状態が "成功" に変わります。 **[Next: hardware updates]\(次へ: ハードウェアの更新\)** をクリックして、ハードウェア更新画面に進みます。
+
+7. Windows Admin Center によって、特定のサーバー ハードウェアをサポートする拡張機能がクラスターにインストールされているかどうかが確認されます。 クラスター内の各サーバーにハードウェアの更新プログラムをインストールするには、 **[次へ: インストール]** をクリックします。 拡張機能または更新プログラムが見つからない場合は、 **[終了]** をクリックします。
+
+8. セキュリティを向上させるには、更新プログラムのインストールが完了したらすぐに CredSSP を無効にします。
     - Windows Admin Center の **[すべての接続]** で、クラスター内の最初のサーバーを選択し、 **[接続]** を選択します。
     - **[概要]** ページで **[Disable CredSSP]\(CredSSP を無効にする\)** を選択し、次に **[Disable CredSSP]\(CredSSP を無効にする\)** ポップアップ ウィンドウで **[はい]** を選択します。
 

@@ -1,75 +1,111 @@
 ---
-title: Azure Stack HCI と Azure Stack Hub および Windows Server の比較
-description: このトピックは、Azure Stack HCI、Azure Stack Hub、または Windows Server がご自分の組織に適しているかどうかを判断するのに役立ちます。
+title: Azure Stack HCI と Windows Server の比較
+description: このトピックは、Azure Stack HCI または Windows Server が組織に適しているかどうかを判断するのに役立ちます。
 ms.topic: conceptual
 author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/22/2020
-ms.openlocfilehash: a4429113088497fd6a7c887a65f524a7495c6b74
-ms.sourcegitcommit: a745662c7a5a18f135accf3f70d8508b57e83e2b
+ms.date: 01/21/2021
+ms.openlocfilehash: c691424251d096794315880106c131ecaaea1f57
+ms.sourcegitcommit: 925351b77490364b3d52746f788c4c1b93343631
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97737812"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98705201"
 ---
-# <a name="compare-azure-stack-hci-to-azure-stack-hub-and-windows-server"></a>Azure Stack HCI と Azure Stack Hub および Windows Server の比較
+# <a name="compare-azure-stack-hci-to-windows-server-2019"></a>Azure Stack HCI と Windows Server 2019 を比較する
 
-> 適用対象:Azure Stack HCI バージョン 20H2、Windows Server 2019、Azure Stack Hub
+> 適用対象:Azure Stack HCI バージョン 20H2、Windows Server 2019
 
-多くのお客様は、Windows Server、Azure Stack HCI、または Azure Stack Hub のどれがご自分のニーズに合うのか迷われるでしょう。 このトピックは、ご自分の組織に適したものを判断するのに役立ちます。 
+このトピックでは、Azure Stack HCI と Windows Server 2019 の主な違いについて説明し、それぞれの使用に適した状況に関するガイダンスを示します。 どちらの製品も、Microsoft によって活発にサポートおよび管理されています。 これらは異なる補完的な目的を意図されているため、多くの組織では、両方とも展開することを選択できます。
 
-## <a name="compare-azure-stack-hci-to-windows-server"></a>Azure Stack HCI と Windows Server の比較
+## <a name="when-to-use-azure-stack-hci"></a>Azure Stack HCI を使用する局面
 
-Windows Server と Azure Stack HCI のどちらでも、新しいリリースのロード マップに従って、同じ高品質のユーザー エクスペリエンスが提供されます。
+Azure Stack HCI は、オンプレミスで VM または仮想デスクトップを実行するための Microsoft の Premier ハイパーコンバージド インフラストラクチャ プラットフォームであり、Azure ハイブリッド サービスに接続できます。 データセンターやブランチ オフィスを最新化してセキュリティで保護し、業界最高のパフォーマンスと低遅延およびデータ主権を実現するための、簡単な方法です。
 
-| Windows Server | Azure Stack HCI |
-| --------------- | --------------- |
-| ゲストおよび従来のサーバーとして最適です | 記憶域スペース ダイレクトなど、ソフトウェアによるデータ センター用の仮想化ホストに最適です |
-| 従来のソフトウェア ライセンス モデルを使用して、どこでも実行できます | 好みのベンダーのハードウェアで実行できますが、Azure サービスとして提供され、Azure アカウントに課金されます |
-| 2 つのインストール オプション:デスクトップ エクスペリエンスを備えたサーバーまたはサーバー コア | わずかにカスタマイズされたサーバー コアに基づきます |
 
-### <a name="when-to-use-windows-server"></a>Windows Server を使用する場合
+:::image type="content" source="media/compare-windows-server/hci-scenarios.png" alt-text="Windows Server 2019 より Azure Stack HCI を使用する方がよい場合" border="false" lightbox="media/compare-windows-server/hci-scenarios.png":::
 
-| Windows Server | Azure Stack HCI |
-| --------------- | --------------- |
-| Windows Server は、非常に汎用性のある多目的なオペレーティング システムであり、ゲスト権限など、数十の役割と数百の機能を備えています。 | Azure Stack HCI にはゲスト権限は含まれておらず、最新のハイパーコンバージド アーキテクチャに使用することが意図されています。 |
-| VM を実行する場合、または Active Directory、ファイル サービス、DNS、DHCP、インターネット インフォメーション サービス (IIS)、コンテナー ホストおよびゲスト、SQL Server、Exchange Server、ホスト ガーディアン サービス (HGS) など、従来のすべてのサーバーの役割を含むベア メタル インストール用には、Windows Server を使用します。 | Hyper-V 仮想化ホストとして意図されている Azure Stack HCI は、少数のサーバーの役割を直接実行するためだけにライセンスを付与されます。他のロールはすべて、VM 内で実行する必要があります。 |
 
-### <a name="when-to-use-azure-stack-hci"></a>Azure Stack HCI を使用する局面
+以下の場合は、Azure Stack HCI を使用します。
 
-| Windows Server | Azure Stack HCI |
-| --------------- | --------------- |
-| Windows Server はオンプレミスでもクラウドでも実行できますが、最新のハイパー集約機能は今後は提供されません。| Azure Stack HCI は、オンプレミスで VM を実行するための Microsoft のプレミア ハイパー集約型インフラストラクチャ プラットフォームであり、必要に応じて 2 つのサイトに拡張でき、Azure ハイブリッド サービスに接続できます。 データ センターやブランチ オフィスを最新化してセキュリティで保護し、SQL Server データベースで業界最高のパフォーマンスを実現し、低待機時間とデータ主権のためにオンプレミスで VM または仮想デスクトップを実行するための簡単な方法です。|
-| Windows Server は、仮想化されているかどうかに関係なく、Windows Server のすべての役割を対象とする優れた多目的の "万能製品" です。 | Exchange、SharePoint、SQL Server などの従来のエンタープライズ アプリを仮想化する場合、またはファイル サーバー、DNS、DHCP、IIS、AD などの Windows Server の役割を仮想化する場合は、Azure Stack HCI を使用します。 シールドされた VM など、すべての Hyper-V 機能への無制限のアクセスが含まれます。|
-| Windows Server の多くの展開は、古いハードウェアで実行されています。 | 大規模な再設計なしで、古いストレージ アレイやネットワーク アプライアンスの代わりにソフトウェアによるインフラストラクチャを使用する場合に、Azure Stack HCI を使用します。 組み込みの Hyper-V、記憶域スペース ダイレクト、およびソフトウェアによるネットワーク (SDN) は直接アクセスして管理できます。 Windows VM または Linux VM 内でアプリを実行します。|
+- コア データセンターの既存のワークロード用、またはブランチ オフィスやエッジの場所での新しい要件用に、インフラストラクチャを最新化するための最適な仮想化ホスト
+- Azure サブスクリプションから定期的に送られてくるイノベーションと、ツールとエクスペリエンスの一貫したセットによる、クラウドの簡単な拡張性
+- ハイパーコンバージド インフラストラクチャのすべてのベネフィット: 高速のストレージとネットワークを使用する、よりシンプルで統合されたデータセンター アーキテクチャ
 
-## <a name="compare-azure-stack-hci-to-azure-stack-hub"></a>Azure Stack HCI と Azure Stack Hub の比較
+  >[!NOTE]
+  >Azure Stack HCI は、最新のハイパーコンバージド アーキテクチャ用の Hyper-V 仮想化ホストとして使用することが意図されているため、ゲスト権限は含まれません。 このため、Azure Stack HCI は、少数のサーバーの役割を直接実行するためだけにライセンスを付与されます。他のロールはすべて、VM 内で実行する必要があります。
 
-お客様の組織がデジタル変革を進める中で、パブリック クラウド サービスを使用して、最新のアーキテクチャ上に構築し、従来のアプリを更新することで、より迅速に前進できることに気付くことがあります。 ただし、技術上の障害や規制の問題などの理由により、多くのワークロードをオンプレミスに残す必要があります。 次の表を使用すると、必要なところに必要なものを提供し、ワークロードの場所に関係なくそのクラウド イノベーションを実現する Microsoft ハイブリッド クラウド戦略を判断するのに役立ちます。
+## <a name="when-to-use-windows-server-2019"></a>Windows Server 2019 を使用する局面
 
-| Azure Stack Hub | Azure Stack HCI |
-| --------------- | --------------- |
-| 新しいスキル、革新的なプロセス | 同じスキル、使い慣れたプロセス |
-| お客様のデータセンター内での Azure サービス | お客様のデータセンターを Azure サービスに接続する |
+Windows Server 2019 は、非常に汎用性のある多目的なオペレーティング システムであり、ゲスト権限など、数十の役割と数百の機能を備えています。 Windows Server マシンは、クラウドでもオンプレミスでも使用でき、Azure Stack HCI での仮想化も含まれます。
 
-### <a name="when-to-use-azure-stack-hub"></a>Azure Stack Hub を使用する局面
 
-| Azure Stack Hub | Azure Stack HCI |
-| --------------- | --------------- |
-| 併置された複数のテナントの強力な分離および正確な使用状況の追跡とチャージバックを実現するセルフサービスのインフラストラクチャとしてのサービス (IaaS) に Azure Stack Hub を使用します。 サービス プロバイダーやエンタープライズ プライベート クラウドに最適です。 テンプレートは Azure Marketplace にあります。 | Azure Stack HCI では、マルチテナントをネイティブに適用したり、提供したりすることはありません。 |
-| オンプレミスで Web Apps、Functions、Event Hubs などのプラットフォームとしてのサービス (PaaS) サービスを利用するアプリの開発と実行に Azure Stack Hub を使用します。 これらのサービスは、Azure 内とまったく同じように Azure Stack Hub 上で実行され、一貫性のあるハイブリッドの開発およびランタイム環境を提供します。 | Azure Stack HCI では、PaaS サービスをオンプレミスで実行しません。 |
-| DevOps プラクティス (コードとしてのインフラストラクチャ、継続的インテグレーションと継続的デプロイ (CI/CD) など) と便利な機能 (Azure と整合性のある VM 拡張機能など) を利用したアプリのデプロイと操作の現代化に Azure Stack Hub を使用します。 開発チームや DevOps チームに最適です。 | Azure Stack HCI には、DevOps ツールがネイティブに含まれていません。 |
+:::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="Azure Stack HCI より Windows Server 2019 を使用する方がよい場合" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
 
-### <a name="when-to-use-azure-stack-hci"></a>Azure Stack HCI を使用する局面
 
-| Azure Stack Hub | Azure Stack HCI |
-| --------------- | --------------- |
-| Azure Stack Hub には、最小 4 つのノードとそれ専用のネットワーク スイッチが必要です。 | リモート オフィスやブランチの場合に占有領域を最小限に抑えるには Azure Stack HCI を使用します。 たった 2 個のサーバー ノードとスイッチレスのバックツーバック ネットワークから開始でき、ピークがわかりやすく、価格が手頃です。 ハードウェアのオファーは、ノードあたり 4 台のドライブ、64 GB のメモリ、10,000 ドル未満からです。 |
-| Azure Stack Hub では、Azure との整合性を確保するために、Hyper-V の構成機能と機能セットが制限されています。 | Exchange、SharePoint、SQL Server などの従来のエンタープライズ アプリ向けの必要最低限の Hyper-V 仮想化や、ファイル サーバー、DNS、DHCP、IIS、AD などの Windows Server ロールの仮想化に、Azure Stack HCI を使用します。 シールドされた VM など、すべての Hyper-V 機能に無制限にアクセスできます。|
-| Azure Stack Hub では、これらのインフラストラクチャ テクノロジは公開されません。 | 大規模な再設計なしで、古いストレージ アレイやネットワーク アプライアンスの代わりにソフトウェアによるインフラストラクチャを使用する場合に、Azure Stack HCI を使用します。 組み込みの Hyper-V、記憶域スペース ダイレクト、およびソフトウェアによるネットワーク (SDN) は直接アクセスして管理できます。 |
+以下の場合は、Windows Server 2019 を使用します。
 
-## <a name="next-steps"></a>次の手順
+- 仮想マシン (VM) またはコンテナー内のゲスト オペレーティング システム
+- Windows アプリケーション用のランタイム
+- Active Directory、ファイル サービス、DNS、DHCP、インターネット インフォメーション サービス (IIS) など、1 つ以上の組み込みサーバー ロールを使用する場合
+- ベアメタル ドメイン コントローラーや SQL Server インストールなどの従来のサーバー
+- ファイバー チャネル SAN ストレージに接続された VM などの従来のインフラストラクチャ
 
-- [Azure Stack HCI とは](../overview.md)
+## <a name="compare-product-positioning"></a>製品の位置づけを比較する
+
+次の表は、Azure Stack HCI と Windows Server 2019 の高レベルの製品パッケージを示したものです。
+
+| **属性**    | **Azure Stack HCI** | **Windows Server 2019** |
+| ---------------- | ------------------- | ----------------------- |
+| 製品の種類     | オペレーティング システムなどが含まれるクラウド サービス | オペレーティング システム |
+| 法務            | Microsoft 顧客契約またはオンライン サブスクリプション契約の対象 | 固有の使用許諾契約 |
+| ライセンス        | Azure サブスクリプションに対して課金 | 固有の有料ライセンス |
+| サポート          | Azure サポートの対象 | Microsoft Premier サポートなど、異なるサポート契約の対象にすることが可能 |
+| 情報の入手元  | [Azure.com/HCI](https://azure.com/hci) からのダウンロード、または統合システムにプレインストール | Microsoft ボリューム ライセンス サービス センターまたは評価センター |
+| VM での実行      | 評価の場合のみ、ホスト OS として意図 | 可能、クラウド内またはオンプレミス |
+| ハードウェア         | [Azure Stack HCI カタログ](https://hcicatalog.azurewebsites.net)の 200 以上の事前検証済みソリューションのいずれでも実行可能 | "Certified for Windows Server 2019" のロゴが付いている任意のハードウェアで実行可能 |
+| ライフサイクル ポリシー | 常に最新の機能で更新 | [Windows Server サービス チャネル](/windows-server/get-started-19/servicing-channels-19)を選択: 長期サービス チャネル (LTSC) または半期チャネル (SAC) |
+
+## <a name="compare-technical-features"></a>技術的な機能を比較する
+
+次の表は、Azure Stack HCI と Windows Server 2019 の技術的機能を比較したものです。
+
+| **属性** | **Azure Stack HCI** | **Windows Server 2019** |
+| ------------- | ------------------- | ----------------------- |
+| コア Hyper-V | はい | はい |
+| コア記憶域スペース ダイレクト | はい | はい |
+| コア SDN | はい | はい |
+| ディザスター リカバリーのための拡張クラスタリング | はい | - |
+| 4 から 5 倍高速の記憶域スペース修復 | はい | - |
+| 統合されたドライバーとファームウェアの更新プログラム | はい (統合システムのみ) | - |
+| ガイド付き展開 | はい | - |
+
+## <a name="compare-management-options"></a>管理オプションを比較する
+
+次の表は、Azure Stack HCI と Windows Server 2019 の管理オプションを比較したものです。 どちらの製品もリモート管理向けに設計されており、多くの同じツールで管理できます。
+
+| **属性** | **Azure Stack HCI** | **Windows Server 2019** |
+| ------------- | ------------------- | ----------------------- |
+| デスクトップ エクスペリエンス | - | はい |
+| Windows Admin Center | はい | はい |
+| Microsoft System Center | はい (個別に販売) | はい (個別に販売) |
+| Azure portal | はい (ネイティブ) | Arc エージェントが必要 |
+| サードパーティ製のツール | はい | はい |
+
+## <a name="compare-product-pricing"></a>製品の価格を比較する
+
+次の表は、Azure Stack HCI と Windows Server 2019 の製品価格を比較したものです。 詳細については、「[Azure Stack HCI の価格](https://azure.microsoft.com/pricing/details/azure-stack/hci/)」を参照してください。
+
+| **属性** | **Azure Stack HCI** | **Windows Server 2019** |
+| ------------- | ------------------- | ----------------------- |
+| 価格の種類 | 購読サービス | さまざま: ほとんどの場合、1 回限りのライセンス |
+| 価格体系 | コアあたり、月あたり | さまざま: 通常はコアあたり |
+| 価格 | コアあたり $10 USD/月 | 「[Windows Server 2019 の価格とライセンス体系](https://www.microsoft.com/windows-server/pricing)」を参照 |
+| 評価および試用の期間 | 登録後に 30 日間の無料試用 | 180 日の評価版コピー |
+| チャネル | Enterprise Agreement、クラウド サービス プロバイダー、または直接 | Enterprise Agreement/ボリューム ライセンス、OEM、サービス プロバイダー ライセンス契約 (SPLA) |
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure Stack HCI と Azure Stack Hub の比較](compare-azure-stack-hub.md)

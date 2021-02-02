@@ -3,16 +3,16 @@ title: Azure Stack Hub のリリース ノート
 description: 更新プログラムやバグ修正プログラムを含む、Azure Stack Hub 統合システムのリリース ノート。
 author: sethmanheim
 ms.topic: article
-ms.date: 12/23/2020
+ms.date: 01/25/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
-ms.openlocfilehash: 9276cff891cd4f69c35c0890a2bf02108407bbe0
-ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
+ms.openlocfilehash: 196313ed569a701dae9cc558ff1438d9d9df1241
+ms.sourcegitcommit: 82f7d16bc5f4224678edbbda0ba3441c8e07ca0b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98256066"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763141"
 ---
 # <a name="azure-stack-hub-release-notes"></a>Azure Stack Hub のリリース ノート
 
@@ -127,19 +127,13 @@ Azure Stack Hub では、修正プログラムが定期的にリリースされ�
 
 Azure Stack Hub 修正プログラムを適用できるのは Azure Stack Hub 統合システムのみです。ASDK には修正プログラムをインストールしないでください。
 
-### <a name="hotfix-prerequisites-before-applying-the-2008-update"></a>修正プログラムの前提条件: 2008 更新プログラムを適用する前
-
-Azure Stack Hub の 2008 リリースは、次の修正プログラムが適用された 2005 リリースに適用する必要があります。
-
-- [Azure Stack Hub 修正プログラム 1.2005.25.92](https://support.microsoft.com/help/4595074)
-
 ### <a name="after-successfully-applying-the-2008-update"></a>2008 更新プログラムが正常に適用された後
 
-新しいメジャー バージョンに更新すると (たとえば、1.2005.x から 1.2008.x)、その新しいメジャー バージョン内の最新の修正プログラム (存在する場合) が自動的にインストールされます。 それ以降は、ビルドの修正プログラムがリリースされたら、それをインストールする必要があります。
+Azure Stack Hub の修正プログラムは累積されるため、ベスト プラクティスとして、お使いのビルド用にリリースされたすべての修正プログラムをインストールして、メジャー リリース間の更新エクスペリエンスを最適にする必要があります。 新しいメジャー バージョンに更新すると (たとえば、1.2005.x から 1.2008.x)、その新しいメジャー バージョン内の最新の修正プログラム (存在する場合) が自動的にインストールされます。
 
 2008 のインストール後に、2008 修正プログラムがリリースされた場合は、それらをインストールする必要があります。
 
-- [Azure Stack Hub 修正プログラム 1.2008.20.102](https://support.microsoft.com/help/4595075)
+- [Azure Stack Hub 修正プログラム 1.2008.23.108](https://support.microsoft.com/topic/c0d203fd-7585-4c8d-8ea5-ae13897e352e)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
@@ -231,7 +225,7 @@ Azure Stack Hub 修正プログラムを適用できるのは Azure Stack Hub �
 
 Azure Stack Hub の 2005 リリースは、次の修正プログラムが適用された 2002 リリースに適用する必要があります。
 
-- [Azure Stack Hub 修正プログラム 1.2002.63.167](https://support.microsoft.com/help/4595072)
+- [Azure Stack Hub 修正プログラム 1.2002.65.171](https://support.microsoft.com/topic/d743db84-df31-496b-b37c-6e5618b4cc8f)
 
 ### <a name="after-successfully-applying-the-2005-update"></a>2005 更新プログラムが正常に適用された後
 
@@ -239,7 +233,7 @@ Azure Stack Hub の 2005 リリースは、次の修正プログラムが適用�
 
 2005 のインストール後に、2005 修正プログラムがリリースされた場合は、それらをインストールする必要があります。
 
-- [Azure Stack Hub 修正プログラム 1.2005.25.92](https://support.microsoft.com/help/4595074)
+- [Azure Stack Hub 修正プログラム 1.2005.28.98](https://support.microsoft.com/topic/ecf727b1-3dc1-4070-ace8-1291cc437389)
 ::: moniker-end
 
 ::: moniker range="azs-2002"
@@ -368,7 +362,7 @@ Azure Stack Hub の 2002 リリースは、以下の修正プログラムが適�
 この更新プログラムをインストールした後、適用可能な修正プログラムがあればインストールします。
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub 修正プログラム 1.2002.63.167](https://support.microsoft.com/help/4595072)
+- [Azure Stack Hub 修正プログラム 1.2002.65.171](https://support.microsoft.com/topic/d743db84-df31-496b-b37c-6e5618b4cc8f)
 ::: moniker-end
 
 <!------------------------------------------------------------>

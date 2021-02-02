@@ -4,16 +4,16 @@ titleSuffix: Azure Stack
 description: VM、ストレージ、App Service に関する問題を含む、Azure Stack Hub のトラブルシューティング方法について学習します。
 author: PatAltimore
 ms.topic: article
-ms.date: 12/10/2020
+ms.date: 01/20/2021
 ms.author: patricka
 ms.reviewer: prchint
 ms.lastreviewed: 12/10/2020
-ms.openlocfilehash: ff3164e16262ecfd4cdf84bbdb5fbb24942fc6ab
-ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
+ms.openlocfilehash: 1706f028aff293f85ea5a0c1fb882a5d332d7196
+ms.sourcegitcommit: dd34ae1c6207aafb5218c31658123e913f51bf7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98255709"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98672879"
 ---
 # <a name="troubleshoot-issues-in-azure-stack-hub"></a>Azure Stack Hub の問題のトラブルシューティングを行う
 
@@ -203,7 +203,7 @@ Azure Stack Hub の修正プログラムと更新プログラムのプロセス�
 
 1. 更新が失敗したときに作成されたエラー アラートの修復手順に従います。
 
-2. 問題を解決できない場合は、[Azure Stack Hub のサポート チケット](./azure-stack-help-and-support-overview.md)を作成します。 問題が発生した期間に[収集されたログ](./diagnostic-log-collection.md#send-logs-now)があることを確認してください。
+2. 問題を解決できない場合は、[Azure Stack Hub のサポート チケット](./azure-stack-help-and-support-overview.md)を作成します。 問題が発生した期間に[収集されたログ](./diagnostic-log-collection.md#send-logs-now)があることを確認してください。 重大なアラートまたは警告が発生して更新が失敗した場合は、アラートの指示に従いエラーを調べて Microsoft カスタマー サポート サービスに連絡し、スケール ユニットが長時間エラー状態のままにならないようにすることが重要です。 スケール ユニットを長時間にわたって更新失敗状態のままにすると、解決するのがいっそう困難な別の問題が後で発生する可能性があります。
 
 ## <a name="common-azure-stack-hub-patch-and-update-issues"></a>Azure Stack Hub の修正プログラムと更新プログラムに関する一般的な問題
 

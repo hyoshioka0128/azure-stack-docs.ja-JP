@@ -3,15 +3,15 @@ title: Windows Admin Center を使用して Azure Stack HCI クラスターを�
 description: Windows Admin Center を使用して Azure Stack HCI 用のサーバー クラスターを作成する方法について説明します
 author: v-dasis
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 01/27/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
-ms.openlocfilehash: a81b684e86f9d13105c39607f9be1c6a1d56eaf0
-ms.sourcegitcommit: 649540e30e1018b409f4b1142bf2cb392c9e8b0d
+ms.openlocfilehash: 12f2152099c935977fd42c4b63989854ca0faf88
+ms.sourcegitcommit: 27ffc5f41de3de17ff2395e44c6c5debef50bcc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208057"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98925852"
 ---
 # <a name="create-an-azure-stack-hci-cluster-using-windows-admin-center"></a>Windows Admin Center を使用して Azure Stack HCI クラスターを作成する
 
@@ -37,6 +37,7 @@ Azure Stack HCI のテストには興味があるものの、ハードウェア�
 - クラスター内の各サーバーに Azure Stack HCI OS をインストールします。 「[Azure Stack HCI オペレーティング システムのデプロイ](operating-system.md)」を参照してください。
 - 各サーバーでローカルの Administrators グループのメンバーであるアカウントを用意します。
 - 管理用 PC またはサーバーに Windows Admin Center をインストールします。 「[Windows Admin Center のインストール](/windows-server/manage/windows-admin-center/deploy/install)」を参照してください。
+- Microsoft ハードウェア パートナーの統合システムを使用している場合、統合ハードウェアとファームウェアの更新を利用するには、Windows Admin Center に最新バージョンのベンダー拡張機能がインストールされていることを確認してください。
 - ストレッチ クラスターの場合は、あらかじめ 2 つのサイトを Active Directory に設定します。 ただし、その設定はウィザードで自動的に行うことができるので、手間はかかりません。
 
 Windows Admin Center を (ローカル PC ではなく) サーバーで実行する場合は、ゲートウェイ管理者グループに属しているアカウント、または Windows Admin Center サーバーのローカルの Administrators グループに属しているアカウントを使用します。
@@ -52,12 +53,13 @@ Windows Admin Center を (ローカル PC ではなく) サーバーで実行す
 
 ウィザードが完了した後、クラスター監視を設定し、Azure に登録し、ボリュームを作成します (また、ストレッチ クラスターを作成する場合は、サイト間のレプリケーションも設定します)。
 
-ウィザードを開始する前に、最新の Windows Admin Center の拡張機能 (特にクラスターの作成拡張機能) がインストールされていることをご確認ください。 これを実行するには、次のようにします。
+ウィザードを開始する前に、最新の拡張機能 (特に、Windows Admin Center 用のクラスター作成拡張機能) とパートナー拡張機能がインストールされていることを確認します。 これを実行するには、次のようにします。
 
 1. Windows Admin Center を開き、右上にある [設定] (歯車アイコン) をクリックします。
 1. **[設定]** で **[拡張機能]** を選択します。
 1. **[Cluster Creation]\(クラスターの作成\)** を選択し、 **[インストール]** をクリックします。
 1. **[Cluster Manager]\(クラスター マネージャー\)** を選択し **[インストール]** をクリックします。
+1. 適用可能なハードウェア ベンダー拡張機能を選択し、それらもインストールします。
 
 これで準備ができました。始めましょう。
 
@@ -152,9 +154,6 @@ Azure Stack HCI の RDMA および Hyper-V ホスト ネットワークの詳細
 
         :::image type="content" source="media/cluster/create-cluster-virtual-switches.png" alt-text="クラスターの作成ウィザード - 仮想スイッチ" lightbox="media/cluster/create-cluster-virtual-switches.png":::
 
-    > [!NOTE]
-    > SDN 用のネットワーク コントローラーをデプロイしようとしている場合 (ウィザードの **[手順 5:SDN]** ) は、仮想スイッチが 1 つ必要になります。 そのため、ここで仮想スイッチを作成せず、ウィザードの外部で 1 つ作成しない場合、ウィザードによるネットワーク コントローラーのデプロイは行われません。
-
     次の表は、各種のネットワーク アダプター構成で、どの仮想スイッチ構成がサポートされ、有効であるかを示したものです。
 
     | オプション | 1 から 2 個のアダプター | 3 個以上のアダプター | チーミングされたアダプター |
@@ -234,6 +233,5 @@ Azure Stack HCI の RDMA および Hyper-V ホスト ネットワークの詳細
 ## <a name="next-steps"></a>次のステップ
 
 - クラスターを Azure に登録します。 「[Azure の登録を管理する](../manage/manage-azure-registration.md)」を参照してください。
+- 監視を設定します。 「[クラスター監視のセットアップ](../manage/witness.md)」を参照してください。
 - クラスターの最終検証を実行します。 「[Azure Stack HCI クラスターの検証](validate.md)」を参照してください
-- VM をプロビジョニングします。 「[Windows Admin Center を使用して Azure Stack HCI 上の VM を管理する](../manage/vm.md)」を参照してください。
-- PowerShell を使用してクラスターをデプロイすることもできます。 [PowerShell を使用した Azure Stack HCI クラスターの作成](create-cluster-powershell.md)に関する記事を参照してください。
