@@ -244,7 +244,7 @@ Azure Stack Hub に、次の Azure Blob ストレージのチュートリアル�
 * [Node.js から BLOB ストレージを使用する方法](/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage)
 * [C++ から BLOB ストレージを使用する方法](/azure/storage/blobs/storage-c-plus-plus-how-to-use-blobs)
 * [PHP から BLOB ストレージを使用する方法](/azure/storage/blobs/storage-php-how-to-use-blobs)
-* [Python から Azure BLOB ストレージを使用する方法](/azure/storage/blobs/storage-python-how-to-use-blob-storage)
+* [Python から Azure Blob Storage を使用する方法](/azure/storage/blobs/storage-python-how-to-use-blob-storage)
 * [Ruby から BLOB ストレージを使用する方法](/azure/storage/blobs/storage-ruby-how-to-use-blob-storage)
 
 ## <a name="queue-storage"></a>ストレージ
