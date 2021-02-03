@@ -838,6 +838,8 @@
                   href: ../user/azure-stack-dev-start-howto-vm-nodejs.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: 基本パターンのデプロイ
           items:
+            - name: 基本パターンのデプロイ
+              href: ../user/deploy-foundational-patterns.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
             - name: ネットワークのパターン
               items:
                 - name: サードパーティの NVA を使用する (Fortinet Fortigate NVA)
@@ -848,15 +850,15 @@
                       href: ../user/azure-stack-network-howto-vnet-to-onprem.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
                     - name: Azure Stack Hub インスタンス間の VNet 間接続
                       href: ../user/azure-stack-network-howto-vnet-to-vnet-stacks.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-            - name: RRAS を使用する
-              items:
-                - name: RRAS との VNet 間接続
-                  href: ../user/azure-stack-network-howto-vnet-peering.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-                - name: 複数サイト間 VPN トンネルを設定する
-                  href: ../user/network-howto-vpn-tunnel.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-                - name: VPN トンネル (GRE) を作成する
-                  href: ../user/network-howto-vpn-tunnel-gre.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-                - name: VPN トンネル (IPSEC) を作成する
+                - name: RRAS を使用する
+                  items:
+                    - name: RRAS との VNet 間接続
+                      href: ../user/azure-stack-network-howto-vnet-peering.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                    - name: 複数サイト間 VPN トンネルを設定する
+                      href: ../user/network-howto-vpn-tunnel.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                    - name: VPN トンネル (GRE) を作成する
+                      href: ../user/network-howto-vpn-tunnel-gre.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                    - name: VPN トンネル (IPSEC) を作成する
                   href: ../user/network-howto-vpn-tunnel-ipsec.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
             - name: F5 ロード バランサー
               href: ../user/network-howto-f5.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
