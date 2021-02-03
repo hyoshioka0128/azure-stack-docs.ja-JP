@@ -734,35 +734,39 @@
                   href: ../user/azure-stack-dev-start-howto-vm-nodejs.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: 基本パターンのデプロイ
           items:
-            - name: VNet ピアリング
+            - name: ネットワークのパターン
               items:
-                - name: FortiGate を使用した VNet ピアリング
-                  href: ../user/azure-stack-network-howto-vnet-to-vnet.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-                - name: VM を使用した VNet ピアリング
+                - name: サードパーティの NVA を使用する (Fortinet Fortigate NVA)
+                  items:
+                    - name: Fortigate による VNet 間接続
+                      href: ../user/azure-stack-network-howto-vnet-to-vnet.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                    - name: オンプレミスへの VPN のセットアップ
+                      href: ../user/azure-stack-network-howto-vnet-to-onprem.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                    - name: Azure Stack Hub インスタンス間の VNet 間接続
+                      href: ../user/azure-stack-network-howto-vnet-to-vnet-stacks.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            - name: RRAS を使用する
+              items:
+                - name: RRAS との VNet 間接続
                   href: ../user/azure-stack-network-howto-vnet-peering.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-            - name: オンプレミスへの VPN のセットアップ
-              href: ../user/azure-stack-network-howto-vnet-to-onprem.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-            - name: VNet 間接続
-              href: ../user/azure-stack-network-howto-vnet-to-vnet-stacks.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-            - name: データセンターを拡張する
-              href: ../user/azure-stack-network-howto-extend-datacenter.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-            - name: F5 ロード バランサー
-              href: ../user/network-howto-f5.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-            - name: iSCSI ストレージに接続する
-              href: ../user/azure-stack-network-howto-iscsi-storage.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-            - name: トンネルを設定する
-              items:
-                - name: 複数サイト間 VPN を設定する
+                - name: 複数サイト間 VPN トンネルを設定する
                   href: ../user/network-howto-vpn-tunnel.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
                 - name: VPN トンネル (GRE) を作成する
                   href: ../user/network-howto-vpn-tunnel-gre.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
                 - name: VPN トンネル (IPSEC) を作成する
                   href: ../user/network-howto-vpn-tunnel-ipsec.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            - name: F5 ロード バランサー
+              href: ../user/network-howto-f5.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            - name: 外部ストレージに接続する
+              items:
+                - name: iSCSI ストレージに接続する
+                  href: ../user/azure-stack-network-howto-iscsi-storage.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                - name: データセンターを拡張する
+                  href: ../user/azure-stack-network-howto-extend-datacenter.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
             - name: バックアップと回復
               items:
-                - name: Commvault を使用して MDC で VM をバックアップする
+                - name: Commvault を使用して Azure Stack Hub ラグド上で VM をバックアップする
                   href: ../user/azure-stack-network-howto-backup-commvault.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-                - name: MDC でストレージ アカウントをバックアップする
+                - name: Azure Stack Hub ラグド上でストレージ アカウントをバックアップする
                   href: ../user/azure-stack-network-howto-backup-storage.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
                 - name: サブスクリプション リソースをコピーする
                   href: ../user/azure-stack-network-howto-backup-replicator.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
