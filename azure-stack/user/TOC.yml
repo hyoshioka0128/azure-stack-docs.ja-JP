@@ -305,8 +305,9 @@
         - name: GPU IoT モジュールをデプロイする
           href: gpu-deploy-sample-module.md
     - name: 基本パターンのデプロイ
-      href: deploy-foundational-patterns.md
       items:
+        - name: 基本パターンのデプロイ
+          href: deploy-foundational-patterns.md
         - name: ネットワークのパターン
           items:
             - name: サードパーティの NVA を使用する (Fortinet Fortigate NVA)
