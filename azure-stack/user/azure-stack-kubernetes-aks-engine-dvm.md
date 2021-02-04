@@ -3,16 +3,16 @@ title: Azure Stack Hub 上の AKS エンジンに Marketplace アイテムのク
 description: Azure Stack Hub 上の AKS エンジンに Marketplace アイテムのクラスターを移動する方法について説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 12/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 09/02/2020
-ms.openlocfilehash: 112862f5e73806d2e73d809b70e4bd7fd2e315b5
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: db9d1657760b558bf592bcf84a407855aeb5adcd
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874185"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99246930"
 ---
 # <a name="move-your-marketplace-item-cluster-to-the-aks-engine-on-azure-stack-hub"></a>Azure Stack Hub 上の AKS エンジンに Marketplace アイテムのクラスターを移動する
 

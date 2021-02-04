@@ -3,16 +3,16 @@ title: Azure Stack Hub で VM の既知の問題をトラブルシューティ�
 description: Azure Stack Hub で仮想マシンの既知の問題をトラブルシューティングする方法について説明します。
 author: mattbriggs
 ms.topic: troubleshooting
-ms.date: 12/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 07/09/2020
-ms.openlocfilehash: d752b31ac5076255ae4368904145a50d5a3c09ff
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 45fcd2857a7da8820f1f588d864873e0e5f41467
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97867164"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99246590"
 ---
 # <a name="known-issues-vms-on-azure-stack-hub"></a>既知の問題:Azure Stack Hub 上の VM
 

@@ -3,15 +3,15 @@ title: Azure Stack Hub ストレージの概要
 description: Azure Stack Hub Storage のサービスについて説明します。
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2020
-ms.openlocfilehash: c9b8d2bbe30cedcd84759fbb5cd9a51b0a03c51a
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 3c02ef69ce2359c050e381d4dec027c28f157765
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97873828"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247559"
 ---
 # <a name="introduction-to-azure-stack-hub-storage"></a>Azure Stack Hub ストレージの概要
 

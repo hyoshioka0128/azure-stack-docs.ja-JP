@@ -8,12 +8,12 @@ ms.date: 10/26/2020
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 10/26/2020
-ms.openlocfilehash: b5221162dd4a75fd9ffbd5fb382ab05560d622f6
-ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
+ms.openlocfilehash: 2e88907094ea18e6fe3f8cbb49811fd1db307733
+ms.sourcegitcommit: 5f3d37994b8cb63c76e54136c0cc05bc4f475950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98255318"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99495459"
 ---
 # <a name="azure-stack-hub-administration-basics---modular-data-center-mdc"></a>Azure Stack Hub の管理の基本 - Modular Data Center (MDC)
 
@@ -53,7 +53,7 @@ Azure Stack Hub をデプロイすると、Azure Stack Hub に既定で次の基
 
 ### <a name="service-roadmap"></a>サービスのロードマップ
 
-Azure Stack Hub には、引き続き Azure サービスのサポートが追加される予定です。 予想されるロードマップについては、「[Azure Stack Hub: Azure の拡張機能](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)」ホワイトペーパーを参照してください。 新しい発表については、[Azure Stack Hub のブログ投稿](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview)を確認することもできます。
+Azure Stack Hub には、引き続き Azure サービスのサポートが追加される予定です。 予想されるロードマップについては、「[Azure Stack Hub: Azure の拡張機能](https://azure.microsoft.com/resources/videos/azure-friday-azure-stack-an-extension-of-azure/)」ホワイトペーパーを参照してください。 新しい発表については、[Azure Stack Hub のブログ投稿](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview)を確認することもできます。
 
 ## <a name="what-account-should-i-use"></a>使用するアカウントについて
 

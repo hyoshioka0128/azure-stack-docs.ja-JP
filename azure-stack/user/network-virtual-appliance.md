@@ -7,12 +7,12 @@ ms.date: 11/22/2020
 ms.topic: article
 ms.reviewer: sranthar
 ms.lastreviewed: 11/22/2020
-ms.openlocfilehash: bb5d62b4e5302762b4feddfd7afd7b7a39002187
-ms.sourcegitcommit: 8526f642ef859b0006c3991d966f93608a87288a
+ms.openlocfilehash: f247e8c604b9b1060f4cc011acdbd9786b487ab1
+ms.sourcegitcommit: 5f3d37994b8cb63c76e54136c0cc05bc4f475950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98243325"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99495501"
 ---
 # <a name="troubleshoot-network-virtual-appliance-problems"></a>ネットワーク仮想アプライアンスに関する問題をトラブルシューティングする
 
@@ -23,7 +23,7 @@ Azure Stack Hub でネットワーク仮想アプライアンス (NVA) を使用
 NVA と、Azure Stack Hub プラットフォームとの統合に対するテクニカル サポートは、NVA のベンダーによって提供されます。
 
 > [!NOTE]
-> NVA が関係する接続やルーティングの問題がある場合は、直接 [NVA のベンダーにお問い合わせ](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)いただく必要があります。
+> NVA が関係する接続やルーティングの問題がある場合は、直接 [NVA のベンダーにお問い合わせ](https://mskb.pkisolutions.com/kb/2984655)いただく必要があります。
 
 Azure Stack Hub での NVA に関する問題をこの記事で対処できない場合は、[Azure Stack Hub サポート チケット](../operator/azure-stack-manage-basics.md#where-to-get-support)を作成してください。
 
@@ -44,7 +44,7 @@ Azure Stack Hub での NVA に関する問題をこの記事で対処できな�
 
 ## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Azure 上の NVA に対する最小構成要件の確認
 
-各 NVA が Azure Stack Hub 上で正常に機能するには、基本的な構成要件を満たす必要があります。 このセクションでは、これらの基本構成を確認するための手順を示します。 詳細については、[NVA のベンダーにお問い合わせください](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+各 NVA が Azure Stack Hub 上で正常に機能するには、基本的な構成要件を満たす必要があります。 このセクションでは、これらの基本構成を確認するための手順を示します。 詳細については、[NVA のベンダーにお問い合わせください](https://mskb.pkisolutions.com/kb/2984655)。
 
 > [!IMPORTANT]
 > パケットで S2S トンネルが使用される場合は、追加のヘッダーでさらにカプセル化されます。 このカプセル化により、各パケットの全体的なサイズが増加します。
@@ -135,7 +135,7 @@ Azure Stack Hub での NVA に関する問題をこの記事で対処できな�
    netstat -an | grep -i listen
    ```
 
-1. 結果に示されている NVA ソフトウェアによって使用されている TCP ポートを探します。 それらを確認できない場合は、NVA と VM 上のアプリケーションを、これらのポートに到達するトラフィックをリッスンして応答するように構成してします。 [サポートが必要な場合は NVA のベンダーにお問い合わせください](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+1. 結果に示されている NVA ソフトウェアによって使用されている TCP ポートを探します。 それらを確認できない場合は、NVA と VM 上のアプリケーションを、これらのポートに到達するトラフィックをリッスンして応答するように構成してします。 [サポートが必要な場合は NVA のベンダーにお問い合わせください](https://mskb.pkisolutions.com/kb/2984655)。
 
 ## <a name="check-nva-performance"></a>NVA のパフォーマンスの確認
 
@@ -147,7 +147,7 @@ CPU のスパイク時に、高い CPU の原因となっているゲスト VM �
 
 また、場合によっては、VM の SKU サイズを増やすか、仮想マシン スケール セットであれば、インスタンス数を増やす必要があります。
 
-サポートが必要な場合は、[NVA のベンダーにお問い合わせください](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+サポートが必要な場合は、[NVA のベンダーにお問い合わせください](https://mskb.pkisolutions.com/kb/2984655)。
 
 ### <a name="validate-vm-network-statistics"></a>VM ネットワークの統計を検証する
 
@@ -183,7 +183,7 @@ VM ネットワークでスパイクが使用される場合、または使用�
 
 パケットを確認できるが、応答がない場合は、VM アプリケーションまたはファイアウォールの問題に対処する必要があります。
 
-サポートが必要な場合は、[NVA のベンダーにお問い合わせください](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+サポートが必要な場合は、[NVA のベンダーにお問い合わせください](https://mskb.pkisolutions.com/kb/2984655)。
 
 ### <a name="create-a-support-ticket"></a>サポート チケットの作成
 

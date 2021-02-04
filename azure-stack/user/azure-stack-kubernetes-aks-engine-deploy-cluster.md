@@ -3,16 +3,16 @@ title: AKS エンジンを使用して Azure Stack Hub に Kubernetes クラス�
 description: AKS エンジンを実行しているクライアント VM から Azure Stack Hub に Kubernetes クラスターをデプロイする方法。
 author: mattbriggs
 ms.topic: article
-ms.date: 12/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 09/02/2020
-ms.openlocfilehash: 6284e771a4b0e326ab5c6296b0a2c09dffe791d0
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 9da037a08aaa7394306c518211fc045453530a71
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874202"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99246964"
 ---
 # <a name="deploy-a-kubernetes-cluster-with-the-aks-engine-on-azure-stack-hub"></a>AKS エンジンを使用して Azure Stack Hub に Kubernetes クラスターをデプロイする
 
@@ -75,7 +75,7 @@ AKS エンジンを実行しているクライアント VM から Azure Stack Hu
 
     | フィールド | 説明 |
     | --- | --- |
-    | count | デプロイに必要なエージェントの数を入力します。 サブスクリプションごとに使用するノードの最大数は 50 です。 サブスクリプションごとに複数のクラスターをデプロイする場合は、エージェントの合計数が 50 を超えないようにしてください。 [API モデルの JSON ファイルのサンプル](https://github.com/Azure/aks-engine/blob/master/examples/azure-stack/kubernetes-azurestack.json)で指定されている構成アイテムを使用してください。  |
+    | count | デプロイに必要なエージェントの数を入力します。 サブスクリプションごとに使用するノードの最大数は 50 です。 サブスクリプションごとに複数のクラスターをデプロイする場合は、エージェントの合計数が 50 を超えないようにしてください。 [API モデルの JSON ファイルのサンプル](https://aka.ms/aksengine-json-example)で指定されている構成アイテムを使用してください。  |
     | vmSize | [Azure Stack Hub でサポートされているサイズ](./azure-stack-vm-sizes.md) (例: `Standard_D2_v2`) を入力します。 |
     | ディストリビューション | 「`aks-ubuntu-16.04`」と入力します。 |
 

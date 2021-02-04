@@ -8,12 +8,12 @@ ms.date: 06/16/2020
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 06/16/2020
-ms.openlocfilehash: 6ee19c12e1a80e8c41c5c33d9c2b613d86fbc104
-ms.sourcegitcommit: 8526f642ef859b0006c3991d966f93608a87288a
+ms.openlocfilehash: 3fdd8701fa61476caa3a6db3e3c5ce8789d1fd09
+ms.sourcegitcommit: 5f3d37994b8cb63c76e54136c0cc05bc4f475950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98243495"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99495484"
 ---
 # <a name="azure-stack-hub-administration-basics---ruggedized"></a>Azure Stack Hub の管理の基本 - ラグド
 
@@ -53,7 +53,7 @@ Azure Stack Hub をデプロイすると、Azure Stack Hub に既定で次の基
 
 ### <a name="service-roadmap"></a>サービスのロードマップ
 
-Azure Stack Hub には、引き続き Azure サービスのサポートが追加される予定です。 予想されるロードマップについては、「[Azure Stack Hub: Azure の拡張機能](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)」ホワイトペーパーを参照してください。 新しい発表については、[Azure Stack Hub のブログ投稿](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview)を確認することもできます。
+Azure Stack Hub には、引き続き Azure サービスのサポートが追加される予定です。 予想されるロードマップについては、「[Azure Stack Hub: Azure の拡張機能](https://azure.microsoft.com/resources/videos/azure-friday-azure-stack-an-extension-of-azure/)」ホワイトペーパーを参照してください。 新しい発表については、[Azure Stack Hub のブログ投稿](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview)を確認することもできます。
 
 ## <a name="what-account-should-i-use"></a>使用するアカウントについて
 
