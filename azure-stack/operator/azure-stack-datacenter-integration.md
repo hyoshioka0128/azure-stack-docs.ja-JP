@@ -7,12 +7,12 @@ ms.date: 04/02/2020
 ms.author: patricka
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2019
-ms.openlocfilehash: 89cb7fe7ee0f8e19c2774d5ebfef988ec0933e03
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 56b0025de1eee074eb0d6fbcdff8228cdbb9ac4e
+ms.sourcegitcommit: 5f3d37994b8cb63c76e54136c0cc05bc4f475950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97871023"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99495552"
 ---
 # <a name="datacenter-integration-planning-considerations-for-azure-stack-hub-integrated-systems"></a>Azure Stack Hub 統合システムのデータセンター統合計画に関する考慮事項
 
@@ -201,7 +201,7 @@ Linux または Windows の IaaS VM をバックアップするには、ゲス�
 ## <a name="learn-more"></a>詳細情報
 
 - ユース ケース、購入、パートナー、OEM ハードウェア ベンダーの詳細については、[Azure Stack Hub](https://azure.microsoft.com/overview/azure-stack/) の製品ページを参照してください。
-- Azure Stack Hub 統合システムのロードマップと地理的な可用性については、ホワイト ペーパー「[Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)」 (Azure Stack: Azure の拡張機能) を参照してください。 
+- Azure Stack Hub 統合システムのロードマップと地理的な可用性については、ホワイト ペーパー「[Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/videos/azure-friday-azure-stack-an-extension-of-azure/)」 (Azure Stack: Azure の拡張機能) を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Stack Hub デプロイの接続モデル](azure-stack-connection-models.md)

@@ -15,12 +15,12 @@ ms.date: 10/26/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 10/26/2020
-ms.openlocfilehash: 7a296065696200d83e30e33f973ed16e62e789b5
-ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
+ms.openlocfilehash: 564c1feb8735a8141ccc3c010d566454d62b29a2
+ms.sourcegitcommit: e88f0a1f2f4ed3bb8442bfb7b754d8b3a51319b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98255403"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99534064"
 ---
 # <a name="download-marketplace-items-to-azure-stack-hub---modular-data-center-mdc"></a>Azure Stack Hub に Marketplace の項目をダウンロードする - Modular Data Center (MDC) 
 
@@ -107,7 +107,7 @@ Azure Stack Hub デプロイは、インターネット接続を備えていて�
     また、Azure PowerShell を使用して既にログインしている場合は、Azure コンテキストを渡すこともできます。
 
     ```powershell
-    Add-AzAccount -Environment AzureCloud -Tenant mytenant.onmicrosoft.com 
+    Connect-AzAccount -Environment AzureCloud -Tenant mytenant.onmicrosoft.com 
     .\Invoke-AzSMarketplaceDownload.ps1 -RegistrationResourceGroup 'azurestack' -RegistrationName '<registration name>' -DownloadFolder 'F:\offlineSyndication' -AzureContext $(Get-AzureRMContext)
     ```
     Azure コンテキストを渡さない場合は、サインインするように求めるメッセージが表示されます。
@@ -166,7 +166,7 @@ Azure Stack Hub デプロイは、インターネット接続を備えていて�
     ```powershell
     Add-AzEnvironment -Name Redmond-Admin -ARMEndpoint https://adminmanagement.redmond.azurestack.corp.microsoft.com
 
-    Add-AzAccount -Environment Redmond-Admin
+    Connect-AzAccount -Environment Redmond-Admin
 
     .\Invoke-AzsMarketplaceUpload.ps1 -DownloadFolder F:\Downloads\offlining -AzureContext $(GetAzContext)
     ```

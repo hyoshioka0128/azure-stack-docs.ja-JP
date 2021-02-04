@@ -7,12 +7,12 @@ ms.date: 05/20/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2019
-ms.openlocfilehash: 9ada0a0c7731b92bc67f85545b5d9cd81e87cd36
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: dcd2779bf1166b6418a0ecbec3b025e889ca048a
+ms.sourcegitcommit: 5f3d37994b8cb63c76e54136c0cc05bc4f475950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97871975"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99495569"
 ---
 # <a name="add-a-new-azure-stack-hub-user-account-in-azure-active-directory-azure-ad"></a>新しい Azure Stack Hub ユーザー アカウントを Azure Active Directory に追加する (Azure AD)
 
@@ -54,7 +54,7 @@ Azure サブスクリプションがない場合は、Azure Portal を使用し�
 > [!NOTE]
 > Microsoft アカウントを使用して ASDK をデプロイしている場合は、Azure AD PowerShell を使用してテナント アカウントを作成できません。
 
-1. **64 ビット** バージョンの [IT プロフェッショナル用 Microsoft Online Services サインイン アシスタント RTW](https://go.microsoft.com/fwlink/p/?LinkId=286152) をインストールします。
+1. **64 ビット** バージョンの [IT プロフェッショナル用 Microsoft Online Services サインイン アシスタント RTW](https://www.microsoft.com/download/details.aspx?id=28177) をインストールします。
 
 2. 以下の手順で Windows PowerShell 用 Microsoft Azure Active Directory モジュールをインストールします。
 

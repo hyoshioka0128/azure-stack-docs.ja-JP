@@ -7,12 +7,12 @@ ms.date: 03/04/2020
 ms.author: patricka
 ms.reviewer: asganesh
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 307a24fdf42ce5e007f74a9cf0072b5124d247b2
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 22327cfb7761513eb18337e1e45e9c6d34482235
+ms.sourcegitcommit: 899c219b8fd433c852d816d6c50293e8195d9895
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97871431"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99099269"
 ---
 # <a name="azure-stack-hub-datacenter-integration-walkthrough"></a>Azure Stack Hub データセンターの統合のチュートリアル
 
@@ -66,7 +66,7 @@ Microsoft または Azure Stack Hub ソリューション パートナーが、�
 -   どのようなサイズのソリューションが必要か?
 -   電源と冷却に関する要件はどのようなものか?
 
-[Azure Stack Hub Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) を使用して、ニーズに最適なハードウェアの容量と構成を調査して分析できます。 
+[Azure Stack Hub Capacity Planner](https://download.microsoft.com/download/4/a/2/4a2bd10c-58a0-4ee7-8c3f-55b526ce7e75/AzureStackHubCapacityPlanner_v2005.01.xlsm) を使用して、ニーズに最適なハードウェアの容量と構成を調査して分析できます。 
 
 ## <a name="ordering"></a>発注
 お客様の組織は、Azure Stack Hub の購入を約束し、コントラクトおよび注文書への署名を行い、統合要件データをソリューション プロバイダーに提供します。

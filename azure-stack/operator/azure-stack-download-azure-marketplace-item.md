@@ -8,12 +8,12 @@ ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 12/16/2020
 zone_pivot_groups: state-connected-disconnected
-ms.openlocfilehash: 9560e9e2fcf5d7b01ca44b409d14a7827cac4060
-ms.sourcegitcommit: 0983c1f90734b7ea5e23ae614eeaed38f9cb3c9a
+ms.openlocfilehash: 3634862089f3811da314d3f85865fc1a29324f5f
+ms.sourcegitcommit: e88f0a1f2f4ed3bb8442bfb7b754d8b3a51319b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98571401"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99534047"
 ---
 # <a name="download-marketplace-items-to-azure-stack-hub"></a>Azure Stack Hub に Marketplace の項目をダウンロードする
 
@@ -119,16 +119,16 @@ Azure Stack の登録の完了後、[Marketplace management]\(Marketplace 管理
 
 1. インターネットに接続されているコンピューターで、PowerShell コンソールを管理者として開きます。
 
-2. Azure Stack Hub を登録するために使用した Azure アカウントを使用して、適切な Azure クラウドと AzureAD ディレクトリ テナントにサインインします。 アカウントを追加するには、PowerShell で `Login-AzAccount` を実行します。
+2. Azure Stack Hub を登録するために使用した Azure アカウントを使用して、適切な Azure クラウドと AzureAD ディレクトリ テナントにサインインします。 アカウントを追加するには、PowerShell で `Connect-AzAccount` を実行します。
 
    ```powershell  
-   Login-AzAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
+   Connect-AzAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
    ```
 
    Azure アカウントの資格情報の入力を求めるメッセージが表示されます。アカウントの構成によっては、2 要素認証を使用する必要があります。
 
    > [!NOTE]
-   > セッションの有効期限が切れた、パスワードが変更された、またはアカウントを切り替えたい場合は、`Add-AzAccount` を使用してサインインする前に、コマンドレット `Remove-AzAccount -Scope Process` を実行します。
+   > セッションの有効期限が切れた、パスワードが変更された、またはアカウントを切り替えたい場合は、`Connect-AzAccount` を使用してサインインする前に、コマンドレット `Remove-AzAccount -Scope Process` を実行します。
 
 3. 複数のサブスクリプションがある場合は、次のコマンドを実行して、登録に使用したものを選択します。
 

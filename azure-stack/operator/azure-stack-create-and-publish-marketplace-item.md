@@ -7,12 +7,12 @@ ms.date: 11/16/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/16/2020
-ms.openlocfilehash: db85757fd898d0b75ace50c8fe78ecaa31722bc2
-ms.sourcegitcommit: 8c745b205ea5a7a82b73b7a9daf1a7880fd1bee9
+ms.openlocfilehash: 1ca64f3d6084ca4f28967070c344b286e858cb9d
+ms.sourcegitcommit: e88f0a1f2f4ed3bb8442bfb7b754d8b3a51319b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95518043"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99534081"
 ---
 # <a name="create-and-publish-a-custom-azure-stack-hub-marketplace-item"></a>Azure Stack Hub でカスタム Marketplace アイテムを作成して発行する
 
@@ -161,7 +161,7 @@ VM Marketplace アイテムを作成する前に、次の手順を実行しま�
     ```powershell
     $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
     Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
-    Add-AzAccount -EnvironmentName "AzureStackAdmin"
+    Connect-AzAccount -EnvironmentName "AzureStackAdmin"
     ```
 
 4. 次のスクリプトを実行して、リソースをギャラリーにインポートします。
