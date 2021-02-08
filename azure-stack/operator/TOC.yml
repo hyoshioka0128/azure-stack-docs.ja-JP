@@ -67,9 +67,12 @@
               href: azure-stack-configure-dns.md
             - name: タイム サーバーを構成する
               href: azure-stack-configure-time.md
-            - name: ファイアウォールの統合
-              href: azure-stack-firewall.md
+            - name: ファイアウォール/プロキシ
               items:
+                - name: ファイアウォールの統合
+                  href: azure-stack-firewall.md
+                - name: 透過的プロキシ
+                  href: azure-stack-transparent-proxy.md
                 - name: エンドポイントの発行
                   href: azure-stack-integrate-endpoints.md
                 - name: 拡張機能ホスト
