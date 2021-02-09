@@ -1,22 +1,22 @@
 ---
-title: Azure Stack HCI の SDN にデータセンター ファイアウォールを使用する
-description: このトピックを使用して、Azure Stack HCI 内でソフトウェア定義ネットワークに対するデータセンター ファイアウォールの使用を開始します。
+title: Azure Stack HCI および Windows Server 内で SDN にデータセンター ファイアウォールを使用する
+description: このトピックを使用して、Azure Stack HCI、Windows Server 2019、および Windows Server 2016 内でソフトウェアによるネットワーク制御に対するデータセンター ファイアウォールの使用を開始します。
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/17/2020
-ms.openlocfilehash: 833780947bd698a0e39709668715372bd8508e90
-ms.sourcegitcommit: 40d3f3f0ac088d1590d1fb64ca05ac1dabf4e00c
+ms.date: 02/02/2021
+ms.openlocfilehash: 8c150de090bd1f863a29109ddae9d6e4bb104dfc
+ms.sourcegitcommit: 0e58c5cefaa81541d9280c0e8a87034989358647
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94881236"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99510705"
 ---
-# <a name="use-datacenter-firewall-for-software-defined-networking-in-azure-stack-hci"></a>Azure Stack HCI 内でソフトウェア定義ネットワークにデータセンター ファイアウォールを使用する
+# <a name="use-datacenter-firewall-for-software-defined-networking-in-azure-stack-hci-and-windows-server"></a>Azure Stack HCI および Windows Server 内でソフトウェアによるネットワーク制御にデータセンター ファイアウォールを使用する
 
-> 適用対象:Azure Stack HCI バージョン 20H2、Windows Server 2019
+> 適用対象:Azure Stack HCI バージョン 20H2、Windows Server 2019、Windows Server 2016
 
 このトピックでは、Windows PowerShell を使用して、Azure Stack HCI でソフトウェア定義ネットワーク (SDN) の[データセンター ファイアウォール](../concepts/datacenter-firewall-overview.md)によってデータ トラフィック フローを管理するためのアクセス制御リスト (ACL) を構成する手順について説明します。 データセンター ファイアウォールを有効にして構成するには、サブネットまたはネットワーク インターフェイスに適用される ACL を作成します。 このトピックのサンプル スクリプトでは、**NetworkController** モジュールからエクスポートされた Windows PowerShell コマンドを使用します。 Windows Admin Center を使用して ACL を構成および管理することもできます。
 
@@ -207,7 +207,7 @@ New-NetworkControllerAccessControlList -ResourceId "Subnet-192-168-0-0" -Propert
 
 ## <a name="add-an-acl-to-a-network-interface"></a>ネットワーク インターフェイスに ACL を追加する
 
-ACL を作成して仮想サブネットに割り当てたら、仮想サブネット上の既定の ACL を個々のネットワーク インターフェイス用に特定の ACL で上書きすることができます。 ここでは、仮想ネットワークではなく、VLAN に接続されているネットワーク インターフェイスに特定の ACL を直接適用します。 ネットワーク インターフェイスに接続された仮想サブネットに ACL が設定されている場合、両方の ACL が適用され、仮想サブネットの ACL よりもネットワーク インターフェイスの ACL が優先されます。
+ACL を作成して仮想サブネットに割り当てたら、仮想サブネット上の既定の ACL を個々のネットワーク インターフェイス用に特定の ACL で上書きすることができます。 Windows Server 2019 Datacenter 以降では、SDN 仮想ネットワークに加えて、SDN 論理ネットワークに接続されたネットワーク インターフェイスに特定の ACL を直接適用できます。 ネットワーク インターフェイスに接続された仮想サブネットに ACL が設定されている場合、両方の ACL が適用され、仮想サブネットの ACL よりもネットワーク インターフェイスの ACL が優先されます。
 
 この例では、仮想ネットワークに ACL を追加する方法を示します。
 
@@ -259,7 +259,7 @@ ACL を作成して仮想サブネットに割り当てたら、仮想サブネ�
 
 ## <a name="firewall-auditing"></a>ファイアウォールの監査
 
-ファイアウォールの監査は、SDN ファイアウォール規則によって処理されるすべてのフローを記録するデータセンター ファイアウォールの新機能です。 ログが有効になっているすべての ACL が記録されます。 ログ ファイルは、[Azure Network Watcher フロー ログ](/azure/network-watcher/network-watcher-nsg-flow-logging-overview)と一致する構文に含まれている必要があります。 これらのログは、診断に使用したり、後で分析するためにアーカイブしたりすることができます。
+Windows Server 2019 で導入されたファイアウォールの監査は、SDN ファイアウォール規則によって処理されるすべてのフローを記録するデータセンター ファイアウォールの新機能です。 ログが有効になっているすべての ACL が記録されます。 ログ ファイルは、[Azure Network Watcher フロー ログ](/azure/network-watcher/network-watcher-nsg-flow-logging-overview)と一致する構文に含まれている必要があります。 これらのログは、診断に使用したり、後で分析するためにアーカイブしたりすることができます。
 
 ホスト サーバーでファイアウォールの監査を有効にするサンプル スクリプトを次に示します。 最初にある変数を更新し、[ネットワーク コントローラー](../concepts/network-controller-overview.md)が展開された Azure Stack HCI クラスターでこれを実行します。
 
@@ -412,4 +412,4 @@ Mode                LastWriteTime         Length Name
 
 - [データセンター ファイアウォールの概要](../concepts/datacenter-firewall-overview.md)
 - [ネットワーク コント ローラーの概要](../concepts/network-controller-overview.md)
-- [Azure Stack HCI における SDN](../concepts/software-defined-networking.md)
+- [Azure Stack HCI および Windows Server 内の SDN](../concepts/software-defined-networking.md)

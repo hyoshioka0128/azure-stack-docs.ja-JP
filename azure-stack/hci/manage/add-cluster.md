@@ -5,13 +5,13 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 01/06/2021
-ms.openlocfilehash: 77f1800323f57721d3f6f70050841e4adf0fd4c5
-ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
+ms.date: 01/29/2021
+ms.openlocfilehash: 0d8aa3cc6418c8e64b7a8dc97290757c8be41856
+ms.sourcegitcommit: e56b0eaf92c633d5d782bfdf17ce521fa88a7256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98254740"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99227432"
 ---
 # <a name="add-or-remove-servers-for-an-azure-stack-hci-cluster"></a>Azure Stack HCI クラスターのサーバーを追加または削除する
 
@@ -21,7 +21,7 @@ Azure Stack HCI のクラスターに対してサーバーを簡単に追加ま�
 
 サーバーを追加または削除したときは必ず、後でクラスター検証を実行して、クラスターが正常に機能していることを確認することも必要です。 これは、非ストレッチ クラスターとストレッチ クラスターの両方に適用されます。
 
-## <a name="obtain-oem-hardware"></a>OEM ハードウェアを入手する
+## <a name="before-you-begin"></a>始める前に
 
 最初の手順は、元の OEM から新しい HCI ハードウェアを入手することです。 クラスターで使用するための新しいサーバー ハードウェアを追加するときは、OEM 提供のドキュメントを必ず参照してください。
 
@@ -29,11 +29,13 @@ Azure Stack HCI のクラスターに対してサーバーを簡単に追加ま�
 1. 物理スイッチ ポートを有効にし、アクセス制御リスト (ACL) と VLAN ID を調整します (該当する場合)。
 1. OEM の指示に従って、ベースボード管理コントローラー (BMC) で正しい IP アドレスを構成し、すべての BIOS 設定を適用します。
 1. OEM によって提供されるツールを使用して、最新のファームウェア ベースラインをすべてのコンポーネントに適用します。
-1. OEM 検証テストを実行して、既存のクラスター サーバーとの同質性を確保します。
+1. OEM 検証テストを実行して、既存のクラスター サーバーとのハードウェアの同質性を確保します。
+1. Azure Stack HCI オペレーティング システムを新しいサーバーにインストールします。 詳細については、[Azure Stack HCI のデプロイ](../deploy/operating-system.md)に関するページをご覧ください。
+1. サーバーをクラスター ドメインに参加させます。
 
 ## <a name="add-a-server-to-a-cluster"></a>クラスターにサーバーを追加する
 
-サーバーが正しく起動したら、Windows Admin Center を使用してサーバーをクラスターに参加させます。
+Windows Admin Center を使用して、サーバーをクラスターに参加させます。
 
 :::image type="content" source="media/manage-cluster/add-server.png" alt-text="サーバーの追加画面" lightbox="media/manage-cluster/add-server.png":::
 

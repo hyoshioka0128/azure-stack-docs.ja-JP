@@ -3,23 +3,21 @@ title: SDN Express を使用して SDN インフラストラクチャをデプ�
 description: SDN Express を使用して SDN インフラストラクチャをデプロイする方法を説明します
 author: v-dasis
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 02/01/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
-ms.openlocfilehash: ec4c348242910eaf78831b59659bd5943f9cb854
-ms.sourcegitcommit: e772df8ac78c86d834a68d1a8be83b7f738019b7
+ms.openlocfilehash: b8431b7e2cf2cad3d238386619839a760b722042
+ms.sourcegitcommit: d74f6d8630783de49667956f39cac67e1968a89d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98782015"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99473193"
 ---
 # <a name="deploy-an-sdn-infrastructure-using-sdn-express"></a>SDN Express を使用して SDN インフラストラクチャをデプロイする
 
 > 適用対象: Azure Stack HCI バージョン 20H2
 
-このトピックでは、SDN Express PowerShell スクリプトを使用して、エンドツーエンドのソフトウェア定義ネットワーク (SDN) インフラストラクチャをデプロイします。 このインフラストラクチャには、高可用性 (HA) ネットワーク コントローラー、高可用性ソフトウェア ロード バランサー (SLB)、および高可用性ゲートウェイが含まれます。  
-
-スクリプトでは段階的デプロイがサポートされており、ネットワーク コントローラーのみをデプロイして、最小限のネットワーク要件に対応するコア セットの機能を実現できます。 Windows Admin Center でクラスターの作成ウィザードを使用して、ネットワーク コントローラーを展開することもできます。 ただし、SLB やゲートウェイなどの他の SDN コンポーネントをデプロイするには、SDN Express スクリプトを使用する必要があります。
+このトピックでは、SDN Express PowerShell スクリプトを使用して、エンドツーエンドのソフトウェア定義ネットワーク (SDN) インフラストラクチャをデプロイします。 このインフラストラクチャには、高可用性 (HA) ネットワーク コントローラー (NC)、高可用性ソフトウェア ロード バランサー (SLB)、および高可用性ゲートウェイを含む場合があります。  スクリプトでは段階的デプロイがサポートされており、ネットワーク コントローラーのみをデプロイして、最小限のネットワーク要件に対応するコア セットの機能を実現できます。 
 
 System Center Virtual Machine Manager (VMM) を使用して SDN インフラストラクチャをデプロイすることもできます。 詳細については、「[VMM ファブリックで SDN リソースを管理する](/system-center/vmm/network-sdn)」を参照してください。
 
@@ -37,7 +35,37 @@ SDN のデプロイを開始する前に、物理およびホストのネット�
 
 すべてのホスト サーバーに Azure Stack HCI オペレーティング システムがインストールされていることを確認してください。 「[Azure Stack HCI オペレーティング システムのデプロイ](../deploy/operating-system.md)」で、これを実行する方法をご覧ください。
 
-## <a name="run-the-sdn-express-scripts"></a>SDN Express スクリプトを実行する
+## <a name="requirements"></a>要件
+
+SDN を正常にデプロイするには、次の要件が満たされている必要があります。
+
+- すべてのホスト サーバーで Hyper-V が有効になっている
+- すべてのホスト サーバーが Active Directory に参加している
+- 仮想スイッチが作成されている
+- 物理ネットワークが、構成ファイルで定義されているサブネットと VLAN に対して構成されている
+- 構成ファイルで指定された VHDX ファイルが、SDN Express スクリプトが実行されているデプロイ コンピューターから到達可能である
+
+## <a name="create-the-vdx-file"></a>VDX ファイルを作成する
+
+SDN によって、Azure Stack HCI OS が含まれる VHDX ファイルが、SDN 仮想マシン (VM) を作成するためのソースとして使用されます。 VHDX 内の OS のバージョンは、Hyper-V ホストで使用されているバージョンと一致している必要があります。
+
+ISO から Azure Stack HCI OS をダウンロードしてインストールしている場合は、[スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter/Convert-WindowsImageps1-0fe23a8f)で説明されているように、`Convert-WindowsImage` ユーティリティを使用してこの VHDX を作成できます。
+
+`Convert-WindowsImage` の使用例を次に示します。
+
+ ```powershell
+$wimpath = "d:\sources\install.wim"
+$vhdpath = "c:\temp\WindowsServerDatacenter.vhdx"
+$Edition = 4   # 4 = Full Desktop, 3 = Server Core
+
+import-module ".\convert-windowsimage.ps1"
+
+Convert-WindowsImage -SourcePath $wimpath -Edition $Edition -VHDPath $vhdpath -SizeBytes 500GB -DiskLayout UEFI
+```
+
+## <a name="download-the-github-repository"></a>GitHub リポジトリをダウンロードする
+
+SDN Express スクリプト ファイルは GitHub 内にあります。 最初の手順として、必要なファイルとフォルダーをお使いのデプロイ コンピューターで取得します。
 
 1. [SDN Express](https://github.com/microsoft/SDN) GitHub リポジトリにアクセスします。
 
@@ -48,15 +76,27 @@ SDN のデプロイを開始する前に、物理およびホストのネット�
 
 1. ZIP ファイルを展開し、`SDNExpress` フォルダーをデプロイ コンピューターの `C:\` フォルダーにコピーします。
 
+## <a name="edit-the-configuration-file"></a>構成ファイルを編集する
+
+PowerShell `MultiNodeSampleConfig.psd1` 構成データ ファイルには、さまざまなパラメーターと構成設定の入力として SDN Express スクリプトに必要なすべてのパラメーターと設定が含まれています。 このファイルには、ネットワーク コントローラー コンポーネントだけをデプロイするのか、ソフトウェア ロード バランサーとゲートウェイ コンポーネントも同様にデプロイするのかに基づいて、何を入力する必要があるかについての具体的な情報が含まれています。
+
+詳細については、「[ソフトウェア定義ネットワーク インフラストラクチャを計画する](../concepts/plan-software-defined-networking-infrastructure.md)」をご覧ください。
+
+では、始めましょう。
+
 1. `C:\SDNExpress\scripts` フォルダーに移動します。
 
-1. `SDNExpress.ps1` スクリプト ファイルを実行します。 このスクリプトでは、さまざまな構成設定の入力として PowerShell デプロイ (PSD) ファイルが使用されます。 スクリプトの実行手順については、`README.md` ファイルを参照してください。  
+1. 使い慣れたテキスト エディターで `MultiNodeSampleConfig.psd1` ファイルを開きます。
 
-1. SDN VM を作成するためのソースとして、Azure Stack HCI OS が含まれる VHDX を使用します。 ISO から Azure Stack HCI OS をダウンロードしてインストールしている場合は、ドキュメントで説明されているように、`convert-windowsimage` ユーティリティを使用してこの VHDX を作成できます。
+1. 特定のパラメーター値をご自身のインフラストラクチャに合わせて変更します。
 
-1. インフラストラクチャに合うように特定の値 (ホスト名、ドメイン名、ユーザー名とパスワードなど) と「[ソフトウェア定義ネットワーク インフラストラクチャを計画する](../concepts/plan-software-defined-networking-infrastructure.md)」トピックで説明されているネットワークのネットワーク情報を変更することで、`SDNExpress\scripts\MultiNodeSampleConfig.psd1` ファイルをカスタマイズします。 このファイルには、ネットワーク コントローラー コンポーネントだけをデプロイするのか、ソフトウェア ロード バランサーとゲートウェイ コンポーネントも同様にデプロイするのかに基づいて、何を入力する必要があるかについての具体的な情報が含まれています。
+## <a name="run-the-deployment-script"></a>展開スクリプトを実行する
 
-1. Hyper-V ホスト上で、管理者の資格情報を持つユーザー アカウントから、次のスクリプトを実行します。
+SDN Express スクリプトによって、お使いの SDN インフラストラクチャがデプロイされます。 スクリプトが完了すると、インフラストラクチャはワークロードのデプロイに使用できるようになります。
+
+1. `README.md` ファイルで、デプロイ スクリプトの実行方法に関する最新情報を確認します。  
+
+1. クラスター ホスト サーバーの管理者資格情報を持つユーザー アカウントから、次のコマンドを実行します。
 
     ```powershell
     SDNExpress\scripts\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose

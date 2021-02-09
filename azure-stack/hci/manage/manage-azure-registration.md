@@ -1,16 +1,16 @@
 ---
 title: Azure Stack HCI の Azure 登録を管理する
-description: PowerShell を使用して、Azure Stack HCI の Azure 登録を管理し、登録状態を把握する方法。
+description: Azure Stack HCI の Azure 登録を管理し、登録状態を把握して、使用停止の準備ができたときにクラスターの登録を解除する方法。
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 12/10/2020
-ms.openlocfilehash: a81a1973d7324371cb42b23ca7905d39492401cf
-ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
+ms.date: 01/28/2021
+ms.openlocfilehash: a187730ed43c6c4a57bbe2d1f81d39085d8b94a1
+ms.sourcegitcommit: b461597917b768412036bf852c911aa9871264b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98254434"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050095"
 ---
 # <a name="manage-azure-registration"></a>Azure 登録の管理
 
@@ -18,9 +18,19 @@ ms.locfileid: "98254434"
 
 Azure Stack HCI クラスターを作成したら、[クラスターを Azure Arc](../deploy/register-with-azure.md) に登録する必要があります。クラスターが登録されると、オンプレミス クラスターとクラウドの間で定期的に情報が同期されます。 このトピックでは、登録状態を把握し、Azure Active Directory のアクセス許可を付与し、使用停止の準備ができたらクラスターの登録を解除する方法について説明します。
 
-## <a name="understanding-registration-status"></a>登録状態の把握
+## <a name="understanding-registration-status-using-windows-admin-center"></a>Windows Admin Center を使用して登録状態を把握する
 
-登録状態を把握するには、`Get-AzureStackHCI` PowerShell コマンドレットと、`ClusterStatus`、`RegistrationStatus`、および `ConnectionStatus` の各プロパティを使用します。 たとえば、Azure Stack HCI オペレーティング システムをインストールした後、クラスターの作成または参加を行う前は、`ClusterStatus` プロパティには "not yet" (未完了) の状態が表示されます。
+Windows Admin Center を使用してクラスターに接続すると、ダッシュボードが表示され、Azure の接続状態が表示されます。 "**接続済み**" とは、クラスターが既に Azure に登録され、過去 1 日以内にクラウドと正常に同期されたことを意味します。
+
+   :::image type="content" source="media/manage-azure-registration/registration-status.png" alt-text="Windows Admin Center ダッシュボードにはクラスター接続状態が常に表示されます" lightbox="media/manage-azure-registration/registration-status.png":::
+
+詳細情報を表示するには、左側の **[ツール]** メニューの一番下にある **[設定]** を選択し、 **[Azure Stack HCI registration]\(Azure Stack HCI の登録\)** を選択します。
+
+   :::image type="content" source="media/manage-azure-registration/azure-stack-hci-registration.png" alt-text="[設定] > [ツール] > [Azure Stack HCI registration]\(Azure Stack HCI の登録\) を選択して詳細を表示" lightbox="media/manage-azure-registration/azure-stack-hci-registration.png":::
+
+## <a name="understanding-registration-status-using-powershell"></a>PowerShell を使用して登録状態を把握する
+
+Windows PowerShell を使用して登録状態を把握するには、`Get-AzureStackHCI` PowerShell コマンドレットと、`ClusterStatus`、`RegistrationStatus`、および `ConnectionStatus` の各プロパティを使用します。 たとえば、Azure Stack HCI オペレーティング システムをインストールした後、クラスターの作成または参加を行う前は、`ClusterStatus` プロパティには "not yet" (未完了) の状態が表示されます。
 
 :::image type="content" source="media/manage-azure-registration/1-get-azurestackhci.png" alt-text="クラスターを作成する前の Azure の登録状態":::
 
@@ -40,7 +50,7 @@ Azure Stack HCI では、Azure のオンライン サービス条件に従って
 
 サブスクリプションで Azure リソースを作成することに加えて、Azure Stack HCI を登録すると、概念的にはユーザーに似たアプリ ID が Azure Active Directory テナントに作成されます。 アプリ ID にはクラスター名が継承されます。 この ID は、サブスクリプション内で、Azure Stack HCI クラウド サービスに代わって適切に機能します。
 
-`Register-AzureStackHCI` を実行するユーザーが Azure Active Directory 管理者であるか、十分なアクセス許可が委任されている場合、これはすべて自動的に行われるため、追加の操作は必要ありません。 そうでない場合は、登録を完了するには、Azure Active Directory 管理者の承認が必要になる場合があります。 管理者は、アプリに明示的に同意するか、アプリに同意できるアクセス許可を委任することができます。
+クラスターを登録するユーザーが Azure Active Directory 管理者であるか、十分なアクセス許可が委任されている場合、これはすべて自動的に行われるため、追加の操作は必要ありません。 そうでない場合は、登録を完了するには、Azure Active Directory 管理者の承認が必要になる場合があります。 管理者は、アプリに明示的に同意するか、アプリに同意できるアクセス許可を委任することができます。
 
 :::image type="content" source="media/manage-azure-registration/aad-permissions.png" alt-text="Azure Active Directory のアクセス許可と ID の図" border="false":::
 
@@ -66,7 +76,7 @@ https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Census.Sync
 https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Billing.Sync
 ```
 
-Azure Active Directory 管理者から承認を受けるには時間がかかる場合があるため、`Register-AzureStackHCI` コマンドレットは終了し、登録は "pending admin consent" (管理者の同意待ち)、つまり部分的に完了した状態のままになります。 同意が得られたら、`Register-AzureStackHCI` をもう一度実行するだけで登録は完了します。
+Azure Active Directory 管理者から承認を受けるには時間がかかる場合があるため、`Register-AzStackHCI` コマンドレットは終了し、登録は "pending admin consent" (管理者の同意待ち)、つまり部分的に完了した状態のままになります。 同意が得られたら、`Register-AzStackHCI` をもう一度実行するだけで登録は完了します。
 
 ## <a name="azure-active-directory-user-permissions"></a>Azure Active Directory ユーザーのアクセス許可
 
@@ -87,7 +97,7 @@ Azure Active Directory で、 **[ユーザー設定] > [アプリの登録]** �
 
 ### <a name="option-2-assign-cloud-application-administration-role"></a>オプション 2:Cloud Application Administration ロールを割り当てる
 
-組み込みの "Cloud Application Administration" Azure AD ロールをユーザーに割り当てます。 こうすることで、ユーザーは追加の AD 管理者の同意なしにクラスターを登録できます。
+組み込みの "Cloud Application Administration" Azure AD ロールをユーザーに割り当てます。 こうすることで、ユーザーは追加の AD 管理者の同意なしにクラスターを登録および登録解除できます。
 
 ### <a name="option-3-create-a-custom-ad-role-and-consent-policy"></a>オプション 3:カスタムの AD ロールと同意ポリシーを作成する
 
@@ -147,17 +157,34 @@ Azure Active Directory で、 **[ユーザー設定] > [アプリの登録]** �
 
    6. [これらの手順](/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=/azure/active-directory/roles/context/ugr-context)に従って、Azure Stack HCI クラスターを Azure に登録するユーザーに新しいカスタムの AD ロールを割り当てます。
 
-## <a name="unregister-azure-stack-hci-with-azure"></a>Azure で Azure Stack HCI の登録を解除する
+## <a name="unregister-azure-stack-hci-using-windows-admin-center"></a>Windows Admin Center を使用して Azure Stack HCI の登録を解除する
 
-Azure Stack HCI クラスターの使用を停止する準備ができたら、`Unregister-AzStackHCI` コマンドレットを使用して登録を解除します。 これにより、Azure Arc による監視、サポート、課金のすべての機能が停止します。クラスターと Azure Active Directory アプリ ID を表す Azure リソースは削除されますが、リソース グループは削除されません。他の無関係なリソースが含まれている可能性があるためです。
+ご自身の Azure Stack HCI クラスターの使用を停止する準備ができたら、Windows Admin Center を使用してクラスターに接続し、左側の **[ツール]** メニューの一番下にある **[設定]** を選択するだけです。 次に、 **[Azure Stack HCI registration]\(Azure Stack HCI の登録\)** を選択し、 **[登録解除]** をクリックします。 登録解除プロセスによって、クラスターを表す Azure リソース、Azure リソース グループ (登録中に作成されたグループで、他のリソースが含まれていない場合)、および Azure AD アプリ ID が自動的にクリーンアップされます。 これにより、Azure Arc による監視、サポート、課金のすべての機能が停止します。
 
-クラスター ノードで `Unregister-AzStackHCI` コマンドレットを実行する場合、この構文を使用し、自分の Azure サブスクリプション ID と、登録を解除したい Azure Stack HCI クラスターのリソース名を指定します。
+   > [!NOTE]
+   > Azure Stack HCI クラスターの登録を解除するには、Azure Active Directory 管理者、または十分なアクセス許可を委任されている他のユーザーが必要です。 「[Azure Active Directory ユーザーのアクセス許可](#azure-active-directory-user-permissions)」をご覧ください。
+
+## <a name="unregister-azure-stack-hci-using-powershell"></a>PowerShell を使用して Azure Stack HCI の登録を解除する
+
+また、`Unregister-AzStackHCI` コマンドレットを使用して、Azure Stack HCI クラスターの登録を解除することもできます。 コマンドレットは、クラスター ノードまたは管理 PC のいずれかで実行できます。
+
+場合によっては、最新バージョンの `Az.StackHCI` モジュールをインストールする必要があります。 " **'PSGallery' からモジュールをインストールしますか?** " というプロンプトが表示されたら、 **[はい]** (Y) と答えます。
+
+```PowerShell
+Install-Module -Name Az.StackHCI
+```
+
+### <a name="unregister-from-a-cluster-node"></a>クラスター ノードから登録を解除する
+
+クラスター内のサーバー上で `Unregister-AzStackHCI` コマンドレットを実行する場合、この構文を使用し、自分の Azure サブスクリプション ID と、登録を解除したい Azure Stack HCI クラスターのリソース名を指定します。
 
 ```PowerShell
 Unregister-AzStackHCI -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName HCI001
 ```
 
 別のデバイス (ご自分の PC や携帯電話など) で microsoft.com/devicelogin にアクセスするよう求められるので、コードを入力し、そこにサインインして Azure の認証を行います。
+
+### <a name="unregister-from-a-management-pc"></a>管理 PC から登録を解除する
 
 管理用 PC からコマンドレットを実行する場合、クラスター内のサーバーの名前も指定する必要があります。
 
@@ -167,9 +194,14 @@ Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "e569b8af-6ecc-
 
 対話型の Azure ログイン ウィンドウがポップアップ表示されます。 表示される正確なプロンプトは、セキュリティ設定 (2 要素認証など) によって異なります。 画面の指示に従ってログインします。
 
+## <a name="cleaning-up-after-a-cluster-that-was-not-properly-unregistered"></a>正常に登録が解除されなかったクラスターを整理する
+
+ユーザーがホストサーバーの再イメージングや仮想クラスター ノードの削除などによって、Azure Stack HCI クラスターの登録を解除せずに破棄すると、成果物が Azure に残されます。 これらは無害であり、課金されたり、リソースを消費したりすることはありませんが、そのせいで Azure portal が煩雑になることはあります。 これを整理するために、手動で削除することができます。
+
+Azure Stack HCI リソースを削除するには、Azure portal のそのページに移動し、上部の操作バーから **[削除]** を選択します。 削除を確認するためにリソースの名前を入力し、 **[削除]** をクリックします。 Azure AD アプリ ID を削除するには、**Azure AD**、 **[アプリの登録]** の順に移動して、 **[すべてのアプリケーション]** の下にそれを表示します。 **[削除]** を選択して、確定します。
+
 ## <a name="next-steps"></a>次のステップ
 
 関連情報については、以下も参照してください。
 
 - [Azure Stack HCI を Azure に接続する](../deploy/register-with-azure.md)
-- [Azure Monitor を使用して Azure Stack HCI を監視する](azure-monitor.md)

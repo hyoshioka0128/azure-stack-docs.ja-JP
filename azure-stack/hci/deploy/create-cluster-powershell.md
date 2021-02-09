@@ -3,15 +3,15 @@ title: Windows PowerShell を使用して Azure Stack HCI クラスターを作�
 description: Windows PowerShell を使用して Azure Stack HCI 用のクラスターを作成する方法について説明します
 author: v-dasis
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 02/01/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
-ms.openlocfilehash: 2099d7e9dcd2d01f949d54ad5bd59ce06ecaccbc
-ms.sourcegitcommit: e772df8ac78c86d834a68d1a8be83b7f738019b7
+ms.openlocfilehash: ca2a9448b787a93e297d4bc666a37d81e4d02b28
+ms.sourcegitcommit: e56b0eaf92c633d5d782bfdf17ce521fa88a7256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98772204"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99227363"
 ---
 # <a name="create-an-azure-stack-hci-cluster-using-windows-powershell"></a>Windows PowerShell を使用して Azure Stack HCI クラスターを作成する
 
@@ -147,9 +147,11 @@ Restart-Computer -ComputerName $ServerList -WSManAuthentication Kerberos
 
 Azure Stack HCI の RDMA および Hyper-V ホスト ネットワークの詳細については、[ホスト ネットワークの要件](../concepts/host-network-requirements.md)に関する記事を参照してください。
 
-### <a name="disable-unused-networks"></a>未使用のネットワークを無効にする
+### <a name="disable-unused-network-adapters"></a>未使用のネットワーク アダプターを無効にする
 
-切断されているか、管理、ストレージ、またはワークロードのトラフィック (VM など) に使用されていないネットワークを、無効にする必要があります。 未使用のネットワークを識別する方法を次に示します。
+管理、ストレージや、VM などのワークロード トラフィックに使用されていない、切断されたすべてのネットワークおよびアダプターを無効にする必要があります。 これには、ベースボード管理コントローラー (BMC) などのヘッドレス管理に使用されるネットワーク アダプターが含まれます。
+
+未使用のネットワークを識別する方法を次に示します。
 
 ```powershell
 $ServerList = "Server1", "Server2", "Server3", "Server4"

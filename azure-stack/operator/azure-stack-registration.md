@@ -10,12 +10,12 @@ ms.reviewer: avishwan
 ms.lastreviewed: 11/19/2020
 ms.custom: contperf-fy20q4
 zone_pivot_groups: state-connected-disconnected
-ms.openlocfilehash: 7888d23390706a098f814f4cc674d030662c9915
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 97a730d61d5ba67124771185deb3fd51c269938a
+ms.sourcegitcommit: e88f0a1f2f4ed3bb8442bfb7b754d8b3a51319b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97869561"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99534149"
 ---
 # <a name="register-azure-stack-hub-with-azure"></a>Azure Stack Hub を Azure に登録する
 
@@ -123,10 +123,10 @@ Azure Stack Hub デプロイのクラウド ID を確認する場合は、「[�
 
 1. Azure Stack Hub リソース プロバイダーを Azure に登録するには、PowerShell ISE を管理者として起動し、**EnvironmentName** パラメーターを適切な Azure サブスクリプション タイプ (以下のパラメーターを参照) に設定して、次の PowerShell コマンドレットを使用します。
 
-2. Azure Stack Hub を登録するために使用した Azure アカウントを追加します。 アカウントを追加するには、**Add-AzAccount** コマンドレットを実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
+2. Azure Stack Hub を登録するために使用した Azure アカウントを追加します。 アカウントを追加するには、**Connect-AzAccount** コマンドレットを実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
 
    ```powershell
-   Add-AzAccount -EnvironmentName "<environment name>"
+   Connect-AzAccount -EnvironmentName "<environment name>"
    ```
 
    | パラメーター | 説明 |  
@@ -134,7 +134,7 @@ Azure Stack Hub デプロイのクラウド ID を確認する場合は、「[�
    | EnvironmentName | Azure クラウド サブスクリプション環境名。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure サブスクリプションを使用している場合は **AzureChinaCloud** です。  |
 
    >[!Note]
-   > セッションの有効期限が切れた、パスワードが変更された、または単にアカウントを切り替えたい場合は、Add-AzAccount を使用してサインインする前に、次のコマンドレットを実行します: `Remove-AzAccount-Scope Process`
+   > セッションの有効期限が切れた、パスワードが変更された、または単にアカウントを切り替えたい場合は、Connect-AzAccount を使用してサインインする前に、次のコマンドレットを実行します: `Remove-AzAccount-Scope Process`
 
 3. 複数のサブスクリプションがある場合は、次のコマンドを実行して、使用するものを選択します。  
 
@@ -252,7 +252,7 @@ Azure Stack Hub デプロイのクラウド ID を確認する場合は、「[�
 
 1. Azure Stack Hub リソース プロバイダーを Azure に登録するには、PowerShell ISE を管理者として起動し、**EnvironmentName** パラメーターを適切な Azure サブスクリプション タイプ (以下のパラメーターを参照) に設定して、次の PowerShell コマンドレットを使用します。
 
-2. Azure Stack Hub を登録するために使用した Azure アカウントを追加します。 アカウントを追加するには、**Add-AzAccount** コマンドレットを実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
+2. Azure Stack Hub を登録するために使用した Azure アカウントを追加します。 アカウントを追加するには、**Connect-AzAccount** コマンドレットを実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
 
    ```powershell  
    Connect-AzAccount -Environment "<environment name>"
@@ -295,7 +295,7 @@ Azure Stack Hub デプロイのクラウド ID を確認する場合は、「[�
 
 1. Azure Stack Hub リソース プロバイダーを Azure に登録するには、PowerShell ISE を管理者として起動し、**EnvironmentName** パラメーターを適切な Azure サブスクリプション タイプ (以下のパラメーターを参照) に設定して、次の PowerShell コマンドレットを使用します。
 
-2. AzureRMure Stack Hub を登録するために使用した Azure アカウントを追加します。 アカウントを追加するには、**Add-AzureRMAccount** コマンドレットを実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
+2. Azure Stack Hub を登録するために使用した Azure アカウントを追加します。 アカウントを追加するには、**Add-AzureRMAccount** コマンドレットを実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
 
    ```powershell  
    Connect-AzureRMAccount -Environment "<environment name>"

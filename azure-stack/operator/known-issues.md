@@ -3,16 +3,16 @@ title: Azure Stack Hub の既知の問題
 description: Azure Stack Hub リリースの既知の問題について説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 01/28/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
-ms.openlocfilehash: 161869d04e036e5265ebceb5cab9e193091baa37
-ms.sourcegitcommit: 50b362d531c2d35a3a935811fee71252971bd5d8
+ms.openlocfilehash: af4187ecf610543c693aff742b1e74b8d5bef84c
+ms.sourcegitcommit: 659114a3fb90c962316eb4cddab53d2d2da35b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96935152"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99065524"
 ---
 # <a name="azure-stack-hub-known-issues"></a>Azure Stack Hub の既知の問題
 
@@ -85,6 +85,18 @@ Azure Stack Hub の更新に関する既知の問題については、[Azure Sta
 
 - 適用先:この問題は、サポートされているすべてのリリースに適用されます。 
 - 原因: ロード バランサーで **セッション アフィニティ** を有効にすると、2 タプル ハッシュで、VM に割り当てられたプライベート IP ではなく、PA IP (物理アドレス IP) が使用されます。 ロード バランサーに送信されるトラフィックが VPN 経由で到着する、またはすべてのクライアント VM (ソース IP) が同じノード上に存在し、セッション アフィニティが有効になっているシナリオでは、すべてのトラフィックが 1 つのバックエンド VM に送信されます。
+- 発生頻度: 共通
+
+#### <a name="ipv6-button-visible-in-frontend-ip-configuration"></a>フロントエンド IP 構成に表示される IPv6 ボタン
+
+- 適用先:この問題は 2008 リリースに適用されます。
+- 原因:IPv6 ボタンは、パブリック ロード バランサーのフロントエンド IP 構成が作成されるときに表示され、有効になります。 これはポータルの表面的な問題です。 IPv6 は Azure Stack Hub ではサポートされていません。
+- 発生頻度: 共通
+
+#### <a name="backend-port-and-frontend-port-need-to-be-the-same-when-floating-ip-is-enabled"></a>フローティング IP が有効になっている場合は、バックエンド ポートとフロントエンド ポートが同じである必要があります
+
+- 適用先:この問題はすべてのリリースに適用されます。 
+- 原因:フローティング IP が有効になっている場合は、負荷分散規則でフロントエンド ポートとバックエンド ポートの両方が同じである必要があります。 これは仕様です。
 - 発生頻度: 共通
 
 <!-- ## Compute -->

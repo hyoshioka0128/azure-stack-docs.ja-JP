@@ -6,19 +6,19 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/28/2020
-ms.openlocfilehash: b2576bed615d6a65a5e0c61e5e3ccbc2c052132b
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.date: 01/28/2020
+ms.openlocfilehash: 17e8758dfea300f6bc3e02609877dfed8f780383
+ms.sourcegitcommit: b461597917b768412036bf852c911aa9871264b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97872706"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050027"
 ---
 # <a name="connect-azure-stack-hci-to-azure"></a>Azure Stack HCI を Azure に接続する
 
 > 適用対象:Azure Stack HCI v20H2
 
-Azure Stack HCI は Azure サービスとして提供され、Azure オンライン サービス条件に従ってインストールから 30 日以内に登録する必要があります。 このトピックでは、監視、サポート、課金、およびハイブリッド サービスのために、Azure Stack HCI クラスターを [Azure Arc](https://azure.microsoft.com/services/azure-arc/) に登録する方法について説明します。 登録時に、オンプレミスの個々の Azure Stack HCI クラスターを表す Azure Resource Manager リソースが作成されます。これにより、Azure 管理プレーンが Azure Stack HCI に効果的に拡張されます。 Azure リソースとオンプレミス クラスターの間で情報が定期的に同期されます。
+Azure Stack HCI は Azure サービスとして提供され、Azure オンライン サービス条件に従ってインストールから 30 日以内に登録する必要があります。 このトピックでは、監視、サポート、課金、およびハイブリッド サービスのために、Azure Stack HCI クラスターを [Azure Arc](https://azure.microsoft.com/services/azure-arc/) に登録する方法について説明します。 登録時に、オンプレミスの個々の Azure Stack HCI クラスターを表す Azure Resource Manager リソースが作成されます。これにより、Azure 管理プレーンが Azure Stack HCI に効果的に拡張されます。 Azure リソースとオンプレミス クラスターの間で情報が定期的に同期されます。 Azure Arc の登録は Azure Stack HCI オペレーティング システムのネイティブ機能であるため、登録にエージェントは必要ありません。
 
    > [!IMPORTANT]
    > Azure への登録が必要です。登録がアクティブになるまでクラスターは完全にはサポートされません。 デプロイ時にクラスターを Azure に登録しなかった場合、またはクラスターは登録したが 30 日以上 Azure に接続しなかった場合は、新しい仮想マシン (VM) を作成または追加することはできません。 これが発生した場合は、VM を作成しようとすると、次のエラー メッセージが表示されます。
@@ -29,7 +29,12 @@ Azure Stack HCI は Azure サービスとして提供され、Azure オンライ
 
 ## <a name="prerequisites-for-registration"></a>登録の前提条件
 
-Azure Stack HCI クラスターを作成しないと、Azure に登録することはできません。 クラスターをサポートするには、クラスター ノードが物理サーバーである必要があります。 仮想マシンはテストに使用できますが、Unified Extensible Firmware Interface (UEFI) をサポートしている必要があります。つまり、Hyper-V Generation 1 仮想マシンは使用できません。 Azure Arc の登録は Azure Stack HCI オペレーティング システムのネイティブ機能であるため、登録にエージェントは必要ありません。
+Azure Stack HCI クラスターを作成しないと、Azure に登録することはできません。 クラスターをサポートするには、クラスター ノードが物理サーバーである必要があります。 仮想マシンはテストに使用できますが、Unified Extensible Firmware Interface (UEFI) をサポートしている必要があります。つまり、Hyper-V Generation 1 仮想マシンは使用できません。
+
+最も単純な登録の場合は、Azure AD 管理者に、Windows Admin Center または PowerShell を使用して、登録を完了してもらってください。
+
+   > [!IMPORTANT]
+   > Windows Admin Center を使用してクラスターを登録する場合は、まず、クラスター登録に使用するのと同じ Azure サブスクリプション ID とテナント ID を使用して、Azure に [Windows Admin Center ゲートウェイを登録](../manage/register-windows-admin-center.md)する必要があります。
 
 ### <a name="internet-access"></a>インターネットへのアクセス
 
@@ -97,7 +102,20 @@ EA または CSP を介した Azure サブスクリプションの場合、最�
 
 登録プロセスを完了するには、適切な Azure Active Directory のアクセス許可も必要です。 まだお持ちでない場合は、Azure AD 管理者に依頼して、アクセス許可の同意を付与するか、委任してもらいます。 詳しくは、「[Azure の登録を管理する](../manage/manage-azure-registration.md#azure-active-directory-app-permissions)」をご覧ください。
 
-## <a name="register-using-powershell"></a>PowerShell を使用して登録する
+## <a name="register-a-cluster-using-windows-admin-center"></a>Windows Admin Center を使用してクラスターを登録する
+
+Azure Stack HCI クラスターを登録する最も簡単な方法は、Windows Admin Center を使用することです。 ユーザーに [Azure Active Directory のアクセス許可](../manage/manage-azure-registration.md#azure-active-directory-app-permissions)が必要であることに注意してください。そうしないと、登録プロセスが完了しないまま終了し、その登録は管理者の同意待ちのままになります。
+
+1. 登録プロセスを開始する前に、Azure に [Windows Admin Center ゲートウェイを登録](../manage/register-windows-admin-center.md)しておく必要があります (まだ登録していない場合)。
+
+   > [!IMPORTANT]
+   > Windows Admin Center を Azure に登録するときは、実際のクラスター登録に使用するのと同じ Azure サブスクリプション ID とテナント ID を使用することが重要です。 Azure AD テナント ID は、アカウントとグループを含む Azure AD の特定のインスタンスを表します。一方、Azure サブスクリプション ID は、課金が発生した Azure リソースを使用するための契約を表します。 ご自身のテナント ID を確認するには、[portal.azure.com](https://portal.azure.com) にアクセスし、 **[Azure Active Directory]** を選択します。 テナント ID は **[テナント情報]** に表示されます。 Azure サブスクリプション ID を取得するには、 **[サブスクリプション]** に移動し、一覧から ID をコピーして貼り付けます。
+
+2. Windows Admin Center を開いて、左側の **[ツール]** メニューの一番下にある **[設定]** を選択します。 次に、 **[設定]** メニューの下部にある **[Azure Stack HCI registration]\(Azure Stack HCI の登録\)** を選択します。 クラスターがまだ Azure に登録されていない場合、 **[Registration status]\(登録状態\)** は **[Not registered]\(未登録\)** になります。 続行するには **[登録]** をクリックします。
+
+3. 登録プロセスを完了するには、Azure アカウントを使用して認証 (サインイン) する必要があります。 登録を続行するには、ご自身の Windows Admin Center ゲートウェイを登録したときに指定した Azure サブスクリプションへのアクセス権がアカウントに必要です。 提供されたコードをコピーし、別のデバイス (ご自分の PC や携帯電話など) で microsoft.com/devicelogin に移動して、コードを入力し、そこにサインインします。 登録ワークフローではログインしたことが検出され、完了に進みます。 その後、Azure portal でクラスターを確認できるようになります。
+
+## <a name="register-a-cluster-using-powershell"></a>PowerShell を使用してクラスターを登録する
 
 管理 PC を使用して Azure Stack HCI クラスターを Azure に登録するには、次の手順を使用します。
 
@@ -108,24 +126,22 @@ EA または CSP を介した Azure サブスクリプションの場合、最�
    ```
 
    > [!NOTE]
-   > - "今すぐ PowerShellGet で NuGet プロバイダーをインストールしてインポートしますか?" などのプロンプトが表示される場合があります。 これには [はい] (Y) と答える必要があります。
-   > - "'PSGallery' からモジュールをインストールしますか? " というメッセージが表示され、[はい] (Y) と答える必要があります。
+   > - "**今すぐ PowerShellGet で NuGet プロバイダーをインストールしてインポートしますか?** " などのプロンプトが表示される場合があります。これには **[はい]** (Y) と答える必要があります。
+   > - さらに " **'PSGallery' からモジュールをインストールしますか?** " というプロンプトが表示されたら、 **[はい]** (Y) と答えます。
 
-2. クラスター内の任意のサーバーの名前を使用して登録を実行します。 Azure サブスクリプション ID を取得するには、[portal.azure.com](https://portal.azure.com) にアクセスし、[サブスクリプション] に移動して、一覧から ID をコピーして貼り付けます。
+2. クラスター内の任意のサーバーの名前を使用して登録を実行します。 Azure サブスクリプション ID を取得するには、[portal.azure.com](https://portal.azure.com) にアクセスし、 **[サブスクリプション]** に移動して、一覧から ID をコピーして貼り付けます。
 
    ```PowerShell
-   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 [–Credential] [-ResourceName] [-ResourceGroupName] [-Region]
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1
    ```
 
-   この構文では、(Server1 がメンバーである) クラスターを現在のユーザーとして既定の Azure リージョンとクラウド環境に登録し、Azure リソースとリソース グループにスマートな既定の名前を使用します。ただし、このコマンドにパラメーターを追加して、必要に応じてこれらの値を指定することもできます。
+   この構文では、(Server1 がメンバーである) クラスターを現在のユーザーとして既定の Azure リージョンとクラウド環境に登録し、Azure リソースとリソース グループにスマートな既定の名前を使用します。 また、このコマンドにオプションの `-Region`、`-ResourceName`、および `-ResourceGroupName` パラメーターを追加して、これらの値を指定することもできます。
 
-   `Register-AzStackHCI` コマンドレットを実行するユーザーは [Azure Active Directory のアクセス許可](../manage/manage-azure-registration.md#azure-active-directory-app-permissions)を持っている必要があることに注意してください。そうしないと、登録プロセスが完了しません。代わりに、終了して、登録が管理者の同意待ちのままになります。 アクセス許可が付与されたら、`Register-AzStackHCI` を再実行して登録を完了します。
+   `Register-AzStackHCI` コマンドレットを実行するユーザーには [Azure Active Directory のアクセス許可](../manage/manage-azure-registration.md#azure-active-directory-app-permissions)が必要であることに注意してください。そうしないと、登録プロセスが完了しないまま終了し、その登録は管理者の同意待ちのままになります。 アクセス許可が付与されたら、`Register-AzStackHCI` を再実行して登録を完了します。
 
 3. Azure での認証
 
-   登録プロセスを完了するには、Azure アカウントを使用して認証 (サインイン) する必要があります。 登録を続行するには、上記の手順 4 で指定した Azure サブスクリプションへのアクセス権がアカウントに必要です。 提供されたコードをコピーし、別のデバイス (ご自分の PC や携帯電話など) で microsoft.com/devicelogin に移動して、コードを入力し、そこにサインインします。 これは、入力方式が限定されている他のデバイス (Xbox など) に対して Microsoft が使用するのと同じエクスペリエンスです。
-
-登録ワークフローではログインしたことが検出され、完了に進みます。 その後、Azure portal でクラスターを確認できるようになります。
+   登録プロセスを完了するには、Azure アカウントを使用して認証 (サインイン) する必要があります。 登録を続行するには、上記の手順 2 で指定した Azure サブスクリプションへのアクセス権がアカウントに必要です。 提供されたコードをコピーし、別のデバイス (ご自分の PC や携帯電話など) で microsoft.com/devicelogin に移動して、コードを入力し、そこにサインインします。 登録ワークフローではログインしたことが検出され、完了に進みます。 その後、Azure portal でクラスターを確認できるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 

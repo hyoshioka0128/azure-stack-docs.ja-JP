@@ -3,16 +3,16 @@ title: Azure Stack Hub のリリース ノート
 description: 更新プログラムやバグ修正プログラムを含む、Azure Stack Hub 統合システムのリリース ノート。
 author: sethmanheim
 ms.topic: article
-ms.date: 01/25/2021
+ms.date: 02/03/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
-ms.openlocfilehash: 196313ed569a701dae9cc558ff1438d9d9df1241
-ms.sourcegitcommit: 82f7d16bc5f4224678edbbda0ba3441c8e07ca0b
+ms.openlocfilehash: ea286718f2f4c0fcd2bdf935d5e12d462d07856f
+ms.sourcegitcommit: e88f0a1f2f4ed3bb8442bfb7b754d8b3a51319b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763141"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99533928"
 ---
 # <a name="azure-stack-hub-release-notes"></a>Azure Stack Hub のリリース ノート
 
@@ -118,7 +118,7 @@ Azure Stack Hub のこの更新でのセキュリティ更新プログラムに�
 
 ## <a name="hotfixes"></a>修正プログラム
 
-Azure Stack Hub では、修正プログラムが定期的にリリースされます。 2005 リリース以降では、新しいメジャー バージョンに更新すると (たとえば、1.2005.x から 1.2008.x)、その新しいメジャー バージョン内の最新の修正プログラム (存在する場合) が自動的にインストールされます。 それ以降は、ビルドの修正プログラムがリリースされたら、それをインストールする必要があります。
+Azure Stack Hub では、修正プログラムが定期的にリリースされます。 2008 に更新する前に、最新の 2005 修正プログラムをインストールしてください。 また、2005 リリース以降、新しいメジャー バージョンに更新すると (たとえば、1.2005.x から 1.2008.x)、その新しいメジャー バージョン内の最新の修正プログラム (パッケージのダウンロード時に使用可能なものがある場合) が自動的にインストールされます。 これにより 2008 インストールにすべての修正プログラムが適用され、最新の状態になります。 それ以降は、2008 の修正プログラムがリリースされたら、それをインストールする必要があります。
 
 > [!NOTE]
 > Azure Stack Hub 修正プログラムのリリースは累積的です。そのバージョンに対する以前の修正プログラムのリリースに含まれるすべての修正を取得するには、最新の修正プログラムをインストールするだけで済みます。
@@ -129,11 +129,11 @@ Azure Stack Hub 修正プログラムを適用できるのは Azure Stack Hub �
 
 ### <a name="after-successfully-applying-the-2008-update"></a>2008 更新プログラムが正常に適用された後
 
-Azure Stack Hub の修正プログラムは累積されるため、ベスト プラクティスとして、お使いのビルド用にリリースされたすべての修正プログラムをインストールして、メジャー リリース間の更新エクスペリエンスを最適にする必要があります。 新しいメジャー バージョンに更新すると (たとえば、1.2005.x から 1.2008.x)、その新しいメジャー バージョン内の最新の修正プログラム (存在する場合) が自動的にインストールされます。
+Azure Stack Hub の修正プログラムは累積されるため、ベスト プラクティスとして、お使いのビルド用にリリースされたすべての修正プログラムをインストールして、メジャー リリース間の更新エクスペリエンスを最適にする必要があります。 新しいメジャー バージョンに更新すると (たとえば、1.2005.x から 1.2008.x)、その新しいメジャー バージョン内の最新の修正プログラム (パッケージのダウンロード時に使用可能なものがある場合) が自動的にインストールされます。
 
 2008 のインストール後に、2008 修正プログラムがリリースされた場合は、それらをインストールする必要があります。
 
-- [Azure Stack Hub 修正プログラム 1.2008.23.108](https://support.microsoft.com/topic/c0d203fd-7585-4c8d-8ea5-ae13897e352e)
+- [Azure Stack Hub 修正プログラム 1.2008.25.114](https://support.microsoft.com/topic/87ee234e-7f33-4342-bc0a-5779dbb33263)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
@@ -233,7 +233,7 @@ Azure Stack Hub の 2005 リリースは、次の修正プログラムが適用�
 
 2005 のインストール後に、2005 修正プログラムがリリースされた場合は、それらをインストールする必要があります。
 
-- [Azure Stack Hub 修正プログラム 1.2005.28.98](https://support.microsoft.com/topic/ecf727b1-3dc1-4070-ace8-1291cc437389)
+- [Azure Stack Hub 修正プログラム 1.2005.29.100](https://support.microsoft.com/topic/10c1b6e2-7bf7-4f71-8204-f1b12e2f744a)
 ::: moniker-end
 
 ::: moniker range="azs-2002"
@@ -421,5 +421,5 @@ Azure Stack Hub の 2002 リリースは、以下の修正プログラムが適�
 ::: moniker-end
 
 ::: moniker range="<azs-2002"
-[以前のバージョンの Azure Stack Hub のリリース ノートは TechNet ギャラリー](https://aka.ms/azsarchivedrelnotes)でアクセスできます。 これらのアーカイブされたドキュメントは、参照のみを目的に提供されており、これらのバージョンのサポートを意味しているわけではありません。 Azure Stack のサポートについては、「[Azure Stack Hub サービス ポリシー](azure-stack-servicing-policy.md)」を参照してください。 さらにサポートが必要な場合は、Microsoft カスタマー サポート サービスにお問い合わせください。
+以前のバージョンの Azure Stack Hub リリースノートには、左側の目次の [ **[リソース] > [リリース ノートのアーカイブ]** ](./relnotearchive/release-notes-1910.md) からアクセスできます。 これらのアーカイブされた記事は、参照のみを目的に提供されており、これらのバージョンのサポートを意味しているわけではありません。 Azure Stack のサポートについては、「[Azure Stack Hub サービス ポリシー](azure-stack-servicing-policy.md)」を参照してください。 さらにサポートが必要な場合は、Microsoft カスタマー サポート サービスにお問い合わせください。
 ::: moniker-end

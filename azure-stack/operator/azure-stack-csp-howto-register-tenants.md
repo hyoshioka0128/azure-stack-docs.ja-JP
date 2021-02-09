@@ -7,12 +7,12 @@ ms.date: 11/17/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 11/17/2020
-ms.openlocfilehash: 81cefb08d6fd0d1fc773221d52393c8a3ae6fddf
-ms.sourcegitcommit: 8c745b205ea5a7a82b73b7a9daf1a7880fd1bee9
+ms.openlocfilehash: 7db231e1bca513bf3755f8e9c078fb40d00cfa09
+ms.sourcegitcommit: e88f0a1f2f4ed3bb8442bfb7b754d8b3a51319b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95517890"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99533843"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack-hub"></a>Azure Stack Hub に使用量と課金用のテナントを追加する
 
@@ -54,11 +54,11 @@ ms.locfileid: "95517890"
 1. 管理者特権のプロンプトで Windows PowerShell を開き、次を実行します。  
 
    ```powershell
-   Add-AzAccount
+   Connect-AzAccount
    ```
 
    >[!NOTE]
-   > セッションの有効期限が切れた、パスワードが変更された、または単にアカウントを切り替えたい場合は、**Add-AzAccount** を使用してサインインする前に、次のコマンドレットを実行します: `Remove-AzAccount-Scope Process`。
+   > セッションの有効期限が切れた、パスワードが変更された、または単にアカウントを切り替えたい場合は、**Connect-AzAccount** を使用してサインインする前に、次のコマンドレットを実行します: `Remove-AzAccount-Scope Process`
 
 2. Azure の資格情報を入力します。
 3. PowerShell セッションで、次のコマンドを実行します。
@@ -87,7 +87,7 @@ ms.locfileid: "95517890"
    ```
 
    >[!NOTE]
-   > セッションの有効期限が切れた、パスワードが変更された、または単にアカウントを切り替えたい場合は、**Add-AzAccount** を使用してサインインする前に、次のコマンドレットを実行します: `Remove-AzAccount-Scope Process`。
+   > セッションの有効期限が切れた、パスワードが変更された、または単にアカウントを切り替えたい場合は、**Connect-AzAccount** を使用してサインインする前に、次のコマンドレットを実行します: `Remove-AzAccount-Scope Process`
 
 2. Azure の資格情報を入力します。
 3. PowerShell セッションで、次のコマンドを実行します。
