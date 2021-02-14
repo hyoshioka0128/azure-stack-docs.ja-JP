@@ -12,6 +12,12 @@
           href: release-notes-security-updates.md
         - name: リリース ノート
           href: release-notes.md
+        - name: 修正プログラム
+          items:
+            - name: 修正プログラム 1.2005.29.100
+              href: hotfix-1-2005-29-100.md
+            - name: 修正プログラム 1.2008.25.114
+              href: hotfix-1-2008-25-114.md
         - name: 既知の問題
           href: known-issues.md
 - name: クイックスタート

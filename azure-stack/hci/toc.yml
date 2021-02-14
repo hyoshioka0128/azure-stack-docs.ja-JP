@@ -112,8 +112,8 @@
       items:
         - name: SDN インフラストラクチャの展開
           href: manage/sdn-express.md
-        - name: データセンター ファイアウォールを使用する
-          href: manage/use-datacenter-firewall.md
+        - name: PowerShell でデータセンター ファイアウォールを使用する
+          href: manage/use-datacenter-firewall-powershell.md
         - name: テナントの論理ネットワークを管理する
           href: manage/tenant-logical-networks.md
         - name: テナントの仮想ネットワークを管理する
