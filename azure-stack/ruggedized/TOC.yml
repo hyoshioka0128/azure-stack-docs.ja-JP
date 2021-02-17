@@ -528,7 +528,7 @@
                   href: customer-replaceable-unit/power-off-scu.md
                 - name: DIMM の交換
                   href: customer-replaceable-unit/replace-dimm.md
-                - name: 失敗した外部ストレージ ディスクの交換
+                - name: 失敗したデータ ドライブの交換
                   href: customer-replaceable-unit/replace-failed-external-storage-disk.md
                 - name: 冷却ファンの交換
                   href: customer-replaceable-unit/replace-cooling-fan.md
@@ -560,8 +560,6 @@
                   href: customer-replaceable-unit/indicators-and-codes.md
                 - name: 直接 USB 接続経由で iDRAC インターフェイスにアクセスする
                   href: customer-replaceable-unit/access-idrac-over-usb-connection.md
-                - name: IDRAC インターフェイスを使用してファームウェアをインストールする
-                  href: customer-replaceable-unit/install-firmware-using-idrac.md
                 - name: 特権アクセス ワークステーションと特権エンドポイント アクセス
                   href: customer-replaceable-unit/privileged-access-workstation.md
     - name: リファレンス

@@ -204,6 +204,8 @@
       href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python
     - name: Azure Stack HCI JavaScript パッケージ
       href: /javascript/api/overview/azure/azurestack/stackhci?view=azure-node-latest
+    - name: Azure Stack HCI REST API リファレンス
+      href: /rest/api/stackhci
     - name: Azure Stack HCI のための .NET 名前空間
       href: /dotnet/api/overview/azure/stackhci/management
     - name: Hyper-V PowerShell コマンド
