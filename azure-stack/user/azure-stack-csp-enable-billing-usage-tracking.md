@@ -3,16 +3,16 @@ title: クラウド ソリューション プロバイダーで Azure Stack Hub 
 description: クラウド ソリューション プロバイダー (CSP) で Azure Stack Hub サブスクリプションを自動的に管理できるようにする方法について学習します。
 author: sethmanheim
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 02/16/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/20/2019
-ms.openlocfilehash: d54b73595b3f8f79cfa606a1fb41ad945f40157d
-ms.sourcegitcommit: 980be7813e6f39fb59926174a5d3e0d392b04293
+ms.openlocfilehash: b6a37ad0db4dfb88a64e641dbb21f2869084c3b5
+ms.sourcegitcommit: 34babe5abf1bceee718011b5c5c25f75e1b03b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414114"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100563050"
 ---
 # <a name="let-your-cloud-solution-provider-manage-your-azure-stack-hub-subscription"></a>クラウド ソリューション プロバイダーで Azure Stack Hub サブスクリプションを管理できるようにする
 
@@ -28,7 +28,7 @@ ms.locfileid: "94414114"
 
 CSP を **ユーザー** としてサブスクリプションに追加します。
 
-1. CSP を、 **ユーザー** ロールを持つゲスト ユーザーとしてテナント ディレクトリに追加します。 ユーザーの追加に関するヘルプについては、[Azure Active Directory への新しいユーザーの追加](/azure/active-directory/add-users-azure-active-directory)に関するページを参照してください。
+1. CSP を、**ユーザー** ロールを持つゲスト ユーザーとしてテナント ディレクトリに追加します。 ユーザーの追加に関するヘルプについては、[Azure Active Directory への新しいユーザーの追加](/azure/active-directory/add-users-azure-active-directory)に関するページを参照してください。
 
 2. CSP では、ローカル Azure Stack Hub サブスクリプションが自動的に作成されます。 これで、Azure Stack Hub の使用を開始する準備ができました。
 

@@ -3,16 +3,16 @@ title: Azure Stack Hub オペレーター アクセス ワークステーショ�
 description: Azure Stack Hub オペレーター アクセス ワークステーションをダウンロードして構成する方法について説明します。
 author: ashika789
 ms.topic: article
-ms.date: 1/15/2021
+ms.date: 02/17/2021
 ms.author: patricka
 ms.reviewer: asganesh
-ms.lastreviewed: 1/15/2021
-ms.openlocfilehash: 011a75dcdbe8818af568eb5cc6bb6123a4f11c4e
-ms.sourcegitcommit: 48a46142ea7bccd6c8a609e188dd7f3f6444f3c4
+ms.lastreviewed: 02/17/2021
+ms.openlocfilehash: 91ed23e40743de4236623322f9f830032d1793ac
+ms.sourcegitcommit: dfce5d143318150d2cab563dc0ee328c777bf5f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98561963"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636647"
 ---
 # <a name="azure-stack-hub-operator-access-workstation"></a>Azure Stack Hub オペレーター アクセス ワークステーション 
 
@@ -48,7 +48,7 @@ param(
     $DownloadedOAWZipFilePath
 )
 
-$expectedHash = '73E16995B79433E79F9EFA9A292443296D112B24B4D86A060FCB4C9403B8D014'
+$expectedHash = '6E412551C7921A6FA4E9D64812A4D3770EB1B1257E2BE55B8426E5EFBCB2C001'
 $actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash
 
 Write-Host "Expected hash: $expectedHash"
@@ -210,20 +210,20 @@ New-OAW
 | SubnetMask                 | 必須 | 仮想マシンで TCP/IP を構成するための IPv4 サブネット マスク。                                                   |
 | DefaultGateway             | 必須 | 仮想マシンで TCP/IP を構成するための既定のゲートウェイの IPv4 アドレス。                                    |
 | DNS                        | 必須 | 仮想マシンで TCP/IP を構成するための DNS サーバー。                                                          |
-| ImageFilePath              | オプション | Microsoft が提供する OAW.vhdx のパス。 既定値は、このスクリプトと同じ親フォルダーにある **OAW.vhdx** です。 |
-| VirtualMachineName         | オプション | 仮想マシンに割り当てる名前。 名前付けプレフィックスが DeploymentData.json ファイルで見つかった場合は、既定の名前として使用されます。 その他の場合、既定の名前として **AzSOAW** が使用されます。 別の名前を指定し、既定値を上書きできます。 |
-| VirtualMachineMemory       | オプション | 仮想マシンに割り当てるメモリ。 既定値は **4 GB** です。                            |
-| VirtualProcessorCount      | オプション | 仮想マシンに割り当てる仮想プロセッサの数。 既定値は **8** です。        |
-| VirtualMachineDiffDiskPath | オプション | 管理 VM がアクティブだった間に一時差分ディスク ファイルを保存するパス。 既定値は、このスクリプトの同じ親フォルダーにある **DiffDisks** サブディレクトリです。 |
-| AzureStackCertificatePath  | オプション | Azure Stack Hub にアクセスするために仮想マシンにインポートする証明書のパス。 |
+| ImageFilePath              | 省略可能 | Microsoft が提供する OAW.vhdx のパス。 既定値は、このスクリプトと同じ親フォルダーにある **OAW.vhdx** です。 |
+| VirtualMachineName         | 省略可能 | 仮想マシンに割り当てる名前。 名前付けプレフィックスが DeploymentData.json ファイルで見つかった場合は、既定の名前として使用されます。 その他の場合、既定の名前として **AzSOAW** が使用されます。 別の名前を指定し、既定値を上書きできます。 |
+| VirtualMachineMemory       | 省略可能 | 仮想マシンに割り当てるメモリ。 既定値は **4 GB** です。                            |
+| VirtualProcessorCount      | 省略可能 | 仮想マシンに割り当てる仮想プロセッサの数。 既定値は **8** です。        |
+| VirtualMachineDiffDiskPath | 省略可能 | 管理 VM がアクティブだった間に一時差分ディスク ファイルを保存するパス。 既定値は、このスクリプトの同じ親フォルダーにある **DiffDisks** サブディレクトリです。 |
+| AzureStackCertificatePath  | 省略可能 | Azure Stack Hub にアクセスするために仮想マシンにインポートする証明書のパス。 |
 | AzSStampInfoFilePath       | オプション | スクリプトで ERCS VM の IP を取得できる AzureStackStampInformation.json ファイルのパス。 |
-| CertificatePassword        | オプション | Azure Stack Hub へのアクセスのために仮想マシンにインポートする証明書のパスワード。 |
+| CertificatePassword        | 省略可能 | Azure Stack Hub へのアクセスのために仮想マシンにインポートする証明書のパスワード。 |
 | ERCSVMIP                   | オプション | 仮想マシンの信頼されたホストの一覧に追加する Azure Stack Hub ERCS VM の IP。 **-SkipNetworkConfiguration** が設定されている場合は、有効になりません。 |
-SkipNetworkConfiguration     | オプション | ユーザーが後で構成できるように、仮想マシンのネットワーク構成をスキップします。 |
+SkipNetworkConfiguration     | 省略可能 | ユーザーが後で構成できるように、仮想マシンのネットワーク構成をスキップします。 |
 | DeploymentDataFilePath     | オプション | DeploymentData.json のパス。 **-SkipNetworkConfiguration** が設定されている場合は、有効になりません。            |
-| PhysicalAdapterMACAddress  | オプション | 仮想マシンの接続に使用される、ホストのネットワーク アダプターの MAC アドレス。<br>- 物理ネットワーク アダプターが 1 つしかない場合、このパラメーターは不要で、その唯一のネットワーク アダプターが使用されます。<br>- 物理ネットワーク アダプターが複数ある場合は、使用するものを指定するために、このパラメーターが必須となります。<br> |
-| VirtualSwitchName          | オプション | 仮想マシンの Hyper-V で構成する必要がある仮想スイッチの名前。<br>- 指定された名前の VMSwitch がある場合は、その VMSwitch が選択されます。<br>- 指定された名前の VMSwitch がない場合は、指定された名前で VMSwitch が作成されます。<br> |
-| ReCreate                   | オプション | 同じ名前の仮想マシンが既に存在する場合は、その仮想マシンを削除して再作成します。 |
+| PhysicalAdapterMACAddress  | 省略可能 | 仮想マシンの接続に使用される、ホストのネットワーク アダプターの MAC アドレス。<br>- 物理ネットワーク アダプターが 1 つしかない場合、このパラメーターは不要で、その唯一のネットワーク アダプターが使用されます。<br>- 物理ネットワーク アダプターが複数ある場合は、使用するものを指定するために、このパラメーターが必須となります。<br> |
+| VirtualSwitchName          | 省略可能 | 仮想マシンの Hyper-V で構成する必要がある仮想スイッチの名前。<br>- 指定された名前の VMSwitch がある場合は、その VMSwitch が選択されます。<br>- 指定された名前の VMSwitch がない場合は、指定された名前で VMSwitch が作成されます。<br> |
+| ReCreate                   | 省略可能 | 同じ名前の仮想マシンが既に存在する場合は、その仮想マシンを削除して再作成します。 |
 
 ## <a name="check-the-oaw-vm-version"></a>OAW VM のバージョンを確認する
 

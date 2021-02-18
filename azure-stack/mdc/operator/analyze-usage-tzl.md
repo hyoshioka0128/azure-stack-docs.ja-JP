@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2020
+ms.date: 02/16/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/27/2020
-ms.openlocfilehash: efbbfbb76215cdd3322c57ca0c5def8575f5f023
-ms.sourcegitcommit: d719f148005e904fa426a001a687e80730c91fda
+ms.openlocfilehash: 5d2c5b143cb11ad7b7b5f5f6dce391c2adaa37db
+ms.sourcegitcommit: 34babe5abf1bceee718011b5c5c25f75e1b03b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97910910"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100562816"
 ---
 # <a name="analyze-azure-stack-usage-with-local-usage-meters---modular-data-center-mdc"></a>ローカルの使用状況測定を使用して、Azure Stack の使用状況を分析する - Modular Data Center (MDC)
 

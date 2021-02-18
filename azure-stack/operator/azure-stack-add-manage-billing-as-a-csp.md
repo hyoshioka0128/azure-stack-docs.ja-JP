@@ -3,16 +3,16 @@ title: クラウド ソリューション プロバイダーとして Azure Stac
 description: Azure Stack Hub をクラウド ソリューション プロバイダー (CSP) として登録し、課金に向けて顧客を追加する方法を説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 02/16/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/15/2019
-ms.openlocfilehash: 0c3e82753835adfb70be13f43a14c20701881885
-ms.sourcegitcommit: 980be7813e6f39fb59926174a5d3e0d392b04293
+ms.openlocfilehash: 5d7a6dc3f0087f50fa97a0e6f61eee30037f54cc
+ms.sourcegitcommit: 34babe5abf1bceee718011b5c5c25f75e1b03b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414080"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100562541"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-hub-as-a-cloud-solution-provider"></a>クラウド ソリューション プロバイダーとして Azure Stack Hub の使用状況と課金を管理する
 
@@ -59,7 +59,7 @@ CSP サブスクリプションは、CSP リセラーまたはエンド カス�
 
 ## <a name="charge-the-right-subscriptions"></a>正しいサブスクリプションに課金する
 
-Azure Stack Hub では、" *登録* " と呼ばれる機能を使用します。 登録は、Azure に格納されているオブジェクトです。 特定の Azure Stack Hub への課金のために Azure サブスクリプションで使用される、登録オブジェクト ドキュメントです。 このセクションでは、登録の重要性について説明します。
+Azure Stack Hub では、"*登録*" と呼ばれる機能を使用します。 登録は、Azure に格納されているオブジェクトです。 特定の Azure Stack Hub への課金のために Azure サブスクリプションで使用される、登録オブジェクト ドキュメントです。 このセクションでは、登録の重要性について説明します。
 
 登録を使用すると、Azure Stack Hub では次のことが可能になります。
 

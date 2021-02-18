@@ -3,16 +3,16 @@ title: Azure Stack Hub VM の概要
 description: Azure Stack Hub VM について説明します。
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/05/2020
-ms.openlocfilehash: ff462a8fbdb2de67e58f15248aaffa79f0abb695
-ms.sourcegitcommit: 695f56237826fce7f5b81319c379c9e2c38f0b88
+ms.openlocfilehash: 70bbb35b8433e8542fc58303f1e8cc56c28c84d7
+ms.sourcegitcommit: 824fd33fd5d6aa0c0dac06c21b592bdb60378940
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94545767"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99850807"
 ---
 # <a name="introduction-to-azure-stack-hub-vms"></a>Azure Stack Hub VM の概要
 
@@ -22,11 +22,11 @@ Azure Stack Hub VM により柔軟な仮想化が可能になります。クラ�
 
 Azure Stack Hub VM は、いくつかの方法で利用できます。 次に例を示します。
 
-- **開発とテスト** :Azure Stack Hub VM を使用すると、アプリケーションのコーディングとテストに必要な特定の構成でコンピューターを作成できます。
+- **開発とテスト**:Azure Stack Hub VM を使用すると、アプリケーションのコーディングとテストに必要な特定の構成でコンピューターを作成できます。
 
-- **クラウドのアプリケーション** :アプリケーションの需要は変動する可能性があるため、Azure Stack Hub 内の VM でアプリケーションを実行することは経済的に理に適っています。 VM が必要になったら追加分の料金を支払い、不要になったらシャットダウンすることができます。
+- **クラウドのアプリケーション**:アプリケーションの需要は変動する可能性があるため、Azure Stack Hub 内の VM でアプリケーションを実行することは経済的に理に適っています。 VM が必要になったら追加分の料金を支払い、不要になったらシャットダウンすることができます。
 
-- **データセンターの拡張** :Azure Stack Hub 仮想ネットワーク内の VM は、組織のネットワークや Azure に接続できます。
+- **データセンターの拡張**:Azure Stack Hub 仮想ネットワーク内の VM は、組織のネットワークや Azure に接続できます。
 
 アプリケーションで使用する VM は、ニーズに応じてスケールアップまたはスケールアウトできます。
 
@@ -73,11 +73,11 @@ Azure Stack Hub の VM は、第 1 世代の仮想ハードディスク (VHD/VHD
 
 VM の拡張機能は、デプロイ後の構成と自動化タスクを通じて VM に追加の機能を提供します。 拡張機能を利用し、次の共通タスクを実行できます。
 
-- **カスタム スクリプトの実行** :カスタム スクリプト拡張機能を利用すれば、VM のプロビジョニングの際にスクリプトを実行して、VM でワークロードを容易に構成できます。
+- **カスタム スクリプトの実行**:カスタム スクリプト拡張機能を利用すれば、VM のプロビジョニングの際にスクリプトを実行して、VM でワークロードを容易に構成できます。
 
-- **構成のデプロイと管理** :PowerShell Desired State Configuration (DSC) 拡張機能を利用すれば、VM で DSC を容易に設定して構成と環境を管理できます。
+- **構成のデプロイと管理**:PowerShell Desired State Configuration (DSC) 拡張機能を利用すれば、VM で DSC を容易に設定して構成と環境を管理できます。
 
-- **診断データの収集** :Azure Diagnostics 拡張機能を利用すれば、アプリケーションの正常性を監視するために使用できる診断データを収集するように VM を容易に構成できます。
+- **診断データの収集**:Azure Diagnostics 拡張機能を利用すれば、アプリケーションの正常性を監視するために使用できる診断データを収集するように VM を容易に構成できます。
 
 ### <a name="related-resources"></a>関連リソース
 

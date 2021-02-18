@@ -16,12 +16,12 @@ ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 76a9909ac35197d8e51115e07d977a0ee39442b5
-ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
+ms.openlocfilehash: 3c852102b386cc0a625f628ed8c75319b112dfbd
+ms.sourcegitcommit: f9be5640dd445b3d926c9ce3e2165e96c72ece89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99248696"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100009266"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新プログラム
 
@@ -322,7 +322,7 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
    - 1808 更新の前にサブスクリプションが作成された場合、Managed Disks を使用した VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、サブスクリプションごとに次の手順に従ってください。
       1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** を選択し、**[Microsoft.Compute]** を選択してから、**[再登録]** をクリックします。
       2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[AzureStack-DiskRP-Client]** ロールがリストに含まれていることを確認します。
-   - マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、[この記事](../azure-stack-enable-multitenancy.md#register-azure-stack-hub-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
+   - マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、[この記事](../azure-stack-enable-multitenancy.md#register-a-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
 
 - SSH の認可を有効にして作成した Ubuntu 18.04 VM では、SSH キーを使用してログインすることはできません。 回避策として、プロビジョニング後に Linux 拡張機能用の VM アクセスを使用して SSH キーを実装するか、パスワードベースの認証を使用してください。
 

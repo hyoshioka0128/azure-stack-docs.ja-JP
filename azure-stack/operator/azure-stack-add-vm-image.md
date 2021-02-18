@@ -3,16 +3,16 @@ title: Azure Stack Hub にカスタム VM イメージを追加する
 description: Azure Stack Hub にカスタム VM イメージを追加または削除する方法について説明します。
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 9/8/2020
-ms.openlocfilehash: 496d706b6ed930087207b24047d3409f29a53e53
-ms.sourcegitcommit: 8122672409954815e472a5b251bb7319fab8f951
+ms.openlocfilehash: 6b80ea5a25ab83eb5b62842fe1c21e7e698ab51a
+ms.sourcegitcommit: 824fd33fd5d6aa0c0dac06c21b592bdb60378940
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92060125"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99850940"
 ---
 # <a name="add-and-remove-a-custom-vm-image-to-azure-stack-hub"></a>Azure Stack Hub に対してカスタム VM イメージを追加または削除する
 
@@ -20,7 +20,7 @@ Azure Stack Hub では、オペレーターとして、カスタム仮想マシ�
 
 ## <a name="add-an-image"></a>イメージの追加
 
-一般化イメージおよび特殊化イメージを追加する手順については、ユーザー ガイドの**コンピューティング**に関するセクションを参照してください。 ユーザーにイメージを提供する前に、一般化イメージを作成することをお勧めします。 手順については、[Azure Stack Hub への VM の移動の概要](../user/vm-move-overview.md)に関するページを参照してください。 テナントに使用できるイメージを作成するときは、ユーザー ポータルまたはテナント ディレクトリ エンドポイントではなく、Azure Stack Hub 管理ポータルまたは管理者エンドポイントを使用します。
+一般化イメージおよび特殊化イメージを追加する手順については、ユーザー ガイドの **コンピューティング** に関するセクションを参照してください。 ユーザーにイメージを提供する前に、一般化イメージを作成することをお勧めします。 手順については、[Azure Stack Hub への VM の移動の概要](../user/vm-move-overview.md)に関するページを参照してください。 テナントに使用できるイメージを作成するときは、ユーザー ポータルまたはテナント ディレクトリ エンドポイントではなく、Azure Stack Hub 管理ポータルまたは管理者エンドポイントを使用します。
 
 ユーザーがイメージを使用できるようにするには、次の 2 つの方法があります。
 
@@ -48,13 +48,13 @@ Azure Stack Hub オペレーターとしてポータルを使用して VM イメ
 
    [![VM イメージを追加する](./media/azure-stack-add-vm-image/tca4-small.png)](./media/azure-stack-add-vm-image/tca4.png#lightbox)
 
-4. **[イメージの作成]** で **[発行元]** 、 **[オファー]** 、 **[SKU]** 、 **[バージョン]** 、[OS ディスクの BLOB URI] に入力します。 その後 **[作成]** をクリックすると VM イメージの作成が開始されます。
+2. **[イメージの作成]** で **[発行元]** 、 **[オファー]** 、 **[SKU]** 、 **[バージョン]** 、[OS ディスクの BLOB URI] に入力します。 その後 **[作成]** をクリックすると VM イメージの作成が開始されます。
 
    [![カスタム イメージ サイドローディング UI](./media/azure-stack-add-vm-image/tca5-small.png)](./media/azure-stack-add-vm-image/tca5.png#lightbox)
 
    イメージが正常に作成されると、VM イメージの状態が **[成功]** に変わります。
 
-5. イメージを追加すると、そのイメージは Azure Resource Manager ベースのテンプレートと PowerShell のデプロイのみで使用できるようになります。 イメージを Marketplace 項目としてユーザーが使用できるようにするには、「[Marketplace アイテムを作成および発行する](azure-stack-create-and-publish-marketplace-item.md)」の手順を使用して Marketplace 項目を公開してください。 **Publisher**、**Offer**、**SKU**、**Version** の値を書き留めておいてください。 これらは、カスタム .azpkg 内の Resource Manager テンプレートと Manifest.json を編集するときに必要になります。
+3. イメージを追加すると、そのイメージは Azure Resource Manager ベースのテンプレートと PowerShell のデプロイのみで使用できるようになります。 イメージを Marketplace 項目としてユーザーが使用できるようにするには、「[Marketplace アイテムを作成および発行する](azure-stack-create-and-publish-marketplace-item.md)」の手順を使用して Marketplace 項目を公開してください。 **Publisher**、**Offer**、**SKU**、**Version** の値を書き留めておいてください。 これらは、カスタム .azpkg 内の Resource Manager テンプレートと Manifest.json を編集するときに必要になります。
 
 ### <a name="powershell"></a>[PowerShell](#tab/image-add-ps)
 
@@ -78,10 +78,10 @@ Azure Stack Hub オペレーターとしてポータルを使用して VM イメ
    **Add-AzsPlatformimage** コマンドレットでは、VM イメージを参照するために Azure Resource Manager テンプレートによって使用される値が指定されます。 値は次のとおりです。
    - **publisher**  
      例: `Canonical`  
-     イメージをデプロイするときにユーザーが使用する VM イメージの**発行元**名のセグメント。 このフィールドではスペースや他の特殊文字は使用できません。  
+     イメージをデプロイするときにユーザーが使用する VM イメージの **発行元** 名のセグメント。 このフィールドではスペースや他の特殊文字は使用できません。  
    - **offer**  
      例: `UbuntuServer`  
-     VM イメージをデプロイするときにユーザーが使用する VM イメージの**オファー**名のセグメント。 このフィールドではスペースや他の特殊文字は使用できません。  
+     VM イメージをデプロイするときにユーザーが使用する VM イメージの **オファー** 名のセグメント。 このフィールドではスペースや他の特殊文字は使用できません。  
    - **sku**  
      例: `14.04.3-LTS`  
      VM イメージをデプロイするときにユーザーが使用する VM イメージの **SKU** 名のセグメント。 このフィールドではスペースや他の特殊文字は使用できません。  
@@ -138,10 +138,10 @@ Azure Stack Hub オペレーターとして PowerShell を使用して VM イメ
    **Remove-AzsPlatformImage** コマンドレットでは、VM イメージを参照するために Azure Resource Manager テンプレートによって使用される値が指定されます。 値は次のとおりです。
    - **publisher**  
      例: `Canonical`  
-     イメージをデプロイするときにユーザーが使用する VM イメージの**発行元**名のセグメント。 このフィールドではスペースや他の特殊文字は使用できません。  
+     イメージをデプロイするときにユーザーが使用する VM イメージの **発行元** 名のセグメント。 このフィールドではスペースや他の特殊文字は使用できません。  
    - **offer**  
      例: `UbuntuServer`  
-     VM イメージをデプロイするときにユーザーが使用する VM イメージの**オファー**名のセグメント。 このフィールドではスペースや他の特殊文字は使用できません。  
+     VM イメージをデプロイするときにユーザーが使用する VM イメージの **オファー** 名のセグメント。 このフィールドではスペースや他の特殊文字は使用できません。  
    - **sku**  
      例: `14.04.3-LTS`  
      VM イメージをデプロイするときにユーザーが使用する VM イメージの **SKU** 名のセグメント。 このフィールドではスペースや他の特殊文字は使用できません。  

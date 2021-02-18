@@ -267,7 +267,7 @@
             - name: ハードウェアの交換
               items:
                 - name: ノード アクション
-                  href: ../operator/azure-stack-node-actions.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                  href: operator/azure-stack-node-actions-tzl.md
         - name: セキュリティとコンプライアンス
           items:
             - name: セキュリティを構成する

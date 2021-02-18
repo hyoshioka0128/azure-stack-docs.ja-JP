@@ -3,16 +3,16 @@ title: ハードウェア ライフサイクル ホストを操作するため�
 description: ハードウェア ライフサイクル ホストを操作するために必要な知識について説明します。
 author: PatAltimore
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 02/05/2021
 ms.author: patricka
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: d6b13e26a1df94958f2b91d7a587e6d7f7a9f4bf
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 3d3e650e9b6b1b6c37e2f265aa5c049246600c2f
+ms.sourcegitcommit: 5ea0e915f24c8bcddbcaf8268e3c963aa8877c9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97867589"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100487784"
 ---
 # <a name="required-knowledge-for-working-with-the-hardware-lifecycle-host"></a>ハードウェア ライフサイクル ホストを操作するために必要な知識
 
@@ -47,17 +47,4 @@ FRU の手順を完了するには、次の概念とガイドに習熟し、ア�
 
 クラッシュ カートを使用してサーバーに直接接続していない場合、仮想 KVM にアクセスするには iDRAC アカウントの資格情報が必要です。
 
-## <a name="dell-emc-poweredge-r640-installation-and-service-manual"></a>Dell EMC PowerEdge R640 設置およびサービス マニュアル
-
-関連するハードウェアを物理的に交換する方法の詳細については、「[Dell](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
- [EMC PowerEdge R640 設置およびサービス マニュアル](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)」の PowerEdge R640 FRU の交換手順を参照してください。
-「[システム コンポーネントの取り付けと取り外し](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/installing-and-removing-system-components?guid=guid-5a5943c4-fe26-4faa-a10c-2afa4c1993ff&lang=en-us)」セクションを参照してください。
-
-## <a name="microsoft-azure-stack-hub-tactical-cloud-appliance-service-manual"></a>Microsoft Azure Stack Hub Tactical Cloud Appliance サービス マニュアル
-
-Microsoft Azure Stack Hub Tactical Cloud Appliance サービス マニュアルには、Tracewell Tactical Pods から Hardware Lifecycle Host を取り外すための手順が記載されています。
-
-## <a name="dell-emc-poweredge-idrac"></a>Dell EMC PowerEdge iDRAC
-
-Dell EMC PowerEdge iDRAC Web インターフェイスをナビゲートして使用する方法について理解しておく必要があります。
 

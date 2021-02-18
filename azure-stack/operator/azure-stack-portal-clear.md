@@ -3,16 +3,16 @@ title: Azure Stack Hub からオンデマンドでポータル ユーザー デ�
 description: Azure Stack Hub ユーザーからの要求時に、ポータル ユーザー データをクリアする方法を学習します。
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.reviewer: troettinger
 ms.lastreviewed: 09/10/2019
-ms.openlocfilehash: 3821eced3f37902b20f13ee4d918b2ff2ea8aca9
-ms.sourcegitcommit: 695f56237826fce7f5b81319c379c9e2c38f0b88
+ms.openlocfilehash: f85f5a06699b11d5316a889c045a33376304a0f0
+ms.sourcegitcommit: d542b68b299b73e045f30916afb6018e365e9db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94545093"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99975896"
 ---
 # <a name="clear-portal-user-data-from-azure-stack-hub"></a>Azure Stack Hub からポータル ユーザー データをクリアする
 
@@ -25,7 +25,7 @@ Azure Stack Hub オペレーターは、Azure Stack Hub ユーザーが要求し
 > [!NOTE]
 > 一部のユーザー データは、この記事のガイダンスに従った後でも、イベント ログのシステム セクションにまだ存在していることがあります。 このデータは、ログが自動的にロール オーバーされるまで、数日間保持される場合があります。
 
-## <a name="requirements"></a>必要条件
+## <a name="prerequisites"></a>前提条件
 
 - [PowerShell for Azure Stack Hub をインストールします](powershell-install-az-module.md)。
 - GitHub から[最新の Azure Stack Hub ツールをダウンロード](azure-stack-powershell-download.md)します。

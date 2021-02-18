@@ -3,16 +3,16 @@ title: ExpressRoute を使用して Azure Stack Hub を Azure に接続する
 description: ExpressRoute を使用して Azure Stack Hub 内の仮想ネットワークを Azure 内の仮想ネットワークに接続する方法について説明します。
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/20/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2019
-ms.openlocfilehash: f736f95105b12bdb51fe452c2749e6331c390065
-ms.sourcegitcommit: 81e2d627c9dc4cc365deb4a0e0674b5ab3a7efbf
+ms.openlocfilehash: ef84604b46f2968be4c8d3b84f190a22e270cb21
+ms.sourcegitcommit: d542b68b299b73e045f30916afb6018e365e9db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92297928"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99975964"
 ---
 # <a name="connect-azure-stack-hub-to-azure-using-azure-expressroute"></a>Azure ExpressRoute を使用して Azure Stack Hub を Azure に接続する
 
@@ -103,7 +103,7 @@ Azure Stack Hub 内でテナントに必要なネットワーク リソースを
 6. 先ほど作成したサブスクリプションが、 **[サブスクリプション]** フィールドに設定されたことがわかります。 その他のフィールドは、次のように入力してください。
 
     * **[リソース グループ]** で **[新規作成]** を選択して新しいリソース グループを作成するか、既存のリソース グループがある場合は **[既存のものを使用]** を選択します。
-    * 既定の**場所**を確認します。
+    * 既定の **場所** を確認します。
     * **Create** をクリックしてください。
     * (省略可能) **[ダッシュボードにピン留めする]** をクリックします。
 
@@ -163,7 +163,7 @@ Azure Stack Hub 内でテナントに必要なネットワーク リソースを
 
 #### <a name="get-the-virtual-network-gateway-public-ip-address"></a>仮想ネットワーク ゲートウェイのパブリック IP アドレスを取得する
 
-仮想ネットワーク ゲートウェイの作成後、ゲートウェイのパブリック IP アドレスを取得できます。 このアドレスは、後でデプロイに必要になった場合のためにメモしておいてください。 デプロイによっては、このアドレスが**内部 IP アドレス**として使用されます。
+仮想ネットワーク ゲートウェイの作成後、ゲートウェイのパブリック IP アドレスを取得できます。 このアドレスは、後でデプロイに必要になった場合のためにメモしておいてください。 デプロイによっては、このアドレスが **内部 IP アドレス** として使用されます。
 
 1. Azure Stack Hub ユーザー ポータルで **[すべてのリソース]** を選択します。
 1. **[すべてのリソース]** で、仮想ネットワーク ゲートウェイを選択します。この例では **GW1** が該当します。
@@ -217,7 +217,7 @@ ASDK は自己完結型であり、物理ホストがデプロイされている
 #### <a name="configure-the-nat"></a>NAT を構成する
 
 1. Azure Stack Hub のホスト コンピューターに管理者アカウントでサインインします。
-1. 管理者特権の PowerShell ISE でスクリプトを実行します。 このスクリプトから**外部 BGPNAT アドレス**が返されます。
+1. 管理者特権の PowerShell ISE でスクリプトを実行します。 このスクリプトから **外部 BGPNAT アドレス** が返されます。
 
    ```powershell
    Get-NetNatExternalAddress

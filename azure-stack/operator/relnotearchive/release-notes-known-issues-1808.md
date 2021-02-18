@@ -16,12 +16,12 @@ ms.date: 10/02/2018
 ms.author: sethm
 ms.reviewer: justini
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7d7ba1e7e3b6686002d24df2e286af81ddda5ce7
-ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
+ms.openlocfilehash: 3574c55568db86c96d22d43fdf1bb08ac79c061e
+ms.sourcegitcommit: f9be5640dd445b3d926c9ce3e2165e96c72ece89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99248676"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100009198"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新プログラム
 
@@ -244,7 +244,7 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
       2. 同じサブスクリプションで、 **[アクセス制御 (IAM)]** に移動し、 **[Azure Stack - マネージド ディスク]** がリストに含まれていることを確認します。
    2. マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、次の手順に従ってください。
       1. [1808 Azure Stack 修正プログラム](https://support.microsoft.com/help/4465859)を適用します。
-      2. [この記事](../azure-stack-enable-multitenancy.md#register-azure-stack-hub-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
+      2. [この記事](../azure-stack-enable-multitenancy.md#register-a-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
 
 <!-- 2869209 IS, ASDK --> 
 - [**Add-AzsPlatformImage** コマンドレット](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0&preserve-view=true)を使用する場合は、ディスクのアップロード先のストレージ アカウント URI として **-OsUri** パラメーターを使用する必要があります。 ディスクのローカル パスを使用した場合、次のエラーが出てコマンドレットが失敗します。*長時間実行処理が状態 "失敗" で失敗しました*。 

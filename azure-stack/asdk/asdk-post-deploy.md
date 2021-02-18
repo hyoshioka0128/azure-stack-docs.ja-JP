@@ -7,12 +7,12 @@ ms.date: 12/03/2020
 ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 12/03/2020
-ms.openlocfilehash: f2e039e2b0934e17a4335753e787c6cdf3808644
-ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+ms.openlocfilehash: 11e79a4d998f012a58c7f3b0ab8ecb928c861851
+ms.sourcegitcommit: d542b68b299b73e045f30916afb6018e365e9db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97873318"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99975862"
 ---
 # <a name="post-deployment-configurations-for-asdk"></a>ASDK のデプロイ後の構成
 
@@ -197,7 +197,7 @@ ASDK のデプロイが成功したことを確認するには、次の手順に
 
 ## <a name="enable-multi-tenancy"></a>マルチテナントの有効化
 
-Azure AD を使用したデプロイでは、ASDK のインストール用に[マルチ テナント機能を有効にする](../operator/azure-stack-enable-multitenancy.md#enable-multi-tenancy)必要があります。
+Azure AD を使用したデプロイでは、ASDK のインストール用に[マルチ テナント機能を有効にする](../operator/azure-stack-enable-multitenancy.md)必要があります。
 
 > [!NOTE]
 > Azure Stack の登録に使用したドメイン以外のドメインからの管理者またはユーザー アカウントを使用して Azure Stack ポータルにログインする場合は、Azure Stack の登録に使用したドメイン名をポータルの URL に追加する必要があります。 たとえば、Azure Stack が fabrikam.onmicrosoft.com に登録されていて、ログインするユーザー アカウントが admin@contoso.com である場合、ユーザー ポータルへのログインに使用する URL は https\://portal.local.azurestack.external/fabrikam.onmicrosoft.com になります。
