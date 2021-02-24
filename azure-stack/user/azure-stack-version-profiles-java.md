@@ -3,22 +3,22 @@ title: Azure Stack Hub での Java による API バージョンのプロファ�
 description: Azure Stack Hub での Java による API バージョンのプロファイルの使用方法について説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 6d072c061839c9d10f1f0d97c01ef9b2fa41e6a7
-ms.sourcegitcommit: 70c344b3c9c63f8c12867b2cdfdd1794fcc518dc
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 5e4ce9b035a21d64d741c017ba54477ea7ceb899
+ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836157"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96525848"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack-hub"></a>Azure Stack Hub での Java による API バージョンのプロファイルの使用
 
 Azure Stack Hub Resource Manager 向けの Java SDK には、インフラストラクチャの構築と管理に役立つツールが用意されています。 SDK のリソース プロバイダーには、Compute、Networking、Storage、App Services、および [KeyVault](/azure/key-vault/key-vault-whatis) が含まれます。
 
-Java SDK は、 **.java** ファイルに適切なモジュールを読み込む **Pom.xml** ファイルに依存関係を含めることで、API プロファイルを組み込みます。 ただし、依存関係として複数のプロファイル (**2019-03-01-hybrid** など) を追加したり、Azure プロファイルとして**最新のもの**を追加したりすることができます。 これらの依存関係を使用すると適切なモジュールが読み込まれるため、リソースの種類を作成するときに、それらのプロファイルから使用したい API バージョンを選択することができます。 これにより、Azure Stack Hub の最新の API バージョンに対する開発の際に、Azure で最新バージョンを使用することができます。
+Java SDK は、 **.java** ファイルに適切なモジュールを読み込む **Pom.xml** ファイルに依存関係を含めることで、API プロファイルを組み込みます。 ただし、依存関係として複数のプロファイル (**2019-03-01-hybrid** など) を追加したり、Azure プロファイルとして **最新のもの** を追加したりすることができます。 これらの依存関係を使用すると適切なモジュールが読み込まれるため、リソースの種類を作成するときに、それらのプロファイルから使用したい API バージョンを選択することができます。 これにより、Azure Stack Hub の最新の API バージョンに対する開発の際に、Azure で最新バージョンを使用することができます。
 
 Java SDK を使用すると、真のハイブリッド クラウド開発者エクスペリエンスを実現できます。 Java SDK に含まれている API プロファイルを使用すると、グローバルな Azure リソースと Azure Stack Hub 上のリソース間を切り替えることで、ハイブリッド クラウド開発を行うことができます。
 
@@ -89,7 +89,7 @@ Azure Stack Hub で Azure Java SDK を使用するには、次の値を指定し
 | サブスクリプション ID           | `AZURE_SUBSCRIPTION_ID`      | [サブスクリプション ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) は Azure Stack Hub 内のオファーにアクセスするために使用します。                |
 | クライアント シークレット             | `AZURE_CLIENT_SECRET`        | サービス プリンシパルの作成時に保存した、サービス プリンシパル アプリケーション シークレット。                                                                                                                                   |
 | Resource Manager エンドポイント | `ARM_ENDPOINT`              | 「[Azure Stack Hub Resource Manager エンドポイント](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-hub-resource-manager-endpoint)」の記事を参照してください。 |
-| 場所                  | `RESOURCE_LOCATION`    | Azure Stack Hub 用の**ローカル**。                                                                                                                                                                                                |
+| 場所                  | `RESOURCE_LOCATION`    | Azure Stack Hub 用の **ローカル**。                                                                                                                                                                                                |
 
 Azure Stack Hub のテナント ID を確認するには、[こちら](../operator/azure-stack-csp-ref-operations.md)の手順を参照してください。 環境変数を設定するには、以降のセクションの手順に従います。
 

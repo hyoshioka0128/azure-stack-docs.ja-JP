@@ -2,25 +2,25 @@
 title: 物理ディスクを交換する
 titleSuffix: Azure Stack Hub
 description: Azure Stack Hub の物理ディスクを交換する方法について説明します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: how-to
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 12/02/2019
-ms.openlocfilehash: ec161fd296785f42049b7b2917142f08b47ac910
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 17c8a963ec49ebefff08f56a3411e71ae9d68011
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "78367848"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97869493"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack-hub"></a>Azure Stack Hub の物理ディスクを交換する
 
 この記事では、Azure Stack Hub で物理ディスクを交換する一般的なプロセスについて説明します。 物理ディスクが正常に機能しなくなった場合、早急に交換する必要があります。
 
 > [!Note]  
-> 物理データ ドライブを交換するために、スケール ユニット ノードをメンテナンス モード (ドレイン) にする必要は**ありません**。 物理ドライブを交換した後で、Azure Stack Hub 管理者ポータルを使用してスケール ユニット ノードを修復する必要もありません。 修復が必要な場合、詳細については、記事「[Azure Stack Hub スケール ユニット ノードのハードウェア コンポーネントを交換する](azure-stack-replace-component.md)」を参照してください。
+> 物理データ ドライブを交換するために、スケール ユニット ノードをメンテナンス モード (ドレイン) にする必要は **ありません**。 物理ドライブを交換した後で、Azure Stack Hub 管理者ポータルを使用してスケール ユニット ノードを修復する必要もありません。 修復が必要な場合、詳細については、記事「[Azure Stack Hub スケール ユニット ノードのハードウェア コンポーネントを交換する](azure-stack-replace-component.md)」を参照してください。
 
 この手順は、ホット スワップ可能なディスクを含むデプロイに使用できます。
 
@@ -48,7 +48,7 @@ ms.locfileid: "78367848"
 
 ディスクの交換後、Azure Stack Hub PowerShell を使用して、仮想ディスクの正常性状態と修復ジョブの進行状況を監視できます。
 
-1. Azure Stack Hub PowerShell がインストールされていることを確認してください。 詳細については、「[PowerShell for Azure Stack Hub をインストールする](azure-stack-powershell-install.md)」を参照してください。
+1. Azure Stack Hub PowerShell がインストールされていることを確認してください。 詳細については、「[PowerShell for Azure Stack Hub をインストールする](powershell-install-az-module.md)」を参照してください。
 2. オペレーターとして、PowerShell を使用して Azure Stack Hub に接続します。 詳細については、[オペレーターとして PowerShell を使用する Azure Stack Hub への接続](azure-stack-powershell-configure-admin.md)に関する記事を参照してください。
 3. 仮想ディスクの正常性と修復状態を検証するには、次のコマンドレットを実行します。
 

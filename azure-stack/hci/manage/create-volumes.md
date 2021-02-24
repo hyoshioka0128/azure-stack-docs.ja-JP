@@ -1,22 +1,22 @@
 ---
-title: Azure Stack HCI でのボリュームの作成
+title: Azure Stack HCI でボリュームを作成する
 description: Windows Admin Center と PowerShell を使用して Azure Stack HCI でボリュームを作成する方法について説明します。
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 02/28/2020
-ms.openlocfilehash: b195a55314935282f43f99bf02bda1d2bc298b54
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.topic: how-to
+ms.date: 09/10/2020
+ms.openlocfilehash: aa0da05ba1cac74cf558a28627962e61c1418a73
+ms.sourcegitcommit: b147d617c32cea138b5bd4bab568109282e44317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "78370440"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90010851"
 ---
-# <a name="creating-volumes-in-azure-stack-hci"></a>Azure Stack HCI でのボリュームの作成
+# <a name="create-volumes-in-azure-stack-hci"></a>Azure Stack HCI でボリュームを作成する
 
-> 適用対象:Windows Server 2019
+> 適用対象:Azure Stack HCI バージョン 20H2、Windows Server 2019
 
-このトピックでは、Windows Admin Center と Windows PowerShell を使用して記憶域スペース ダイレクト クラスターにボリュームを作成する方法、ボリューム上のファイルを操作する方法、およびボリュームでデータ重複除去と圧縮を有効にする方法について説明します。
+このトピックでは、Windows Admin Center と Windows PowerShell を使用して Azure Stack HCI クラスターにボリュームを作成する方法、ボリューム上のファイルを操作する方法、およびボリュームでデータ重複除去と圧縮を有効にする方法について説明します。 ストレッチ クラスター用のボリュームを作成し、レプリケーションを設定する方法を学習するには、[拡張ボリュームの作成](create-stretched-volumes.md)に関する記事を参照してください。
 
 ## <a name="create-a-three-way-mirror-volume"></a>3 方向ミラー ボリュームを作成する
 
@@ -74,23 +74,11 @@ Windows Admin Center でボリュームを開き、ボリュームにファイ�
 
 重複除去と圧縮はボリュームごとに管理されます。 重複除去と圧縮では後処理モデルが使用されるため、実行されるまで節約は確認されません。 実行されると、以前から存在するファイルであっても、すべてのファイルが処理されます。
 
-1. Windows Admin Center で、記憶域スペース ダイレクト クラスターに接続し、 **[ツール]** ペインで **[ボリューム]** を選択します。
-2. **[ボリューム]** ページで、 **[インベントリ]** タブを選択します。
-3. ボリュームの一覧で、管理するボリュームの名前を選択します。
-4. ボリュームの詳細ページで、 **[Deduplication and compression]\(重複除去と圧縮\)** というラベルの付いたスイッチをクリックします。
-5. **[Enable deduplication]\(重複除去を有効にする\)** ペインで、重複除去モードを選択します。
-
-    Windows Admin Center では、複雑な設定の代わりに、さまざまなワークロードに対応した既製のプロファイルを選択できます。 わからない場合は、既定の設定を使用します。
-
-6. **[有効化]** を選択します。
-
-重複除去と圧縮を有効にする方法に関する簡単な動画をご覧ください。
-
-> [!VIDEO https://www.youtube-nocookie.com/embed/PRibTacyKko]
+詳細については、「[ボリュームの暗号化、重複除去、圧縮を有効にする](volume-encryption-deduplication.md)」をご覧ください。
 
 ## <a name="create-volumes-using-windows-powershell"></a>Windows PowerShell を使用してボリュームを作成する
 
-最初に、Windows の [スタート] メニューから Windows PowerShell を起動します。 **New-Volume** コマンドレットを使用して、Azure Stack HCI のボリュームを作成することをお勧めします。 これは、高速で操作が非常に分かりやすいです。 この単一のコマンドレットは、仮想ディスクを自動的に作成し、パーティションを作成してフォーマットします。また、名前が一致するボリュームを作成し、クラスターの共有ボリュームに追加します。これらすべてのが 1 つの簡単な手順で実行されます。
+最初に、Windows の [スタート] メニューから Windows PowerShell を起動します。 **New-Volume** コマンドレットを使用して、Azure Stack HCI のボリュームを作成することをお勧めします。 これは、高速で操作が非常に分かりやすいです。 このコマンドレット 1 つだけで、仮想ディスクが作成されて、パーティション化およびフォーマットされ、一致する名前を持つボリュームが作成されて、クラスター共有ボリュームに追加されます。すべて 1 つの簡単な手順で行うことができます。
 
 **New-Volume** コマンドレットには、次の 4 つのパラメーターを常に指定する必要があります。
 
@@ -147,9 +135,9 @@ New-Volume -FriendlyName "Volume4" -FileSystem CSVFS_ReFS -StoragePoolFriendlyNa
 
 ## <a name="next-steps"></a>次のステップ
 
-記憶域スペース ダイレクトでその他の記憶域管理タスクを実行するには、次の項目も参照してください。
+関連トピックおよびその他のストレージ管理タスクについては、次のトピックも参照してください。
 
 - [記憶域スペース ダイレクトの概要](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [記憶域スペース ダイレクトのボリュームの計画](/windows-server/storage/storage-spaces/plan-volumes)
-- [記憶域スペース ダイレクトのボリュームの拡張](/windows-server/storage/storage-spaces/resize-volumes)
-- [記憶域スペース ダイレクトのボリュームの削除](/windows-server/storage/storage-spaces/delete-volumes)
+- [ボリュームの計画](../concepts/plan-volumes.md)
+- [ボリュームの拡張](extend-volumes.md)
+- [ボリュームの削除](delete-volumes.md)

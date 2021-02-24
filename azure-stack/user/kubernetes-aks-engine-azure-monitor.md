@@ -3,20 +3,20 @@ title: Azure Stack Hub で Azure Monitor for containers を使用する
 description: Azure Stack Hub で Azure Monitor for containers を使用する方法について説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 3/19/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/19/2020
-ms.openlocfilehash: ae72fcbeccdb4500cf9182c01e2913188abd2895
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.lastreviewed: 9/2/2020
+ms.openlocfilehash: bab70c6c083ef7d046fb5f967eb22e947df0c9d0
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80068986"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247423"
 ---
 # <a name="use-azure-monitor-for-containers-on-azure-stack-hub"></a>Azure Stack Hub で Azure Monitor for containers を使用する
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) for containers を使用して、AKS エンジンによって Azure Stack Hub にデプロイされた Kubernetes クラスター内のコンテナーを監視できます。 
+[Azure Monitor](/azure/azure-monitor/) for containers を使用して、AKS エンジンによって Azure Stack Hub にデプロイされた Kubernetes クラスター内のコンテナーを監視できます。 
 
 > [!IMPORTANT]
 > Azure Stack Hub 上のコンテナー用 Azure Monitor は、現在パブリック プレビュー段階です。
@@ -36,7 +36,7 @@ Azure Monitor では、Kubernetes で使用可能なコントローラー、ノ�
 
 ## <a name="method-two"></a>方法 2
 
-AKS エンジン クラスター仕様の JSON ファイルで、**アドオン**を指定できます。 このファイルは API モデルとも呼ばれます。 このアドオンで、監視情報が格納される Azure Log Analytics ワークスペースの **WorkspaceGUID** と **WorkspaceKey** の base64 エンコード バージョンを提供します。
+AKS エンジン クラスター仕様の JSON ファイルで、**アドオン** を指定できます。 このファイルは API モデルとも呼ばれます。 このアドオンで、監視情報が格納される Azure Log Analytics ワークスペースの **WorkspaceGUID** と **WorkspaceKey** の base64 エンコード バージョンを提供します。
 
 Azure Stack Hub クラスターに対してサポートされる API 定義については、[kubernetes-container-monitoring_existing_workspace_id_and_key.json](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json) の例をご覧ください。 具体的には、**kubernetesConfig** の **addons** プロパティを探します。
 
@@ -59,4 +59,4 @@ Azure Stack Hub クラスターに対してサポートされる API 定義に�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Stack Hub 上の AKS エンジン](azure-stack-kubernetes-aks-engine-overview.md)を確認してください  
-- 「[コンテナーに対する Azure Monitor の概要](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)」を読む
+- 「[コンテナーに対する Azure Monitor の概要](/azure/azure-monitor/insights/container-insights-overview)」を読む

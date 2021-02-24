@@ -7,12 +7,13 @@ ms.date: 04/10/2020
 ms.author: bryanla
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: f1217bacebc4c391347506720c760b947e363b3a
-ms.sourcegitcommit: 41195d1ee8ad14eda102cdd3fee3afccf1d83aca
+ms.custom: conteperfq4
+ms.openlocfilehash: 971bac83972664bbefe900f16aa2ab83c12aa3a1
+ms.sourcegitcommit: 32d77de1a554315f53473407279e464a72aa9aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82908610"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97515049"
 ---
 # <a name="integrate-ad-fs-identity-with-your-azure-stack-hub-datacenter"></a>AD FS ID を Azure Stack Hub データセンターに統合する
 
@@ -63,7 +64,7 @@ Graph は、単一の Active Directory フォレストとの統合のみをサ�
 
 Azure Stack Hub の[パブリック VIP ネットワーク](azure-stack-network.md#public-vip-network) サブネットを、Azure Stack Hub に最も近い Active Directory サイトに追加します。 たとえば、Active Directory に 2 つのサイトがあるとします。シアトルとレドモントです。 シアトルのサイトに Azure Stack Hub がデプロイされている場合、Azure Stack Hub のパブリック VIP ネットワーク サブネットを、Active Directory のシアトルのサイトに追加します。
 
-Active Directory サイトの詳細については、「[サイト トポロジの設計](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)」を参照してください。
+Active Directory サイトの詳細については、「[サイト トポロジの設計](/windows-server/identity/ad-ds/plan/designing-the-site-topology)」を参照してください。
 
 > [!Note]  
 > Active Directory が単一サイトで構成されている場合、この手順はスキップできます。 包括的なサブネットが構成されている場合、Azure Stack Hub のパブリック VIP ネットワーク サブネットがその一部ではないことを確認します。
@@ -86,13 +87,33 @@ Active Directory サイトの詳細については、「[サイト トポロジ�
 
    ```powershell  
    $creds = Get-Credential
-   Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
+   $pep = New-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-2. これで特権エンドポイントに接続されました。次のコマンドを実行します。 
+2. 特権エンドポイントを使用するセッションができたので、次のコマンドを実行します。 
+
+   **Azure Stack Hub の 2008 以降のビルドについては、次のスクリプトを実行します** <br>
 
    ```powershell  
-   Register-DirectoryService -CustomADGlobalCatalog contoso.com
+    $i = @(
+           [pscustomobject]@{ 
+                     CustomADGlobalCatalog="fabrikam.com"
+                     CustomADAdminCredential= get-credential
+                     SkipRootDomainValidation = $false 
+                     ValidateParameters = $true
+                   }) 
+
+    Invoke-Command -Session $pep -ScriptBlock {Register-DirectoryService -customCatalog $using:i} 
+
+
+   ```
+
+   **Azure Stack Hub の 2008 より前のビルドについては、次のスクリプトを実行します** <br>
+
+   ```powershell  
+   Invoke-Command -Session $pep -ScriptBlock {Register-DirectoryService -CustomADGlobalCatalog contoso.com} 
+   
+   
    ```
 
    メッセージが表示されたら、Graph サービスに使用するユーザー アカウントの資格情報を指定します (graphservice など)。 Register-DirectoryService コマンドレットには、フォレスト内の他のドメインではなく、フォレスト内のフォレスト名/ルート ドメインを入力する必要があります。
@@ -104,8 +125,8 @@ Active Directory サイトの詳細については、「[サイト トポロジ�
 
    |パラメーター|説明|
    |---------|---------|
-   |`-SkipRootDomainValidation`|推奨されるルート ドメインではなく、子ドメインを使用する必要があることを指定します。|
-   |`-Force`|すべての検証チェックをバイパスします。|
+   |`SkipRootDomainValidation`|推奨されるルート ドメインではなく、子ドメインを使用する必要があることを指定します。|
+   |`ValidateParameters`|すべての検証チェックをバイパスします。|
 
 #### <a name="graph-protocols-and-ports"></a>Graph のプロトコルとポート
 
@@ -259,7 +280,7 @@ Azure Stack Hub の Graph サービスでは、次のプロトコルとポート
    ```
 
     > [!Note]  
-    > Windows 統合認証 (WIA) サポートのユーザー エージェント文字列が、AD FS 展開に対して期限切れになっている場合があり、最新のクライアントをサポートするための更新プログラムが必要になる場合があります。 WIA によってサポートされるユーザー エージェント文字列の更新に関する詳細については、「[WIA をサポートしていないデバイスのイントラネットフォームベース認証の構成](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia)」の記事をお読みください。<br><br>フォーム ベース認証ポリシーを有効にする手順については、「[認証ポリシーを構成する](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies)」を参照してください。
+    > Windows 統合認証 (WIA) サポートのユーザー エージェント文字列が、AD FS 展開に対して期限切れになっている場合があり、最新のクライアントをサポートするための更新プログラムが必要になる場合があります。 WIA によってサポートされるユーザー エージェント文字列の更新に関する詳細については、「[WIA をサポートしていないデバイスのイントラネットフォームベース認証の構成](/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia)」の記事をお読みください。<br><br>フォーム ベース認証ポリシーを有効にする手順については、「[認証ポリシーを構成する](/windows-server/identity/ad-fs/operations/configure-authentication-policies)」を参照してください。
 
 3. 証明書利用者信頼を追加するには、AD FS インスタンスまたはファーム メンバーで、次の Windows PowerShell コマンドを実行します。 必ず AD FS エンドポイントを更新して、手順 1 で作成されたファイルを指定します。
 

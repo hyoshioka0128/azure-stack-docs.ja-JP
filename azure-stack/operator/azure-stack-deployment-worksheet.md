@@ -1,18 +1,18 @@
 ---
 title: Azure Stack Hub のデプロイ ワークシート
 description: Azure Stack Hub をデプロイするデプロイ ワークシート ツールのインストール方法と使用方法について説明します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: article
 ms.date: 04/19/2019
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: wamota
 ms.lastreviewed: 04/19/2019
-ms.openlocfilehash: 1949d198c7d85e60c5a3195dfbd5e725cef834c7
-ms.sourcegitcommit: 70c344b3c9c63f8c12867b2cdfdd1794fcc518dc
+ms.openlocfilehash: afdad104cad67e928e1d6d988138ab1c8555631c
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836129"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97870887"
 ---
 # <a name="deployment-worksheet-for-azure-stack-hub-integrated-systems"></a>Azure Stack Hub 統合システムのデプロイ ワークシート
 
@@ -62,7 +62,7 @@ Azure Stack Hub デプロイ ワークシートは、必要なすべてのデプ
    Start-DeploymentWorksheet
    ```
 
-デプロイ ワークシートは、 **[Customer Settings]\(顧客設定\)** 、 **[ネットワーク設定]** 、 **[Scale Unit #]\(スケール ユニット番号\)** など、環境設定を収集するための個別のタブで構成されています。 構成データ ファイルを生成する前に、すべてのタブで (**省略可能**とマークされたものを除いて) すべての値を指定する必要があります。 必要な値をすべてツールに入力したら、 **[アクション]** メニューを使用して **[インポート]** 、 **[エクスポート]** 、および **[生成]** を実行できます。 デプロイに必要な JSON ファイルは次のとおりです。
+デプロイ ワークシートは、 **[Customer Settings]\(顧客設定\)** 、 **[ネットワーク設定]** 、 **[Scale Unit #]\(スケール ユニット番号\)** など、環境設定を収集するための個別のタブで構成されています。 構成データ ファイルを生成する前に、すべてのタブで (**省略可能** とマークされたものを除いて) すべての値を指定する必要があります。 必要な値をすべてツールに入力したら、 **[アクション]** メニューを使用して **[インポート]** 、 **[エクスポート]** 、および **[生成]** を実行できます。 デプロイに必要な JSON ファイルは次のとおりです。
 
 **Import**:このツールによって生成された Azure Stack Hub 構成データ ファイル (ConfigurationData.json)、または以前のリリースのデプロイ ワークシートによって作成されたファイルをインポートできます。 インポートを実行するとフォームがリセットされ、以前に入力した設定や生成されたデータが削除されます。
 

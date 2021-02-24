@@ -1,18 +1,18 @@
 ---
 title: Azure Stack Hub にパブリック IP アドレスを追加する
 description: Azure Stack Hub にパブリック IP アドレスを追加する方法について説明します。
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 05/28/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: scottnap
 ms.lastreviewed: 09/10/2019
-ms.openlocfilehash: 423f274dab5569273cc35ec4aac6b082326217f3
-ms.sourcegitcommit: f4c2d5b87bc86ac4accb4d4df5b731b67d1a346c
+ms.openlocfilehash: 5f083e507689e7d24fa02060e63a9e6302ef3568
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84203138"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97871941"
 ---
 # <a name="add-public-ip-addresses"></a>パブリック IP アドレスの追加
 
@@ -44,7 +44,7 @@ Azure Stack Hub に新しいパブリック IP アドレス ブロックを追�
 4. [リソース プロバイダー] タイルを見つけて、ネットワーク リソース プロバイダーをクリックします。
 5. [パブリック IP プールの使用量] タイルをクリックします。
 6. [Add IP pool]\(IP プールの追加\) ボタンをクリックします。
-7. IP プールの名前を指定します。 選択した名前によって、IP プールを簡単に識別できます。 必須ではありませんが、アドレス範囲と同じ名前にすることをお勧めします。
+7. IP プールの名前を指定します。 選択した名前によって、IP プールを簡単に識別できます。 このフィールドでは、"/" のような特殊文字は使用できません。 必須ではありませんが、アドレス範囲と同じ名前にすることをお勧めします。
 8. CIDR 表記で追加するアドレス ブロックを入力します。 次に例を示します。192.168.203.0/24
 9. [アドレス範囲 (CIDR ブロック)] フィールドに有効な CIDR 範囲を指定すると、[開始 IP アドレス]、[終了 IP アドレス] および [利用可能な IP アドレス] の各フィールドが自動的に設定されます。 これらは読み取り専用で、自動的に生成されるため、[アドレス範囲] フィールドで値を変更せずにこれらのフィールドを変更することはできません。
 10. ブレード上の情報を確認し、すべて正しいことを確認したら、 **[OK]** を選択して変更をコミットし、アドレス範囲を Azure Stack Hub に追加します。

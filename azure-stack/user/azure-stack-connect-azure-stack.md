@@ -3,16 +3,16 @@ title: Azure Stack Hub に接続する
 description: Azure Stack Hub に接続する方法について説明します。
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 5/27/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2020
-ms.openlocfilehash: 1b4db2cf67231f8660948af43d4935bbcf9c846c
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: b8a9c565cf618ea97714574a8f4d662afadaa749
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111899"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247831"
 ---
 # <a name="connect-to-azure-stack-hub"></a>Azure Stack Hub に接続する
 
@@ -28,7 +28,7 @@ ms.locfileid: "84111899"
 
 2. Development Kit コンピューターからサーバー マネージャーを開き、 **[ローカル サーバー]** をクリックし、Internet Explorer セキュリティ強化を無効にして、サーバー マネージャーを閉じます。
 
-3. ポータルを開くには、(https://portal.local.azurestack.external/) に移動し、ユーザーの資格情報を使用してサインインします。
+3. ポータルを開くには、`https://portal.local.azurestack.external/` に移動し、ユーザーの資格情報を使用してサインインします。
 
 
 ## <a name="connect-to-azure-stack-hub-with-vpn"></a>VPN を使用して Azure Stack Hub に接続する
@@ -40,7 +40,7 @@ Azure Stack Development Kit に対して、分割トンネルの VPN 接続を�
 
 ### <a name="prerequisites"></a>前提条件
 
-* [Azure Stack Hub 互換の Azure PowerShell](../operator/azure-stack-powershell-install.md) をローカル コンピューターにインストールします。  
+* [Azure Stack Hub 互換の Azure PowerShell](../operator/powershell-install-az-module.md) をローカル コンピューターにインストールします。  
 * [Azure Stack Hub の操作に必要なツール](../operator/azure-stack-powershell-download.md)をダウンロードします。 
 
 ### <a name="configure-vpn-connectivity"></a>VPN 接続の構成
@@ -97,7 +97,7 @@ Add-AzsVpnConnection `
 
 ### <a name="test-the-vpn-connectivity"></a>VPN 接続のテスト
 
-ポータル接続をテストするには、ブラウザーを開き、ユーザー ポータル (https://portal.local.azurestack.external/) に移動し、サインインしてリソースを作成します。  
+ポータル接続をテストするには、ブラウザーを開き、ユーザー ポータル `https://portal.local.azurestack.external/` に移動し、サインインしてリソースを作成します。  
 
 ## <a name="next-steps"></a>次のステップ
 

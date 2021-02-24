@@ -2,18 +2,18 @@
 title: Azure Stack Hub のテレメトリを構成する
 titleSuffix: Azure Stack
 description: Azure Stack Hub のテレメトリと、PowerShell を使用してテレメトリ設定を構成する方法について学習します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
 ms.date: 1/16/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: comartin
 ms.lastreviewed: 10/15/2019
-ms.openlocfilehash: 6bc12104ef8ce325fe9b1773373ef235a33919e5
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 467573e6e964e7c89bdffaf322ac473524d87892
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77696959"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97872638"
 ---
 # <a name="configure-azure-stack-hub-telemetry"></a>Azure Stack Hub のテレメトリを構成する
 
@@ -24,7 +24,7 @@ Azure Stack Hub オペレーターの場合、テレメトリによって、企�
 > [!NOTE]
 > また、課金のための使用状況情報を Azure に転送するように Azure Stack Hub を構成することもできます。 マルチノードの Azure Stack Hub をご利用で従量課金制を選択されたお客様には、これが必要となります。 使用状況のレポートは、テレメトリとは別に制御され、マルチノードをご利用の場合でも容量モデルを選択されたお客様や、Azure Stack Development Kit のユーザーには必要ありません。 そのような場合は、使用状況のレポートを[登録スクリプトを使って](azure-stack-usage-reporting.md)無効にすることができます。
 
-Azure Stack Hub テレメトリは、Windows Server 2016 の接続ユーザー エクスペリエンスとテレメトリ コンポーネントに基づいています。 このコンポーネントでは [Windows イベント トレーシング (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) の TraceLogging テクノロジを使用して、イベントとデータを収集して格納します。 Azure Stack のコンポーネントにも同じテクノロジが使用されており、パブリックなオペレーティング システムのイベント ログとトレース API を使用して収集されたイベントとデータが発行されます。 これらの Azure Stack Hub コンポーネントの例として、ネットワーク リソース プロバイダー、ストレージ リソース プロバイダー、監視リソース プロバイダー、更新リソース プロバイダーがあります。 接続ユーザー エクスペリエンスとテレメトリ コンポーネントは、SSL を使用してデータを暗号化し、証明書のピン留めを使用してデータを HTTPS で Microsoft Data Management サービスに送信します。
+Azure Stack Hub テレメトリは、Windows Server 2016 の接続ユーザー エクスペリエンスとテレメトリ コンポーネントに基づいています。 このコンポーネントでは [Windows イベント トレーシング (ETW)](/windows/win32/tracelogging/trace-logging-about) の TraceLogging テクノロジを使用して、イベントとデータを収集して格納します。 Azure Stack のコンポーネントにも同じテクノロジが使用されており、パブリックなオペレーティング システムのイベント ログとトレース API を使用して収集されたイベントとデータが発行されます。 これらの Azure Stack Hub コンポーネントの例として、ネットワーク リソース プロバイダー、ストレージ リソース プロバイダー、監視リソース プロバイダー、更新リソース プロバイダーがあります。 接続ユーザー エクスペリエンスとテレメトリ コンポーネントは、SSL を使用してデータを暗号化し、証明書のピン留めを使用してデータを HTTPS で Microsoft Data Management サービスに送信します。
 
 > [!IMPORTANT]
 > テレメトリ データ フローを有効にするには、ネットワークでポート 443 (HTTPS) を開く必要があります。 "接続ユーザー エクスペリエンスとテレメトリ" コンポーネントから Microsoft Data Management サービスへの接続には、`https://v10.events.data.microsoft.com` が使われます。 また、"接続ユーザー エクスペリエンスとテレメトリ" コンポーネントは、構成情報をダウンロードする目的で `https://settings-win.data.microsoft.com` にも接続します。 その他の診断データ サービスは、エラーのレポートのために `https://watson.telemetry.microsoft.com` を接続します。
@@ -94,7 +94,7 @@ Security データに加え、基本的な正常性データと品質データ�
 > [!IMPORTANT]
 > これらのテレメトリ レベルが適用されるのは、Microsoft Azure Stack Hub のコンポーネントのみです。 Azure Stack Hub ハードウェア パートナーのハードウェア ライフサイクル ホストで動作する、Microsoft 以外のソフトウェア コンポーネントやサービスでは、これらのテレメトリ レベル外でそのクラウド サービスと通信を行うことが考えられます。 テレメトリ ポリシーについてと、どのようにオプトインまたはオプトアウトできるかについては、ご利用の Azure Stack Hub ハードウェア ソリューション プロバイダーにお問い合わせください。
 
-Windows と Azure Stack Hub のテレメトリをオフにすると、SQL のテレメトリも無効になります。 Windows Server のテレメトリ設定の作用に関する詳細については、[Windows テレメトリのホワイトペーパー](https://aka.ms/winservtelemetry)を参照してください。
+Windows と Azure Stack Hub のテレメトリをオフにすると、SQL のテレメトリも無効になります。 Windows Server のテレメトリ設定の作用に関する詳細については、[Windows テレメトリのホワイトペーパー](/windows/privacy/configure-windows-diagnostic-data-in-your-organization)を参照してください。
 
 ### <a name="asdk-set-the-telemetry-level-in-the-windows-registry"></a>ASDK: Windows レジストリでテレメトリ レベルを設定する
 

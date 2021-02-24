@@ -3,20 +3,20 @@ title: Azure Stack Hub サブスクリプションまたはストレージ ア�
 description: Azure Stack Hub サブスクリプションにストレージ エクスプローラーを接続する方法について説明します。
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 701b2a0c6bae3fa4f246877f49f73aca8482b0de
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: d4fac8bd262260802c386446190557b1333a14ed
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81660374"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247236"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-hub-subscription-or-a-storage-account"></a>Azure Stack Hub サブスクリプションまたはストレージ アカウントにストレージ エクスプローラーを接続する
 
-この記事では、[Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) を使用して Azure Stack Hub サブスクリプションとストレージ アカウントに接続する方法について説明します。 Storage Explorer は、Windows、macOS、Linux で Azure Stack Hub ストレージのデータを簡単に操作できるようにするスタンドアロン アプリです。
+この記事では、[Azure Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer) を使用して Azure Stack Hub サブスクリプションとストレージ アカウントに接続する方法について説明します。 Storage Explorer は、Windows、macOS、Linux で Azure Stack Hub ストレージのデータを簡単に操作できるようにするスタンドアロン アプリです。
 
 > [!NOTE]  
 > Azure Stack Hub ストレージからデータを移動するために利用できるツールは、いくつかあります。 詳細については、[Azure Stack Hub ストレージのデータ転送ツール](azure-stack-storage-transfer.md)に関するページを参照してください。
@@ -29,7 +29,7 @@ Azure Stack Hub サブスクリプションまたはストレージ アカウン
 
 Storage Explorer で Azure Stack Hub サブスクリプションにアクセスするには、Azure Stack Hub への直接アクセス、または VPN 接続が必要です。 Azure Stack Hub への VPN 接続を設定する方法の詳細については、[VPN を使用した Azure Stack Hub への接続](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)に関するページを参照してください。
 
-> [!Note]  
+> [!NOTE]  
 > ASDK では、VPN 経由で ASDK に接続している場合、VPN 設定プロセス中に作成されたルート証明書 (CA.cer) を使用しないでください。  これは DER でエンコードされた証明書であり、Storage Explorer で Azure Stack Hub サブスクリプションを取得することは許可されません。 以下の手順を使用して、Storage Explorer で使用するための Base-64 でエンコードされた証明書をエクスポートします。
 
 接続されていない統合システムおよび ASDK の場合は、内部エンタープライズ証明機関を使用して、Base-64 形式でルート証明書をエクスポートした後、Azure Storage Explorer にインポートすることをお勧めします。  
@@ -89,14 +89,15 @@ Azure Active Directory (Azure AD) アカウントに属している Azure Stack 
 
 ## <a name="connect-to-an-azure-stack-hub-subscription-with-ad-fs-account"></a>AD FS アカウントを使用して Azure Stack Hub サブスクリプションに接続する
 
-> [!Note]  
+> [!NOTE]  
 > Azure のフェデレーション サービス (AD FS) のサインイン エクスペリエンスでは、Azure Stack Hub 1804 以降の更新プログラムが適用されたストレージ エクスプローラー 1.2.0 以降のバージョンがサポートされます。
+
 AD FS アカウントに属している Azure Stack Hub サブスクリプションに Storage Explorer を接続するには、次の手順を使用します。
 
 1. **[アカウントの管理]** を選択します。 エクスプローラーには、サインインした Microsoft サブスクリプションが一覧表示されます。
 2. Azure Stack Hub サブスクリプションに接続するには、 **[アカウントの追加]** を選択します。
 
-    ![アカウントの追加 - Storage Explorer](media/azure-stack-storage-connect-se/add-an-account.png)
+    ![Storage Explorer でアカウントを追加する方法を示すスクリーンショット。](media/azure-stack-storage-connect-se/add-an-account.png)
 
 3. **[次へ]** を選択します。 [Azure Storage へ接続] ダイアログ ボックスの **[Azure 環境]** で **[Use Custom Environment] (カスタム環境の使用)** を選択し、 **[次へ]** をクリックします。
 
@@ -104,10 +105,10 @@ AD FS アカウントに属している Azure Stack Hub サブスクリプショ
 
 4. Azure Stack Hub のカスタム環境に必要な情報を入力します。 
 
-    | フィールド | メモ |
+    | フィールド | Notes |
     | ---   | ---   |
     | 環境名 | このフィールドはユーザーがカスタマイズできます。 |
-    | Azure Resource Manager endpoint (Azure Resource Manager エンドポイント) | Azure Stack Development Kit の Azure Resource Manager リソース エンドポイントの例は次のとおりです。<br>オペレーター用: https://adminmanagement.local.azurestack.external <br> ユーザー用: https://management.local.azurestack.external |
+    | Azure Resource Manager endpoint (Azure Resource Manager エンドポイント) | Azure Stack Development Kit の Azure Resource Manager リソース エンドポイントの例は次のとおりです。<br>オペレーター用: `https://adminmanagement.local.azurestack.external` <br> ユーザー用: `https://management.local.azurestack.external` |
 
     Azure Stack Hub 統合システムで作業していて、管理エンドポイントが不明な場合は、オペレーターに問い合わせてください。
 

@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: サービスとしての検証を使用して Azure Stack Hub 用の対話型機能検証テストを作成する方法について説明します。
 author: mattbriggs
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5529164b909099156219086dd8a4895c223ed5a3
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: 1e7e87073518ab5a040cc96ec1af5b7db5f808d9
+ms.sourcegitcommit: 53b0dde60a6435936a5e0cb9e931245f262d637a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661303"
+ms.lasthandoff: 09/23/2020
+ms.locfileid: "91107255"
 ---
 # <a name="interactive-feature-verification-testing"></a>対話型機能検証テスト  
 
@@ -48,7 +48,7 @@ ms.locfileid: "81661303"
     > [!Note]  
     > テストのバージョン番号は、2 次テストの改良が行われると増加します。 Microsoft による別段の指示がない限り、常に最新バージョンを使用することが推奨されます。
 
-    ![ディスク識別テスト - Azure Stack Hub での対話型テスト](media/azure-stack-vaas-interactive-feature-verification/image4.png)
+    ![ディスク識別テスト - Azure Stack Hub での対話型テストを示すスクリーンショット。](media/azure-stack-vaas-interactive-feature-verification/image4.png)
 
 2. **[編集]** を選択して、ドメイン管理者のユーザー名とパスワードを指定します。
 

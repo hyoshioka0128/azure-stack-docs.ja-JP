@@ -1,18 +1,18 @@
 ---
 title: Syslog 転送を使用して Azure Stack Hub と監視ソリューションを統合する
 description: Syslog 転送を使用して、Azure Stack Hub と監視ソリューションを統合する方法を説明します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: article
 ms.date: 01/10/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: fiseraci
-ms.lastreviewed: 01/10/2019
-ms.openlocfilehash: a02458ba7790fdf48d8b506abfea0e771b8a179e
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.lastreviewed: 06/15/2020
+ms.openlocfilehash: 9a6da457b32bf9a224a906bc24ec65c7adcf1fab
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77699424"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97870411"
 ---
 # <a name="integrate-azure-stack-hub-with-monitoring-solutions-using-syslog-forwarding"></a>Syslog 転送を使用して Azure Stack Hub と監視ソリューションを統合する
 
@@ -234,6 +234,8 @@ Prefix fields
 * Signature ID: Microsoft-AzureStack-PrivilegedEndpoint: <PEP Event ID>
 * Name: <PEP Task Name>
 * Severity: mapped from PEP Level (details see the PEP Severity table below)
+* Who: account used to connect to the PEP
+* WhichIP: IP address of the device used to connect to the PEP
 ```
 
 特権エンドポイントのイベントの表:
@@ -271,6 +273,8 @@ Prefix fields
 * Signature ID: Microsoft-AzureStack-PrivilegedEndpoint: <REP Event ID>
 * Name: <REP Task Name>
 * Severity: mapped from REP Level (details see the REP Severity table below)
+* Who: account used to connect to the REP
+* WhichIP: IP address of the device used to connect to the REP
 ```
 
 復旧エンドポイントのイベントの表:
@@ -364,7 +368,7 @@ Azure Stack Hub の作成されたアラートのカスタム拡張機能の表:
 
 | カスタム拡張機能名 | 例 | 
 |-----------------------|---------|
-|MasEventDescription|説明: ユーザー アカウント \<TestUser\> が \<TestDomain\> に対して作成されました。 これは潜在的なセキュリティ リスクです。 -- 解決策:サポートにお問い合せください。 この問題を解決するにはカスタマー サポートが必要です。 サポートを受けずに、この問題を解決しようとしないでください。 サポート リクエストを開く前に、 https://aka.ms/azurestacklogfiles のガイダンスを使用してログ ファイルの収集プロセスを開始してください。
+|MasEventDescription|説明: \<TestDomain\> のユーザー アカウント \<TestUser\> が作成されました。 これは潜在的なセキュリティ リスクです。 -- 解決策: サポートにお問い合わせください。 この問題を解決するにはカスタマー サポートが必要です。 サポートを受けずに、この問題を解決しようとしないでください。 サポート リクエストを開く前に、https://aka.ms/azurestacklogfiles のガイダンスを使用してログ ファイルの収集プロセスを開始してください。
 
 ### <a name="cef-mapping-for-alerts-closed"></a>解決されたアラートの CEF マッピング
 
@@ -378,6 +382,22 @@ Azure Stack Hub の作成されたアラートのカスタム拡張機能の表:
 ```
 2018:05:17:-23:59:28 -07:00 TestHost CEF:0.0|Microsoft|Microsoft Azure Stack Hub|1.0|3|TITLE: User Account Created -- DESCRIPTION: A user account \<TestUser\> was created for \<TestDomain\>. It's a potential security risk. -- REMEDIATION: Please contact Support. Customer Assistance is required to resolve this issue. Do not try to resolve this issue without their assistance. Before you open a support request, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles|10
 ```
+
+## <a name="syslog-event-types"></a>Syslog イベントの種類  
+
+Syslog チャネルを介して送信されるすべてのイベントの種類、イベント、メッセージ スキーマ、またはプロパティを次の表に示します。 設定の verbose スイッチは、SIEM 統合に Windows 情報イベントが必要な場合にのみ使用してください。 
+
+| イベントの種類                                 | イベントまたはメッセージ スキーマ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | verbose 設定が必要         | イベントの説明 (省略可能)                                                                                                                                   |
+|--------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure Stack Hub のアラート                     | アラート メッセージ スキーマについては、「[解決されたアラートの CEF マッピング](#cef-mapping-for-alerts-closed)」を参照してください。 <br> <br>別のドキュメントに、すべてのアラートの一覧がまとめられています。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | いいえ                               | システムの正常性のアラート                                                                                                                                           |
+| 特権エンドポイント イベント                 | 特権エンドポイントのメッセージ スキーマについては、「[特権エンドポイント イベントの CEF マッピング](#cef-mapping-for-privileged-endpoint-events)」を参照してください。<br> <br>PrivilegedEndpointAccessed <br>SupportSessionTokenRequested <br>SupportSessionDevelopmentTokenRequested <br>SupportSessionUnlocked <br>SupportSessionFailedToUnlock <br>PrivilegedEndpointClosed <br>NewCloudAdminUser <br>RemoveCloudAdminUser <br>SetCloudAdminUserPassword <br>GetCloudAdminPasswordRecoveryToken <br>ResetCloudAdminPassword <br>PrivilegedEndpointSessionTimedOut                                                                                                                                                                                                                                                                                                      | いいえ                               |                                                                                                                                                                |
+| 復旧エンドポイント イベント                   | 復旧エンドポイントのメッセージ スキーマについては、「[復旧エンドポイント イベントの CEF マッピング](#cef-mapping-for-recovery-endpoint-events)」を参照してください。 <br>RecoveryEndpointAccessed <br>RecoverySessionTokenRequested <br>RecoverySessionDevelopmentTokenRequested <br>RecoverySessionUnlocked <br>RecoverySessionFailedToUnlock <br>Recovand RecoveryEndpointClosed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | いいえ                               |                                                                                                                                                                |
+| Windows セキュリティ イベント                    |   <br>Windows イベントのメッセージ スキーマについては、「[Windows イベントの CEF マッピング](#cef-mapping-for-windows-events)」を参照してください。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | はい (情報イベントを取得するため)  | 種類: <br>- 情報 <br>- 警告 <br>- エラー <br>- Critical (重大)                                                                                               |
+| ARM のイベント                                 | メッセージのプロパティ: <br> <br>AzsSubscriptionId <br>AzsCorrelationId <br>AzsPrincipalOid <br>AzsPrincipalPuid <br>AzsTenantId <br>AzsOperationName <br>AzsOperationId <br>AzsEventSource <br>AzsDescription <br>AzsResourceProvider <br>AzsResourceUri <br>AzsEventName <br>AzsEventInstanceId <br>AzsChannels <br>AzsEventLevel <br>AzsStatus <br>AzsSubStatus <br>AzsClaims <br>AzsAuthorization <br>AzsHttpRequest <br>AzsProperties <br>AzsEventTimestamp <br>AzsAudience <br>AzsIssuer <br>AzsIssuedAt <br>AzsApplicationId <br>AzsUniqueTokenId <br>AzsArmServiceRequestId <br>AzsEventCategory <br> <br>                                                                                                                                                                                                                                | いいえ <br>                          | 登録されている各 ARM リソースによってイベントを発生させることができます。                                                                                                               |
+| BCDR イベント                                | メッセージ スキーマ: <br> <br>AuditingManualBackup { <br>} <br>AuditingConfig <br>{ <br>Interval <br>Retention <br>IsSchedulerEnabled <br>BackupPath <br>} <br>AuditingPruneBackupStore { <br>IsInternalStore <br>} <br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | いいえ                               | これらのイベントでは、ユーザーが手動で実行したインフラのバックアップ管理操作 (トリガーのバックアップ、バックアップ構成の変更、バックアップ データの排除など) が追跡されます。       |
+| インフラ障害によるイベントの作成と終了    | メッセージ スキーマ: <br> <br>InfrastructureFaultOpen { <br>AzsFaultId, <br>AzsFaultTypeName, <br>AzsComponentType, <br>AzsComponentName, <br>AzsFaultHash, <br>AzsCreatedTimeUtc, <br>AzsSource <br>} <br>  <br>InfrastructureFaultClose {  <br>AzsFaultId, <br>AzsFaultTypeName, <br>AzsComponentType, <br>AzsComponentName, <br>AzsFaultHash, <br>AzsLastUpdatedTimeUtc, <br>AzsSource <br>}                                                                                                                                                                                                                                                                                                                                                                                                                                                    | いいえ                               | 障害によって、アラートにつながる可能性があるエラーの修復を試みるワークフローがトリガーされます。 障害に修復策がない場合は、そのままアラートが発生します。            |
+| サービス障害によるイベントの作成と終了  | メッセージ スキーマ: <br> <br>ServiceFaultOpen { <br>AzsFaultId, <br>AzsFaultTypeName, <br>AzsSubscriptionId, <br>AzsResourceGroup, <br>AzsServiceName, <br>AzsResourceId <br>AzsFaultHash, <br>AzsCreatedTimeUtc, <br>AzsSource <br>} <br>  <br>ServiceFaultClose { <br>AzsFaultId, <br>AzsFaultTypeName, <br>AzsSubscriptionId, <br>AzsResourceGroup, <br>AzsServiceName, <br>AzsResourceId <br>AzsFaultHash, <br>AzsLastUpdatedTimeUtc, <br>AzsSource <br>}                                                                                                                                                                                                                                                                                                                                                                                     | いいえ                               | 障害によって、アラートにつながる可能性があるエラーの修復を試みるワークフローがトリガーされます。  <br>障害に修復策がない場合は、そのままアラートが発生します。 <br>  |
+| PEP WAC イベント                             | メッセージ スキーマ: <br> <br>プレフィックス フィールド  <br>* Signature ID: Microsoft-AzureStack-PrivilegedEndpoint: <PEP Event ID>  <br>* Name: <PEP Task Name>  <br>* Severity: PEP レベルからマップされます (詳細については、次の PEP 重大度テーブルを参照してください)  <br>* Who: PEP への接続に使用されるアカウント  <br>* WhichIP: PEP への接続に使用されるデバイスの IP アドレス <br><br>WACServiceStartFailedEvent <br>WACConnectedUserNotRetrievedEvent <br>WACEnableExceptionEvent  <br>WACUserAddedEvent <br>WACAddUserToLocalGroupFailedEvent <br>WACIsUserInLocalGroupFailedEvent  <br>WACServiceStartTimeoutEvent  <br>WACServiceStartInvalidOperationEvent <br>WACGetSidFromUserFailedEvent <br>WACDisableFirewallFailedEvent <br>WACCreateLocalGroupIfNotExistFailedEvent <br>WACEnableFlagIsTrueEvent <br>WACEnableFlagIsFalseEvent <br>WACServiceStartedEvent | いいえ                               |                                                                                                                                                                |
 
 ## <a name="next-steps"></a>次のステップ
 

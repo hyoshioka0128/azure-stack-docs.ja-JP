@@ -1,0 +1,101 @@
+### YamlMime:Landing
+title: Azure Modular Data Center (MDC) オペレーターおよびユーザーのドキュメント
+summary: Azure Modular Data Center (MDC) の操作と使用の方法を説明します。
+metadata:
+  title: Azure Modular Data Center (MDC) オペレーターおよびユーザーのドキュメント - チュートリアル、概念、操作方法の記事
+  description: Azure Modular Data Center (MDC) は、Azure Stack Hub のソリューションとストレージを含む、モジュール式のデータ センターです。 Azure から切断されていても接続していても、オンプレミスやエッジで Azure サービスを提供することや、大規模なコンピューティングおよびストレージをホスティングすることができます。 データの主権とオンプレミスでの制御が必須のユース ケースに最適化されています。
+  ms.service: azure-stack
+  ms.subservice: asdk
+  ms.topic: landing-page
+  author: PatAltimore
+  ms.author: patricka
+  ms.date: 07/23/2020
+  ms.openlocfilehash: 5ef5ba2a176e6a74c406b8b529a59c49131ffc33
+  ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 01/05/2021
+  ms.locfileid: "97872366"
+landingContent:
+- title: Azure Modular Data Center について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Modular Data Center とは
+      url: mdc-overview.md
+    - text: モデルの仕様
+      url: azure-stack-capacity-planning-overview.md
+  - linkListType: whats-new
+    links:
+    - text: セキュリティ更新プログラム
+      url: ../operator/release-notes-security-updates.md
+    - text: リリース ノート
+      url: ../operator/release-notes.md
+- title: Azure Modular Data Center を使ってみる
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 管理者ポータルを使用する
+      url: ../operator/azure-stack-manage-portals.md
+    - text: ユーザーにサービスを提供する
+      url: ../operator/tutorial-offer-services.md
+    - text: サービス オファリングをテストする
+      url: ../operator/tutorial-test-offer.md
+  - linkListType: concept
+    links:
+    - text: 接続モデルの比較
+      url: ../operator/azure-stack-connection-models.md
+    - text: 接続されたデプロイ
+      url: ../operator/azure-stack-connected-deployment.md
+    - text: 切断されたデプロイ
+      url: ../operator/azure-stack-disconnected-deployment.md
+- title: Azure Modular Data Center の管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 正常性とアラートの監視
+      url: operator/azure-stack-monitor-health-tzl.md
+    - text: 更新プログラムのインストールと進行状況の監視
+      url: ../operator/azure-stack-apply-updates.md
+    - text: バックアップおよび復元のベスト プラクティス
+      url: operator/azure-stack-backup-best-practices-tzl.md
+- title: Azure Stack Hub ツール
+  linkLists:
+  - linkListType: download
+    links:
+    - text: GitHub からの Azure Stack Hub ツールのダウンロード
+      url: ../operator/azure-stack-powershell-download.md
+    - text: Azure Stack PowerShell のインストール
+      url: ../operator/powershell-install-az-module.md
+    - text: Docker を使用して PowerShell を実行する
+      url: ../user/azure-stack-powershell-user-docker.md
+    - text: Azure Stack PowerShell を使用して接続する
+      url: ../operator/azure-stack-powershell-configure-admin.md
+- title: Azure Stack Hub のサービスとしてのインフラストラクチャ (IaaS)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: クイック スタート - VM の作成
+      url: ../user/azure-stack-quick-linux-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: VM の移行
+      url: ../user/vm-move-overview.md
+    - text: テンプレートを使用して IaaS に VM をデプロイする
+      url: ../user/azure-stack-create-vm-template.md
+    - text: 仮想ネットワークを構成する
+      url: ../user/deploy-foundational-patterns.md
+    - text: コードで記述されたアプリをホストする
+      url: ../user/azure-stack-dev-start-deploy-app.md
+- title: Azure Stack Hub サービスを提供する
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 仮想マシンのプランを作成する
+      url: ../operator/tutorial-offer-services.md
+  - linkListType: how-to-guide
+    links:
+    - text: 高可用性 MySQL データベースを作成する
+      url: ../operator/azure-stack-tutorial-mysql.md
+    - text: あらゆるプラットフォーム向けのアプリを作成する
+      url: ../operator/azure-stack-app-service-overview.md

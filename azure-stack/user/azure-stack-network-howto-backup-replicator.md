@@ -1,18 +1,18 @@
 ---
-title: 複数の Azure Stack Hub サブスクリプション間でリソースをレプリケートする方法
+title: 複数の Azure Stack Hub サブスクリプション間でリソースをレプリケートする
 description: Azure Stack Hub サブスクリプション レプリケーターの一連のスクリプトを使用してリソースをレプリケートする方法について説明します。
 author: mattbriggs
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: a20979ff0bb60f058658e9a0f9f540b2c0cb434e
-ms.sourcegitcommit: d930d52e27073829b8bf8ac2d581ec2accfa37e3
+ms.openlocfilehash: edcf1f964a46538ab87d2d8de9af391bab92082d
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82173915"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99246760"
 ---
 # <a name="replicate-resources-using-the-azure-stack-hub-subscription-replicator"></a>Azure Stack Hub サブスクリプション レプリケーターを使用してリソースをレプリケートする
 
@@ -54,7 +54,7 @@ Azure サブスクリプション レプリケーターはモジュール式に�
 
 Replicator ファイル構造には、**Standardized_ARM_Templates** という名前のフォルダーがあります。 ソース環境に応じて、デプロイではこれらの標準化された Azure Resource Manager テンプレートのいずれかを使用するか、カスタマイズされた Azure Resource Manager テンプレートを生成する必要があります。 このケースでは、カスタマイズ済みプロセッサから Azure Resource Manager テンプレート ジェネレーターを呼び出す必要があります。 前述の例では、仮想マシン用の Azure Resource Manager テンプレート ジェネレーターの名前は **virtualMachines_ARM_Template_Generator.ps1** という名前になります。 Azure Resource Manager テンプレート ジェネレーターは、リソースのメタデータに含まれる情報に基づいて、カスタマイズされた Azure Resource Manager テンプレートを作成する役割を担います。 たとえば、仮想マシン リソースに可用性セットのメンバーであることを指定するメタデータがある場合、Azure Resource Manager テンプレート ジェネレーターによって、仮想マシンが属する可用性セットの ID を指定するコードで Azure Resource Manager テンプレートが作成されます。 これにより、仮想マシンが新しいサブスクリプションにデプロイされると、デプロイ時に可用性セットに自動的に追加されます。 これらのカスタマイズされた Azure Resource Manager テンプレートは、**Standardized_ARM_Templates** フォルダー内にある **Custom_ARM_Templates** フォルダーに保存されます。 post_processor.ps1 は、デプロイに標準化された Azure Resource Manager テンプレートを使用するか、カスタマイズしたテンプレートを使用するかを決定し、対応するデプロイ コードを生成する役割を担います。
 
-スクリプト **post-process.ps1** は、パラメーター ファイルをクリーン アップし、ユーザーが新しいリソースをデプロイするために使用するスクリプトを作成する役割を担います。 クリーンアップ フェーズでは、スクリプトにより、ソースのサブスクリプション ID、テナント ID、および場所へのすべての参照が、対応するターゲット値に置き換えられます。 次に、パラメーター ファイルが **Parameter_Files** フォルダーに出力されます。 次に、処理対象のリソースにカスタマイズされた Azure Resource Manager テンプレートを使用するかどうかが決定され、対応するデプロイ コードが生成されます。これには **New-AzureRmResourceGroupDeployment** コマンドレットが使用されます。 このデプロイ コードは、**Deployment_Files** フォルダーに保存されている **DeployResources.ps1** という名前のファイルに追加されます。 最後に、スクリプトによってリソースが属するリソース グループが決定され、**DeployResourceGroups.ps1** スクリプトがチェックされ、そのリソース グループをデプロイするデプロイ コードが既に存在するかどうかが確認されます。 しない場合はそのスクリプトにリソース グループをデプロイするコードが追加され、する場合は何も実行されません。
+スクリプト **post-process.ps1** は、パラメーター ファイルをクリーン アップし、ユーザーが新しいリソースをデプロイするために使用するスクリプトを作成する役割を担います。 クリーンアップ フェーズでは、スクリプトにより、ソースのサブスクリプション ID、テナント ID、および場所へのすべての参照が、対応するターゲット値に置き換えられます。 次に、パラメーター ファイルが **Parameter_Files** フォルダーに出力されます。 次に、カスタマイズされた Azure Resource Manager テンプレートが処理対象のリソースによって使用されるかどうかが特定され、対応するデプロイ コードが生成されます。これには **New-AzResourceGroupDeployment** コマンドレットが使用されます。 このデプロイ コードは、**Deployment_Files** フォルダーに保存されている **DeployResources.ps1** という名前のファイルに追加されます。 最後に、スクリプトによってリソースが属するリソース グループが決定され、**DeployResourceGroups.ps1** スクリプトがチェックされ、そのリソース グループをデプロイするデプロイ コードが既に存在するかどうかが確認されます。 しない場合はそのスクリプトにリソース グループをデプロイするコードが追加され、する場合は何も実行されません。
 
 ### <a name="dynamic-api-retrieval"></a>動的 API の取得
 
@@ -68,7 +68,7 @@ Replicator ファイル構造には、**Standardized_ARM_Templates** という�
 
 ### <a name="parallel-deployments"></a>並列デプロイ
 
-このツールには **parallel** という名前のパラメーターが必要です。 このパラメーターは、取得したリソースを並行してデプロイするかどうかを指定するブール値を受け取ります。 値が **true** に設定されている場合、**New-AzureRmResourceGroupDeployment** への各呼び出しには **-asJob** フラグが含まれ、リソースの種類に基づいて、並列ジョブが終了するまで待つコード ブロックがリソース デプロイのセットの間に追加されます。 これにより、次の種類のリソースがデプロイされる前に、ある種類のすべてのリソースが確実にデプロイされます。 **parallel** パラメーター値が **false** に設定されている場合は、すべてのリソースがシリアルでデプロイされます。
+このツールには **parallel** という名前のパラメーターが必要です。 このパラメーターは、取得したリソースを並行してデプロイするかどうかを指定するブール値を受け取ります。 値が **true** に設定されている場合、**New-AzResourceGroupDeployment** への各呼び出しには **-asJob** フラグが含まれ、リソースの種類に基づいて、並列ジョブが終了するまで待つコード ブロックがリソース デプロイのセットの間に追加されます。 これにより、次の種類のリソースがデプロイされる前に、ある種類のすべてのリソースが確実にデプロイされます。 **parallel** パラメーター値が **false** に設定されている場合は、すべてのリソースがシリアルでデプロイされます。
 
 ## <a name="add-additional-resource-types"></a>新しいリソースの種類の追加
 
@@ -80,7 +80,7 @@ Azure サブスクリプション レプリケーター (v3) ツールを実行�
 
 スクリプトの実行が完了すると、3 つの新しいフォルダー **Deployment_Files**、**Parameter_Files**、および **Custom_ARM_Templates** が作成されます。
 
- > [!Note]  
+ > [!NOTE]  
  > 生成されたスクリプトを実行する前に、適切な環境を設定し、ターゲット サブスクリプション (新しい Azure Stack Hub など) にログインして、作業ディレクトリを **Deployment_Files** フォルダーに設定する必要があります。
 
 Deployment_Files には、2 つのファイル **DeployResourceGroups.ps1** と **DeployResources.ps1** が保持されます。 DeployResourceGroups.ps1 を実行すると、リソース グループがデプロイされます。 DeployResources.ps1 を実行すると、処理されたすべてのリソースがデプロイされます。 リソースの種類として **All** または **Microsoft.Compute/virtualMachines** を指定してツールを実行した場合、DeployResources.ps1 では仮想マシンの管理者パスワードを入力するようにユーザーに求められます。これはすべての仮想マシンの作成に使用されます。
@@ -91,7 +91,7 @@ Deployment_Files には、2 つのファイル **DeployResourceGroups.ps1** と 
 
     ![スクリプトを実行する](./media/azure-stack-network-howto-backup-replicator/image2.png)
 
-    > [!Note]  
+    > [!NOTE]  
     > PS インスタンスのソース環境とサブスクリプション コンテキストを必ず構成してください。 
 
 2.  新しく作成されたフォルダーを確認します。
@@ -170,7 +170,7 @@ replicatorV3 フォルダー内には、**cleanup_generated_items.ps1** とい�
             - ネットワーク セキュリティ グループの構成  
             - 可用性セットの構成  
 
-> [!Note]  
+> [!NOTE]  
 > OS ディスクとデータ ディスクのマネージド ディスクのみが作成されます。 現時点では、ストレージ アカウントの使用はサポートされていません。 
 
 ### <a name="limitations"></a>制限事項

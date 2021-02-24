@@ -6,16 +6,16 @@ services: azure-stack
 documentationcenter: ''
 author: BryanLa
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 10/19/2020
 ms.author: bryanla
 ms.reviewer: jerskine
-ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: a8809c9f3a041d6bb4812c58d614693ce2d5431a
-ms.sourcegitcommit: d930d52e27073829b8bf8ac2d581ec2accfa37e3
+ms.lastreviewed: 10/19/2020
+ms.openlocfilehash: 0b032929496646de763336a630f22782bd03091c
+ms.sourcegitcommit: 695f56237826fce7f5b81319c379c9e2c38f0b88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82174000"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94545683"
 ---
 # <a name="validate-ad-fs-integration-for-azure-stack-hub"></a>Azure Stack Hub の AD FS 統合を検証する
 
@@ -23,9 +23,9 @@ Azure Stack Hub 適合性チェッカー ツール (AzsReadinessChecker) を使�
 
 適合性チェッカーは以下を検証します。
 
-* "*フェデレーション メタデータ*" にフェデレーションに有効な XML 要素が含まれている。
-* *AD FS SSL 証明書*を取得し、信頼チェーンを構築できる。 スタンプでは、AD FS で SSL 証明書チェーンを信頼する必要があります。 証明書は、Azure Stack Hub デプロイ証明書に使用される同じ "*証明機関*" か、信頼されたルート証明機関パートナーによって署名されている必要があります。 信頼されたルート証明機関パートナーの完全な一覧については、[TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca) を参照してください。
-* *AD FS 署名証明書*が信頼され、有効期限が迫っていない。
+* " *フェデレーション メタデータ* " にフェデレーションに有効な XML 要素が含まれている。
+* *AD FS SSL 証明書* を取得し、信頼チェーンを構築できる。 スタンプでは、AD FS で SSL 証明書チェーンを信頼する必要があります。 証明書は、Azure Stack Hub デプロイ証明書に使用される同じ " *証明機関* " か、信頼されたルート証明機関パートナーによって署名されている必要があります。 信頼されたルート証明機関パートナーの完全な一覧については、[TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca) を参照してください。
+* *AD FS 署名証明書* が信頼され、有効期限が迫っていない。
 
 Azure Stack Hub とデータ センターの統合の詳細については、「[Azure Stack Hub とデータセンターの統合 - ID](azure-stack-integrate-identity.md)」を参照してください。
 
@@ -40,7 +40,7 @@ Azure Stack Hub とデータ センターの統合の詳細については、「
 **ツールを実行するコンピューター:**
 
 * ドメインに接続された Windows 10 または Windows Server 2016。
-* PowerShell 5.1 以降。 お使いのバージョンを確認するには、次の PowerShell コマンドを実行し、"*メジャー*" バージョンと "*マイナー*" バージョンを確かめます。  
+* PowerShell 5.1 以降。 お使いのバージョンを確認するには、次の PowerShell コマンドを実行し、" *メジャー* " バージョンと " *マイナー* " バージョンを確かめます。  
     ```powershell
     $PSVersionTable.PSVersion
     ```
@@ -58,7 +58,7 @@ Azure Stack Hub とデータ センターの統合の詳細については、「
 1. 前提条件を満たしているコンピューターで、管理 PowerShell プロンプトを開き、次のコマンドを実行して、AzsReadinessChecker をインストールします。
 
     ```powershell
-    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
+    Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
     ```
 
 1. PowerShell プロンプトから次のコマンドを実行して、検証を開始します。 フェデレーション メタデータの URI として、 **-CustomADFSFederationMetadataEndpointUri** の値を指定します。
@@ -107,7 +107,7 @@ Azure Stack Hub とデータ センターの統合の詳細については、「
 
 ## <a name="validation-failures"></a>検証エラー
 
-検証チェックに失敗した場合は、エラーの詳細が PowerShell ウィンドウに表示されます。 また、ツールによって、*AzsReadinessChecker.log* にログ情報が記録されます。
+検証チェックに失敗した場合は、エラーの詳細が PowerShell ウィンドウに表示されます。 また、ツールによって、 *AzsReadinessChecker.log* にログ情報が記録されます。
 
 次の例は、一般的な検証エラーに関するガイダンスです。
 
@@ -117,9 +117,9 @@ Azure Stack Hub とデータ センターの統合の詳細については、「
 Invoke-AzsADFSValidation : The term 'Invoke-AzsADFSValidation' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
 ```
 
-**原因**:PowerShell Autoload で、適合性チェッカー モジュールを正しく読み込めませんでした。
+**原因** :PowerShell Autoload で、適合性チェッカー モジュールを正しく読み込めませんでした。
 
-**解決方法**:適合性チェッカー モジュールを明示的にインポートします。 次のコードをコピーして PowerShell に貼り付け、`<version>` を現在インストールされているバージョンの番号に更新します。
+**解決方法** :適合性チェッカー モジュールを明示的にインポートします。 次のコードをコピーして PowerShell に貼り付け、`<version>` を現在インストールされているバージョンの番号に更新します。
 
 ```powershell
 Import-Module "c:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.ReadinessChecker\<version>\Microsoft.AzureStack.ReadinessChecker.psd1" -Force

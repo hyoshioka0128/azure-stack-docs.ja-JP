@@ -2,22 +2,22 @@
 title: 保存データの暗号化
 titleSuffix: Azure Stack Hub
 description: Azure Stack Hub が暗号化によって保存データをどのように保護するかを説明します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: how-to
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: fiseraci
-ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 19680b9e8317e419c0b696d79213f29bcbee2263
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.lastreviewed: 08/06/2020
+ms.openlocfilehash: 891c544c27be43834ebd1a1785da76282a0fbf59
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "78367608"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97869323"
 ---
 # <a name="data-at-rest-encryption-in-azure-stack-hub"></a>Azure Stack Hub での保存データの暗号化
 
-Azure Stack Hub は、保存時の暗号化を使用して、ストレージ サブシステム レベルのユーザー データとインフラストラクチャ データを保護します。 Azure Stack Hub のストレージ サブシステムは、128 ビット AES 暗号化による BitLocker を使用して暗号化されます。 BitLocker のキーは、内部のシークレット ストアに保存されます。
+Azure Stack Hub は、保存時の暗号化を使用して、ストレージ サブシステム レベルのユーザー データとインフラストラクチャ データを保護します。 既定で、Azure Stack Hub のストレージ サブシステムは、128 ビット AES 暗号化による BitLocker を使用して暗号化されます。 BitLocker のキーは、内部のシークレット ストアに保存されます。 デプロイ時、256 ビット AES 暗号化を使用するように BitLocker を構成することもできます。
 
 保存データの暗号化は、主要なコンプライアンス標準 (PCI-DSS、FedRAMP、HIPAA など) の多くで一般的な要件です。 Azure Stack Hub では、特別な作業や構成を行わなくても、これらの要件を満たすことができます。 Azure Stack Hub がコンプライアンス標準への準拠をどのように支援するかについて詳しくは、[Microsoft Service Trust Portal](https://aka.ms/AzureStackCompliance) を参照してください。
 
@@ -35,14 +35,14 @@ BitLocker 回復キーを取得するには、[特権エンドポイント](azur
 
 ```powershell
 ##This cmdlet retrieves the recovery keys for all the volumes that are encrypted with BitLocker.
-Get-AzsRecoveryKeys
+Get-AzsRecoveryKeys -raw
 ```
 
-*Get-AzsRecoveryKeys* コマンドレットのオプション パラメーター:
+*Get-AzsRecoveryKeys* コマンドレットのパラメーター:
 
-| パラメーター | 説明 | 種類 | 必須 |
+| パラメーター | 説明 | Type | 必須 |
 |---------|---------|---------|---------|
-|*raw* | 回復キーとコンピューター名と暗号化された各ボリュームのパスワード ID とにおけるマッピングの生データを返します。  | Switch | × (サポート シナリオ用)|
+|*raw* | 回復キーとコンピューター名と暗号化された各ボリュームのパスワード ID とにおけるデータのマッピングを返します。  | Switch | いいえ (ただし推奨) |
 
 ## <a name="troubleshoot-issues"></a>問題のトラブルシューティング
 
@@ -56,4 +56,4 @@ Azure Stack Hub が起動に失敗するなど、システムで BitLocker に�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Stack Hub のセキュリティについて詳しく学習します](azure-stack-security-foundations.md)。
-- BitLocker による CSV の保護の詳細については、[BitLocker を使用したクラスター共有ボリュームと記憶域ネットワークの保護](https://docs.microsoft.com/windows/security/information-protection/bitlocker/protecting-cluster-shared-volumes-and-storage-area-networks-with-bitlocker)に関するページを参照してください。
+- BitLocker による CSV の保護の詳細については、[BitLocker を使用したクラスター共有ボリュームと記憶域ネットワークの保護](/windows/security/information-protection/bitlocker/protecting-cluster-shared-volumes-and-storage-area-networks-with-bitlocker)に関するページを参照してください。

@@ -6,16 +6,16 @@ services: azure-stack
 documentationcenter: ''
 author: sethmanheim
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 02/16/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: d0d11295d9425e07e34dc59eb2fcc83c6b020582
-ms.sourcegitcommit: a3ae6dd8670f8fb24224880df7eee256ebbcc4ef
+ms.openlocfilehash: de13461f9ba2b5985b6c6500d59b047fdfc2d2b0
+ms.sourcegitcommit: 34babe5abf1bceee718011b5c5c25f75e1b03b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772552"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100562524"
 ---
 # <a name="report-azure-stack-hub-usage-data-to-azure"></a>Azure Stack Hub 使用状況データの Azure への報告
 

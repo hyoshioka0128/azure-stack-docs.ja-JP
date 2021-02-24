@@ -1,18 +1,18 @@
 ---
-title: Azure Stack Hub のための Infrastructure Backup サービスのベスト プラクティス
+title: インフラストラクチャ バックアップ サービスのベスト プラクティス - Azure Stack Hub
 description: Azure Stack Hub をデプロイして管理するときのこれらのベスト プラクティスに従って、致命的な障害が発生した場合のデータ損失を軽減できます。
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 02/08/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: hectorl
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: a141beed4df6b34175f37d9e1e60e694f3ab71f2
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: f1208b2a683923e4cf09951d9812e8cbcfcd475f
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77700512"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97871822"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>インフラストラクチャ バックアップ サービスのベスト プラクティス
 
@@ -53,6 +53,7 @@ Azure Stack Hub をデプロイして管理するときのこれらのベスト 
 ### <a name="backups"></a>バックアップ
 
  - バックアップ ジョブはシステムの稼働中に実行されるため、管理エクスペリエンスやユーザーのアプリにダウンタイムが発生しません。 それなりに負荷がかかっているソリューションでは、バックアップ ジョブに 20 から 40 分かかると想定してください。
+ - パッチ、更新プログラム、FRU の操作中は、自動バックアップは開始されません。 スケジュールされたバックアップ ジョブは、既定ではスキップされます。 これらの操作中は、バックアップに対するオンデマンド要求もブロックされます。    
  - OEM 提供の手順を使用して、ネットワーク スイッチを手動でバックアップします。また、Infrastructure Backup コントローラーでコントロール プレーン バックアップ データが格納されている場所と同じバックアップ共有上に、ハードウェア ライフサイクル ホスト (HLH) を格納する必要があります。 スイッチと HLH 構成は、リージョンのフォルダーに格納することを検討してください。 同一リージョンに Azure Stack Hub インスタンスが複数ある場合は、スケール ユニットに属している構成ごとに識別子を使用することを検討してください。
 
 ### <a name="folder-names"></a>フォルダー名
@@ -65,20 +66,23 @@ Azure Stack Hub をデプロイして管理するときのこれらのベスト 
 FQDN: contoso.com  
 リージョン: nyc
 
-
+```console
     \\fileserver01.contoso.com\AzSBackups
     \\fileserver01.contoso.com\AzSBackups\contoso.com
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\MASBackup
+```
 
 MASBackup フォルダーは、Azure Stack Hub で Azure Stack Hub のバックアップ データを格納する場所です。 独自のデータを格納するために、このフォルダーは使用しないでください。 同様に OEM でも、バックアップ データの格納にはこのフォルダーを使用しないでください。
 
 OEM は、各社のコンポーネントのバックアップ データは、リージョン フォルダー配下に格納することを推奨します。 各ネットワーク スイッチ、ハードウェア ライフサイクル ホスト (HLH) などは、それぞれのサブフォルダーに格納されることもあります。 次に例を示します。
 
+```console
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\HLH
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\Switches
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\DeploymentData
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\Registration
+```
 
 ### <a name="monitoring"></a>監視
 

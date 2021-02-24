@@ -2,19 +2,19 @@
 title: Azure Stack Hub のストレージ インフラストラクチャの概要
 titleSuffix: Azure Stack
 description: Azure Stack Hub 用のストレージ インフラストラクチャを管理する方法について説明します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.lastreviewed: 5/5/2020
 ms.reviewer: jiaha
-ms.custom: contperfq4
-ms.openlocfilehash: a8bc501587c4f4450a07704734391a8e889e3296
-ms.sourcegitcommit: 7d4c28353bc138bbae744d9dbca79fe934c2e94b
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 04a4e2314fb91a2a8a8eaedf0ca5d5849c8bee10
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83624581"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97869170"
 ---
 # <a name="azure-stack-hub-storage-infrastructure-overview"></a>Azure Stack Hub のストレージ インフラストラクチャの概要
 
@@ -24,7 +24,7 @@ ms.locfileid: "83624581"
 
 ### <a name="drive-types"></a>ドライブの種類
 
-Azure Stack Hub の統合システム パートナーからは、ストレージの幅広い柔軟性など、バリエーション豊かなソリューションが提供されています。 現在、サポートされている次の 3 つのドライブの種類から **2 つ**までを選択できます。
+Azure Stack Hub の統合システム パートナーからは、ストレージの幅広い柔軟性など、バリエーション豊かなソリューションが提供されています。 現在、サポートされている次の 3 つのドライブの種類から **2 つ** までを選択できます。
 
 1. NVMe (Non-Volatile Memory Express)
 1. SATA/SAS SSD (ソリッドステート ドライブ)
@@ -50,12 +50,12 @@ Azure Stack のデプロイでは、ストレージのパフォーマンスを�
 
 オールフラッシュ型のデプロイは、ストレージのパフォーマンスを最大化することを目標としたものであり、回転式のハード HDD が含まれません。
 
-![Azure Stack Hub のストレージ インフラストラクチャ](media/azure-stack-storage-infrastructure-overview/image1.png)
+![オールフラッシュ型のデプロイのグループ化を示す図。](media/azure-stack-storage-infrastructure-overview/image1.png)
 
 
 ハイブリッド型のデプロイは、パフォーマンスとキャパシティのバランスの調和またはキャパシティの最大化を目標としたもので、回転式の HDD が含まれます。
 
-![Azure Stack Hub のストレージ インフラストラクチャ](media/azure-stack-storage-infrastructure-overview/image2.png)
+![ハイブリッド型のデプロイのグループ化を示す図。](media/azure-stack-storage-infrastructure-overview/image2.png)
 
 ### <a name="caching-behavior"></a>キャッシュ動作
 
@@ -65,7 +65,7 @@ Azure Stack のデプロイでは、ストレージのパフォーマンスを�
 
 キャッシュの対象が HDD の場合 (HDD のキャッシュを SSD に保存する場合など) には、読み取りと書き込みのどちらにもフラッシュと同等の待ち時間 (多くの場合、約 10 倍のスピード) を実現できるよう、読み取りと書き込みの両方がキャッシュに保存されます。
 
-![Azure Stack Hub のストレージ インフラストラクチャ](media/azure-stack-storage-infrastructure-overview/image3.svg)
+![Azure Stack Hub のストレージのキャッシュ動作を示す図。](media/azure-stack-storage-infrastructure-overview/image3.svg)
 
 利用できるストレージ構成については、Azure Stack Hub OEM パートナー (https://azure.microsoft.com/overview/azure-stack/partners/) にお問い合わせのうえ、仕様の詳細をご確認ください。
 
@@ -76,14 +76,14 @@ Azure Stack のデプロイでは、ストレージのパフォーマンスを�
 
 "*ストレージ サービス*" では、利用可能なストレージが複数のボリュームにパーティション分割されます。分割によってできた個別のボリュームは、システム データとテナント データを保持するために割り当てられます。 記憶域プール内のドライブを組み合わせたボリュームでは、記憶域スペース ダイレクトのフォールト トレランス、スケーラビリティ、パフォーマンス面のメリットが提供されます。
 
-![Azure Stack Hub のストレージ インフラストラクチャ](media/azure-stack-storage-infrastructure-overview/image4.svg)
+![Azure Stack Hub のストレージ サービスのパーティションを示す図。](media/azure-stack-storage-infrastructure-overview/image4.svg)
 
 ### <a name="volume-types"></a>ボリュームの種類
 
 Azure Stack Hub の記憶域プール上に作成されるボリュームは 3 種類あります。
 
 1. **インフラストラクチャ** ボリュームでは、Azure Stack Hub インフラストラクチャ VM とコア サービスによって使用されるファイルがホストされます。
-1. **VM 一時ボリューム**では、テナント VM に接続されている一時ディスクと、そのディスクに格納されているデータがホストされます。
+1. **VM 一時ボリューム** では、テナント VM に接続されている一時ディスクと、そのディスクに格納されているデータがホストされます。
 1. **オブジェクト ストア** ボリュームでは、BLOB、テーブル、キュー、および VM ディスクにサービスを提供するテナント データがホストされます。
 
 ### <a name="volumes-in-a-multi-node-deployment"></a>マルチノード デプロイでのボリューム
@@ -99,7 +99,7 @@ VM 一時ボリュームとオブジェクト ストア ボリュームの数は
 - ボリュームの数は、ノードに不具合が発生したり、ノードを削除したりした場合でもそのまま維持されます。
 
 > [!NOTE]
-> [Azure Stack Development Kit (ASDK)](https://docs.microsoft.com/azure-stack/asdk/) を使用する場合は、複数の[共有](azure-stack-manage-storage-shares.md)を含む単一のボリュームがあります。
+> [Azure Stack Development Kit (ASDK)](../asdk/index.yml) を使用する場合は、複数の[共有](azure-stack-manage-storage-shares.md)を含む単一のボリュームがあります。
 
 ### <a name="fault-tolerance-and-mirroring"></a>フォールト トレランスとミラーリング
 
@@ -111,7 +111,7 @@ Azure Stack Hub のデプロイでは、データの回復性確保のために 
 
 テナント データのコピーが 3 つ、別々のサーバーに書き込まれ、キャッシュに保存されます。
 
-![Azure Stack Hub のストレージ インフラストラクチャ](media/azure-stack-storage-infrastructure-overview/image5.png)
+![テナント データの 3 つのコピーがどのように異なるサーバーに書き込まれるかを示す図。](media/azure-stack-storage-infrastructure-overview/image5.png)
 
 ## <a name="next-step"></a>次のステップ
 

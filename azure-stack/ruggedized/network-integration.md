@@ -1,0 +1,240 @@
+---
+title: Azure Stack Hub ラグド ネットワーク統合
+description: Azure Stack Hub ラグド デバイスの Azure Stack ネットワーク統合について説明します。
+author: PatAltimore
+ms.author: patricka
+ms.service: azure-stack
+ms.topic: conceptual
+ms.date: 10/14/2020
+ms.lastreviewed: 10/14/2020
+ms.openlocfilehash: df6f531c2aa9642f52cde4fb2bbfd93375340684
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256168"
+---
+# <a name="azure-stack-hub-ruggedized-network-integration"></a>Azure Stack Hub ラグド ネットワーク統合 
+
+このトピックでは、Azure Stack ネットワーク統合について説明します。
+
+## <a name="border-connectivity-uplink"></a>境界接続 (アップリンク)
+
+ネットワーク統合の計画は、Azure Stack 統合システムの展開、操作、および管理を正常に行うための重要な前提条件です。 境界接続の計画は、境界ゲートウェイ プロトコル (BGP) による動的ルーティングを使用するかどうかを選択することから始まります。 これを行うには、16 ビットの BGP 自律システム番号 (パブリックまたはプライベート) を割り当てるか、または既定の静的ルートが境界デバイスに割り当てられる静的ルーティングを使用する必要があります。
+
+Top-of-Rack (TOR) スイッチでは、ポイント ツー ポイント IP (/30 ネットワーク) を持つレイヤー 3 アップリンクが物理インターフェイスに構成されている必要があります。 Azure Stack 操作をサポートする TOR スイッチを持つレイヤー 2 アップリンクは、サポートされていません。 
+
+### <a name="bgp-routing"></a>BGP ルーティング
+
+BGP のような動的ルーティング プロトコルを使用すると、システムが常にネットワークの変更を把握していることが保証され、管理が容易になります。 セキュリティを強化するために、TOR と境界間の BGP ピアリングにパスワードを設定できます。
+
+次の図に示すように、TOR スイッチ上のプライベート IP 空間のアドバタイズは、prefix-list を使用してブロックされます。 このプレフィックスの一覧により、プライベート ネットワークの広告が拒否され、TOR と境界間の接続でルート マップとして適用されます。
+
+Azure Stack ソリューションの内部で実行されている ソフトウェア ロード バランサー (SLB) は、TOR デバイスをピアにして、VIP アドレスを動的に公開できるようにします。
+
+ユーザー トラフィックが即時かつ透過的に障害から復旧できるようにするために、TOR デバイス間で構成された VPC または MLAG は、ホストと IP ネットワークの冗長性を提供する HSRP または VRRP に対してマルチシャーシ リンク アグリゲーションの使用を許可します。
+
+
+
+
+### <a name="static-routing"></a>静的ルーティング
+
+静的ルーティングには、境界デバイスへの追加構成が必要です。 これにより、より多くの手動介入と管理が必要になり、変更を行う前に分析を行う必要もあります。 構成エラーによって発生した問題の場合、行われた変更によっては、より長い時間がかかる可能性があります。 このルーティング方法はお勧めできませんが、サポートされています。
+
+静的ルーティングを使用してネットワーク環境に Azure Stack を統合するには、境界と TOR デバイスの間の 4 つの物理的リンクすべてを接続する必要があります。
+静的ルーティングの動作方法のため、高可用性は保証されません。
+
+境界デバイスには、Azure Stack 内の任意のネットワーク宛てのトラフィック用に、TOR と境界の間に設定された 4 つの P2P IP のそれぞれを指す静的ルートを構成する必要がありますが、操作には "*外部*" またはパブリック VIP ネットワークのみが必要です。 初期のデプロイには、*BMC* および "*外部*" ネットワークへの静的ルートが必要です。 オーケストレーターは、*BMC* および "*インフラストラクチャ*" ネットワーク上に存在する管理リソースにアクセスするために境界内の静的ルートを残しておくことができます。 "*スイッチ インフラストラクチャ*" ネットワークと "*スイッチ管理*" ネットワークへの静的ルートの追加は省略可能です。
+
+TOR デバイスには、すべてのトラフィックを境界デバイスに送信する既定の静的ルートが構成されています。 この既定のルールに対する 1 つのトラフィックの例外は、TOR から境界への接続に適用されたアクセス制御リストを使用してブロックされるプライベート空間の場合です。
+
+静的ルーティングは、TOR と境界スイッチの間のアップリンクにのみ適用されます。
+BGP 動的ルーティングは、ラックの内部で使用されます。これは SLB とその他のコンポーネントにとって不可欠なツールであり、無効にしたり削除したりすることはできないためです。
+
+
+
+
+\* デプロイ後の BMC ネットワークは省略可能です。
+
+\*\* スイッチ インフラストラクチャ ネットワークは省略可能であり、ネットワーク全体をスイッチ管理ネットワークに含めることができます。
+
+\*\*\* スイッチ管理ネットワークは必須であり、スイッチ インフラストラクチャ ネットワークとは別に追加できます。
+
+### <a name="transparent-proxy"></a>透過プロキシ
+
+データセンターですべてのトラフィックがプロキシを使用する必要がある場合は、ラックからのすべてのトラフィックをポリシーに従って処理し、ネットワーク上のゾーン間でトラフィックを分離する *透過プロキシ* を構成する必要があります。
+
+Azure Stack ソリューションは、通常の Web プロキシをサポートしていません 
+
+
+透過プロキシ (インターセプト、インライン、または強制プロキシとも呼ばれます) は、特殊なクライアント構成を必要とすることなく、通常の通信をネットワーク レイヤーでインターセプトします。 クライアントがプロキシの存在を意識する必要はありません。
+
+
+
+SSL トラフィックのインターセプトはサポートされておらず、エンドポイントへのアクセスでサービス エラーが発生する可能性があります。 ID に必要なエンドポイントとの通信に対してサポートされる最大タイムアウトは 60 秒で、再試行は 3 回です。
+
+## <a name="dns"></a>DNS
+
+
+このセクションでは、ドメイン ネーム システム (DNS) の構成について説明します。
+
+### <a name="configure-conditional-dns-forwarding"></a>条件付き DNS フォワーダーの構成
+
+この要件が該当するのは AD FS デプロイのみです。 
+
+
+既存の DNS インフラストラクチャ を使用して名前解決を有効にするには、条件付きフォワーダーを構成します。
+
+条件付きフォワーダーを追加するには、特権エンドポイントを使用する必要が あります。
+
+この手順では、データセンター ネットワーク内の、Azure Stack の特権エンドポイントと通信できるコンピューターを使用します。
+
+1.  管理者特権での Windows PowerShell セッション (管理者として実行) を開き、特権エンドポイントの IP アドレスに接続します。 CloudAdmin 認証の資格情報を使用します。
+
+    ```powershell
+    \$cred=Get-Credential Enter-PSSession -ComputerName \<IP Address of ERCS\> -ConfigurationName PrivilegedEndpoint -Credential \$cred 
+    ```
+
+2.  特権エンドポイントに接続したら、次の PowerShell コマンドを実行します。 サンプルの値を、使用する DNS サーバーのドメイン名とアドレスで置き換えてください。
+
+    ```powershell
+    Register-CustomDnsServer -CustomDomainName "contoso.com" -CustomDnsIPAddresses "192.168.1.1","192.168.1.2" 
+    ```
+
+### <a name="resolving-azure-stack-dns-names-from-outside-azure-stack"></a>Azure Stack 外部からの DNS 名の解決
+
+権限のあるサーバーは、外部の DNS ゾーンとユーザーが作成したゾーンの情報を保持しています。 このサーバーと統合することで、ゾーンの委任または条件付き転送を使用して Azure Stack 外部からの Azure Stack DNS 名を解決できるようになります。
+
+### <a name="get-dns-server-external-endpoint-information"></a>DNS サーバーの外部エンドポイント情報の取得
+
+Azure Stack のデプロイを DNS インフラストラクチャと統合するには、次の情報が必要です。
+
+-   DNS サーバーの FQDN
+
+-   DNS サーバーの IP アドレス
+
+Azure Stack DNS サーバーの FQDN は次のような形式をとります。
+
+\<NAMINGPREFIX\>-ns01.\<REGION\>.\<EXTERNALDOMAINNAME\>
+
+\<NAMINGPREFIX\>-ns02.\<REGION\>.\<EXTERNALDOMAINNAME\>
+
+サンプルの値を使用すると、DNS サーバーの FQDN は次のようになります。
+
+azs-ns01.east.cloud.fabrikam.com
+
+azs-ns02.east.cloud.fabrikam.com
+
+この情報は管理ポータルで使用できますが、AzureStackStampInformation.json という名前のファイルで、すべての Azure Stack デプロイの最後にも作成されます。
+このファイルは、デプロイ仮想マシンの C:\\CloudDeployment\\logs フォルダー内にあります。 Azure Stack のデプロイに使用された値がわからない場合は、ここから取得できます。
+
+デプロイ仮想マシンが使用不可またはアクセス不可になっている場合は、特権エンドポイントに接続して Get-AzureStackStampInformation PowerShell コマンドレットを実行することで値を取得できます。 詳細については、特権エンドポイントに関するページを参照してください。
+
+### <a name="setting-up-conditional-forwarding-to-azure-stack"></a>Azure Stack への条件付き転送の設定
+
+Azure Stack と DNS インフラストラクチャを統合する最も簡単で安全な方法は、親ゾーンをホストするサーバーから、ゾーンの条件付き転送を行うことです。 Azure Stack の外部 DNS 名前空間の親ゾーンをホストする DNS サーバーを直接制御できる場合は、この方法をお勧めします。
+
+DNS で条件付き転送を行う方法がわからない場合は、次の TechNet の記事を参照してください。 ドメイン名の条件付きフォワーダーの割り当てに関する記事、またはお使いの DNS ソリューションに固有のドキュメントをご覧ください。
+
+会社のドメイン名の子ドメインのように見える Azure Stack 外部の DNS ゾーンを指定しているシナリオでは、条件付き転送は使用できません。 DNS 委任を構成する必要があります。
+
+例:
+
+-   会社の DNS ドメイン名: contoso.com
+
+-   Azure Stack 外部 DNS ドメイン名: azurestack.contoso.com
+
+### <a name="editing-dns-forwarder-ips"></a>DNS フォワーダー IP の編集
+
+DNS フォワーダー IP は Azure Stack のデプロイ中に設定されます。 何らかの理由でフォワーダー IP を更新する必要がある場合は、特権エンドポイントに接続し、Get-AzSDnsForwarder および Set-AzSDnsForwarder [[-IPAddress] \<IPAddress[]\>] の PowerShell コマンドレットを実行することで値を編集することができます。 詳細については、特権エンドポイントに関するページを参照してください。
+
+### <a name="delegating-the-external-dns-zone-to-azure-stack"></a>外部 DNS ゾーンの Azure Stack への委任
+
+DNS 名を Azure Stack デプロイの外部から解決できるようにするには、DNS 委任を設定する必要があります。
+
+各レジストラーは独自の DNS 管理ツールを所有していて、ドメインのネーム サーバー レコードを変更します。 レジストラーの DNS 管理ページで、NS レコードを編集し、ゾーンの NS レコードを、Azure Stack の NS レコードに置き換えます。
+
+ほとんどの DNS レジストラーでは、委任を実行するために 2 つ以上の DNS サーバーを指定する必要があります。
+
+## <a name="firewall"></a>ファイアウォール
+
+Azure Stack は、そのインフラストラクチャ ロールのために仮想 IP アドレス (VIP) を設定します。
+この VIP はパブリック IP アドレス プールから割り当てられます。 各 VIP は、ソフトウェア定義のネットワーク レイヤーで、アクセス制御リスト (ACL) で保護されます。 ACL は、ソリューションをさらに強化するために、さまざまな物理スイッチ (TOR や BMC) でも使われます。 デプロイ時に指定された外部 DNS ゾーン内のエンドポイントごとに、DNS エントリが作成されます。 たとえば、ユーザー ポータルに portal. *\<region\>.\<fqdn\>* の DNS ホスト エントリが割り当てられます。
+
+次のアーキテクチャ図は、さまざまなネットワーク レイヤーと ACL を示しています。
+
+![アーキテクチャ図は、さまざまなネットワーク レイヤーと ACL を示しています。](media/network-deployment/network-architecture.png) 
+
+
+### <a name="ports-and-urls"></a>ポートと URL
+
+Azure Stack サービス (ポータル、Azure Resource Manager、DNS など) を外部ネットワークに対して使用可能にするには、特定の URL、ポート、プロトコルに対して、これらのエンドポイントへの受信トラフィックを許可する必要があります。
+
+透過プロキシから従来のプロキシ サーバーへのアップリンクが存在するか、ファイアウォールでソリューションを保護しているデプロイでは、特定のポートと URL に受信および送信の両方の通信を許可する必要があります。 これには、ID、マーケットプレース、パッチと更新プログラム、登録、使用状況データに使用するポートと URL が該当します。
+
+### <a name="outbound-communication"></a>送信方向の通信
+
+Azure Stack は、透過的なプロキシ サーバーのみをサポートします。 透過プロキシから従来のプロキシ サーバーへのアップリンクが存在するデプロイ環境では、接続モードでデプロイするときに次の表のポートと URL に外部への通信を許可する必要があります。
+
+SSL トラフィックのインターセプトはサポートされておらず、エンドポイントへのアクセスでサービス エラーが発生する可能性があります。 ID に必要なエンドポイントとの通信に対してサポートされる最大タイムアウトは、60 秒です。
+
+>[!NOTE] 
+>ExpressRoute ではすべてのエンドポイントにトラフィックをルーティングできない場合があるため、Azure Stack では、ExpressRoute を使用して、次の表に示す Azure サービスに到達することはサポートされていません。 
+
+
+|目的|接続先 URL|Protocol|Port|ソース ネットワーク|
+|---------|---------|---------|---------|---------|
+|ID|**Azure**<br>login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https:\//secure.aadcdn.microsoftonline-p.com<br>www.office.com<br>ManagementServiceUri = https:\//management.core.windows.net<br>ARMUri = https:\//management.azure.com<br>https:\//\*.msftauth.net<br>https:\//\*.msauth.net<br>https:\//\*.msocdn.com<br>**Azure Government**<br>https:\//login.microsoftonline.us/<br>https:\//graph.windows.net/<br>**Azure China 21Vianet**<br>https:\//login.chinacloudapi.cn/<br>https:\//graph.chinacloudapi.cn/<br>**Azure Germany**<br>https:\//login.microsoftonline.de/<br>https:\//graph.cloudapi.de/|HTTP<br>HTTPS|80<br>443|パブリック VIP - /27<br>パブリック インフラストラクチャ ネットワーク|
+|Marketplace シンジケーション|**Azure**<br>https:\//management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://&#42;.azureedge.net<br>**Azure Government**<br>https:\//management.usgovcloudapi.net/<br>https://&#42;.blob.core.usgovcloudapi.net/<br>**Azure China 21Vianet**<br>https:\//management.chinacloudapi.cn/<br>http://&#42;.blob.core.chinacloudapi.cn|HTTPS|443|パブリック VIP - /27|
+|パッチと更新プログラム|https://&#42;.azureedge.net<br>https:\//aka.ms/azurestackautomaticupdate|HTTPS|443|パブリック VIP - /27|
+|登録|**Azure**<br>https:\//management.azure.com<br>**Azure Government**<br>https:\//management.usgovcloudapi.net/<br>**Azure China 21Vianet**<br>https:\//management.chinacloudapi.cn|HTTPS|443|パブリック VIP - /27|
+|使用法|**Azure**<br>https://&#42;.trafficmanager.net<br>**Azure Government**<br>https://&#42;.usgovtrafficmanager.net<br>**Azure China 21Vianet**<br>https://&#42;.trafficmanager.cn|HTTPS|443|パブリック VIP - /27|
+|Windows Defender|&#42;.wdcp.microsoft.com<br>&#42;.wdcpalt.microsoft.com<br>&#42;.wd.microsoft.com<br>&#42;.update.microsoft.com<br>&#42;.download.microsoft.com<br>https:\//www.microsoft.com/pkiops/crl<br>https:\//www.microsoft.com/pkiops/certs<br>https:\//crl.microsoft.com/pki/crl/products<br>https:\//www.microsoft.com/pki/certs<br>https:\//secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|パブリック VIP - /27<br>パブリック インフラストラクチャ ネットワーク|
+|NTP|(デプロイに提供される NTP サーバーの IP)|UDP|123|パブリック VIP - /27|
+|DNS|(デプロイに提供される DNS サーバーの IP)|TCP<br>UDP|53|パブリック VIP - /27|
+|CRL|(証明書上で CRL 配布ポイントの下にある URL)|HTTP|80|パブリック VIP - /27|
+|LDAP|Graph 統合のために用意されている Active Directory フォレスト|TCP<br>UDP|389|パブリック VIP - /27|
+|LDAP SSL|Graph 統合のために用意されている Active Directory フォレスト|TCP|636|パブリック VIP - /27|
+|LDAP GC|Graph 統合のために用意されている Active Directory フォレスト|TCP|3268|パブリック VIP - /27|
+|LDAP GC SSL|Graph 統合のために用意されている Active Directory フォレスト|TCP|3269|パブリック VIP - /27|
+|AD FS|AD FS 統合のために用意されている AD FS メタデータ エンドポイント|TCP|443|パブリック VIP - /27|
+|診断ログ収集サービス|Azure Storage により提供される BLOB SAS の URL|HTTPS|443|パブリック VIP - /27|
+|     |     |     |     |     |
+                                  
+                                  
+### <a name="inbound-communication"></a>受信方向の通信
+
+Azure Stack エンドポイントを外部ネットワークに公開するには、一連のインフラストラクチャ VIP が必要です。 "*エンドポイント (VIP)* " の表は、各エンドポイント、必要なポート、およびプロトコルを示しています。 SQL リソース プロバイダーなど、追加のリソース プロバイダーを必要とするエンドポイントについては、特定のリソース プロバイダーのデプロイに関するドキュメントを参照してください。
+
+社内インフラストラクチャの VIP は Azure Stack の発行には不要なため、記載されていません。 ユーザーの VIP は動的であり、ユーザー自身によって定義され、Azure Stack オペレーターによって管理されるわけではありません。
+
+
+>[!NOTE] 
+>IKEv2 VPN は、標準ベースの IPsec VPN ソリューションであり、UDP ポート 500 と 4500、および TCP ポート 50 を使用します。 ファイアウォールでは、これらのポートが必ずしも開いているとは限りません。そのため、IKEv2 VPN ではプロキシとファイアウォールを通過できないことがあります。 
+
+
+|エンドポイント (VIP)|DNS ホスト A レコード|Protocol|Port|
+|---------|---------|---------|---------|
+|AD FS|Adfs. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|ポータル (管理者)|Adminportal. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|AdminHosting | *.adminhosting.\<region>.\<fqdn> | HTTPS | 443 |
+|Azure Resource Manager (管理者)|Adminmanagement. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|ポータル (ユーザー)|Portal. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Azure Resource Manager (ユーザー)|Management. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|グラフ|Graph. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|証明書の失効リスト|Crl. *&lt;region>.&lt;fqdn>*|HTTP|80|
+|DNS|&#42;. *&lt;region>.&lt;fqdn>*|TCP と UDP|53|
+|Hosting | *.hosting.\<region>.\<fqdn> | HTTPS | 443 |
+|Key Vault (ユーザー)|&#42;.vault. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Key Vault (管理者)|&#42;.adminvault. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|ストレージ キュー|&#42;.queue. *&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
+|ストレージ テーブル|&#42;.table. *&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
+|ストレージ BLOB|&#42;.blob. *&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
+|SQL リソース プロバイダー|sqladapter.dbadapter. *&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
+|MySQL リソース プロバイダー|mysqladapter.dbadapter. *&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
+|App Service|&#42;.appservice. *&lt;region>.&lt;fqdn>*|TCP|80 (HTTP)<br>443 (HTTPS)<br>8172 (MSDeploy)|
+|  |&#42;.scm.appservice. *&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)|
+|  |api.appservice. *&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)<br>44300 (Azure Resource Manager)|
+|  |ftp.appservice. *&lt;region>.&lt;fqdn>*|TCP、UDP|21、1021、10001-10100 (FTP)<br>990 (FTPS)|
+|VPN ゲートウェイ|     |     |[VPN Gateway に関する FAQ を参照してください](/azure/vpn-gateway/vpn-gateway-vpn-faq#can-i-traverse-proxies-and-firewalls-using-point-to-site-capability)。|
+|     |     |     |     |

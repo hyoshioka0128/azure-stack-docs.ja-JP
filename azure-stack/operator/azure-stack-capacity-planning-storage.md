@@ -1,18 +1,18 @@
 ---
 title: Azure Stack Hub ストレージ容量の計画
 description: Azure Stack Hub デプロイのためのストレージ容量の計画について説明します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
-ms.openlocfilehash: d7776f07745a2f76bc447df3f29a54578624aca6
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 69248d5a81cf3d1017f221a57549d75b205f0fc3
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "78935034"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97871261"
 ---
 # <a name="azure-stack-hub-storage-capacity-planning"></a>Azure Stack Hub ストレージ容量の計画
 
@@ -30,7 +30,7 @@ Azure Stack Hub のハイパーコンバージド構成を使用すると、物�
 
 すべてのストレージ容量は、Azure Stack Hub インフラストラクチャによって直接割り当てられ、管理されます。 オペレーターが、構成、割り当て、容量拡張に関する選択を行う必要はありません。 Azure Stack Hub では、これらの設計上の決定は、初期インストールとデプロイ時、または容量の引き上げ時に、ソリューション要件に合わせて自動的に行われます。 Azure Stack Hub では、回復性、リビルドのための予約容量、その他の詳細は、設計の一部として考慮されます。
 
-オペレーターは、*オール フラッシュ*ストレージ構成または*ハイブリッド* ストレージ構成を選択できます。
+オペレーターは、*オール フラッシュ* ストレージ構成または *ハイブリッド* ストレージ構成を選択できます。
 
 ![Azure のストレージ容量計画の図](media/azure-stack-capacity-planning/storage.png)
 

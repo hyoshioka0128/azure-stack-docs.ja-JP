@@ -1,18 +1,18 @@
 ---
 title: Azure Stack Hub 統合システムの Azure から切断されたデプロイの決定
 description: Azure Stack Hub 統合システムの Azure から切断されたデプロイと考慮すべき計画の決定について説明します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: wfayed
 ms.lastreviewed: 11/01/2019
-ms.openlocfilehash: 9f7ca860de1dd801ae35134683583a4ce8053dde
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 53f46732b799e7a638ce7fb61e236ba4a55f2437
+ms.sourcegitcommit: 5f3d37994b8cb63c76e54136c0cc05bc4f475950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "78368704"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99495460"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-hub-integrated-systems"></a>Azure Stack Hub 統合システムの Azure から切断されたデプロイ計画の決定
 [Azure Stack Hub をご利用のハイブリッド クラウド環境に統合する方法](azure-stack-connection-models.md)を決定したら、Azure Stack Hub デプロイの決定を完了することができます。
@@ -50,7 +50,7 @@ Azure Stack Hub は Azure に接続されているときに最適に機能する
 
 ## <a name="learn-more"></a>詳細情報
 - ユース ケース、購入、パートナー、OEM ハードウェア ベンダーの詳細については、[Azure Stack Hub](https://azure.microsoft.com/overview/azure-stack/) の製品ページを参照してください。
-- Azure Stack Hub 統合システムのロードマップと地理的な可用性については、ホワイト ペーパー「[Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)」 (Azure Stack: Azure の拡張機能) を参照してください。 
+- Azure Stack Hub 統合システムのロードマップと地理的な可用性については、ホワイト ペーパー「[Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/videos/azure-friday-azure-stack-an-extension-of-azure/)」 (Azure Stack: Azure の拡張機能) を参照してください。 
 - Microsoft Azure Stack Hub のパッケージと価格の詳細については、[.pdf をダウンロードしてください](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)。 
 
 ## <a name="next-steps"></a>次のステップ

@@ -3,16 +3,16 @@ title: Azure Stack Hub でコマンド ラインを使ってテンプレート�
 description: Azure クロス プラットフォームのコマンド ライン インターフェイス (CLI) を使用して、Azure Stack Hub にテンプレートをデプロイする方法を学習します。
 author: mattbriggs
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 362047bbfa88538140630311f5bdee07508db8a4
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: 38327d2e23fd74c1a5e0a197ccc2a32b65b3fa7a
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112120"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247814"
 ---
 # <a name="deploy-a-template-with-the-command-line-in-azure-stack-hub"></a>Azure Stack Hub でコマンド ラインを使ってテンプレートをデプロイする
 

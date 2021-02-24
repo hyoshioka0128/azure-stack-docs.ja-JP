@@ -7,15 +7,15 @@ ms.date: 11/27/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 11/27/2019
-ms.openlocfilehash: 6e58e60e0863e2ef40abc95689430f8e378a4fd4
-ms.sourcegitcommit: e75218d2e04f41620cc09caf04473ad4c7289253
+ms.openlocfilehash: 38aaf52936d09c999765118e36bfcde909409cdd
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83708195"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86489914"
 ---
 # <a name="what-is-the-azure-stack-development-kit-asdk"></a>Azure Stack 開発キット (ASDK) とは
-[Microsoft Azure Stack Hub 統合システム](../operator/azure-stack-overview.md)には 4 ノードから 16 ノードまでのサイズがあり、ハードウェア パートナーと Microsoft によって共同でサポートされます。 Azure Stack Hub 統合システムの使用により、運用ワークロード向けの新しいシナリオが可能になります。 統合システム インフラストラクチャの管理およびサービスの提供を行う Azure Stack Hub オペレーターは、[オペレーター ドキュメント](/azure-stack/operator)を参照してください。
+[Microsoft Azure Stack Hub 統合システム](../operator/azure-stack-overview.md)には 4 ノードから 16 ノードまでのサイズがあり、ハードウェア パートナーと Microsoft によって共同でサポートされます。 Azure Stack Hub 統合システムの使用により、運用ワークロード向けの新しいシナリオが可能になります。 統合システム インフラストラクチャの管理およびサービスの提供を行う Azure Stack Hub オペレーターは、[オペレーター ドキュメント](../operator/index.yml)を参照してください。
 
 ASDK は、Azure Stack Hub の単一ノード デプロイであり、**無料**でダウンロードして使用できます。 すべての ASDK コンポーネントは、単一のホスト コンピューター上で実行される仮想マシン (VM) にインストールされます。そのコンピューターは、[最低限のハードウェア要件](asdk-deploy-considerations.md#hardware)を満たす必要があります。 ASDK の目的は、"*非運用*" 環境で Azure と一貫性のある API とツールを使用して、Azure Stack Hub の評価と最新アプリの開発ができる環境を提供することです。 
 
@@ -42,7 +42,7 @@ ASDK の詳細については、次の短い動画をご覧ください。
 |**回復力**|単一ノードの構成では、高可用性は提供されません|高可用性機能がサポートされています。|
 |**ネットワーク**|ASDK ホストは、すべての ASDK ネットワーク トラフィックをルーティングします。 他のスイッチ要件はありません。|Top-Of-Rack (TOR)、ベースボード管理コントローラー (BMC)、境界 (データセンター ネットワーク) スイッチなど、より複雑な[ネットワーク ルーティング インフラストラクチャ](../operator/azure-stack-network.md#network-infrastructure)がマルチノード デプロイでは必要です。|
 |**修正プログラムと更新プログラムの処理**|ASDK の新しいバージョンに移行するには、ASDK のホスト コンピューターで ASDK を再デプロイする必要があります。|インストール済みの Azure Stack Hub バージョンを更新するために、[修正プログラムと更新プログラム](../operator/azure-stack-updates.md)のプロセスが使用されます。|
-|**サポート**|MSDN の Azure Stack フォーラム。 Microsoft カスタマー サービス & サポート (CSS) のサポートは、非運用環境では使用 "*できません*"。|[MSDN の Azure Stack フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack)と完全な CSS サポート。|
+|**サポート**|MSDN の Azure Stack フォーラム。 Microsoft サポートは、非運用環境では使用 "*できません*"。|[MSDN の Azure Stack フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack)と完全なサポート。|
 | | |
 
 ## <a name="learn-about-available-services"></a>利用できるサービスの詳細

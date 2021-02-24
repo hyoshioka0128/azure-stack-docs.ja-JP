@@ -1,0 +1,69 @@
+- name: Azure Stack HCI の Azure Kubernetes Service のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Stack HCI の Azure Kubernetes Service
+      href: overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: Azure Stack HCI で Azure Kubernetes Service を設定する
+      items:
+        - name: Windows Admin Center を使用する
+          href: setup.md
+        - name: PowerShell の使用
+          href: setup-powershell.md
+    - name: Kubernetes クラスターを作成する
+      items:
+        - name: Windows Admin Center を使用する
+          href: create-kubernetes-cluster.md
+        - name: PowerShell の使用
+          href: create-kubernetes-cluster-powershell.md
+- name: チュートリアル
+  items:
+    - name: Linux コンテナーを使用する
+      href: deploy-linux-application.md
+- name: 概念
+  items:
+    - name: Azure Stack HCI の Azure Kubernetes の概念
+      href: kubernetes-concepts.md
+    - name: システム要件
+      href: system-requirements.md
+- name: 操作方法ガイド
+  items:
+    - name: Azure Arc for Kubernetes に接続する
+      href: connect-to-arc.md
+    - name: 混合 OS の Kubernetes クラスター用にアプリを調整する
+      href: adapt-apps-mixed-os-clusters.md
+    - name: Windows Server コンテナーを使用する
+      items:
+        - name: .NET アプリケーションをデプロイする
+          href: deploy-windows-application.md
+        - name: グループの管理サービス アカウントをサポートするための Windows ノードの準備
+          href: prepare-windows-nodes-gmsa.md
+        - name: 永続ボリュームの使用
+          href: persistent-volume.md
+    - name: トラブルシューティング
+      href: troubleshoot.md
+- name: 関連項目
+  items:
+    - name: Azure Stack HCI
+      href: ../hci/index.yml
+    - name: Windows Admin Center
+      href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+    - name: Azure ハイブリッド クラウド
+      href: /hybrid
+    - name: Windows Server
+      href: /windows-server/
+- name: リソース
+  items:
+    - name: リリース ノート
+      href: 'https://aka.ms/aks-hci-relnotes/'
+    - name: 既知の問題
+      href: known-issues.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure Stack HCI 上の AKS のロードマップ
+      href: 'https://aka.ms/aks-hci-roadmap/'
+    - name: バグを申請する
+      href: 'https://aka.ms/aks-hci-issues/'

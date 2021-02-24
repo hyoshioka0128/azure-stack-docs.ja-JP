@@ -1,18 +1,18 @@
 ---
 title: Azure Stack Hub でのスケール ユニットのノード操作
 description: 電源オン、電源オフ、無効化、再開を含むスケール ユニットのノード アクションと、Azure Stack Hub 統合システムでノードの状態を表示する方法について説明します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: how-to
-ms.date: 04/30/2020
-ms.author: inhenkel
+ms.date: 1/19/2021
+ms.author: patricka
 ms.reviewer: thoroet
-ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 17ecab0f42c89d6c25daba98652d8dc9d1a9e3b0
-ms.sourcegitcommit: 21cdab346fc242b8848a04a124bc16c382ebc6f0
+ms.lastreviewed: 1/19/2021
+ms.openlocfilehash: 67f381a50d1b98361207a00a300921a636679326
+ms.sourcegitcommit: e88f0a1f2f4ed3bb8442bfb7b754d8b3a51319b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777748"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99534166"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack-hub"></a>Azure Stack Hub でのスケール ユニットのノード操作
 
@@ -41,6 +41,8 @@ ms.locfileid: "82777748"
    - ベースボード管理コントローラー (BMC) の IP アドレス。
    - コアの合計数。
    - メモリの総量。
+   
+    ノード操作によって、予期されるアラートが管理者ポータルで発生することもあります。 
 
 ![スケール ユニットの状態](media/azure-stack-node-actions/multinodeactions.png)
 
@@ -62,12 +64,14 @@ Azure Stack Hub では、ドレイン、再開、修復、シャットダウン�
 
 次の手順を適用する前に、現在進行中の操作がないことを確認してください。 お使いの環境に合わせてエンドポイントを更新します。
 
-1. PowerShell を開き、Azure Stack Hub 環境を追加します。 これを行うには、お使いのコンピューターに [Azure Stack Hub PowerShell がインストールされている](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install)必要があります。
+### <a name="az-modules"></a>[Az モジュール](#tab/az1)
 
-   ```powershell
-   Add-AzureRmEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
-   Add-AzureRmAccount -Environment AzureStack
-   ```
+1. PowerShell を開き、Azure Stack Hub 環境を追加します。 これを行うには、お使いのコンピューターに [Azure Stack Hub PowerShell がインストールされている](./powershell-install-az-module.md)必要があります。
+
+    ```powershell
+    Add-AzEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
+    Connect-AzAccount -Environment AzureStack
+    ```
 
 2. 次のコマンドを実行して、ファブリック リソース プロバイダー ロールを再起動します。
 
@@ -83,6 +87,32 @@ Azure Stack Hub では、ドレイン、再開、修復、シャットダウン�
 
 4. ノードの動作状態がまだ **[追加中]** と表示される場合は、続いてサポート インシデントを開いてください。
 
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm1)
+
+1. PowerShell を開き、Azure Stack Hub 環境を追加します。 これを行うには、お使いのコンピューターに [Azure Stack Hub PowerShell がインストールされている](./powershell-install-az-module.md)必要があります。
+
+    ```powershell
+    Add-AzureRMEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
+    Add-AzureRMAccount -Environment AzureStack
+    ```
+
+2. 次のコマンドを実行して、ファブリック リソース プロバイダー ロールを再起動します。
+
+   ```powershell
+   Restart-AzsInfrastructureRole -Name FabricResourceProvider
+   ```
+
+3. 影響を受けているスケール ユニット ノードの動作状態が、 **[実行中]** に変更されたことを確認します。 管理者ポータルまたは次の PowerShell コマンドを使用できます。
+
+   ```powershell
+   Get-AzsScaleUnitNode |ft name,scaleunitnodestatus,powerstate
+   ```
+
+4. ノードの動作状態がまだ **[追加中]** と表示される場合は、続いてサポート インシデントを開いてください。
+
+---
+
+
 
 ## <a name="scale-unit-node-actions"></a>スケール ユニットのノード操作
 
@@ -95,13 +125,13 @@ Azure Stack Hub では、ドレイン、再開、修復、シャットダウン�
 
 ノードの操作状態によって、使用可能なオプションが決まります。
 
-Azure Stack Hub PowerShell モジュールをインストールする必要があります。 これらのコマンドレットは **Azs.Fabric.Admin** モジュールに存在します。 PowerShell for Azure Stack Hub のインストールまたはインストールの確認については、「[PowerShell for Azure Stack Hub をインストールする](azure-stack-powershell-install.md)」を参照してください。
+Azure Stack Hub PowerShell モジュールをインストールする必要があります。 これらのコマンドレットは **Azs.Fabric.Admin** モジュールに存在します。 PowerShell for Azure Stack Hub のインストールまたはインストールの確認については、「[PowerShell for Azure Stack Hub をインストールする](powershell-install-az-module.md)」を参照してください。
 
 ## <a name="stop"></a>Stop
 
-**停止**アクションは、ノードをオフにします。 これは、電源ボタンを押した場合と同じです。 オペレーティング システムにシャットダウン信号は送られません。 計画されている停止操作の場合は、最初に必ずシャットダウン操作を行ってください。
+**停止** アクションは、ノードをオフにします。 これは、電源ボタンを押した場合と同じです。 オペレーティング システムにシャットダウン信号は送られません。 計画されている停止操作の場合は、最初に必ずシャットダウン操作を行ってください。
 
-この操作は通常、ノードが停止状態であり要求に応答しないときに使用されます。
+この操作は通常、ノードが要求に応答しなくなったときに使用されます。
 
 停止アクションを実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
 
@@ -111,11 +141,11 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
 
 まれなケースで、停止アクションが機能しない場合には、操作を再試行し、2 度目も失敗するようであれば、代わりに BMC Web インターフェイスを使用してください。
 
-詳細については、「[Stop-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/stop-azsscaleunitnode)」を参照してください。
+詳細については、「[Stop-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/stop-azsscaleunitnode)」を参照してください。
 
 ## <a name="start"></a>[開始]
 
-**開始**操作は、ノードをオンにします。 これは、電源ボタンを押した場合と同じです。
+**開始** 操作は、ノードをオンにします。 これは、電源ボタンを押した場合と同じです。
 
 開始アクションを実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
 
@@ -125,11 +155,11 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
 
 めったにありませんが、開始操作が機能しない場合は、操作を再試行します。 2 回目も失敗した場合は、代わりに BMC Web インターフェイスを使用します。
 
-詳細については、「[Start-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/start-azsscaleunitnode)」を参照してください。
+詳細については、「[Start-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/start-azsscaleunitnode)」を参照してください。
 
 ## <a name="drain"></a>ドレイン
 
-**ドレイン**操作は、すべてのアクティブなワークロードを、その特定のスケール ユニット内の残りのノードに移動します。
+**ドレイン** 操作は、すべてのアクティブなワークロードを、その特定のスケール ユニット内の残りのノードに移動します。
 
 この操作は通常、ノード全体の交換などの、パーツの現場交換中に使用されます。
 
@@ -142,11 +172,11 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
   Disable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```
 
-詳細については、「[Disable-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/disable-azsscaleunitnode)」を参照してください。
+詳細については、「[Disable-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/disable-azsscaleunitnode)」を参照してください。
 
 ## <a name="resume"></a>Resume
 
-**再開**アクションは、無効化されたノードを再開し、ワークロードのアクティブな配置対象としてマークします。 ノードで実行されていた以前のワークロードはフェールバックされません。 (ノードのドレイン操作を使用する場合は、必ず電源をオフにしてください。 ノードは、電源をオンに戻しても、ワークロードのアクティブな配置対象としてマークされることはありません。 準備ができたら、再開操作を使用しノードをアクティブとしてマークする必要があります。)
+**再開** アクションは、無効化されたノードを再開し、ワークロードのアクティブな配置対象としてマークします。 ノードで実行されていた以前のワークロードはフェールバックされません。 (ノードのドレイン操作を使用する場合は、必ず電源をオフにしてください。 ノードは、電源をオンに戻しても、ワークロードのアクティブな配置対象としてマークされることはありません。 準備ができたら、再開操作を使用しノードをアクティブとしてマークする必要があります。)
 
 再開アクションを実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
 
@@ -154,12 +184,12 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
   Enable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```
 
-詳細については、「[Enable-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/enable-azsscaleunitnode)」を参照してください。
+詳細については、「[Enable-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/enable-azsscaleunitnode)」を参照してください。
 
 ## <a name="repair"></a>修復
 
 > [!CAUTION]  
-> この記事で説明している操作を成功させるには、ファームウェアの平準化が重要です。 この手順を実行しないと、システムの不安定化、パフォーマンスの低下、セキュリティ スレッドの発生、または Azure Stack Hub オートメーションによるオペレーティング システムのデプロイ時に失敗を引き起こす可能性があります。 ハードウェアを交換する場合は、ハードウェア パートナーのドキュメントを必ず参照して、適用されるファームウェアが、[Azure Stack Hub 管理者ポータル](azure-stack-updates.md)に表示されている OEM バージョンと一致していることを確認してください。<br><br>
+> この記事で説明している操作を成功させるには、ファームウェアの平準化が重要です。 この手順を行わないと、システムの不安定化、パフォーマンスの低下、セキュリティ上の脅威、または Azure Stack Hub オートメーションによるオペレーティング システムのデプロイ時に失敗を引き起こす可能性があります。 ハードウェアを交換する場合は、ハードウェア パートナーのドキュメントを必ず参照して、適用されるファームウェアが、[Azure Stack Hub 管理者ポータル](azure-stack-updates.md)に表示されている OEM バージョンと一致していることを確認してください。<br><br>
 詳細およびパートナー ドキュメントへのリンクについては、[ハードウェア コンポーネントの交換](azure-stack-replace-component.md)に関する記事を参照してください。
 
 | ハードウェア パートナー | リージョン | URL |
@@ -172,7 +202,7 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
 | HPE | All | [HPE ProLiant for Microsoft Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
 | Lenovo | All | [ThinkAgile SXM Best Recipes](https://datacentersupport.lenovo.com/us/en/solutions/ht505122) |
 
-**修復**アクションは、ノードを修復します。 次のシナリオのいずれかに対してのみ使用します。
+**修復** アクションは、ノードを修復します。 次のシナリオのいずれかに対してのみ使用します。
 
 - ノードの完全交換 (新しいデータ ディスクあり、またはなし)。
 - ハードウェア コンポーネントの障害と交換の後 (フィールド交換可能装置 (FRU) ドキュメントで推奨されている場合)。
@@ -190,7 +220,7 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
 
 ## <a name="shutdown"></a>Shutdown
 
-**シャットダウン**操作では最初に、すべてのアクティブなワークロードを、同じスケール ユニット内の残りのノードに移動します。 操作では次に、スケール ユニット ノードを適切にシャットダウンします。
+**シャットダウン** 操作では最初に、すべてのアクティブなワークロードを、同じスケール ユニット内の残りのノードに移動します。 操作では次に、スケール ユニット ノードを適切にシャットダウンします。
 
 シャットダウンされたノードの開始後は、[再開](#resume)操作を実行する必要があります。 ノードで実行されていた以前のワークロードはフェールバックされません。
 
@@ -204,6 +234,6 @@ Azure Stack Hub PowerShell モジュールをインストールする必要が�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack PowerShell をインストールする](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install)
-- [Azure Stack Hub Fabric オペレーター モジュールについて確認する](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0)
-- [ノードの追加操作を監視する](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-scale-node#monitor-add-node-operations)
+- [Azure Stack PowerShell をインストールする](./powershell-install-az-module.md)
+- [Azure Stack Hub Fabric オペレーター モジュールについて確認する](/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0&preserve-view=true)
+- [ノードの追加操作を監視する](./azure-stack-add-scale-node.md#monitor-add-node-operations)

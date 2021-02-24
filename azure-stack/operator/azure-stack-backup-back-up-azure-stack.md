@@ -1,22 +1,22 @@
 ---
 title: Azure Stack Hub のバックアップ
 description: Azure Stack Hub でオンデマンド バックアップを行う方法について学習します。
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: hectorl
 ms.lastreviewed: 09/05/2019
-ms.openlocfilehash: 10a7c60a18faa5528fb9c1917c62994b43bee51a
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 5df894d32d335b488ad51b09bb38c3011f754e15
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77701039"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97871839"
 ---
 # <a name="back-up-azure-stack-hub"></a>Azure Stack Hub のバックアップ
 
-この記事では、Azure Stack Hub でオンデマンド バックアップを行う方法について説明します。 PowerShell 環境の構成方法については、[PowerShell for Azure Stack Hub のインストール](azure-stack-powershell-install.md)に関するページをご覧ください。 Azure Stack Hub にサインインするには、「[Azure Stack Hub で管理者ポータルを使用する](azure-stack-manage-portals.md)」をご覧ください。
+この記事では、Azure Stack Hub でオンデマンド バックアップを行う方法について説明します。 PowerShell 環境の構成方法については、[PowerShell for Azure Stack Hub のインストール](powershell-install-az-module.md)に関するページをご覧ください。 Azure Stack Hub にサインインするには、「[Azure Stack Hub で管理者ポータルを使用する](azure-stack-manage-portals.md)」をご覧ください。
 
 ## <a name="start-azure-stack-hub-backup"></a>Azure Stack Hub のバックアップを開始する
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/13/2019
 ms.reviewer: shriramnat
 ms.lastreviewed: 10/06/2019
-ms.openlocfilehash: 2aae33b324be4828b514ffbd019992aae989f50b
-ms.sourcegitcommit: bdd4d529bd3e115a9f76eece62b1613448d5d020
+ms.openlocfilehash: b0dd6b5013a19c120d1d8e69594406292ee6ac6c
+ms.sourcegitcommit: 6306e0c2506106ad01ff50010f36466f3325d0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "80423843"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84631354"
 ---
 # <a name="tutorial-test-a-service-offering"></a>チュートリアル:サービス オファリングをテストする
 
@@ -37,7 +37,7 @@ ms.locfileid: "80423843"
 1. ユーザー アカウントを使用してユーザー ポータルにサインインします 
 
    - 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、 https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt; の形式になります。
-   - Azure Stack Development Kit を使用している場合、ポータルのアドレスは https://portal.local.azurestack.external になります。
+   - Azure Stack Development Kit を使用している場合、ポータルのアドレスは `https://portal.local.azurestack.external` になります。
 
 1. **[サブスクリプションの取得]** タイルを選択します。
 

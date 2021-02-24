@@ -3,16 +3,16 @@ title: Azure Stack Hub での使用量接続の問題とエラー
 description: Azure Stack Hub 使用量接続の問題とエラーのトラブルシューティング。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 12/15/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019
-ms.openlocfilehash: a2c7ed968eeb6cbe9245590c6c0a75479294c916
-ms.sourcegitcommit: 278aaeca069213a98b90751253f6b15423634849
+ms.openlocfilehash: 8b5522cc15972018be4130bf7901444a9e4cdf05
+ms.sourcegitcommit: a53ea4a28e715c80a99fa89e9d364bc4556558de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82742392"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97577008"
 ---
 # <a name="usage-connectivity-errors"></a>使用量接続エラー
 
@@ -30,7 +30,7 @@ Azure Stack Hub の使用状況データは、Azure Stack Hub 内の [*Azure Bri
 
 - ネットワーク構成によって Azure Bridge がリモート サービスに接続されることを確認します。
 
-- [ **[Region Management]\(リージョン管理\)**  >  **[プロパティ]** ](azure-stack-registration.md#verify-azure-stack-hub-registration) ブレードに移動して、登録に使用された Azure サブスクリプション ID、リソース グループ、登録リソースの名前を検索します。 Azure portal で、登録リソースが正しい Azure サブスクリプション ID の下に存在することを確認します。 これを行うには、Azure サブスクリプション ID で作成された **[すべてのリソース]** に移動して、 **[非表示の型の表示]** ボックスをオンにします。 登録リソースが見つからない場合は、「[登録を更新または変更する](azure-stack-registration.md#renew-or-change-registration)」の手順に従って、ご利用の Azure Stack Hub を再登録します。
+- [ **[Region Management]\(リージョン管理\)**  >  **[プロパティ]**](azure-stack-registration.md#verify-azure-stack-hub-registration) ブレードに移動して、登録に使用された Azure サブスクリプション ID、リソース グループ、登録リソースの名前を検索します。 Azure portal で、登録リソースが正しい Azure サブスクリプション ID の下に存在することを確認します。 これを行うには、Azure サブスクリプション ID で作成された **[すべてのリソース]** に移動して、 **[非表示の型の表示]** ボックスをオンにします。 登録リソースが見つからない場合は、「[登録を更新または変更する](azure-stack-registration.md#renew-or-change-registration)」の手順に従って、ご利用の Azure Stack Hub を再登録します。
 
   ![ポータル](media/azure-stack-usage-issues/stackres.png)
 

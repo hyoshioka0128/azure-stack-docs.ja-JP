@@ -3,20 +3,20 @@ title: Azure Stack Hub コンテナーを使用するための Kubernetes をデ
 description: Azure Stack Hub でコンテナーを使用するための Kubernetes をデプロイする方法について説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: 789f516355407a5b1c69c4c359b8377a63e06123
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: ead1d1cad49876643080e57ba45b0c430596113a
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111406"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247712"
 ---
 # <a name="deploy-kubernetes-to-use-containers-with-azure-stack-hub"></a>Azure Stack Hub でコンテナーを使用するための Kubernetes をデプロイする
 
-> [!Note]  
+> [!NOTE]  
 > Kubernetes Azure Stack Marketplace 項目のみを使用して、概念実証としてクラスターをデプロイします。 Azure Stack でサポートされている Kubernetes クラスターの場合は、[AKS エンジン](azure-stack-kubernetes-aks-engine-overview.md)を使用します。
 
 この記事の手順に従えば、1 回の連携した操作で Kubernetes のリソースをデプロイおよび設定することができます。 この手順では、Azure Resource Manager ソリューション テンプレートを使用します。 Azure Stack Hub のインストールに関する必要な情報を収集し、テンプレートを生成してから、クラウドにデプロイする必要があります。 Azure Stack Hub テンプレートでは、グローバルな Azure で提供されているのと同じマネージド型の AKS サービスは使用されません。
@@ -59,4 +59,4 @@ AD FS を使用した場合のクラスターのインストール手順につ�
 
 [Active Directory フェデレーション サービス (AD FS) を使用して Azure Stack Hub に Kubernetes をデプロイする](azure-stack-solution-template-kubernetes-adfs.md)
 
-[Azure における Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Azure における Kubernetes](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

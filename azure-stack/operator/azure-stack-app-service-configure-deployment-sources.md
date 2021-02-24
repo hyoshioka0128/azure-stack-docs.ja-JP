@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub 上の App Services のデプロイ ソースを構成する
+title: App Services のデプロイ ソースを構成する - Azure Stack Hub
 description: Azure Stack Hub 上の App Services のデプロイ ソース (Git、GitHub、BitBucket、DropBox、および OneDrive) を構成する方法について説明します。
 author: bryanla
 ms.topic: article
@@ -7,12 +7,12 @@ ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2019
-ms.openlocfilehash: f679f4a609f7be2798a664dc4a748e56f8b0d2fb
-ms.sourcegitcommit: ddcd083430ca905653d412dc2f7b813218d79509
+ms.openlocfilehash: 2766c495087d32dba1162d2354b9b0a8ea673afb
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83374900"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90573260"
 ---
 # <a name="configure-deployment-sources-for-app-services-on-azure-stack-hub"></a>Azure Stack Hub 上の App Services のデプロイ ソースを構成する
 
@@ -40,7 +40,7 @@ App Service on Azure Stack Hub では、複数のソース管理プロバイダ�
 
 このタスクを完了するには、GitHub アカウントが必要です。 個人のアカウントではなく、組織のアカウントを使用できます。
 
-1. GitHub にサインインし、 https://www.github.com/settings/developers に移動して、 **[Register a new application]\(新しいアプリケーションの登録\)** を選択します。
+1. GitHub にサインインし、 <https://www.github.com/settings/developers> に移動して、 **[Register a new application]\(新しいアプリケーションの登録\)** を選択します。
 
     ![GitHub - 新しいアプリケーションの登録][3]
 
@@ -96,7 +96,7 @@ App Service on Azure Stack Hub では、複数のソース管理プロバイダ�
 > [!NOTE]
 > 現時点では、OneDrive for Business アカウントはサポートされていません。
 
-1. https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm に移動し、Microsoft アカウントを使用してサインインします。
+1. <https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm> に移動し、Microsoft アカウントを使用してサインインします。
 2. **[マイ アプリケーション]** で **[アプリの追加]** を選択します。
 
     ![OneDrive アプリケーション][10]
@@ -129,7 +129,7 @@ App Service on Azure Stack Hub では、複数のソース管理プロバイダ�
 > [!NOTE]
 > このタスクを完了するには、DropBox アカウントが必要です。 個人のアカウントではなく、組織のアカウントを使用できます。
 
-1. https://www.dropbox.com/developers/apps に移動し、DropBox アカウントの資格情報を使用してサインインします。
+1. <https://www.dropbox.com/developers/apps> に移動し、DropBox アカウントの資格情報を使用してサインインします。
 2. **[Create app]\(アプリの作成\)** を選択します。
 
     ![Dropbox アプリ][14]
@@ -154,7 +154,7 @@ App Service on Azure Stack Hub では、複数のソース管理プロバイダ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[継続的配置](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)、[ローカルの Git デプロイ](https://docs.microsoft.com/azure/app-service/deploy-local-git)、[クラウド フォルダーの同期](https://docs.microsoft.com/azure/app-service/deploy-content-sync)などでデプロイ ソースを使用できるようになりました。
+[継続的配置](/azure/app-service/deploy-continuous-deployment)、[ローカルの Git デプロイ](/azure/app-service/deploy-local-git)、[クラウド フォルダーの同期](/azure/app-service/deploy-content-sync)などでデプロイ ソースを使用できるようになりました。
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin.png

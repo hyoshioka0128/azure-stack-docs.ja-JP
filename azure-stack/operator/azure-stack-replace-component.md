@@ -2,18 +2,18 @@
 title: Azure Stack Hub スケール ユニット ノードのハードウェア コンポーネントを交換する
 titleSuffix: Azure Stack Hub
 description: Azure Stack Hub 統合システムのハードウェア コンポーネントの交換方法について説明します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: how-to
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 07/18/2019
-ms.openlocfilehash: c7e6bc3042b79ee47bde45cefbabc4243c3f0a03
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 5111857dbf154c3669e3971b16af686eb0facc44
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "78367822"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97869408"
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-hub-scale-unit-node"></a>Azure Stack Hub スケール ユニット ノードのハードウェア コンポーネントを交換する
 

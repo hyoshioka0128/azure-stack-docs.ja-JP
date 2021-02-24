@@ -2,18 +2,18 @@
 title: Azure Stack Hub のセキュリティ コントロール
 titleSuffix: Azure Stack Hub
 description: Azure Stack Hub に適用されるセキュリティの体制とコントロールについて説明します。
-author: JustinHall
+author: PatAltimore
 ms.topic: article
 ms.date: 06/10/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/07/2020
-ms.openlocfilehash: 2d1b97bc17543e4fbdc1a1f79c39a01f188332df
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: e3bda80857a4c7026bac58f9e1d866b1d21168d5
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80891087"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97869204"
 ---
 # <a name="azure-stack-hub-infrastructure-security-controls"></a>Azure Stack Hub インフラストラクチャのセキュリティ コントロール
 
@@ -48,20 +48,18 @@ Azure Stack Hub の外部エンドポイントに対して TLS 1.2 を適用す�
 
 ## <a name="secret-management"></a>シークレットの管理
 
-Azure Stack Hub インフラストラクチャが機能するうえで、パスワードなど、さまざまなシークレット情報が使用されます。 これらのほとんどは、24 時間ごとに入れ換えるグループ管理サービス アカウント (gMSA) であるため、頻繁に自動的に入れ換えが行われます。
-
-gMSA ではない残りのシークレットは、特権エンドポイントでスクリプトを使用して手動で入れ換えることができます。
+Azure Stack Hub インフラストラクチャが機能するうえで、パスワードや証明書など、さまざまなシークレット情報が使用されます。 内部サービス アカウントに関連付けられているパスワードのほとんどは、24 時間おきに自動的にローテーションされます。これはアカウントが[グループの管理されたサービス アカウント (gMSA)](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) であるためです。gMSA は、内部ドメイン コントローラーによって直接管理される種類のドメイン アカウントです。
 
 Azure Stack Hub インフラストラクチャでは、すべての内部証明書に 4096 ビット RSA キーが使用されます。 外部エンドポイントに対しても、同じキー長の証明書を使用できます。 シークレットと証明書のローテーションの詳細については、「[Azure Stack Hub でシークレットをローテーションする](azure-stack-rotate-secrets.md)」を参照してください。
 
 ## <a name="windows-defender-application-control"></a>Windows Defender アプリケーション制御
 
-Azure Stack Hub には、最新の Windows Server セキュリティ機能が使用されています。 これらの 1 つに Windows Defender Application Control があります (WDAC: 以前はコード整合性と呼ばれていました)。この機能により、実行可能ファイルのホワイトリスト登録が可能になり、承認済みのコードだけが Azure Stack Hub インフラストラクチャ内で実行されることが保証されます。
+Azure Stack Hub には、最新の Windows Server セキュリティ機能が使用されています。 これらの 1 つに Windows Defender アプリケーション制御があります (WDAC: 以前はコード整合性と呼ばれていました)。これにより、実行可能ファイル フィルタリングが提供され、承認済みのコードだけが Azure Stack Hub インフラストラクチャ内で実行されることが保証されます。
 
 承認済みのコードは Microsoft または OEM パートナーのいずれかによって署名されます。 署名され認証されたコードは、Microsoft が定義したポリシーで指定されている認定ソフトウェアのリストに含まれています。 つまり、Azure Stack Hub インフラストラクチャでの実行が承認されているソフトウェアのみを実行できます。 未承認のコードを実行しようとしてもブロックされ、アラートが生成されます。 Azure Stack Hub では、User Mode Code Integrity (UMCI) と Hypervisor Code Integrity (HVCI) の両方が適用されます。
 
 WDAC ポリシーによっても、Azure Stack Hub インフラストラクチャでサード パーティ製のエージェントまたはソフトウェアを実行することが禁止されています。
-WDAC の詳細については、「[Windows Defender アプリケーション コントロールと仮想化ベースのコードの整合性の保護](https://docs.microsoft.com/windows/security/threat-protection/device-guard/introduction-to-device-guard-virtualization-based-security-and-windows-defender-application-control)」を参照してください。
+WDAC の詳細については、「[Windows Defender アプリケーション コントロールと仮想化ベースのコードの整合性の保護](/windows/security/threat-protection/device-guard/introduction-to-device-guard-virtualization-based-security-and-windows-defender-application-control)」を参照してください。
 
 ## <a name="credential-guard"></a>資格情報の保護
 
@@ -83,7 +81,7 @@ Azure Stack Hub 内の管理は、それぞれが特定の目的を持つ、次�
 
 - [管理者ポータル](azure-stack-manage-portals.md)では、日常の管理操作にポイントアンドクリック エクスペリエンスが提供されます。
 - Azure Resource Manager では、PowerShell および Azure CLI で使用される、REST API を介した管理者ポータルのすべての管理操作が公開されます。
-- データ センターの統合やサポート シナリオなど、特定の低レベルの操作では、Azure Stack Hub により、[特権エンドポイント](azure-stack-privileged-endpoint.md)と呼ばれる PowerShell エンドポイントが公開されます。 このエンドポイントでは、コマンドレットのホワイトリストのセットのみが公開され、これは厳重に監査されます。
+- データ センターの統合やサポート シナリオなど、特定の低レベルの操作では、Azure Stack Hub により、[特権エンドポイント](azure-stack-privileged-endpoint.md)と呼ばれる PowerShell エンドポイントが公開されます。 このエンドポイントでは、コマンドレットの許可されたセットのみが公開され、これは厳重に監査されます。
 
 ## <a name="network-controls"></a>ネットワーク制御
 

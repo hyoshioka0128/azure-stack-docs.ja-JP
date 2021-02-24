@@ -3,20 +3,20 @@ title: Azure Stack Hub での使用量と請求の登録エラー コード
 description: Azure Stack Hub での使用量と請求の登録エラーコードについて説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 12/15/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019
-ms.openlocfilehash: d4cd7b00b00f4447f9ba9a8bc341452ae6464897
-ms.sourcegitcommit: 804f94f288859027b8249d138b14e8bc1501e009
+ms.openlocfilehash: b229d4019e6e7ed99826e311fc62da341c1203dd
+ms.sourcegitcommit: a53ea4a28e715c80a99fa89e9d364bc4556558de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84158335"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97576940"
 ---
 # <a name="usage-and-billing-registration-error-codes"></a>使用量と請求の登録エラー コード
 
-Cloud Solution Provider (CSP) の場合、顧客の Azure サブスクリプション ID に対して使用量をレポートするための登録に[テナントを追加](azure-stack-csp-ref-operations.md#add-tenant-to-registration)するときに、次のエラー メッセージが発生することがあります。
+Cloud Solution Provider (CSP) の場合、顧客の Azure サブスクリプション ID に対して使用量をレポートするための登録に[テナントを追加](azure-stack-csp-ref-operations.md#add-tenant-to-registration)するときに、次のエラー メッセージが表示されることがあります。
 
 ## <a name="list-of-registration-error-codes"></a>登録エラー コードの一覧
 

@@ -4,16 +4,16 @@ titleSuffix: Azure Stack Hub
 description: SQL リソース プロバイダー アダプターを使用したプロビジョニングのためにホスティング サーバーを追加する方法について説明します。
 author: bryanla
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 12/07/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: a30c3a4f745e46a5e7b58d4355f1c193d8702e28
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.lastreviewed: 12/07/2020
+ms.openlocfilehash: 146ce73bb28b70d44f6eff03a135e6a3a9f22249
+ms.sourcegitcommit: 62eb5964a824adf7faee58c1636b17fedf4347e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "79295426"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778208"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>SQL リソース プロバイダーへのホスティング サーバーの追加
 
@@ -41,7 +41,7 @@ SQL ホスティング サーバーを追加する前に、次の必須要件と
 
 Marketplace 管理機能により、SQL IaaS VM イメージを使用できます。 これらのイメージは、Azure で使用できる SQL VM と同じです。
 
-Marketplace 項目を使用して SQL VM をデプロイする前に、必ず **SQL IaaS 拡張機能**の最新バージョンをダウンロードしてください。 IaaS 拡張機能や対応するポータル拡張機能により、修正プログラムの自動適用やバックアップなどの追加機能が提供されます。 この拡張機能の詳細については、[SQL Server Agent 拡張機能を使用した Azure VM での管理タスクの自動化](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)に関する記事を参照してください。
+Marketplace 項目を使用して SQL VM をデプロイする前に、必ず **SQL IaaS 拡張機能** の最新バージョンをダウンロードしてください。 IaaS 拡張機能や対応するポータル拡張機能により、修正プログラムの自動適用やバックアップなどの追加機能が提供されます。 この拡張機能の詳細については、[SQL Server Agent 拡張機能を使用した Azure VM での管理タスクの自動化](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)に関する記事を参照してください。
 
 > [!NOTE]
 > SQL IaaS 拡張機能は、Marketplace にあるすべての SQL on Windows イメージに "_必須_" です。この拡張機能をダウンロードしなかった場合、VM のデプロイは失敗します。 これは、Linux ベースの SQL VM イメージでは使用されません。
@@ -66,13 +66,13 @@ SQL sysadmin より低い特権を持つ管理者ユーザーを作成できま�
 
 * すべての Azure Stack Hub ストレージは BitLocker を使用して暗号化されているので、Azure Stack Hub 上のどの SQL インスタンスも暗号化された Blob ストレージを利用します。
 * SQL リソース プロバイダーは、TLS 1.2 を完全にサポートします。 SQL RP を通じて管理される SQL Server はすべて、TLS 1.2 "_のみ_" に対して構成されており、RP は既定でこれに設定されることを確認します。 サポートされているすべてのバージョンの SQL Server は、TLS 1.2 をサポートしています。 詳細については、「[Microsoft SQL Server 用の TLS 1.2 のサポート](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)」を参照してください。
-* SQL Server 構成マネージャーを使用して、SQL Server へのすべての通信が常に暗号化されるように **ForceEncryption** オプションを設定します。 詳細については、「[暗号化された接続を強制するサーバーを構成するには](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#to-configure-the-server-to-force-encrypted-connections)」を参照してください。
+* SQL Server 構成マネージャーを使用して、SQL Server へのすべての通信が常に暗号化されるように **ForceEncryption** オプションを設定します。 詳細については、「[暗号化された接続を強制するサーバーを構成するには](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017&preserve-view=true#to-configure-the-server-to-force-encrypted-connections)」を参照してください。
 * クライアント アプリが、暗号化された接続で通信することも確認します。
 * RP は、SQL Server インスタンスで使用される証明書を信頼するように構成されています。
 
 ## <a name="provide-capacity-by-connecting-to-a-standalone-hosting-sql-server"></a>スタンドアロンのホスティング SQL Server に接続して容量を提供する
 
-SQL Server 2014 または SQL Server 2016 の任意のエディションを使って、スタンドアロンの (非 HA) SQL Server を使用できます。 sysadmin 特権を持つアカウントの資格情報があることを確認してください。
+SQL Server 2014 または SQL Server 2016 の任意のエディションを使って、スタンドアロンの (非 HA) SQL Server を使用できます。 sysadmin 特権を持つアカウントの資格情報があることを確認してください。 
 
 既に設定されているスタンドアロンのホスティング サーバーを追加するには、次の手順を実行します。
 
@@ -88,6 +88,9 @@ SQL Server 2014 または SQL Server 2016 の任意のエディションを使�
 
 3. **[追加]** をクリックし、 **[Add a SQL Hosting Server]\(SQL ホスティング サーバーの追加\)** ブレードで、SQL Server インスタンスの接続の詳細を指定します。
 
+   > [!IMPORTANT]
+   > デプロイ中に SQL リソース プロバイダーのインストーラーによって作成された **リソース グループ** `system.<region>.sqladapter` は選択しないでください。 スタンドアロン ホスティング サーバー用に別のリソース グループを用意する必要があります。 
+
    ![Azure Stack Hub 管理者ポータルでの SQL ホスティング サーバーの追加](./media/azure-stack-sql-rp-deploy/sql-rp-new-hosting-server.png)
 
     必要に応じて、インスタンス名を指定します。また、インスタンスが既定のポート 1433 に割り当てられていない場合は、ポート番号を指定します。
@@ -95,10 +98,10 @@ SQL Server 2014 または SQL Server 2016 の任意のエディションを使�
    > [!NOTE]
    > ユーザーと管理者の Azure Resource Manager が SQL インスタンスにアクセスできる限り、SQL インスタンスをリソースプロバイダーの管理下に置くことができます。 SQL インスタンスは、リソース プロバイダーに排他的に割り当てる __必要があります__。
 
-4. サーバーを追加するときは、追加するサーバーを既存の SKU に割り当てるか、または新しい SKU を作成する必要があります。 **[Add a Hosting Server]\(ホスティング サーバーの追加\)** の下で、 **[SKU]** を選択します。
+4. サーバーを追加するときは、追加するサーバーを既存の SKU に割り当てるか、または新しい SKU を作成する必要があります。 **[Add a Hosting Server]\(ホスティング サーバーの追加\)** の下で、**[SKU]** を選択します。
 
-   * 既存の SKU を使用するには、使用可能な SKU を選択してから、 **[作成]** を選択します。
-   * SKU を作成するには、 **[+ Create new SKU]\(+ 新しい SKU の作成\)** を選択します。 必要な情報を **[Create SKU]\(SKU の作成\)** に入力し、 **[OK]** を選択します。
+   * 既存の SKU を使用するには、使用可能な SKU を選択してから、**[作成]** を選択します。
+   * SKU を作成するには、**[+ Create new SKU]\(+ 新しい SKU の作成\)** を選択します。 必要な情報を **[Create SKU]\(SKU の作成\)** に入力し、**[OK]** を選択します。
 
      ![Azure Stack Hub 管理者ポータルでの SKU の作成](./media/azure-stack-sql-rp-deploy/sqlrp-new-sku.png)
 
@@ -106,15 +109,15 @@ SQL Server 2014 または SQL Server 2016 の任意のエディションを使�
 
 SQL Always On インスタンスの構成にはさらに手順が必要で、3 台の VM (または物理マシン) が必要です。この記事は、Always On 可用性グループについて十分に理解していることを前提にしています。 詳細については、次の記事を参照してください。
 
-* [Azure Virtual Machines での SQL Server Always On 可用性グループの概要](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
-* [Always On 可用性グループ (SQL Server)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
+* [Azure Virtual Machines での SQL Server Always On 可用性グループの概要](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+* [Always On 可用性グループ (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017&preserve-view=true)
 
 > [!NOTE]
 > SQL アダプター リソース プロバイダーは、Always On 可用性グループに対して SQL 2016 SP1 Enterprise 以降のインスタンス _のみ_ をサポートします。 このアダプターの構成には、自動シード処理などの SQL の新機能が必要です。
 
 ### <a name="automatic-seeding"></a>自動シード処理
 
-SQL Server のインスタンスごとに各可用性グループで[自動シード処理](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)を有効にする必要があります。
+SQL Server のインスタンスごとに各可用性グループで[自動シード処理](/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)を有効にする必要があります。
 
 すべてのインスタンスで自動シード処理を有効にするには、次の SQL コマンドを編集し、セカンダリ インスタンスごとにプライマリ レプリカで実行します。
 
@@ -136,7 +139,7 @@ SQL Server のインスタンスごとに各可用性グループで[自動シ�
 
 ### <a name="configure-contained-database-authentication"></a>包含データベース認証を構成する
 
-包含データベースを可用性グループに追加する前に、包含データベース認証サーバー オプションが、可用性グループの可用性レプリカをホストするすべてのサーバー インスタンスで 1 に設定されていることを確認します。 詳細については、[包含データベース認証サーバー構成オプション](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017)を参照してください。
+包含データベースを可用性グループに追加する前に、包含データベース認証サーバー オプションが、可用性グループの可用性レプリカをホストするすべてのサーバー インスタンスで 1 に設定されていることを確認します。 詳細については、[包含データベース認証サーバー構成オプション](/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017&preserve-view=true)を参照してください。
 
 これらのコマンドを使用して、包含データベース認証サーバー オプションをインスタンスごとに設定します。
 
@@ -156,6 +159,9 @@ SQL Server のインスタンスごとに各可用性グループで[自動シ�
    **[SQL Hosting Servers]\(SQL ホスティング サーバー\)** では、リソース プロバイダーのバックエンドとして機能する SQL Server の実際のインスタンスに SQL Server リソース プロバイダーを接続できます。
 
 3. SQL Server インスタンスの接続詳細をフォームに入力します。 Always On リスナーの FQDN アドレス (および必要に応じてポート番号とインスタンス名) を必ず使用してください。 sysadmin 特権で構成したアカウントの情報を提供します。
+
+   > [!IMPORTANT]
+   > デプロイ中に SQL リソース プロバイダーのインストーラーによって作成された **リソース グループ** `system.<region>.sqladapter` は選択しないでください。 スタンドアロン ホスティング サーバー用に別のリソース グループを用意する必要があります。 
 
 4. SQL Always On 可用性グループ ボックスのインスタンスのサポートを有効にするには、[Always On 可用性グループ] ボックスをオンにします。
 
@@ -195,4 +201,4 @@ SKU を編集するには、 **[すべてのサービス]**  >  **[SQL アダプ
 
 ## <a name="next-steps"></a>次のステップ
 
-[データベースを追加する](azure-stack-sql-resource-provider-databases.md)
+[[データベースの追加]](azure-stack-sql-resource-provider-databases.md)

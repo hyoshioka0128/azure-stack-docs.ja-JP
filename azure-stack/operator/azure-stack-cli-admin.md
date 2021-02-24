@@ -3,23 +3,23 @@ title: Azure Stack Hub ユーザーに対して Azure CLI を有効にする
 description: Azure Stack Hub でクロスプラットフォーム コマンド ライン インターフェイス (CLI) を使用してリソースの管理およびデプロイを行えるようにする方法について学習します。
 author: mattbriggs
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: d81f7bc0894ea204b9cd956f30e3f302747a6de6
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: b9df823c61a9c0c54975188d15046ea4d73f9ca4
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111447"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99246046"
 ---
 # <a name="enable-azure-cli-for-azure-stack-hub-users"></a>Azure Stack Hub ユーザーに対して Azure CLI を有効にする
 
 Azure Stack Hub のユーザーに CA ルート証明書を提供することで、Azure Stack Hub のユーザーは自分の開発マシン上で Azure CLI を有効にすることができます。 ユーザーが CLI を使用してリソースを管理するには証明書が必要です。
 
- - ユーザーが Azure Stack Development Kit (ASDK) の外部のワークステーションから CLI を使用する場合は、**Azure Stack Hub の CA ルート証明書**が必要です。  
+ - ユーザーが Azure Stack Development Kit (ASDK) の外部のワークステーションから CLI を使用する場合は、**Azure Stack Hub の CA ルート証明書** が必要です。  
 
- - **仮想マシン (VM) のエイリアス エンドポイント**では、VM をデプロイするときに、1 つのパラメーターとしてイメージ発行者、プラン、SKU、バージョンを参照する "UbuntuLTS" または "Win2012Datacenter" などのエイリアスを提供します。  
+ - **仮想マシン (VM) のエイリアス エンドポイント** では、VM をデプロイするときに、1 つのパラメーターとしてイメージ発行者、プラン、SKU、バージョンを参照する "UbuntuLTS" または "Win2012Datacenter" などのエイリアスを提供します。  
 
 これらの値の取得方法については、以下のセクションで説明します。
 
@@ -61,5 +61,5 @@ Azure Stack Hub オペレーターは、VM のエイリアス ファイルをホ
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure CLI を使用したテンプレートのデプロイ](../user/azure-stack-deploy-template-command-line.md )
-- [PowerShell で接続する](azure-stack-powershell-install.md)
+- [PowerShell で接続する](powershell-install-az-module.md)
 - [ユーザー アクセス許可の管理](azure-stack-manage-permissions.md)

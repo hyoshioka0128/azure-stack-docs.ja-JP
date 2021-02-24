@@ -3,16 +3,16 @@ title: Azure Stack Hub 上に基本パターンをデプロイする
 description: Azure Stack Hub で基本パターンをデプロイする方法について説明します。
 author: mattbriggs
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/06/2019
-ms.openlocfilehash: 8fedf1e2cd932b5c3a5e84efb6b36bb14c1854d1
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 5609d9195a909a20a54917555a7309fe0901d7fa
+ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81660770"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96525474"
 ---
 # <a name="deploy-foundational-patterns-overview"></a>基本パターンのデプロイの概要
 
@@ -43,7 +43,7 @@ ms.locfileid: "81660770"
 Azure Stack Hub でストレージのオプションを増やすには、ストレージ パターンを使用します。 Azure Stack Hub では、ストレージは有限です。 既存のデータセンター内のリソースに接続します。 Azure Stack Hub に Windows VM を作成して外部 iSCSI ターゲットに接続する手順を確認してください。 マルチパス I/O (MPIO) などの主要な機能を有効にして、VM と外部ストレージ間のパフォーマンスと接続を最適化する方法を学習できます。
 
 | iSCSI ストレージ | ストレージを拡張する |
-| --- | --- | --- |
+| --- | --- |
 | ![iSCSI ストレージに接続する](media/deploy-foundational-patterns/icon-storage-87-storage-accounts-classic.svg)<br>[iSCSI ストレージに接続する](azure-stack-network-howto-iscsi-storage.md) | ![データセンターを拡張する](media/deploy-foundational-patterns/icon-storage-88-recovery-services-vaults.svg)<br>[データセンターを拡張する](azure-stack-network-howto-extend-datacenter.md) |
 
 ## <a name="backup"></a>バックアップ
@@ -53,9 +53,9 @@ Azure Stack Hub でストレージのオプションを増やすには、スト�
 
 
 |  バックアップ  |  コピー  |
-| --- | --- | --- |
+| --- | --- |
 | ![Commvault を使用して Azure Stack Hub で VM をバックアップする](media/deploy-foundational-patterns/icon-storage-100-import-export-jobs.svg)<br>[Commvault を使用して Azure Stack Hub で VM をバックアップする](azure-stack-network-howto-backup-commvault.md) | ![サブスクリプション リソースをコピーする](media/deploy-foundational-patterns/icon-storage-94-data-box.svg)<br>[サブスクリプション リソースをコピーする](azure-stack-network-howto-backup-replicator.md) |
-|  | ![Azure Stack Hub でストレージ アカウントをバックアップする](media/deploy-foundational-patterns/icon-storage-93-storage-sync-services.svg)<br>[Azure Stack Hub でストレージ アカウントをバックアップする](azure-stack-network-howto-backup-storage.md)  |
+|  ![Azure Stack Hub でストレージ アカウントをバックアップする](media/deploy-foundational-patterns/icon-storage-93-storage-sync-services.svg)<br>[Azure Stack Hub でストレージ アカウントをバックアップする](azure-stack-network-howto-backup-storage.md)  | |
 
 ## <a name="github-samples"></a>GitHub のサンプル
 
@@ -63,4 +63,4 @@ Azure Stack Hub でストレージのオプションを増やすには、スト�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure のハイブリッド パターンとソリューションのドキュメント](https://docs.microsoft.com/azure-stack/hybrid/)
+[Azure のハイブリッド パターンとソリューションのドキュメント](/hybrid/app-solutions)

@@ -1,18 +1,18 @@
 ---
 title: ASDK を起動および停止する
 description: Azure Stack Development Kit (ASDK) を起動および停止する方法について説明します。
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 07/18/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 07/18/2019
-ms.openlocfilehash: 6798481e7645c4a1a49c6370b00b1851c32ff478
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: e30652bbb497a19c21b751e4cebd713a37e2083b
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "79511982"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97872995"
 ---
 # <a name="start-and-stop-the-asdk"></a>ASDK を起動および停止する
 ASDK ホスト コンピューターを単純に再起動することはお勧めしません。 代わりに、この記事の手順に従い、正しくシャット ダウンして ASDK サービスを再起動してください。
@@ -27,7 +27,7 @@ ASDK ホスト コンピューターを単純に再起動することはお勧�
    ```powershell
    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint
    ```
-4. 次に、PEP セッションでは **Stop AzureStack**コマンドレットを使用して、Azure Stack サービスを停止し、ASDK ホスト コンピューターをシャット ダウンします。
+4. 次に、PEP セッションでは **Stop AzureStack** コマンドレットを使用して、Azure Stack サービスを停止し、ASDK ホスト コンピューターをシャット ダウンします。
 
    ```powershell
    Stop-AzureStack
@@ -72,13 +72,13 @@ ASDK ホスト コンピューターの電源投入後 2 時間以内に Azure S
    Test-AzureStack
    ```
 5. 出力を確認しエラーを解決します。 詳細については、[Azure Stack の検証テストの実行](../operator/azure-stack-diagnostic-test.md)に関するページをご覧ください。
-6. PEP セッション内で **Start-AzureStack**コマンドレットを実行してから Azure Stack サービスを再起動します。
+6. PEP セッション内で **Start-AzureStack** コマンドレットを実行してから Azure Stack サービスを再起動します。
 
    ```powershell
    Start-AzureStack
    ```
 
-**Start-AzureStack**の実行が失敗した場合、[Azure Stack サポート フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack)で ASDK トラブルシューティングのサポートを得てください。 
+**Start-AzureStack** の実行が失敗した場合、[Azure Stack サポート フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack)で ASDK トラブルシューティングのサポートを得てください。 
 
 ## <a name="next-steps"></a>次のステップ 
 Azure Stack 診断ツールと問題のログ記録については、「[Azure Stack の診断ツール](../operator/azure-stack-get-azurestacklog.md)」をご覧ください。

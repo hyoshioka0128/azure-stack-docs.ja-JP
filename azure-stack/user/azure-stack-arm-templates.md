@@ -3,16 +3,16 @@ title: Azure Stack Hub で Azure Resource Manager テンプレートを使用す
 description: Azure Stack Hub で Azure Resource Manager テンプレートを使用してリソースをプロビジョニングする方法を説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: justini
 ms.lastreviewed: 11/14/2019
-ms.openlocfilehash: 41f83e1e7f1432e182473c3b090171d3c426d340
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: 21c6fd7408179c71e6ff2ab64bfc94afba0140b2
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111916"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247015"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack-hub"></a>Azure Stack Hub で Azure Resource Manager テンプレートを使用する
 
@@ -66,7 +66,7 @@ PowerShell DSC 拡張機能を使用して、既存の仮想マシンのロー�
 
 ## <a name="cancel-a-running-template-deployment"></a>実行中のテンプレートのデプロイのキャンセル
 
-実行中のテンプレートのデプロイをキャンセルするには、[Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell [コマンドレット](/powershell/scripting/developer/cmdlet/cmdlet-overview)を使用します。
+実行中のテンプレートのデプロイをキャンセルするには、[Stop-AzResourceGroupDeployment](/powershell/module/Az.resources/stop-Azresourcegroupdeployment) PowerShell [コマンドレット](/powershell/scripting/developer/cmdlet/cmdlet-overview)を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

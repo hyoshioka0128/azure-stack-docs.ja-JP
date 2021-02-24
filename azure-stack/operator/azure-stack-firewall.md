@@ -1,18 +1,18 @@
 ---
-title: Azure Stack Hub 統合システムでの Azure Stack Hub ファイアウォールの統合
+title: ファイアウォールを Azure Stack Hub システムと統合する
 description: Azure Stack Hub 統合システムでの Azure Stack Hub ファイアウォールの統合について説明します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 11/15/2019
-ms.openlocfilehash: c33c2dbcdb662f23072ef7aca83364643c3cdf0c
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: eef96a9dba14853357cf6b29ff0ad93849f25d17
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81244209"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97870598"
 ---
 # <a name="azure-stack-hub-firewall-integration"></a>Azure Stack Hub ファイアウォールの統合
 Azure Stack Hub は、ファイアウォール デバイスを使ってセキュリティで保護することをお勧めします。 ファイアウォールは、分散型サービス拒否 (DDOS) 攻撃に対する防御、侵入検出、コンテンツ検査などに役立ちます。 ただし、これが BLOB、テーブル、キューなどの Azure ストレージ サービスのスループットのボトルネックになる場合もあります。
@@ -48,7 +48,7 @@ Azure Resource Manager (管理者)、管理者ポータル、Key Vault (管理�
 
 - **セキュア ゾーン**: これは、ルーティング可能な内部 (または企業) IP アドレスを使用した内部ネットワークです。 セキュア ネットワークは、分割できるほか、ファイアウォール上で NAT を介したインターネット アウトバウンド アクセスを設定することができます。また、通常は、内部ネットワークを介して、データセンター内のどこからでもアクセスすることができます。 Azure Stack Hub のネットワークは、外部ネットワークのパブリック VIP プールを除き、すべてセキュア ゾーンに存在します。
 - **境界ゾーン**. 通常、境界ネットワークには、Web サーバーなど、外部 (インターネットに公開される) アプリがデプロイされます。 一般的に、DDoS や侵入 (ハッキング) などの攻撃を防ぐためにファイアウォールによって監視され、インターネットからは指定した受信トラフィックが引き続き許可されます。 Azure Stack Hub の中で、DMZ ゾーンに存在する必要があるのは、外部ネットワークのパブリック VIP プールだけです。
-- **セキュリティ保護なしゾーン** これは外部ネットワーク、つまりインターネットです。 セキュリティ保護なしゾーンに Azure Stack Hub をデプロイすることは**推奨されません**。
+- **セキュリティ保護なしゾーン** これは外部ネットワーク、つまりインターネットです。 セキュリティ保護なしゾーンに Azure Stack Hub をデプロイすることは **推奨されません**。
 
 ![Azure Stack Hub の境界ネットワークの例](./media/azure-stack-firewall/perimeter-network-scenario.svg)
 

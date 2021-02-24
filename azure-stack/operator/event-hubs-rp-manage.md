@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.date: 12/09/2019
 ms.reviewer: jfggdl
 ms.lastreviewed: 12/09/2019
-ms.openlocfilehash: e9f500da4cab68688a6dd33374cfbc1cc166828d
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 9cf3339398516688865f7aab3a696562f4974699
+ms.sourcegitcommit: 0983c1f90734b7ea5e23ae614eeaed38f9cb3c9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80424639"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98571333"
 ---
 # <a name="how-to-manage-event-hubs-on-azure-stack-hub"></a>Azure Stack Hub で Event Hubs を管理する方法
-
-[!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
 
 Event Hubs の管理エクスペリエンスを使用すると、サービスを制御し、その状態とアラートを視覚化することができます。 
 
@@ -52,8 +50,8 @@ Event Hubs リソース プロバイダーでは、次のアラートがサポ�
 |----------|-------|------|-----------|
 | パフォーマンス | | | |
 | | EventHub-CpuUsage | 警告 | 過去 6 時間の Event Hubs クラスターの CPU 使用率の平均が、50% を超えている場合。 |
-| | EventHub-MemoryUsage | 警告 | 過去 6 時間の Event Hubs クラスターのデータ ディスク (E:) 使用率の平均が、50% を超えている場合。 |
-| | EventHub-DiskUsage | 警告 | 過去 6 時間の Event Hubs クラスターの空きメモリ容量の平均が、50% を下回っている場合。 |
+| | EventHub-MemoryUsage | 警告 | 過去 6 時間の Event Hubs クラスターの空きメモリ容量の平均が、50% を下回っている場合。 |
+| | EventHub-DiskUsage | 警告 | 過去 6 時間の Event Hubs クラスターのデータ ディスク (E:) 使用率の平均が、50% を超えている場合。 |
 | 使用量およびクォータ | | | |
 | | EventHub-QuotaExceeded | 警告 | 過去 6 時間以内にクォータ超過エラーが発生した場合。 |
 | | EventHub-NamespaceCreditUsage | 警告 | 過去 6 時間の名前空間クレジットの使用量の合計が、10000.0 を超えている場合。 |
@@ -70,11 +68,11 @@ Event Hubs リソース プロバイダーでは、次のアラートがサポ�
 
 [![Event Hubs を管理する - アラートの概要](media/event-hubs-rp-manage/2-alerts-summary.png)](media/event-hubs-rp-manage/2-alerts-summary.png#lightbox)
 
-一覧からアラートを選択すると、右側のパネルに**アラートの詳細**が表示されます。
+一覧からアラートを選択すると、右側のパネルに **アラートの詳細** が表示されます。
 
 [![Event Hubs を管理する - アラートの詳細](media/event-hubs-rp-manage/2-alerts-detail.png)](media/event-hubs-rp-manage/2-alerts-detail.png#lightbox)
 
-アラートなど、Azure Stack Hub の監視機能の詳細については、[正常性とアラートの監視](azure-stack-monitor-health.md)に関するページを参照してください。 ログ収集の詳細については、[Azure Stack 診断ログの収集の概要](azure-stack-diagnostic-log-collection-overview.md)に関するページを参照してください。
+アラートなど、Azure Stack Hub の監視機能の詳細については、[正常性とアラートの監視](azure-stack-monitor-health.md)に関するページを参照してください。 ログ収集の詳細については、[Azure Stack 診断ログの収集の概要](./diagnostic-log-collection.md)に関するページを参照してください。
 
 ## <a name="event-hubs-clusters"></a>Event Hubs クラスター
 
@@ -103,17 +101,4 @@ Event Hubs リソース プロバイダーでは、次のアラートがサポ�
 
 - Event Hubs に対して定義されているクォータの種類については、[クォータの種類](azure-stack-quota-types.md#event-hubs-quota-types)に関するページを参照してください。
 - アラートなど、Azure Stack Hub の監視機能については、[正常性とアラートの監視](azure-stack-monitor-health.md)に関するページを参照してください。 
-- Azure Stack Hub のログの収集については、[Azure Stack 診断ログの収集の概要](azure-stack-diagnostic-log-collection-overview.md)に関するページを参照してください。
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Azure Stack Hub のログの収集については、[Azure Stack 診断ログの収集の概要](./diagnostic-log-collection.md)に関するページを参照してください。

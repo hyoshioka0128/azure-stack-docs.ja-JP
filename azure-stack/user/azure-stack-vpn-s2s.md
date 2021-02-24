@@ -2,17 +2,17 @@
 title: Azure Stack Hub で IPsec/IKE のサイト間 VPN 接続を構成する
 description: Azure Stack Hub でのサイト間 VPN 接続または VNet 間接続用の IPsec/IKE ポリシーについて説明し、構成します。
 author: sethmanheim
-ms.custom: contperfq4
+ms.custom: contperf-fy20q4
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 11/22/2020
 ms.author: sethm
-ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: fdc1f71e5d4c5afa8b3989b69795d150cf96de67
-ms.sourcegitcommit: d69eacbf48c06309b00d17c82ebe0ce2bc6552df
+ms.lastreviewed: 11/22/2020
+ms.openlocfilehash: 27653bcb9cfee29abd4a4587ceee67eb698a93bb
+ms.sourcegitcommit: e13f27291bab236aac5d8b05401056961e9cc1e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780678"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97697643"
 ---
 # <a name="configure-ipsecike-policy-for-site-to-site-vpn-connections"></a>サイト間 VPN 接続の IPsec/IKE ポリシーを構成する
 
@@ -45,7 +45,7 @@ IPsec/IKE 標準プロトコルでは、幅広い暗号アルゴリズムがさ�
 
 - Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-- Azure Resource Manager PowerShell コマンドレット。 PowerShell コマンドレットのインストールの詳細については、「[PowerShell for Azure Stack Hub をインストールする](../operator/azure-stack-powershell-install.md)」を参照してください。
+- Azure Resource Manager PowerShell コマンドレット。 PowerShell コマンドレットのインストールの詳細については、「[PowerShell for Azure Stack Hub をインストールする](../operator/powershell-install-az-module.md)」を参照してください。
 
 ## <a name="part-1---create-and-set-ipsecike-policy"></a>パート 1 - IPsec/IKE ポリシーを作成して設定する
 
@@ -73,12 +73,14 @@ IPsec/IKE 標準プロトコルでは、幅広い暗号アルゴリズムがさ�
 |------------------------------------------------------|--------------------------------------------------------------------------|
 | IKEv2 暗号化                                     | AES256、AES192、AES128、DES3、DES                                        |
 | IKEv2 整合性                                      | SHA384、SHA256、SHA1、MD5                                                |
-| DH グループ                                             | ECP384、ECP256、DHGroup24、DHGroup14、DHGroup2、DHGroup1                 |
+| DH グループ                                             | ECP384、DHGroup14、DHGroup2、DHGroup1、ECP256 *、DHGroup24*             |
 | IPsec 暗号化                                     | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、なし |
-| IPsec 整合性                                      | GCMASE256、GCMAES192、GCMAES128                                          |
+| IPsec 整合性                                      | GCMAES256、GCMAES192、GCMAES128                                          |
 | PFS グループ                                            | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、PFSMM、なし                  |
 | QM SA の有効期間                                       | (オプション: 指定されていない場合、既定値が使用されます)<br />                         秒 (整数: 最小 300/既定値 27,000 秒)<br />                         キロバイト数 (整数: 最小 1,024/既定値 102,400,000 キロバイト) |
 | トラフィック セレクター                                     | Azure Stack Hub ではポリシー ベースのトラフィック セレクターはサポートされていません。         |
+
+\* これらのパラメーターは、ビルド 2002 以降でのみ使用できます。 
 
 - ご使用のオンプレミス VPN デバイスの構成は、Azure IPsec/IKE ポリシーで指定した次のアルゴリズムおよびパラメーターと一致している (または含んでいる) 必要があります。
 
@@ -108,9 +110,11 @@ IPsec/IKE 標準プロトコルでは、幅広い暗号アルゴリズムがさ�
 | 1                    | DHGroup1  | PFS1          | 768 ビット MODP  |
 | 2                    | DHGroup2  | PFS2          | 1024 ビット MODP |
 | 14                   | DHGroup14<br/>DHGroup2048 | PFS2048       | 2048 ビット MODP |
-| 19                   | ECP256    | ECP256        | 256 ビット ECP   |
+| 19                   | ECP256*    | ECP256        | 256 ビット ECP   |
 | 20                   | ECP384    | ECP384        | 384 ビット ECP   |
-| 24                   | DHGroup24 | PFS24         | 2048 ビット MODP |
+| 24                   | DHGroup24* | PFS24         | 2048 ビット MODP |
+
+\* これらのパラメーターは、ビルド 2002 以降でのみ使用できます。 
 
 詳細については、[RFC3526](https://tools.ietf.org/html/rfc3526) および [RFC5114](https://tools.ietf.org/html/rfc5114) を参照してください。
 
@@ -158,41 +162,87 @@ $LNGIP6 = "131.107.72.22"
 
 PowerShell コンソールを開き、アカウントに接続します。たとえば、次のようにします。
 
+### <a name="az-modules"></a>[Az モジュール](#tab/az1)
+
 ```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionName $Sub1
-New-AzureRmResourceGroup -Name $RG1 -Location $Location1
+Connect-AzAccount
+Select-AzSubscription -SubscriptionName $Sub1
+New-AzResourceGroup -Name $RG1 -Location $Location1
 ```
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm1)
+
+```powershell
+Connect-AzureRMAccount
+Select-AzureRMSubscription -SubscriptionName $Sub1
+New-AzureRMResourceGroup -Name $RG1 -Location $Location1
+```
+
+---
+
+
 
 #### <a name="3-create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>3.仮想ネットワーク、VPN ゲートウェイ、およびローカル ネットワーク ゲートウェイを作成する
 
 次の例では、仮想ネットワーク **TestVNet1** と 3 つのサブネットと VPN ゲートウェイが作成されます。 値を代入するときは、ゲートウェイ サブネットの名前を明確に **GatewaySubnet** にすることが重要です。 別の名前にすると、ゲートウェイの作成は失敗します。
 
+### <a name="az-modules"></a>[Az モジュール](#tab/az2)
+
 ```powershell
-$fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
-$besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
-$gwsub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+$fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
+$besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
+$gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
 
-New-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
+New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
 
-$gw1pip1 = New-AzureRmPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
+$gw1pip1 = New-AzPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
 
-$vnet1 = Get-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
+$vnet1 = Get-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
 
-$subnet1 = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" `
+$subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" `
 -VirtualNetwork $vnet1
 
-$gw1ipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 `
+$gw1ipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 `
 -Subnet $subnet1 -PublicIpAddress $gw1pip1
 
-New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
+New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
 -Location $Location1 -IpConfigurations $gw1ipconf1 -GatewayType Vpn `
 -VpnType RouteBased -GatewaySku VpnGw1
 
-New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 `
+New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 `
 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix `
 $LNGPrefix61,$LNGPrefix62
 ```
+
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm2)
+
+```powershell
+$fesub1 = New-AzureRMVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
+$besub1 = New-AzureRMVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
+$gwsub1 = New-AzureRMVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+
+New-AzureRMVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
+
+$gw1pip1 = New-AzureRMPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
+
+$vnet1 = Get-AzureRMVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
+
+$subnet1 = Get-AzureRMVirtualNetworkSubnetConfig -Name "GatewaySubnet" `
+-VirtualNetwork $vnet1
+
+$gw1ipconf1 = New-AzureRMVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 `
+-Subnet $subnet1 -PublicIpAddress $gw1pip1
+
+New-AzureRMVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
+-Location $Location1 -IpConfigurations $gw1ipconf1 -GatewayType Vpn `
+-VpnType RouteBased -GatewaySku VpnGw1
+
+New-AzureRMLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 `
+-Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix `
+$LNGPrefix61,$LNGPrefix62
+```
+---
+
+
 
 ### <a name="step-2---create-a-site-to-site-vpn-connection-with-an-ipsecike-policy"></a>手順 2 - IPsec/IKE ポリシーを使用するサイト対サイト VPNを作成する
 
@@ -203,9 +253,19 @@ $LNGPrefix61,$LNGPrefix62
 - IKEv2:AES128、SHA1、DHGroup14
 - IPsec:AES256、SHA256、なし、SA の有効期間 14,400 秒および 102,400,000 KB
 
+### <a name="az-modules"></a>[Az モジュール](#tab/az3)
 ```powershell
-$ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup none -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
+$ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup none -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
 ```
+
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm3)
+
+```powershell
+$ipsecpolicy6 = New-AzureRMIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup none -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
+```
+---
+
+
 
 IPsec に GCMAES を使用する場合、IPsec 暗号化と整合性の両方で同じ GCMAES アルゴリズムとキーの長さを使用する必要があります。
 
@@ -213,12 +273,25 @@ IPsec に GCMAES を使用する場合、IPsec 暗号化と整合性の両方で
 
 サイト対サイト VPN 接続を作成し、先ほど作成した IPsec/IKE ポリシーを適用します。
 
-```powershell
-$vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
-$lng6 = Get-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1
+### <a name="az-modules"></a>[Az モジュール](#tab/az4)
 
-New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -IpsecPolicies $ipsecpolicy6 -SharedKey 'Azs123'
+```powershell
+$vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
+$lng6 = Get-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1
+
+New-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -IpsecPolicies $ipsecpolicy6 -SharedKey 'Azs123'
 ```
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm4)
+
+```powershell
+$vnet1gw = Get-AzureRMVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
+$lng6 = Get-AzureRMLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1
+
+New-AzureRMVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -IpsecPolicies $ipsecpolicy6 -SharedKey 'Azs123'
+```
+---
+
+
 
 > [!IMPORTANT]
 > 接続に IPsec/IKE ポリシーを指定すると、Azure VPN ゲートウェイは、その特定の接続に対して指定された暗号アルゴリズムとキーの強度を使用する IPsec/IKE 提案のみを送受信します。 接続用のオンプレミスの VPN デバイスで、ポリシーの完全な組み合わせを使用できるか受け入れられることを確認してください。それ以外の場合、サイト対サイト VPN トンネルは確立できません。
@@ -238,10 +311,33 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupNam
 
 次の例は、接続に構成されている IPsec/IKE ポリシーを取得する方法を示しています。 これらのスクリプトは、前の手順の続きでもあります。
 
+### <a name="az-modules"></a>[Az モジュール](#tab/az5)
+
 ```powershell
 $RG1 = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
-$connection6 = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6 = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6.IpsecPolicies
+```
+
+最後のコマンドによって、接続に構成されている現在の IPsec/IKE ポリシーが表示されます (存在する場合)。 次の例は、接続の出力サンプルです。
+
+```shell
+SALifeTimeSeconds : 14400
+SADataSizeKilobytes : 102400000
+IpsecEncryption : AES256
+IpsecIntegrity : SHA256
+IkeEncryption : AES128
+IkeIntegrity : SHA1
+DhGroup : DHGroup14
+PfsGroup : None
+```
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm5)
+
+```powershell
+$RG1 = "TestPolicyRG1"
+$Connection16 = "VNet1toSite6"
+$connection6 = Get-AzureRMVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 $connection6.IpsecPolicies
 ```
 
@@ -258,28 +354,52 @@ DhGroup : DHGroup14
 PfsGroup : None
 ```
 
+---
+
+
+
 IPsec/IKE ポリシーが構成されていない場合、`$connection6.policy` コマンドは何も返しません。 これは、接続に IPsec/IKE が構成されていないという意味ではなく、カスタム IPsec/IKE ポリシーがないことを意味します。 実際の接続では、オンプレミスの VPN デバイスと Azure VPN ゲートウェイの間でネゴシエートされる既定のポリシーが使用されます。
 
 ### <a name="2-add-or-update-an-ipsecike-policy-for-a-connection"></a>2.IPsec/IKE ポリシーを接続に追加するか、ポリシーを更新する
 
 接続に新しいポリシーを追加する手順と既存のポリシーを更新する手順は同じです。つまり、新しいポリシーを作成した後、新しいポリシーを接続に適用します。
 
+### <a name="az-modules"></a>[Az モジュール](#tab/az8)
+
 ```powershell
 $RG1 = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
-$connection6 = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6 = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 
-$newpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
+$newpolicy6 = New-AzIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
 
 $connection6.SharedKey = "AzS123"
 
-Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -IpsecPolicies $newpolicy6
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -IpsecPolicies $newpolicy6
 ```
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm8)
+
+```powershell
+$RG1 = "TestPolicyRG1"
+$Connection16 = "VNet1toSite6"
+$connection6 = Get-AzureRMVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+
+$newpolicy6 = New-AzureRMIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
+
+$connection6.SharedKey = "AzS123"
+
+Set-AzureRMVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -IpsecPolicies $newpolicy6
+```
+---
+
+
 
 接続をもう一度取得して、ポリシーが更新されていることを確認できます。
 
+### <a name="az-modules"></a>[Az モジュール](#tab/az6)
+
 ```powershell
-$connection6 = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6 = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 $connection6.IpsecPolicies
 ```
 
@@ -295,21 +415,60 @@ IkeIntegrity : SHA1
 DhGroup : DHGroup14
 PfsGroup : None
 ```
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm6)
+
+```powershell
+$connection6 = Get-AzureRMVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6.IpsecPolicies
+```
+
+最後の行によって、次の例のような出力が表示されます。
+
+```shell
+SALifeTimeSeconds : 14400
+SADataSizeKilobytes : 102400000
+IpsecEncryption : AES256
+IpsecIntegrity : SHA256
+IkeEncryption : AES128
+IkeIntegrity : SHA1
+DhGroup : DHGroup14
+PfsGroup : None
+```
+---
+
+
 
 ### <a name="3-remove-an-ipsecike-policy-from-a-connection"></a>3.接続から IPsec/IKE ポリシーを削除する
 
 接続からカスタム ポリシーを削除すると、Azure VPN ゲートウェイは[既定の IPsec/IKE 候補](azure-stack-vpn-gateway-settings.md#ipsecike-parameters)に戻り、オンプレミスの VPN デバイスとの再ネゴシエーションが実行されます。
 
+### <a name="az-modules"></a>[Az モジュール](#tab/az7)
+
 ```powershell
 $RG1 = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
-$connection6 = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6 = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 $connection6.SharedKey = "AzS123"
 $currentpolicy = $connection6.IpsecPolicies[0]
 $connection6.IpsecPolicies.Remove($currentpolicy)
 
-Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6
 ```
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm7)
+
+```powershell
+$RG1 = "TestPolicyRG1"
+$Connection16 = "VNet1toSite6"
+$connection6 = Get-AzureRMVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6.SharedKey = "AzS123"
+$currentpolicy = $connection6.IpsecPolicies[0]
+$connection6.IpsecPolicies.Remove($currentpolicy)
+
+Set-AzureRMVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6
+```
+---
+
+
 
 同じスクリプトを使用して、接続からポリシーが削除されたかどうかを確認できます。
 

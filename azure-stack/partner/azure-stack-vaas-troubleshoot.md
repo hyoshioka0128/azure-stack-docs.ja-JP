@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: Azure Stack Hub のサービスとしての検証のトラブルシューティングを行います。
 author: mattbriggs
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 310a8a8d958428af2ce29f6c465a788e64870b8e
-ms.sourcegitcommit: db3c9179916a36be78b43a8a47e1fd414aed3c2e
+ms.openlocfilehash: f9a3b4b3ac61447a3dca567ad9ebcb636c8f9bc3
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84146973"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97874627"
 ---
 # <a name="troubleshoot-validation-as-a-service"></a>サービスとしての検証のトラブルシューティング
 
@@ -36,7 +36,7 @@ ms.locfileid: "84146973"
 エージェント プロセスが正常ではない方法でシャットダウンされた場合、実行されていたテストは **running** と表示されたままになります。 正常でないシャットダウンの例としては、マシンが再起動されてプロセスが強制終了される場合が挙げられます (エージェント ウィンドウでの CTRL + C は正常なシャットダウンと見なされます)。 エージェントが再起動される場合、エージェントはテストの状態を **canceled** に更新します。 エージェントが再起動されない場合、テストは **running** と表示され、テストを手動でキャンセルする必要があります。
 
 > [!Note]
-> ワークフロー内のテストは、連続して実行されるようにスケジュールされます。 **保留中**のテストは、同じワークフロー内の **running** 状態のテストが完了するまで実行されません。
+> ワークフロー内のテストは、連続して実行されるようにスケジュールされます。 **保留中** のテストは、同じワークフロー内の **running** 状態のテストが完了するまで実行されません。
 
 ## <a name="vm-images"></a>VM イメージ
 

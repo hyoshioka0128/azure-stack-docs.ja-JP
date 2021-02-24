@@ -3,16 +3,16 @@ title: Azure Stack Hub でのお客様への請求と配賦
 description: Azure Stack Hub ユーザーにどのようにリソース使用量が請求されるか、および分析と配賦のために請求情報にアクセスする方法を学習します。
 author: sethmanheim
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 11/09/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 03/21/2019
-ms.openlocfilehash: 9606f5ec17826e4fc339ebad5b4439829bd828cc
-ms.sourcegitcommit: a3ae6dd8670f8fb24224880df7eee256ebbcc4ef
+ms.openlocfilehash: 066538eb3bccb6e9e296a394400f2d1de0583f93
+ms.sourcegitcommit: 980be7813e6f39fb59926174a5d3e0d392b04293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772538"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94414097"
 ---
 # <a name="usage-and-billing-in-azure-stack-hub"></a>Azure Stack Hub での使用量と請求
 

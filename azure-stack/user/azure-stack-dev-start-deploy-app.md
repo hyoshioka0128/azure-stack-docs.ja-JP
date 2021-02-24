@@ -3,16 +3,16 @@ title: Azure Stack Hub にアプリをデプロイする
 description: Azure Stack Hub にアプリをデプロイします。
 author: mattbriggs
 ms.topic: overview
-ms.date: 5/27/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: f162a244e97d2346851ff4b13b6bdd04033e33fb
-ms.sourcegitcommit: db3c9179916a36be78b43a8a47e1fd414aed3c2e
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 08728a6e0de2bc1ce0e646de124fb58dac83c8fe
+ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84146854"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96525372"
 ---
 # <a name="common-deployments-for-azure-stack-hub"></a>Azure Stack Hub 向けの一般的なデプロイ
 
@@ -36,4 +36,4 @@ Azure Stack Hub へのアプリのデプロイを開始する前に、お使い�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Stack Hub 内で開発環境](azure-stack-dev-start.md)を設定する。
-- [Azure Stack Hub 内で継続的インテグレーション/継続的デリバリー (CI/CD) パイプライン](azure-stack-solution-pipeline.md)を設定する。
+- [Azure Stack Hub 内で継続的インテグレーション/継続的デリバリー (CI/CD) パイプライン](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/hybrid-devops)を設定する。

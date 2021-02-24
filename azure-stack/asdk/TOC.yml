@@ -43,6 +43,8 @@
       href: asdk-validate-backup.md
     - name: ASDK に接続する
       href: asdk-connect.md
+    - name: Azure CLI をセットアップする
+      href: asdk-cli.md
     - name: トラブルシューティング
       href: asdk-troubleshooting.md
 - name: リファレンス
@@ -54,9 +56,11 @@
 - name: 関連項目
   items:
     - name: Azure Stack Hub のオペレーター ドキュメント
-      href: /azure-stack/operator
+      href: ../operator/index.yml
     - name: Azure Stack Hub のユーザー ドキュメント
-      href: /azure-stack/user/
+      href: ../user/index.yml
+    - name: Azure ハイブリッド クラウドのドキュメント
+      href: /hybrid
 - name: リソース
   items:
     - name: Azure Stack のロード マップ
@@ -70,4 +74,4 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-stack'
     - name: トレーニングと認定
-      href: /azure-stack/operator/azure-stack-train-and-cert
+      href: ../operator/azure-stack-train-and-cert.md

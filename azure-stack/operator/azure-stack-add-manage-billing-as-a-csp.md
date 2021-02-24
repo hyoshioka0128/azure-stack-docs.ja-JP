@@ -3,16 +3,16 @@ title: クラウド ソリューション プロバイダーとして Azure Stac
 description: Azure Stack Hub をクラウド ソリューション プロバイダー (CSP) として登録し、課金に向けて顧客を追加する方法を説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 02/16/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/15/2019
-ms.openlocfilehash: 8202942a10e4faf48b09e9fd0d456a810d6a08fd
-ms.sourcegitcommit: a3ae6dd8670f8fb24224880df7eee256ebbcc4ef
+ms.openlocfilehash: 5d7a6dc3f0087f50fa97a0e6f61eee30037f54cc
+ms.sourcegitcommit: 34babe5abf1bceee718011b5c5c25f75e1b03b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772412"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100562541"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-hub-as-a-cloud-solution-provider"></a>クラウド ソリューション プロバイダーとして Azure Stack Hub の使用状況と課金を管理する
 
@@ -32,6 +32,10 @@ Azure Stack Hub で使用する共有サービス アカウントの種類を選
 
 - クラウド ソリューション プロバイダー
 - Partner Shared Services サブスクリプション
+
+マルチテナントの権限を管理する方法を理解するのに役立つチュートリアル ビデオを作成しました。
+
+> [!VIDEO https://www.youtube.com/embed/ZP6jkbLeS34]
 
 #### <a name="azure-partner-shared-services"></a>Azure Partner Shared Services
 

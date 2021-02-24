@@ -1,18 +1,18 @@
 ---
 title: ASDK のインストール
 description: Azure Stack Development Kit (ASDK) をインストールする方法について説明します。
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: b85279aff5427e0f3dbdc15b979a00a41db43e57
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: fe485a3eebee3e44e19173fdf68440057de7d783
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77695854"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97873420"
 ---
 # <a name="install-the-asdk"></a>ASDK のインストール
 [ASDK ホスト コンピューターの準備](asdk-prepare-host.md)ができたら、この記事の次の手順に従って、Azure Stack Development Kit (ASDK) を CloudBuilder.vhdx イメージにデプロイできます。
@@ -35,7 +35,7 @@ ms.locfileid: "77695854"
   
     Azure サブスクリプション ID プロバイダーを選択する場合は、インターネット接続、Azure AD ディレクトリ テナントのフルネーム (*domainname*.onmicrosoft.com の形式) または Azure AD の検証済みのカスタム ドメイン名が必要です。 また、指定されたディレクトリの全体管理者の資格情報も必要です。
 
-    デプロイの後、Azure Active Directory (Azure AD) の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要な場合があります。 たとえば、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に復元するか、*既定のプロバイダー サブスクリプション*の所有者である別の全体管理者アカウントを使用します。
+    デプロイの後、Azure Active Directory (Azure AD) の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要な場合があります。 たとえば、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に復元するか、*既定のプロバイダー サブスクリプション* の所有者である別の全体管理者アカウントを使用します。
 
     ID プロバイダーとして AD FS を使用している場合は、既定のスタンプ ディレクトリ サービスが使用されます。 サインインに使用する既定のアカウントは azurestackadmin@azurestack.local であり、使用するパスワードは、セットアップの一部として指定したものです。
 
@@ -46,7 +46,7 @@ ms.locfileid: "77695854"
 
     ![ASDK 用のネットワーク アダプターを選択する](media/asdk-install/3.PNG)
 
-5. **[ネットワーク構成]** ページで、有効な**タイム サーバー IP** アドレスを指定します。 この必須フィールドでは、ASDK によって使われるタイム サーバーを設定します。 このパラメーターは、有効なタイム サーバーの IP アドレスとして指定する必要があります。 サーバー名はサポートされていません。
+5. **[ネットワーク構成]** ページで、有効な **タイム サーバー IP** アドレスを指定します。 この必須フィールドでは、ASDK によって使われるタイム サーバーを設定します。 このパラメーターは、有効なタイム サーバーの IP アドレスとして指定する必要があります。 サーバー名はサポートされていません。
 
       > [!TIP]
       > タイム サーバーの IP アドレスを検索するには、[ntppool.org](https://www.ntppool.org/) にアクセスするか、time.windows.com に ping を実行します。 

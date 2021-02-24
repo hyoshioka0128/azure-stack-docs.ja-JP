@@ -3,16 +3,16 @@ title: Azure Stack Hub でハードウェアの正常性を監視する
 description: Azure Stack Hub のハードウェア コンポーネントの正常性を監視する方法を学習します。
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 11/21/2019
-ms.openlocfilehash: a4f5d82979e209eae124f930d1f59abc1bb88b98
-ms.sourcegitcommit: ddcd083430ca905653d412dc2f7b813218d79509
+ms.openlocfilehash: 0b1d107d33cb19223018f6d6ac26f11f65d6cc15
+ms.sourcegitcommit: d542b68b299b73e045f30916afb6018e365e9db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83375174"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99975913"
 ---
 # <a name="monitor-azure-stack-hub-hardware-components"></a>Azure Stack Hub のハードウェア コンポーネントを監視する
 
@@ -26,11 +26,11 @@ Azure Stack Hub の正常性および監視システムは、記憶域サブシ�
 - ブート ドライブ
 
 > [!NOTE]
-> この機能を有効にする前に、ハードウェアの準備ができていることをハードウェア パートナーと共に検証する必要があります。 ハードウェア パートナーは、BMC でこの機能を有効にするための詳細な手順も提供します。
+> この機能を有効にする前に、ハードウェアの準備ができていることをハードウェア パートナーと共に検証する必要があります。 ハードウェア パートナーは、ベースボード管理コントローラー (BMC) でこの機能を有効にするための詳細な手順も提供します。 ベースボード管理コントローラーのユーザー暗号化は、ビルド 2005 以降で AES に設定する必要があります。
 
 ## <a name="snmp-listener-scenario"></a>SNMP リスナーのシナリオ
 
-SNMP v3 リスナーは、TCP ポート 162 上の 3 つの ERCS インスタンスすべてで実行されています。 Azure Stack Hub リスナーに SNMP トラップを送信するように、ベースボード管理コントローラー (BMC) を構成する必要があります。 リージョンのプロパティ ビューを開くことで、管理者ポータルから 3 つの PEP IP を取得できます。
+SNMP v3 リスナーは、TCP ポート 162 上の 3 つの ERCS インスタンスすべてで実行されています。 Azure Stack Hub リスナーに SNMP トラップを送信するように、BMC を構成する必要があります。 リージョンのプロパティ ビューを開くことで、管理者ポータルから 3 つの PEP IP を取得できます。
 
 リスナーにトラップを送信するには認証が必要であり、ベース BMC 自体にアクセスするときと同じ資格情報を使用する必要があります。
 

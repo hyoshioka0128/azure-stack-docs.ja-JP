@@ -4,18 +4,18 @@ titleSuffix: Azure Stack Hub
 description: Azure Stack Hub 適合性チェック ツールを使用して、Azure Stack Hub 統合システムの PKI 証明書を検証する方法について説明します。
 services: azure-stack
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: how-to
-ms.date: 03/04/2020
-ms.author: inhenkel
+ms.date: 10/19/2020
+ms.author: patricka
 ms.reviewer: ppacent
-ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: e8114d060e596f581cd23ec80b0b5f455567dc1f
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.lastreviewed: 10/19/2020
+ms.openlocfilehash: 30a0c94f52a46ae92b1d76e111fae64d5599aba7
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "79025239"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97868831"
 ---
 # <a name="validate-azure-stack-hub-pki-certificates"></a>Azure Stack Hub PKI 証明書の検証
 
@@ -58,12 +58,12 @@ Azure Stack Hub のデプロイに対して PKI 証明書を検証する前に�
 
 ## <a name="perform-core-services-certificate-validation"></a>コア サービス証明書の検証を実行する
 
-次の手順を使って、デプロイとシークレット ローテーションに使用する Azure Stack Hub PKI 証明書を準備し、検証します。
+次の手順を使って、デプロイとシークレット ローテーションに使用する Azure Stack Hub PKI 証明書を検証します。
 
 1. 次のコマンドレットを実行して、PowerShell プロンプト (5.1 以降) から **AzsReadinessChecker** をインストールします。
 
     ```powershell  
-        Install-Module Microsoft.AzureStack.ReadinessChecker -force 
+        Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
     ```
 
 2. 証明書ディレクトリ構造を作成します。 次の例では、`<C:\Certificates\Deployment>` を、選択した新規ディレクトリ パスに変更できます。
@@ -93,70 +93,75 @@ Azure Stack Hub のデプロイに対して PKI 証明書を検証する前に�
 
     ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
-    Invoke-AzsCertificateValidation -CertificateType Deployment -CertificatePath C:\Certificates\Deployment -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
+    Invoke-AzsHubDeploymentCertificateValidation -CertificatePath C:\Certificates\Deployment -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
     ```
 
 4. 出力を確認し、すべての証明書がすべてのテストに合格していることを確認します。 次に例を示します。
 
     ```powershell
-    Invoke-AzsCertificateValidation v1.1912.1082.37 started.
-    Testing: KeyVaultInternal\adminvault.pfx
-    Thumbprint: B1CB76****************************565B99
-            Expiry Date: OK
-            Signature Algorithm: OK
-            DNS Names: OK
-            Key Usage: OK
-            Key Length: OK
-            Parse PFX: OK
-            Private Key: OK
-            Cert Chain: OK
-            Chain Order: OK
-            Other Certificates: OK
-    Testing: ARM Public\management.pfx
-    Thumbprint: 44A35E****************************36052A
-            Expiry Date: OK
-            Signature Algorithm: OK
-            DNS Names: OK
-            Key Usage: OK
-            Key Length: OK
-            Parse PFX: OK
-            Private Key: OK
-            Cert Chain: OK
-            Chain Order: OK
-            Other Certificates: OK
-    Testing: Admin Portal\adminportal.pfx
-    Thumbprint: 3F5E81****************************9EBF9A
-            Expiry Date: OK
-            Signature Algorithm: OK
-            DNS Names: OK
-            Key Usage: OK
-            Key Length: OK
-            Parse PFX: OK
-            Private Key: OK
-            Cert Chain: OK
-            Chain Order: OK
-            Other Certificates: OK
-    Testing: Public Portal\portal.pfx
+    Invoke-AzsHubDeploymentCertificateValidation v1.2005.1286.272 started.
+    Testing: KeyVaultInternal\KeyVaultInternal.pfx
+    Thumbprint: E86699****************************4617D6
+        PFX Encryption: OK
+        Expiry Date: OK
+        Signature Algorithm: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Length: OK
+        Parse PFX: OK
+        Private Key: OK
+        Cert Chain: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: ARM Public\ARMPublic.pfx
+    Thumbprint: 8DC4D9****************************69DBAA
+        PFX Encryption: OK
+        Expiry Date: OK
+        Signature Algorithm: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Length: OK
+        Parse PFX: OK
+        Private Key: OK
+        Cert Chain: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: Admin Portal\AdminPortal.pfx
+    Thumbprint: 6F9055****************************4AC0EA
+        PFX Encryption: OK
+        Expiry Date: OK
+        Signature Algorithm: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Length: OK
+        Parse PFX: OK
+        Private Key: OK
+        Cert Chain: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: Public Portal\PublicPortal.pfx
 
-    Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
-    Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
-    Invoke-AzsCertificateValidation Completed
+
+    Log location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+    Report location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+    Invoke-AzsHubDeploymentCertificateValidation Completed
+
     ```
 
     他の Azure Stack Hub サービスの証明書を検証するには、```-CertificateType``` の値を変更します。 次に例を示します。
 
     ```powershell  
     # App Services
-    Invoke-AzsCertificateValidation -CertificateType AppServices -CertificatePath C:\Certificates\AppServices -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+    Invoke-AzsHubAppServicesCertificateValidation -CertificatePath C:\Certificates\AppServices -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
 
     # DBAdapter
-    Invoke-AzsCertificateValidation -CertificateType DBAdapter -CertificatePath C:\Certificates\DBAdapter -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+    Invoke-AzsHubDBAdapterCertificateValidation -CertificatePath C:\Certificates\DBAdapter -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
 
     # EventHubs
-    Invoke-AzsCertificateValidation -CertificateType EventHubs -CertificatePath C:\Certificates\EventHubs -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+    Invoke-AzsHubEventHubsCertificateValidation -CertificatePath C:\Certificates\EventHubs -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
 
     # IoTHub
-    Invoke-AzsCertificateValidation -CertificateType IoTHub -CertificatePath C:\Certificates\IoTHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+    Invoke-AzsHubIoTHubCertificateValidation -CertificatePath C:\Certificates\IoTHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
     ```
     各フォルダーには、証明書の種類に対応する単一の PFX ファイルが含まれている必要があります。 ある証明書の種類で複数の証明書が必要な場合は、個々の証明書ごとに入れ子になったフォルダーが必要で、名前で区別されます。 次のコードは、すべての証明書の種類に関するフォルダー/証明書構造の例と、```-CertificateType``` および ```-CertificatePath```の適切な値を示しています。
     
@@ -233,6 +238,12 @@ Azure Stack Hub のデプロイに対して PKI 証明書を検証する前に�
     ```
 
 **解決方法**:ツール ガイダンスの詳細セクションにある各証明書テスト設定に従います。
+
+**現象**:HTTP CDP が x509 拡張機能に書き込まれているにもかかわらず、HTTP CRL チェックが失敗する。
+
+**原因**:現時点では、AzsReadinessChecker によって HTTP CDP を確認できない言語がいくつかあります。
+
+**解決方法**:OS 言語を EN-US に設定して検証を実行します。
 
 ## <a name="certificates"></a>証明書
 

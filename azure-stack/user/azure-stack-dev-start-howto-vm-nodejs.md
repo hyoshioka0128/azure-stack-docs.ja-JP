@@ -1,18 +1,18 @@
 ---
-title: Azure Stack Hub 内の仮想マシンに Node.js アプリをデプロイする
+title: Azure Stack Hub の VM に Node.js アプリをデプロイする
 description: Azure Stack Hub に Node.js アプリをデプロイします。
 author: mattbriggs
 ms.topic: overview
-ms.date: 5/27/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/02/20
-ms.openlocfilehash: d264f48864591a7205bf3a116e14c590e5083262
-ms.sourcegitcommit: db3c9179916a36be78b43a8a47e1fd414aed3c2e
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 49a709370f5f3ffebe8cc5ee6d365aaf152bf67b
+ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84146667"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96524641"
 ---
 # <a name="deploy-a-nodejs-web-app-to-a-vm-in-azure-stack-hub"></a>Azure Stack Hub で VM に Node.js Web アプリをデプロイする
 

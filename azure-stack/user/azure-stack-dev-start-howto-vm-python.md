@@ -1,18 +1,18 @@
 ---
-title: Azure Stack Hub 内の仮想マシンに Python Web アプリをデプロイする
+title: Azure Stack Hub 内の VM に Python Web アプリをデプロイする
 description: Azure Stack Hub 内の仮想マシンに Python Web アプリをデプロイします。
 author: mattbriggs
 ms.topic: overview
-ms.date: 3/12/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 3/12/2020
-ms.openlocfilehash: 700589e985aa651a1a7ae4a5ffbc020b8e6a2d3f
-ms.sourcegitcommit: 4138a2a15f78e7db38b3a29acc963a71937146fd
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 88c6592c1ac99918b084b540eec7351f2f121b77
+ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "79313014"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96524621"
 ---
 # <a name="deploy-a-python-web-app-to-a-vm-in-azure-stack-hub"></a>Azure Stack Hub 内の VM に Python Web アプリをデプロイする
 

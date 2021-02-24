@@ -4,16 +4,16 @@ titleSuffix: Azure Stack Hub
 description: Azure Stack Hub でのリージョンの管理の概要です。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/04/2020
+ms.date: 12/15/2020
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2019
-ms.openlocfilehash: e04f6a6baca7b834a248bc40835d05f0773fd5b4
-ms.sourcegitcommit: 21cdab346fc242b8848a04a124bc16c382ebc6f0
+ms.openlocfilehash: 86e449c9a825c80fa230d94948281c67e4756a25
+ms.sourcegitcommit: a53ea4a28e715c80a99fa89e9d364bc4556558de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777850"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97577025"
 ---
 # <a name="region-management-in-azure-stack-hub"></a>Azure Stack Hub でのリージョンの管理
 
@@ -23,7 +23,7 @@ Azure Stack Hub では、Azure Stack Hub インフラストラクチャを構成
 
 ## <a name="information-available-through-the-region-management-tile"></a>[リージョンの管理] タイルから使用可能な情報
 
-Azure Stack Hub には、 **[リージョンの管理]** タイルで使用できる一連のリージョン管理機能があります。 このタイルは、管理者ポータルの既定のダッシュボードで Azure Stack Hub オペレーターが使用できます。 このタイルでは、Azure Stack Hub リージョンと、リージョンに固有なそのコンポーネントを監視および更新できます。
+Azure Stack Hub には、 **[リージョンの管理]** タイルで使用できる一連のリージョン管理機能があります。 このタイルは、管理者ポータルの既定のダッシュボードで Azure Stack Hub オペレーターが使用できます。 この画面では、Azure Stack Hub リージョンと、リージョンに固有なそのコンポーネントを監視および更新できます。
 
 ![Azure Stack Hub 管理者ポータルの [リージョンの管理] タイル](media/azure-stack-region-management/image1.png)
 

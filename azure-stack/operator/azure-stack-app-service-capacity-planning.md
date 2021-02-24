@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub での App Service サーバー ロールのキャパシティ プランニング
+title: App Service サーバー ロールのキャパシティを計画する - Azure Stack Hub
 description: Azure Stack Hub での Azure App Service サーバー ロールのキャパシティ プランニングについて説明します。
 author: BryanLa
 ms.topic: article
@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 04/13/2020
-ms.openlocfilehash: a0cfc16035d82eb230f61900bc0c971a51c86ea1
-ms.sourcegitcommit: c263a86d371192e8ef2b80ced2ee0a791398cfb7
+ms.openlocfilehash: ed29e43c7863b3bad3075ab97a9ce0085edb88c3
+ms.sourcegitcommit: 3e2460d773332622daff09a09398b95ae9fb4188
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82847861"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90573294"
 ---
 # <a name="capacity-planning-for-app-service-server-roles-in-azure-stack-hub"></a>Azure Stack Hub での App Service サーバー ロールのキャパシティ プランニング
 

@@ -7,12 +7,12 @@ ms.date: 04/23/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
-ms.openlocfilehash: c559a90234b486f8501eeb7b0b8249e41dcdb8fa
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: d1177361f8980c44f67a0d1757f7bb146aed04be
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77701481"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97973437"
 ---
 # <a name="back-up-app-service-on-azure-stack-hub"></a>Azure Stack Hub 上の App Service をバックアップする
 
@@ -61,7 +61,7 @@ SQL Server へのログイン中にこれらのデータベースを手動でバ
   ```
 
 > [!NOTE]
-> SQL AlwaysOn データベースをバックアップする必要がある場合、[これらの手順](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-backup-on-availability-replicas-sql-server?view=sql-server-2017)に従ってください。 
+> SQL AlwaysOn データベースをバックアップする必要がある場合、[これらの手順](/sql/database-engine/availability-groups/windows/configure-backup-on-availability-replicas-sql-server?view=sql-server-2017&preserve-view=true)に従ってください。 
 
 すべてのデータベースを正常にバックアップできたら、.bak ファイルを App Service のシークレット情報と共に安全な場所にコピーします。
 
@@ -80,5 +80,5 @@ robocopy $source $destination
 net use $destination /delete
 ```
 
-## <a name="next-steps"></a>次の手順
-[Azure Stack 上の App Service の復元](app-service-recover.md)
+## <a name="next-steps"></a>次のステップ
+[Azure Stack Hub 上の App Service の復元](app-service-recover.md)

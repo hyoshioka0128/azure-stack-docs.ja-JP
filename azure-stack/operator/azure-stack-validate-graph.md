@@ -4,16 +4,16 @@ titleSuffix: Azure Stack Hub
 description: Azure Stack Hub 適合性チェッカーを使用して、Azure Stack Hub の Graph 統合を検証します。
 author: BryanLa
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 10/19/2020
 ms.author: bryanla
 ms.reviewer: jerskine
-ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: e4af68d1d4f9a44bb957f318f0f13ec1d2c9ecdd
-ms.sourcegitcommit: d930d52e27073829b8bf8ac2d581ec2accfa37e3
+ms.lastreviewed: 10/19/2020
+ms.openlocfilehash: 1abb44838e0c70764d08a4aa47a0fdf73660072d
+ms.sourcegitcommit: 695f56237826fce7f5b81319c379c9e2c38f0b88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82173846"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94545603"
 ---
 # <a name="validate-graph-integration-for-azure-stack-hub"></a>Azure Stack Hub の Graph 統合を検証する
 
@@ -22,7 +22,7 @@ Azure Stack Hub 適合性チェッカー ツール (AzsReadinessChecker) を使�
 適合性チェッカーは以下を検証します。
 
 * Graph 統合用に作成したサービス アカウントの資格情報に、Active Directory に対してクエリを実行するための適切な権限が含まれていること。
-* "*グローバル カタログ*" を解決できること。また、グローバル カタログに接続できること。
+* " *グローバル カタログ* " を解決できること。また、グローバル カタログに接続できること。
 * KDC を解決できること。また、KDC に接続できること。
 * 必要なネットワーク接続が存在すること。
 
@@ -39,7 +39,7 @@ Azure Stack Hub とデータ センターの統合の詳細については、「
 **ツールを実行するコンピューター:**
 
 * ドメインに接続された Windows 10 または Windows Server 2016。
-* PowerShell 5.1 以降。 お使いのバージョンを確認するには、次の PowerShell コマンドを実行し、"*メジャー*" バージョンと "*マイナー*" バージョンを確かめます。
+* PowerShell 5.1 以降。 お使いのバージョンを確認するには、次の PowerShell コマンドを実行し、" *メジャー* " バージョンと " *マイナー* " バージョンを確かめます。
     ```powershell
     $PSVersionTable.PSVersion
     ```
@@ -56,7 +56,7 @@ Azure Stack Hub とデータ センターの統合の詳細については、「
 1. 前提条件を満たしているコンピューターで、管理 PowerShell プロンプトを開き、次のコマンドを実行して、AzsReadinessChecker をインストールします。
 
     ```powershell
-    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
+    Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
     ```
 
 1. PowerShell プロンプトから次のコマンドを実行して、 *$graphCredential* 変数を Graph アカウントに設定します。 `domain\username` の形式を使用して `contoso\graphservice` をご自身のアカウントで置き換えます。
@@ -112,7 +112,7 @@ Azure Stack Hub とデータ センターの統合の詳細については、「
 
 ## <a name="validation-failures"></a>検証エラー
 
-検証チェックに失敗した場合は、エラーの詳細が PowerShell ウィンドウに表示されます。 また、ツールによって、*AzsGraphIntegration.log* にログ情報が記録されます。
+検証チェックに失敗した場合は、エラーの詳細が PowerShell ウィンドウに表示されます。 また、ツールによって、 *AzsGraphIntegration.log* にログ情報が記録されます。
 
 ## <a name="next-steps"></a>次のステップ
 

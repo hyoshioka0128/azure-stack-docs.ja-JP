@@ -3,16 +3,16 @@ title: Azure Stack Hub 上の AKS エンジンのトラブルシューティン�
 description: この記事では Azure Stack Hub 上の AKS エンジンのトラブルシューティングの手順について説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 4/17/2020
+ms.date: 10/07/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 4/17/2020
-ms.openlocfilehash: 8768628e246c439c86bba80f4faac2ff9ae1973d
-ms.sourcegitcommit: 355e21dd9b8c3f44e14abaae0b4f176443cf7495
+ms.lastreviewed: 10/07/2020
+ms.openlocfilehash: ae82bb1c07ec8f466eb29fe8c610af09e01e233a
+ms.sourcegitcommit: 1621f2748b2059fd47ccacd48595a597c44ee63f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81624986"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91853178"
 ---
 # <a name="troubleshoot-the-aks-engine-on-azure-stack-hub"></a>Azure Stack Hub 上の AKS エンジンのトラブルシューティング
 
@@ -70,40 +70,53 @@ AKS エンジンを使用して Kubernetes クラスターをデプロイして�
 
 ## <a name="collect-aks-engine-logs"></a>AKS エンジン ログの収集
 
-AKS エンジンによって作成されたレビュー情報にアクセスできます。 AKS エンジンでは、アプリケーションの実行時の状態とエラーが報告されます。 出力をテキスト ファイルにパイプすることも、コマンドライン コンソールから直接コピーすることもできます。 AKS エンジンによってトリガーされるエラー コードの一覧については、「[カスタム スクリプト拡張機能のエラー コードを確認する](#review-custom-script-extension-error-codes)」を参照してください。
+AKS エンジンによって作成された情報を確認できます。 AKS エンジンでは、アプリケーションの実行時の状態とエラーが報告されます。 出力をテキスト ファイルにパイプすることも、コマンドライン コンソールから直接コピーすることもできます。 AKS エンジンによってトリガーされるエラー コードの一覧については、「[カスタム スクリプト拡張機能のエラー コードを確認する](#review-custom-script-extension-error-codes)」を参照してください。
 
 1.  AKS エンジンのコマンドライン ツールに表示される情報から、標準出力とエラーを収集します。
 
-2. ローカル ファイルからログを取得します。 出力ディレクトリは、 **--output-directory** パラメーターを使用して設定できます。
+2. ローカル ファイルからログを取得します。 出力ディレクトリは、 **--output-directory** フラグを設定して `get-logs` コマンドで設定できます。
 
     ログのローカル パスを設定するには:
 
     ```bash  
-    aks-engine --output-directory <path to the directory>
+    aks-engine get-logs --output-directory <path to the directory>
     ```
 
 ## <a name="collect-kubernetes-logs"></a>Kubernetes のログの収集
 
-AKS エンジン ログに加えて、Kubernetes コンポーネントでは、ステータス メッセージとエラー メッセージが生成されます。 これらのログは、Bash スクリプト [getkuberneteslogs.sh](https://github.com/msazurestackworkloads/azurestack-gallery/releases/tag/diagnosis-v0.1.3) を使用して収集できます。
+AKS エンジン ログに加えて、Kubernetes コンポーネントでは、状態とエラー メッセージが生成されます。 これらのログは、Bash スクリプト [getkuberneteslogs.sh](https://github.com/msazurestackworkloads/azurestack-gallery/releases/tag/diagnosis-v0.1.5) を使用して収集できます。
 
 このスクリプトにより、次のログの収集プロセスが自動化されます。 
 
- - Microsoft Azure Linux エージェント (waagent) ログ
- - カスタム スクリプト拡張機能ログ
- - kube-system コンテナーの実行メタデータ
- - kube-system コンテナーの実行ログ
- - Kubelet サービスの状態と履歴
- - etcd サービスの状態と履歴
- - ギャラリー アイテムの DVM ログ
- - kube-system スナップショット
+- ディレクトリ `/var/log/azure/` 内のログ ファイル
+- ディレクトリ `/var/log/kubeaudit` 内のログ ファイル (kube 監査ログ)
+- ログ ファイル `/var/log/waagent.log` (waagent)
+- ログ ファイル `/var/log/azure/deploy-script-dvm.log` (Azure Stack Hub の Kubernetes Cluster Marketplace の項目を使用してデプロイされている場合)
+- ディレクトリ `/etc/kubernetes/manifests` 内の静的マニフェスト
+- ディレクトリ ` /etc/kubernetes/addons` 内の静的アドオン
+- kube-system コンテナーのメタデータとログ
+- kubelet の状態と履歴
+- etcd の状態と履歴
+- Docker の状態と履歴
+- kube-system スナップショット
+- Azure CNI 構成ファイル
+
+Windows ノード用に、いくつかの追加ログが取得されます。
+
+- ログ ファイル `c:\Azure\CustomDataSetupScript.log`
+- kube-proxy の状態と履歴
+- containerd の状態と履歴
+- azure-vnet ログと azure-vnet-telemetry ログ
+- Docker の ETW イベント
+- Hyper-V の ETW イベント
 
 このスクリプトがない場合は、クラスター内の各ノードに接続して、手動でログを検索してダウンロードする必要があります。 また、このスクリプトでは、必要に応じて、収集したログをストレージ アカウントにアップロードして、他のユーザーとログを共有することもできます。
 
 要件:
 
  - Linux VM、Git Bash、または Bash on Windows。
- - [Azure CLI](azure-stack-version-profiles-azurecli2.md) がスクリプトを実行するマシンにインストールされていること。
- - Azure Stack Hub への Azure CLI セッションにサインインしたサービス プリンシパル ID。 このスクリプトは、作業を行うために ARM リソースを検出して作成することができるため、Azure CLI とサービス プリンシパル ID が必要です。
+ - スクリプトを実行するマシンに [Azure CLI](azure-stack-version-profiles-azurecli2.md) がインストールされている。
+ - Azure Stack Hub への Azure CLI セッションにサインインしたサービス プリンシパル ID。 このスクリプトは、作業を行うために Azure Stack Resource Manager リソースを検出して作成することができるため、Azure CLI とサービス プリンシパル ID が必要です。
  - 環境で Kubernetes クラスターが既に選択されているユーザー アカウント (サブスクリプション)。 
 1. スクリプト tar ファイルの最新リリースをご自分のクライアント VM、Kubernetes クラスターにアクセスできるマシン、または AKS エンジンを使用してクラスターをデプロイするために使用したものと同じマシンにダウンロードします。
 
@@ -112,8 +125,8 @@ AKS エンジン ログに加えて、Kubernetes コンポーネントでは、�
     ```bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
-    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.1/diagnosis-v0.1.1.tar.gz
-    tar xvf diagnosis-v0.1.1.tar.gz -C ./
+    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.5/diagnosis-v0.1.5.tar.gz
+    tar xvf diagnosis-v0.1.5.tar.gz -C ./
     ```
 
 2. `getkuberneteslogs.sh` スクリプトに必要なパラメーターを探します。 このスクリプトでは、次のパラメーターが使用されます。

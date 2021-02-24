@@ -3,17 +3,17 @@ title: Azure Stack の検証のベスト プラクティス
 description: サービスとしての検証のベスト プラクティスについて説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: cfb2e4d71f821c23dd076842a0b4f3963a5599cc
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: f39209b054debea61228bd6f44ab571521d3f3a7
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661255"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97868405"
 ---
 # <a name="azure-stack-validation-best-practices"></a>Azure Stack の検証のベスト プラクティス
 

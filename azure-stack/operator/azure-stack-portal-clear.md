@@ -3,16 +3,16 @@ title: Azure Stack Hub からオンデマンドでポータル ユーザー デ�
 description: Azure Stack Hub ユーザーからの要求時に、ポータル ユーザー データをクリアする方法を学習します。
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.reviewer: troettinger
 ms.lastreviewed: 09/10/2019
-ms.openlocfilehash: e419ebd632fabac6985b1a763b4661d75307e4ba
-ms.sourcegitcommit: ddcd083430ca905653d412dc2f7b813218d79509
+ms.openlocfilehash: f85f5a06699b11d5316a889c045a33376304a0f0
+ms.sourcegitcommit: d542b68b299b73e045f30916afb6018e365e9db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83375096"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99975896"
 ---
 # <a name="clear-portal-user-data-from-azure-stack-hub"></a>Azure Stack Hub からポータル ユーザー データをクリアする
 
@@ -25,9 +25,9 @@ Azure Stack Hub オペレーターは、Azure Stack Hub ユーザーが要求し
 > [!NOTE]
 > 一部のユーザー データは、この記事のガイダンスに従った後でも、イベント ログのシステム セクションにまだ存在していることがあります。 このデータは、ログが自動的にロール オーバーされるまで、数日間保持される場合があります。
 
-## <a name="requirements"></a>必要条件
+## <a name="prerequisites"></a>前提条件
 
-- [PowerShell for Azure Stack Hub をインストールします](azure-stack-powershell-install.md)。
+- [PowerShell for Azure Stack Hub をインストールします](powershell-install-az-module.md)。
 - GitHub から[最新の Azure Stack Hub ツールをダウンロード](azure-stack-powershell-download.md)します。
 - ユーザー アカウントが、ディレクトリ内にまだ存在している必要があります。
 - 管理者の Resource Manager エンドポイントにアクセスするための Azure Stack Hub 管理者資格情報。
@@ -43,7 +43,7 @@ Azure Stack Hub オペレーターは、Azure Stack Hub ユーザーが要求し
 
 この手順では、Azure Stack Hub の管理者 Resource Manager エンドポイントと通信できるコンピューターを使用します。
 
-1. 管理者特権で Windows PowerShell セッションを開き (管理者として実行)、**AzureStack-Tools-master** ディレクトリ内のルート フォルダーに移動して、必要な PowerShell モジュールをインポートします。
+1. 管理者特権で Windows PowerShell セッションを開き (管理者として実行)、**AzureStack-Tools-az** ディレクトリ内のルート フォルダーに移動して、必要な PowerShell モジュールをインポートします。
 
    ```powershell
    Import-Module .\DatacenterIntegration\Portal\PortalUserDataUtilities.psm1
@@ -84,7 +84,7 @@ Azure Stack Hub オペレーターがポータル ユーザー データを削�
 
 ### <a name="user-retrieves-the-user-object-id"></a>ユーザーがユーザー オブジェクト ID を取得する
 
-1. 管理者特権で Windows PowerShell セッションを開き (管理者として実行)、**AzureStack-Tools-master** ディレクトリ内のルート フォルダーに移動して、必要な PowerShell モジュールをインポートします。
+1. 管理者特権で Windows PowerShell セッションを開き (管理者として実行)、**AzureStack-Tools-az** ディレクトリ内のルート フォルダーに移動して、必要な PowerShell モジュールをインポートします。
 
    ```powershell
    Import-Module .\DatacenterIntegration\Portal\PortalUserDataUtilities.psm1
@@ -114,7 +114,7 @@ Azure Stack Hub オペレーターがポータル ユーザー データを削�
 
 Azure Stack Hub オペレーターは、ユーザー オブジェクト ID を受け取ったら、次のコマンドを実行してポータル ユーザー データを削除します。
 
-1. 管理者特権で Windows PowerShell セッションを開き (管理者として実行)、**AzureStack-Tools-master** ディレクトリ内のルート フォルダーに移動して、必要な PowerShell モジュールをインポートします。
+1. 管理者特権で Windows PowerShell セッションを開き (管理者として実行)、**AzureStack-Tools-az** ディレクトリ内のルート フォルダーに移動して、必要な PowerShell モジュールをインポートします。
 
    ```powershell
    Import-Module .\DatacenterIntegration\Portal\PortalUserDataUtilities.psm1

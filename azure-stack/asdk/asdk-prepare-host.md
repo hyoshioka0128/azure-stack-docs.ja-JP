@@ -1,18 +1,18 @@
 ---
 title: ASDK ホスト コンピューターの準備
 description: ASDK のインストール用に Azure Stack Development Kit (ASDK) ホスト コンピューターを準備する方法について説明します。
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 08/28/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 08/28/2019
-ms.openlocfilehash: ba64a3bfbef9601d9cc8d8a28176a84a9403326a
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 5745d7efc5a953abaaa4e1d878677131c1c6e709
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77696024"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97873335"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>ASDK ホスト コンピューターの準備
 Azure Stack Development Kit (ASDK) をホスト コンピューターにインストールするには、ASDK ホストがインストール用に準備されている必要があります。 ホストが準備されると、CloudBuilder.vhdx 仮想マシン (VM) のハード ドライブから起動して ASDK のデプロイが開始されます。
@@ -60,7 +60,7 @@ ASDK をホスト コンピューターにインストールする前に、ASDK 
 
             ![ネットワーク アダプターの設定のスクリーンショット](media/asdk-prepare-host/step-four-network-adapter.png)
 
-        - 表示されている **[IP アドレス]** 、 **[ゲートウェイ]** 、および **[DNS]** 値が正しいことを確認し、有効な**時刻サーバーの IP** アドレスを入力して、 **[次へ]** をクリックします。
+        - 表示されている **[IP アドレス]** 、 **[ゲートウェイ]** 、および **[DNS]** 値が正しいことを確認し、有効な **時刻サーバーの IP** アドレスを入力して、 **[次へ]** をクリックします。
 
             >[!TIP]
             >タイム サーバーの IP アドレスを検索するには、[ntppool.org](https://www.ntppool.org/) にアクセスするか、time.windows.com に ping を実行します。 

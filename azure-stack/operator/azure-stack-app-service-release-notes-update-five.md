@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 32dbed7c4cca981c04f904f61e9abea77cb5fc4a
-ms.sourcegitcommit: c263a86d371192e8ef2b80ced2ee0a791398cfb7
+ms.openlocfilehash: 3a4b2ae49e052731e372f4bfdaf8ff30c9b5490e
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82847794"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974406"
 ---
 # <a name="app-service-on-azure-stack-hub-update-5-release-notes"></a>App Service on Azure Stack Hub Update 5 のリリース ノート
 
@@ -46,17 +46,17 @@ Azure App Service on Azure Stack Hub の 1.5 へのアップグレードを開�
   > [!Important]
   > ファイル サーバーと SQL Server の保守と操作を担当するのは、クラウド オペレーターです。  リソース プロバイダーは、これらのリソースの管理は行いません。  クラウドオ ペレーターが、App Service データベースとテナント コンテンツ ファイル共有のバックアップを行います。
 
-- Marketplace から**カスタム スクリプト拡張機能**バージョン **1.9.1** を配信します。
+- Marketplace から **カスタム スクリプト拡張機能** バージョン **1.9.1** を配信します。
 
 ## <a name="new-features-and-fixes"></a>新機能と修正
 
 Azure App Service on Azure Stack Hub Update 5 には、次の機能強化と修正が含まれています。
 
-- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Hub Portal SDK バージョンと一貫性があります。
+- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール** の更新。 Azure Stack Hub Portal SDK バージョンと一貫性があります。
 
-- **Azure Functions ランタイム**が **v1.0.12205** に更新されました。
+- **Azure Functions ランタイム** が **v1.0.12205** に更新されました。
 
-- **切断された** Azure Stack Hub をお客様が操作する場合のスタイル設定と機能に関する問題を解決する、**Kudu ツール**の更新。 
+- **切断された** Azure Stack Hub をお客様が操作する場合のスタイル設定と機能に関する問題を解決する、**Kudu ツール** の更新。 
 
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 
@@ -72,7 +72,7 @@ Azure App Service on Azure Stack Hub Update 5 には、次の機能強化と修�
 ## <a name="post-deployment-steps"></a>デプロイ後の手順
 
 > [!IMPORTANT]  
-> SQL Always On インスタンスを使用して App Service リソース プロバイダーを提供している場合は、データベースのフェールオーバーが発生したときにサービスが失われないように、[appservice_hosting と appservice_metering データベースを可用性グループに追加](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する "*必要があります*"。
+> SQL Always On インスタンスを使用して App Service リソース プロバイダーを提供している場合は、データベースのフェールオーバーが発生したときにサービスが失われないように、[appservice_hosting と appservice_metering データベースを可用性グループに追加](/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する "*必要があります*"。
 
 ## <a name="post-update-steps"></a>更新後の手順
 
@@ -81,7 +81,7 @@ Azure App Service on Azure Stack Hub Update 5 には、次の機能強化と修�
 > [!IMPORTANT]
 > 移行手順の所要時間は 5 分から 10 分程度です。 この手順には、既存のデータベース ログイン セッションを中止する作業が伴います。 Azure App Service on Azure Stack Hub の移行とその後の検証に伴うダウンタイムを考慮してください。 Azure App Service on Azure Stack Hub 1.3 に更新した後でこれらの手順を実行した場合、これらの手順は必要ありません。
 
-1. [AppService データベース (appservice_hosting and appservice_metering) を可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)に追加します。
+1. [AppService データベース (appservice_hosting and appservice_metering) を可用性グループ](/sql/database-engine/availability-groups/windows/availability-group-add-a-database)に追加します。
 
 1. 包含データベースを有効にします。
     ```sql
@@ -221,7 +221,7 @@ Azure App Service on Azure Stack Hub Update 5 には、次の機能強化と修�
 
 ## <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>Azure App Service on Azure Stack Hub を運用するクラウド管理者に対する既知の問題
 
-[Azure Stack Hub 1809 リリース ノート](azure-stack-update-1903.md)内のドキュメントを参照してください。
+[Azure Stack Hub 1809 リリース ノート](./release-notes.md)内のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,16 +3,16 @@ title: AKS エンジンを使用して Azure Stack Hub に Kubernetes クラス�
 description: AKS エンジンを実行しているクライアント VM から Azure Stack Hub に Kubernetes クラスターをデプロイする方法。
 author: mattbriggs
 ms.topic: article
-ms.date: 4/23/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 4/23/2020
-ms.openlocfilehash: 85f9e789db3ce86b04b490be83f355eb73e7329e
-ms.sourcegitcommit: c51e7787e36c49d34ee86cabf9f823fb98b61026
+ms.lastreviewed: 09/02/2020
+ms.openlocfilehash: 9da037a08aaa7394306c518211fc045453530a71
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82218825"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99246964"
 ---
 # <a name="deploy-a-kubernetes-cluster-with-the-aks-engine-on-azure-stack-hub"></a>AKS エンジンを使用して Azure Stack Hub に Kubernetes クラスターをデプロイする
 
@@ -32,7 +32,7 @@ AKS エンジンを実行しているクライアント VM から Azure Stack Hu
     curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json
     ```
 
-    > [!Note]  
+    > [!NOTE]  
     > 切断されている場合は、ファイルをダウンロードして、編集する予定の切断されたマシンに手動でコピーすることができます。 [PuTTY や WinSCP](https://www.suse.com/documentation/opensuse103/opensuse103_startup/data/sec_filetrans_winssh.html) などのツールを使用して、ファイルを Linux マシンにコピーできます。
 
 2.  API モデルをエディターで開くには、nano を使用できます。
@@ -41,7 +41,7 @@ AKS エンジンを実行しているクライアント VM から Azure Stack Hu
     nano ./kubernetes-azurestack.json
     ```
 
-    > [!Note]  
+    > [!NOTE]  
     > nano がインストールされていない場合は、Ubuntu で nano をインストールできます: `sudo apt-get install nano`。
 
 3.  kubernetes-azurestack.json ファイルで、orchestratorRelease と orchestratorVersion を見つけます。 サポートされている Kubernetes バージョンのいずれかを選択します。 たとえば、`orchestratorRelease` には 1.14 または 1.15 を使用し、`orchestratorVersion` にはそれぞれ 1.14.7 または 1.15.10 を使用します。 `orchestratorRelease` を x.xx、orchestratorVersion を x.xx.x と指定します。 最新バージョンの一覧については、「[サポートされている AKS エンジンのバージョン](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions)」を参照してください
@@ -57,7 +57,7 @@ AKS エンジンを実行しているクライアント VM から Azure Stack Hu
         },
     ```
 
-    > [!Note]  
+    > [!NOTE]  
     > ID システムに Azure AD を使用している場合は、**identitySystem** フィールドを追加する必要はありません。
 
 6. `portalURL` を見つけ、テナント ポータルへの URL を指定します。 たとえば、「 `https://portal.local.azurestack.external` 」のように入力します。
@@ -68,15 +68,15 @@ AKS エンジンを実行しているクライアント VM から Azure Stack Hu
     | --- | --- |
     | dnsPrefix | VM のホスト名を識別するために使用される一意の文字列を入力します。 たとえば、リソース グループ名に基づいて名前を指定します。 |
     | count |  デプロイに必要なマスターの数を入力します。 HA デプロイの最小値は 3 ですが、非 HA デプロイでは 1 が許可されます。 |
-    | vmSize |  [Azure Stack Hub でサポートされているサイズ](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) (例: `Standard_D2_v2`) を入力します。 |
+    | vmSize |  [Azure Stack Hub でサポートされているサイズ](./azure-stack-vm-sizes.md) (例: `Standard_D2_v2`) を入力します。 |
     | ディストリビューション | 「`aks-ubuntu-16.04`」と入力します。 |
 
 8.  `agentPoolProfiles` で、以下を更新します。
 
     | フィールド | 説明 |
     | --- | --- |
-    | count | デプロイに必要なエージェントの数を入力します。 サブスクリプションごとに使用するノードの最大数は 50 です。 サブスクリプションごとに複数のクラスターをデプロイする場合は、エージェントの合計数が 50 を超えないようにしてください。 [API モデルの JSON ファイルのサンプル](https://github.com/Azure/aks-engine/blob/master/examples/azure-stack/kubernetes-azurestack.json)で指定されている構成アイテムを使用してください。  |
-    | vmSize | [Azure Stack Hub でサポートされているサイズ](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) (例: `Standard_D2_v2`) を入力します。 |
+    | count | デプロイに必要なエージェントの数を入力します。 サブスクリプションごとに使用するノードの最大数は 50 です。 サブスクリプションごとに複数のクラスターをデプロイする場合は、エージェントの合計数が 50 を超えないようにしてください。 [API モデルの JSON ファイルのサンプル](https://aka.ms/aksengine-json-example)で指定されている構成アイテムを使用してください。  |
+    | vmSize | [Azure Stack Hub でサポートされているサイズ](./azure-stack-vm-sizes.md) (例: `Standard_D2_v2`) を入力します。 |
     | ディストリビューション | 「`aks-ubuntu-16.04`」と入力します。 |
 
 
@@ -90,6 +90,9 @@ AKS エンジンを実行しているクライアント VM から Azure Stack Hu
     | ssh | VM での SSH 認証に使用される公開キーを入力します。 `ssh-rsa` およびキーを使用します。 公開キーを作成する手順については、「[Linux 用の SSH キーを作成する](create-ssh-key-on-windows.md)」を参照してください。 |
 
     カスタム仮想ネットワークにデプロイする場合、API モデルの適切な配列に必要なキーと値を見つけて追加する手順は、[カスタム仮想ネットワークへの Kubernetes クラスターのデプロイ](kubernetes-aks-engine-custom-vnet.md)に関する記事で確認できます。
+
+    > [!NOTE]  
+    > Azure Stack Hub 用の AKS エンジンでは、クラスターを作成するための独自の証明書の提供は許可されません。
 
 ### <a name="more-information-about-the-api-model"></a>API モデルに関する詳細情報
 
@@ -120,7 +123,7 @@ Azure Stack Hub オペレーターに次のことを依頼します。
     | output-directory | kube-rg | 出力ファイル `apimodel.json` とその他の生成されたファイルを格納するディレクトリの名前を入力します。 |
     | client-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | サービス プリンシパル GUID を入力します。 Azure Stack Hub 管理者がサービス プリンシパルを作成したときにアプリケーション ID として識別されたクライアント ID。 |
     | client-secret | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | サービス プリンシパル シークレットを入力します。 クライアント シークレットは、サービスの作成時に設定します。 |
-    | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | サブスクリプション ID を入力します。 詳細については、「[プランへのサブスクライブ](https://docs.microsoft.com/azure-stack/user/azure-stack-subscribe-services#subscribe-to-an-offer)」を参照してください。 |
+    | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | サブスクリプション ID を入力します。 テナントのサブスクリプションを指定する必要があります。 管理サブスクリプションへのデプロイはサポートされません。  詳細については、「[プランへのサブスクライブ](./azure-stack-subscribe-services.md#subscribe-to-an-offer)」を参照してください。 |
 
     たとえば次のようになります。
 
@@ -145,7 +148,7 @@ Azure Stack Hub オペレーターに次のことを依頼します。
 
     生成された `apimodel.json` には、入力 API モデルで使用するサービス プリンシパル、シークレット、および SSH 公開キーが含まれています。 また、AKS エンジンが他のすべての操作を実行するために必要な、他のすべてのメタデータも含まれています。 紛失した場合、AKS エンジンでクラスターを構成することができません。
 
-    シークレットは**暗号化されていません**。 ファイルは暗号化された安全な場所に保管してください。 
+    シークレットは **暗号化されていません**。 ファイルは暗号化された安全な場所に保管してください。 
 
 ## <a name="verify-your-cluster"></a>クラスターを確認する
 
@@ -223,6 +226,22 @@ Azure Stack Hub オペレーターに次のことを依頼します。
     ```bash
     kubectl delete deployment -l app=redis
     ```
+
+## <a name="rotate-your-service-principle-secret"></a>サービス プリンシパル シークレットのローテーション
+
+AKS エンジンを使用して Kubernetes クラスターをデプロイすると、Azure Stack Hub インスタンスでの Azure Resource Manager との対話を管理するために、サービス プリンシパル (SPN) が使用されます。 ある時点で、このサービス プリンシパルのシークレットの有効期限が切れるおそれがあります。 シークレットの有効期限が切れた場合は、次の方法で資格情報を更新できます。
+
+- 新しいサービス プリンシパル シークレットを使用して各ノードを更新する。
+- または、API モデルの資格情報を更新し、アップグレードを実行する。
+
+### <a name="update-each-node-manually"></a>各ノードを手動で更新する
+
+1. クラウド オペレーターからサービス プリンシパルの新しいシークレットを取得します。 Azure Stack Hub の手順については、「[アプリ ID を使用して Azure Stack Hub リソースにアクセスする](../operator/azure-stack-create-service-principals.md)」を参照してください。
+2. クラウド オペレーターによって提供された新しい資格情報を使用して、各ノードで `/etc/kubernetes/azure.json` を更新します。 更新を行ったら、**kubelet** と **kube-controller-manager** の両方を再起動します。
+
+### <a name="update-the-cluster-with-aks-engine-update"></a>aks-engine の更新プログラムを使用してクラスターを更新する
+
+または、`apimodel.json` の資格情報を置き換えて、更新された json を使用して、同じまたは新しい Kubernetes のバージョンへのアップグレードを実行することもできます。 モデルをアップグレードする手順については、「[Azure Stack Hub で Kubernetes クラスターをアップグレードする](azure-stack-kubernetes-aks-engine-upgrade.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

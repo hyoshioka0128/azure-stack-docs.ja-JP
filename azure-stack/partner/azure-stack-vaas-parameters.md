@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: Azure Stack Hub のサービスとしての検証の共通ワークフロー パラメーターについて説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: f7932714642568c1d41a94d55a212af1bcc385ad
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: 51821c70153f2b4f091b0e8ccb659dddf863bb5e
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112071"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97910859"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-hub-validation-as-a-service"></a>Azure Stack Hub のサービスとしての検証のためのワークフロー共通パラメーター
 
@@ -47,7 +47,7 @@ ms.locfileid: "84112071"
 
 ### <a name="locate-values-in-the-ece-configuration-file"></a>ECE 構成ファイルで値を検索する
 
-環境パラメーター値は、DVM の `C:\EceStore\403314e1-d945-9558-fad2-42ba21985248\80e0921f-56b5-17d3-29f5-cd41bf862787` にある **ECE 構成ファイル**で手動で検索することもできます。
+環境パラメーター値は、DVM の `C:\EceStore\403314e1-d945-9558-fad2-42ba21985248\80e0921f-56b5-17d3-29f5-cd41bf862787` にある **ECE 構成ファイル** で手動で検索することもできます。
 
 ## <a name="test-parameters"></a>テスト パラメーター
 
@@ -61,7 +61,7 @@ ms.locfileid: "84112071"
 診断接続文字列          | テストの実行中に診断ログのコピー先となる Azure ストレージ アカウントの SAS URL。 SAS URL を生成する手順については、「[診断接続文字列を生成する](#generate-the-diagnostics-connection-string)」をご覧ください。 |
 
 > [!IMPORTANT]
-> 先に進むには、**診断接続文字列**が有効である必要があります。
+> 先に進むには、**診断接続文字列** が有効である必要があります。
 
 ### <a name="generate-the-diagnostics-connection-string"></a>診断接続文字列を生成する
 

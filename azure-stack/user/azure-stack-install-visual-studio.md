@@ -3,16 +3,16 @@ title: Visual Studio をインストールして Azure Stack Hub に接続する
 description: Visual Studio をインストールして Azure Stack Hub に接続する方法について説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 06/11/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2020
-ms.openlocfilehash: 9fb0cf281fb97bc5cf255fb39507869b106d0a1b
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 89a6b4da29796cd29d988ea5869330a1486ce420
+ms.sourcegitcommit: 695f56237826fce7f5b81319c379c9e2c38f0b88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77702960"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94546516"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack-hub"></a>Visual Studio をインストールして Azure Stack Hub に接続する
 
@@ -30,9 +30,9 @@ Visual Studio を使用して Azure Resource Manager [テンプレート](azure-
 
     ![WebPI のインストール手順を示すスクリーンショット](./media/azure-stack-install-visual-studio/image1.png)
 
-5. [PowerShell for Azure Stack Hub をインストールします](../operator/azure-stack-powershell-install.md)。
+5. [PowerShell for Azure Stack Hub をインストールします](../operator/powershell-install-az-module.md)。
 
-6. インストールが完了したら、オペレーティング システムを再起動します。
+6. インストールが完了したら、コンピューターを再起動します。
 
 ## <a name="connect-to-azure-stack-hub-with-azure-ad"></a>Azure AD を使用して Azure Stack Hub に接続する
 
@@ -40,9 +40,9 @@ Visual Studio を使用して Azure Resource Manager [テンプレート](azure-
 
 2. **[表示]** メニューの **[Cloud Explorer]** を選択します。
 
-3. 新しいウィンドウで **[アカウントの追加]** を選択し、Azure Active Directory (Azure AD) の資格情報を使ってサインインします。  
+3. **[アカウントの管理]** を選択し、新しいウィンドウで、Azure Active Directory (Azure AD) の資格情報でサインインします。  
 
-    ![ログインして Azure Stack Hub に接続した後の Cloud Explorer のスクリーンショット](./media/azure-stack-install-visual-studio/image2.png)
+    ![ログインして Azure Stack Hub に接続した後の Cloud Explorer を示すスクリーンショット](./media/azure-stack-install-visual-studio/image2.png)
 
 ログインしたら、[テンプレートをデプロイ](azure-stack-deploy-template-visual-studio.md)するか、使用可能なリソースの種類やリソース グループを参照して独自のテンプレートを作成することができます。  
 
@@ -52,7 +52,7 @@ Visual Studio を使用して Azure Resource Manager [テンプレート](azure-
 
 2. **[ツール]** から **[オプション]** を選択します。
 
-3. **ナビゲーション ウィンドウ**の **[環境]** を展開し、 **[アカウント]** を選択します。
+3. ナビゲーション ウィンドウの **[環境]** を展開し、 **[アカウント]** を選択します。
 
 4. **[追加]** を選択し、User Azure Resource Manger エンドポイントを入力します。 Azure Stack Development Kit (ASDK) の URL は `https://management.local.azurestack/external` です。  Azure Stack Hub 統合システムの URL は `https://management.[Region}.[External FQDN]` です。
 
@@ -62,7 +62,7 @@ Visual Studio を使用して Azure Resource Manager [テンプレート](azure-
 
     Visual Studio は Azure Resource Manger を呼び出し、Azure Directory Federated Services (AD FS) の認証エンドポイントを含むエンドポイントを検出します。
 
-    ![ログインして Azure Stack Hub に接続した後の Cloud Explorer のスクリーンショット](./media/azure-stack-install-visual-studio/image6.png)
+    ![Azure Directory フェデレーション サービスのエンドポイントを示すスクリーンショット。](./media/azure-stack-install-visual-studio/image6.png)
 
 6. **[表示]** メニューの **[Cloud Explorer]** を選択します。
 

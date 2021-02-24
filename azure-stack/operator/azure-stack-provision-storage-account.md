@@ -2,17 +2,17 @@
 title: Azure Stack Hub でストレージ アカウントを作成する
 titleSuffix: Azure Stack Hub
 description: Azure Stack Hub でストレージ アカウントを作成する方法について説明します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: how-to
 ms.date: 1/22/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 2d4085605fc37e95c3f68db074d4a517f5296a7a
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 953ba2c8ee1c5d5950b4f42b0771d5c0976c2d89
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "78367915"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97869544"
 ---
 # <a name="create-storage-accounts-in-azure-stack-hub"></a>Azure Stack Hub でストレージ アカウントを作成する
 
@@ -22,7 +22,7 @@ Azure Stack Hub のストレージ アカウントには、BLOB や Table servic
 
    ![Azure Stack Hub 管理者ポータルでストレージ アカウントを作成する](media/azure-stack-provision-storage-account/image01.png)
 
-2. **[ストレージ アカウントの作成]** ブレードで、ストレージ アカウントの名前を入力します。 新しい**リソース グループ**を作成するか、既存のものを選択し、 **[作成]** をクリックしてストレージ アカウントを作成します。
+2. **[ストレージ アカウントの作成]** ブレードで、ストレージ アカウントの名前を入力します。 新しい **リソース グループ** を作成するか、既存のものを選択し、 **[作成]** をクリックしてストレージ アカウントを作成します。
 
    ![Azure Stack Hub 管理者ポータルでストレージ アカウントを確認する](media/azure-stack-provision-storage-account/image02.png)
 

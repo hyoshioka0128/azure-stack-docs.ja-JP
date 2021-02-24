@@ -8,12 +8,12 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 05/18/2019
-ms.openlocfilehash: 9c9838a93c0ee46ce0556cd86e9f6ae8b4c7c9d4
-ms.sourcegitcommit: c263a86d371192e8ef2b80ced2ee0a791398cfb7
+ms.openlocfilehash: 518062e13e06dead8564aa649796621dfb93db7a
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82848049"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974355"
 ---
 # <a name="app-service-on-azure-stack-hub-update-2-release-notes"></a>App Service on Azure Stack Hub Update 2 のリリース ノート
 
@@ -29,7 +29,7 @@ App Service on Azure Stack Hub Update 2 のビルド番号は **72.0.13698.10** 
 ## <a name="prerequisites"></a>前提条件
 
 > [!IMPORTANT]
-> Azure App Service で Kudu の SSO の処理方法が改善されたため、Azure App Service on Azure Stack Hub の新しいデプロイには、3 つのサブジェクトのワイルドカード証明書が必要になります。 新しいサブジェクトは、 **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>** です
+> Azure App Service で Kudu の SSO の処理方法が改善されたため、Azure App Service on Azure Stack Hub の新しいデプロイには、3 つのサブジェクトのワイルドカード証明書が必要になります。 新しいサブジェクトは次のとおりです: **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
 
 デプロイを開始する前に、[App Service on Azure Stack Hub の前提条件](azure-stack-app-service-before-you-get-started.md)に関するページを参照してください。
 
@@ -37,9 +37,9 @@ App Service on Azure Stack Hub Update 2 のビルド番号は **72.0.13698.10** 
 
 Azure App Service on Azure Stack Hub Update 2 には、次の機能強化と修正が含まれています。
 
-- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Hub Portal SDK バージョンと一貫性があります。
+- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール** の更新。 Azure Stack Hub Portal SDK バージョンと一貫性があります。
 
-- **Azure Functions ランタイム**が **v1.0.11612** に更新されました。
+- **Azure Functions ランタイム** が **v1.0.11612** に更新されました。
 
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 
@@ -55,11 +55,11 @@ Azure App Service on Azure Stack Hub Update 2 には、次の機能強化と修�
   - パブリック クラウドで Azure App Service と一致するように更新された .NET Core コンポーネント。
   - 更新された Kudu
 
-- デプロイ スロット機能の自動スワップを有効化: [自動スワップの構成](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#configure-auto-swap)。
+- デプロイ スロット機能の自動スワップを有効化: [自動スワップの構成](/azure/app-service/deploy-staging-slots#configure-auto-swap)。
 
 - 実稼働環境で機能のテストを有効化: [実稼働環境でのテストの概要](https://azure.microsoft.com/resources/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/)。
 
-- Azure Functions プロキシの有効化: [Azure Functions プロキシの操作](https://docs.microsoft.com/azure/azure-functions/functions-proxies)。
+- Azure Functions プロキシの有効化: [Azure Functions プロキシの操作](/azure/azure-functions/functions-proxies)。
 
 - App Service 管理者の拡張機能 UX のサポートが以下に追加されました。
   - シークレット ローテーション
@@ -85,7 +85,7 @@ Azure App Service on Azure Stack Hub Update 2 には、次の機能強化と修�
 
 ## <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>Azure App Service on Azure Stack Hub を運用するクラウド管理者に対する既知の問題
 
-[Azure Stack Hub 1804 リリース ノート](azure-stack-update-1903.md)内のドキュメントを参照してください。
+[Azure Stack Hub 1804 リリース ノート](./release-notes.md?view=azs-1804&preserve-view=true)内のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

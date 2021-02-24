@@ -3,16 +3,16 @@ title: Azure Stack Hub を使用して Linux VM を作成する
 description: Azure Stack Hub を使用して Linux サーバー VM を作成します。
 author: mattbriggs
 ms.topic: quickstart
-ms.date: 04/20/2020
+ms.date: 10/06/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 1/10/2020
-ms.openlocfilehash: 75056bbadb3ab5792bd51ed3dcb348ef3d42aa3e
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.lastreviewed: 10/06/2020
+ms.openlocfilehash: 2addd1c2e6c486afcdf3f5c6307653d65a9f545e
+ms.sourcegitcommit: 8187658b1d45dceed727aca3ae1b9b57aca04392
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81660435"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630806"
 ---
 # <a name="quickstart-create-a-linux-server-vm-by-using-the-azure-stack-hub-portal"></a>クイック スタート:Azure Stack Hub ポータルを使用して Linux サーバー VM を作成する
 
@@ -49,7 +49,7 @@ SSH キーの組を作成するには:
 
 1. **[PuTTY Key Generator]** ウィンドウで、 **[Type of key to generate]\(生成するキーの種類\)** を **[RSA]** に、 **[Number of bits in a generated key]\(生成されるキーのビット数\)** を **[2048]** に設定します。
 
-   ![PuTTY Key Generator の構成](media/azure-stack-quick-linux-portal/Putty01a.png)
+   ![PuTTY Key Generator の構成](media/azure-stack-quick-linux-portal/Putty01aa.png)
 
 1. **[Generate] \(生成)** を選択します。
 
@@ -57,13 +57,13 @@ SSH キーの組を作成するには:
 
 1. キーの生成が完了したら、 **[Save public key]\(公開キーを保存する\)** を選択してから、 **[Save private key]\(秘密キーを保存する\)** を選択してキーをファイルに保存します。
 
-   ![PuTTY Key Generator の結果](media/azure-stack-quick-linux-portal/Putty02a.png)
+   ![PuTTY Key Generator の結果](media/azure-stack-quick-linux-portal/Putty02aa.png)
 
 ## <a name="sign-in-to-the-azure-stack-hub-portal"></a>Azure Stack Hub ポータルにサインインする
 
 Azure Stack Hub ポータルのアドレスは、接続している Azure Stack Hub 製品によって異なります。
 
-* ASDK の場合は、 https://portal.local.azurestack.external に移動します。
+* ASDK の場合は、`https://portal.local.azurestack.external` に移動します。
 
 * Azure Stack Hub 統合システムの場合は、Azure Stack Hub オペレーターによって提供された URL に移動します。
 
@@ -71,30 +71,33 @@ Azure Stack Hub ポータルのアドレスは、接続している Azure Stack 
 
 1. **[リソースの作成]**  >  **[Compute]** の順に選択します。 `Ubuntu Server 16.04 LTS` を検索します。 名前を選択します。
 
-   ![Linux サーバーを作成する](media/azure-stack-quick-linux-portal/image1.png)
+   ![Linux サーバーを作成する](media/azure-stack-quick-linux-portal/image1a.png)
 
 1. **［作成］** を選択します
 
-   ![Linux サーバーを作成する - 作成](media/azure-stack-quick-linux-portal/image2.png)
+   ![Linux サーバーを作成する - 作成](media/azure-stack-quick-linux-portal/image2a.png)
 
 1. VM 情報を入力します。 [認証の種類] で **[SSH 公開キー]** を選択し、保存した SSH 公開キーを貼り付け、 **[OK]** を選択します。
 
-    > [!Note]  
+    > [!NOTE]  
     > キーの先頭または末尾の空白を必ず削除してください。
 
-   ![認証](media/azure-stack-quick-linux-portal/image3.png)
+   ![認証](media/azure-stack-quick-linux-portal/image3a.png)
 
 1. VM のサイズとして **[D1_V2]** を選択します。
 
-   ![Linux サーバーを作成する - サイズ](media/azure-stack-quick-linux-portal/image4.png)
+> [!Note]  
+> GPU 対応 VM を作成している場合は、VM サイズとして GPU VM **[NC_v3]** または **[NC4as_T4_v3]** を選択します。
+
+   ![Linux サーバーを作成する - サイズ](media/azure-stack-quick-linux-portal/image4a.png)
 
 1. **[設定]** ブレードで既定値への変更を入力します。マネージド ディスクを使用します。 SSH アクセスを許可する必要がある場合は **[SSH (22)]** を選択してポートを開きます。 お使いの構成の準備が整ったら、 **[OK]** を選択します。
 
-   ![Linux サーバーを作成する - 設定](media/azure-stack-quick-linux-portal/image5.png)
+   ![Linux サーバーを作成する - 設定](media/azure-stack-quick-linux-portal/image5a.png)
 
 1. [概要] で **[OK]** を選択して、VM のデプロイを開始します。 **[仮想マシン]** を選択して新しい VM を確認し、VM 名を検索して、検索結果でその VM を選択します。
 
-![Linux サーバーを作成する - 概要](media/azure-stack-quick-linux-portal/image5.png)
+![Linux サーバーを作成する - 概要](media/azure-stack-quick-linux-portal/image5a.png)
 
 ## <a name="connect-to-the-vm"></a>VM に接続します
 
@@ -102,7 +105,7 @@ Azure Stack Hub ポータルのアドレスは、接続している Azure Stack 
 
 1. **[PuTTY Configuration]\(PuTTY 構成\)** ページの **[Category]\(カテゴリ\)** ウィンドウで、下へスクロールして、 **[SSH]** を展開し、 **[Auth]\(認証\)** を選択します。 
 
-   ![VM を接続する](media/azure-stack-quick-linux-portal/putty03a.png)
+   ![VM を接続する](media/azure-stack-quick-linux-portal/putty03aa.png)
 
 1. **[Browse]\(参照\)** を選択し、保存した秘密キー ファイルを選択します。
 
@@ -112,7 +115,7 @@ Azure Stack Hub ポータルのアドレスは、接続している Azure Stack 
 
 1. **[Open]\(開く\)** を選択して、VM のセッションを開きます。
 
-   ![Linux セッション](media/azure-stack-quick-linux-portal/Putty05a.png)
+   ![Linux セッション](media/azure-stack-quick-linux-portal/Putty05aa.png)
 
 ## <a name="install-the-nginx-web-server"></a>NGINX Web サーバーのインストール
 
@@ -134,9 +137,9 @@ NGINX のインストールが完了したら、SSH セッションを閉じて 
 
 受信トラフィックと送信トラフィックのセキュリティは、ネットワーク セキュリティ グループ (NSG) で確保します。 Azure Stack Hub ポータルから VM が作成されると、SSH 接続用のポート 22 上の受信規則が作成されます。 この VM は Web サーバーをホストするため、ポート 80 上で Web トラフィックを許可するには NSG 規則を作成する必要があります。
 
-1. VM の **[概要]** ページで、**リソース グループ**の名前を選択します。
+1. VM の **[概要]** ページで、**リソース グループ** の名前を選択します。
 
-1. VM の**ネットワーク セキュリティ グループ**を選択します。 NSG は **[種類]** 列を使用して識別できます。
+1. VM の **ネットワーク セキュリティ グループ** を選択します。 NSG は **[種類]** 列を使用して識別できます。
 
 1. 左側のウィンドウの **[設定]** で **[受信セキュリティ規則]** を選択します。
 
@@ -152,9 +155,9 @@ NGINX のインストールが完了したら、SSH セッションを閉じて 
 
 NGINX がインストールされ、VM 上のポート 80 が開かれたので、その VM のパブリック IP アドレスを使用して Web サーバーにアクセスできます (パブリック IP アドレスは VM の **[概要]** ページに表示されます)。
 
-Web ブラウザーを開いて、*http://\<public IP address>* に移動します。
+Web ブラウザーを開いて､*http://\<public IP address>* に移動します｡
 
-![NGINX Web サーバーのようこそページ](media/azure-stack-quick-linux-portal/linux-05a.png)
+![NGINX Web サーバーのようこそページ](media/azure-stack-quick-linux-portal/linux-05aa.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

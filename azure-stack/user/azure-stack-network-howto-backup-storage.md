@@ -1,18 +1,18 @@
 ---
-title: Azure Stack Hub 上でストレージ アカウントをバックアップする方法
+title: Azure Stack Hub でストレージ アカウントをバックアップする
 description: Azure Stack Hub でストレージ アカウントをバックアップする方法について説明します。
 author: mattbriggs
 ms.topic: how-to
-ms.date: 5/27/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/19/2019
-ms.openlocfilehash: 1af0a054c90369ba3f1e97d55dac7e5eec20ee43
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 5067c873b2313f76c9213d89674ce00926efadc1
+ms.sourcegitcommit: 51ce5ba6cf0a377378d25dac63f6f2925339c23d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111967"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210973"
 ---
 # <a name="back-up-your-storage-accounts-on-azure-stack-hub"></a>Azure Stack Hub でストレージ アカウントをバックアップする
 
@@ -22,17 +22,17 @@ ms.locfileid: "84111967"
 
 このセクションでは、ソリューションの全体的な構造と主要部分について説明します。
 
-![Azure Stack Hub ストレージのバックアップ](./media/azure-stack-network-howto-backup-storage/azure-stack-storage-backup.png)
+![Azure Stack Hub ストレージのバックアップの全体的な構造を示す図。](./media/azure-stack-network-howto-backup-storage/azure-stack-storage-backup.png)
 
 ### <a name="application-layer"></a>アプリケーション レイヤー
 
-別の Azure Stack Hub スケール ユニット上のストレージ アカウント間でデータをレプリケートするには、複数の [PUT BLOB](https://docs.microsoft.com/rest/api/storageservices/put-blob) または [Put Block](https://docs.microsoft.com/rest/api/storageservices/put-block) 操作を発行して、オブジェクトを複数の場所に書き込みます。 または、プライマリ アカウントへの Put 操作が完了した後、アプリケーションから [Copy BLOB](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 操作を発行し、別のスケール ユニットでホストされているストレージ アカウントに BLOB をコピーできます。
+別の Azure Stack Hub スケール ユニット上のストレージ アカウント間でデータをレプリケートするには、複数の [PUT BLOB](/rest/api/storageservices/put-blob) または [Put Block](/rest/api/storageservices/put-block) 操作を発行して、オブジェクトを複数の場所に書き込みます。 または、プライマリ アカウントへの Put 操作が完了した後、アプリケーションから [Copy BLOB](/rest/api/storageservices/copy-blob) 操作を発行し、別のスケール ユニットでホストされているストレージ アカウントに BLOB をコピーできます。
 
 ### <a name="scheduled-copy-task"></a>スケジュールされたコピー タスク
 
 AzCopy は、ローカル ファイルシステム、Azure Cloud Storage、Azure Stack Hub ストレージ、および s3 からデータをコピーするために利用できる優れたツールです。 現在、AzCopy では、2 つの Azure Stack Hub ストレージ アカウント間でデータをコピーすることはできません。 ソース Azure Stack Hub ストレージ アカウントからターゲット Azure Stack Hub ストレージ アカウントにオブジェクトをコピーするには、中継ローカル ファイルシステムが必要です。
 
-詳細については、記事「[Azure Stack Hub Storage でのデータ転送ツールの使用](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer?view=azs-1908#azcopy)」の「AzCopy」を参照してください。
+詳細については、記事「[Azure Stack Hub Storage でのデータ転送ツールの使用](./azure-stack-storage-transfer.md#azcopy)」の「AzCopy」を参照してください。
 
 ### <a name="azure-stack-hub-source"></a>Azure Stack Hub (ソース)
 
@@ -54,13 +54,13 @@ Linux または Windows サーバーを中継サーバーとして作成でき�
 - Linux サーバーを設定する手順については、[Azure Stack Hub ポータルを使用した Linux サーバー VM の作成](azure-stack-quick-linux-portal.md)に関するページを参照してください。  
 - Windows Server を設定する手順については、[Azure Stack Hub ポータルを使用した Windows サーバー VM の作成](azure-stack-quick-windows-portal.md)に関するページを参照してください。  
 
-Windows Server を設定したら、[Azure Stack Hub PowerShell](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json) と [Azure Stack Hub ツール](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json)をインストールする必要があります。
+Windows Server を設定したら、[Azure Stack Hub PowerShell](../operator/powershell-install-az-module.md?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json) と [Azure Stack Hub ツール](../operator/azure-stack-powershell-download.md?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json)をインストールする必要があります。
 
 ## <a name="set-up-backup-for-storage-accounts"></a>ストレージ アカウントのバックアップを設定する
 
 1. ソースとターゲットのストレージ アカウントの BLOB エンドポイントを取得します。
 
-    ![Azure Stack Hub ストレージのバックアップ](./media/azure-stack-network-howto-backup-storage/back-up-step1.png)
+    ![ソースとターゲットのストレージ アカウントのプライマリ BLOB エンドポイントを示すスクリーンショット。](./media/azure-stack-network-howto-backup-storage/back-up-step1.png)
 
 2. ソースとターゲットのストレージ アカウントの SAS トークンを作成し、記録します。
 
@@ -80,13 +80,13 @@ Windows Server を設定したら、[Azure Stack Hub PowerShell](https://docs.mi
     export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09
     ```
 
-4. 中継サーバー上でスクリプトを作成します。 実際の**ストレージ アカウント**、**SAS キー**、および **ローカル ディレクトリのパス**を使用して、このコマンドを更新します。 スクリプトを実行して、**ソース** ストレージ アカウントからデータを増分コピーします。
+4. 中継サーバー上でスクリプトを作成します。 実際の **ストレージ アカウント**、**SAS キー**、および **ローカル ディレクトリのパス** を使用して、このコマンドを更新します。 スクリプトを実行して、**ソース** ストレージ アカウントからデータを増分コピーします。
 
     ```
     azcopy sync "https:/<storagaccount>/<container>?<SAS Key>" "C:\\myFolder" --recursive=true --delete-destination=true
     ```
 
-5.  **ストレージ アカウント**、**SAS キー**、および**ローカル ディレクトリのパスを入力します。  これを使用して、**ターゲット** ストレージ アカウントにデータを増分コピーします
+5.  **ストレージ アカウント**、**SAS キー**、および **ローカル ディレクトリのパス** を入力します。  これを使用して、**ターゲット** ストレージ アカウントにデータを増分コピーします
     
     ```
     azcopy sync "C:\\myFolder" "https:// <storagaccount>/<container>?<SAS Key>" --recursive=true --delete-destination=true
@@ -112,7 +112,7 @@ Windows Server を設定したら、[Azure Stack Hub PowerShell](https://docs.mi
 
     - Windows サーバーの場合:
 
-    Windows タスク スケジュールの使用の詳細については、「[開発者向けのタスク スケジューラ](https://docs.microsoft.com/windows/win32/taskschd/task-scheduler-start-page)」を参照してください。
+    Windows タスク スケジュールの使用の詳細については、「[開発者向けのタスク スケジューラ](/windows/win32/taskschd/task-scheduler-start-page)」を参照してください。
     
 
 ## <a name="use-your-storage-account-in-a-disaster"></a>災害時にストレージ アカウントを使用する

@@ -3,16 +3,16 @@ title: Azure Stack Hub でのオファーの委任
 description: オファーの作成やユーザーのサインアップなどのタスクを委任する方法について説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 12/15/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 4f32bc3e12689f75ad5c7e5b04e7fb36049271b3
-ms.sourcegitcommit: 278aaeca069213a98b90751253f6b15423634849
+ms.openlocfilehash: 806c4c565553fe76cb8347d763aa7ce20e000821
+ms.sourcegitcommit: a53ea4a28e715c80a99fa89e9d364bc4556558de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82742513"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97577076"
 ---
 # <a name="delegate-offers-in-azure-stack-hub"></a>Azure Stack Hub でのオファーの委任
 
@@ -22,17 +22,17 @@ Azure Stack Hub オペレーターが、ユーザーのサインアップとサ�
 
 ![Azure Stack Hub での委任のレベル](media/azure-stack-delegated-provider/image1.png)
 
-委任を使用すると、委任されたプロバイダーがオファーを管理する (*委任されたオファー*と呼ばれる) ため、エンド カスタマーはシステム管理者からの関与なしに、そのオファーのサブスクリプションを取得します。
+委任を使用すると、委任されたプロバイダーがオファーを管理する (*委任されたオファー* と呼ばれる) ため、エンド カスタマーはシステム管理者からの関与なしに、そのオファーのサブスクリプションを取得します。
 
 ## <a name="delegation-roles"></a>委任ロール
 
 次のロールは委任の一部です。
 
-* *Azure Stack Hub のオペレーター*は、Azure Stack Hub インフラストラクチャを管理し、オファー テンプレートを作成します。 オペレーターは、テナントにオファーを提供する業務を委任します。
+* *Azure Stack Hub のオペレーター* は、Azure Stack Hub インフラストラクチャを管理し、オファー テンプレートを作成します。 オペレーターは、テナントにオファーを提供する業務を委任します。
 
-* 委任された Azure Stack Hub オペレーターとは、*委任されたプロバイダー*と呼ばれるサブスクリプションで、*所有者*または*共同作成者*の権限を持つユーザーです。 他の組織 (他の Azure Active Directory (Azure AD) テナントなど) に属すことができます。
+* 委任された Azure Stack Hub オペレーターとは、*委任されたプロバイダー* と呼ばれるサブスクリプションで、*所有者* または *共同作成者* の権限を持つユーザーです。 他の組織 (他の Azure Active Directory (Azure AD) テナントなど) に属すことができます。
 
-* *ユーザー*はオファーにサインアップして、それらを使用してワークロードの管理、VM の作成、データの格納などを行います。
+* *ユーザー* はオファーにサインアップして、それらを使用してワークロードの管理、VM の作成、データの格納などを行います。
 
 ## <a name="delegation-steps"></a>委任手順
 

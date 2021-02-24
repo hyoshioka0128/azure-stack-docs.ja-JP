@@ -2,18 +2,18 @@
 title: Azure Stack Hub のトラブルシューティングを行う
 titleSuffix: Azure Stack
 description: VM、ストレージ、App Service に関する問題を含む、Azure Stack Hub のトラブルシューティング方法について学習します。
-author: justinha
+author: PatAltimore
 ms.topic: article
-ms.date: 05/13/2020
-ms.author: justinha
+ms.date: 01/20/2021
+ms.author: patricka
 ms.reviewer: prchint
-ms.lastreviewed: 15/13/2020
-ms.openlocfilehash: 4910a7aaa2462cb53c4ce89246c92a60f61d5017
-ms.sourcegitcommit: ddcd083430ca905653d412dc2f7b813218d79509
+ms.lastreviewed: 12/10/2020
+ms.openlocfilehash: 1706f028aff293f85ea5a0c1fb882a5d332d7196
+ms.sourcegitcommit: dd34ae1c6207aafb5218c31658123e913f51bf7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83375006"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98672879"
 ---
 # <a name="troubleshoot-issues-in-azure-stack-hub"></a>Azure Stack Hub の問題のトラブルシューティングを行う
 
@@ -21,7 +21,7 @@ ms.locfileid: "83375006"
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-以下のセクションには、Microsoft カスタマー サポート サービス (CSS) に送られてくる一般的な質問を取り上げたドキュメントのリンクが含まれています。
+以下のセクションには、Microsoft サポートに送られてくる一般的な質問を取り上げたドキュメントのリンクが含まれています。
 
 ### <a name="purchase-considerations"></a>購入に関する考慮事項
 
@@ -30,7 +30,7 @@ ms.locfileid: "83375006"
 
 ### <a name="updates-and-diagnostics"></a>更新と診断
 
-* [Azure Stack Hub で診断ツールを使用する方法](azure-stack-diagnostics.md)
+* [Azure Stack Hub で診断ツールを使用する方法](./diagnostic-log-collection.md)
 * [Azure Stack Hub システムの状態を検証する方法](azure-stack-diagnostic-test.md)
 * [更新プログラム パッケージのリリース周期](azure-stack-servicing-policy.md#update-package-release-cadence)
 * [ノードの状態の確認とトラブルシューティング](azure-stack-node-actions.md)
@@ -66,7 +66,7 @@ Azure Stack Hub のユーザーは、サブスクリプション、リソース 
 
 Azure リソースの組み込みロールが組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure PowerShell を使用して、Reader Support Tickets というカスタム ロールを作成します。
 
-* [チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-powershell)
+* [チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](/azure/role-based-access-control/tutorial-custom-role-powershell)
 
 ### <a name="manage-usage-and-billing-as-a-csp"></a>使用量と課金を CSP として管理する
 
@@ -80,7 +80,7 @@ Azure Stack Hub で使用する共有サービス アカウントの種類を選
 
 ### <a name="get-scale-unit-metrics"></a>スケール ユニットのメトリックを取得する
 
-PowerShell を使用して、CSS を利用せずに、スタンプ使用状況の情報を取得できます。 スタンプの使用状況を取得するには:
+PowerShell を使用して、Microsoft サポートを利用せずに、スタンプ使用状況の情報を取得できます。 スタンプの使用状況を取得するには:
 
 1. PEP セッションを作成します。
 2. `test-azurestack` を実行します。
@@ -91,6 +91,78 @@ PowerShell を使用して、CSS を利用せずに、スタンプ使用状況�
 詳細については、[Azure Stack Hub の診断](azure-stack-get-azurestacklog.md)に関する記述を参照してください。
 
 ## <a name="troubleshoot-virtual-machines-vms"></a>仮想マシン (VM) のトラブルシューティングを行う
+
+### <a name="reset-linux-vm-password"></a>Linux VM のパスワードをリセットする
+
+Linux VM のパスワードを忘れて、VMAccess 拡張機能の問題が原因で **[パスワードのリセット]** オプションが機能しない場合は、次の手順に従ってリセットを実行できます。
+
+1. 復旧 VM として使用する Linux VM を選択します。
+
+1. ユーザー ポータルにサインインします。
+   1. VM サイズ、NIC、パブリック IP、NSG、データ ディスクをメモしておきます。
+   1. 影響を受けた VM を停止します。
+   1. 影響を受けた VM を削除します。
+   1. 影響を受けた VM のディスクを、復旧 VM のデータ ディスクとしてアタッチします (ディスクが使用可能になるまでに数分かかる場合があります)。
+
+1. 復旧 VM にサインインし、次のコマンドを実行します。
+
+   ```
+   sudo su –
+   mkdir /tempmount
+   fdisk -l
+   mount /dev/sdc2 /tempmount /*adjust /dev/sdc2 as necessary*/
+   chroot /tempmount/
+   passwd root /*substitute root with the user whose password you want to reset*/
+   rm -f /.autorelabel /*Remove the .autorelabel file to prevent a time consuming SELinux relabel of the disk*/
+   exit /*to exit the chroot environment*/
+   umount /tempmount
+   ```
+
+1. ユーザー ポータルにサインインします。
+
+   1. 復旧 VM からディスクを切断します。
+   1. ディスクから VM を再作成します。
+   1. 必ず前の VM からパブリック IP を移行し、データ ディスクをアタッチするなどの操作を行ってください。
+
+
+元のディスクで直接変更を行うのではなく、元のディスクのスナップショットを作成し、そこから新しいディスクを作成することもできます。 詳細については、以下のトピックを参照してください。
+
+- [パスワードのリセット](/azure/virtual-machines/troubleshooting/reset-password)
+- [スナップショットからディスクを作成する](/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-portal-linux#create-a-disk-from-the-snapshot)
+- [ルート パスワードの変更とリセット](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/system_administrators_guide/sec-terminal_menu_editing_during_boot#sec-Changing_and_Resetting_the_Root_Password)
+
+
+### <a name="license-activation-fails-for-windows-server-2012-r2-during-provisioning"></a>プロビジョニング中に Windows Server 2012 R2 のライセンス認証が失敗する
+
+この場合、Windows で認証に失敗し、画面の右下隅に透かしが表示されます。 次のイベントが、C:\Windows\Panther の下にある WaSetup.xml ログに含まれます。
+
+```xml
+<Event time="2019-05-16T21:32:58.660Z" category="ERROR" source="Unattend">
+    <UnhandledError>
+        <Message>InstrumentProcedure: Failed to execute 'Call ConfigureLicensing()'. Will raise error to caller</Message>
+        <Number>-2147221500</Number>
+        <Description>Could not find the VOLUME_KMSCLIENT product</Description>
+        <Source>Licensing.wsf</Source>
+    </UnhandledError>
+</Event>
+```
+
+
+ライセンス認証を行うには、認証する SKU に対する仮想マシンの自動ライセンス認証 (AVMA) キーをコピーします。
+
+|Edition|AVMA キー|
+|-|-|
+|データセンター|Y4TGP-NPTV9-HTC2H-7MGQ3-DV4TW|
+|Standard|DBGBW-NPF86-BJVTX-K3WKJ-MTB6V|
+|要点|K2XGM-NMBT3-2R6Q8-WF2FK-P36R2|
+
+VM で、次のコマンドを実行します。
+
+```powershell
+slmgr /ipk <AVMA_key>
+```
+
+詳細については、[仮想マシンの自動ライセンス認証](/windows-server/get-started-19/vm-activation-19)に関する記事をご覧ください。
 
 ### <a name="default-image-and-gallery-item"></a>既定のイメージとギャラリー アイテム
 
@@ -115,7 +187,7 @@ Azure Stack Hub に VM をデプロイする前に、Windows Server イメージ
 
 ### <a name="azure-storage-explorer-not-working-with-azure-stack-hub"></a>Azure Stack Hub で Azure Storage Explorer が動作しない
 
-切断されたシナリオで統合システムを使用する場合は、エンタープライズ証明機関 (CA) を利用することをお勧めします。 ルート証明書を Base-64 形式でエクスポートしてから、Azure Storage Explorer にインポートします。 必ず、Resource Manager エンドポイントから末尾のスラッシュ (`/`) を削除してください。 詳細については、「[Azure Stack Hub への接続を準備する](/azure-stack/user/azure-stack-storage-connect-se)」を参照してください。
+切断されたシナリオで統合システムを使用する場合は、エンタープライズ証明機関 (CA) を利用することをお勧めします。 ルート証明書を Base-64 形式でエクスポートしてから、Azure Storage Explorer にインポートします。 必ず、Resource Manager エンドポイントから末尾のスラッシュ (`/`) を削除してください。 詳細については、「[Azure Stack Hub への接続を準備する](../user/azure-stack-storage-connect-se.md)」を参照してください。
 
 ## <a name="troubleshoot-app-service"></a>App Service のトラブルシューティング
 
@@ -127,11 +199,11 @@ App Service に必要な Create-AADIdentityApp.ps1 スクリプトが失敗す�
 
 Azure Stack Hub の修正プログラムと更新プログラムのプロセスは、オペレーターが更新プログラム パッケージを一貫した合理的な方法で適用できるように設計されています。 まれに、修正プログラムや更新プログラムのプロセス中に問題が発生することがあります。 修正プログラムや更新プログラムのプロセス中に問題が発生した場合は、以下の手順を実行することをお勧めします。
 
-0. **前提条件**:[更新プログラムのアクティビティのチェックリスト](release-notes-checklist.md)に従っていること、および[事前ログ収集を有効](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md)にしていることを確認してください。
+0. **前提条件**:[更新プログラムのアクティビティのチェックリスト](release-notes-checklist.md)に従っていること、および [事前ログ収集を有効](./diagnostic-log-collection.md#send-logs-proactively)にしていることを確認してください。
 
 1. 更新が失敗したときに作成されたエラー アラートの修復手順に従います。
 
-2. 問題を解決できない場合は、[Azure Stack Hub のサポート チケット](azure-stack-help-and-support-overview-tzl.md)を作成します。 問題が発生した期間に[収集されたログ](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md)があることを確認してください。
+2. 問題を解決できない場合は、[Azure Stack Hub のサポート チケット](./azure-stack-help-and-support-overview.md)を作成します。 問題が発生した期間に[収集されたログ](./diagnostic-log-collection.md#send-logs-now)があることを確認してください。 重大なアラートまたは警告が発生して更新が失敗した場合は、アラートの指示に従いエラーを調べて Microsoft カスタマー サポート サービスに連絡し、スケール ユニットが長時間エラー状態のままにならないようにすることが重要です。 スケール ユニットを長時間にわたって更新失敗状態のままにすると、解決するのがいっそう困難な別の問題が後で発生する可能性があります。
 
 ## <a name="common-azure-stack-hub-patch-and-update-issues"></a>Azure Stack Hub の修正プログラムと更新プログラムに関する一般的な問題
 
@@ -146,3 +218,23 @@ Azure Stack Hub の修正プログラムと更新プログラムのプロセス�
 **対応策**: **[今すぐインストール]** をもう一度クリックすることで、この問題を回避できます。 問題が解決しない場合は、[更新プログラムのインストール](azure-stack-apply-updates.md?#install-updates-and-monitor-progress)に関するセクションに従って、更新プログラム パッケージを手動でアップロードすることをお勧めします。
 
 **発生頻度**: 共通
+
+### <a name="warnings-and-errors-reported-while-update-is-in-progress"></a>更新の進行中に報告される警告とエラー
+
+**適用先**: この問題は、サポートされているすべてのリリースに適用されます。
+
+**原因**:Azure Stack Hub の更新の状態が **進行中** の場合、ポータルで警告とエラーが報告されることがあります。 コンポーネントは、アップグレード中に他のコンポーネントを待機しているためにタイムアウトし、エラーが発生する場合があります。 Azure Stack Hub には、断続的なエラーが原因による一部のタスクを再試行または修復するメカニズムがあります。
+
+**対応策**: Azure Stack Hub の更新の状態が **進行中** の場合、ポータルで報告された警告とエラーは無視できます。
+
+**発生頻度**: 共通
+
+::: moniker range="azs-2002"
+### <a name="2002-update-failed"></a>2002 更新プログラムが失敗
+
+**適用先**: この問題は 2002 リリースにのみ適用されます。
+
+**原因**:2002 更新プログラムを実行しようとすると、更新プログラムが失敗し、`The private network parameter is missing from cloud parameters. Please use set-azsprivatenetwork cmdlet to set private networkTrace` というメッセージが表示されることがあります。
+
+**対応策**: [プライベート内部ネットワークを設定します](./azure-stack-network.md?view=azs-2002&preserve-view=true#private-network)。
+::: moniker-end

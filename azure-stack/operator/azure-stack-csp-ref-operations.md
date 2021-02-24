@@ -3,16 +3,16 @@ title: Azure Stack Hub に使用状況の追跡のためのテナントを登録
 description: Azure Stack Hub でのテナントの登録方法とテナントの使用状況の追跡方法について学習します。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 11/17/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 10/14/2019
-ms.openlocfilehash: 89ef1d91ae2c6cb41a26bed04cb87abf33da1650
-ms.sourcegitcommit: 804f94f288859027b8249d138b14e8bc1501e009
+ms.lastreviewed: 11/17/2020
+ms.openlocfilehash: 990ac200fdf36e951dbee9d2fed96f4918a9a8bd
+ms.sourcegitcommit: 8c745b205ea5a7a82b73b7a9daf1a7880fd1bee9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84158369"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95517805"
 ---
 # <a name="register-tenants-for-usage-tracking-in-azure-stack-hub"></a>Azure Stack Hub に使用状況の追跡のためのテナントを登録する
 
@@ -25,7 +25,7 @@ ms.locfileid: "84158369"
 
 この操作は、ご自分の登録に新しいテナントを追加するときに使用します。 テナントの使用状況は、Azure Active Directory (Azure AD) テナントに接続されている Azure サブスクリプションの下で報告されます。
 
-この操作は、テナントに関連付けられているサブスクリプションを変更する場合にも使用できます。 以前のマッピングを上書きするには、PUT または **New-AzureRMResource** PowerShell コマンドレットを呼び出します。
+この操作は、テナントに関連付けられているサブスクリプションを変更する場合にも使用できます。 以前のマッピングを上書きするには、PUT または **New-AzResource** PowerShell コマンドレットを呼び出します。 AzureRM PowerShell モジュールを使用している場合は、**New-AzureResource** PowerShell コマンドレットを使用します。
 
 テナントと関連付けることができる Azure サブスクリプションは 1 つだけです。 既存のテナントに第 2 のサブスクリプションを追加すると、最初のサブスクリプションは上書きされます。
 
@@ -47,14 +47,24 @@ Azure Stack Hub と API プロファイルの詳細については、「[Azure S
 > [!NOTE]  
 > テナントは、それが使用する各 Azure Stack Hub デプロイに登録されている必要があります。 テナントで複数の Azure Stack Hub を使用する場合は、各デプロイの初期登録をテナントのサブスクリプションで更新します。
 
-### <a name="powershell"></a>PowerShell
 
-テナントを追加するには、**New-AzureRmResource** コマンドレットを使用します。 [Azure Stack Hub に接続](azure-stack-powershell-configure-admin.md)してから、管理者特権のプロンプトから次のコマンドレットを使用します。
+### <a name="powershell"></a>PowerShell
+### <a name="az-modules"></a>[Az モジュール](#tab/az1)
+
+テナントを追加するには、**New-AzResource** コマンドレットを使用します。 [Azure に接続](/powershell/azure/get-started-azureps)し、管理者特権のプロンプトから次のコマンドを実行します。
 
 ```powershell  
-New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+New-AzResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+```
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm1)
+
+テナントを追加するには、**New-AzureRmResource** コマンドレットを使用します。 [Azure に接続](/powershell/azure/get-started-azureps)し、管理者特権のプロンプトから次のコマンドを実行します。
+
+```powershell  
+New-AzResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
 ```
 
+---
 ### <a name="api-call"></a>API 呼び出し
 
 **Operation**:PUT  
@@ -79,12 +89,23 @@ New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/reso
 
 ### <a name="powershell"></a>PowerShell
 
-登録されているすべてのテナントを一覧表示するには、**Get-AzureRmResource** コマンドレットを使用します。 [Azure Stack Hub に接続](azure-stack-powershell-configure-admin.md)してから、管理者特権のプロンプトから次のコマンドレットを実行します。
+### <a name="az-modules"></a>[Az モジュール](#tab/az2)
+
+登録されているすべてのテナントを一覧表示するには、**Get-AzResource** コマンドレットを使用します。 [Azure Stack Hub に接続](azure-stack-powershell-configure-admin.md)してから、管理者特権のプロンプトから次のコマンドレットを実行します。
 
 ```powershell
-Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
+Get-AzResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
 ```
 
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm2)
+
+登録されているすべてのテナントを一覧表示するには、**Get-AzureRMResource** コマンドレットを使用します。 [Azure Stack Hub に接続](azure-stack-powershell-configure-admin.md)してから、管理者特権のプロンプトから次のコマンドレットを実行します。
+
+```powershell
+Get-AzureRMResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
+```
+
+---
 ### <a name="api-call"></a>API 呼び出し
 
 GET 操作を使用して、すべてのテナント マッピングの一覧を取得できます。
@@ -128,11 +149,23 @@ GET 操作を使用して、すべてのテナント マッピングの一覧を
 
 ### <a name="powershell"></a>PowerShell
 
-テナントを削除するには、**Remove-AzureRmResource** コマンドレットを使用します。 [Azure Stack Hub に接続](azure-stack-powershell-configure-admin.md)してから、管理者特権のプロンプトから次のコマンドレットを実行します。
+### <a name="az-modules"></a>[Az モジュール](#tab/az3)
+
+テナントを削除するには、**Remove-AzResource** コマンドレットを使用します。 [Azure Stack Hub に接続](azure-stack-powershell-configure-admin.md)してから、管理者特権のプロンプトから次のコマンドレットを実行します。
 
 ```powershell
-Remove-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+Remove-AzResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
 ```
+
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm3)
+
+テナントを削除するには、**Remove-AzureRMResource** コマンドレットを使用します。 [Azure Stack Hub に接続](azure-stack-powershell-configure-admin.md)してから、管理者特権のプロンプトから次のコマンドレットを実行します。
+
+```powershell
+Remove-AzureRMResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+```
+
+---
 
 ### <a name="api-call"></a>API 呼び出し
 

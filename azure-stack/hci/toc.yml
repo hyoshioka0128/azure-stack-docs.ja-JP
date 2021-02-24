@@ -4,50 +4,210 @@
   items:
     - name: Azure Stack HCI とは
       href: overview.md
-- name: はじめに
+    - name: Windows Server との比較
+      href: concepts/compare-windows-server.md
+    - name: Azure Stack Hub との比較
+      href: concepts/compare-azure-stack-hub.md
+    - name: リリース情報
+      href: release-information.md
+    - name: リリース ノート
+      href: 'https://support.microsoft.com/help/4595086'
+    - name: よく寄せられる質問
+      href: faq.md
+- name: クイックスタート
   items:
     - name: Windows Admin Center で Azure Stack HCI を使用する
       href: get-started.md
+    - name: Azure Stack HCI クラスターを作成する
+      href: deploy/deployment-quickstart.md
+- name: 配置
+  items:
+    - name: デプロイの概要
+      href: deploy/deployment-overview.md
+    - name: Azure Stack HCI OS のデプロイ
+      href: deploy/operating-system.md
+    - name: クラスターの作成
+      href: deploy/create-cluster.md
+    - name: 新しいハードウェアに移行する
+      href: deploy/migrate-cluster-new-hardware.md
+    - name: 同じハードウェア上で移行する
+      href: deploy/migrate-cluster-same-hardware.md
+    - name: Azure に登録する
+      href: deploy/register-with-azure.md
+    - name: クラスターを検証する
+      href: deploy/validate.md
+    - name: PowerShell でデプロイする
+      items:
+        - name: PowerShell を使用してクラスターを作成する
+          href: deploy/create-cluster-powershell.md
+    - name: ワークロードのデプロイ
+      items:
+        - name: ブランチ オフィスとエッジ
+          href: deploy/branch-office-edge.md
+        - name: 仮想デスクトップ インフラストラクチャ
+          href: deploy/virtual-desktop-infrastructure.md
+        - name: SQL Server
+          href: deploy/sql-server.md
+        - name: エンタープライズ向け高信頼仮想化
+          href: deploy/trusted-enterprise-virtualization.md
 - name: 管理する
   items:
-    - name: ボリュームの作成
-      href: manage/create-volumes.md
-    - name: ボリュームの拡張
-      href: manage/extend-volumes.md
-    - name: ボリュームを削除する
-      href: manage/delete-volumes.md
-    - name: ドライブの交換
-      href: manage/replace-drives.md
-    - name: クラスターの管理
-      href: manage/cluster.md
-    - name: PowerShell を使用したクラスターの管理
-      href: manage/cluster-powershell.md
-    - name: サーバーの追加または削除
-      href: manage/add-cluster.md
-    - name: Azure Site Recovery を使用する
-      href: manage/azure-site-recovery.md
-    - name: Azure Monitor による監視
-      href: manage/azure-monitor.md
     - name: VM の管理
-      href: manage/vm.md
-    - name: PowerShell で VM を管理する
-      href: manage/vm-powershell.md
-    - name: Linux VM への GPU のアタッチ
-      href: manage/attach-gpu-to-linux-vm.md
+      items:
+        - name: VM の管理
+          href: manage/vm.md
+        - name: PowerShell で VM を管理する
+          href: manage/vm-powershell.md
+        - name: VM アフィニティ ルールの作成
+          href: manage/vm-affinity.md
+        - name: VM の負荷分散
+          href: manage/vm-load-balancing.md
+        - name: Linux VM への GPU のアタッチ
+          href: manage/attach-gpu-to-linux-vm.md
+    - name: ストレージの管理
+      items:
+        - name: ボリュームの作成
+          href: manage/create-volumes.md
+        - name: 拡張ボリュームの作成
+          href: manage/create-stretched-volumes.md
+        - name: ボリュームの保護
+          href: manage/volume-encryption-deduplication.md
+        - name: ボリュームの拡張
+          href: manage/extend-volumes.md
+        - name: ボリュームを削除する
+          href: manage/delete-volumes.md
+        - name: ドライブの交換
+          href: manage/replace-drives.md
+        - name: CSV インメモリ読み取りキャッシュを使用する
+          href: manage/use-csv-cache.md
+        - name: SMB マルチチャネルの管理
+          href: manage/manage-smb-multichannel.md
+    - name: クラスターの管理
+      items:
+        - name: クラスターの管理
+          href: manage/cluster.md
+        - name: PowerShell を使用したクラスターの管理
+          href: manage/cluster-powershell.md
+        - name: クラスターの更新
+          href: manage/update-cluster.md
+        - name: クラスターを監視する
+          href: manage/monitor-cluster.md
+        - name: クラスター監視のセットアップ
+          href: manage/witness.md
+        - name: DISKSPD を使用してワークロードをテストする
+          href: manage/diskspd-overview.md
+        - name: サーバーの追加または削除
+          href: manage/add-cluster.md
+        - name: メンテナンスのためにサーバーをオフラインにする
+          href: manage/maintain-servers.md
+        - name: 言語の変更
+          href: manage/languages.md
+        - name: プライバシー設定を変更する
+          href: manage/change-privacy-settings.md
+        - name: クラスター検証レポートのトラブルシューティング
+          href: manage/validate-qos.md
+        - name: CredSSP のトラブルシューティング
+          href: manage/troubleshoot-credssp.md
+    - name: SDN の管理
+      items:
+        - name: SDN インフラストラクチャの展開
+          href: manage/sdn-express.md
+        - name: PowerShell でデータセンター ファイアウォールを使用する
+          href: manage/use-datacenter-firewall-powershell.md
+        - name: テナントの論理ネットワークを管理する
+          href: manage/tenant-logical-networks.md
+        - name: テナントの仮想ネットワークを管理する
+          href: manage/tenant-virtual-networks.md
+    - name: Azure サービスの管理
+      items:
+        - name: Windows Admin Center を Azure に登録する
+          href: manage/register-windows-admin-center.md
+        - name: Azure でのクラスター登録の管理
+          href: manage/manage-azure-registration.md
+        - name: Azure Portal の使用
+          href: manage/azure-portal.md
+        - name: Azure Monitor による監視
+          href: manage/azure-monitor.md
+        - name: Azure Site Recovery を使用する
+          href: manage/azure-site-recovery.md
+        - name: Azure Backup の使用
+          href: manage/use-azure-backup.md
+        - name: Azure ネットワーク アダプターを使用する
+          href: manage/use-azure-network-adapter.md
 - name: 概念
   items:
-    - name: ドライブの選択
-      href: concepts/choose-drives.md
-    - name: ボリュームの計画
-      href: concepts/plan-volumes.md
-    - name: キャッシュの理解
-      href: concepts/cache.md
-    - name: フォールト トレランスとストレージの効率性
-      href: concepts/fault-tolerance.md
-    - name: クラスターと記憶域プールのクォーラム
-      href: concepts/quorum.md
+    - name: ストレージとクラスター
+      items:
+        - name: システム要件
+          href: concepts/system-requirements.md
+        - name: ドライブの選択
+          href: concepts/choose-drives.md
+        - name: ドライブの対称性に関する考慮事項
+          href: concepts/drive-symmetry-considerations.md
+        - name: ボリュームの計画
+          href: concepts/plan-volumes.md
+        - name: 記憶域プール キャッシュについて
+          href: concepts/cache.md
+        - name: フォールト トレランスとストレージの効率性
+          href: concepts/fault-tolerance.md
+        - name: ストレッチ クラスター
+          href: concepts/stretched-clusters.md
+        - name: クラスターと記憶域プールのクォーラム
+          href: concepts/quorum.md
+    - name: ネットワーク
+      items:
+        - name: 物理ネットワークの要件
+          href: concepts/physical-network-requirements.md
+        - name: ホスト ネットワークの要件
+          href: concepts/host-network-requirements.md
+        - name: ソフトウェア定義ネットワーク (SDN)
+          href: concepts/software-defined-networking.md
+        - name: SDN インフラストラクチャを計画する
+          href: concepts/plan-software-defined-networking-infrastructure.md
+        - name: ネットワーク コント ローラーの概要
+          href: concepts/network-controller-overview.md
+        - name: ネットワーク コントローラーを計画する
+          href: concepts/network-controller.md
+        - name: データセンター ファイアウォールの概要
+          href: concepts/datacenter-firewall-overview.md
+        - name: ソフトウェア ロード バランサーの概要
+          href: concepts/software-load-balancer.md
+        - name: RAS ゲートウェイの概要
+          href: concepts/gateway-overview.md
+        - name: ルート リフレクターの概要
+          href: concepts/route-reflector-overview.md
+    - name: メンテナンスとセキュリティ
+      items:
+        - name: 課金
+          href: concepts/billing.md
+        - name: ファイアウォールの構成
+          href: concepts/configure-firewalls.md
+        - name: 更新とアップグレード
+          href: concepts/updates.md
+        - name: セキュリティに関する考慮事項
+          href: concepts/security.md
+        - name: ユーティリティ アプリケーション
+          href: concepts/utility-applications.md
+        - name: データ コレクション
+          href: concepts/data-collection.md
 - name: リファレンス
   items:
+    - name: Azure 登録の Azure CLI コマンド
+      href: /cli/azure/ext/stack-hci/stack-hci
+    - name: Azure 登録の PowerShell コマンド
+      href: /powershell/module/az.stackhci
+    - name: ARM Azure Stack HCI サービス API のための Go パッケージ
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci'
+    - name: Azure Stack HCI Java サービスのクラスとインターフェイス
+      href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
+    - name: Azure Stack HCI 管理サービスの Python パッケージ
+      href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python
+    - name: Azure Stack HCI JavaScript パッケージ
+      href: /javascript/api/overview/azure/azurestack/stackhci?view=azure-node-latest
+    - name: Azure Stack HCI REST API リファレンス
+      href: /rest/api/stackhci
+    - name: Azure Stack HCI のための .NET 名前空間
+      href: /dotnet/api/overview/azure/stackhci/management
     - name: Hyper-V PowerShell コマンド
       href: /powershell/module/hyper-v
     - name: Storage PowerShell コマンド
@@ -66,25 +226,31 @@
       href: /powershell/module/dcbqos
 - name: 関連項目
   items:
+    - name: Azure Stack HCI の Azure Kubernetes Service
+      href: ../aks-hci/overview.md
     - name: Azure Stack ファミリ
       href: ../index.yml
-    - name: Azure Stack Hub
-      href: /azure-stack/operator/azure-stack-overview?view=azs-2002
-    - name: Azure Stack Edge
-      href: /azure/databox-online/data-box-edge-overview
+    - name: Azure ハイブリッド クラウド
+      href: /hybrid
     - name: Windows Server
       href: /windows-server/
     - name: Windows Admin Center
       href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
-    - name: Azure ハイブリッド サービス
-      href: /windows-server/manage/windows-admin-center/azure
-    - name: 記憶域スペース ダイレクト
-      href: /windows-server/storage/storage-spaces/storage-spaces-direct-overview
-    - name: フェールオーバー クラスタリング
-      href: /windows-server/failover-clustering/failover-clustering-overview
-    - name: Hyper-V
-      href: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
     - name: ソフトウェアによるネットワーク
       href: /windows-server/networking/sdn
     - name: System Center
       href: /system-center/
+- name: リソース
+  items:
+    - name: Azure Stack HCI の製品ページ
+      href: 'https://azure.com/hci'
+    - name: 評価ガイド
+      href: 'https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/azure-stack/hci/'
+    - name: サポート
+      href: manage/get-support.md
+    - name: トレーニング
+      href: /learn/paths/azure-stack-hci-foundations/
+    - name: アーカイブされたリリース ノート
+      href: preview-release-notes.md

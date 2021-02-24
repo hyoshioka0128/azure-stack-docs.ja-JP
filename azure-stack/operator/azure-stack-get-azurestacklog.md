@@ -1,23 +1,23 @@
 ---
 title: 特権エンドポイント (PEP) を使用して診断ログを収集する
 description: 管理者ポータルまたは PowerShell スクリプトを使用して Azure Stack Hub 内で診断ログをオンデマンドで収集する方法について説明します。
-author: justinha
+author: PatAltimore
+ms.custom: conteperfq4
 ms.topic: article
-ms.date: 03/05/2020
-ms.author: justinha
+ms.date: 09/02/2020
+ms.author: patricka
 ms.reviewer: shisab
-ms.lastreviewed: 03/05/2020
-ms.openlocfilehash: df5a98e8526181a84d8b214fbdf82eb1dba00088
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.lastreviewed: 09/02/2020
+ms.openlocfilehash: 95ca8364e06176f1a96fae388e1d8047eb4a0403
+ms.sourcegitcommit: 6efe456173ce77d52789144709195b6291d0d707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "79520652"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97950724"
 ---
 # <a name="send-azure-stack-hub-diagnostic-logs-by-using-the-privileged-endpoint-pep"></a>特権エンドポイント (PEP) を使用して Azure Stack Hub 診断ログを送信する
 
 <!--how do you look up the PEP IP address. You look up the azurestackstampinfo.json--->
-
 
 統合システムで Get-AzureStackLog を実行するには、特権エンドポイント (PEP) へのアクセス権が必要です。 PEP を使用してログを収集するのに実行できるスクリプト例を次に示します。 実行中のログ収集をキャンセルして新しいログ収集を開始する場合は、新しいログ収集を開始するまで 5 分待ち、`Remove-PSSession -Session $session` を入力してください。
 
@@ -83,25 +83,41 @@ if ($session) {
 * 付加価値 RP のログを収集します。 一般的な構文は次のとおりです。
  
   ```powershell
-  Get-AzureStackLogs -FilterByResourceProvider <<value-add RP name>>
+  Get-AzureStackLog -FilterByResourceProvider <<value-add RP name>>
   ```
- 
+  
+  ::: moniker range=">= azs-2008"
+
+  SQL RP のログを収集するには: 
+
+  ```powershell
+  Get-AzureStackLog -FilterByResourceProvider SQLAdapter
+  ```
+
+  MySQL RP のログを収集するには: 
+
+  ```powershell
+  Get-AzureStackLog -FilterByResourceProvider MySQLAdapter
+  ```
+  
+  ::: moniker-end
+
   IoT Hub のログを収集するには: 
 
   ```powershell
-  Get-AzureStackLogs -FilterByResourceProvider IotHub
+  Get-AzureStackLog -FilterByResourceProvider iothubServiceHealth
   ```
  
   Event Hubs のログを収集するには:
 
   ```powershell
-  Get-AzureStackLogs -FilterByResourceProvider eventhub
+  Get-AzureStackLog -FilterByResourceProvider eventhub
   ```
  
   Azure Stack Edge のログを収集するには:
 
   ```powershell
-  Get-AzureStackLogs -FilterByResourceProvide databoxedge
+  Get-AzureStackLog -FilterByResourceProvide databoxedge
   ```
 
 * ログを収集して、指定された Azure Storage BLOB コンテナーに保存します。 この操作の一般的な構文は次のとおりです。
@@ -137,12 +153,10 @@ if ($session) {
   9. **作成** を選択します。
   10. Shared Access Signature が表示されます。 URL の部分をコピーし、`-OutputSasUri` パラメーターに入力します。
 
-### <a name="parameter-considerations"></a>パラメーターに関する考慮事項 
+### <a name="parameter-considerations"></a>パラメーターに関する考慮事項
 
 * **OutputSharePath** パラメーターと **OutputShareCredential** パラメーターは、ユーザー指定の場所にログを格納するために使用されます。
-
 * **FromDate** パラメーターと **ToDate** パラメーターを使用して、特定の期間のログを収集できます。 これらのパラメーターが指定されない場合、既定では過去 4 時間のログが収集されます。
-
 * コンピューター名でログをフィルター処理するには、**FilterByNode** パラメーターを使用します。 次に例を示します。
 
     ```powershell
@@ -159,28 +173,175 @@ if ($session) {
 * ダンプ ファイルのログ収集は既定で無効になっています。 これを有効にするには、**IncludeDumpFile** スイッチ パラメーターを使用します。
 * 現時点では **FilterByRole** パラメーターを使用して、次のロールごとにログ収集をフィルター処理できます。
 
-  |   |   |   |    |     |
-  | - | - | - | -  |  -  |
-  |ACS                   |CA                             |HRP                            |OboService                |VirtualMachines|
-  |ACSBlob               |CacheService                   |IBC                            |OEM                       |WAS            |
-  |ACSDownloadService    |Compute                        |InfraServiceController         |OnboardRP                 |WASPUBLIC|
-  |ACSFabric             |CPI                            |KeyVaultAdminResourceProvider  |PXE                       |         |
-  |ACSFabric           |CRP                            |KeyVaultControlPlane           |QueryServiceCoordinator   |         | 
-  |ACSMetrics            |DeploymentMachine              |KeyVaultDataPlane              |QueryServiceWorker        |         |
-  |ACSMigrationService   |DiskRP                         |KeyVaultInternalControlPlane   |SeedRing                  |         |
-  |ACSMonitoringService  |Domain                         |KeyVaultInternalDataPlane      |SeedRingServices          |         |
-  |ACSSettingsService    |ECE                            |KeyVaultNamingService          |SLB                       |         |
-  |ACSTableMaster        |EventAdminRP                   |MDM                            |SQL                       |         |
-  |ACSFabric        |EventRP                        |MetricsAdminRP                 |SRP                       |         |
-  |ACSWac                |ExternalDNS                    |MetricsRP                      |Storage                   |         |
-  |ADFS                  |FabricRing                     |MetricsServer                  |StorageController         |         |
-  |ApplicationController |FabricRingServices             |MetricsStoreService            |URP                       |         |
-  |ASAppGateway          |FirstTierAggregationService    |MonAdminRP                     |SupportBridgeController   |         |
-  |AzureBridge           |FRP                            |MonRP                          |SupportRing               |         |
-  |AzureMonitor          |Gateway                        |NC                             |SupportRingServices       |         |
-  |BareMetal             |HealthMonitoring               |NonPrivilegedAppGateway        |SupportBridgeRP           |         |
-  |BRP                   |HintingServiceV2               |NRP                            |UsageBridge               |         |
-  |   |   |   |    |     | 
+:::row:::
+   :::column span="":::
+
+      ACS
+
+      ACSBlob
+
+      ACSDownloadService
+
+      ACSFabric
+
+      ACSFabric
+
+      ACSMetrics
+
+      ACSMigrationService
+
+      ACSMonitoringService
+
+      ACSSettingsService
+
+      ACSTableMaster
+
+      ACSFabric
+
+      ACSWac
+
+      ADFS
+
+      ApplicationController
+
+      ASAppGateway
+
+      AzureBridge
+
+      AzureMonitor
+
+      BareMetal
+
+      BRP
+
+      CA
+
+      CacheService
+
+      Compute
+
+      CPI
+
+      CRP
+
+      DeploymentMachine
+
+      DiskRP
+
+      Domain
+
+   :::column-end:::
+   :::column span="":::
+
+      ECE
+
+      EventAdminRP
+
+      EventRP
+
+      ExternalDNS
+
+      FabricRing
+
+      FabricRingServices
+
+      FirstTierAggregationService
+
+      FRP
+
+      Gateway
+
+      HealthMonitoring
+
+      HintingServiceV2
+
+      HRP
+
+      IBC
+
+      InfraServiceController
+
+      KeyVaultAdminResourceProvider
+
+      KeyVaultControlPlane
+
+      KeyVaultDataPlane
+
+      KeyVaultInternalControlPlane
+
+      KeyVaultInternalDataPlane
+
+      KeyVaultNamingService
+
+      MDM
+
+      MetricsAdminRP
+
+      MetricsRP
+
+      MetricsServer
+
+      MetricsStoreService
+
+      MonAdminRP
+
+      MonRP
+
+   :::column-end:::
+   :::column span="":::
+
+      NC
+
+      NonPrivilegedAppGateway
+
+      NRP
+
+      OboService
+
+      OEM
+
+      OnboardRP
+
+      PXE
+
+      QueryServiceCoordinator
+
+      QueryServiceWorker
+
+      SeedRing
+
+      SeedRingServices
+
+      SLB
+
+      SQL
+
+      SRP
+
+      ストレージ
+
+      StorageController
+
+      URP
+
+      SupportBridgeController
+
+      SupportRing
+
+      SupportRingServices
+
+      SupportBridgeRP
+
+      UsageBridge
+
+      VirtualMachines
+
+      WAS
+
+      WASPUBLIC
+   
+   :::column-end:::
+:::row-end:::
 
 ### <a name="additional-considerations-on-diagnostic-logs"></a>診断ログに関するその他の考慮事項
 
@@ -196,7 +357,7 @@ if ($session) {
   * ACS ログは、**Storage** ロールと **ACS** ロールで収集されます。
 
 > [!NOTE]
-> 記憶域スペースを効率的に使用し、ログで占領されないようにすることは極めて重要であるため、収集されるログにはサイズと有効期間の制限が強制されます。 ただし、問題を診断する場合に、こうした制限のためにもう存在していないログが必要となることがあります。 このため、外部の記憶域スペース (Azure のストレージ アカウント、オンプレミスの追加の記憶装置など) に 8 から 12 時間ごとにログをオフロードし、要件に応じて 1 から 3 か月間そこに保存しておくことを**強くお勧めします**。 また、この記憶域の場所が暗号化されるようにする必要もあります。
+> 記憶域スペースを効率的に使用し、ログで占領されないようにすることは極めて重要であるため、収集されるログにはサイズと有効期間の制限が強制されます。 ただし、問題を診断する場合に、こうした制限のためにもう存在していないログが必要となることがあります。 このため、外部の記憶域スペース (Azure のストレージ アカウント、オンプレミスの追加の記憶装置など) に 8 から 12 時間ごとにログをオフロードし、要件に応じて 1 から 3 か月間そこに保存しておくことを **強くお勧めします**。 また、この記憶域の場所が暗号化されるようにする必要もあります。
 
 ### <a name="invoke-azurestackondemandlog"></a>Invoke-AzureStackOnDemandLog
 

@@ -2,18 +2,18 @@
 title: Azure Stack Hub のプロファイルでサポートされているリソース プロバイダー API バージョン
 description: Azure Stack Hub のプロファイルでサポートされている Azure Resource Manager API のバージョンについて説明します。
 author: sethmanheim
-ms.custom: contperfq4
+ms.custom: contperf-fy20q4
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 05/08/2019
-ms.openlocfilehash: a70ef2865b43732dcc7f546106d6584284762f88
-ms.sourcegitcommit: d69eacbf48c06309b00d17c82ebe0ce2bc6552df
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 31916f9f68f69785eb1e6e16cd9abd3ca8bf84f8
+ms.sourcegitcommit: e13f27291bab236aac5d8b05401056961e9cc1e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780732"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97697662"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack-hub"></a>Azure Stack Hub のプロファイルでサポートされているリソース プロバイダー API バージョン
 
@@ -28,7 +28,7 @@ API プロファイルでは、次の 3 つの名前付け規則を使用しま�
 Azure Stack Hub の API プロファイルとバージョン リリース周期の詳細については、「[Azure Stack Hub での API バージョン プロファイルの管理](azure-stack-version-profiles.md)」を参照してください。
 
 > [!NOTE]
-> **最新**の API プロファイルには最新バージョンのリソース プロバイダーの API が含まれており、この記事には示されていません。
+> **最新** の API プロファイルには最新バージョンのリソース プロバイダーの API が含まれており、この記事には示されていません。
 
 ## <a name="overview-of-the-2019-03-01-hybrid-profile"></a>2019-03-01 ハイブリッド プロファイルの概要
 
@@ -193,5 +193,5 @@ Azure Resource Manager を使用して、Azure ソリューション用のイン
 
 ## <a name="next-steps"></a>次のステップ
 
-- [PowerShell for Azure Stack Hub をインストールする](../operator/azure-stack-powershell-install.md)
+- [PowerShell for Azure Stack Hub をインストールする](../operator/powershell-install-az-module.md)
 - [Azure Stack Hub の PowerShell 環境を構成する](azure-stack-powershell-configure-user.md)  

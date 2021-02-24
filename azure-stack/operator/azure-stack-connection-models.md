@@ -1,18 +1,18 @@
 ---
 title: Azure Stack Hub 統合システムの接続モデル
 description: Azure Stack Hub 統合システムに対して接続モデルとその他のデプロイ計画を決定します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: wfayed
 ms.lastreviewed: 02/21/2019
-ms.openlocfilehash: 4e0fb77bc6f6f174d474a123611dbf529e814b0a
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 4d3cf019366b1e3b9b42f83948a170427ffbb1bd
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "78364046"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97871106"
 ---
 # <a name="azure-stack-hub-integrated-systems-connection-models"></a>Azure Stack Hub 統合システムの接続モデル
 Azure Stack Hub 統合システムの購入に関心をお持ちの場合は、このシステムがご利用のデータセンターにどのように適合するかを判断するために、Azure Stack Hub のデプロイに関する[データセンターの統合のいくつかの考慮事項](azure-stack-datacenter-integration.md)を理解する必要があります。 さらに、Azure Stack Hub をハイブリッド クラウド環境にどのように統合するかを決定する必要があります。 この記事では、Azure 接続モデル、ID ストア オプション、課金モデル オプションなど、これらの主な決定の概要について示します。

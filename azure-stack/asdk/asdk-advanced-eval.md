@@ -1,18 +1,18 @@
 ---
 title: 高度な ASDK 評価タスク
 description: 高度な Azure Stack Development Kit (ASDK) 評価タスクについて説明します。
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 2c4a83ea024f83c0181cfe77c598519746deaeed
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 853a67fab66c064f7cc68093dece1030319ea1f1
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77695361"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97973318"
 ---
 # <a name="advanced-asdk-evaluation-tasks"></a>高度な ASDK 評価タスク
 基本的な Azure Stack Development Kit (ASDK) サービスの機能について把握したら、より高度なシナリオをテストして Azure Stack の理解を深めることができます。 これらのより高度な評価タスクは、Azure Stack のオペレーター ドキュメントに詳しく記載されています。
@@ -28,12 +28,12 @@ Azure Stack オペレーターとして、オファー作成とユーザー サ�
 ## <a name="make-sql-databases-available-to-your-azure-stack-users"></a>SQL データベースを Azure Stack ユーザーから使用可能にする
 Azure Stack オペレーターとして、ユーザー (テナント) が自分のクラウド ネイティブなアプリ、Web サイト、およびワークロードで使用できる SQL データベースを作成できるようにするオファーを作成できます。 これらのカスタムの、オンデマンドで、クラウド ベースのデータベースをユーザーに提供することによって、ユーザーの時間とリソースの節約になります。
 
-SQL Server リソースプロバイダー アダプターを使って、[SQL データベースを Azure Stack ユーザーが Azure Stack のサービスとして使用できるようにします](../operator/azure-stack-tutorial-sql-server.md)。 リソース プロバイダーをインストールした後で、1 つまたは複数の SQL Server インスタンスに接続します。
+SQL Server リソースプロバイダー アダプターを使って、[SQL データベースを Azure Stack ユーザーが Azure Stack のサービスとして使用できるようにします](../operator/azure-stack-sql-resource-provider.md)。 リソース プロバイダーをインストールした後で、1 つまたは複数の SQL Server インスタンスに接続します。
 
 ## <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにする
 Azure Stack オペレーターは、ユーザー (テナント) が Azure Functions、Web アプリ、API アプリを作成できるようにするオファーを作成できます。 これらのオンデマンドで、クラウドベースのアプリへのアクセスをユーザーに提供することによって、ユーザーの時間とリソースを節約できます。
 
-App Service リソース プロバイダーをデプロイして、[Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにします](../operator/azure-stack-tutorial-app-service.md)。
+App Service リソース プロバイダーをデプロイして、[Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにします](../operator/azure-stack-app-service-overview.md)。
 
 ## <a name="next-steps"></a>次のステップ
 

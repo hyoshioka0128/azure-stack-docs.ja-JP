@@ -8,12 +8,12 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
-ms.openlocfilehash: 2e8a4e4fe4de85e981bb0f33366b003c5ee907f8
-ms.sourcegitcommit: c263a86d371192e8ef2b80ced2ee0a791398cfb7
+ms.openlocfilehash: 433bfa9f6aee13131b80f3200c092bc0d72bd65e
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82847760"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97974389"
 ---
 # <a name="app-service-on-azure-stack-hub-update-1-release-notes"></a>App Service on Azure Stack Hub Update 1 のリリース ノート
 
@@ -29,7 +29,7 @@ App Service on Azure Stack Hub Update 1 のビルド番号は **69.0.13698.9** �
 ## <a name="prerequisites"></a>前提条件
 
 > [!IMPORTANT]
-> Azure App Service で Kudu の SSO の処理方法が改善されたため、Azure App Service on Azure Stack Hub の新しいデプロイには、3 つのサブジェクトのワイルドカード証明書が必要になります。 新しいサブジェクトは、 **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>** です。
+> Azure App Service で Kudu の SSO の処理方法が改善されたため、Azure App Service on Azure Stack Hub の新しいデプロイには、3 つのサブジェクトのワイルドカード証明書が必要になります。 新しいサブジェクトは、 **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>** です
 
 デプロイを開始する前に、[App Service on Azure Stack Hub の前提条件](azure-stack-app-service-before-you-get-started.md)に関するページを参照してください。
 
@@ -41,9 +41,9 @@ Azure App Service on Azure Stack Hub Update 1 には、次の機能強化と修�
 
 - **既存の仮想ネットワークへのデプロイ** - App Service on Azure Stack Hub を既存の仮想ネットワーク内にデプロイできるようになりました。 既存の仮想ネットワークにデプロイすると、Azure App Service に必要な SQL Server とファイル サーバーにプライベート ポート経由で接続できます。 デプロイ時に既存の仮想ネットワークへのデプロイを選択できますが、デプロイ前に、[App Service が使用するサブネットを作成する必要があります](azure-stack-app-service-before-you-get-started.md#virtual-network)。
 
-- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Hub Portal SDK バージョンと一貫性があります。
+- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール** の更新。 Azure Stack Hub Portal SDK バージョンと一貫性があります。
 
-- **Azure Functions ランタイム**が **v1.0.11388** に更新されました。
+- **Azure Functions ランタイム** が **v1.0.11388** に更新されました。
 
 - **次のアプリケーション フレームワークとツールの更新**:
     - **.NET Core 2.0** のサポートが追加されました。
@@ -85,7 +85,7 @@ Azure App Service on Azure Stack Hub Update 1 には、次の機能強化と修�
 
 - セットアップ中に予約済みの管理者名を使用できなくなります。
 
-- **ドメイン参加済み**ファイル サーバーで App Service デプロイが有効になりました。
+- **ドメイン参加済み** ファイル サーバーで App Service デプロイが有効になりました。
 
 - スクリプトでの Azure Stack Hub のルート証明書の取得が改善され、App Service インストーラーでルート証明書を検証する機能が追加されました。
 
@@ -111,7 +111,7 @@ Azure App Service on Azure Stack Hub Update 1 には、次の機能強化と修�
 
 このリリースでは、サイトのスロット スワップが破損しています。 機能を復元するには、次の手順を実行します。
 
-1. App Services コントローラー インスタンスへのリモート デスクトップ接続を**許可**するように ControllersNSG Network Security Group を変更します。 AppService.local を、App Service をデプロイしたリソース グループの名前に置き換えます。
+1. App Services コントローラー インスタンスへのリモート デスクトップ接続を **許可** するように ControllersNSG Network Security Group を変更します。 AppService.local を、App Service をデプロイしたリソース グループの名前に置き換えます。
 
     ```powershell
       Add-AzureRmAccount -EnvironmentName AzureStackAdmin
@@ -136,7 +136,7 @@ Azure App Service on Azure Stack Hub Update 1 には、次の機能強化と修�
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
 
-2. Azure Stack Hub 管理者ポータルの [Virtual Machines] で **CN0-VM** を参照し、 **[接続] をクリックして**コントローラー インスタンスとのリモート デスクトップ セッションを開きます。 App Service のデプロイ時に指定した資格情報を使用します。
+2. Azure Stack Hub 管理者ポータルの [Virtual Machines] で **CN0-VM** を参照し、 **[接続] をクリックして** コントローラー インスタンスとのリモート デスクトップ セッションを開きます。 App Service のデプロイ時に指定した資格情報を使用します。
 3. **管理者権限で PowerShell** を起動し、次のスクリプトを実行します。
 
     ```powershell
@@ -161,7 +161,7 @@ Azure App Service on Azure Stack Hub Update 1 には、次の機能強化と修�
     ```
 
 4. リモート デスクトップ セッションを終了します。
-5. App Services コントローラー インスタンスへのリモート デスクトップ接続を**拒否**するように ControllersNSG Network Security Group を戻します。 AppService.local を、App Service をデプロイしたリソース グループの名前に置き換えます。
+5. App Services コントローラー インスタンスへのリモート デスクトップ接続を **拒否** するように ControllersNSG Network Security Group を戻します。 AppService.local を、App Service をデプロイしたリソース グループの名前に置き換えます。
 
     ```powershell
 
@@ -203,7 +203,7 @@ Azure App Service on Azure Stack Hub Update 1 には、次の機能強化と修�
 
 ## <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>Azure App Service on Azure Stack Hub を運用するクラウド管理者に対する既知の問題
 
-[Azure Stack Hub 1802 リリース ノート](azure-stack-update-1903.md)内のドキュメントを参照してください。
+[Azure Stack Hub 1802 リリース ノート](./release-notes.md?view=azs-1802&preserve-view=true)内のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

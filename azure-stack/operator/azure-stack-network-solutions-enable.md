@@ -3,16 +3,16 @@ title: Fortinet FortiGate を Azure Stack Hub Marketplace に追加する
 description: Fortinet FortiGate を Azure Stack Hub Marketplace に追加し、ユーザーがネットワーク ソリューションを作成できるようにする方法について説明します。
 author: mattbriggs
 ms.topic: how-to
-ms.date: 5/27/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/30/2019
-ms.openlocfilehash: 12dc8715b90aa257953b5dc13bf671c9264aea8d
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: fec899c2040b71ad10be95d18dfc56a17d1fe617
+ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111165"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96525525"
 ---
 # <a name="offer-a-network-solution-in-azure-stack-hub-with-fortinet-fortigate"></a>Fortinet FortiGate を使用して Azure Stack Hub にネットワーク ソリューションを提供する
 
@@ -30,7 +30,7 @@ Azure Marketplace での FortiGate の詳細については、「[Fortinet Forti
     - Fortinet FortiGate - Azure BYOL 用の VM
     - FortiGate NGFW - 単一の VM のデプロイ (BYOL)
 
-    ![Azure Stack Hub の FortiGate Fortinet](./media/azure-stack-network-solutions-enable/azure-stack-marketplace-FortiGate-fortinet.png)
+    ![使用可能なダウンロードされた項目を示すスクリーンショット。](./media/azure-stack-network-solutions-enable/azure-stack-marketplace-FortiGate-fortinet.png)
 
 4. Marketplace のアイテムの状態が **[ダウンロード済み]** になるまで待機します。 アイテムのダウンロードには、数分かかる可能性があります。
 

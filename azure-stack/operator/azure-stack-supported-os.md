@@ -4,16 +4,16 @@ titleSuffix: Azure Stack
 description: Azure Stack Hub で使用できるゲスト オペレーティング システムについて説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 02/01/2021
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/06/2019
-ms.openlocfilehash: 17af4430f84f744a6ff4c8994ff453939fadb747
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: 336a4d27adf5f0ab52fffc6b624ce84f7fd0b53c
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661243"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99245910"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack-hub"></a>Azure Stack Hub でサポートされているゲスト オペレーティング システム
 
@@ -50,9 +50,17 @@ Azure Stack Hub Marketplace で入手可能として示されている Linux デ
 
 | Distribution | 説明 | Publisher | Azure Stack Hub Marketplace |
 | --- | --- | --- | --- |
-| CentOS-based 6.9 | 64 ビット | Rogue Wave | はい |
+| CentOS-based 8.0 | 64 ビット | Rogue Wave | はい |
+| CentOS-based 7.8 | 64 ビット | Rogue Wave | はい |
+| CentOS-based 7.7 LVM | 64 ビット | Rogue Wave | はい |
+| CentOS-based 7.7 | 64 ビット | Rogue Wave | はい |
+| CentOS-based 7.6 | 64 ビット | Rogue Wave | はい |
 | CentOS-based 7.5 | 64 ビット | Rogue Wave | はい |
+| CentOS-based 7.5 LVM | 64 ビット | Rogue Wave | はい |
+| CentOS-based 7.4 | 64 ビット | Rogue Wave | はい |
 | CentOS-based 7.3 | 64 ビット | Rogue Wave | はい |
+| CentOS-based 6.9 | 64 ビット | Rogue Wave | はい |
+| CentOS-based 6.10 | 64 ビット | Rogue Wave | はい |
 | ClearLinux | 64 ビット | ClearLinux.org | はい |
 | CoreOS Linux (Stable) |  64 ビット | CoreOS | はい |
 | Debian 8 "Jessie" | 64 ビット | credativ |  はい |
@@ -64,6 +72,7 @@ Azure Stack Hub Marketplace で入手可能として示されている Linux デ
 | Ubuntu 14.04-LTS | 64 ビット | Canonical | はい |
 | Ubuntu 16.04-LTS | 64 ビット | Canonical | はい |
 | Ubuntu 18.04-LTS | 64 ビット | Canonical | はい |
+| Ubuntu Server 20.04 LTS | 64 ビット | Canonical | はい |
 
 Red Hat Enterprise Linux のサポート情報については、「[Red Hat and Azure Stack Hub: Frequently Asked Questions](https://access.redhat.com/articles/3413531)」(Red Hat と Azure Stack: よく寄せられる質問) を参照してください。
 

@@ -1,18 +1,18 @@
 ---
-title: Azure Stack Hub の Close-PrivilegedEndpoint 特権エンドポイント
-description: PowerShell Azure Stack の特権エンドポイントのリファレンス - Close-PrivilegedEndpoint
+title: Set-Telemetry
+description: PowerShell Azure Stack の特権エンドポイントのリファレンス - Set-Telemetry
 author: mattbriggs
 ms.topic: reference
 ms.date: 04/27/2020
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
-ms.openlocfilehash: 948d8771be47ca9a594da75d8e4d138ceb6b894c
-ms.sourcegitcommit: 54f98b666bea9226c78f26dc255ddbdda539565f
+ms.openlocfilehash: 89e9182dd5ebb7a7ab9da6e9d4e7b21da6d4ce9e
+ms.sourcegitcommit: 2ac64ac431411b673e655465939d3c95cc94c55d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82564011"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98810913"
 ---
 # <a name="set-telemetry"></a>Set-Telemetry
 
@@ -91,4 +91,4 @@ Accept wildcard characters: False
 
 ## <a name="next-steps"></a>次のステップ
 
-特権エンドポイントにアクセスして使用する方法については、「[Azure Stack Hub で特権エンドポイントを使用する](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint)」を参照してください。
+特権エンドポイントにアクセスして使用する方法については、「[Azure Stack Hub で特権エンドポイントを使用する](../../operator/azure-stack-privileged-endpoint.md)」を参照してください。

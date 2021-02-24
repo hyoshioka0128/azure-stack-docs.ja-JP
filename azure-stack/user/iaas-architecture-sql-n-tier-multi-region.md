@@ -3,22 +3,22 @@ title: 高可用性を得るために複数の Azure Stack Hub リージョン�
 description: 高可用性を得るために複数の Azure Stack Hub リージョンで n 層アプリケーションを実行する方法について学習します。
 author: mattbriggs
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
-ms.openlocfilehash: 7667039bc64fe45f912cb855d5cb832b7fe5d28f
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: 74f0d38b7101bac23b8fcac300e9800c523a31f5
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81659880"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247060"
 ---
 # <a name="run-an-n-tier-application-in-multiple-azure-stack-hub-regions-for-high-availability"></a>高可用性を得るために複数の Azure Stack Hub リージョンで n 層アプリケーションを実行する
 
 このリファレンス アーキテクチャは、可用性と堅牢なディザスター リカバリー インフラストラクチャを実現するために、複数の Azure Stack Hub リージョンで n 層アプリケーションを実行するための一連の実証済みのプラクティスを示しています。 このドキュメントでは、高可用性を実現するために Traffic Manager が使用されていますが、お使いの環境に Traffic Manager が適していない場合は、可用性の高いロード バランサーのペアに置き換えることもできます。
 
-> [!Note]  
+> [!NOTE]  
 > 以下のアーキテクチャで使用されている Traffic Manager は Azure で構成する必要があり、Traffic Manager プロファイルの構成に使用されるエンドポイントは、パブリックにルーティング可能な IP である必要があります。
 
 ## <a name="architecture"></a>Architecture
@@ -29,15 +29,15 @@ ms.locfileid: "81659880"
 
 -   **プライマリ リージョンとセカンダリ リージョン**。 2 つのリージョンを使用して高可用性を実現します。 1 つはプライマリ リージョンであり、 他方のリージョンはフェールオーバー用です。
 
--   **Azure Traffic Manager**。 [Traffic Manager](https://azure.microsoft.com/services/traffic-manager) では、着信要求がいずれかのリージョンにルーティングされます。 通常の運用中は、プライマリ リージョンに要求をルーティングします。 そのリージョンが使用できなくなった場合、Traffic Manager はセカンダリ リージョンへのフェールオーバーを実行します。 詳細については、「[Traffic Manager の構成](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server#traffic-manager-configuration)」を参照してください。
+-   **Azure Traffic Manager**。 [Traffic Manager](https://azure.microsoft.com/services/traffic-manager) では、着信要求がいずれかのリージョンにルーティングされます。 通常の運用中は、プライマリ リージョンに要求をルーティングします。 そのリージョンが使用できなくなった場合、Traffic Manager はセカンダリ リージョンへのフェールオーバーを実行します。 詳細については、「[Traffic Manager の構成](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server#traffic-manager-configuration)」を参照してください。
 
--   **リソース グループ**。 プライマリ リージョンとセカンダリ リージョン用に個別の[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 これにより、各リージョンをリソースの 1 つのコレクションとして柔軟に管理できます。 たとえば、片方のリージョンの再デプロイを、他方のリージョンをダウンさせずに実行できます。 [リソース グループをリンク](https://docs.microsoft.com/azure/resource-group-link-resources)して、アプリケーション用のすべてのリソースを一覧表示するクエリを実行できるようにします。
+-   **リソース グループ**。 プライマリ リージョンとセカンダリ リージョン用に個別の[リソース グループ](/azure/azure-resource-manager/resource-group-overview)を作成します。 これにより、各リージョンをリソースの 1 つのコレクションとして柔軟に管理できます。 たとえば、片方のリージョンの再デプロイを、他方のリージョンをダウンさせずに実行できます。 [リソース グループをリンク](/azure/resource-group-link-resources)して、アプリケーション用のすべてのリソースを一覧表示するクエリを実行できるようにします。
 
 -   **仮想ネットワーク**。 リージョンごとに個別の仮想ネットワークを作成します。 アドレス空間が重複していないことを確認してください。
 
--   **SQL Server Always On 可用性グループ**。 SQL Server を使用している場合は、[SQL Always On 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)を使用して高可用性を実現することをお勧めします。 両方のリージョンの SQL Server インスタンスを含む単一の可用性グループを作成します。
+-   **SQL Server Always On 可用性グループ**。 SQL Server を使用している場合は、[SQL Always On 可用性グループ](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-ver15&preserve-view=true)を使用して高可用性を実現することをお勧めします。 両方のリージョンの SQL Server インスタンスを含む単一の可用性グループを作成します。
 
--   **VNET 間 VPN 接続**。 Azure Stack Hub で VNET ピアリングがまだ使用できないため、2 つの VNET を接続するには、VNET 間 VPN 接続を使用します。 詳細については、[Azure Stack Hub での VNET 対 VNET](https://docs.microsoft.com/azure-stack/user/azure-stack-network-howto-vnet-to-vnet?view=azs-1908) に関するページを参照してください。
+-   **VNET 間 VPN 接続**。 Azure Stack Hub で VNET ピアリングがまだ使用できないため、2 つの VNET を接続するには、VNET 間 VPN 接続を使用します。 詳細については、[Azure Stack Hub での VNET 対 VNET](./azure-stack-network-howto-vnet-to-vnet.md) に関するページを参照してください。
 
 ## <a name="recommendations"></a>Recommendations
 
@@ -57,9 +57,9 @@ ms.locfileid: "81659880"
 
 Traffic Manager を構成するときは、次の点を検討してください。
 
--   **ルーティング**。 Traffic Manager では、複数の[ルーティング アルゴリズム](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods)がサポートされています。 この記事で説明するシナリオでは、"*優先度による*" ルーティング (旧称 "*フェールオーバー*" ルーティング) を使用します。 この設定では、プライマリ リージョンが到達不能にならない限り、Traffic Manager はプライマリ リージョンにすべての要求を送信します。 到達不能になった時点で、セカンダリ リージョンに自動的にフェールオーバーします。 [フェールオーバーのルーティング方法の構成](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-failover-routing-method)に関する記事を参照してください。
+-   **ルーティング**。 Traffic Manager では、複数の[ルーティング アルゴリズム](/azure/traffic-manager/traffic-manager-routing-methods)がサポートされています。 この記事で説明するシナリオでは、"*優先度による*" ルーティング (旧称 "*フェールオーバー*" ルーティング) を使用します。 この設定では、プライマリ リージョンが到達不能にならない限り、Traffic Manager はプライマリ リージョンにすべての要求を送信します。 到達不能になった時点で、セカンダリ リージョンに自動的にフェールオーバーします。 [フェールオーバーのルーティング方法の構成](/azure/traffic-manager/traffic-manager-configure-failover-routing-method)に関する記事を参照してください。
 
--   **正常性プローブ**。 Traffic Manager では、HTTP (または HTTPS) [プローブ](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)を使用して、各リージョンが使用可能かどうかが監視されます。 プローブは、特定の URL パスの HTTP 200 応答をチェックします。 ベスト プラクティスとして、アプリケーションの全体的な正常性を報告するエンドポイントを作成し、そのエンドポイントを正常性プローブ用に使用します。 これを行わなかった場合、プローブは、アプリケーションの重要な部分で実際には障害が発生しているにもかかわらず、エンドポイントが正常であると報告する可能性があります。 詳細については、「[正常性エンドポイントの監視パターン](https://docs.microsoft.com/azure/architecture/patterns/health-endpoint-monitoring)」を参照してください。
+-   **正常性プローブ**。 Traffic Manager では、HTTP (または HTTPS) [プローブ](/azure/traffic-manager/traffic-manager-monitoring)を使用して、各リージョンが使用可能かどうかが監視されます。 プローブは、特定の URL パスの HTTP 200 応答をチェックします。 ベスト プラクティスとして、アプリケーションの全体的な正常性を報告するエンドポイントを作成し、そのエンドポイントを正常性プローブ用に使用します。 これを行わなかった場合、プローブは、アプリケーションの重要な部分で実際には障害が発生しているにもかかわらず、エンドポイントが正常であると報告する可能性があります。 詳細については、「[正常性エンドポイントの監視パターン](/azure/architecture/patterns/health-endpoint-monitoring)」を参照してください。
 
 Traffic Manager がフェールオーバーを実行すると、クライアントがアプリケーションに到達できない時間が発生します。 この持続時間は、次の要因に影響されます。
 
@@ -67,13 +67,13 @@ Traffic Manager がフェールオーバーを実行すると、クライアン�
 
 -   DNS サーバーが、IP アドレスのキャッシュされた DNS レコードを更新する必要があります。これは DNS 有効期限 (TTL) に依存します。 TTL の既定値は 300 秒 (5 分) ですが、この値は、Traffic Manager プロファイルを作成するときに構成できます。
 
-詳細については、[Traffic Manager の監視](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)に関する記事を参照してください。
+詳細については、[Traffic Manager の監視](/azure/traffic-manager/traffic-manager-monitoring)に関する記事を参照してください。
 
 Traffic Manager でフェールオーバーを実行する場合は、自動フェールバックを実装するのではなく、手動でフェールバックを実行することをお勧めします。 これを行わなかった場合、リージョン間でアプリケーションが切り替わる状況が発生する可能性があります。 フェールバックする前に、すべてのアプリケーション サブシステムが正常であることを確認します。
 
 Traffic Manager は、既定では自動的にフェールバックすることに注意してください。 これが起こらないようにするには、フェールオーバー イベントの後、手動でプライマリ リージョンの優先度を下げます。 たとえば、プライマリ リージョンの優先度は 1、セカンダリ リージョンの優先度は 2 であるとします。 フェールオーバーした後、プライマリ リージョンの優先度を 3 に設定して、自動フェールバックが起こらないにします。 元に戻す準備ができたら、優先度を 1 に更新します。
 
-次の [Azure CLI](https://docs.microsoft.com/cli/azure/) コマンドでは、優先度が更新されます。
+次の [Azure CLI](/cli/azure/) コマンドでは、優先度が更新されます。
 
 ```cli  
 az network traffic-manager endpoint update --resource-group <resource-group> --profile-name <profile>
@@ -105,15 +105,15 @@ Windows Server 2016 より前に、SQL Server Always On 可用性グループで
 
 -   各ドメイン コントローラーに静的 IP アドレスを指定します。
 
--   [VPN](https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways) を作成して、2 つの仮想ネットワーク間で通信できるようにします。
+-   [VPN](./azure-stack-vpn-gateway-about-vpn-gateways.md) を作成して、2 つの仮想ネットワーク間で通信できるようにします。
 
--   各仮想ネットワークで、DNS サーバーのリストに (両方のリージョンの) ドメイン コントローラーの IP アドレスを追加します。 次の CLI コマンドを使用できます。 詳細については、「[DNS サーバーの変更](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers)」を参照してください。
+-   各仮想ネットワークで、DNS サーバーのリストに (両方のリージョンの) ドメイン コントローラーの IP アドレスを追加します。 次の CLI コマンドを使用できます。 詳細については、「[DNS サーバーの変更](/azure/virtual-network/manage-virtual-network#change-dns-servers)」を参照してください。
 
     ```cli
     az network vnet update --resource-group <resource-group> --name <vnet-name> --dns-servers "10.0.0.4,10.0.0.6,172.16.0.4,172.16.0.6"
     ```
 
--   両方のリージョンの SQL Server インスタンスを含む [Windows Server フェールオーバー クラスタリング](https://msdn.microsoft.com/library/hh270278.aspx) (WSFC) クラスターを作成します。
+-   両方のリージョンの SQL Server インスタンスを含む [Windows Server フェールオーバー クラスタリング](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-ver15&preserve-view=true) (WSFC) クラスターを作成します。
 
 -   プライマリ リージョンとセカンダリ リージョンの SQL Server インスタンスを含む SQL Server Always On 可用性グループを作成します。 手順については、[Always On 可用性グループのリモート Azure データセンターへの拡張 (PowerShell)](https://techcommunity.microsoft.com/t5/DataCAT/Extending-AlwaysOn-Availability-Group-to-Remote-Azure-Datacenter/ba-p/305217)に関する記事を参照してください。
 
@@ -121,9 +121,9 @@ Windows Server 2016 より前に、SQL Server Always On 可用性グループで
 
     -   1 つ以上のセカンダリ レプリカをプライマリ リージョンに配置します。 それらを自動フェールオーバーを伴う同期コミット モードを使用するように構成します。
 
-    -   1 つ以上のセカンダリ レプリカをセカンダリ リージョンに配置します。 パフォーマンス上の理由で、それらは*非同期*コミットを使用するように構成します (これを行わなかった場合、すべての T-SQL トランザクションがセカンダリ リージョンへのネットワーク上にラウンド トリップで待機する必要があります)。
+    -   1 つ以上のセカンダリ レプリカをセカンダリ リージョンに配置します。 パフォーマンス上の理由で、それらは *非同期* コミットを使用するように構成します (これを行わなかった場合、すべての T-SQL トランザクションがセカンダリ リージョンへのネットワーク上にラウンド トリップで待機する必要があります)。
 
-> [!Note]  
+> [!NOTE]  
 > 非同期コミット レプリカでは、自動フェールオーバーはサポートされていません。
 
 ## <a name="availability-considerations"></a>可用性に関する考慮事項
@@ -134,14 +134,14 @@ Traffic Manager は、システムの障害ポイントになる可能性があ�
 
 SQL Server クラスターでは、2 つのフェールオーバー シナリオを考慮する必要があります。
 
--   プライマリ リージョン内のすべての SQL Server データベースのレプリカが失敗する。 これは、たとえば地域的な停止中に発生することがあります。 この場合は、Traffic Manager がフロント エンドで自動的にフェールオーバーを実行する場合でも、可用性グループを手動でフェールオーバーする必要があります。 「[Perform a Forced Manual Failover of a SQL Server Availability Group](https://msdn.microsoft.com/library/ff877957.aspx)」(SQL Server 可用性グループの強制手動フェールオーバーを実行する) の手順に従います。この記事では、SQL Server 2016 で SQL Server Management Studio、Transact-SQL、または PowerShell を使用して強制フェールオーバーを実行する方法が説明されています。
+-   プライマリ リージョン内のすべての SQL Server データベースのレプリカが失敗する。 これは、たとえば地域的な停止中に発生することがあります。 この場合は、Traffic Manager がフロント エンドで自動的にフェールオーバーを実行する場合でも、可用性グループを手動でフェールオーバーする必要があります。 「[Perform a Forced Manual Failover of a SQL Server Availability Group](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server?view=sql-server-ver15&preserve-view=true)」(SQL Server 可用性グループの強制手動フェールオーバーを実行する) の手順に従います。この記事では、SQL Server 2016 で SQL Server Management Studio、Transact-SQL、または PowerShell を使用して強制フェールオーバーを実行する方法が説明されています。
 
     > [!Warning]  
-    > 強制フェールオーバーには、データ損失のリスクがあります。 プライマリ リージョンがオンラインに戻ったら、データベースのスナップショットを取得し、[tablediff](https://msdn.microsoft.com/library/ms162843.aspx) を使用して差異を検出してください。
+    > 強制フェールオーバーには、データ損失のリスクがあります。 プライマリ リージョンがオンラインに戻ったら、データベースのスナップショットを取得し、[tablediff](/sql/tools/tablediff-utility?view=sql-server-ver15&preserve-view=true) を使用して差異を検出してください。
 
 -   Traffic Manager がセカンダリ リージョンへのフェールオーバーを実行するが、SQL Server データベースのプライマリ レプリカが引き続き使用可能である。 たとえば SQL Server VM に影響しない障害がフロント エンド層で発生することがあります。 この場合、インターネット トラフィックはセカンダリ リージョンにルーティングされますが、セカンダリ リージョンは引き続きプライマリ レプリカに接続できます。 ただし、SQL Server の接続がリージョンにまたがるため、待機時間が長くなります。 この状況では、次のように手動フェールオーバーを実行する必要があります。
 
-    1.  セカンダリ リージョンの SQL Server データベースのレプリカを一時的に*同期*コミットに切り替えます。 これにより、フェールオーバー中にデータの損失が発生しないことが保証されます。
+    1.  セカンダリ リージョンの SQL Server データベースのレプリカを一時的に *同期* コミットに切り替えます。 これにより、フェールオーバー中にデータの損失が発生しないことが保証されます。
 
     2.  そのレプリカにフェールオーバーします。
 
@@ -171,4 +171,4 @@ SQL Server クラスターでは、2 つのフェールオーバー シナリオ
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure のクラウド パターンの詳細については、「[Cloud Design Pattern (クラウド設計パターン)](https://docs.microsoft.com/azure/architecture/patterns)」を参照してください。
+- Azure のクラウド パターンの詳細については、「[Cloud Design Pattern (クラウド設計パターン)](/azure/architecture/patterns)」を参照してください。

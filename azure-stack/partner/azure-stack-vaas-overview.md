@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: Azure Stack Hub のサービスとしての検証の概要。
 author: mattbriggs
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7c42c9029e1e1292865f0da239d3dafcb78e5543
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: 89e05e776538ab2032995634e69d704b1ae4981b
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661210"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97868184"
 ---
 # <a name="what-is-validation-as-a-service-for-azure-stack-hub"></a>Azure Stack Hub のサービスとしての検証とは
 
@@ -31,25 +31,25 @@ VaaS の主な用途は次のとおりです。
 
 ## <a name="validate-a-new-azure-stack-hub-solution"></a>新しい Azure Stack Hub ソリューションの検証
 
-パートナーは、**ソリューション検証**ワークフローを使用して、新しい Azure Stack Hub ソリューションを検証します。 ソリューションは、必須の Hardware Lab Kit (HLK) Azure Stack Hub コンポーネント テストに合格する必要があります。 さまざまなハードウェア構成を認定するために、新しいソリューションごとに、このワークフローを 2 回 (最小構成と最大構成に対してそれぞれ 1 回) 実行する必要があります。
+パートナーは、**ソリューション検証** ワークフローを使用して、新しい Azure Stack Hub ソリューションを検証します。 ソリューションは、必須の Hardware Lab Kit (HLK) Azure Stack Hub コンポーネント テストに合格する必要があります。 さまざまなハードウェア構成を認定するために、新しいソリューションごとに、このワークフローを 2 回 (最小構成と最大構成に対してそれぞれ 1 回) 実行する必要があります。
 
 詳細については、[新しい Azure Stack Hub ソリューションの検証](azure-stack-vaas-validate-solution-new.md)に関するページを参照してください。
 
 ## <a name="validate-changes-to-the-azure-stack-hub-software"></a>Azure Stack Hub ソフトウェアに加えられた変更の検証
 
-パートナーは、**パッケージ検証**ワークフローを使用して、最新の Azure Stack Hub ソフトウェア更新プログラムでソリューションが動作することを確認します。 パッケージ検証ワークフローは、修正プログラムと更新プログラム (P&U) を使用して更新が適用された、Microsoft が推奨するハードウェア環境で実行する必要があります。 また、ベースライン ビルドでもこのワークフローを実行することをお勧めします。
+パートナーは、**パッケージ検証** ワークフローを使用して、最新の Azure Stack Hub ソフトウェア更新プログラムでソリューションが動作することを確認します。 パッケージ検証ワークフローは、修正プログラムと更新プログラム (P&U) を使用して更新が適用された、Microsoft が推奨するハードウェア環境で実行する必要があります。 また、ベースライン ビルドでもこのワークフローを実行することをお勧めします。
 
 詳細については、「[Validate software updates from Microsoft (Microsoft のソフトウェア更新プログラムの検証)](azure-stack-vaas-validate-microsoft-updates.md)」を参照してください。
 
 ## <a name="get-digitally-signed-solution-partner-packages"></a>デジタル署名されたソリューション パートナーのパッケージの取得
 
-パートナーは、Azure Stack Hub 更新プログラムの検証に加えて、**パッケージ検証**ワークフローを使用して OEM カスタマイズ パッケージに対する更新プログラムを検証します。 これらの更新プログラムには、Azure Stack Hub ソフトウェアのデプロイ時に使用される Azure Stack Hub パートナー固有のドライバー、ファームウェア、その他のソフトウェアが含まれています。 少なくとも、サポートが予定されている最小サイズのソリューションを使用して、Azure Stack Hub ソフトウェアの最新バージョンで検証するパッケージをデプロイします。 パッケージは、テストを実行する前に VaaS に送信されます。 テストが成功した場合は、パッケージのテストが完了し、Azure Stack Hub デジタル署名でデジタル署名する必要があることを [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) に通知します。 Microsoft がパッケージに署名し、Azure Stack Hub 検証ポータルでパッケージがダウンロード可能であることを Azure Stack Hub パートナーに通知します。
+パートナーは、Azure Stack Hub 更新プログラムの検証に加えて、**パッケージ検証** ワークフローを使用して OEM カスタマイズ パッケージに対する更新プログラムを検証します。 これらの更新プログラムには、Azure Stack Hub ソフトウェアのデプロイ時に使用される Azure Stack Hub パートナー固有のドライバー、ファームウェア、その他のソフトウェアが含まれています。 少なくとも、サポートが予定されている最小サイズのソリューションを使用して、Azure Stack Hub ソフトウェアの最新バージョンで検証するパッケージをデプロイします。 パッケージは、テストを実行する前に VaaS に送信されます。 テストが成功した場合は、パッケージのテストが完了し、Azure Stack Hub デジタル署名でデジタル署名する必要があることを [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) に通知します。 Microsoft がパッケージに署名し、Azure Stack Hub 検証ポータルでパッケージがダウンロード可能であることを Azure Stack Hub パートナーに通知します。
 
 詳細については、「[Validate OEM packages (OEM パッケージの検証)](azure-stack-vaas-validate-oem-package.md)」を参照してください。
 
 ## <a name="preview-vaas-test-collateral"></a>VaaS の 2 次テストのプレビュー
 
-Microsoft は、定期的に Azure Stack Hub で新機能を提供しています。 これらの機能を市場に投入するための開発プロセスの一環として、**テスト成功**ワークフローで新しい 2 次テストが利用できるようになりました。 テスト成功ワークフローには、他のワークフローからの 2 次テストが含まれ、非公式のテストを実行できます。 承認を求めて結果を提出するときには、テスト成功ワークフローを使用しないでください。 ソリューションの正式な承認を得るには、ソリューション検証ワークフローとパッケージ検証ワークフローを使用します。
+Microsoft は、定期的に Azure Stack Hub で新機能を提供しています。 これらの機能を市場に投入するための開発プロセスの一環として、**テスト成功** ワークフローで新しい 2 次テストが利用できるようになりました。 テスト成功ワークフローには、他のワークフローからの 2 次テストが含まれ、非公式のテストを実行できます。 承認を求めて結果を提出するときには、テスト成功ワークフローを使用しないでください。 ソリューションの正式な承認を得るには、ソリューション検証ワークフローとパッケージ検証ワークフローを使用します。
 
 詳細については、「[クイック スタート: Azure Stack Hub 検証ポータルを使用して初めてのテストをスケジュールする](azure-stack-vaas-schedule-test-pass.md)」を参照してください。
 

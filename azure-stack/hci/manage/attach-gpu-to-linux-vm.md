@@ -3,18 +3,18 @@ title: Azure Stack HCI で Linux VM に GPU をアタッチする
 description: Azure Stack HCI 上の Ubuntu Linux VM で実行されている AI ワークロードに GPU を使用する方法について説明します。
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 03/24/2020
-ms.openlocfilehash: c1f1ddbfb9f362261a8e55d32a0d8c28b7b64629
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.topic: how-to
+ms.date: 07/01/2020
+ms.openlocfilehash: 422f6984fad6218387673d2dc9292f0ae7cb1739
+ms.sourcegitcommit: 7b189e5317b8fe5f8ad825565da3607a39a1b899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80402859"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94493654"
 ---
 # <a name="attaching-a-gpu-to-an-ubuntu-linux-vm-on-azure-stack-hci"></a>Azure Stack HCI 上の Ubuntu Linux VM に GPU をアタッチする
 
-> 適用対象:Windows Server 2019
+> 適用対象:Azure Stack HCI バージョン 20H2、Windows Server 2019
 
 このトピックでは、Azure Stack HCI と Discrete Device Assignment (DDA) テクノロジを使用して、Ubuntu 仮想マシン (VM) に NVIDIA グラフィックス処理装置 (GPU) をインストールして構成する詳細な手順を紹介します。
 このドキュメントは、Azure Stack HCI クラスターがデプロイされ、VM がインストールされていることを前提としています。
@@ -24,7 +24,7 @@ ms.locfileid: "80402859"
 1. OEM のインストラクションと BIOS の推奨事項に従って、適切なサーバーに NVIDIA GPU を物理的にインストールします。
 2. 各サーバーの電源をオンにします。
 3. NVIDIA GPU がインストールされているサーバーに、管理特権があるアカウントを使用してサインインします。
-4. **デバイス マネージャー**を開いて *[その他のデバイス]* セクションに移動します。 デバイスが "3D ビデオ コントローラー" として表示されているのがわかります。
+4. **デバイス マネージャー** を開いて *[その他のデバイス]* セクションに移動します。 デバイスが "3D ビデオ コントローラー" として表示されているのがわかります。
 5. [3D ビデオ コントローラー] を右クリックして **[プロパティ]** ページを表示します。 **[詳細]** をクリックします。 **[プロパティ]** ボックスの一覧から [Location paths]\(場所のパス\) を選択します。
 6. 下のスクリーンショットで強調表示されている PCIRoot という文字列を含む値に注目してください。 **[値]** を右クリックし、コピーして保存します。
     :::image type="content" source="media/attach-gpu-to-linux-vm/pciroot.png" alt-text="[Location paths]\(場所のパス\) のスクリーンショット":::
@@ -32,16 +32,16 @@ ms.locfileid: "80402859"
     ```PowerShell
     Dismount-VMHostAssignableDevice -LocationPath "PCIROOT(16)#PCI(0000)#PCI(0000)" -force
     ```
-8. **デバイス マネージャー**のシステム デバイスに、このデバイスが "マウント解除済み" として表示されていることを確認します。
+8. **デバイス マネージャー** のシステム デバイスに、このデバイスが "マウント解除済み" として表示されていることを確認します。
     :::image type="content" source="media/attach-gpu-to-linux-vm/dismounted.png" alt-text="マウント解除済みデバイスのスクリーンショット":::
 
 ## <a name="create-and-configure-an-ubuntu-virtual-machine"></a>Ubuntu 仮想マシンを作成して構成する
 
-1. [Ubuntu デスクトップ リリース 18.04.02 ISO](http://cdimage.ubuntu.com/lubuntu/releases/18.04.2/release/lubuntu-18.04.2-desktop-amd64.iso) をダウンロードします。
-2. GPU をインストールしたシステムのノードで **Hyper-V マネージャー**を開きます。
+1. [Ubuntu デスクトップ リリース 18.04.02 ISO](http://old-releases.ubuntu.com/releases/18.04.2/) をダウンロードします。
+2. GPU をインストールしたシステムのノードで **Hyper-V マネージャー** を開きます。
    > [!NOTE]
-   > [DDA では、フェールオーバーがサポートされません](/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment)。 これは DDA に関する仮想マシンの制限です。 したがって、**フェールオーバー クラスター マネージャー**ではなく、**Hyper-V マネージャー**を使用してノードに VM をデプロイすることをお勧めします。 DDA で**フェールオーバー クラスター マネージャー**を使用すると、高可用性をサポートしていないデバイスが VM に存在することを示すエラー メッセージが表示されて失敗します。
-3. 手順 1. でダウンロードした Ubuntu ISO を使用し、**Hyper-V マネージャー**の**仮想マシンの新規作成ウィザード**を使って新しい仮想マシンを作成します。2 GB のメモリを搭載し、ネットワーク カードがアタッチされた Ubuntu Gen 1 VM を作成してください。
+   > [DDA では、フェールオーバーがサポートされません](/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment)。 これは DDA に関する仮想マシンの制限です。 したがって、**フェールオーバー クラスター マネージャー** ではなく、**Hyper-V マネージャー** を使用してノードに VM をデプロイすることをお勧めします。 DDA で **フェールオーバー クラスター マネージャー** を使用すると、高可用性をサポートしていないデバイスが VM に存在することを示すエラー メッセージが表示されて失敗します。
+3. 手順 1. でダウンロードした Ubuntu ISO を使用し、**Hyper-V マネージャー** の **仮想マシンの新規作成ウィザード** を使って新しい仮想マシンを作成します。2 GB のメモリを搭載し、ネットワーク カードがアタッチされた Ubuntu Gen 1 VM を作成してください。
 4. PowerShell で下記のコマンドレットを使用して、マウント解除済みの GPU デバイスを VM に割り当てます。*LocationPath* の値は、実際のデバイスの値に置き換えてください。
     ```PowerShell
     # Confirm that there are no DDA devices assigned to the VM
@@ -74,7 +74,7 @@ ms.locfileid: "80402859"
 
 5. Hyper-V マネージャーを使用して、VM に接続し、Ubuntu OS のインストールを開始します。 既定値を選択すると、Ubuntu OS が VM にインストールされます。
 
-6. インストールの完了後、**Hyper-V マネージャー**を使用して VM をシャットダウンし、ゲスト オペレーティング システムをシャットダウンするように VM の **[Automatic Stop Action]\(自動停止アクション\)** を構成します (以下のスクリーンショットを参照)。:::image type="content" source="media/attach-gpu-to-linux-vm/guest-shutdown.png" alt-text="ゲスト OS のシャットダウンのスクリーンショット":::
+6. インストールの完了後、**Hyper-V マネージャー** を使用して VM をシャットダウンし、ゲスト オペレーティング システムをシャットダウンするように VM の **[Automatic Stop Action]\(自動停止アクション\)** を構成します (以下のスクリーンショットを参照)。:::image type="content" source="media/attach-gpu-to-linux-vm/guest-shutdown.png" alt-text="ゲスト OS のシャットダウンのスクリーンショット":::
 
 7. Ubuntu にログインし、ターミナルを開いて SSH をインストールします。
 
@@ -84,7 +84,7 @@ ms.locfileid: "80402859"
 
 8. **ifconfig** コマンドを使用して Ubuntu インストール用の TCP/IP アドレスを探し、**eth0** インターフェイスの IP アドレスをコピーします。
 
-9. さらに構成を行うために、[Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/) などの SSH クライアントを使用して Ubuntu VM に接続します。
+9. OpenSSH などの SSH クライアントを使用するか (Windows 10 には既定で ssh.exe がインストールされています) [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/) を使用して、Ubuntu VM に接続して、さらに構成を行います。
 
 10. SSH クライアント経由でログインしたら、**lspci** コマンドを発行して、NVIDIA GPU が "3D コントローラー" として表示されていることを確認します。
 
@@ -94,7 +94,7 @@ ms.locfileid: "80402859"
 11. VM 内で、 **[Software & Updates]\(ソフトウェアと更新プログラム\)** を探して開きます。 **[追加ドライバー]** に移動し、最新の NVIDIA GPU ドライバーを一覧から選択します。 **[変更の適用]** をクリックして、ドライバーのインストールを完了します。
     :::image type="content" source="media/attach-gpu-to-linux-vm/driver-install.png" alt-text="ドライバー インストールのスクリーンショット":::
 
-12. ドライバーのインストールの完了後、Ubuntu VM を再起動します。 VM の起動後、SSH クライアント経由で接続し、**nvidia-smi** コマンドを発行して、NVIDIA GPU ドライバーのインストールが正常に完了したことを確認します。 以下のスクリーンショットのような出力が表示されます。:::image type="content" source="media/attach-gpu-to-linux-vm/nvidia-smi.png" alt-text="nvidia-smi のスクリーンショット":::
+12. ドライバーのインストールの完了後、Ubuntu VM を再起動します。 VM の起動後、SSH クライアント経由で接続し、**nvidia-smi** コマンドを発行して、NVIDIA GPU ドライバーのインストールが正常に完了したことを確認します。 出力は次のスクリーンショットのようになるはずです。:::image type="content" source="media/attach-gpu-to-linux-vm/nvidia-smi.png" alt-text="nvidia-smi コマンドからの出力を示すスクリーンショット。":::
 
 13. SSH クライアントを使用してリポジトリを設定し、Docker CE エンジンをインストールします。
 
@@ -273,12 +273,12 @@ ms.locfileid: "80402859"
     # and any modifications thereto.  Any use, reproduction, disclosure or
     # distribution of this software and related documentation without an express
     # license agreement from NVIDIA Corporation is strictly prohibited.
-    
+
     [application]
     enable-perf-measurement=1
     perf-measurement-interval-sec=5
     #gie-kitti-output-dir=streamscl
-    
+
     [tiled-display]
     enable=1
     rows=2
@@ -292,7 +292,7 @@ ms.locfileid: "80402859"
     #(3): nvbuf-mem-cuda-unified - Allocate Unified cuda memory, applicable for Tesla
     #(4): nvbuf-mem-surface-array - Allocate Surface Array memory, applicable for Jetson
     nvbuf-memory-type=0
-    
+
     [source0]
     enable=1
     #Type - 1=CameraV4L2 2=URI 3=MultiURI
@@ -301,7 +301,7 @@ ms.locfileid: "80402859"
     num-sources=2
     gpu-id=0
     nvbuf-memory-type=0
-    
+
     [source1]
     enable=1
     #Type - 1=CameraV4L2 2=URI 3=MultiURI
@@ -310,10 +310,10 @@ ms.locfileid: "80402859"
     num-sources=2
     gpu-id=0
     nvbuf-memory-type=0
-    
+
     [sink0]
     enable=0
-    
+
     [sink3]
     enable=1
     #Type - 1=FakeSink 2=EglSink 3=File 4=RTSPStreaming
@@ -325,7 +325,7 @@ ms.locfileid: "80402859"
     # set below properties in case of RTSPStreaming
     rtsp-port=8554
     udp-port=5400
-    
+
     [sink1]
     enable=1
     #Type - 1=FakeSink 2=EglSink 3=File 4=UDPSink 5=nvoverlaysink 6=MsgConvBroker
@@ -340,7 +340,7 @@ ms.locfileid: "80402859"
     topic=mytopic
     #Optional:
     #msg-broker-config=../../../../libs/azure_protocol_adaptor/module_client/cfg_azure.txt
-    
+
     [sink2]
     enable=0
     type=3
@@ -353,7 +353,7 @@ ms.locfileid: "80402859"
     bitrate=2000000
     output-file=out.mp4
     source-id=0
-    
+
     [osd]
     enable=1
     gpu-id=0
@@ -368,7 +368,7 @@ ms.locfileid: "80402859"
     clock-text-size=12
     clock-color=1;0;0;0
     nvbuf-memory-type=0
-    
+
     [streammux]
     gpu-id=0
     ##Boolean property to inform muxer that sources are live
@@ -384,7 +384,7 @@ ms.locfileid: "80402859"
     ##along with width, height properties
     enable-padding=0
     nvbuf-memory-type=0
-    
+
     [primary-gie]
     enable=1
     gpu-id=0
@@ -401,7 +401,7 @@ ms.locfileid: "80402859"
     labelfile-path=../../../../../samples/models/Primary_Detector/labels.txt
     config-file=../../../../../samples/configs/deepstream-app/config_infer_primary.txt
     #infer-raw-output-dir=../../../../../samples/primary_detector_raw_output/
-    
+
     [tracker]
     enable=1
     tracker-width=600
@@ -413,7 +413,7 @@ ms.locfileid: "80402859"
     gpu-id=0
     #enable-batch-process applicable to DCF only
     enable-batch-process=0
-    
+
     [tests]
     file-loop=1
     ```
@@ -426,13 +426,25 @@ ms.locfileid: "80402859"
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/set-modules.png" alt-text="[モジュールの設定] のスクリーンショット":::
 
-14. [IoT Edge モジュール] で、[Marketplace モジュール] をクリックして選択します。
+14. [IoT Edge モジュール] で、[IoT Edge モジュール] をクリックして選択します。
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/marketplace-module.png" alt-text="[Marketplace モジュール] のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/marketplace-module.png" alt-text="IoT Edge モジュールの追加のスクリーンショット":::
 
-15. NVIDIA を検索し、下図のような DeepStream SDK を選択します。
+15. **[IoT Edge モジュールを追加する]** ペインで **[モジュールの設定]** タブを選択し、次の値を入力または選択します。
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/deepstream.png" alt-text="DeepStream SDK のスクリーンショット":::
+    - **[IoT Edge モジュール名]** : NVIDIADeepStreamSDK
+
+    - **[イメージの URI]** : marketplace.azurecr.io/nvidia/deepstream-iot2
+
+    - **[再起動ポリシー]** : [常に]
+
+    - **[必要な状態]** : [実行中]
+
+    - **[Image Pull Policy]\(イメージ プル ポリシー\)** : "*空白*"
+    
+    **[追加]** を選択します。
+
+    :::image type="content" source="media/attach-gpu-to-linux-vm/deepstream-module-settings.png" alt-text="DeepStream SDK のスクリーンショット":::
 
 16. [IoT Edge モジュール] に NvidiaDeepStreamSDK モジュールが一覧表示されます。
 
@@ -486,7 +498,7 @@ ms.locfileid: "80402859"
     sudo iotedge list
     ```
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/verify-modules-sudo.png" alt-text="iotedge list のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify-modules-sudo.png" alt-text="iotedge list の出力を示すスクリーンショット。":::
 
     ```shell
     nvidia-smi
@@ -503,19 +515,19 @@ ms.locfileid: "80402859"
     sudo iotedge list
     ```
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/verify1.png" alt-text="iotedge list のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify1.png" alt-text="NvdiaDeepStreem コンテナーが稼動していることを示す出力のスクリーンショット。":::
 
     ```shell
     sudo iotedge logs -f NVIDIADeepStreamSDK
     ```
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/verify2.png" alt-text="iotedge list のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify2.png" alt-text="iotedge logs -f NVIDIADeepStreamSDK コマンドの出力を示すスクリーンショット。":::
 
     ```shell
     nvidia-smi
     ```
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/verify3.png" alt-text="iotedge list のスクリーンショット":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify3.png" alt-text="nvidia-smi コマンドの追加の出力を示すスクリーンショット。":::
 
 21. **ifconfig** コマンドを使用して Ubuntu VM の TCP/IP アドレスを確認し、**eth0** インターフェイスの横の TCP/IP アドレスを探します。
 

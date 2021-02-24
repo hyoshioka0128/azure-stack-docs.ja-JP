@@ -4,16 +4,16 @@ titleSuffix: Azure Stack Hub
 description: Kubernetes を Azure Stack Hub Marketplace に追加する方法について説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 03/24/2020v
-ms.openlocfilehash: bd8867b4bd7fae79f82752a0f4cdbd1457efc0ef
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: a8b29a59de27ed8fd65357249e336d0532b63f6d
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80229528"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99246012"
 ---
 # <a name="add-kubernetes-to-azure-stack-hub-marketplace"></a>Kubernetes を Azure Stack Hub Marketplace に追加する
 
@@ -28,7 +28,7 @@ Kubernetes は、マーケットプレース項目としてユーザーに提供
 
 Kubernetes のマーケットプレース項目のプラン、オファー、サブスクリプションを作成します。 既存のプランとオファーを使うこともできます。
 
-1. [管理者ポータル](https://adminportal.local.azurestack.external)にサインインします。
+1. 管理者ポータル `https://adminportal.local.azurestack.external` にサインインします。
 
 1. プランは基本プランとして作成します。 手順については、「[Azure Stack Hub でのプランの作成](azure-stack-create-plan.md)」をご覧ください。
 
@@ -42,9 +42,9 @@ Kubernetes のマーケットプレース項目のプラン、オファー、サ
 
 1. **[+ リソースの作成]**  >  **[Offers and Plans] (オファーとプラン)**  >  **[サブスクリプション]** と選択し、サブスクリプションを作成します。
 
-    a. **表示名**を入力します。
+    a. **表示名** を入力します。
 
-    b. **ユーザー**を入力します。 テナントに関連付けられている Azure AD アカウントを使用します。
+    b. **ユーザー** を入力します。 テナントに関連付けられている Azure AD アカウントを使用します。
 
     c. **[プロバイダーの説明]**
 
@@ -60,7 +60,7 @@ ID 管理サービスのために Active Directory Federated Services (AD FS) �
 
 次の Ubuntu Server イメージを Azure Stack Hub Marketplace に追加します。
 
-1. [管理者ポータル](https://adminportal.local.azurestack.external)にサインインします。
+1. 管理者ポータル `https://adminportal.local.azurestack.external` にサインインします。
 
 1. **[すべてのサービス]** を選択し、 **[管理]** カテゴリで **[Marketplace management] (Marketplace 管理)** を選択します。
 
@@ -80,7 +80,7 @@ ID 管理サービスのために Active Directory Federated Services (AD FS) �
 
 Azure Stack Hub Marketplace から Kubernetes を追加します。
 
-1. [管理者ポータル](https://adminportal.local.azurestack.external)を開きます。
+1. 管理者ポータル `https://adminportal.local.azurestack.external` を開きます。
 
 1. **[すべてのサービス]** を選択し、 **[管理]** カテゴリで **[Marketplace management] (Marketplace 管理)** を選択します。
 
@@ -100,7 +100,7 @@ Azure Stack Hub Marketplace から Kubernetes を追加します。
 
 ## <a name="add-kubernetes-to-the-marketplace"></a>Kubernetes をマーケットプレースに追加する
 
-1. [管理者ポータル](https://adminportal.local.azurestack.external)を開きます。
+1. 管理者ポータル `https://adminportal.local.azurestack.external` を開きます。
 
 1. **[すべてのサービス]** を選択し、 **[管理]** カテゴリで **[Marketplace management] (Marketplace 管理)** を選択します。
 

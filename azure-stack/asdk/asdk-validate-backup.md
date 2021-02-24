@@ -1,18 +1,18 @@
 ---
 title: ASDK を使用してAzure Stack のバックアップを検証する
 description: ASDK を使用して、Azure Stack 統合システムのバックアップを検証する方法について説明します。
-author: justinha
+author: PatAltimore
 ms.topic: article
-ms.date: 07/31/2019
-ms.author: justinha
+ms.date: 1/15/2020
+ms.author: patricka
 ms.reviewer: hectorl
-ms.lastreviewed: 03/11/2020
-ms.openlocfilehash: 268bef58cb4176909ec6a13029324b18de75b52d
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.lastreviewed: 1/15/2020
+ms.openlocfilehash: d04116cb3eeb74eda7241c35c377d34df97dde28
+ms.sourcegitcommit: 48a46142ea7bccd6c8a609e188dd7f3f6444f3c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "79512016"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98561980"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>ASDK を使用してAzure Stack のバックアップを検証する
 Azure Stack をデプロイし、オファー、プラン、クォータ、およびサブスクリプションなどのユーザー リソースのプロビジョニング後に、[Azure Stack インフラストラクチャのバックアップを有効にする](../operator/azure-stack-backup-enable-backup-console.md)必要があります。 スケジュール設定とインフラストラクチャの定期的なバックアップの実行により、突発的的なハードウェアの故障またはサービスのエラーがある場合に、インフラストラクチャ管理のデータが失われないこようにします。
@@ -30,7 +30,7 @@ ASDK によるバックアップの検証は、次のシナリオでサポート
 |エンド ツー エンドの復旧ワークフローについて説明します。|ASDK を使用して、バックアップ全体を検証およびエクスペリエンスを検証します。|
 |     |     |
 
-次のシナリオは、ASDK でバックアップを検証する時にサポートされて**いません**:
+次のシナリオは、ASDK でバックアップを検証する時にサポートされて **いません**:
 
 |シナリオ|目的|
 |-----|-----|
@@ -151,7 +151,7 @@ $decryptioncertpassword  = Read-Host -AsSecureString -Prompt "Password for the d
 ```
 
 ## <a name="complete-cloud-recovery"></a>クラウドの復旧を完了する 
-クラウド の復旧デプロイ後、**Restore-AzureStack**を使用して復元を完了する必要があります。 
+クラウド の復旧デプロイ後、**Restore-AzureStack** を使用して復元を完了する必要があります。 
 
 Azure Stack オペレーターとしてログインした後、[Azure Stack PowerShell をインストール](asdk-post-deploy.md#install-azure-stack-powershell)し、次のコマンドを実行して、バックアップからの復元時に使用される証明書とパスワードを指定します。
 
@@ -162,7 +162,7 @@ Azure Stack オペレーターとしてログインした後、[Azure Stack Powe
 
 ```powershell
 $decryptioncertpassword = Read-Host -AsSecureString -Prompt "Password for the decryption certificate"
-Restore-AzsBackup -ResourceId "<BackupID>" `
+Restore-AzsBackup -Name "<BackupID>" `
  -DecryptionCertPath "<path to decryption certificate with file name (.pfx)>" `
  -DecryptionCertPassword $decryptioncertpassword
 ```

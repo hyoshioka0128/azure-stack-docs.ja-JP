@@ -3,16 +3,16 @@ title: Azure Stack Hub ユーザー ポータルの使用
 description: Azure Stack Hub でユーザー ポータルにアクセスして使用する方法について説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: efemmano
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: f60094812a5bc0b27a05ec7e66ac7bf65d747d76
-ms.sourcegitcommit: db3c9179916a36be78b43a8a47e1fd414aed3c2e
+ms.openlocfilehash: 79757f734f76c620e8be4f47d73ab647a1accfee
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84147024"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247882"
 ---
 # <a name="use-the-azure-stack-hub-user-portal"></a>Azure Stack Hub ユーザー ポータルの使用
 
@@ -23,7 +23,7 @@ Azure Stack Hub ポータルを使用して、パブリック オファーをサ
 Azure Stack Hub オペレーター (サービス プロバイダーまたは組織内の管理者のいずれか) から、ポータルにアクセスするための正しい URL が通知されます。
 
 - 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、 https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; の形式になります。
-- Azure Stack Development Kit (ASDK) を使用している場合、ポータル アドレスは https://portal.local.azurestack.external です。
+- Azure Stack Development Kit (ASDK) を使用している場合、ポータル アドレスは `https://portal.local.azurestack.external` です。
 - すべての Azure Stack Hub デプロイの既定のタイム ゾーンは、協定世界時 (UTC) に設定されています。 Azure Stack Hub のインストール時にタイム ゾーンを選択できますが、インストール中に既定として UTC に自動的に戻ります。
 
 ## <a name="customize-the-dashboard"></a>ダッシュボードのカスタマイズ
@@ -57,7 +57,7 @@ Azure Stack Hub オペレーター (サービス プロバイダーまたは組�
     特に、作業を開始するにあたって次の記事を確認することをお勧めします。
 
     - [重要な考慮事項: Azure Stack Hub でのサービスの使用またはアプリの作成](azure-stack-considerations.md)。
-    - ドキュメントの**サービスの使用**に関するセクションには、サービスごとの考慮事項の記事があります。 考慮事項に関するページでは、Azure で提供されるサービスと Azure Stack Hub で提供される同じサービスとの相違点を説明しています。 例については、「[VM に関する考慮事項](azure-stack-vm-considerations.md)」を参照してください。 「**サービスの使用**」セクションには、Azure Stack Hub に固有なその他の情報が含まれている場合があります。
+    - ドキュメントの **サービスの使用** に関するセクションには、サービスごとの考慮事項の記事があります。 考慮事項に関するページでは、Azure で提供されるサービスと Azure Stack Hub で提供される同じサービスとの相違点を説明しています。 例については、「[VM に関する考慮事項](azure-stack-vm-considerations.md)」を参照してください。 「**サービスの使用**」セクションには、Azure Stack Hub に固有なその他の情報が含まれている場合があります。
 
       サービスの一般的なリファレンスとして Azure のドキュメントを使用できますが、これらの相違点を把握しておく必要があります。 **[Quickstart tutorials] (クイックスタート チュートリアル)** タイル上のドキュメント リンクが Azure のドキュメントを指していることを理解します。
 

@@ -8,20 +8,18 @@ ms.topic: how-to
 ms.date: 12/09/2019
 ms.reviewer: jfggdl
 ms.lastreviewed: 12/09/2019
-ms.openlocfilehash: 2a1525f4b91998479d368714aa3a88df6ecfcef9
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: b69d5b7a7b621d22745c89c18a3e7f000e54bcbd
+ms.sourcegitcommit: f56a5b287c90b2081ae111385c8b7833931d4059
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80424597"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97343747"
 ---
 # <a name="how-to-remove-event-hubs-on-azure-stack-hub"></a>Azure Stack Hub の Event Hubs を削除する方法
 
-[!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
-
 > [!WARNING]
 > Event Hubs をアンインストールすると、リソース プロバイダーと、ユーザーが作成したすべての Event Hubs クラスター、名前空間、および Event Hubs リソースが削除 (消去) されます。 また、関連付けられているイベント データも削除されます。  
-> Event Hubs のアンインストールを決定する際は、細心の注意を払ってください。 Event Hubs をアンインストールしても、Event Hubs のインストールに使用したパッケージは削除**されません**。 これを行うには、「[Event Hubs パッケージを削除する](#delete-event-hubs-packages)」を参照してください。
+> Event Hubs のアンインストールを決定する際は、細心の注意を払ってください。 Event Hubs をアンインストールしても、Event Hubs のインストールに使用したパッケージは削除 **されません**。 これを行うには、「[Event Hubs パッケージを削除する](#delete-event-hubs-packages)」を参照してください。
 
 ## <a name="uninstall-event-hubs"></a>Event Hubs をアンインストールする
 

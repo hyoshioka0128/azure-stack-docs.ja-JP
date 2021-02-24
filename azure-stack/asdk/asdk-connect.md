@@ -1,18 +1,18 @@
 ---
 title: ASDK に接続する
 description: Azure Stack Development Kit (ASDK) に接続する方法について説明します。
-author: justinha
+author: PatAltimore
 ms.topic: article
-ms.date: 05/06/2019
-ms.author: justinha
+ms.date: 11/14/2020
+ms.author: patricka
 ms.reviewer: knithinc
-ms.lastreviewed: 10/25/2019
-ms.openlocfilehash: 44fa05f5841952d581a35d8394300e96333bfc4f
-ms.sourcegitcommit: c263a86d371192e8ef2b80ced2ee0a791398cfb7
+ms.lastreviewed: 11/14/2020
+ms.openlocfilehash: 0bf880cdbb181ae923a16932ba5522cfadc74be0
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82847080"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97873522"
 ---
 # <a name="connect-to-the-asdk"></a>ASDK に接続する
 
@@ -48,7 +48,7 @@ ASDK ホスト コンピューターに対する分割トンネルの VPN 接続
 VPN 接続は、Azure AD と Active Directory フェデレーション サービス (AD FS) の両方のデプロイでサポートされています。
 
 > [!NOTE]
-> VPN 接続では、Azure Stack VM には接続*できません*。 VPN 経由で接続している間は、Azure Stack VM に RDP 接続することはできません。
+> VPN 接続では、Azure Stack VM には接続 *できません*。 VPN 経由で接続している間は、Azure Stack VM に RDP 接続することはできません。
 
 ### <a name="prerequisites"></a>前提条件
 ASDK への VPN 接続を設定する前に、次の前提条件を満たしていることを確認してください。
@@ -60,9 +60,11 @@ ASDK への VPN 接続を設定する前に、次の前提条件を満たして�
 
 ASDK への VPN 接続を作成するには、Windows ベースのローカル コンピューター上で管理者として PowerShell を開きます。 その後、次のスクリプトを実行します。IP アドレスとパスワードの値は実際の環境に合わせて更新してください。
 
+### <a name="az-modules"></a>[Az モジュール](#tab/az)
+
 ```powershell
 # Change directories to the default Azure Stack tools directory
-cd C:\AzureStack-Tools-master
+cd C:\AzureStack-Tools-az
 
 # Configure Windows Remote Management (WinRM), if it's not already configured.
 winrm quickconfig  
@@ -74,7 +76,7 @@ Import-Module .\Connect\AzureStack.Connect.psm1
 
 # Add the ASDK host computer's IP address as the ASDK certificate authority (CA) to the list of trusted hosts. Make sure you update the IP address and password values for your environment.
 
-$hostIP = "<Azure Stack host IP address>"
+$hostIP = "<Azure Stack Hub host IP address>"
 
 $Password = ConvertTo-SecureString `
   "<operator's password provided when deploying Azure Stack>" `
@@ -92,6 +94,40 @@ Add-AzsVpnConnection `
 
 ```
 
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm)
+
+```powershell
+# Change directories to the default Azure Stack tools directory
+cd C:\AzureStack-Tools-master
+
+# Configure Windows Remote Management (WinRM), if it's not already configured.
+winrm quickconfig  
+
+Set-ExecutionPolicy RemoteSigned
+
+# Import the Connect module.
+Import-Module .\Connect\AzureStack.Connect.psm1
+
+# Add the ASDK host computer's IP address as the ASDK certificate authority (CA) to the list of trusted hosts. Make sure you update the IP address and password values for your environment.
+
+$hostIP = "<Azure Stack Hub host IP address>"
+
+$Password = ConvertTo-SecureString `
+  "<operator's password provided when deploying Azure Stack>" `
+  -AsPlainText `
+  -Force
+
+Set-Item wsman:\localhost\Client\TrustedHosts `
+  -Value $hostIP `
+  -Concatenate
+
+# Create a VPN connection entry for the local user.
+Add-AzsVpnConnection `
+  -ServerAddress $hostIP `
+  -Password $Password
+
+```
+---
 設定が成功すると、VPN 接続の一覧に **Azure Stack** と表示されます。
 
 ![ネットワーク接続](media/asdk-connect/vpn.png)  

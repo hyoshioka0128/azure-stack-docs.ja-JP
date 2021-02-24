@@ -3,16 +3,16 @@ title: Azure Stack Hub 用のテンプレートの開発
 description: Azure と Azure Stack Hub 間のアプリの移植性のために Azure Resource Manager テンプレートを開発する方法について説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: unknown
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: dd43abbf1194aa4aaa3ca1cc75a3e2ff6262bbbc
-ms.sourcegitcommit: db3c9179916a36be78b43a8a47e1fd414aed3c2e
+ms.openlocfilehash: a99f3803f5b8ea8d23913efafd1f8d72005b49bd
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84146752"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247763"
 ---
 # <a name="develop-templates-for-azure-stack-hub-with-azure-resource-manager"></a>Azure Resource Manager による Azure Stack Hub 用テンプレートの開発
 

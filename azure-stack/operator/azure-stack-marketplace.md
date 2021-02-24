@@ -3,20 +3,20 @@ title: Azure Stack Hub Marketplace の概要
 description: Azure Stack Hub Marketplace と Marketplace アイテムの概要。
 author: sethmanheim
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 11/09/2020
 ms.author: sethm
-ms.reviewer: ihcherie
+ms.reviewer: gara
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 638ffe45cef9301059fd9e9e39b74b793e2ba86a
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: b5f9fb7c7e3379b773d4168c72486d7333fd88fb
+ms.sourcegitcommit: 40d3f3f0ac088d1590d1fb64ca05ac1dabf4e00c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661342"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94875061"
 ---
 # <a name="azure-stack-hub-marketplace-overview"></a>Azure Stack Hub Marketplace の概要
 
-Azure Stack Hub Marketplace は、Azure Stack Hub 向けにカスタマイズされたサービス、アプリ、およびリソースのコレクションです。 リソースには、ネットワーク、仮想マシン (VM)、ストレージなどが含まれます。 Azure Stack Hub Marketplace を使用して、新しいリソースを作成したり、新しいアプリをデプロイしたり、使用するアイテムを参照して選択したりします。 ユーザーが Marketplace アイテムを使用するには、アイテムへのアクセスが許可されているサービスをサブスクライブする必要があります。
+Azure Stack Hub Marketplace は、Azure Stack Hub 向けにカスタマイズされたサービス、アプリ、およびリソースのコレクションです。 リソースには、ネットワーク、仮想マシン (VM)、ストレージなどが含まれます。 Azure Stack Hub Marketplace を使用して、新しいリソースを作成したり、新しいアプリをデプロイしたり、使用するアイテムを参照して選択したりします。 ユーザーが Marketplace アイテムを使用するには、アイテムへのアクセスが許可されるオファーにサブスクライブする必要があります。
 
 Azure Stack Hub オペレーターが、Azure Stack Hub Marketplace に追加 (公開) するアイテムを決定します。 データベース、アプリ サービスなどのアイテムを公開できます。 公開すると、アイテムはすべてのユーザーに表示されます。 作成したカスタム アイテムを公開することも、増え続けている [Azure Marketplace アイテムの一覧](azure-stack-marketplace-azure-items.md)からアイテムを公開することもできます。 Azure Stack Hub Marketplace にアイテムを公開すると、5 分以内にユーザーがそれを表示できます。
 

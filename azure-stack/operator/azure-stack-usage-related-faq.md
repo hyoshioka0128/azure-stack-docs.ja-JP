@@ -6,16 +6,16 @@ services: azure-stack
 documentationcenter: ''
 author: sethmanheim
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 01/14/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: 1d5e6d9cbed6f3273cf2e6e18ffcb36d6a627a90
-ms.sourcegitcommit: 278aaeca069213a98b90751253f6b15423634849
+ms.openlocfilehash: dc49218a5abce85c1ca1bcfd7ea5ef2077e8265a
+ms.sourcegitcommit: 649540e30e1018b409f4b1142bf2cb392c9e8b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82742411"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98207997"
 ---
 # <a name="frequently-asked-questions-about-azure-stack-hub-usage"></a>Azure Stack Hub の使用量に関してよく寄せられる質問
 
@@ -210,6 +210,18 @@ ms.locfileid: "82742411"
 **単位**:MB\*時  
 **注**:作成時のデータベースの合計容量。 使用状況 API を日単位の細分性で呼び出した場合、メーターは MB に時間数を乗算して返します。
 
+### <a name="event-hubs"></a>Event Hubs
+
+**測定 ID**: d3a257e7-cf59-43bd-82c0-cf29ca8f7da0 (有料メーター)  
+**測定名**:1 コア    
+**単位**:コア \* 時間  
+**注**:デプロイされた Event Hubs クラスターによって使用されるコアの数。 コア数は 10 の倍数です。
+
+**測定 ID**:29ea0bfc-6780-4711-98fc-2c7db191e1a4 (管理メーター)  
+**測定名**:1 コア管理者   
+**単位**:コア \* 時間  
+**注**:デプロイされた Event Hubs クラスターによって使用されるコアの数。 コア数は 10 の倍数です。
+
 ### <a name="key-vault"></a>Key Vault
   
 **測定 ID**:EBF13B9F-B3EA-46FE-BF54-396E93D48AB4  
@@ -240,7 +252,7 @@ ms.locfileid: "82742411"
 **測定 ID**:D1D04836-075C-4F27-BF65-0A1130EC60ED  
 **測定名**:関数 - コンピューティング  
 **単位**:GB/秒  
-**注**:ギガバイト/秒 (GB/秒) 単位で測定されたリソース使用量。 **実際のリソース使用量**は、平均メモリ サイズ (GB) に関数の実行にかかった時間 (ミリ秒) を乗じて計算されます。 関数によって使用されたメモリは、128 MB 単位で切り上げて測定されます。最大メモリ サイズは 1,536 MB です。実行時間は 1 ミリ秒単位で切り上げて計算されます。 1 つの関数の実行の最小実行時間は 100 ミリ秒、最小メモリは 128 MB です。  
+**注**:ギガバイト/秒 (GB/秒) 単位で測定されたリソース使用量。 **実際のリソース使用量** は、平均メモリ サイズ (GB) に関数の実行にかかった時間 (ミリ秒) を乗じて計算されます。 関数によって使用されたメモリは、128 MB 単位で切り上げて測定されます。最大メモリ サイズは 1,536 MB です。実行時間は 1 ミリ秒単位で切り上げて計算されます。 1 つの関数の実行の最小実行時間は 100 ミリ秒、最小メモリは 128 MB です。  
   
 **測定 ID**:957E9F36-2C14-45A1-B6A1-1723EF71A01D  
 **測定名**:Shared App Service 時間  
@@ -285,7 +297,7 @@ ms.locfileid: "82742411"
 **単位**:GB  
 **注**:受信要求応答の合計バイト数 + 送信要求応答の合計バイト数 + 受信 FTP 要求応答の合計バイト数 + 受信 Web デプロイ要求応答の合計バイト数。  
   
-## <a name="how-do-the-azure-stack-hub-usage-apis-compare-to-the-azure-usage-api-currently-in-public-preview"></a>Azure Stack Hub Usage API は [Azure Usage API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (現在パブリック プレビュー中) と比較してどうですか。
+## <a name="how-do-the-azure-stack-hub-usage-apis-compare-to-the-azure-usage-api-currently-in-public-preview"></a>Azure Stack Hub Usage API は [Azure Usage API](/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (現在パブリック プレビュー中) と比較してどうですか。
 
 * テナント使用量 API は、Azure API と一貫性がありますが、唯一の例外として、現在 Azure Stack Hub では *showDetails* フラグはサポートされていません。
 * プロバイダー使用量 API は、Azure Stack Hub にのみ適用されます。

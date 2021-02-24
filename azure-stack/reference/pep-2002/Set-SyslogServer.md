@@ -1,18 +1,18 @@
 ---
-title: Azure Stack Hub の Close-PrivilegedEndpoint 特権エンドポイント
-description: PowerShell Azure Stack の特権エンドポイントのリファレンス - Close-PrivilegedEndpoint
+title: Set-SyslogServer
+description: PowerShell Azure Stack の特権エンドポイントのリファレンス - Set-SyslogServer
 author: mattbriggs
 ms.topic: reference
 ms.date: 04/27/2020
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
-ms.openlocfilehash: 1b0df5892149d8cd351e3a222b11cf63c9d37759
-ms.sourcegitcommit: 54f98b666bea9226c78f26dc255ddbdda539565f
+ms.openlocfilehash: 3d6cb57660485d715a1136bdffa94682bc4dee2c
+ms.sourcegitcommit: 2ac64ac431411b673e655465939d3c95cc94c55d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82563627"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98810932"
 ---
 # <a name="set-syslogserver"></a>Set-SyslogServer
 
@@ -185,4 +185,4 @@ Accept wildcard characters: False
 
 ## <a name="next-steps"></a>次のステップ
 
-特権エンドポイントにアクセスして使用する方法については、「[Azure Stack Hub で特権エンドポイントを使用する](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint)」を参照してください。
+特権エンドポイントにアクセスして使用する方法については、「[Azure Stack Hub で特権エンドポイントを使用する](../../operator/azure-stack-privileged-endpoint.md)」を参照してください。

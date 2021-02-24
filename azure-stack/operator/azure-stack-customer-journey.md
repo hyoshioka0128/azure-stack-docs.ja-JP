@@ -1,18 +1,18 @@
 ---
 title: Azure Stack Hub データセンターの統合のチュートリアル
 description: 計画からデプロイ後まで、データセンターでの Azure Stack Hub のオンサイト デプロイの成功のために期待されることについて学習します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: asganesh
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: d55176266fc169b344e7bb43389a46657174b88e
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 22327cfb7761513eb18337e1e45e9c6d34482235
+ms.sourcegitcommit: 899c219b8fd433c852d816d6c50293e8195d9895
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "78368846"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99099269"
 ---
 # <a name="azure-stack-hub-datacenter-integration-walkthrough"></a>Azure Stack Hub データセンターの統合のチュートリアル
 
@@ -66,7 +66,7 @@ Microsoft または Azure Stack Hub ソリューション パートナーが、�
 -   どのようなサイズのソリューションが必要か?
 -   電源と冷却に関する要件はどのようなものか?
 
-[Azure Stack Hub Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) を使用して、ニーズに最適なハードウェアの容量と構成を調査して分析できます。 
+[Azure Stack Hub Capacity Planner](https://download.microsoft.com/download/4/a/2/4a2bd10c-58a0-4ee7-8c3f-55b526ce7e75/AzureStackHubCapacityPlanner_v2005.01.xlsm) を使用して、ニーズに最適なハードウェアの容量と構成を調査して分析できます。 
 
 ## <a name="ordering"></a>発注
 お客様の組織は、Azure Stack Hub の購入を約束し、コントラクトおよび注文書への署名を行い、統合要件データをソリューション プロバイダーに提供します。
@@ -91,14 +91,14 @@ Azure Stack Hub をデータセンターと統合する方法について決定�
 
 - **ファイアウォールの統合**。 Azure Stack Hub は、[ファイアウォールを使用](azure-stack-firewall.md)してセキュリティで保護することをお勧めします。 ファイアウォールは、DDOS 攻撃の防止、侵入検出、およびコンテンツ検査に役立ちます。 ただし、Azure ストレージ サービスのスループットのボトルネックになる可能性があることに注意してください。
 
-- **証明書の要件**。 デプロイのためにデータセンターにオンサイト エンジニアが到着する*前に*、すべての[必要な証明書](azure-stack-pki-certs.md)が使用可能になっていることが重要です。
+- **証明書の要件**。 デプロイのためにデータセンターにオンサイト エンジニアが到着する *前に*、すべての [必要な証明書](azure-stack-pki-certs.md)が使用可能になっていることが重要です。
 
 デプロイ ワークシートからすべての前提条件情報を収集したら、ソリューション プロバイダーは収集されたデータに基づいて工場出荷時のプロセスを開始し、Azure Stack Hub をデータセンターに正常に統合できることを確実にします。
 
 ## <a name="hardware-delivery"></a>ハードウェア納入 
 ソリューション プロバイダーは、ソリューションのお客様の施設への納入をスケジュールするためにお客様と連携します。 受け取って適切に配置したら、Azure Stack Hub のデプロイを実行するためにエンジニアがオンサイトに来る時間をソリューション プロバイダーとともにスケジュールする必要があります。
 
-*オンサイト エンジニアがソリューションをデプロイするために到着する前に*、すべての前提条件データをロックして使用可能にしておくことが**重要です**。
+*オンサイト エンジニアがソリューションをデプロイするために到着する前に*、すべての前提条件データをロックして使用可能にしておくことが **重要です**。
 
 -   すべての証明書を購入して準備しておく必要があります。
 

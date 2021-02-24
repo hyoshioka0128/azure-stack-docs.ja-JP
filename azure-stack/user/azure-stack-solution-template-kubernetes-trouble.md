@@ -4,19 +4,19 @@ description: Kubernetes の Azure Stack Hub へのデプロイのトラブルシ
 author: mattbriggs
 ms.topic: article
 ms.author: mabrigg
-ms.date: 04/20/2020
+ms.date: 2/1/2021
 ms.reviewer: waltero
 ms.lastreviewed: 11/14/2019
-ms.openlocfilehash: 30743cf5a2edf880c155e443c0608dc7d3f8f55f
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: b76bd5aa4e46eba8c7abf7f5beceae79ed5c025a
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81660211"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247746"
 ---
 # <a name="troubleshoot-kubernetes-deployment-to-azure-stack-hub"></a>Kubernetes の Azure Stack Hub へのデプロイのトラブルシューティング
 
-> [!Note]  
+> [!NOTE]  
 > Kubernetes Azure Stack Hub Marketplace 項目のみを使用して、概念実証としてクラスターをデプロイします。 Azure Stack Hub でサポートされている Kubernetes クラスターの場合は、[AKS エンジン](azure-stack-kubernetes-aks-engine-overview.md)を使用します。
 
 この記事では、Kubernetes クラスターのトラブルシューティングを行う方法を確認します。 トラブルシューティングを開始するには、デプロイに必要な要素を確認します。 場合によっては、Azure Stack Hub または Kubernetes をホストする Linux VM からデプロイ ログを収集する必要があります。 管理エンドポイントからログを取得するには、Azure Stack Hub 管理者にお問い合わせください。
@@ -93,7 +93,7 @@ Kubernetes クラスターをサポートしている VM のデプロイ ログ�
 
 Kubernetes クラスターをデプロイする際には、デプロイの状態を確認して、問題をチェックすることができます。
 
-1. [Azure Stack Hub ポータル](https://portal.local.azurestack.external)を開きます。
+1. Azure Stack Hub ポータル `https://portal.local.azurestack.external` を開きます。
 2. **[リソース グループ]** を選択し、Kubernetes クラスターのデプロイ時に使用したリソース グループの名前を選択します。
 3. **[デプロイ]** を選択し、 **[デプロイ名]** を選択します。
 
@@ -155,7 +155,7 @@ Azure Stack Hub の管理に使用するマシンには Bash プロンプトが�
 
     また、ログ コレクター スクリプトは、ログ ファイルでエラーを検索し、既知の問題を検出した場合はトラブルシューティング手順を含めます。 既知の問題が検出される可能性を高めるために、最新バージョンのスクリプトを実行してください。
 
-> [!Note]  
+> [!NOTE]  
 > ログ コレクター スクリプトの詳細を確認するには、 こちらの GitHub [リポジトリ](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
@@ -164,4 +164,4 @@ Azure Stack Hub の管理に使用するマシンには Bash プロンプトが�
 
 [Kubernetes クラスターを Marketplace に追加する (Azure Stack Hub のオペレーター)](../operator/azure-stack-solution-template-kubernetes-cluster-add.md)
 
-[Azure における Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Azure における Kubernetes](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

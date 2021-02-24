@@ -3,16 +3,16 @@ title: Azure Stack Hub での API バージョンのプロファイルの管理
 description: Azure Stack Hub での API バージョンのプロファイルについて説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/04/2020
+ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 07/24/2019
-ms.openlocfilehash: f72f0e79fe7b890c65c630ff00ec3870d4756c5e
-ms.sourcegitcommit: 70c344b3c9c63f8c12867b2cdfdd1794fcc518dc
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 0d5bd91af5c320d3e6dcbb73d87b704d4903e817
+ms.sourcegitcommit: 8526f642ef859b0006c3991d966f93608a87288a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836225"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98243444"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack-hub"></a>Azure Stack Hub での API バージョンのプロファイルの管理
 
@@ -44,13 +44,13 @@ API プロファイルでは、Azure リソース プロバイダーと Azure RE
 最新の API プロファイルは Azure Stack Hub との互換性がありません。 次の名前付け規則を使用して、Azure Stack Hub ソリューションにどのプロファイルを使用するか識別します。
 
 **最新**  
-このプロファイルはグローバル Azure にある最新の API バージョンであり、Azure Stack Hub では機能しません。 **最新** このプロファイルには､最も多くの重大な変更が含まれています｡ このプロファイルでは､安定性および他のクラウドとの互換性は配慮されていません｡ 最新の API バージョンを使用する場合は､**最新**プロファイルを使用してください。
+このプロファイルはグローバル Azure にある最新の API バージョンであり、Azure Stack Hub では機能しません。 **最新** このプロファイルには､最も多くの重大な変更が含まれています｡ このプロファイルでは､安定性および他のクラウドとの互換性は配慮されていません｡ 最新の API バージョンを使用する場合は､**最新** プロファイルを使用してください。
 
 **yyyy-mm-dd-hybrid**  
 このプロファイルは､毎年 3月と 9 月にリリースされます｡ 最適な安定性と、さまざまなクラウドとの互換性があり、グローバル Azure と Azure Stack Hub を対象に設計されています。 このプロファイルに記載されている Azure API バージョンは、Azure Stack Hub に記載されているものと同じです。 このプロファイルを利用して､ハイブリッド クラウド ソリューション向けのコードを開発します。
 
 **yyyy-mm-dd-profile**  
-このプロファイルは､グローバル Azure 向けに 6 月と 12 月にリリースされます｡ Azure Stack Hub では機能せず、一般的に、重大な変更が多数含まれています。 最適な安定性と最新の機能のバランスを取っていますが、**最新**プロファイルとこのプロファイルの違いは､API のリリース時期に関係なく、**最新**のプロファイルは常に最新の API バージョンで構成されることです。 たとえば､Compute API 用に新しい API バージョンが明日作成されるとすると､**最新**プロファイルには､その API バージョンが記載されますが､このプロファイルはすでに存在するため、**yyyy-mm-dd-profile** プロファイルには記載されません｡ **yyyy-mm-dd-profile** は、6 月または 12 月の前にリリースされた最新のバージョンが対応します｡
+このプロファイルは､グローバル Azure 向けに 6 月と 12 月にリリースされます｡ Azure Stack Hub では機能せず、一般的に、重大な変更が多数含まれています。 最適な安定性と最新の機能のバランスを取っていますが、**最新** プロファイルとこのプロファイルの違いは､API のリリース時期に関係なく、**最新** のプロファイルは常に最新の API バージョンで構成されることです。 たとえば､Compute API 用に新しい API バージョンが明日作成されるとすると､**最新** プロファイルには､その API バージョンが記載されますが､このプロファイルはすでに存在するため、**yyyy-mm-dd-profile** プロファイルには記載されません｡ **yyyy-mm-dd-profile** は、6 月または 12 月の前にリリースされた最新のバージョンが対応します｡
 
 ## <a name="azure-resource-manager-api-profiles"></a>Azure Resource Manager API プロファイル
 
@@ -73,7 +73,8 @@ API プロファイルは、Azure Resource Manager を使用するツール (Pow
 - **.NET** <br>
 .NET API プロファイルを使用して、リソース プロバイダーのパッケージに含まれる各リソースの種類の、最も安定した最新バージョンを取得します。 詳細については、[Azure Stack Hub での .NET による API バージョンのプロファイルの使用](azure-stack-version-profiles-net.md)についてのページを参照してください。
 - **PowerShell**  
-PowerShell ギャラリーから入手できる **AzureRM.Bootstrapper** モジュールを使用して、API バージョンのプロファイルを操作するために必要な PowerShell コマンドレットを取得します。 詳しくは、「[Use API version profiles for PowerShell (PowerShell 向け API バージョン プロファイルの使用)](azure-stack-version-profiles-powershell.md)」をご覧ください。
+PowerShell ギャラリーから入手できる **Az.Bootstrapper** モジュールを使用して、API バージョンのプロファイルを使用するために必要な PowerShell コマンドレットを取得します。 詳しくは、「[Use API version profiles for PowerShell (PowerShell 向け API バージョン プロファイルの使用)](../operator/azure-stack-powershell-install.md)」をご覧ください。
+PowerShell ギャラリーから入手できる **AzureRM.Bootstrapper** モジュールを使用して、API バージョンのプロファイルを操作するために必要な PowerShell コマンドレットを取得します。 詳しくは、「[Use API version profiles for PowerShell (PowerShell 向け API バージョン プロファイルの使用)](../operator/powershell-install-az-module.md)」をご覧ください。
 - **Azure CLI**  
 Azure Stack Hub 固有の API バージョンのプロファイルを使用するようにお使いの環境の構成を更新します。 詳細については、[Azure CLI での API バージョンのプロファイルの使用](azure-stack-version-profiles-azurecli2.md)に関するページを参照してください。
 - **Go**  
@@ -87,6 +88,6 @@ Azure Stack Hub Resource Manager 向けの Node.js SDK には、インフラス�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [PowerShell for Azure Stack Hub をインストールする](../operator/azure-stack-powershell-install.md)
+- [PowerShell for Azure Stack Hub をインストールする](../operator/powershell-install-az-module.md)
 - [Azure Stack Hub ユーザーの PowerShell 環境の構成](azure-stack-powershell-configure-user.md)
 - [プロファイルでサポートされているリソース プロバイダーの API バージョンの詳細を確認します](azure-stack-profiles-azure-resource-manager-versions.md)。

@@ -2,17 +2,17 @@
 title: Azure Stack Hub のネットワークの相違点
 description: Azure Stack Hub でネットワークを操作する際の違いと考慮事項について説明します。
 author: mattbriggs
-ms.date: 5/27/2020
+ms.date: 2/1/2021
 ms.topic: article
 ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 07/10/2019
-ms.openlocfilehash: 2a71320a660c7dbf74ad885226bb7fcbfa78b35f
-ms.sourcegitcommit: cad40ae88212cc72f40c84a1c88143ea0abb65ef
+ms.openlocfilehash: b16c65554be272d4aacc89959fe2e0d71561c363
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84111381"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247916"
 ---
 # <a name="differences-and-considerations-for-azure-stack-hub-networking"></a>Azure Stack Hub ネットワークの違いと考慮事項
 
@@ -22,7 +22,7 @@ Azure Stack Hub ネットワークは、Azure ネットワークで提供され�
 
 ## <a name="cheat-sheet-networking-differences"></a>チート シート:ネットワークの違い
 
-| サービス | 機能 | Azure (グローバル) | Azure Stack Hub |
+| サービス | 特徴量 | Azure (グローバル) | Azure Stack Hub |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | DNS | マルチテナント DNS | サポートされています | まだサポートされていません |
 |  | DNS AAAA レコード | サポートされています | サポートされていません |
@@ -30,8 +30,8 @@ Azure Stack Hub ネットワークは、Azure ネットワークで提供され�
 |  | ゾーンあたりの DNS レコード セット数 | 5000 (既定値)<br>ご希望により増やすことができます。 | 5000 |
 |  | ゾーンの委任用のネーム サーバー | Azure では、作成されるユーザー (テナント) ゾーンごとに 4 つのネーム サーバーを提供します。 | Azure Stack Hub では、作成されるユーザー (テナント) ゾーンごとに 2 つのネーム サーバーを提供します。 |
 | Azure Firewall | ネットワーク セキュリティ サービス | Azure Firewall は、Azure Virtual Network リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。 | まだサポートされていません。 |
-| Virtual Network | 仮想ネットワーク ピアリング | 同じリージョンに存在する 2 つの仮想ネットワークを Azure のバックボーン ネットワークを介して接続します。 | まだサポートされていません |
-|  | IPv6 アドレス | [ネットワーク インターフェイス構成](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions)の一部として IPv6 アドレスを割り当てることができます。 | IPv4 のみがサポートされています。 |
+| Virtual Network | 仮想ネットワーク ピアリング | 同じリージョンに存在する 2 つの仮想ネットワークを Azure のバックボーン ネットワークを介して接続します。 | バージョン 2008 [仮想ネットワーク ピアリング](virtual-network-peering.md)からサポートされています |
+|  | IPv6 アドレス | [ネットワーク インターフェイス構成](/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions)の一部として IPv6 アドレスを割り当てることができます。 | IPv4 のみがサポートされています。 |
 |  | DDoS 保護計画 | サポートされています | まだサポートされていません。 |
 |  | スケール セットの IP 構成 | サポートされています | まだサポートされていません。 |
 |  | プライベート アクセス サービス (サブネット) | サポートされています | まだサポートされていません。 |
@@ -52,7 +52,8 @@ Azure Stack Hub ネットワークは、Azure ネットワークで提供され�
 |  | ゲートウェイのサイズ変更 | Azure では、デプロイ後のゲートウェイのサイズ変更がサポートされています。 | サイズ変更はサポートされていません。 |
 |  | 高可用性構成 | アクティブ/アクティブ | アクティブ/パッシブ |
 |  | UsePolicyBasedTrafficSelectors | Azure では、ルート ベースのゲートウェイ接続によるポリシー ベースのトラフィック セレクターの使用がサポートされています。 | まだサポートされていません。 |
-| Load Balancer | SKU | Basic Load Balancer と Standard Load Balancer がサポートされています | Basic Load Balancer のみがサポートされています。<br>SKU のプロパティはサポートされていません。<br>Basic SKU ロード バランサーの /path/ には、5 つを超えるフロントエンド IP 構成を含めることはできません。  |
+|  | 監視とアラート | Azure では Azure Monitor を使用し、VPN リソースのアラートを設定するための機能を提供します。 | まだサポートされていません。|
+| Load Balancer | SKU | Basic Load Balancer と Standard Load Balancer がサポートされています | Basic Load Balancer のみがサポートされています。<br>SKU のプロパティはサポートされていません。<br>Basic SKU のロードバランサーでは、リリース 1807-1906 では 10 個のフロントエンド IP 構成が、リリース 1907 以降では 200 個のフロントエンド IP 構成が、ロード バランサーごとにサポートされています。  |
 |  | ゾーン | Availability Zones がサポートされています。 | まだサポートされていません |
 |  | サービス エンドポイントの受信 NAT ルール サポート | Azure では、受信 NAT 規則のサービス エンドポイントの指定がサポートされています。 | Azure Stack Hub でサービス エンドポイントはまだサポートされていないため、指定できません。 |
 |  | Protocol | Azure では、GRE または ESP の指定がサポートされています。 | Azure Stack Hub では、プロトコル クラスはサポートされていません。 |

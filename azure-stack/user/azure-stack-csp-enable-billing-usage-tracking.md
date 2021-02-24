@@ -3,16 +3,16 @@ title: クラウド ソリューション プロバイダーで Azure Stack Hub 
 description: クラウド ソリューション プロバイダー (CSP) で Azure Stack Hub サブスクリプションを自動的に管理できるようにする方法について学習します。
 author: sethmanheim
 ms.topic: article
-ms.date: 04/24/2020
+ms.date: 02/16/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/20/2019
-ms.openlocfilehash: 1d325f8c1b48db33c8607dbbc04c480c00c54de0
-ms.sourcegitcommit: e5b587216a137819444680ec619281c90f37bad9
+ms.openlocfilehash: b6a37ad0db4dfb88a64e641dbb21f2869084c3b5
+ms.sourcegitcommit: 34babe5abf1bceee718011b5c5c25f75e1b03b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82167128"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100563050"
 ---
 # <a name="let-your-cloud-solution-provider-manage-your-azure-stack-hub-subscription"></a>クラウド ソリューション プロバイダーで Azure Stack Hub サブスクリプションを管理できるようにする
 
@@ -26,7 +26,7 @@ ms.locfileid: "82167128"
 
 ## <a name="manage-your-subscription-with-a-csp"></a>CSP でサブスクリプションを管理する
 
-CSP を**ユーザー**としてサブスクリプションに追加します。
+CSP を **ユーザー** としてサブスクリプションに追加します。
 
 1. CSP を、**ユーザー** ロールを持つゲスト ユーザーとしてテナント ディレクトリに追加します。 ユーザーの追加に関するヘルプについては、[Azure Active Directory への新しいユーザーの追加](/azure/active-directory/add-users-azure-active-directory)に関するページを参照してください。
 
@@ -36,11 +36,11 @@ CSP を**ユーザー**としてサブスクリプションに追加します。
 
 ## <a name="let-the-csp-manage-your-subscription-using-rbac-rights"></a>CSP で RBAC 権限を使用してサブスクリプションを管理できるようにする
 
-CSP を**所有者**としてサブスクリプションに追加します。
+CSP を **所有者** としてサブスクリプションに追加します。
 
 1. CSP を、ゲスト ユーザーとしてテナント ディレクトリに追加します。 ユーザーの追加の詳細については、「[Azure Active Directory に新しいユーザーを追加する](/azure/active-directory/add-users-azure-active-directory)」を参照してください。
 
-2. CSP ゲスト ユーザーに**所有者**ロールを追加します。 サブスクリプションへの CSP ユーザーの追加に関する詳細については、[ロールベースのアクセス制御を使用した Azure サブスクリプション リソースへのアクセスの管理](/azure/role-based-access-control/role-assignments-portal)に関するページを参照してください。 CSP では、ローカル Azure Stack Hub サブスクリプションが自動的に作成されます。 これで、Azure Stack Hub の使用を開始する準備ができました。
+2. CSP ゲスト ユーザーに **所有者** ロールを追加します。 サブスクリプションへの CSP ユーザーの追加に関する詳細については、[ロールベースのアクセス制御を使用した Azure サブスクリプション リソースへのアクセスの管理](/azure/role-based-access-control/role-assignments-portal)に関するページを参照してください。 CSP では、ローカル Azure Stack Hub サブスクリプションが自動的に作成されます。 これで、Azure Stack Hub の使用を開始する準備ができました。
 3. CSP は、サブスクリプション内にリソースを作成して、その CSP がリソースを管理できることを確認する必要があります。
 
 ## <a name="next-steps"></a>次のステップ

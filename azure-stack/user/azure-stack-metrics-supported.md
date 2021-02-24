@@ -3,15 +3,15 @@ title: Azure Stack Hub 上の Azure Monitor でサポートされるメトリッ
 description: Azure Stack Hub 上の Azure Monitor でサポートされるメトリックについて説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 2a200939dd987ba11edcd5fbca516c3fc6566dbd
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: 19a113e4d088bb3b239ec87ef1116892a0e4879b
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661026"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247593"
 ---
 # <a name="supported-metrics-for-azure-monitor-on-azure-stack-hub"></a>Azure Stack Hub 上の Azure Monitor でサポートされるメトリック
 

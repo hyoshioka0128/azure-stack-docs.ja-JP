@@ -5,32 +5,30 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 12/09/2019
+ms.date: 09/02/2020
 ms.reviewer: jfggdl
-ms.lastreviewed: 12/09/2019
+ms.lastreviewed: 09/02/2020
 zone_pivot_groups: state-connected-disconnected
-ms.openlocfilehash: d92c8c8514020d3b33e236232aa07b95ade9f798
-ms.sourcegitcommit: c263a86d371192e8ef2b80ced2ee0a791398cfb7
+ms.openlocfilehash: 975ab63a6af9f895f01d4607f998bca9fc52cebf
+ms.sourcegitcommit: f56a5b287c90b2081ae111385c8b7833931d4059
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82848202"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97343820"
 ---
 # <a name="how-to-install-event-hubs-on-azure-stack-hub"></a>Azure Stack Hub に Event Hubs をインストールする方法
-
-[!INCLUDE [preview banner](../includes/event-hubs-preview.md)]
 
 この記事では、Event Hubs リソース プロバイダーをダウンロードしてインストールし、サブスクリプションの顧客に提供できるようにする方法について説明します。
 
 ## <a name="download-packages"></a>パッケージのダウンロード
 
-Azure Stack Hub に Event Hubs をインストールする前に、Marketplace Management 機能を使用してリソース プロバイダーとその依存パッケージをダウンロードする必要があります。 Marketplace Management 機能に慣れていない場合は、[Azure から Marketplace 項目をダウンロードして Azure Stack Hub に発行する方法](azure-stack-download-azure-marketplace-item.md)に関するページを入念に確認してください。 この記事では、Azure から Azure Stack Hub Marketplace に項目をダウンロードする手順について説明しています。 接続されている場合と接続されていない場合、両方のシナリオについての説明があります。 
+Azure Stack Hub に Event Hubs をインストールする前に、Marketplace Management 機能を使用してリソース プロバイダーとその依存パッケージをダウンロードする必要があります。 Marketplace Management 機能に慣れていない場合は、[Azure から Marketplace 項目をダウンロードして Azure Stack Hub に発行する方法](azure-stack-download-azure-marketplace-item.md)に関するページを入念に確認してください。 このセクションでは、Azure Marketplace から項目をダウンロードするプロセスについて説明します。 
 
 > [!NOTE]
 > ネットワーク待ち時間と Azure Stack Hub インスタンス上の既存のパッケージによっては、ダウンロード プロセスに 30 分から 2 時間かかることがあります。 
 
 ::: zone pivot="state-connected"
-接続されたシナリオについては、次の手順に従ってください。
+接続されたシナリオの場合、Azure Marketplace から Azure Stack Hub Marketplace に項目を直接ダウンロードします。
 
 1. Azure Stack Hub 管理者ポータルにサインインします。
 2. 左側にある **[Marketplace Management]** を選択します。
@@ -48,7 +46,7 @@ Event Hubs と共に、次のような追加のソフトウェア パッケー�
 ::: zone-end
 
 ::: zone pivot="state-disconnected"
-接続されていないか、部分的に接続されているシナリオの場合は、パッケージをローカル コンピューターにダウンロードしてから、Azure Stack Hub インスタンスにインポートします。
+接続されていないか、部分的に接続されているシナリオの場合は、パッケージをローカル コンピューターにダウンロードしてから、Azure Stack Hub Marketplace にインポートします。
 
 1. まだ行っていない場合は、[Marketplace 項目のダウンロードに関するページの「接続されていないか、部分的に接続されているシナリオ」](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected)の手順に従ってください。 ここでは、Marketplace シンジケーション ツールをダウンロードして実行します。これにより、Event Hubs パッケージをダウンロードできるようになります。
 2. シンジケーション ツールの [Azure Marketplace の項目] ウィンドウが開いたら、[Event Hubs] を見つけて選択し、必要なパッケージをローカル コンピューターにダウンロードします。
@@ -62,16 +60,16 @@ Event Hubs と共に、次のような追加のソフトウェア パッケー�
    [![Marketplace Management のダウンロード済みパッケージ](media/event-hubs-rp-install/2-marketplace-management-downloaded.png)](media/event-hubs-rp-install/2-marketplace-management-downloaded.png#lightbox)
  
 3. Event Hubs のインストール パッケージのページの上部に青いバナーが表示されます。 バナーを選択して Event Hubs のインストールを開始します。
-   [![Marketplace Management の Event Hubs - インストールの開始](media/event-hubs-rp-install/3-marketplace-management-install-ready.png)](media/event-hubs-rp-install/3-marketplace-management-install-ready.png#lightbox)
+   [![[Marketplace management]\(Marketplace の管理\) の [Event Hubs] - インストールの開始](media/event-hubs-rp-install/3-marketplace-management-install-ready.png)](media/event-hubs-rp-install/3-marketplace-management-install-ready.png#lightbox)
 
 ### <a name="install-prerequisites"></a>必須コンポーネントのインストール
 
 1. 次に、インストール ページが表示されます。 インストール プロセスを開始するには、 **[必須コンポーネントのインストール]** を選択します。
-   ![Marketplace Management の Event Hubs - 必須コンポーネント](media/event-hubs-rp-install/4-marketplace-management-install-prereqs-start.png)
+   ![[Marketplace management]\(Marketplace の管理\) の [Event Hubs] - [必須コンポーネントのインストール]](media/event-hubs-rp-install/4-marketplace-management-install-prereqs-start.png)
  
 2. 必須コンポーネントのインストールが成功するまで待ちます。 **[必須コンポーネントのインストール]** の横に緑色のチェックマークが表示されるのを確認してから、次の手順に進みます。
 
-   ![Marketplace Management の Event Hubs - 必須コンポーネント](media/event-hubs-rp-install/5-marketplace-management-install-prereqs-succeeded.png)
+   ![[Marketplace management]\(Marketplace の管理\) の [Event Hubs] - 必須コンポーネントのインストールの成功](media/event-hubs-rp-install/5-marketplace-management-install-prereqs-succeeded.png)
 
 ### <a name="prepare-secrets"></a>シークレットの準備 
 
@@ -87,39 +85,17 @@ Event Hubs と共に、次のような追加のソフトウェア パッケー�
 ### <a name="install-resource-provider"></a>リソース プロバイダーのインストール
 
 1. 証明書のインストールが成功したら、 **[Prepare secrets]\(シークレットの準備\)** の横に緑色のチェックマークが表示されるのを確認してから、次の手順に進みます。 次に、**3 [Install resource provider]\(リソース プロバイダーのインストール\)** の横にある **[インストール]** ボタンを選択します。
-   ![Marketplace Management の Event Hubs - インストールの開始](media/event-hubs-rp-install/8-marketplace-management-install-start.png)
+   ![[Marketplace management]\(Marketplace の管理\) の [Event Hubs] - RP のインストールの開始](media/event-hubs-rp-install/8-marketplace-management-install-start.png)
  
 2. 次に、以下のページが表示されます。これは Event Hubs リソース プロバイダーをインストール中であることを示しています。
-   [![Marketplace Management の Event Hubs - インストール中](media/event-hubs-rp-install/9-marketplace-management-install-inprogress.png)](media/event-hubs-rp-install/9-marketplace-management-install-inprogress.png#lightbox)
+   [![[Marketplace management]\(Marketplace の管理\) の [Event Hubs] - RP のインストール中](media/event-hubs-rp-install/9-marketplace-management-install-inprogress.png)](media/event-hubs-rp-install/9-marketplace-management-install-inprogress.png#lightbox)
  
 3. インストール完了の通知が表示されるのを待ちます。 通常、このプロセスには、Azure Stack Hub の種類に応じて 1 時間以上かかります。 
-   [![Marketplace Management の Event Hubs - インストールの完了](media/event-hubs-rp-install/10-marketplace-management-install-complete.png)](media/event-hubs-rp-install/10-marketplace-management-install-complete.png#lightbox)
+   [![[Marketplace management]\(Marketplace の管理\) の [Event Hubs] - RP のインストールの完了](media/event-hubs-rp-install/10-marketplace-management-install-complete.png)](media/event-hubs-rp-install/10-marketplace-management-install-complete.png#lightbox)
 
 4. Event Hubs のインストールが正常に完了したことを確認します。そのためには、**Marketplace Management** の **[リソース プロバイダー]** ページに戻ります。 Event Hubs の状態が "インストール済み" と表示されます。
    ![利用可能になった Marketplace Management の Event Hubs](media/event-hubs-rp-install/11-marketplace-management-rps-installed.png)
 
-## <a name="register-event-hubs"></a>Event Hubs の登録
-
-次に、Event Hubs リソース プロバイダーを登録する必要があります。 登録すると、Event Hubs の管理ページを使用してサービスを管理できます。
-
-1. 管理者ポータルの左上にある **[すべてのサービス]** を選択します。
-2. **[サブスクリプション]** を選択します。 サブスクリプションの一覧が表示されます。 
-   > [!NOTE]
-   > **[ユーザー サブスクリプション]** は選択しないでください
-3. **[サブスクリプション]** ページで、 **[既定のプロバイダー サブスクリプション]** を選択します。
-4. **[既定のプロバイダー サブスクリプション]** ページの左側にある **[リソース プロバイダー]** を選択します。
-5. 上部にある **[名前でフィルター]** フィールドで、「EventHub」という文字列を検索します。
-6. "Microsoft.EventHub" および "Microsoft.EventHub.Admin" リソース プロバイダーの行の **[状態]** 列を確認します。
-7. 状態が "登録解除" になっている場合は、各プロバイダーを選択し、 **[登録]** を選択します。 
-   ![登録解除になっているリソース プロバイダー](media/event-hubs-rp-install/12-default-subscription-rps-unregistered.png)
-8. 数秒後に、 **[更新]** を選択します。 リソース プロバイダーの状態が登録済みになっていることを確認します。 
-9. これで、Microsoft.EventHub と Microsoft.EventHub.Admin の状態が "登録済み" になります。
-   ![登録済みのリソース プロバイダー](media/event-hubs-rp-install/13-default-subscription-rps-registered.png)
-
-10. **[すべてのサービス]** ページに戻ります。
-11. 「Event Hubs」を検索します。 "Event Hubs" が表示されます。これは、Event Hubs 管理ページのエントリ ポイントです。 
-   ![使用可能なサービス - Event Hubs](media/event-hubs-rp-install/14-all-service-event-hubs.png)
- 
 ## <a name="next-steps"></a>次のステップ
 
 ユーザーが Event Hubs リソースをデプロイできるようになるには、1 つ以上のプラン、オファー、およびサブスクリプションを作成しておく必要があります。 

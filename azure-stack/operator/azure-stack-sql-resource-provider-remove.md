@@ -8,12 +8,12 @@ ms.date: 10/02/2019
 ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/20/2019
-ms.openlocfilehash: 7046eff5aa90504e2f02d7b7d24b1c2a74421270
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: b232bf2efb690ddc0a351d762e6866a75ced4a81
+ms.sourcegitcommit: 97ecba06aeabf2f30de240ac283b9bb2d49d62f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77697180"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97011367"
 ---
 # <a name="remove-the-sql-resource-provider"></a>SQL リソース プロバイダーの削除
 
@@ -41,7 +41,7 @@ SQL リソース プロバイダーを削除すると、オペレーターが管
     * **PrivilegedEndpoint**:特権エンドポイントの IP アドレスまたは DNS 名。
     * **AzureEnvironment**:Azure Stack Hub のデプロイに使用する Azure 環境。 Azure AD のデプロイでのみ必須です。
     * **CloudAdminCredential**:特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。
-    * **AzCredential**:Azure Stack Hub サービス管理者アカウントの資格情報。 Azure Stack Hub のデプロイに使用したのと同じ資格情報を使用します。
+    * **AzCredential**:Azure Stack Hub サービス管理者アカウントの資格情報。 Azure Stack Hub のデプロイに使用したのと同じ資格情報を使用します。 AzCredential で使用するアカウントが多要素認証 (MFA) を必要とする場合、スクリプトは失敗します。
 
 ## <a name="next-steps"></a>次のステップ
 

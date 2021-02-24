@@ -1,18 +1,18 @@
 ---
-title: Azure Stack Hub 内の仮想マシンに C# ASP.NET Web アプリをデプロイする
+title: Azure Stack Hub 内の VM に C# ASP.NET Web アプリをデプロイする
 description: Azure Stack Hub 内の VM に C# ASP.NET Web アプリをデプロイします。
 author: mattbriggs
 ms.topic: overview
-ms.date: 04/20/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 1f986c1d09397fae9d765f2a64a7fda267f4ac98
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 1ff00f354f9ab451bbf9557c1d63b01980d78875
+ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661068"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96525416"
 ---
 # <a name="deploy-a-c-aspnet-web-app-to-a-vm-in-azure-stack-hub"></a>Azure Stack Hub 内の VM に C# ASP.NET Web アプリをデプロイする
 
@@ -65,9 +65,9 @@ Azure Stack Hub 内にご自分の C# ASP.NET Web アプリをホストする仮
 
     a. **[ソース]** で **[すべて]** を選択します。
 
-    b. **[発信元ポート範囲]** に、アスタリスク ( **\*** ) を入力します。
+    b. **[発信元ポート範囲]** に、アスタリスク (* *\** _) を入力します。
 
-    c. **[宛先]** で **[すべて]** を選択します。
+    c. _*Destination** では **[すべて]** を選択します。
 
     d. **[宛先ポート範囲]** で、開くポートを追加します。
 
@@ -77,7 +77,7 @@ Azure Stack Hub 内にご自分の C# ASP.NET Web アプリをホストする仮
 
     g. **[優先度]** で、既定の選択項目のままにします。
 
-    h. ポートが開いている理由を思い出せるように**名前**と**説明**を入力します。
+    h. ポートが開いている理由を思い出せるように **名前** と **説明** を入力します。
 
     i. **[追加]** を選択します。
 
@@ -93,23 +93,22 @@ Azure Stack Hub 内にご自分の C# ASP.NET Web アプリをホストする仮
 
     e. **[割り当て]** で **[動的]** を選択します。
 
-    f. 完全な URL が **mywebapp.local.cloudapp.azurestack.external** になるように、*mywebapp* などの DNS 名ラベルを入力します。
+    f. 完全な URL が *mywebapp.local.cloudapp.azurestack.external* になるように、**mywebapp** などの DNS 名ラベルを入力します。
 
 ## <a name="create-an-app"></a>アプリを作成する 
 
-ご自分の Web アプリを使用することも、[Visual Studio を使用した Azure への ASP.NET Core アプリの発行](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-2.2&tabs=visual-studio
-)に関するページの例を使用することもできます。 この記事では、Visual Studio 2017 の Azure Virtual Machines 発行機能を使用して、ASP.NET Web アプリを作成して Azure 仮想マシンに発行する方法について説明します。 インストールし、ご自分のアプリがローカルで実行されていることを確認したら、発行ターゲットをご使用の Azure Stack Hub インスタンス内の Windows VM に更新します。
+ご自分の Web アプリを使用することも、[Visual Studio を使用した Azure への ASP.NET Core アプリの発行](/aspnet/core/tutorials/razor-pages/razor-pages-start?tabs=visual-studio&view=aspnetcore-2.2)に関するページの例を使用することもできます。 この記事では、Visual Studio 2017 の Azure Virtual Machines 発行機能を使用して、ASP.NET Web アプリを作成して Azure 仮想マシンに発行する方法について説明します。 インストールし、ご自分のアプリがローカルで実行されていることを確認したら、発行ターゲットをご使用の Azure Stack Hub インスタンス内の Windows VM に更新します。
 
 ## <a name="deploy-and-run-the-app"></a>アプリのデプロイと実行
 
 Azure Stack Hub 内のご自分の VM への発行ターゲットを作成します。
 
-1. **ソリューション エクスプローラー**で、ご自分のプロジェクトを右クリックし、 **[発行]** を選択します。
+1. **ソリューション エクスプローラー** で、ご自分のプロジェクトを右クリックし、 **[発行]** を選択します。
 
     ![ASP.NET Web アプリを Azure Stack Hub にデプロイする (発行)](media/azure-stack-dev-start-howto-vm-dotnet/deploy-app-to-azure-stack.png)
 
 1. **[発行]** ウィンドウで、 **[新しいプロファイル]** を選択します。
-1. **[IIS]、[FTP] など**を選択します。
+1. **[IIS]、[FTP] など** を選択します。
 1. **[発行]** を選択します。
 1. **[発行方法]** で **[Web 配置]** を選択します。
 1. **[サーバー]** で、以前に定義した DNS 名 (*w21902.local.cloudapp.azurestack.external* など) を入力します。
@@ -136,4 +135,4 @@ Azure Stack Hub 内のご自分の VM への発行ターゲットを作成しま
 
 - [Azure Stack Hub 内で開発環境を設定する](azure-stack-dev-start.md)方法について学習する。
 - [IaaS としての Azure Stack Hub 向けの一般的なデプロイ](azure-stack-dev-start-deploy-app.md)を確認する。
-- C# プログラミング言語の詳細および C# の他のリソースについては、「[C# のガイド](https://docs.microsoft.com/dotnet/csharp/)」を参照してください。
+- C# プログラミング言語の詳細および C# の他のリソースについては、「[C# のガイド](/dotnet/csharp/)」を参照してください。

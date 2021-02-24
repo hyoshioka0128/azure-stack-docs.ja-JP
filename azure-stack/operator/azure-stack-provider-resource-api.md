@@ -3,20 +3,20 @@ title: Azure Stack Hub のプロバイダー リソース使用量 API
 description: Azure Stack Hub の使用状況情報を取得するリソース使用量 API のリファレンス。
 author: sethmanheim
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 02/01/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: c360123e5393b328e8e5e800ddac283739f89b7b
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: 13eb197cee1da34f5e4e2b934ed05e26446b4970
+ms.sourcegitcommit: e56b0eaf92c633d5d782bfdf17ce521fa88a7256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661330"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99227404"
 ---
 # <a name="provider-resource-usage-api"></a>プロバイダー リソース使用量 API
 
-*プロバイダー*という用語は、サービス管理者と委任されたすべてのプロバイダーに適用されます。 Azure Stack Hub オペレーターおよび委任されたプロバイダーは、プロバイダーの使用量 API を使用して、直接的に関係するテナントの使用状況を表示できます。 たとえば、次の図に示すように、P0 はプロバイダー API を呼び出して、P1 と P2 の直接の使用状況情報を取得でき、P1 は P3 と P4 の使用状況情報を呼び出すことができます。
+*プロバイダー* という用語は、サービス管理者と委任されたすべてのプロバイダーに適用されます。 Azure Stack Hub オペレーターおよび委任されたプロバイダーは、プロバイダーの使用量 API を使用して、直接的に関係するテナントの使用状況を表示できます。 たとえば、次の図に示すように、P0 はプロバイダー API を呼び出して、P1 と P2 の直接の使用状況情報を取得でき、P1 は P3 と P4 の使用状況情報を呼び出すことができます。
 
 ![プロバイダー階層の概念モデル](media/azure-stack-provider-resource-api/image1.png)
 
@@ -26,7 +26,7 @@ ms.locfileid: "81661330"
 
 要求は、要求されたサブスクリプションと要求された期間の使用の詳細を取得します。 要求の本文はありません。
 
-この使用状況 API はプロバイダー API であるため、呼び出し元に、プロバイダーのサブスクリプションの**所有者**、**共同作成者**、または**閲覧者**の役割が割り当てられている必要があります。
+この使用状況 API はプロバイダー API であるため、呼び出し元に、プロバイダーのサブスクリプションの **所有者**、**共同作成者**、または **閲覧者** の役割が割り当てられている必要があります。
 
 | Method | 要求 URI |
 | --- | --- |
@@ -98,7 +98,7 @@ meterID1",
 
 使用量データを生成するには、実行されていて、システムをアクティブに使っているリソース (アクティブな仮想マシン (VM) や、データを格納しているストレージ アカウントなど) が必要です。 Azure Stack Hub Marketplace で実行されているリソースがあるかどうかが不明な場合は、VM をデプロイし、VM 監視ブレードを調べて、リソースが実行されていることを確認します。 使用量データを表示するには、次の PowerShell コマンドレットを使います。
 
-1. [PowerShell for Azure Stack Hub をインストールします](azure-stack-powershell-install.md)。
+1. [PowerShell for Azure Stack Hub をインストールします](powershell-install-az-module.md)。
 2. [Azure Stack Hub ユーザー](../user/azure-stack-powershell-configure-user.md)または [Azure Stack Hub オペレーター](azure-stack-powershell-configure-admin.md)の PowerShell 環境を構成します。
 3. 使用状況データを取得するには、[Get-AzsSubscriberUsage](/powershell/module/azs.commerce.admin/get-azssubscriberusage) PowerShell コマンドレットを呼び出します。
 
@@ -114,13 +114,13 @@ meterID1",
 
 | Method | 要求 URI |
 | --- | --- |
-| GET | `https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version=2015-06-01-preview` |
+| GET | `https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version=2015-06-01-preview` |
 
 #### <a name="return-usage-for-deleted-or-active-tenant"></a>削除済みまたはアクティブなテナントの使用状況を返す
 
 | Method | 要求 URI |
 | --- | --- |
-| GET |`https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={subscriber-id}&api-version=2015-06-01-preview` |
+| GET |`https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={subscriber-id}&api-version=2015-06-01-preview` |
 
 ## <a name="next-steps"></a>次のステップ
 

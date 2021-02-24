@@ -2,18 +2,18 @@
 title: ネットワーク リソースの管理
 titleSuffix: Azure Stack Hub
 description: MAC アドレス プールや、リージョン内のパブリック IP アドレスの使用など、ネットワーク リソースを管理する方法について説明します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
 ms.date: 1/22/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: scottnap
 ms.lastreviewed: 09/17/2019
-ms.openlocfilehash: f210f5939f60eb996f7c72b9552cf09d11f8de91
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: f4fc98a7fae3a58d9467d8c1cafe46fcbef858fc
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77696211"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97868728"
 ---
 # <a name="manage-network-resources-in-azure-stack-hub"></a>Azure Stack Hub 上でのネットワーク リソースの管理
 
@@ -29,7 +29,7 @@ Azure Stack Hub では、MAC アドレスを自動的に生成して仮想マシ
 
 仮想ネットワークと既存の企業ネットワークとの接続方法によっては、VM の MAC アドレスが重複することがあります。
 
-MAC アドレス プールの使用率の詳細については、Azure Stack Hub 管理者の PowerShell モジュール内にあるコマンドレット [Get AzsMacAddressPool](https://docs.microsoft.com/powershell/module/azs.fabric.admin/get-azsmacaddresspool) を使用して確認できます。
+MAC アドレス プールの使用率の詳細については、Azure Stack Hub 管理者の PowerShell モジュール内にあるコマンドレット [Get AzsMacAddressPool](/powershell/module/azs.fabric.admin/get-azsmacaddresspool) を使用して確認できます。
 
 ## <a name="view-public-ip-address-consumption-in-azure-stack-hub"></a>Azure Stack Hub でパブリック IP アドレスの使用量を表示する
 

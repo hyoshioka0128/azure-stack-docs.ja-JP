@@ -3,15 +3,15 @@ title: Azure Stack Hub に安全に格納された証明書で VM をデプロ�
 description: Azure Stack Hub の Key Vault を使って、仮想マシンをデプロイして証明書を仮想マシンにプッシュする方法について説明します。
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 11/20/2020
 ms.author: sethm
-ms.lastreviewed: 12/27/2019
-ms.openlocfilehash: f808d3dca853ef114d215be08f3e6ae3f6737fb5
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.lastreviewed: 11/20/2020
+ms.openlocfilehash: a326004b5ed100b0fc7eeb841dd0fbc4ded9ee5a
+ms.sourcegitcommit: b50dd116d6d1f89d42bd35ad0f85bb25c5192921
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77702790"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "95518162"
 ---
 # <a name="deploy-a-vm-with-a-securely-stored-certificate-on-azure-stack-hub"></a>Azure Stack Hub に安全に格納された証明書で VM をデプロイする
 
@@ -39,15 +39,17 @@ Active Directory への認証、Web トラフィックの暗号化など、多�
 ## <a name="prerequisites"></a>前提条件
 
 * ユーザーは、Key Vault サービスを含むプランをサブスクライブする必要があります。
-* [PowerShell for Azure Stack Hub をインストールします](../operator/azure-stack-powershell-install.md)。
+* [PowerShell for Azure Stack Hub をインストールします](../operator/powershell-install-az-module.md)。
 * [Azure Stack Hub ユーザーの PowerShell 環境の構成](azure-stack-powershell-configure-user.md)
 
 ## <a name="create-a-key-vault-secret"></a>キー コンテナー シークレットを作成する
 
-次のスクリプトは、.pfx 形式で証明書を作成し、Key Vault を作成して、Key Vault にシークレットとして証明書を格納します。
+次のスクリプトは、.pfx 形式で証明書を作成し、Key Vault を作成して、Key Vault にシークレットとして証明書を格納します。 シークレットの `contentType` は `pfx` に設定する必要があります。
 
 > [!IMPORTANT]
 > キー コンテナーを作成するときは、`-EnabledForDeployment` パラメーターを使う必要があります。 このパラメーターにより、Azure Resource Manager テンプレートから Key Vault を確実に参照できます。
+
+### <a name="az-modules"></a>[Az モジュール](#tab/az)
 
 ```powershell
 # Create a certificate in the .pfx format
@@ -87,11 +89,11 @@ $jsonObject = @"
 $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
 $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
 
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
   -Name $resourceGroup `
   -Location $location
 
-New-AzureRmKeyVault `
+New-AzKeyVault `
   -VaultName $vaultName `
   -ResourceGroupName $resourceGroup `
   -Location $location `
@@ -107,6 +109,70 @@ Set-AzureKeyVaultSecret `
   -Name $secretName `
    -SecretValue $secret
 ```
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm)
+
+```powershell
+# Create a certificate in the .pfx format
+New-SelfSignedCertificate `
+  -certstorelocation cert:\LocalMachine\My `
+  -dnsname contoso.microsoft.com
+
+$pwd = ConvertTo-SecureString `
+  -String "<Password used to export the certificate>" `
+  -Force `
+  -AsPlainText
+
+Export-PfxCertificate `
+  -cert "cert:\localMachine\my\<certificate thumbprint that was created in the previous step>" `
+  -FilePath "<Fully qualified path to where the exported certificate can be stored>" `
+  -Password $pwd
+
+# Create a key vault and upload the certificate into the key vault as a secret
+$vaultName = "contosovault"
+$resourceGroup = "contosovaultrg"
+$location = "local"
+$secretName = "servicecert"
+$fileName = "<Fully qualified path to where the exported certificate can be stored>"
+$certPassword = "<Password used to export the certificate>"
+
+$fileContentBytes = get-content $fileName `
+  -Encoding Byte
+
+$fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
+$jsonObject = @"
+{
+"data": "$filecontentencoded",
+"dataType" :"pfx",
+"password": "$certPassword"
+}
+"@
+$jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
+$jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
+
+New-AzureRMResourceGroup `
+  -Name $resourceGroup `
+  -Location $location
+
+New-AzureRMKeyVault `
+  -VaultName $vaultName `
+  -ResourceGroupName $resourceGroup `
+  -Location $location `
+  -sku standard `
+  -EnabledForDeployment
+
+$secret = ConvertTo-SecureString `
+  -String $jsonEncoded `
+  -AsPlainText -Force
+
+Set-AzureKeyVaultSecret `
+  -VaultName $vaultName `
+  -Name $secretName `
+   -SecretValue $secret
+```
+
+---
+
+
 
 このスクリプトを実行すると、出力にはシークレットの URI が含まれます。 この URI は、[Windows Resource Manager に証明書をプッシュするテンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate)で参照する必要があるため、メモしておいてください。 開発用コンピューターに [vm-push-certificate-windows](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate) テンプレート フォルダーをダウンロードします。 このフォルダーには、**azuredeploy.json** ファイルと **azuredeploy.parameters.json** ファイルが含まれています。これらは次の手順で必要になります。
 
@@ -153,14 +219,29 @@ Set-AzureKeyVaultSecret `
 
 次の PowerShell スクリプトを使用して、テンプレートをデプロイします。
 
+### <a name="az-modules"></a>[Az モジュール](#tab/az2)
+
 ```powershell
 # Deploy a Resource Manager template to create a VM and push the secret to it
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -Name KVDeployment `
   -ResourceGroupName $resourceGroup `
   -TemplateFile "<Fully qualified path to the azuredeploy.json file>" `
   -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm2)
+
+```powershell
+# Deploy a Resource Manager template to create a VM and push the secret to it
+New-AzureRMResourceGroupDeployment `
+  -Name KVDeployment `
+  -ResourceGroupName $resourceGroup `
+  -TemplateFile "<Fully qualified path to the azuredeploy.json file>" `
+  -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
+```
+---
+
+
 
 テンプレートが正常にデプロイされると、次の出力が表示されます。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: sethm
 ms.lastreviewed: 12/27/2019
-ms.openlocfilehash: 6ff4822e3093dd636bdd5b83fb3150eb9036d9ec
-ms.sourcegitcommit: 9894804f31527234d43f4a93a9b7c106c8540435
+ms.openlocfilehash: 178164148e9d7de069c4ab12dc3042899b83d16d
+ms.sourcegitcommit: 8790b8a4ecf4421409534df5ff510d537cc000da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82967779"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97801948"
 ---
 # <a name="configure-vpn-gateway-settings-for-azure-stack-hub"></a>Azure Stack Hub の VPN ゲートウェイ設定の構成
 
@@ -28,7 +28,7 @@ VPN Gateway の接続は複数のリソースの構成に依存し、それぞ�
 仮想ネットワーク ゲートウェイを作成するときは、ゲートウェイの種類が構成に対して適切であることを確認する必要があります。 VPN ゲートウェイでは、次の例のように `-GatewayType Vpn` フラグが必要です。
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
 -VpnType RouteBased
 ```
@@ -39,7 +39,7 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 Azure Stack Hub には、次の表に示す VPN ゲートウェイ SKU が用意されています。
 
-| | VPN ゲートウェイのスループット |VPN ゲートウェイの IPsec トンネルの最大数 |
+| | トンネル スループット |VPN ゲートウェイの IPsec トンネルの最大数 |
 |-------|-------|-------|
 |**Basic SKU**  | 100 Mbps    | 20    |
 |**Standard SKU**   | 100 Mbps  | 20 |
@@ -62,7 +62,7 @@ Azure Stack Hub ポータルを使用して Resource Manager の仮想ネット�
 次の PowerShell の例では、`-GatewaySku` パラメーターが **Standard** として指定されています。
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig -GatewaySku Standard `
 -GatewayType Vpn -VpnType RouteBased
 ```
@@ -74,7 +74,7 @@ Resource Manager デプロイ モデルの各構成では、仮想ネットワ�
 次の PowerShell の例では、IPsec の接続の種類を必要とするサイト間接続が作成されます。
 
 ```powershell
-New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
+New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
 -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
 -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 ```
@@ -95,10 +95,10 @@ VPN Gateway 構成に対して仮想ネットワーク ゲートウェイを作�
 
 * **RouteBased**: ルートベースの VPN は、IP 転送やルーティング テーブルに構成されているルートを使用して、対応するトンネル インターフェイスにパケットを転送します。 その後、トンネル インターフェイスではトンネルの内部または外部でパケットを暗号化または復号します。 **RouteBased** VPN のポリシー (またはトラフィック セレクター) は、Any-to-Any (またはワイルドカードを使用して) 構成できます。 既定では変更できません。 **RouteBased** VPN の種類の値は **RouteBased** です。
 
-次の PowerShell の例では、 `-VpnType` を **RouteBased**に指定しています。 ゲートウェイを作成する場合、`-VpnType` が自分の構成に対して適切であることを確認する必要があります。
+次の PowerShell の例では、 `-VpnType` を **RouteBased** に指定しています。 ゲートウェイを作成する場合、`-VpnType` が自分の構成に対して適切であることを確認する必要があります。
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig `
 -GatewayType Vpn -VpnType RouteBased
 ```
@@ -128,7 +128,7 @@ VPN ゲートウェイを作成する前に、ゲートウェイ サブネット
 次の Resource Manager PowerShell の例では、**GatewaySubnet** という名前のゲートウェイ サブネットを示しています。 CIDR 表記で /27 を指定しています。これで既存のほとんどの構成で IP アドレスに十分対応できます。
 
 ```powershell
-Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
+Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 ```
 
 > [!IMPORTANT]
@@ -143,7 +143,7 @@ Azure で VPN ゲートウェイ構成を作成する場合、多くのローカ
 この PowerShell の例では、新しいローカル ネットワーク ゲートウェイを作成します。
 
 ```powershell
-New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
+New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```
 

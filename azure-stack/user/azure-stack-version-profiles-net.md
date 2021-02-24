@@ -3,16 +3,16 @@ title: Azure Stack Hub での .NET による API バージョンのプロファ�
 description: Azure Stack Hub での .NET SDK による API バージョンのプロファイルの使用方法について説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: bb13b13f48aa9ccab231e255e0dcb5547b61615a
-ms.sourcegitcommit: 70c344b3c9c63f8c12867b2cdfdd1794fcc518dc
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 0b790eebb276c23f5204d3f6c178c9e6ba54480b
+ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82835919"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97973998"
 ---
 # <a name="use-api-version-profiles-with-net-in-azure-stack-hub"></a>Azure Stack Hub での .NET による API バージョンのプロファイルの使用
 
@@ -95,7 +95,7 @@ Resource Manager エンドポイントからメタデータ情報を取得でき
 
 次の考慮事項に注意してください。
 
-- Azure Stack Development Kit (ASDK) の **ResourceManagerUrl** は https://management.local.azurestack.external/ です。
+- Azure Stack Development Kit (ASDK) の **ResourceManagerUrl** は `https://management.local.azurestack.external/` です。
 
 - 統合システムの **ResourceManagerUrl** は `https://management.region.<fqdn>/` です。ここで、`<fqdn>` は完全修飾ドメイン名です。
 必要なメタデータを取得するには、`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` になります。
@@ -206,4 +206,4 @@ API プロファイルに関する詳細情報
   [API プロファイルの概要]: ../user/azure-stack-version-profiles.md#summary-of-api-profiles
   [Test Project to Virtual Machine, vNet, resource groups, and storage account]: https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject
   [Use Azure PowerShell to create a service principal with a certificate]: ../operator/azure-stack-create-service-principals.md
-  [Run unit tests with Test Explorer.]: /visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2017
+  [Run unit tests with Test Explorer.]: /visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2017&preserve-view=true

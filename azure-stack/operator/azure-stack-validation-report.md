@@ -2,18 +2,18 @@
 title: Azure Stack Hub 検証レポート
 titleSuffix: Azure Stack Hub
 description: Azure Stack Hub 適合性チェッカー ツールを使用して、検証レポートを生成します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: how-to
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 10/23/2019
-ms.openlocfilehash: 5cc3f24c62fc9c91637744cf031da39c6c7279fb
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: ec94d4112bc1739aad974220aa4438c99874795d
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "78366502"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97868932"
 ---
 # <a name="azure-stack-hub-validation-report"></a>Azure Stack Hub 検証レポート
 

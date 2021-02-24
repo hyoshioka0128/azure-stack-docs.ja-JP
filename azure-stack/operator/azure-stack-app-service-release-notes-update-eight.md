@@ -4,16 +4,16 @@ description: App Service on Azure Stack Hub の Update 8 リリース ノート 
 author: apwestgarth
 manager: stefsch
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 11/17/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 27e7073d2b266cb5fa8c7c36739219bc29660e87
-ms.sourcegitcommit: ddcd083430ca905653d412dc2f7b813218d79509
+ms.openlocfilehash: 4c89f139c2fc0f80a80fc70ab6d5842a7ffffd4f
+ms.sourcegitcommit: 2562b86f47db20e2652d4636227afb9cfd0e03ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83374600"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94785806"
 ---
 # <a name="app-service-on-azure-stack-hub-update-8-release-notes"></a>App Service on Azure Stack Hub update 8 のリリース ノート
 
@@ -46,15 +46,15 @@ Azure App Service on Azure Stack Hub の 1.8 へのアップグレードを開�
   > [!Important]
   > ファイル サーバーと SQL Server の保守と操作を担当するのは、クラウド オペレーターです。  リソース プロバイダーは、これらのリソースの管理は行いません。  クラウドオ ペレーターが、App Service データベースとテナント コンテンツ ファイル共有のバックアップを行います。
 
-- Azure Stack Hub Marketplace から**カスタム スクリプト拡張機能**バージョン **1.9.3** を配信します
+- Azure Stack Hub Marketplace から **カスタム スクリプト拡張機能** バージョン **1.9.3** を配信します
 
 ## <a name="new-features-and-fixes"></a>新機能と修正
 
 Azure App Service on Azure Stack Hub Update 8 には、次の機能強化と修正が含まれています。
 
-- **App Service のテナント ポータル、管理ポータル、関数ポータル、Kudu ツール**の更新。 Azure Stack Portal SDK バージョンと一貫性があります。
+- **App Service のテナント ポータル、管理ポータル、関数ポータル、Kudu ツール** の更新。 Azure Stack Portal SDK バージョンと一貫性があります。
 
-- **Azure 関数ランタイム**が **v1.0.12615** に更新されました。
+- **Azure 関数ランタイム** が **v1.0.12615** に更新されました。
 
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 
@@ -105,7 +105,7 @@ Azure App Service on Azure Stack Hub のすべての新しいデプロイでは�
 ## <a name="post-deployment-steps"></a>デプロイ後の手順
 
 > [!IMPORTANT]
-> SQL Always On インスタンスを使用して App Service リソース プロバイダーを提供している場合は、データベースのフェールオーバーが発生したときにサービスが失われないように、[appservice_hosting と appservice_metering データベースを可用性グループに追加](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する "必要があります"。
+> SQL Always On インスタンスを使用して App Service リソース プロバイダーを提供している場合は、データベースのフェールオーバーが発生したときにサービスが失われないように、[appservice_hosting と appservice_metering データベースを可用性グループに追加](/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する "必要があります"。
 
 ## <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
 
@@ -125,12 +125,12 @@ Azure App Service on Azure Stack Hub のすべての新しいデプロイでは�
 
 - Azure App Service on Azure Stack Hub 1.8 の新しいデプロイでは、データベースを包含データベースに変換する必要がある
 
-    このリリースでの回帰が原因で、**新しく**デプロイしたときは、両方の App Service データベース (appservice_hosting と appservice_metering) を包含データベースに変換する必要があります。  これは、**アップグレードした**デプロイには影響**しません**。
+    このリリースでの回帰が原因で、**新しく** デプロイしたときは、両方の App Service データベース (appservice_hosting と appservice_metering) を包含データベースに変換する必要があります。  これは、**アップグレードした** デプロイには影響 **しません**。
 
     > [!IMPORTANT]
     > この手順の所要時間は 5 分から 10 分程度です。 この手順には、既存のデータベース ログイン セッションを中止する作業が伴います。 Azure App Service on Azure Stack Hub の移行とその後の検証に伴うダウンタイムを考慮してください。
 
-    1. [AppService データベース (appservice_hosting and appservice_metering) を可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)に追加します。
+    1. [AppService データベース (appservice_hosting and appservice_metering) を可用性グループ](/sql/database-engine/availability-groups/windows/availability-group-add-a-database)に追加します。
 
     1. 包含データベースを有効にします。
 
@@ -298,7 +298,26 @@ Azure App Service on Azure Stack Hub のすべての新しいデプロイでは�
 
 ## <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>Azure App Service on Azure Stack Hub を運用するクラウド管理者に対する既知の問題
 
-[Azure Stack Hub 1907 リリース ノート](azure-stack-release-notes-1907.md)内のドキュメントを参照してください。
+[Azure Stack Hub 1907 リリース ノート](./release-notes.md?view=azs-1907&preserve-view=true)内のドキュメントを参照してください。
+
+- テナントは、テナント ポータルの App Service プラン ビューで新規を使用して App Service プランを作成できない
+
+新しいアプリケーションを作成する場合、テナントはアプリの作成ワークフローで App Service プランを作成できます。また、App Service プランは、現在のアプリの App Service プランを変更する際や、App Service プランの Marketplace 項目を使用して作成することもできます
+
+- カスタム ドメインは、切断された環境ではサポートされない
+
+App Service は、パブリック DNS エンドポイントに対してドメインの所有権の検証を実行します。このため、カスタム ドメインは、切断されたシナリオではサポートされません。
+
+- 場合によっては、ワーカーが正常性チェックに合格しないことがあります (ディスク領域不足)
+
+多くのサイトがワーカーに割り当てられている場合や、サイトで大量の要求が処理されている場合、ワーカーによって C:\DWAS\LogFiles に多数のランタイム ログ ファイルが生成されます。  これは、これらのログ ファイルのクリーンアップ ロジックのバグが原因です。  
+
+この問題を軽減するには、個々のワーカーを削除し、フォルダーの内容を消去します。
+
+この問題は、[App Service on Azure Stack Hub 2020 Q3](app-service-release-notes-2020-Q3.md) で修正されました。できるだけ早く 2020 Q3 リリースにアップグレードすることをお勧めします。
+
+> [!IMPORTANT]
+> Azure App Service on Azure Stack Hub 2020 Q3 に更新するには、Azure Stack Hub 2008 へアップグレードする **必要があります**
 
 ## <a name="next-steps"></a>次のステップ
 

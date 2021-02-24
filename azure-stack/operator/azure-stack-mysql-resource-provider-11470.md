@@ -1,18 +1,18 @@
 ---
 title: Azure Stack Hub MySQL リソース プロバイダー 1.1.47.0 のリリース ノート
 description: リリース ノートを参照して、Azure Stack Hub MySQL リソース プロバイダー 1.1.47.0 更新プログラムの新機能を確認してください。
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 11/26/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/26/2019
-ms.openlocfilehash: cf116e392cc75119eabe8fbea9ccb37f72f4b1a0
-ms.sourcegitcommit: ddcd083430ca905653d412dc2f7b813218d79509
+ms.openlocfilehash: d98a4d4c7de76d5a73cab3005893dd279a6e1025
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83375140"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97869850"
 ---
 # <a name="mysql-resource-provider-11470-release-notes"></a>MySQL リソース プロバイダー 1.1.47.0 のリリース ノート
 
@@ -39,7 +39,7 @@ Azure Stack Hub が 1910 リリースにアップグレードされた後に MyS
 
 ## <a name="known-issues"></a>既知の問題
 
-[なし] :
+Azure Stack Hub 統合システムの[証明書をローテーションする](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)場合、Key Vault 証明書のパスワードを更新する意図がなくても、KeyVaultPfxPassword 引数は必須となります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,19 +1,19 @@
 ---
-title: App Service on Azure Stack Hub 2020 Q2 のリリース ノート
+title: App Service on Azure Stack Hub 2020 年第 2 四半期のリリース ノート
 description: Azure App Service on Azure Stack Hub の 2020 年第2 四半期リリースの内容、既知の問題、および更新プログラムをダウンロードする場所について説明します。
 author: apwestgarth
 manager: stefsch
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 11/17/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 04/30/2020
-ms.openlocfilehash: 57cdd5ed496d0792f2d36f1e12d5fb8fce1d4370
-ms.sourcegitcommit: 8646eba1674ca708baf6699f4a4b56d134766e85
+ms.openlocfilehash: 6534a4539fc4e0fd699b21e84490f1d25be1dfe1
+ms.sourcegitcommit: 2562b86f47db20e2652d4636227afb9cfd0e03ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82861403"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94785857"
 ---
 # <a name="app-service-on-azure-stack-hub-2020-q2-release-notes"></a>App Service on Azure Stack Hub 2020 年第 2 四半期のリリース ノート
 
@@ -45,7 +45,7 @@ Azure App Service on Azure Stack Hub を 2020 Q2 にアップグレードを開�
   > [!Important]
   > ファイル サーバーと SQL Server の保守と操作を担当するのは、クラウド オペレーターです。  リソース プロバイダーは、これらのリソースの管理は行いません。  クラウドオ ペレーターが、App Service データベースとテナント コンテンツ ファイル共有のバックアップを行います。
 
-- Marketplace から**カスタム スクリプト拡張機能**バージョン **1.9.3** を配信します
+- Marketplace から **カスタム スクリプト拡張機能** バージョン **1.9.3** を配信します
 
 
 
@@ -53,9 +53,9 @@ Azure App Service on Azure Stack Hub を 2020 Q2 にアップグレードを開�
 
 Azure App Service on Azure Stack Hub Update Q2 には、次の機能強化と修正が含まれています。
 
-- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Portal SDK バージョンと一致しています。
+- **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール** の更新。 Azure Stack Portal SDK バージョンと一致しています。
 
-- **Azure Functions ランタイム**が **v1.0.13021** に更新されました。
+- **Azure Functions ランタイム** が **v1.0.13021** に更新されました。
 
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 
@@ -119,7 +119,7 @@ ASDK デプロイでは、インスタンスを下位の SKU にスケールダ�
 ## <a name="post-deployment-steps"></a>デプロイ後の手順
 
 > [!IMPORTANT]
-> SQL Always On インスタンスを使用して App Service リソース プロバイダーを提供している場合は、データベースのフェールオーバーが発生したときにサービスが失われないように、[appservice_hosting と appservice_metering データベースを可用性グループに追加](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する必要があります。
+> SQL Always On インスタンスを使用して App Service リソース プロバイダーを提供している場合は、データベースのフェールオーバーが発生したときにサービスが失われないように、[appservice_hosting と appservice_metering データベースを可用性グループに追加](/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する必要があります。
 
 ## <a name="known-issues-update"></a>既知の問題 (更新プログラム)
 
@@ -131,8 +131,9 @@ ASDK デプロイでは、インスタンスを下位の SKU にスケールダ�
 
 このスクリプトは、次の条件下で実行する必要があります
 
-1. システム管理者特権を持つユーザー (SQL SA アカウントなど) が実行する
-1. SQL Always On を使用する場合は、次の形式の App Service ログインをすべて含む SQL インスタンスからスクリプトを実行する。
+- システム管理者特権を持つユーザー (SQL SA アカウントなど) が実行する
+- SQL Always On を使用する場合は、次の形式の App Service ログインをすべて含む SQL インスタンスからスクリプトを実行する。
+
     - appservice_hosting_FileServer
     - appservice_hosting_HostingAdmin
     - appservice_hosting_LoadBalancer
@@ -222,6 +223,17 @@ ASDK デプロイでは、インスタンスを下位の SKU にスケールダ�
 - カスタム ドメインは、切断された環境ではサポートされない
 
 App Service は、パブリック DNS エンドポイントに対してドメインの所有権の検証を実行します。このため、カスタム ドメインは、切断されたシナリオではサポートされません。
+
+- 場合によっては、ワーカーが正常性チェックに合格しないことがあります (ディスク領域不足)
+
+多くのサイトがワーカーに割り当てられている場合や、サイトで大量の要求が処理されている場合、ワーカーによって C:\DWAS\LogFiles に多数のランタイム ログ ファイルが生成されます。  これは、これらのログ ファイルのクリーンアップ ロジックのバグが原因です。  
+
+この問題を軽減するには、個々のワーカーを削除し、フォルダーの内容を消去します。
+
+この問題は、[App Service on Azure Stack Hub 2020 Q3](app-service-release-notes-2020-Q3.md) で修正されました。できるだけ早く 2020 Q3 リリースにアップグレードすることをお勧めします。
+
+> [!IMPORTANT]
+> Azure App Service on Azure Stack Hub 2020 Q3 に更新するには、Azure Stack Hub 2008 へアップグレードする **必要があります**
 
 ## <a name="next-steps"></a>次のステップ
 

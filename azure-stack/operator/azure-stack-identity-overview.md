@@ -7,12 +7,12 @@ ms.date: 04/10/2020
 ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: b078158bebf83835e4a0a0eb6d92ba90b4679ca9
-ms.sourcegitcommit: d930d52e27073829b8bf8ac2d581ec2accfa37e3
+ms.openlocfilehash: dac1902747c79b68116c0341f50c47c3e0998c0f
+ms.sourcegitcommit: e9a1dfa871e525f1d6d2b355b4bbc9bae11720d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82173968"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86488792"
 ---
 # <a name="overview-of-identity-providers-for-azure-stack-hub"></a>Azure Stack Hub の ID プロバイダーの概要
 
@@ -51,7 +51,7 @@ Azure Stack Hub 環境に依存するオプションの詳細については、�
 
 Azure Stack Hub では、ユーザー アカウントに次のような特徴があります。
 
-- *username\@domain* の形式で作成されています。 AD FS はユーザー アカウントを Active Directory インスタンスにマッピングしますが、AD FS では " *\\\<ドメイン>\\\<エイリアス>* " 形式の使用がサポートされていません。
+- *username\@domain* の形式で作成されています。 AD FS はユーザー アカウントを Active Directory インスタンスにマッピングしますが、AD FS では *\\\<domain>\\\<alias>* 形式の使用はサポートされていません。
 - 多要素認証を使用するようにセットアップすることができます。
 - 最初に登録するディレクトリ、つまり組織のディレクトリに制限されています。
 - オンプレミスのディレクトリからインポートすることができます。 詳細については、「[オンプレミスのディレクトリと Azure Active Directory の統合](/azure/active-directory/connect/active-directory-aadconnect)」を参照してください。
@@ -137,7 +137,7 @@ Azure Stack Hub をインストールすると、いくつかの組み込みの�
 |レイヤー    |レイヤー間の認証  |
 |---------|---------|
 |管理者ポータルなどのツールとクライアント     | Azure Stack Hub のリソースにアクセスしたり、変更したりするために、ツールとクライアントでは [JSON Web トークン](/azure/active-directory/develop/active-directory-token-and-claims)を使用して Azure Resource Manager を呼び出します。 <br>Azure Resource Manager では JSON Web トークンを検証し、発行されたトークン内の "*要求*" を読み取って、ユーザーまたはサービス プリンシパルが Azure Stack Hub で持つ承認のレベルを見積もります。 |
-|Azure Resource Manager とそのコア サービス     |Azure Resource Manager は、リソース プロバイダーと通信して、ユーザーからの通信を転送します。 <br> 転送では、[Azure Resource Manager テンプレート](/azure-stack/user/azure-stack-arm-templates)を通じて、"*直接命令*" 呼び出しまたは "*宣言*" 呼び出しが使用されます。|
+|Azure Resource Manager とそのコア サービス     |Azure Resource Manager は、リソース プロバイダーと通信して、ユーザーからの通信を転送します。 <br> 転送では、[Azure Resource Manager テンプレート](../user/azure-stack-arm-templates.md)を通じて、"*直接命令*" 呼び出しまたは "*宣言*" 呼び出しが使用されます。|
 |リソース プロバイダー     |リソース プロバイダーに渡された呼び出しは、証明書ベースの認証によって保護されます。 <br>Azure Resource Manager とリソース プロバイダーは、API を介した通信を継続します。 Azure Resource Manager から受信したすべての呼び出しを、リソース プロバイダーはその証明書で検証します。|
 |インフラストラクチャとビジネス ロジック     |リソース プロバイダーは、任意の認証モードを使用して、ビジネス ロジックおよびインフラストラクチャと通信します。 Azure Stack Hub 付属の既定のリソース プロバイダーは、この通信をセキュリティで保護するために Windows 認証を使用します。|
 
@@ -188,7 +188,7 @@ Azure PowerShell を使用して Azure Stack Hub で認証する方法の詳細�
 
 ### <a name="authenticate-with-azure-cli"></a>Azure CLI で認証する
 
-Azure PowerShell を使用して Azure Stack Hub で認証する方法については、[Azure Stack Hub で使用する Azure CLI のインストールと構成](/azure-stack/user/azure-stack-version-profiles-azurecli2)に関するページを参照してください。
+Azure PowerShell を使用して Azure Stack Hub で認証する方法については、[Azure Stack Hub で使用する Azure CLI のインストールと構成](../user/azure-stack-version-profiles-azurecli2.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

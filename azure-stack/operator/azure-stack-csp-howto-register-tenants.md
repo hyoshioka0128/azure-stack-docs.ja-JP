@@ -3,16 +3,16 @@ title: Azure Stack Hub に使用量と課金用のテナントを追加する
 description: Azure Stack Hub に使用量と課金用のテナントを追加する方法について説明します。
 author: sethmanheim
 ms.topic: article
-ms.date: 5/28/2020
+ms.date: 11/17/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 5/28/2020
-ms.openlocfilehash: 08185a25c608c735aa99ca7f7d2b060c8b67042b
-ms.sourcegitcommit: 804f94f288859027b8249d138b14e8bc1501e009
+ms.lastreviewed: 11/17/2020
+ms.openlocfilehash: 7db231e1bca513bf3755f8e9c078fb40d00cfa09
+ms.sourcegitcommit: e88f0a1f2f4ed3bb8442bfb7b754d8b3a51319b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84158386"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99533843"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack-hub"></a>Azure Stack Hub に使用量と課金用のテナントを追加する
 
@@ -49,32 +49,66 @@ ms.locfileid: "84158386"
 
 エンド カスタマーの新しいサブスクリプションで登録を更新します。 Azure は、パートナー センターの顧客 ID を使用して顧客の使用量をレポートします。 この手順により、各顧客の使用量が、その顧客それぞれの CSP サブスクリプションごとに報告されるようになります。 これで、使用量の追跡と課金が簡単になります。 この手順を実行するためには、まず [Azure Stack Hub に登録する](azure-stack-registration.md)必要があります。
 
+### <a name="az-modules"></a>[Az モジュール](#tab/az)
+
 1. 管理者特権のプロンプトで Windows PowerShell を開き、次を実行します。  
 
    ```powershell
-   Add-AzureRmAccount
+   Connect-AzAccount
    ```
 
    >[!NOTE]
-   > セッションの有効期限が切れた、パスワードが変更された、または単にアカウントを切り替えたい場合は、**Add-AzureRmAccount** を使用してサインインする前に、次のコマンドレットを実行します。`Remove-AzureRmAccount-Scope Process`
+   > セッションの有効期限が切れた、パスワードが変更された、または単にアカウントを切り替えたい場合は、**Connect-AzAccount** を使用してサインインする前に、次のコマンドレットを実行します: `Remove-AzAccount-Scope Process`
 
 2. Azure の資格情報を入力します。
 3. PowerShell セッションで、次のコマンドを実行します。
 
    ```powershell
-   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+   New-AzResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
    ```
 
-### <a name="new-azurermresource-powershell-parameters"></a>PowerShell の New-AzureRmResource パラメーター
+**PowerShell の New-AzResource のパラメーター**
 
-次のセクションでは、**New-AzureRmResource** コマンドレットのパラメーターについて説明します。
+次のセクションでは、**New-AzResource** コマンドレットのパラメーターについて説明します。
 
 | パラメーター | 説明 |
 | --- | --- |
 |registrationSubscriptionID | Azure Stack Hub の初期登録に使用された Azure サブスクリプション。|
 | customerSubscriptionID | 登録する顧客が所有する (Azure Stack Hub ではない) Azure サブスクリプション。 CSP のオファー内で作成する必要があります。 実際には、パートナー センターを介することを意味します。 顧客が複数の Azure Active Directory テナントを持っている場合は、Azure Stack Hub へのログインに使用するテナントでこのサブスクリプションを作成する必要があります。 顧客サブスクリプション ID は大文字と小文字の区別があります。 |
 | resourceGroup | 登録が格納されている Azure 内のリソース グループ。 |
-| registrationName | お使いの Azure Stack Hub の登録名。 Azure に格納されているオブジェクトです。 
+| registrationName | お使いの Azure Stack Hub の登録名。 Azure に格納されているオブジェクトです。
+
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm)
+
+1. 管理者特権のプロンプトで Windows PowerShell を開き、次を実行します。  
+
+   ```powershell
+   Add-AzureRMAccount
+   ```
+
+   >[!NOTE]
+   > セッションの有効期限が切れた、パスワードが変更された、または単にアカウントを切り替えたい場合は、**Connect-AzAccount** を使用してサインインする前に、次のコマンドレットを実行します: `Remove-AzAccount-Scope Process`
+
+2. Azure の資格情報を入力します。
+3. PowerShell セッションで、次のコマンドを実行します。
+
+   ```powershell
+   New-AzureRMResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+   ```
+
+**PowerShell の New-AzureRMResource パラメーター**
+
+次のセクションでは、**New-AzureRMResource** コマンドレットのパラメーターについて説明します。
+
+| パラメーター | 説明 |
+| --- | --- |
+|registrationSubscriptionID | Azure Stack Hub の初期登録に使用された Azure サブスクリプション。|
+| customerSubscriptionID | 登録する顧客が所有する (Azure Stack Hub ではない) Azure サブスクリプション。 CSP のオファー内で作成する必要があります。 実際には、パートナー センターを介することを意味します。 顧客が複数の Azure Active Directory テナントを持っている場合は、Azure Stack Hub へのログインに使用するテナントでこのサブスクリプションを作成する必要があります。 顧客サブスクリプション ID は大文字と小文字の区別があります。 |
+| resourceGroup | 登録が格納されている Azure 内のリソース グループ。 |
+| registrationName | お使いの Azure Stack Hub の登録名。 Azure に格納されているオブジェクトです。
+
+---
+
 
 > [!NOTE]  
 > テナントは、使用する各 Azure Stack Hub に登録されている必要があります。 Azure Stack Hub のデプロイが 2 つあり、テナントがその両方を使用している場合は、各デプロイの初期登録をそのテナントのサブスクリプションで更新する必要があります。

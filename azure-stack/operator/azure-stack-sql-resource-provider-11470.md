@@ -1,18 +1,18 @@
 ---
 title: Azure Stack Hub SQL リソース プロバイダー 1.1.47.0 のリリース ノート
 description: 新しい機能、修正プログラム、既知の問題など、Azure Stack Hub SQL リソース プロバイダー更新プログラムの最新情報をご覧ください。
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 11/26/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/26/2019
-ms.openlocfilehash: 59c8cfdaf13b84f7ba27e633731f4d1587cf63b8
-ms.sourcegitcommit: ddcd083430ca905653d412dc2f7b813218d79509
+ms.openlocfilehash: d95be92f4cab37c41e1802fdcb18969e3276f459
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83375029"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97869221"
 ---
 # <a name="sql-resource-provider-11470-release-notes"></a>SQL リソース プロバイダー 1.1.47.0 のリリース ノート
 
@@ -40,7 +40,7 @@ Azure Stack Hub が 1910 更新プログラムにアップグレードされた�
 
 ## <a name="known-issues"></a>既知の問題
 
-[なし] :
+Azure Stack Hub 統合システムの[証明書をローテーションする](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)場合、Key Vault 証明書のパスワードを更新する意図がなくても、KeyVaultPfxPassword 引数は必須となります。
 
 ## <a name="next-steps"></a>次のステップ
 

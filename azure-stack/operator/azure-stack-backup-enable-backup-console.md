@@ -1,18 +1,18 @@
 ---
 title: 管理者ポータルで Azure Stack Hub のバックアップを有効にする
 description: エラーが発生した場合に Azure Stack Hub を復元できるように、管理者ポータルで Infrastructure Backup サービスを有効にする方法について説明します。
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 08/21/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: hectorl
 ms.lastreviewed: 08/21/2019
-ms.openlocfilehash: ce401b20d6baa66807e6ee5f7ee1e94503b653af
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 4ec0aebf0fcf46973a4f371d659aece8e51eb2c7
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77703164"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97871856"
 ---
 # <a name="enable-backup-for-azure-stack-hub-from-the-administrator-portal"></a>管理者ポータルで Azure Stack Hub のバックアップを有効にする
 
@@ -28,21 +28,21 @@ Azure Stack Hub でインフラストラクチャのバックアップを生成�
 管理者とユーザーは、IaaS および PaaS のリソースのバックアップと復元を、インフラストラクチャ バックアップ プロセスとは別に行う責任があります。 IaaS と PaaS のリソースのバックアップについては、次のリンクをご覧ください。
 
 - [Azure Stack Hub にデプロイされた VM の保護](../user/azure-stack-manage-vm-protect.md)
-- [Azure でのアプリのバックアップ](https://docs.microsoft.com/azure/app-service/manage-backup)
-- [Azure Virtual Machines 上の SQL Server とは何か (Windows)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview)
+- [Azure でのアプリのバックアップ](/azure/app-service/manage-backup)
+- [Azure Virtual Machines 上の SQL Server とは何か (Windows)](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview)
 
 
 ## <a name="enable-or-reconfigure-backup"></a>バックアップの有効化または再構成
 
 1. [Azure Stack Hub 管理者ポータル](azure-stack-manage-portals.md)を開きます。
 2. **[すべてのサービス]** を選択し、 **[管理]** カテゴリで **[インフラストラクチャ バックアップ]** を選びます。 **[Infrastructure backup]\(インフラストラクチャ バックアップ\)** ブレードで **[構成]** を選択します。
-3. **バックアップ ストレージの場所**のパスを入力します。 別のデバイスでホストされるファイル共有へのパスの場合、汎用名前付け規則 (UNC) の文字列を使用します。 UNC 文字列は、共有ファイルやデバイスといった、リソースの場所を指定します。 サービスの場合は、IP アドレスを使用できます。 障害発生後にバックアップ データを確実に利用できるようにするためには、保存デバイスは別の場所に配置する必要があります。
+3. **バックアップ ストレージの場所** のパスを入力します。 別のデバイスでホストされるファイル共有へのパスの場合、汎用名前付け規則 (UNC) の文字列を使用します。 UNC 文字列は、共有ファイルやデバイスといった、リソースの場所を指定します。 サービスの場合は、IP アドレスを使用できます。 障害発生後にバックアップ データを確実に利用できるようにするためには、保存デバイスは別の場所に配置する必要があります。
 
     > [!Note]  
     > 使用する環境で Azure Stack Hub インフラストラクチャ ネットワークからエンタープライズ環境への名前解決がサポートされている場合は、IP ではなく、完全修飾ドメイン名 (FQDN) を使用できます。
 
-4. ファイルを読み書きするための十分なアクセス権を持つドメインとユーザー名を使用して**ユーザー名**を入力します。 たとえば、「 `Contoso\backupshareuser` 」のように入力します。
-5. ユーザーの**パスワード**を入力します。
+4. ファイルを読み書きするための十分なアクセス権を持つドメインとユーザー名を使用して **ユーザー名** を入力します。 たとえば、「 `Contoso\backupshareuser` 」のように入力します。
+5. ユーザーの **パスワード** を入力します。
 6. **[パスワードの確認]** にもう一度パスワードを入力します。
 7. **頻度 (時間単位)** はバックアップの作成頻度を決定します。 既定値は 12 です。 Scheduler では、最大値 12 から最小値 4 までをサポートします。 
 8. **保有期間 (日単位)** は、バックアップが外部の保存場所に保持される日数を決定します。 既定値は 7 です。 Scheduler では、最大値 14 から最小値 2 までをサポートします。 保有期間より前のバックアップは、外部の保存場所から自動的に削除されます。
@@ -67,7 +67,7 @@ Azure Stack Hub でインフラストラクチャのバックアップを生成�
    > [!Note]
    > **1901 以降**:Azure Stack Hub では、インフラストラクチャ バックアップ データを暗号化するための証明書が受け入れられます。 公開キーと秘密キーを含む証明書を安全な場所に保管してください。 セキュリティ上の理由から、公開キーと秘密キーを含む証明書を使用して、バックアップ設定を構成することはお勧めできません。 この証明書のライフサイクルを管理する方法について詳しくは、「[インフラストラクチャ バックアップ サービスのベスト プラクティス](azure-stack-backup-best-practices.md)」をご覧ください。
    > 
-   > **1811 以前**:Azure Stack Hub では、インフラストラクチャのバックアップ データを暗号化するための対称キーが受け入れられます。 [キーの作成には、New-AzsEncryptionKey64 コマンドレットを使用します](https://docs.microsoft.com/powershell/module/azs.backup.admin/new-azsencryptionkeybase64)。 1811 から 1901 にアップグレードした後は、バックアップ設定に暗号化キーが保持されます。 証明書を使用するように、バックアップ設定を更新することをお勧めします。 暗号化キーのサポートは現在、非推奨となっています。 証明書を使用するような設定への更新が必要になるまでには、リリースが少なくともあと 3 回あります。
+   > **1811 以前**:Azure Stack Hub では、インフラストラクチャのバックアップ データを暗号化するための対称キーが受け入れられます。 [キーの作成には、New-AzsEncryptionKey64 コマンドレットを使用します](/powershell/module/azs.backup.admin/new-azsencryptionkeybase64)。 1811 から 1901 にアップグレードした後は、バックアップ設定に暗号化キーが保持されます。 証明書を使用するように、バックアップ設定を更新することをお勧めします。 暗号化キーのサポートは現在、非推奨となっています。 証明書を使用するような設定への更新が必要になるまでには、リリースが少なくともあと 3 回あります。
 
 10. **[OK]** を選択して、バックアップ コントローラーの設定を保存します。
 
@@ -77,7 +77,7 @@ Azure Stack Hub でインフラストラクチャのバックアップを生成�
 ## <a name="start-backup"></a>バックアップの開始
 バックアップを開始するには、 **[今すぐバックアップ]** をクリックして、オンデマンド バックアップを開始します。 オンデマンド バックアップでは、次回のスケジュールされたバックアップの時間は変更されません。 タスクの完了後、 **[基本]** で設定を確認できます。
 
-![Azure Stack Hub - オンデマンド バックアップ](media/azure-stack-backup/scheduled-backup.png)
+![オンデマンド バックアップを開始する方法を示すスクリーンショット。](media/azure-stack-backup/scheduled-backup.png)
 
 また、Azure Stack Hub 管理コンピューターで PowerShell コマンドレット **Start-AzsBackup** を実行することもできます。 詳細については、「[Azure Stack Hub のバックアップ](azure-stack-backup-back-up-azure-stack.md)」を参照してください。
 
@@ -115,7 +115,7 @@ Azure Stack Hub でインフラストラクチャのバックアップを生成�
 ![Azure Stack Hub - 証明書のサムプリントを表示する](media/azure-stack-backup/encryption-settings-thumbprint.png)
 
 ### <a name="backwards-compatibility-mode"></a>下位互換性モード
-1901 に更新する前にバックアップを構成した場合、設定は動作の変更なしで引き継がれます。 この場合、暗号化キーは下位互換性のためにサポートされます。 暗号化キーを更新するか、または証明書の使用に切り替えることができます。 少なくともあと 3 回のリリースの間は、引き続き暗号化キーを更新できます。 この期間を使用して、証明書に移行してください。 新しい暗号化キーを作成するには、[New-AzsEncryptionKeyBase64](https://docs.microsoft.com/powershell/module/azs.backup.admin/new-azsencryptionkeybase64) を使用します。
+1901 に更新する前にバックアップを構成した場合、設定は動作の変更なしで引き継がれます。 この場合、暗号化キーは下位互換性のためにサポートされます。 暗号化キーを更新するか、または証明書の使用に切り替えることができます。 少なくともあと 3 回のリリースの間は、引き続き暗号化キーを更新できます。 この期間を使用して、証明書に移行してください。 新しい暗号化キーを作成するには、[New-AzsEncryptionKeyBase64](/powershell/module/azs.backup.admin/new-azsencryptionkeybase64) を使用します。
 
 ![Azure Stack Hub - 下位互換性モードで暗号化キーを使用する](media/azure-stack-backup/encryption-settings-backcompat-encryption-key.png)
 

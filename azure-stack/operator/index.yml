@@ -7,15 +7,15 @@ metadata:
   services: azure-stack
   ms.service: azure-stack
   ms.topic: landing-page
-  author: justinha
-  ms.author: justinha
+  author: PatAltimore
+  ms.author: patricka
   ms.date: 04/13/2020
-  ms.openlocfilehash: 16a63e28a67b6dfc9d68b29df343e130ae4abca0
-  ms.sourcegitcommit: bdd4d529bd3e115a9f76eece62b1613448d5d020
+  ms.openlocfilehash: b815aa8a669c59acdd40e7847f26dd66335fdea3
+  ms.sourcegitcommit: 52c934f5eeb5fcd8e8f2ce3380f9f03443d1e445
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/14/2020
-  ms.locfileid: "81274091"
+  ms.lasthandoff: 01/07/2021
+  ms.locfileid: "97974185"
 landingContent:
 - title: Azure Stack Hub について
   linkLists:
@@ -24,13 +24,13 @@ landingContent:
     - text: Azure Stack Hub とは
       url: azure-stack-overview.md
     - text: Azure Stack HCI とは
-      url: azure-stack-hci-overview.md
+      url: ../hci/overview.md
   - linkListType: whats-new
     links:
     - text: セキュリティ更新プログラム
-      url: azure-stack-release-notes-security-updates.md
+      url: ./release-notes-security-updates.md
     - text: リリース ノート
-      url: azure-stack-release-notes-1908.md
+      url: ./release-notes.md
     - text: Azure Stack Hub キャパシティ プランニング ツール
       url: azure-stack-capacity-planning-overview.md
 - title: はじめに
@@ -58,7 +58,7 @@ landingContent:
     - text: GitHub からの Azure Stack Hub ツールのダウンロード
       url: azure-stack-powershell-download.md
     - text: Azure Stack PowerShell のインストール
-      url: azure-stack-powershell-install.md
+      url: powershell-install-az-module.md
     - text: Azure Stack PowerShell を使用して接続する
       url: azure-stack-powershell-configure-admin.md
     - text: Azure Stack Development Kit (ASDK) のダウンロード
@@ -78,7 +78,7 @@ landingContent:
   - linkListType: deploy
     links:
     - text: 仮想マシンのプランを作成する
-      url: azure-stack-tutorial-tenant-vm.md
+      url: ./tutorial-offer-services.md
     - text: 高可用性 MySQL データベースを作成する
       url: azure-stack-tutorial-mysql.md
     - text: あらゆるプラットフォーム向けのアプリを作成する

@@ -1,18 +1,18 @@
 ---
 title: 外部の監視ソリューションと Azure Stack Hub を統合する
 description: Azure Stack Hub とご利用のデータセンターの外部の監視ソリューションを統合する方法を説明します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: article
-ms.date: 04/10/2020
-ms.author: inhenkel
+ms.date: 11/18/2020
+ms.author: patricka
 ms.reviewer: thoroet
-ms.lastreviewed: 06/05/2019
-ms.openlocfilehash: 0bc19bf584f482d2ec67758368afa11c91ae456e
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.lastreviewed: 11/18/2020
+ms.openlocfilehash: 79fd494996c87aa513fc7aa4ab0554449c5770d5
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81243892"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97870904"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack-hub"></a>外部の監視ソリューションと Azure Stack Hub を統合する
 
@@ -69,6 +69,9 @@ Nagios 監視プラグインは、制約のない無料ソフトウェア ライ
 
 バージョン 1.2 の場合、Azure Stack Hub - Nagios プラグインでは、Microsoft ADAL ライブラリが活用され、シークレットまたは証明書と共にサービス プリンシパルを利用する認証がサポートされています。 また、構成は、新しいパラメーターを含む単一の構成ファイルを使用して簡略化されています。 現在、ID システムとして Azure AD と AD FS を使用した Azure Stack Hub のデプロイがサポートされています。
 
+> [!IMPORTANT]
+> AD FS は、対話型サインイン セッションのみをサポートしています。 自動化シナリオに非対話型サインインを必要とする場合は、SPN を使用する必要があります。
+
 プラグインは Nagios 4x および XI で動作します。 プラグインをダウンロードするには、[Azure Stack Hub アラートの監視](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)に関するページを参照してください。 このダウンロード サイトでインストールと詳細な構成も行えます。
 
 ### <a name="requirements-for-nagios"></a>Nagios の要件
@@ -116,13 +119,13 @@ SPN の作成方法に関する詳細については、「[アプリ ID を使�
 
 | パラメーター | 説明 | 認証 |
 | --- | --- | --- |
-| **External_domain_fqdn ** | 外部ドメイン FQDN |    |
-| **region: ** | リージョン名 |    |
-| **tenant_id: ** | テナント ID\* |    |
+| **External_domain_fqdn** | 外部ドメイン FQDN |    |
+| **region:** | リージョン名 |    |
+| **tenant_id:** | テナント ID\* |    |
 | client_id: | クライアント ID | シークレットを使用する SPN |
 | client_secret: | クライアント パスワード | シークレットを使用する SPN |
 | client_cert\*\*: | 証明書へのパス | 証明書を使用する SPN |
-| client_cert_thumbprint\*\*: | 証明書のサムプリント | 証明書を使用する SPN |
+| client_cert_thumbprint\*\*: | 証明書の拇印 | 証明書を使用する SPN |
 
 \*テナント ID は、AD FS を使用する Azure Stack Hub デプロイには必要ありません。
 
@@ -148,7 +151,7 @@ SPN の作成方法に関する詳細については、「[アプリ ID を使�
 
 ### <a name="update-nagios-configuration"></a>Nagios 構成を更新する
 
-Azure Stack Hub – Nagios プラグインが確実に読み込まれるように、Nagios 構成を更新する必要があります。
+Azure Stack Hub - Nagios プラグインが確実に読み込まれるように、Nagios 構成を更新する必要があります。
 
 1. 次のファイルを開きます。
 
@@ -198,7 +201,46 @@ Azure Stack Hub – Nagios プラグインが確実に読み込まれるよう�
 
 Operations Manager、Nagios、または Nagios ベースのソリューションを使用していない場合は、PowerShell でさまざまな監視ソリューションを使用して Azure Stack Hub と統合できます。
 
-1. PowerShell を使用するには、Azure Stack Hub オペレーター環境用に [PowerShell がインストールされ構成されている](azure-stack-powershell-install.md)必要があります。 Resource Manager (管理者) エンドポイント (https://adminmanagement.[region].[External_FQDN]) にアクセスできるローカル コンピューターに PowerShell をインストールします。
+### <a name="az-modules"></a>[Az モジュール](#tab/az)
+
+1. PowerShell を使用するには、Azure Stack Hub オペレーター環境用に [PowerShell がインストールされ構成されている](powershell-install-az-module.md)必要があります。 Resource Manager (管理者) エンドポイント (https://adminmanagement.[region].[External_FQDN]) にアクセスできるローカル コンピューターに PowerShell をインストールします。
+
+2. 次のコマンドを実行して、Azure Stack Hub オペレーターとして Azure Stack Hub 環境に接続します。
+
+   ```powershell
+   Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN] `
+      -AzureKeyVaultDnsSuffix adminvault.[Region].[External_FQDN] `
+      -AzureKeyVaultServiceEndpointResourceId https://adminvault.[Region].[External_FQDN]
+
+   Connect-AzAccount -EnvironmentName "AzureStackAdmin"
+   ```
+
+3. 次の例のようなコマンドを使用して、アラートを操作します。
+
+```powershell
+# Retrieve all alerts
+$Alerts = Get-AzsAlert
+$Alerts
+
+# Filter for active alerts
+$Active = $Alerts | Where-Object { $_.State -eq "active" }
+$Active
+
+# Close alert
+Close-AzsAlert -AlertID "ID"
+
+#Retrieve resource provider health
+$RPHealth = Get-AzsRPHealth
+$RPHealth
+
+# Retrieve infrastructure role instance health
+$FRPID = $RPHealth | Where-Object { $_.DisplayName -eq "Capacity" }
+   Get-AzsRegistrationHealth -ServiceRegistrationId $FRPID.RegistrationId
+```
+
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm)
+
+1. PowerShell を使用するには、Azure Stack Hub オペレーター環境用に [PowerShell がインストールされ構成されている](powershell-install-az-module.md)必要があります。 Resource Manager (管理者) エンドポイント (https://adminmanagement.[region].[External_FQDN]) にアクセスできるローカル コンピューターに PowerShell をインストールします。
 
 2. 次のコマンドを実行して、Azure Stack Hub オペレーターとして Azure Stack Hub 環境に接続します。
 
@@ -207,30 +249,33 @@ Operations Manager、Nagios、または Nagios ベースのソリューション
       -AzureKeyVaultDnsSuffix adminvault.[Region].[External_FQDN] `
       -AzureKeyVaultServiceEndpointResourceId https://adminvault.[Region].[External_FQDN]
 
-   Connect-AzureRmAccount -EnvironmentName "AzureStackAdmin"
+   Connect-AzureRMAccount -EnvironmentName "AzureStackAdmin"
    ```
 
 3. 次の例のようなコマンドを使用して、アラートを操作します。
-   ```powershell
-    # Retrieve all alerts
-    $Alerts = Get-AzsAlert
-    $Alerts
 
-    # Filter for active alerts
-    $Active = $Alerts | Where-Object { $_.State -eq "active" }
-    $Active
+```powershell
+# Retrieve all alerts
+$Alerts = Get-AzsAlert
+$Alerts
 
-    # Close alert
-    Close-AzsAlert -AlertID "ID"
+# Filter for active alerts
+$Active = $Alerts | Where-Object { $_.State -eq "active" }
+$Active
 
-    #Retrieve resource provider health
-    $RPHealth = Get-AzsRPHealth
-    $RPHealth
+# Close alert
+Close-AzsAlert -AlertID "ID"
 
-    # Retrieve infrastructure role instance health
-    $FRPID = $RPHealth | Where-Object { $_.DisplayName -eq "Capacity" }
-    Get-AzsRegistrationHealth -ServiceRegistrationId $FRPID.RegistrationId
-    ```
+#Retrieve resource provider health
+$RPHealth = Get-AzsRPHealth
+$RPHealth
+
+# Retrieve infrastructure role instance health
+$FRPID = $RPHealth | Where-Object { $_.DisplayName -eq "Capacity" }
+Get-AzsRegistrationHealth -ServiceRegistrationId $FRPID.RegistrationId
+```
+
+---
 
 ## <a name="learn-more"></a>詳細情報
 

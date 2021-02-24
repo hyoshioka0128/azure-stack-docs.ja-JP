@@ -4,26 +4,26 @@ description: Azure Stack Hub で AzureRM モジュールから新しい Az モ�
 author: mattbriggs
 ms.author: mabrigg
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 12/2/2020
 ms.reviewer: sijuman
-ms.lastreviewed: 04/14/2020
-ms.openlocfilehash: bcfd4b467013a6f207efa37bc02917d3800e3eb0
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 8a7d1f270cdb611749e07da310fef484ca8bcd82
+ms.sourcegitcommit: 50b362d531c2d35a3a935811fee71252971bd5d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81395183"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96934626"
 ---
 # <a name="migrate-from-azurerm-to-azure-powershell-az-in-azure-stack-hub"></a>Azure Stack Hub での AzureRM から Azure PowerShell Az への移行
 
 Az モジュールには AzureRM との機能パリティがありますが、より短く一貫性のあるコマンドレット名が使用されます。
 AzureRM コマンドレット用に記述されたスクリプトは、新しいモジュールで自動的に機能するわけではありません。 移行を容易にするために、Az には AzureRM を使用する既存のスクリプトを実行できるようにするツールが用意されています。 新しいコマンド セットへの移行がないに越したことはありませんが、この記事は、新しいモジュールへの切り替えを開始する際に役立ちます。
 
-AzureRM と Az の間の破壊的変更の完全な一覧については、「[Migration guide for Az 1.0.0 (Az 1.0.0 の移行ガイド)](https://docs.microsoft.com/powershell/azure/migrate-az-1.0.0)」を参照してください。
+AzureRM と Az の間の破壊的変更の完全な一覧については、「[Migration guide for Az 1.0.0 (Az 1.0.0 の移行ガイド)](/powershell/azure/migrate-az-1.0.0)」を参照してください。
 
 ## <a name="check-for-installed-versions-of-azurerm"></a>インストールされている AzureRM のバージョンを確認する
 
-Az モジュールは AzureRM モジュールと同時にインストールできますが、これはお勧めしません。 移行手順を実行する前に、システムにインストールされている AzureRM のバージョンを確認します。 これにより、スクリプトが最新のリリースで既に実行中であることを確認し、AzureRM をアンインストールせずにコマンドの別名を有効にできるかどうかを把握することができます。
+移行手順を実行する前に、システムにインストールされている AzureRM のバージョンを確認します。 これにより、スクリプトが最新のリリースで既に実行中であることを確認し、AzureRM をアンインストールせずにコマンドの別名を有効にできるかどうかを把握することができます。
 
 インストールされている AzureRM のバージョンを確認するには、次のコマンドを実行します。
 
@@ -41,9 +41,9 @@ Get-InstalledModule -Name AzureRM -AllVersions
 
 Azure PowerShell Az モジュールをインストールするには、次の手順を実行します。
 
-* __推奨__:[AzureRM モジュールをアンインストールする](/powershell/azure/uninstall-az-ps#uninstall-the-azurerm-module)。
+* **[推奨]** : [AzureRM モジュールをアンインストールする](/powershell/azure/uninstall-az-ps#uninstall-the-azurerm-module)。
   最新のバージョンだけでなく、インストールした "_すべて_" のバージョンの AzureRM を必ず削除します。
-* [Az モジュールをインストールする](https://docs.microsoft.com/powershell/azure/install-az-ps)
+* [Az モジュールをインストールする](/powershell/azure/install-az-ps)
 
 ## <a name="enable-azurerm-compatibility-aliases"></a>AzureRM と互換性のあるエイリアスを有効にする 
 
@@ -136,7 +136,7 @@ Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
 エイリアスを無効にする準備ができたら、`Disable-AzureRmAlias` により作成されたエイリアスが削除されます。 詳細については、[Disable-AzureRmAlias リファレンス](/powershell/module/az.accounts/disable-azurermalias)を参照してください。
 
 > [!IMPORTANT]
-> エイリアスを無効にする場合は、必ず、エイリアスが有効になっている_すべて_のスコープに対して無効にしてください。
+> エイリアスを無効にする場合は、必ず、エイリアスが有効になっている _すべて_ のスコープに対して無効にしてください。
 
 ### <a name="module-name-changes"></a>モジュール名の変更
 
@@ -155,7 +155,7 @@ Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
 | AzureRM.UsageAggregates | Az.Billing |
 | AzureRM.Consumption | Az.Billing |
 
-モジュール名が変更されたので、`#Requires` または `Import-Module` を使用して特定のモジュールを読み込むスクリプトは、新しいモジュールを代わりに使用するように変更する必要があります。 コマンドレットのサフィックスが変更されていないモジュールの場合、これは、モジュール名が変更されていても操作スペースを示すサフィックスは_変更されていない_ことを意味します。
+モジュール名が変更されたので、`#Requires` または `Import-Module` を使用して特定のモジュールを読み込むスクリプトは、新しいモジュールを代わりに使用するように変更する必要があります。 コマンドレットのサフィックスが変更されていないモジュールの場合、これは、モジュール名が変更されていても操作スペースを示すサフィックスは _変更されていない_ ことを意味します。
 
 #### <a name="migrating-requires-and-import-module-statements"></a>#Requires ステートメントと Import-Module ステートメントの移行
 
@@ -208,7 +208,7 @@ RequiredModules = @(@{ModuleName="AzureRM.Profile"; ModuleVersion="5.8.2"})
 次のように変更する必要があります。
 
 ```powershell
-RequiredModules = @(@{ModuleName="Az.Profile"; ModuleVersion="1.0.0"})
+RequiredModules = @(@{ModuleName="Az.Accounts"; ModuleVersion="1.0.0"})
 ```
 
 ### <a name="removed-modules"></a>削除されたモジュール

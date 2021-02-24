@@ -3,16 +3,16 @@ title: Visual Studio Code 内で Azure Account 拡張機能を使用して Azure
 description: 開発者として Visual Studio Code 内で Azure Account 拡張機能を使用して Azure Stack Hub に接続します
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 768b93c2ef2d984fcc75f6893be6260a1c4fbb1c
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 3a9603dd4521e63d00d281f8fcd1b8f1912d5836
+ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661051"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96526001"
 ---
 # <a name="connect-to-azure-stack-hub-using-azure-account-extension-in-visual-studio-code"></a>Visual Studio Code 内で Azure Account 拡張機能を使用して Azure Stack Hub に接続する
 
@@ -20,7 +20,7 @@ ms.locfileid: "81661051"
 
 VS Code は、Web とクラウドのアプリケーションのビルドとデバッグを行うための軽量エディターです。 ASP.NET Core、Python、NodeJS、Go などの開発者が VS Code を使用しています。 Azure Account 拡張機能を利用すると、追加の Azure 拡張機能に対するサブスクリプション フィルターと Azure シングル サインインを使用することができます。 この拡張機能により、VS Code 統合ターミナル内で Azure Cloud Shell を使用できるようになります。 この拡張機能を使用すると、ID マネージャーとして Azure AD (Azure AD) と Active Directory フェデレーション サービス (AD FS) の両方を使用して、Azure Stack Hub サブスクリプションに接続できます。 Azure Stack Hub にサインインし、お使いのサブスクリプションを選択して、Cloud Shell で新しいコマンド ラインを開くことができます。 
 
-> [!Note]  
+> [!NOTE]  
 > この記事の手順は、Active Directory フェデレーション サービス (AD FS) 環境に使用できます。 AD FS の資格情報とエンドポイントを使用します。
 
 ## <a name="pre-requisites-for-the-azure-account-extension"></a>Azure Account 拡張機能の前提条件
@@ -34,7 +34,7 @@ VS Code は、Web とクラウドのアプリケーションのビルドとデ�
 
 1. GitHub の Azure Stack Hub ツールから **Identity** スクリプトを実行します。
 
-    - スクリプトを実行する前に、PowerShell がインストールされ、お使いの環境用に構成されている必要があります。 手順については、「[PowerShell for Azure Stack Hub をインストールする](../operator/azure-stack-powershell-install.md)」を参照してください。
+    - スクリプトを実行する前に、PowerShell がインストールされ、お使いの環境用に構成されている必要があります。 手順については、「[PowerShell for Azure Stack Hub をインストールする](../operator/powershell-install-az-module.md)」を参照してください。
 
     - **Identity** スクリプトの手順とスクリプトについては、「[AzureStack-Tools/Identity](https://aka.ms/aa6z611)」を参照してください。
 
@@ -81,7 +81,8 @@ VS Code は、Web とクラウドのアプリケーションのビルドとデ�
         | `tenant-ID` | Azure Stack Hub の[テナント ID](../operator/azure-stack-identity-overview.md) の値。 |
         | `activeDirectoryEndpointUrl` | これは loginEndpoint プロパティからの URL です。 |
         | `activeDirectoryResourceId` | これは、audiences プロパティからの URL です。
-        | `resourceManagerEndpointUrl` | これは Azure Stack Hub に対する Azure Resource Manager のルート URL です。 | 
+        | `resourceManagerEndpointUrl` | これは Azure Stack Hub に対する Azure Resource Manager のルート URL です。 |
+        | `validateAuthority` | Azure AD を ID マネージャーとして使用している場合は、このパラメーターを除外できます。 AD FS を使用している場合は、値 `false` を使用してパラメーターを追加します。 |
 
     - JSON スニペット:
 
@@ -91,6 +92,7 @@ VS Code は、Web とクラウドのアプリケーションのビルドとデ�
           "activeDirectoryEndpointUrl": "Login endpoint",
           "activeDirectoryResourceId": "This is the URL from the audiences property.",
           "resourceManagerEndpointUrl": "Aure Resource Management Endpoint",
+          "validateAuthority" : false, 
       },
       "azure.cloud": "AzurePPE"
       ```
@@ -114,6 +116,6 @@ VS Code は、Web とクラウドのアプリケーションのビルドとデ�
 | Azure: Open PowerShell in Cloud Shell (Azure: Cloud Shell 内で PowerShell を開く) | Cloud Shell 内で PowerShell を実行している新しいターミナルを開きます。 |
 | Azure: Upload to Cloud Shell (Azure: Cloud Shell へのアップロード) | お使いの Cloud Shell ストレージ アカウントにファイルをアップロードします。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Stack Hub 内で開発環境を設定する](azure-stack-dev-start.md)

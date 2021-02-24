@@ -4,16 +4,16 @@ titleSuffix: Azure Stack Hub
 description: SQL Server リソース プロバイダーを使用して、SQL データベースを Azure Stack Hub 上のサービスとして提供する方法を説明します。
 author: bryanla
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 8/19/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/25/2019
-ms.openlocfilehash: 15eaf26162b0d3f647d65dfab66e3d9327b2f357
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: c0f599d8a63f0a1ea16e5a39303391cb1b0790a0
+ms.sourcegitcommit: 8079220917523ab9ddb824e4bba3e9b091f38a9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77697146"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661590"
 ---
 # <a name="use-sql-databases-on-azure-stack-hub"></a>Azure Stack Hub 上で SQL データベースを使用する
 
@@ -25,9 +25,10 @@ SQL リソース プロバイダーを使用して、[Azure Stack Hub](azure-sta
 SQL リソース プロバイダーをインストールする前に、考慮すべき制限事項:
 
 - ユーザーは、個々のデータベースの作成と管理のみを行うことができます。 エンド ユーザーは、データベース サーバー インスタンスにアクセスできません。 これにより、マスター、Temp DB にアクセスしたり、データベースを動的に管理したりすることが必要なオンプレミス データベース アプリとの互換性が制限される可能性があります。
-- Azure Stack Hub オペレーターは、SQL データベース サーバーおよびホストのデプロイ、更新、セキュリティ保護、構成、および保守を担当します。 RP サービスでは、ホストおよびデータベース サーバー インスタンスの管理機能は提供されません。
+- Azure Stack Hub オペレーターは、SQL データベース サーバーとホストのデプロイ、更新、セキュリティ保護、構成、保守を担当します。 RP サービスでは、ホストおよびデータベース サーバー インスタンスの管理機能は提供されません。
 - 異なるサブスクリプションの異なるユーザーのデータベースは、同じデータベース サーバー インスタンスに配置できます。 RP は、データベースを別のホストまたはデータベース サーバー インスタンス上で分離するためのメカニズムを備えていません。
 - RP では、データベースのテナント使用に関するレポートは提供されません。
+- SQL ホスティング サーバーは、グローバル Azure 内の別のサブスクリプションにのみ移動できます。 Azure Stack Hub では、SQL ホスティング サーバーの別のサブスクリプションへの移動はサポートされていません。
 
 オンプレミスの従来の SQL Server ワークロードには、Azure Stack Hub 上の SQL Server 仮想マシンをお勧めします。
 
@@ -35,7 +36,7 @@ SQL リソース プロバイダーをインストールする前に、考慮す
 
 リソース プロバイダーは、次のコンポーネントで構成されています。
 
-- **SQL リソース プロバイダーの仮想マシン (VM)** 。プロバイダー サービスを実行する Windows Server VM です。
+- **SQL リソース プロバイダーの仮想マシン (VM)**。プロバイダー サービスを実行する Windows Server VM です。
 - **リソース プロバイダー**。要求を処理し、データベース リソースにアクセスします。
 - **SQL Server をホストするサーバー**。これはデータベースに容量を提供し、ホスティング サーバーと呼ばれます。
 

@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: Azure Stack Hub 検証ポータルでテストをスケジュールする方法について説明します。
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 649ad123107d01059f2b5fdc25adc1b847e2e2c5
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: 3096797a847b4a4e84dc40a6c696061fc0249852
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661198"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97874746"
 ---
 # <a name="scheduling-a-test"></a>テストのスケジュール設定
 

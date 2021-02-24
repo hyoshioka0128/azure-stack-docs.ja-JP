@@ -1,18 +1,18 @@
 ---
 title: ASDK の要件と考慮事項
 description: Azure Stack Development Kit (ASDK) のハードウェア、ソフトウェア、環境の要件を確認します。
-author: justinha
+author: PatAltimore
 ms.topic: article
-ms.date: 05/13/2019
-ms.author: justinha
+ms.date: 09/23/2020
+ms.author: patricka
 ms.reviewer: misainat
-ms.lastreviewed: 05/13/2019
-ms.openlocfilehash: 98298b405bd818cb3cd1f67d52d1735a4cc3edd4
-ms.sourcegitcommit: c263a86d371192e8ef2b80ced2ee0a791398cfb7
+ms.lastreviewed: 09/23/2020
+ms.openlocfilehash: 64b0209ad669c42b7a792498369ca0f48bfcca52
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82846961"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97873284"
 ---
 # <a name="asdk-requirements-and-considerations"></a>ASDK の要件と考慮事項
 
@@ -20,18 +20,16 @@ Azure Stack Development Kit (ASDK) をデプロイする前に、ASDK のホス�
 
 ## <a name="hardware"></a>ハードウェア
 
-| コンポーネント | 最小値 | 推奨 |
-| --- | --- | --- |
-| ディスク ドライブ: オペレーティング システム |システム パーティション用に最低 200 GB の空きがある、1 つのオペレーティング システム ディスク (SSD または HDD)。 |システム パーティション用に最低 200 GB の空きがある 1 OS ディスク (SSD または HDD)。 |
-| ディスク ドライブ: 開発キット データ全般<sup>*</sup>  |4 つのディスク。 各ディスクに最低 240 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |4 つのディスク。 各ディスクに最低 400 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |
-| コンピューティング: CPU |デュアル ソケット: 16 個の物理コア (合計)。 |デュアル ソケット: 20 個の物理コア (合計)。 |
-| コンピューティング: メモリ |192 GB の RAM。 |256 GB の RAM。 |
-| コンピューティング: BIOS |Hyper-V 対応 (SLAT サポートあり)。 |Hyper-V 対応 (SLAT サポートあり)。 |
-| [ネットワーク]\: NIC |Windows Server 2012 R2 認定。 特別な機能は必要ありません。 | Windows Server 2012 R2 認定。 特別な機能は必要ありません。 |
-| ハードウェア ロゴ認定 |[Windows Server 2012 R2 認定](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm)。 
-|[Windows Server 2016 認定](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm)。 
-|
-
+| コンポーネント                                             | 最小値                                                                                                 | 推奨                                                                                             |
+|-------------------------------------------------------|---------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| ディスク ドライブ: オペレーティング システム                         | システム パーティション用に最低 200 GB の空きがある、1 つのオペレーティング システム ディスク (SSD または HDD)。             | システム パーティション用に最低 200 GB の空きがある 1 OS ディスク (SSD または HDD)。                           |
+| ディスク ドライブ: 開発キット データ全般<sup>*</sup> | 4 つのディスク。 各ディスクに最低 240 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 | 4 つのディスク。 各ディスクに最低 400 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |
+| コンピューティング: CPU                                          | デュアル ソケット: 16 個の物理コア (合計)。                                                                 | デュアル ソケット: 20 個の物理コア (合計)。                                                                 |
+| コンピューティング: メモリ                                       | 192 GB の RAM。                                                                                             | 256 GB の RAM。                                                                                             |
+| コンピューティング: BIOS                                         | Hyper-V 対応 (SLAT サポートあり)。                                                                    | Hyper-V 対応 (SLAT サポートあり)。                                                                    |
+| [ネットワーク]\: NIC                                          | Windows Server 2012 R2 認定。 特別な機能は必要ありません。                                 | Windows Server 2012 R2 認定。 特別な機能は必要ありません。                                 |
+| ハードウェア ロゴ認定                                 | [Windows Server 2012 R2 認定](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm)。 | [Windows Server 2016 認定](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm)。    |
+  
 <sup>*</sup> Azure から[マーケットプレース項目](../operator/azure-stack-create-and-publish-marketplace-item.md)の多くを追加する計画の場合は、この推奨容量より多くが必要です。
 
 ### <a name="hardware-notes"></a>ハードウェアの注
@@ -68,7 +66,7 @@ Azure Stack Development Kit (ASDK) をデプロイする前に、ASDK のホス�
 
 - 2 テラバイトを超えるシステムの HDD 容量が必要です。
 - ご使用の ASDK に SSD がない場合、双方向ミラー構成には少なくとも 8 個の HDD が必要です。
-- ご使用の ASDK に SSD も HDD もある場合は、少なくとも 5 個の HDD が必要です。 ただし、6 個の HHD が推奨されます。 6 個の HDD の場合は、さらに、対応する SSD をシステム内に少なくとも 3 個持つことをお勧めします。それにより、1 個のキャッシュ ディスク (SSD) で 2 個の容量ドライブ (HDD) に対応することができます。
+- ご使用の ASDK に SSD も HDD もある場合は、少なくとも 5 個の HDD が必要です。 ただし、6 個の HDD が推奨されます。 6 個の HDD の場合は、さらに、対応する SSD をシステム内に少なくとも 3 個持つことをお勧めします。それにより、1 個のキャッシュ ディスク (SSD) で 2 個の容量ドライブ (HDD) に対応することができます。
 
 双方向ミラー構成の例:
 
@@ -80,9 +78,6 @@ Azure Stack Development Kit (ASDK) をデプロイする前に、ASDK のホス�
 |  | **必要条件** |
 | --- | --- |
 | **OS バージョン** |Windows Server 2016 以降。 Azure Stack のインストールに含まれる VHD でホスト コンピューターを起動するので、デプロイが開始する前のオペレーティング システムのバージョンは重要ではありません。 オペレーティング システムと必要なすべての修正プログラムは、イメージに既に統合されています。 ASDK で使われている Windows Server インスタンスをアクティブ化するためにキーを使わないでください。 |
-
-> [!TIP]
-> オペレーティング システムをインストールした後は、[Deployment Checker for Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) を使って、ハードウェアがすべての要件を満たしていることを確認できます。
 
 ## <a name="account-requirements"></a>アカウントの要件
 通常は、Microsoft Azure に接続できるようにインターネットに接続された状態で ASDK をデプロイします。 この場合、ASDK をデプロイするために Azure Active Directory (Azure AD) アカウントを構成する必要があります。
@@ -107,13 +102,13 @@ Azure AD アカウントを使って Azure Stack をデプロイするには、�
    | 有効な中国の Azure サブスクリプションのある職場または学校アカウント |はい |
    | 有効な米国政府の Azure サブスクリプションのある職場または学校アカウント |はい |
 
-デプロイの後、Azure AD の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要な場合があります。 そのような操作の例には、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に復元するか、*既定のプロバイダー サブスクリプション*の所有者である別の全体管理者アカウントを使用します。
+デプロイの後、Azure AD の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要な場合があります。 そのような操作の例には、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に復元するか、*既定のプロバイダー サブスクリプション* の所有者である別の全体管理者アカウントを使用します。
 
 ## <a name="network"></a>ネットワーク
-### <a name="switch"></a>Switch
-ASDK マシンでは、1 つのスイッチで 1 つのポートのみを使用できます。  
+### <a name="switch"></a>スイッチ
+ASDK マシンには、1 つのスイッチで 1 つのポートが使用できます。  
 
-ASDK マシンでは、スイッチ アクセス ポートまたはトランク ポートへの接続をサポートしています。 スイッチでは特別な機能は必要ありません。 トランク ポートを使用している場合、または VLAN ID を構成する必要がある場合は、デプロイ パラメーターとして VLAN ID を指定する必要があります。
+ASDK マシンでは、スイッチ アクセス ポートまたはトランク ポートへの接続をサポートしています。 スイッチでは特別な機能は必要ありません。
 
 ### <a name="subnet"></a>Subnet
 次のサブネットには、ASDK マシンを接続しないでください。
@@ -134,11 +129,10 @@ IPv4 のみがサポートされています。 IPv6 ネットワークを作成
 NIC を接続するネットワークで使用できる DHCP サーバーがあることを確認します。 DHCP が使用できない場合は、ホストが使用するためのものに加え、追加の静的 IPv4 ネットワークを準備する必要があります。 デプロイ パラメーターとしてその IP アドレスとゲートウェイも指定する必要があります。
 
 ### <a name="internet-access"></a>インターネットへのアクセス
-Azure Stack は、直接または透過プロキシ経由で、インターネットにアクセスできる必要があります。 Azure Stack は、インターネット アクセスを有効にするための Web プロキシの構成をサポートしていません。 ホスト IP と (DHCP または静的 IP アドレスによって) AzS-BGPNAT01 に割り当てられた新しい IP の両方が、インターネットにアクセスできる必要があります。 graph.windows.net および login.microsoftonline.com ドメインのポート 80 と 443 を使用します。
+Azure Stack は、直接または透過プロキシ経由で、インターネットにアクセスできる必要があります。 Azure Stack は、インターネット アクセスを有効にするための Web プロキシの構成をサポートしていません。 graph.windows.net および login.microsoftonline.com ドメインのポート 80 と 443 を使用します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [ASDK デプロイ パッケージをダウンロードします](asdk-download.md)。
-- 記憶域スペース ダイレクトの詳細については、「[記憶域スペース ダイレクトの概要](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)」を参照してください。
-
+- 記憶域スペース ダイレクトの詳細については、「[記憶域スペース ダイレクトの概要](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)」を参照してください。

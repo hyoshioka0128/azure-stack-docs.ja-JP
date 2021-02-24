@@ -1,18 +1,18 @@
 ---
 title: Azure Stack Hub のストレージ アカウントを管理する
 description: Azure Stack Hub のストレージ アカウントを検索、管理、回復、および回収する方法を学習します。
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: how-to
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
-ms.openlocfilehash: 995342f471ed7300d2fb9dd95a6623588a13d1a9
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 4a939cafccd91b29a324dd15e01b04be47074df8
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "79295330"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97870105"
 ---
 # <a name="manage-azure-stack-hub-storage-accounts"></a>Azure Stack Hub のストレージ アカウントを管理する
 
@@ -22,7 +22,7 @@ Azure Stack Hub のストレージ アカウントを管理する方法を学習
 
 リージョン内のストレージ アカウントのリストは、これらの手順に従うことで Azure Stack Hub で表示できます。
 
-1. [管理者ポータル](https://adminportal.local.azurestack.external)にサインインします。
+1. 管理者ポータル `https://adminportal.local.azurestack.external` にサインインします。
 
 2. **[すべてのサービス]**  >  **[ストレージ]**  >  **[ストレージ アカウント]** の順に選択します。
 
@@ -32,12 +32,12 @@ Azure Stack Hub のストレージ アカウントを管理する方法を学習
 
 OR
 
-特定のストレージ アカウントに関心がある場合は、**フィルター処理して関連するアカウントのみをフェッチ**することができます。
+特定のストレージ アカウントに関心がある場合は、**フィルター処理して関連するアカウントのみをフェッチ** することができます。
 
 **アカウントをフィルター処理するには:**
 
 1. ウィンドウの上部にある **[フィルター]** を選択します。
-2. [フィルター] ウィンドウでは、**アカウント名**、**サブスクリプション ID**、または**ステータス**を指定して、表示するストレージ アカウントのリストを細かく調整できます。 必要に応じてこれらを使用します。
+2. [フィルター] ウィンドウでは、**アカウント名**、**サブスクリプション ID**、または **ステータス** を指定して、表示するストレージ アカウントのリストを細かく調整できます。 必要に応じてこれらを使用します。
 3. 入力中、リストに自動的にフィルターが適用されます。
 
     ![Azure Stack Hub のストレージ アカウントをフィルター処理する](media/azure-stack-manage-storage-accounts/image5.png)
@@ -62,7 +62,7 @@ Azure Stack Hub では、これを行う簡単な方法があります。
 
 1. ストレージ アカウント リストを参照します。 詳細については、この記事の最初の「[ストレージ アカウントの検索](azure-stack-manage-storage-accounts.md)」を参照してください。
 2. そのリストで特定のアカウントを検索します。 場合によっては、フィルターを使用する必要があります。
-3. アカウントの*状態*を確認します。 **[削除済み]** になっているはずです。
+3. アカウントの *状態* を確認します。 **[削除済み]** になっているはずです。
 4. アカウントを選択して、その詳細ウィンドウを開きます。
 5. このウィンドウの上部にある **[回復]** ボタンを選択します。
 6. **[はい]** を選択して確定します。
@@ -76,7 +76,7 @@ Azure Stack Hub では、これを行う簡単な方法があります。
    回復したアカウントが正常に同期されたら、もう一度使用できます。
 
 ### <a name="some-gotchas"></a>注意事項
-* 削除されたアカウントの状態が、**保有期間外**として表示される。
+* 削除されたアカウントの状態が、**保有期間外** として表示される。
   
   "保有期間外" は、削除されたアカウントが保有期間を超過しており、回復できない可能性があることを意味します。
 
@@ -89,8 +89,8 @@ Azure Stack Hub では、これを行う簡単な方法があります。
 
 **保有期間を変更するには:**
 
-1. [管理者ポータル](https://adminportal.local.azurestack.external)にサインインします。
-2. **[管理]** の下で、**[すべてのサービス]** > **[リージョン管理]** を選択します。
+1. 管理者ポータル `https://adminportal.local.azurestack.external` にサインインします。
+2. **[管理]** の下で、 **[すべてのサービス]**  >  **[リージョン管理]** を選択します。
 3. **[リソース プロバイダー]**  >  **[ストレージ]**  >  **[設定]** の順に選択します。 パスは、[ホーム] > [<*リージョン*> - リソース プロバイダー] > [ストレージ] です。
 4. **[構成]** を選択してリテンション期間の値を編集します。
 
@@ -123,8 +123,8 @@ PowerShell を使用して保有期間を明示的にオーバーライドし、
 **PowerShell を使用して容量を回収するには:**
 
 1. Azure PowerShell がインストールおよび構成されていることを確認します。 それ以外の場合は、次の手順を実行します。 
-   * Azure PowerShell の最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、[Azure PowerShell のインストールおよび構成方法](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)に関するページをご覧ください。
-   Azure Resource Manager コマンドレットの詳細については、[Azure Resource Manager での Azure PowerShell の使用](https://go.microsoft.com/fwlink/?LinkId=394767)に関するページを参照してください。
+   * Azure PowerShell の最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、[Azure PowerShell のインストールおよび構成方法](/powershell/azure/)に関するページをご覧ください。
+   Azure Resource Manager コマンドレットの詳細については、[Azure Resource Manager での Azure PowerShell の使用](/azure/azure-resource-manager/management/manage-resources-powershell)に関するページを参照してください。
 2. 次のコマンドレットを実行します。
 
 > [!NOTE]  
@@ -135,7 +135,7 @@ PowerShell を使用して保有期間を明示的にオーバーライドし、
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ```
 
-詳細については、[Azure Stack Hub PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/azure-stack/overview)を参照してください。
+詳細については、[Azure Stack Hub PowerShell のドキュメント](/powershell/azure/azure-stack/overview)を参照してください。
  
 
 ## <a name="next-steps"></a>次のステップ

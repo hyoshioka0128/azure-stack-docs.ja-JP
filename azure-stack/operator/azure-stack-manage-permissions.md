@@ -1,18 +1,18 @@
 ---
 title: ロールベースのアクセス制御を使用してアクセス許可を設定する
 description: Azure Stack Hub で、ロールベースのアクセス制御 (RBAC) を使用してアクセス許可を設定する方法について説明します。
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 12/23/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 12/23/2019
-ms.openlocfilehash: f74f35a8b1124ed9678e6b4bc254d4d2cd05a84e
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: 852aa0283e3bd88a196c4bcf9e56951142bc4d60
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77699271"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97870122"
 ---
 # <a name="set-access-permissions-using-role-based-access-control"></a>ロールベースのアクセス制御を使用してアクセス許可を設定する
 
@@ -23,12 +23,12 @@ Azure Stack Hub のユーザーは、サブスクリプション、リソース 
  - 所有者: ユーザーは、リソースへのアクセスを含め、すべてを管理できます。
  - カスタム:ユーザーのリソースへのアクセスは、特定のものに制限されています。
 
- カスタム ロールの作成の詳細については、「[Azure リソースのカスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)」を参照してください。
+ カスタム ロールの作成の詳細については、「[Azure リソースのカスタム ロール](/azure/role-based-access-control/custom-roles)」を参照してください。
 
 ## <a name="set-access-permissions-for-a-user"></a>ユーザーのアクセス権限の設定
 
 1. 管理するリソースへの所有者アクセス許可があるアカウントでサインインします。
-2. リソースのブレードで、 **[アクセス]** アイコン ![](media/azure-stack-manage-permissions/image1.png) をクリックします。
+2. リソースのブレードで、 **[アクセス]** アイコン ![[アクセス] アイコンは、2 名の人物の頭と肩の輪郭線です。](media/azure-stack-manage-permissions/image1.png) をクリックします。
 3. **[ユーザー]** ブレードで、 **[役割]** をクリックします。
 4. **[役割]** ブレードで、 **[追加]** をクリックし、ユーザーのアクセス許可を追加します。
 
@@ -38,7 +38,7 @@ Azure Stack Hub のユーザーは、サブスクリプション、リソース 
 > Active Directory フェデレーション サービス (AD FS) にのみ適用されます。
 
 1. 管理するリソースへの所有者アクセス許可があるアカウントでサインインします。
-2. リソースのブレードで、 **[アクセス]** アイコン ![](media/azure-stack-manage-permissions/image1.png) をクリックします。
+2. リソースのブレードで、 **[アクセス]** アイコン ![[アクセス] アイコンは、2 名の人物の頭と肩の輪郭線です。](media/azure-stack-manage-permissions/image1.png) をクリックします。
 3. **[ユーザー]** ブレードで、 **[役割]** をクリックします。
 4. **[役割]** ブレードで、 **[追加]** をクリックして、ユニバーサル グループ Active Directory グループのアクセス許可を追加します。
 

@@ -3,16 +3,16 @@ title: Azure Stack Hub でのサイト間 VPN 接続のトラブルシューテ�
 description: オンプレミス ネットワークと Azure Stack Hub 仮想ネットワークの間のサイト間 VPN 接続を構成した後に実行できるトラブルシューティング手順。
 author: sethmanheim
 ms.author: sethm
-ms.date: 05/12/2020
+ms.date: 11/22/2020
 ms.topic: article
 ms.reviewer: sranthar
-ms.lastreviewed: 05/12/2020
-ms.openlocfilehash: 361fefb0cfac67d5d55c9b3391da68877d695da3
-ms.sourcegitcommit: f4c2d5b87bc86ac4accb4d4df5b731b67d1a346c
+ms.lastreviewed: 11/22/2020
+ms.openlocfilehash: a39cbd5a845e79114393710c8ec77d37f30a68a0
+ms.sourcegitcommit: 8526f642ef859b0006c3991d966f93608a87288a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84203121"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98243512"
 ---
 # <a name="troubleshoot-site-to-site-vpn-connections"></a>サイト間 VPN 接続のトラブルシューティング
 
@@ -21,6 +21,9 @@ ms.locfileid: "84203121"
 この記事で Azure Stack Hub の問題に対処できない場合、[Azure Stack Hub MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)を参照してください。
 
 Azure サポート要求を送信することもできます。 [Azure Stack Hub サポート](../operator/azure-stack-manage-basics.md#where-to-get-support)を参照してください。
+
+> [!NOTE]
+> 2 つの Azure Stack Hub デプロイ間に作成できるのは、1 つのサイト間 VPN 接続だけです。 これは、同じ IP アドレスに対して許容される VPN 接続が 1 つだけであるというプラットフォームの制限によるものです。 Azure Stack Hub では、Azure Stack Hub システム内のすべての VPN Gateway に対して単一のパブリック IP を使用するマルチテナント ゲートウェイが活用されているため、2 つの Azure Stack Hub システム間に存在できる VPN 接続は 1 つだけです。 この制限は、単一の IP アドレスを使用する VPN ゲートウェイに複数のサイト間 VPN 接続を接続する場合にも当てはまります。 Azure Stack Hub では、同じ IP アドレスを使用して複数のローカル ネットワーク ゲートウェイ リソースを作成することはできません。
 
 ## <a name="initial-troubleshooting-steps"></a>初回のトラブルシューティングの手順
 
@@ -43,6 +46,8 @@ Azure サポート要求を送信することもできます。 [Azure Stack Hub
 
 ## <a name="status-not-connected---intermittent-disconnects"></a>状態 "未接続" - 断続的な切断
 
+### <a name="az-modules"></a>[Az モジュール](#tab/az)
+
 - オンプレミスの VPN デバイスと AzSH 仮想ネットワーク VPN の共有キーを比較し、両者が一致することを確認します。 AzSH VPN 接続の共有キーを確認するには、次のいずれかの方法を使います。
 
   - **Azure Stack Hub テナント ポータル**:作成した VPN ゲートウェイ サイト間接続に移動します。 **[設定]** セクションで **[共有キー]** を選択します。
@@ -51,11 +56,27 @@ Azure サポート要求を送信することもできます。 [Azure Stack Hub
 
   - **Azure PowerShell**:次の PowerShell コマンドを使用します。
 
-      ```powershell
-      Get-AzureRMVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
-      ```
+```powershell
+Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
+```
 
-## <a name="status-connected--traffic-not-flowing"></a>状態 "接続済み" - トラフィック フローなし
+### <a name="azurerm-modules"></a>[AzureRM モジュール](#tab/azurerm)
+
+- オンプレミスの VPN デバイスと AzSH 仮想ネットワーク VPN の共有キーを比較し、両者が一致することを確認します。 AzSH VPN 接続の共有キーを確認するには、次のいずれかの方法を使います。
+
+  - **Azure Stack Hub テナント ポータル**:作成した VPN ゲートウェイ サイト間接続に移動します。 **[設定]** セクションで **[共有キー]** を選択します。
+
+      :::image type="content" source="media/site-to-site/vpn-connection.png" alt-text="VPN 接続":::
+
+  - **Azure PowerShell**:次の PowerShell コマンドを使用します。
+
+```powershell
+Get-AzurerRMVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
+```
+
+---
+
+## <a name="status-connected---traffic-not-flowing"></a>状態 "接続済み" - トラフィック フローなし
 
 - ゲートウェイ サブネットのユーザー定義ルート (UDR) とネットワーク セキュリティ グループ (NSG) があれば削除し、その結果をテストします。 問題が解決した場合は、適用されている UDR または NSG の設定を確認します。
 
@@ -73,8 +94,8 @@ Azure サポート要求を送信することもできます。 [Azure Stack Hub
 
   - Azure Stack Hub 仮想ネットワークとオンプレミスの定義で、仮想ネットワーク アドレス空間が完全に一致することを確認します。
 
-  - **ローカル ネットワーク ゲートウェイ**とオンプレミス ネットワークのオンプレミス定義との間でサブネットが完全に一致することを確認します。
+  - **ローカル ネットワーク ゲートウェイ** とオンプレミス ネットワークのオンプレミス定義との間でサブネットが完全に一致することを確認します。
 
 ## <a name="create-a-support-ticket"></a>サポート チケットの作成
 
-上記の手順で問題が解決しない場合、[サポート チケット](../operator/azure-stack-manage-basics.md#where-to-get-support)を作成し、[オンデマンド ログ収集ツール](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md)を使用してログを提供してください。
+上記の手順で問題が解決しない場合、[サポート チケット](../operator/azure-stack-manage-basics.md#where-to-get-support)を作成し、[オンデマンド ログ収集ツール](../operator/diagnostic-log-collection.md)を使用してログを提供してください。

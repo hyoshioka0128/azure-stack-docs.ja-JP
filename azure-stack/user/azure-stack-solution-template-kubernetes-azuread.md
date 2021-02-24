@@ -3,20 +3,20 @@ title: Azure Active Directory (Azure AD) を使用して Azure Stack Hub に Kub
 description: Azure Active Directory (Azure AD) を使用して Azure Stack Hub に Kubernetes をデプロイする方法について説明します。
 author: mattbriggs
 ms.topic: article
-ms.date: 3/12/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 3/12/2020
-ms.openlocfilehash: e85df91b08c51ce8255e2b35c9d7ba31505b3d00
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.openlocfilehash: b7d29513341fafc83a0143de8c7c70c1cbde479f
+ms.sourcegitcommit: a6f62a6693e48eb05272c01efb5ca24372875173
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "79313221"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99247797"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-hub-using-azure-active-directory"></a>Azure Active Directory を使用して Azure Stack Hub に Kubernetes をデプロイする
 
-> [!Note]  
+> [!NOTE]  
 > Kubernetes Azure Stack Marketplace 項目のみを使用して、概念実証としてクラスターをデプロイします。 Azure Stack でサポートされている Kubernetes クラスターの場合は、[AKS エンジン](azure-stack-kubernetes-aks-engine-overview.md)を使用します。
 
 この記事の手順に従えば、Azure Active Directory (Azure AD) を ID 管理サービスとして 1 回の連携した操作で使用するときに、Kubernetes のリソースをデプロイおよび設定することができます。
@@ -27,7 +27,7 @@ ms.locfileid: "79313221"
 
 1. Azure Active Directory (Azure AD) テナントにアプリケーションを作成できることを確認します。 Kubernetes のデプロイには所定のアクセス許可が必要です。
 
-    アクセス許可をチェックする手順については、「[Azure Active Directory のアクセス許可を確認する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)」を参照してください。
+    アクセス許可をチェックする手順については、「[Azure Active Directory のアクセス許可を確認する](/azure/azure-resource-manager/resource-group-create-service-principal-portal)」を参照してください。
 
 1. SSH 公開キーと秘密キーのペアを生成して、Azure Stack Hub 上の Linux VM にサインインします。 クラスターを作成するときに、公開キーが必要になります。
 
@@ -35,7 +35,7 @@ ms.locfileid: "79313221"
 
 1. Azure Stack Hub テナント ポータル内で有効なサブスクリプションがあり、新しいアプリケーションの追加に十分使用できるパブリック IP アドレスがあることを確認します。
 
-    クラスターを Azure Stack Hub **管理者**サブスクリプションにデプロイすることはできません。 **User** サブスクリプションを使用する必要があります。 
+    クラスターを Azure Stack Hub **管理者** サブスクリプションにデプロイすることはできません。 **User** サブスクリプションを使用する必要があります。 
 
 1. マーケットプレースに Kubernetes クラスターがない場合は、Azure Stack Hub 管理者に連絡してください。
 
@@ -65,13 +65,13 @@ Azure でサービス プリンシパルを設定します。 サービス プ�
 
     b. **[有効期限]** で **[Never expires]\(有効期限なし\)** を選択します。
 
-    c. **[追加]** を選択します。 キー文字列をメモします。 クラスターを作成するときに、キー文字列が必要になります。 キーは、**サービス プリンシパル クライアント シークレット**として参照されます。
+    c. **[追加]** を選択します。 キー文字列をメモします。 クラスターを作成するときに、キー文字列が必要になります。 キーは、**サービス プリンシパル クライアント シークレット** として参照されます。
 
 ## <a name="give-the-service-principal-access"></a>サービス プリンシパルへのアクセスの付与
 
 サービス プリンシパルがリソースを作成できるように、そのプリンシパルにサブスクリプションへのアクセスを付与します。
 
-1.  [Azure Stack Hub ポータル](https://portal.local.azurestack.external/)にサインインします。
+1.  Azure Stack Hub ポータル `https://portal.local.azurestack.external/` にサインインします。
 
 1. **[すべてのサービス]**  >  **[サブスクリプション]** を選択します。
 
@@ -87,17 +87,17 @@ Azure でサービス プリンシパルを設定します。 サービス プ�
 
 ## <a name="deploy-kubernetes"></a>Kubernetes のデプロイ
 
-1. [Azure Stack Hub ポータル](https://portal.local.azurestack.external)を開きます。
+1. Azure Stack Hub ポータル `https://portal.local.azurestack.external` を開きます。
 
 1. **[+ リソースの作成]**  >  **[コンピューティング]**  >  **[Kubernetes クラスター]** を選択します。 **Create** をクリックしてください。
 
-    ![ソリューション テンプレートのデプロイ](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
+    ![Kubernetes クラスターの作成方法を示すスクリーンショット。](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
 ### <a name="1-basics"></a>1.基本
 
 1. [Kubernetes クラスターを作成] で **[基本]** を選びます。
 
-    ![ソリューション テンプレートのデプロイ](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
+    ![Kubernetes クラスターに関する基本情報を追加する方法を示すスクリーンショット。](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
 1. **[サブスクリプション]** を選択します。
 
@@ -109,7 +109,7 @@ Azure でサービス プリンシパルを設定します。 サービス プ�
 
 1. [Kubernetes クラスターを作成] で **[Kubernetes Cluster Settings] (Kubernetes クラスターの設定)** を選択します。
 
-    ![ソリューション テンプレートのデプロイ](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings-aad.png)
+    ![Kubernetes クラスターの設定に関する情報を指定する場所を示すスクリーンショット。](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings-aad.png)
 
 1. **[Linux VM admin username]\(Linux VM 管理者ユーザー名\)** を入力します。 Kubernetes クラスターと DVM の一部である Linux Virtual Machines のユーザー名
 
@@ -117,7 +117,7 @@ Azure でサービス プリンシパルを設定します。 サービス プ�
 
 1. リージョンで一意の **[Master Profile DNS Prefix]\(マスター プロファイル DNS プレフィックス\)** を入力します。 これは、`k8s-12345` など、リージョンで一意の名前になっている必要があります。 ベスト プラクティスとして、リソース グループ名と同じ名前を選択してみてください。
 
-    > [!Note]  
+    > [!NOTE]  
     > 各クラスターに対して、新しい一意のマスター プロファイル DNS プレフィックスを使用してください。
 
 1. **[Kubernetes master pool profile count]\(Kubernetes マスター プール プロファイル数\)** を選択します。 この数には、マスター プール内のノードの数が含まれます。 1 ～ 7 を使用できます。 この値は奇数である必要があります。
@@ -128,7 +128,7 @@ Azure でサービス プリンシパルを設定します。 サービス プ�
 
 1. **[VMSize of the Kubernetes node VMs]\(Kubernetes ノード VM の VM サイズ\)** を選択します。 これにより、Kubernetes ノード VM の VM サイズを指定します。 
 
-1. Azure Stack Hub のインストールに向けて、**Azure Stack Hub の ID システム**用の **Azure AD** を選択します。
+1. Azure Stack Hub のインストールに向けて、**Azure Stack Hub の ID システム** 用の **Azure AD** を選択します。
 
 1. **[Service principal clientId]\(サービス プリンシパル クライアント ID\)** を入力します。これは、Kubernetes Azure クラウド プロバイダーによって使用されます。 Azure Stack Hub 管理者がサービス プリンシパルを作成したときに、アプリケーション ID として識別されたクライアント ID。
 

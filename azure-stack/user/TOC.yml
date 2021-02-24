@@ -48,12 +48,12 @@
                 - name: Azure Stack Hub PowerShell の概要
                   href: azure-stack-powershell-overview.md
                 - name: Azure Stack Hub PowerShell のインストール
-                  href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                  href: ../operator/powershell-install-az-module.md?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
                   maintainContext: true
                 - name: PowerShell で接続する
                   href: azure-stack-powershell-configure-user.md
                 - name: Azure Stack Hub ツールのダウンロード
-                  href: /azure-stack/operator/azure-stack-powershell-download?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                  href: ../operator/azure-stack-powershell-download.md?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
                   maintainContext: true
                 - name: Docker を使用して PowerShell を実行する
                   href: azure-stack-powershell-user-docker.md
@@ -118,7 +118,7 @@
             - name: ロールベースのアクセス制御を使用する
               href: azure-stack-manage-permissions.md
             - name: アプリ ID を使用してリソースにアクセスする
-              href: /azure-stack/operator/azure-stack-create-service-principals?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+              href: ../operator/azure-stack-create-service-principals.md?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: サービスの使用
           items:
             - name: Compute
@@ -129,16 +129,34 @@
                   href: azure-stack-vm-considerations.md
                 - name: VM サイズ
                   href: azure-stack-vm-sizes.md
+                - name: サポートされる GPU VM
+                  href: gpu-vms-about.md
                 - name: VM ディスクの管理
                   href: azure-stack-manage-vm-disks.md
                 - name: マネージド ディスクに関する考慮事項
                   href: azure-stack-managed-disk-considerations.md
+                - name: マネージド ディスク テンプレート
+                  href: virtual-machines-use-managed-disks-template.md
+                - name: 依存関係がある VM を削除する
+                  href: delete-vm.md
                 - name: VM の保護
                   href: azure-stack-manage-vm-protect.md
+                - name: VM に関する既知の問題
+                  href: troubleshoot-vm-known-issues.md
                 - name: VM の更新と管理
                   href: vm-update-management.md
                 - name: SQL Server VM に関する考慮事項
                   href: azure-stack-sql-server-vm-considerations.md
+                - name: VM の移行
+                  items:
+                    - name: VM の移行の概要
+                      href: vm-move-overview.md
+                    - name: Azure からの VM
+                      href: vm-move-from-azure.md
+                    - name: オンプレミスの特殊化 VM
+                      href: vm-move-specialized.md
+                    - name: オンプレミスの一般化 VM
+                      href: vm-move-generalized.md
             - name: ストレージ
               items:
                 - name: 概要
@@ -171,6 +189,8 @@
                       href: network-virtual-appliance.md
                     - name: サイト間接続のトラブルシューティング
                       href: site-to-site.md
+                - name: 仮想ネットワーク ピアリング
+                  href: virtual-network-peering.md
                 - name: Azure Stack Hub 用の iDNS
                   href: azure-stack-understanding-dns.md
                 - name: Azure Stack Hub の DNS
@@ -195,6 +215,12 @@
               items:
                 - name: 概要
                   href: event-hubs-overview.md
+            - name: IoT Hub
+              items:
+                - name: 概要
+                  href: iot-hub-overview.md
+                - name: IoT Edge デバイスの接続
+                  href: iot-hub-connect-iot-edge-device.md
             - name: Azure Monitor
               href: azure-stack-metrics-azure-data.md
               items:
@@ -232,10 +258,14 @@
                       href: azure-stack-kubernetes-aks-engine-scale.md
                     - name: クラスターのアップグレード
                       href: azure-stack-kubernetes-aks-engine-upgrade.md
+                    - name: サービス アカウント トークンのボリューム予測を有効にする
+                      href: kubernetes-aks-engine-service-account.md
                     - name: AKS エンジンのトラブルシューティング
                       href: azure-stack-kubernetes-aks-engine-troubleshoot.md
                     - name: Azure Monitor for containers を使用する
-                      href: 'https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-hybrid-setup'
+                      href: /azure/azure-monitor/insights/container-insights-hybrid-setup
+                    - name: Azure Stack Hub 上の AKS エンジンに関する既知の問題
+                      href: azure-stack-kubernetes-aks-engine-known-issues.md
                 - name: Marketplace の項目
                   items:
                     - name: Kubernetes クラスターのデプロイ
@@ -254,7 +284,7 @@
               href: azure-stack-solution-template-cognitive-services.md
     - name: アプリをデプロイする
       items:
-        - name: 'C# Web アプリを Windows VM にデプロイする'
+        - name: C# Web アプリを Windows VM にデプロイする
           href: azure-stack-dev-start-howto-vm-dotnet.md
         - name: Web アプリを Linux VM にデプロイする
           items:
@@ -270,24 +300,29 @@
               href: azure-stack-dev-start-howto-vm-python.md
             - name: NodeJS Web アプリをデプロイする
               href: azure-stack-dev-start-howto-vm-nodejs.md
+        - name: GitHub アクションの作成 - ログイン
+          href: ci-cd-github-action-login-cli.md
+        - name: GPU IoT モジュールをデプロイする
+          href: gpu-deploy-sample-module.md
     - name: 基本パターンのデプロイ
-      href: deploy-foundational-patterns.md
       items:
+        - name: 基本パターンのデプロイ
+          href: deploy-foundational-patterns.md
         - name: ネットワークのパターン
           items:
-            - name: VM を使用した VNet ピアリング
-              href: azure-stack-network-howto-vnet-peering.md
             - name: サードパーティの NVA を使用する (Fortinet Fortigate NVA)
               items:
-                - name: FortiGate を使用した VNet ピアリング
+                - name: Fortigate との VNet 間接続
                   href: azure-stack-network-howto-vnet-to-vnet.md
                 - name: オンプレミスへの VPN を設定する
                   href: azure-stack-network-howto-vnet-to-onprem.md
-                - name: VNet 間接続
+                - name: Azure Stack Hub インスタンス間の VNet 間接続
                   href: azure-stack-network-howto-vnet-to-vnet-stacks.md
             - name: RRAS を使用する
               items:
-                - name: 複数サイト間 VPN を設定する
+                - name: RRAS との VNet 間接続
+                  href: azure-stack-network-howto-vnet-peering.md
+                - name: 複数サイト間 VPN トンネルを設定する
                   href: network-howto-vpn-tunnel.md
                 - name: VPN トンネル (GRE) を作成する
                   href: network-howto-vpn-tunnel-gre.md
@@ -326,23 +361,25 @@
 - name: リファレンス
   items:
     - name: Azure Stack Hub PowerShell
-      href: 'https://docs.microsoft.com/powershell/azure/azure-stack/overview'
+      href: /powershell/azure/azure-stack/overview
     - name: Azure Stack Hub の管理者 REST API
       href: /rest/api/azure-stack/
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest'
+      href: /cli/azure/reference-index?view=azure-cli-latest
 - name: 関連項目
   items:
     - name: Azure Stack Hub のオペレーター ドキュメント
-      href: /azure-stack/operator/
+      href: ../operator/index.yml
     - name: ASDK のドキュメント
-      href: /azure-stack/asdk/
+      href: ../asdk/index.yml
+    - name: Azure ハイブリッド クラウドのドキュメント
+      href: /hybrid
 - name: リソース
   items:
     - name: Azure Stack Hub のロード マップ
       href: 'https://azure.microsoft.com/updates/?query=azure%20stack%20hub'
-    - name: Azure Stack Hub の MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
+    - name: Azure Stack Hub Microsoft Q&A
+      href: /answers/questions/topics/single/50514.html
     - name: Azure Stack Hub のドキュメントのフィードバック
       href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: 料金情報
@@ -350,4 +387,4 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-stack'
     - name: トレーニングと認定
-      href: /azure-stack/operator/azure-stack-train-and-cert
+      href: ../operator/azure-stack-train-and-cert.md

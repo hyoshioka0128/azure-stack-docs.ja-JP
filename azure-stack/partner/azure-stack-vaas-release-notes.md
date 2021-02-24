@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: Azure Stack Hub のサービスとしての検証のリリース ノート。
 author: mattbriggs
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5c5aa3342acd37708231720663d10eacc7c2388b
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.openlocfilehash: 82e7820b49578139bbfb140e98fd740e6c1be8fb
+ms.sourcegitcommit: 733a22985570df1ad466a73cd26397e7aa726719
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661176"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97868201"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>サービスとしての検証のリリース ノート
 
@@ -30,6 +30,38 @@ ms.locfileid: "81661176"
 
 - バグの修正
   - テスト Test101LinuxEmptyAttachedDiskManagedDisk、Test101WindowsEmptyAttachedDiskManagedDisk を修正しました。
+
+## <a name="version-4442"></a>バージョン 4.4.4.2
+
+2020 年 11 月 11 日
+
+- CSE 検証ワークフローが更新され、AzureStack のフル アップデート後に、テスト署名済みの OEM 拡張パッケージを自動的にインストールできるようになりました。
+  - この修正以前は、AzureStack のフル アップデート後に、VaaS を使用したテスト署名済みの OEM 拡張パッケージをスタンプにインストールする際に失敗することがありました。 VaaS によって AzureStack 更新プログラムが適用され、その後に実行が終了されます。
+  - これはすでに修正済みで、CSE 検証ワークフローによって指定された AzureStack 更新プログラムとテスト署名済みの OEM 拡張パッケージがインストールされることを確認できます。
+- OEM パッケージ検証拡張機能を 'OEM 検証ワークフロー' に追加しました
+  - この拡張機能は、スタンプの更新が開始される前に実行されます。
+  - この拡張機能によって、OEM 拡張機能パッケージの内容と oemMetadata.xml の要素が検証されます
+  - OEM 拡張パッケージでエラーまたは問題が発生した場合は、VaaS テストが開始される前に検出されます。
+  - これらの検証は、以前は VaaS のテスト実行後のパッケージの署名時に実行されていました。  
+- 新しいバージョンの AzureStack および AzureRM PowerShell モジュールをインストールするように VaaS の前提要件が更新されました
+  - AzureStack PS モジュール バージョン 1.8.2
+  - AzureRM PS モジュール バージョン 2.5.0
+- サービスのマイナー アップデート。
+
+## <a name="version-443112"></a>バージョン 4.4.3.112
+
+2020 年 8 月 23 日
+
+- サービスの更新。
+  - サービス展開の更新。
+  - サービスの認証方法が更新されました。
+
+## <a name="version-44368"></a>バージョン 4.4.3.68
+
+2020 年 6 月 30 日
+
+- サービスの更新。
+  - Service Fabric で実行されるようにサービスを移動しました。
 
 ## <a name="version-4421"></a>バージョン 4.4.2.1
 
@@ -56,7 +88,6 @@ ms.locfileid: "81661176"
     - Test101LinuxEmptyAttachedDiskManagedDisk
     - Test101WindowsEmptyAttachedDiskManagedDisk
 
-
 ## <a name="version-4353"></a>バージョン 4.3.5.3
 
 2019 月 11 月 7 日
@@ -64,13 +95,13 @@ ms.locfileid: "81661176"
 - テスト コンテンツの更新:
   - Monthly Azure Stack Hub Update Verification (月次 Azure Stack Hub 更新プログラムの検証) (バージョン 5.1.46.0 -> 5.1.49.0)。
   - OEM Extension Package Verification (OEM 拡張機能パッケージの検証) (バージョン 5.1.46.0 -> 5.1.49.0)。
-  - 5\.1.46.0 の結果は保持されています。 5\.1.46.0 で正常に実行された場合は、結果を送信するときに vaashelp@microsoft.com に通知します。
+  - 5.1.46.0 の結果は保持されています。 5\.1.46.0 で正常に実行された場合は、結果を送信するときに vaashelp@microsoft.com に通知します。
 
 - バグの修正
   - 更新プログラムの .zip に特殊文字が含まれていた場合に月次 Azure Stack Hub 更新プログラムの検証が実行に失敗する問題を修正しました。
 
 - 既知の問題
-  - mstest.exe が検出されない場合、VaaS テストが失敗します。 対処法:
+  - mstest.exe が検出されない場合、VaaS テストが失敗します。 対応策 :
     1. PowerShell ウィンドウでエージェントの CTRL + C を実行します。
     1. 「mstest.exe」と入力して、mstest.exe が認識されるプログラムであることを確認します。
     1. mstest.exe が認識されない場合は、現在の PowerShell ウィンドウを閉じます。
@@ -188,7 +219,7 @@ Azure Stack Hub 月間更新検証ワークフローを実行しているとき�
 
   - 対話型テスト カテゴリ:
 
-    **対話型**テスト カテゴリが追加されました。 これらのテストにより、自動化されていない対話型の Azure Stack Hub シナリオが実行されます。
+    **対話型** テスト カテゴリが追加されました。 これらのテストにより、自動化されていない対話型の Azure Stack Hub シナリオが実行されます。
 
   - 対話型の機能検証:
 

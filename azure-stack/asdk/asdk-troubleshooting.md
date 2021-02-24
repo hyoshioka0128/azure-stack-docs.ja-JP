@@ -1,24 +1,23 @@
 ---
 title: ASDK のトラブルシューティング
 description: Azure Stack Development Kit (ASDK) のトラブルシューティング方法について説明します。
-author: justinha
+author: PatAltimore
 ms.topic: article
-ms.date: 11/05/2019
-ms.author: justinha
+ms.date: 01/06/2021
+ms.author: patricka
 ms.reviewer: misainat
-ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 73e769358d0b6007a7849edd1cebaac0ade78d04
-ms.sourcegitcommit: a630894e5a38666c24e7be350f4691ffce81ab81
+ms.lastreviewed: 01/06/2021
+ms.openlocfilehash: ab4a7166f0a6ae43259f3f1f919c3b24af017c1e
+ms.sourcegitcommit: 9b0e1264ef006d2009bb549f21010c672c49b9de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77691349"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98255216"
 ---
 # <a name="troubleshoot-the-asdk"></a>ASDK のトラブルシューティング
 この記事では、Azure Stack Development Kit (ASDK) の一般的なトラブルシューティング情報を提供します。 Azure Stack 統合システムに関するヘルプについては、「[Microsoft Azure Stack のトラブルシューティング](../operator/azure-stack-troubleshooting.md)」を参照してください。 
 
-ASDK は評価環境であるため、Microsoft カスタマー サポート サービス (CSS) によるサポートは提供されません。 記載されていない問題が発生している場合は、[Azure Stack MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)で専門家からのヘルプを得られます。 
-
+ASDK は評価環境であるため、Microsoft サポートによるサポートは提供されません。 記載されていない問題が発生している場合は、[Azure Stack 用の Microsoft Q&A](/answers/questions/topics/azure-stack-hub.html) で専門家からのヘルプを得られます。
 
 ## <a name="deployment"></a>デプロイ
 ### <a name="deployment-failure"></a>デプロイの失敗
@@ -36,10 +35,10 @@ ASDK は評価環境であるため、Microsoft カスタマー サポート サ
 
 テンプレートの検証時に、パラメーター "osProfile" が許可されないというエラー メッセージが表示される場合は、以下のコンポーネントの正しいバージョンが使用されていることを確認してください。
 
-- [Compute](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftcompute)
-- [Network](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
+- [Compute](../user/azure-stack-profiles-azure-resource-manager-versions.md#microsoftcompute)
+- [Network](../user/azure-stack-profiles-azure-resource-manager-versions.md#microsoftnetwork)
 
-Azure から Azure Stack に VHD をコピーするには、[AzCopy 7.3.0](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#download-and-install-azcopy)を使用します。 イメージ自体の問題については、ベンダーと協力して解決してください。 Azure Stack の WALinuxAgent の要件の詳細については、「[Azure LinuX エージェント](../operator/azure-stack-linux.md#azure-linux-agent)」を参照してください。
+Azure から Azure Stack に VHD をコピーするには、[AzCopy 7.3.0](../user/azure-stack-storage-transfer.md#download-and-install-azcopy)を使用します。 イメージ自体の問題については、ベンダーと協力して解決してください。 Azure Stack の WALinuxAgent の要件の詳細については、「[Azure LinuX エージェント](../operator/azure-stack-linux.md#azure-linux-agent)」を参照してください。
 
 ### <a name="deployment-fails-due-to-lack-of-external-access"></a>外部アクセスがないことが原因でデプロイが失敗する
 外部アクセスが必要な段階でデプロイが失敗する場合は、次の例のような例外が返されます。
@@ -74,10 +73,10 @@ Azure Stack に VM をデプロイする前に、まず Windows Server イメー
 
 また、ASDK ホストの再起動後に、そのテナント VM が自動的に起動しないことに気付く場合もあります。 手動でいくつかの手順を実行して、オンラインにすることができます。
 
-1.  ASDK ホストで、[スタート] メニューから**フェールオーバー クラスター マネージャー**を起動します。
+1.  ASDK ホストで、[スタート] メニューから **フェールオーバー クラスター マネージャー** を起動します。
 2.  クラスター **S-Cluster.azurestack.local** を選択します。
 3.  **[役割]** を選びます。
-4.  テナント VM が*保存済み*状態で表示されます。 すべてのインフラストラクチャ VM が実行されたら、テナント VM を右クリックし、 **[開始]** を選択して、VM を再開します。
+4.  テナント VM が *保存済み* 状態で表示されます。 すべてのインフラストラクチャ VM が実行されたら、テナント VM を右クリックし、 **[開始]** を選択して、VM を再開します。
 
 ### <a name="ive-deleted-some-vms-but-still-see-the-vhd-files-on-disk"></a>一部の VM の削除後に、まだディスクに VHD ファイルが表示される 
 この動作は仕様によるものです。

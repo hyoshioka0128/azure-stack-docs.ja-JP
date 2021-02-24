@@ -3,16 +3,16 @@ title: Azure Stack Hub 内で開発環境を設定する
 description: Azure Stack Hub 向けのアプリケーションの開発を開始します。
 author: mattbriggs
 ms.topic: overview
-ms.date: 04/20/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: d86797e7239b32e779567942b2c53c1ae58d94c8
-ms.sourcegitcommit: 32834e69ef7a804c873fd1de4377d4fa3cc60fb6
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: d000d7f892697795377323f4ad181149bda9ca31
+ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661001"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96525916"
 ---
 # <a name="set-up-a-development-environment-in-azure-stack-hub"></a>Azure Stack Hub 内で開発環境を設定する 
 
@@ -76,7 +76,7 @@ Windows 10 マシンを使用している場合は、PowerShell 5.0 と Visual S
 
 ### <a name="set-up-your-tools"></a>ご使用になるツールを設定する 
 
-1. PowerShell の設定を行います。 手順については、[Azure Stack Hub Powershell のインストール](../operator/azure-stack-powershell-install.md)に関するページを参照してください。 
+1. PowerShell の設定を行います。 手順については、[Azure Stack Hub Powershell のインストール](../operator/powershell-install-az-module.md)に関するページを参照してください。 
 
 2. Azure Stack Hub ツールをダウンロードします。 手順については、「[GitHub からの Azure Stack Hub ツールのダウンロード](../operator/azure-stack-powershell-download.md)」を参照してください。 
 
@@ -106,7 +106,7 @@ Windows 10 マシンを使用している場合は、PowerShell 5.0 と Visual S
 
 Linux マシンを使用している場合は、Azure CLI と Visual Studio Code、またはお好みの統合開発環境を使用できます。 
 
-> [!Note]   
+> [!NOTE]   
 > Linux マシンと ASDK を使用する場合、ご使用のリモート マシンが ASDK と同じネットワーク内にある必要があります。 仮想プライベート ネットワーク接続を使用して接続することはできません。 
 
 ### <a name="set-up-your-tools"></a>ご使用になるツールを設定する 
@@ -135,7 +135,7 @@ Linux マシンを使用している場合は、Azure CLI と Visual Studio Code
 
 macOS マシンでは、Azure CLI と Visual Studio Code、またはお好みの統合開発環境を使用できます。 
 
-> [!Note]   
+> [!NOTE]   
 > macOS マシンと ASDK を使用する場合、ご使用のリモート マシンが ASDK と同じネットワーク内にある必要があります。 仮想プライベート ネットワーク接続を使用して接続することはできません。 
 
 ### <a name="set-up-your-tools"></a>ご使用になるツールを設定する 

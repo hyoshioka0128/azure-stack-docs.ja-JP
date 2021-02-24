@@ -1,18 +1,18 @@
 ---
-title: Azure Stack Hub のカスタム仮想ネットワークに Kubernetes クラスターをデプロイする
-description: Azure Stack Hub のカスタム仮想ネットワークに Kubernetes クラスターをデプロイする方法について説明します。
+title: Azure Stack Hub で Linux 用の SSH キーを作成する
+description: Azure Stack Hub で Linux 用の SSH キーを作成する方法について説明します
 author: mattbriggs
 ms.topic: article
-ms.date: 2/28/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
-ms.reviewer: waltero
-ms.lastreviewed: 2/28/2020
-ms.openlocfilehash: b8bc4c1a9e56f363fa604e8df7a1fa0dbe37fcb0
-ms.sourcegitcommit: 355e21dd9b8c3f44e14abaae0b4f176443cf7495
+ms.reviewer: sijuman
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 4d85a543484fb7dfd33e6fb6c412198a4e646345
+ms.sourcegitcommit: 9ef2cdc748cf00cd3c8de90705ea0542e29ada97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81624987"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96525950"
 ---
 # <a name="create-an-ssh-key-for-linux-on-azure-stack-hub"></a>Azure Stack Hub で Linux 用の SSH キーを作成する
 
@@ -21,7 +21,7 @@ Windows マシンで Linux マシンの SSH (Secure Shell) キーを作成でき
 ## <a name="open-bash-on-windows"></a>Windows で bash を開く
 
 1. マシンに Windows Subsystem for Linux がインストールされていない場合は、[Ubuntu on Windows](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab) をインストールします。  
-    Windows Subsystem for Linux の使用方法の詳細については、「[Windows Subsystem for Linux のドキュメント](https://docs.microsoft.com/windows/wsl/about)」を参照してください。
+    Windows Subsystem for Linux の使用方法の詳細については、「[Windows Subsystem for Linux のドキュメント](/windows/wsl/about)」を参照してください。
 
 2. ツールバーに「**Ubuntu**」と入力し、 **[Open]\(開く\)** を選択します。
 
